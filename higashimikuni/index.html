@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" type="image/webp" href="assets/favicon.webp" />
+<title>東三国 男性専用 自宅サロン｜夜のリラクゼーション＆整体</title>
+<meta name="description" content="大阪市淀川区・東三国の男性専用自宅サロン。施術歴30年の男性セラピストによる夜のリラクゼーションと整体。完全予約制。近日開院予定で、ご予約は開院後にLINE公式アカウントで受付開始します。" />
+<meta property="og:title" content="東三国 男性専用 自宅サロン｜夜のリラクゼーション＆整体" />
+<meta property="og:description" content="大阪市淀川区・東三国の男性専用自宅サロン。施術歴30年の男性セラピストによる夜のリラクゼーションと整体。完全予約制。近日開院予定で、ご予約は開院後にLINE公式アカウントで受付開始します。" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/hero.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="東三国 男性専用 自宅サロン｜夜のリラクゼーション＆整体" />
+<meta name="twitter:description" content="大阪市淀川区・東三国の男性専用自宅サロン。施術歴30年の男性セラピストによる夜のリラクゼーションと整体。完全予約制。近日開院予定で、ご予約は開院後にLINE公式アカウントで受付開始します。" />
+<style>
+:root{
+--bg:#f6f2ea; --bg2:#efe8da; --surface:#fffdf8; --surface2:#ece4d3;
+--ink:#20261f; --ink2:#4c554b; --muted:#77806f;
+--line:#ddd2bd; --line2:#cbbfa4;
+--accent:#2e4a3e; --accent-ink:#ffffff; --gold:#a07c3a; --gold-soft:#f0e3c2;
+--teal:#33594d; --warn-bg:#fdf3e3; --warn-line:#e6c88a; --warn-ink:#6d5316;
+--line-green:#06c755; --radius:14px;
+--shadow:0 10px 30px rgba(46,58,44,.12);
+}
+@media (prefers-color-scheme: dark){
+:root{
+--bg:#131713; --bg2:#171c17; --surface:#1c211c; --surface2:#232a23;
+--ink:#ece7da; --ink2:#c3c9bd; --muted:#98a191;
+--line:#333b32; --line2:#465243;
+--accent:#7fb59d; --accent-ink:#10201a; --gold:#d2ab63; --gold-soft:#2c2517;
+--teal:#8fc0ab; --warn-bg:#2a2113; --warn-line:#6b5626; --warn-ink:#e8cd8d;
+--shadow:0 10px 30px rgba(0,0,0,.45);
+}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;
+line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--teal)}
+.serif{font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Shippori Mincho",serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* header */
+header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.head-in{display:flex;align-items:center;gap:14px;padding:10px 0}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px;line-height:1.35}
+.brand small{display:block;font-weight:500;color:var(--muted);font-size:11px;letter-spacing:.14em}
+nav.main{margin-left:auto;display:flex;gap:18px;font-size:13.5px}
+nav.main a{color:var(--ink2);text-decoration:none;font-weight:600}
+nav.main a:hover{color:var(--ink)}
+nav.main a.cta{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:7px 15px}
+nav.main a.cta:hover{color:var(--accent-ink);opacity:.88}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;font-weight:700;text-decoration:none;border:1px solid transparent;cursor:pointer;font-size:15px;line-height:1.2;transition:transform.15s ease, opacity.15s ease}
+.btn:active{transform:scale(.98)}
+.btn-line{background:var(--line-green);color:#fff}
+.btn-line.small{padding:8px 16px;font-size:13.5px}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line2)}
+.btn-dark{background:var(--accent);color:var(--accent-ink)}
+@media (max-width:760px){ nav.main{display:none}.head-in{justify-content:space-between}}
+/* hero */
+.hero{position:relative;color:#f4efe3;overflow:hidden;background:#101511}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+.hero.veil{position:absolute;inset:0;background:linear-gradient(100deg, rgba(10,14,11,.88) 30%, rgba(10,14,11,.45) 62%, rgba(10,14,11,.18))}
+.hero-in{position:relative;padding:74px 0 64px;max-width:640px}
+.hero.place{letter-spacing:.22em;font-size:12.5px;color:#d9c491;font-weight:700}
+.hero h1{font-size:clamp(30px,5.4vw,46px);line-height:1.32;margin:14px 0 16px;font-weight:700}
+.hero h1.thin{font-weight:500}
+.hero p.lead{font-size:16.5px;color:#e6dfcd;max-width:34em;margin:0 0 22px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.badge{border:1px solid rgba(244,239,227,.45);border-radius:999px;padding:5px 13px;font-size:12.5px;font-weight:600;background:rgba(16,21,17,.35)}
+.badge.solid{background:#d9c491;color:#221d0e;border-color:#d9c491}
+.opening-soon{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;background:#d9c491;color:#221d0e;border-radius:12px;padding:12px 18px;margin:0 0 20px;max-width:36em}
+.opening-soon strong{font-size:19px;letter-spacing:.1em;white-space:nowrap}
+.opening-soon span{font-size:13.5px;font-weight:600;line-height:1.6}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero-note{font-size:12.5px;color:#cfc7ae;margin-top:14px}
+/* sections */
+section.block{padding:58px 0 8px}
+.kicker{font-size:12px;letter-spacing:.24em;color:var(--gold);font-weight:700;margin:0 0 8px}
+h2.sec{font-size:clamp(23px,3.6vw,30px);margin:0 0 10px;line-height:1.4}
+.sec-lead{color:var(--ink2);max-width:44em;margin:0 0 26px}
+/* notice */
+.notice{margin-top:26px;border:1px solid var(--warn-line);background:var(--warn-bg);color:var(--warn-ink);border-radius:var(--radius);padding:14px 18px;font-size:14px;display:flex;gap:12px}
+.notice strong{white-space:nowrap}
+/* about editorial */
+.about-grid{display:grid;grid-template-columns:1.05fr.95fr;gap:34px;align-items:start}
+@media (max-width:820px){.about-grid{grid-template-columns:1fr}}
+.about-grid figure{margin:0;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.about-grid figcaption{font-size:12.5px;color:var(--muted);padding-top:8px}
+.point{border-top:1px solid var(--line);padding:18px 2px}
+.point:first-of-type{border-top:none;padding-top:2px}
+.point h3{margin:0 0 6px;font-size:17.5px}
+.point h3.no{color:var(--gold);font-family:Georgia,serif;margin-right:10px;font-size:15px}
+.point p{margin:0;color:var(--ink2);font-size:14.5px}
+/* symptoms */
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{border:1px solid var(--line2);background:var(--surface);border-radius:999px;padding:7px 15px;font-size:14px;font-weight:600}
+/* menu */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.menu-grid{grid-template-columns:1fr}}
+.course{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.course img{height:180px;width:100%;object-fit:cover}
+.course.body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.course h3{margin:0;font-size:19px}
+.course.tag{align-self:flex-start;background:var(--gold-soft);color:var(--gold);font-size:11.5px;font-weight:700;letter-spacing:.08em;border-radius:6px;padding:3px 9px}
+.course p{margin:0;color:var(--ink2);font-size:14px;flex:1}
+.price-row{display:flex;justify-content:space-between;border-top:1px dashed var(--line2);padding-top:10px;font-size:14.5px}
+.price-row b{font-size:16px}
+.price-note{font-size:12.5px;color:var(--muted);margin-top:12px}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media (max-width:900px){.flow{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.flow{grid-template-columns:1fr}}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.step.n{font-family:Georgia,serif;font-size:22px;color:var(--gold);line-height:1}
+.step h3{margin:8px 0 5px;font-size:15.5px}
+.step p{margin:0;font-size:13px;color:var(--ink2)}
+/* booking tool */
+.tool{background:var(--surface);border:1px solid var(--line2);border-radius:20px;padding:26px;box-shadow:var(--shadow)}
+.tool h3{margin:0 0 4px;font-size:19px}
+.tool.sub{color:var(--ink2);font-size:14px;margin:0 0 18px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:640px){.form-grid{grid-template-columns:1fr}}
+label.f{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+input[type=text],input[type=date],select,textarea{width:100%;border:1px solid var(--line2);border-radius:10px;padding:11px 12px;font-size:15px;background:var(--bg);color:var(--ink);font-family:inherit}
+textarea{min-height:150px;resize:vertical;line-height:1.6}
+.tagrow{display:flex;flex-wrap:wrap;gap:8px}
+.tagbtn{border:1px solid var(--line2);background:var(--bg);color:var(--ink2);border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:600;cursor:pointer}
+.tagbtn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.tool-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;align-items:center}
+.toast{font-size:13.5px;color:var(--teal);font-weight:700;min-height:1.2em}
+/* two col lists */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:760px){.cols{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.panel h3{margin:0 0 12px;font-size:17px}
+ul.tick{list-style:none;margin:0;padding:0}
+ul.tick li{padding:7px 0 7px 26px;position:relative;font-size:14.5px;color:var(--ink2);border-bottom:1px dashed var(--line)}
+ul.tick li:last-child{border-bottom:none}
+ul.tick li::before{content:"✓";position:absolute;left:2px;color:var(--gold);font-weight:800}
+ul.warn li::before{content:"!";color:#b3543f}
+/* profile */
+.profile{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:center}
+@media (max-width:820px){.profile{grid-template-columns:1fr}}
+.profile figure{margin:0;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.quals{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.qual{border:1px solid var(--line2);border-radius:8px;padding:5px 12px;font-size:13px;font-weight:700;background:var(--surface)}
+/* faq */
+details.faq{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:4px 18px}
+details.faq summary{cursor:pointer;font-weight:700;padding:12px 0;font-size:15.5px}
+details.faq p{margin:0 0 14px;color:var(--ink2);font-size:14.5px}
+/* column / article */
+.col-card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;text-decoration:none;color:var(--ink)}
+.col-card:hover{border-color:var(--line2)}
+.col-card .date{font-size:12.5px;color:var(--muted)}
+.col-card h3{margin:6px 0 8px;font-size:19px;line-height:1.5;color:var(--ink)}
+.col-card p{margin:0;color:var(--ink2);font-size:14.5px}
+.col-card .more{color:var(--teal);font-weight:700;font-size:14px;margin-top:10px;display:inline-block}
+.article{max-width:820px}
+.article-meta{font-size:13px;color:var(--muted);margin:0 0 18px}
+.article h3.art{font-size:19px;margin:32px 0 8px;line-height:1.5}
+.article p.body{color:var(--ink2);margin:0 0 14px}
+.article ul.body{color:var(--ink2);margin:0 0 14px;padding-left:22px}
+.article ul.body li{margin-bottom:8px}
+.article .refbox{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:10px}
+.article .refbox h3{margin:0 0 10px;font-size:17px}
+/* access */
+.access{background:var(--surface2);border-radius:20px;padding:28px}
+.access dl{display:grid;grid-template-columns:110px 1fr;gap:8px 16px;margin:0;font-size:15px}
+.access dt{font-weight:700;color:var(--ink2)}
+.access dd{margin:0}
+@media (max-width:520px){.access dl{grid-template-columns:1fr}.access dt{margin-top:8px}}
+/* recruit */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.pillars{grid-template-columns:1fr}}
+.pillar{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.pillar .no{color:var(--gold);font-family:Georgia,serif;font-size:15px;letter-spacing:.06em}
+.pillar h3{margin:6px 0 8px;font-size:18px}
+.pillar p{margin:0;color:var(--ink2);font-size:14.5px}
+.recruit-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+@media (max-width:760px){.recruit-cols{grid-template-columns:1fr}}
+/* system strip */
+.system{border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--surface)}
+.system ol{margin:10px 0 0;padding-left:20px;color:var(--ink2);font-size:14.5px}
+/* footer */
+footer{margin-top:70px;border-top:1px solid var(--line);background:var(--bg2);padding:34px 0 44px}
+footer.cols-f{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;font-size:13.5px;color:var(--ink2)}
+footer b{color:var(--ink)}
+.fixed-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none}
+.fixed-cta.row{display:flex;gap:10px;align-items:center;max-width:1080px;margin:0 auto}
+.fixed-cta.txt{font-size:12.5px;line-height:1.4;color:var(--ink2)}
+.fixed-cta.txt b{color:var(--ink);font-size:13.5px}
+.fixed-cta.btn{margin-left:auto;white-space:nowrap}
+@media (max-width:760px){.fixed-cta{display:block}}
+.library{background:var(--surface);border:1px solid var(--line2);border-radius:20px;padding:26px 28px;box-shadow:var(--shadow);display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;justify-content:space-between}
+.library-text{max-width:42em;flex:1 1 320px}
+.library-text h2{font-size:clamp(21px,3.2vw,26px);margin:0 0 8px;line-height:1.45}
+.library-text p{margin:0;color:var(--ink2);font-size:15px}
+.library-actions{flex:0 0 auto}
+.fineprint{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="site" id="top">
+<div class="wrap head-in">
+<div class="brand serif">東三国 男性専用サロン<small>HIGASHI-MIKUNI MEN'S SALON</small></div>
+<nav class="main" aria-label="ページ内メニュー">
+<a href="#about">サロンについて</a>
+<a href="#menu">メニュー</a>
+<a href="#flow">当日の流れ</a>
+<a href="#booking">ご予約</a>
+<a href="#faq">よくある質問</a>
+<a class="cta" href="#/recruit">セラピスト募集</a>
+<a href="#access">アクセス</a>
+</nav>
+</div>
+</header>
+
+<div id="view-main">
+<!-- HERO -->
+<div class="hero">
+<img class="bg" src="assets/hero.webp" alt="夜の静かな自宅サロンの施術室。ベッドとタオル、間接照明と東三国の夜景" />
+<div class="veil"></div>
+<div class="wrap">
+<div class="hero-in">
+<p class="place">大阪市淀川区 東三国 ／ 夜の自宅サロン</p>
+<h1 class="serif">仕事帰りに、静かに整える。<br><span class="thin">男性専用の</span>リラクゼーション＆整体</h1>
+<p class="lead">東三国の自宅の一室で開く、男性だけの小さなサロンです。施術歴30年の男性セラピストが、東洋医学と運動学の視点から、その日の疲れと体の歪みに合わせて施術します。大きな店の喧騒のない、落ち着いた夜の時間をお過ごしください。</p>
+<div class="opening-soon" role="note">
+<strong>近日開院予定</strong>
+<span>ただいま開院準備中です。ご予約の受付は開院後に開始します。受付開始はこのページでご案内します。</span>
+</div>
+<div class="badges">
+<span class="badge solid">男性専用</span>
+<span class="badge">完全予約制</span>
+<span class="badge">夜 17:00–22:00</span>
+<span class="badge">施術歴30年</span>
+<span class="badge">1日わずか数名</span>
+</div>
+<div class="hero-cta">
+<a class="btn btn-ghost" style="color:#f4efe3;border-color:rgba(244,239,227,.5)" href="#menu">メニューを見る</a>
+</div>
+<p class="hero-note">※自宅サロンのため、詳しい住所はご予約確定後にLINEでご案内します。</p>
+</div>
+</div>
+</div>
+
+<div class="wrap">
+<div class="notice" role="note">
+<strong>ご案内</strong>
+<span>当サロンは<strong>男性専用</strong>です。性的なサービスは一切行っておりません。</span>
+</div>
+</div>
+
+<!-- SELF-CARE LIBRARY -->
+<section class="block" id="library" style="padding-top:34px">
+<div class="wrap">
+<div class="library">
+<div class="library-text">
+<p class="kicker" style="margin-bottom:6px">SELF-CARE LIBRARY</p>
+<h2 class="sec serif" style="margin-bottom:8px">セルフケア資料ライブラリ（無料）</h2>
+<p>肩こり・腰の重さ・目の疲れなど、<strong>症状別のセルフケア資料が無料で読める</strong>資料ライブラリをご用意しています。ご自宅でできるケアの見直しにお役立てください。あわせて、<strong>無料姿勢チェックの申込もそちらからできます</strong>。写真をお送りいただくと、姿勢の傾向と日常で試せるケアのヒントをお返しします。</p>
+</div>
+<div class="library-actions">
+<a class="btn btn-dark" href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">資料ライブラリを見る →</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="block" id="about">
+<div class="wrap">
+<p class="kicker">ABOUT</p>
+<h2 class="sec serif">自宅だから、肩の力を抜いて通える</h2>
+<p class="sec-lead">店舗型のサロンとは違い、他のお客様と顔を合わせることはありません。仕事帰りにそのまま寄って、静かな一室で体を預けられる——そんな「かかりつけ」のような場所を目指しています。</p>
+<div class="about-grid">
+<div>
+<div class="point">
+<h3><span class="no">01</span>もむだけでは終わらない整体の視点</h3>
+<p>疲れた場所をほぐすだけでなく、姿勢・骨盤の傾き・筋肉の連動まで確認します。なぜそこが凝るのか、原因側から整えることで、戻りにくい体づくりを支えます。</p>
+</div>
+<div class="point">
+<h3><span class="no">02</span>東洋医学の知見を日々のコンディションへ</h3>
+<p>鍼灸師としての知識をもとに、季節や体質に合わせたツボへのアプローチや、ご自宅でできるセルフケア（ストレッチ・入浴・食養生のヒント）までお渡しします。</p>
+</div>
+<div class="point">
+<h3><span class="no">03</span>夜だけ開く、働く男性のための時間</h3>
+<p>営業は17:00–22:00。残業帰りでも間に合う時間帯に絞り、1日数名までしか受けないため、待ち時間なく落ち着いて受けられます。</p>
+</div>
+</div>
+<figure>
+<img src="assets/relax.webp" alt="男性のお客様が肩と背中のリラクゼーションを受けている様子" loading="lazy" />
+<figcaption>施術イメージ（リラクゼーション）</figcaption>
+</figure>
+</div>
+
+<div style="margin-top:34px">
+<h3 class="serif" style="font-size:18px;margin:0 0 12px">こんなお悩みに</h3>
+<div class="chips">
+<span class="chip">慢性的な肩こり・首こり</span>
+<span class="chip">腰の重だるさ</span>
+<span class="chip">デスクワークの疲れ</span>
+<span class="chip">猫背・姿勢の崩れ</span>
+<span class="chip">眼精疲労・頭の重さ</span>
+<span class="chip">睡眠の質の低下</span>
+<span class="chip">運動不足による体の硬さ</span>
+<span class="chip">ゴルフ・トレーニング後のケア</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- MENU -->
+<section class="block" id="menu">
+<div class="wrap">
+<p class="kicker">MENU</p>
+<h2 class="sec serif">メニュー</h2>
+<p class="sec-lead">当日の体調に合わせて、強さや重点部位は調整します。初めての方は「まるごとケア 90分」が、整体とリラクゼーションの両方を体験できておすすめです。料金は全コース共通で、初回はお試し価格、2回目以降は通常料金です。</p>
+<div class="notice" role="note" style="margin-top:0;margin-bottom:24px">
+<strong>ご案内</strong>
+<span>近日開院予定のため、ご予約の受付はまだ開始していません。受付開始はこのページでご案内します。</span>
+</div>
+<div class="menu-grid">
+<article class="course">
+<img src="assets/relax.webp" alt="リラクゼーション施術のイメージ" loading="lazy" />
+<div class="body">
+<span class="tag">ほぐして緩める</span>
+<h3 class="serif">リラクゼーション</h3>
+<p>全身のもみほぐしを中心に、ご希望に応じてアロマオイルでの施術も組み合わせます。1日の疲れをリセットしたい日に。</p>
+<div class="price-row"><span>60分</span><b>初回 2,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 6,000円</span></b></div>
+<div class="price-row"><span>90分</span><b>初回 3,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 9,000円</span></b></div>
+</div>
+</article>
+<article class="course">
+<img src="assets/seitai.webp" alt="男性セラピストによる整体・姿勢調整の施術イメージ" loading="lazy" />
+<div class="body">
+<span class="tag">歪みから整える</span>
+<h3 class="serif">整体</h3>
+<p>姿勢と可動域を確認し、骨盤・肩甲帯・脊柱まわりを中心に調整。着衣のまま受けられ、ストレッチ指導も含みます。</p>
+<div class="price-row"><span>60分</span><b>初回 2,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 6,000円</span></b></div>
+<div class="price-row"><span>90分</span><b>初回 3,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 9,000円</span></b></div>
+</div>
+</article>
+<article class="course">
+<img src="assets/hero.webp" alt="夜のサロンの施術室" loading="lazy" />
+<div class="body">
+<span class="tag">初めての方におすすめ</span>
+<h3 class="serif">まるごとケア（整体＋リラクゼーション）</h3>
+<p>最初に整体で土台を整え、後半はリラクゼーションで深く緩めます。カウンセリングとセルフケア指導込みの看板コースです。</p>
+<div class="price-row"><span>60分</span><b>初回 2,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 6,000円</span></b></div>
+<div class="price-row"><span>90分</span><b>初回 3,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 9,000円</span></b></div>
+</div>
+</article>
+</div>
+<p class="price-note">※初回はお試し価格です。2回目以降は通常料金となります。お支払いは<strong>現金のみ</strong>、当日払いです。クレジットカード・電子マネー・QRコード決済等はご利用いただけませんので、現金のご用意をお願いします。領収書の発行も可能です。</p>
+</div>
+</section>
+
+<!-- PROFILE -->
+<section class="block" id="profile">
+<div class="wrap">
+<p class="kicker">THERAPIST</p>
+<h2 class="sec serif">施術者について</h2>
+<div class="profile">
+<figure>
+<img src="assets/seitai.webp" alt="男性セラピストが整体施術を行っている様子" loading="lazy" />
+</figure>
+<div>
+<h3 class="serif" style="font-size:21px;margin:0">平賀建人</h3>
+<p style="color:var(--ink2);margin:8px 0 0">施術歴30年。鍼灸の国家資格を土台に、整体・アロマ・トレーニング指導まで横断して学んできました。「その場しのぎではなく、翌日以降の体が変わる施術」を大切にしています。自宅サロンでは鍼灸施術は行わず、リラクゼーションと整体のみを提供します。</p>
+<div class="quals">
+<span class="qual">鍼灸師（国家資格）</span>
+<span class="qual">登録販売者</span>
+<span class="qual">アロマセラピスト</span>
+<span class="qual">パーソナルトレーナー</span>
+</div>
+<p class="fineprint">※当サロンは医療機関ではありません。症状の診断や治療は行いません。強い痛みやしびれ、発熱などがある場合は、まず医療機関の受診をおすすめします。</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FLOW -->
+<section class="block" id="flow">
+<div class="wrap">
+<p class="kicker">FLOW</p>
+<h2 class="sec serif">ご予約から当日の流れ</h2>
+<p class="sec-lead">開院後は、ご予約をLINE公式アカウントのみで受け付けます。電話予約は行っておりません。</p>
+<div class="flow">
+<div class="step"><div class="n">1</div><h3>LINEで予約</h3><p>下の「予約文を作る」で下書きを作成し、LINEで送信してください。</p></div>
+<div class="step"><div class="n">2</div><h3>日時の確定・住所案内</h3><p>空き状況を確認し、確定後に詳しい住所と当日の案内をお送りします。</p></div>
+<div class="step"><div class="n">3</div><h3>来店・カウンセリング</h3><p>問診票にご記入いただき、姿勢と体の状態を確認します（初回は＋10分ほど）。</p></div>
+<div class="step"><div class="n">4</div><h3>施術</h3><p>その日の状態に合わせて施術。強さは随時お声がけください。</p></div>
+<div class="step"><div class="n">5</div><h3>アフターケア</h3><p>体の変化の説明と、ご自宅でできるセルフケアをお渡しします。</p></div>
+</div>
+
+<div class="system" style="margin-top:20px">
+<h3 class="serif" style="margin:0;font-size:17px">ダブルブッキングを防ぐ仕組み</h3>
+<ol>
+<li>施術者は1名のため、<strong>完全予約制</strong>で1枠に1名様のみ受け付けています。</li>
+<li>ご予約が確定した時間帯は受付を終了しますので、他のお客様と時間が重なることはありません。</li>
+<li>直前のご予約ではご希望に添えない場合があります。お早めのご連絡が確実です。</li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- BOOKING TOOL -->
+<section class="block" id="booking">
+<div class="wrap">
+<p class="kicker">RESERVATION</p>
+<h2 class="sec serif">LINE予約の下書きを作る</h2>
+<p class="sec-lead">開院後は、項目を選ぶと、そのままLINEに貼れる予約文ができます。コピーして、LINE公式アカウントのトークに貼り付けて送信してください。</p>
+<div class="notice" role="note" style="margin-top:0;margin-bottom:24px">
+<strong>ご案内</strong>
+<span>近日開院予定のため、ご予約の受付はまだ開始していません。受付開始はこのページでご案内します。開院後に、下記の下書きをご利用ください。</span>
+</div>
+<div class="tool">
+<h3>予約リクエスト作成</h3>
+<p class="sub">※このページから直接送信はされません。文面を確認して、ご自身でLINEからお送りください。</p>
+<div class="form-grid">
+<div>
+<label class="f" for="f-name">お名前（通称・イニシャル可）</label>
+<input type="text" id="f-name" placeholder="例：ヤマダ／T.Y" autocomplete="off" />
+</div>
+<div>
+<label class="f" for="f-course">ご希望コース</label>
+<select id="f-course">
+<option value="まるごとケア（整体＋リラクゼーション）90分">まるごとケア 90分（おすすめ）</option>
+<option value="まるごとケア（整体＋リラクゼーション）60分">まるごとケア 60分</option>
+<option value="リラクゼーション 60分">リラクゼーション 60分</option>
+<option value="リラクゼーション 90分">リラクゼーション 90分</option>
+<option value="整体 60分">整体 60分</option>
+<option value="整体 90分">整体 90分</option>
+<option value="相談して決めたい">相談して決めたい</option>
+</select>
+</div>
+<div>
+<label class="f" for="f-date1">第1希望日</label>
+<input type="date" id="f-date1" />
+</div>
+<div>
+<label class="f" for="f-time1">希望の開始時間帯</label>
+<select id="f-time1">
+<option value="17:00頃">17:00頃</option>
+<option value="18:00頃">18:00頃</option>
+<option value="19:00頃" selected>19:00頃</option>
+<option value="20:00頃">20:00頃</option>
+<option value="20:30頃（最終受付目安）">20:30頃（最終受付目安）</option>
+<option value="空いている時間で相談したい">空いている時間で相談したい</option>
+</select>
+</div>
+<div>
+<label class="f" for="f-date2">第2希望日（任意）</label>
+<input type="date" id="f-date2" />
+</div>
+<div>
+<label class="f" for="f-first">ご利用</label>
+<select id="f-first">
+<option value="初めて">初めて</option>
+<option value="2回目以降">2回目以降</option>
+</select>
+</div>
+</div>
+<div style="margin-top:16px">
+<label class="f">特につらい・気になる部位（任意、複数可）</label>
+<div class="tagrow" id="tagrow">
+<button type="button" class="tagbtn" aria-pressed="false">首・肩</button>
+<button type="button" class="tagbtn" aria-pressed="false">背中</button>
+<button type="button" class="tagbtn" aria-pressed="false">腰</button>
+<button type="button" class="tagbtn" aria-pressed="false">脚・ふくらはぎ</button>
+<button type="button" class="tagbtn" aria-pressed="false">頭・目</button>
+<button type="button" class="tagbtn" aria-pressed="false">姿勢・猫背</button>
+<button type="button" class="tagbtn" aria-pressed="false">全身の疲れ</button>
+<button type="button" class="tagbtn" aria-pressed="false">眠りの浅さ</button>
+</div>
+</div>
+<div style="margin-top:16px">
+<label class="f" for="f-msg">生成される予約文（そのまま編集できます）</label>
+<textarea id="f-msg" aria-live="polite"></textarea>
+</div>
+<div class="tool-actions">
+<button type="button" class="btn btn-dark" id="btn-regen">文面を作り直す</button>
+<button type="button" class="btn btn-line" id="btn-copy">文面をコピーする</button>
+<span class="toast" id="toast" role="status"></span>
+</div>
+<p class="fineprint" style="margin-top:12px">コピー後はLINE公式アカウントを開き、トーク画面に貼り付けて送信してください。LINEアカウントのURL・QRコードは、公開準備が整い次第ここに掲載します。</p>
+</div>
+</div>
+</section>
+
+<!-- BEFORE VISIT -->
+<section class="block" id="before">
+<div class="wrap">
+<p class="kicker">BEFORE YOUR VISIT</p>
+<h2 class="sec serif">来店前のお願いと確認事項</h2>
+<div class="cols">
+<div class="panel">
+<h3>当日の持ち物・服装</h3>
+<ul class="tick">
+<li>持ち物は特にありません。施術用の着替えをご用意しています</li>
+<li>整体は着衣のままでも受けられます。動きやすい服装だとスムーズです</li>
+<li>貴金属・時計は施術前に外していただきます</li>
+<li>施術前後の水分補給をおすすめします（お水をご用意しています）</li>
+<li>到着はご予約時間の5分前を目安にお願いします（早すぎる到着は準備中の場合があります）</li>
+</ul>
+</div>
+<div class="panel">
+<h3>事前にご相談ください</h3>
+<ul class="tick warn">
+<li>発熱がある、体調がすぐれない日は無理せず日程変更をご連絡ください</li>
+<li>飲酒直後の施術はお断りしています</li>
+<li>骨折・脱臼・急性の炎症、手術直後の方は事前にお知らせください</li>
+<li>皮膚に炎症や傷がある部位は施術を避ける場合があります</li>
+<li>妊娠中の方、高血圧などで通院・服薬中の方は、予約時に一言お知らせください</li>
+<li>ペースメーカー等の体内機器がある方は整体の内容を調整します</li>
+</ul>
+</div>
+</div>
+<div class="panel" style="margin-top:18px">
+<h3>キャンセル・変更について</h3>
+<p style="margin:0;color:var(--ink2);font-size:14.5px">自宅サロンは1日数名のみの受付のため、変更・キャンセルは分かった時点でLINEへご連絡ください。当日キャンセルが続く場合は、次回以降のご予約をお断りする場合があります。施術者側の都合で変更をお願いする際は、代替日時を優先的にご案内します。</p>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="block" id="faq">
+<div class="wrap">
+<p class="kicker">FAQ</p>
+<h2 class="sec serif">よくある質問</h2>
+<div style="max-width:820px">
+<details class="faq"><summary>本当に自宅なのですか？入りづらくないですか？</summary><p>はい、東三国の自宅の一室が施術室です。玄関先でのご案内から施術まで施術者が対応し、他のお客様と会うことはありません。詳しい住所と建物の目印は、ご予約確定後にLINEで写真付きでご案内します。</p></details>
+<details class="faq"><summary>なぜ男性専用なのですか？</summary><p>自宅の一室で開く小さなサロンのため、男性のお客様専用として運営しています。女性のお客様の受け入れは行っておりません。</p></details>
+<details class="faq"><summary>当日の予約はできますか？</summary><p>開院後は、空きがあれば可能です。施術者は1名のため、すでにご予約が入っている時間帯はお受けできません。LINEで空き状況をご確認ください。</p></details>
+<details class="faq"><summary>施術は痛いですか？強さの調整はできますか？</summary><p>整体はバキバキと鳴らす矯正ではなく、圧とストレッチでじっくり整える方法が中心です。強さは「弱め・普通・強め」など随時調整しますので、遠慮なくお声がけください。</p></details>
+<details class="faq"><summary>鍼（はり）やお灸はしてもらえますか？</summary><p>当サロンでは行いません。施術はリラクゼーションと整体のみです。鍼灸が必要と判断される症状については、医療機関や鍼灸院の受診をご案内する場合があります。</p></details>
+<details class="faq"><summary>支払い方法を教えてください。</summary><p>お支払いは<strong>現金のみ</strong>、当日払いです。クレジットカード・電子マネー・QRコード決済等はご利用いただけませんので、あらかじめ現金のご用意をお願いします。領収書の発行も可能です。</p></details>
+<details class="faq"><summary>シャワーや駐車場はありますか？</summary><p>シャワーのご用意はありません。オイル施術の場合はホットタオルで拭き取りを行います。専用駐車場はないため、お車の方は近隣のコインパーキングをご利用ください。自転車はご予約時にご相談ください。</p></details>
+<details class="faq"><summary>回数券や定期ケアはありますか？</summary><p>体の変化を見ながら通うペースをご提案します。料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円です。無理な勧誘は行いません。</p></details>
+</div>
+</div>
+</section>
+
+<!-- COLUMN -->
+<section class="block" id="column">
+<div class="wrap">
+<p class="kicker">COLUMN</p>
+<h2 class="sec serif">お役立ちコラム</h2>
+<p class="sec-lead">日々の体の悩みを整理し、セルフケアの見直しに役立てていただくための読み物です。原因や効果を断定する内容ではありませんので、気になる症状が続くときは医療機関への相談もあわせてご検討ください。</p>
+<a class="col-card" href="#/article/hirou-koshi">
+<span class="date">2026年10月26日</span>
+<h3 class="serif">東三国で働く男性の「疲労感と腰の重さ」｜考えられる要因とセルフケア、受診の目安</h3>
+<p>夕方になると腰が重い、休んでも疲れが抜けにくい——そんな感覚について、考えられる要因と、無理なく続けられるセルフケア、医療機関へ相談する目安を整理しました。</p>
+<span class="more">記事を読む →</span>
+</a>
+</div>
+</section>
+
+<!-- ACCESS -->
+<section class="block" id="access">
+<div class="wrap">
+<p class="kicker">ACCESS</p>
+<h2 class="sec serif">アクセス</h2>
+<div class="access">
+<dl>
+<dt>所在地</dt><dd>大阪市淀川区東三国二丁目（自宅サロンのため、詳細住所はご予約確定後にLINEでご案内します）</dd>
+<dt>最寄り駅</dt><dd>大阪メトロ御堂筋線「東三国駅」より徒歩圏内。新大阪・江坂方面からもアクセスしやすい立地です</dd>
+<dt>営業時間</dt><dd>17:00–22:00（最終受付 20:30目安）／完全予約制</dd>
+<dt>営業日</dt><dd>予約状況により変動します。開院後の空き状況はLINEでご確認ください</dd>
+<dt>ご予約</dt><dd>開院後にLINE公式アカウントのみで受付開始（電話予約は行っておりません）</dd>
+<dt>お支払い</dt><dd>現金のみ（当日払い）</dd>
+<dt>対象</dt><dd>男性専用／性的なサービスは一切行っておりません</dd>
+</dl>
+</div>
+<p class="fineprint" style="margin-top:12px">※近隣は住宅地です。来店・退店の際は、大きな声での会話など近隣へのご配慮をお願いします。</p>
+</div>
+</section>
+
+</div><!-- /view-main -->
+
+<div id="view-recruit" hidden>
+<div class="wrap" style="padding-top:22px"><a href="#top" style="font-weight:700">← トップページに戻る</a></div>
+<!-- RECRUIT -->
+<section class="block" id="recruit">
+<div class="wrap">
+<p class="kicker">RECRUIT</p>
+<h2 class="sec serif">セラピスト募集（業務委託）</h2>
+<p class="sec-lead">当サロンは、男性のお客様を対象にした、男性向けのリラクゼーションと整体の店です。この店で施術を担当していただけるセラピストを、<strong>業務委託</strong>で募集しています。雇用ではありません。未経験の方も、すでに技術をお持ちの方も、それぞれの形でスタートできます。</p>
+<div class="pillars">
+<div class="pillar">
+<span class="no">01</span>
+<h3 class="serif">雇用ではなく、業務委託</h3>
+<p>雇用契約ではなく、業務委託契約でのお仕事です。報酬は<strong>施術料の60%</strong>。働く時間は、本人の希望に合わせて設定できます。副業や空いた時間の活用を考えている方も、まずはご相談ください。</p>
+</div>
+<div class="pillar">
+<span class="no">02</span>
+<h3 class="serif">未経験者は研修無料</h3>
+<p>施術の経験がない方には、研修を無料で受けていただけます。基礎から確認しながら進めるので、未経験であることを理由に諦める必要はありません。</p>
+</div>
+<div class="pillar">
+<span class="no">03</span>
+<h3 class="serif">経験者は技術をそのままメニュー化</h3>
+<p>すでにお持ちの技術は、そのまま当サロンのメニューとして出せます。新しい手技を一から覚え直す必要はなく、あなたの得意な施術でお客様をお迎えください。</p>
+</div>
+</div>
+<div class="recruit-cols">
+<div class="panel">
+<h3>未経験者向け研修内容の例</h3>
+<ul class="tick">
+<li>接客マナー（お迎えからお見送りまでの基本の流れ）</li>
+<li>整体・リラクゼーションの基礎</li>
+<li>解剖学の基礎（体の構造と、触れてよい場所・避ける場所）</li>
+<li>衛生管理（タオル・リネン類の扱い、消毒の基本）</li>
+</ul>
+<p class="fineprint" style="margin-top:10px">※上記は研修内容の例です。実際の進め方や進み具合は、面談で一人ひとりの状況に合わせてご案内します。</p>
+</div>
+<div class="panel">
+<h3>技術メニュー化の例（経験者）</h3>
+<ul class="tick">
+<li>整体</li>
+<li>リフレクソロジー</li>
+<li>ヘッドケア</li>
+<li>そのほか、お持ちの技術をご相談ください</li>
+</ul>
+<p class="fineprint" style="margin-top:10px">※当サロンの方針（男性専用・性的なサービスは行わない）に沿う内容でご提案します。メニュー名や施術の組み立ては、面談で一緒に決めていきます。</p>
+</div>
+</div>
+<div style="margin-top:34px">
+<h3 class="serif" style="font-size:18px;margin:0 0 12px">応募の流れ</h3>
+<div class="flow">
+<div class="step"><div class="n">1</div><h3>応募</h3><p>下のフォームで応募文を作り、LINEでお送りください。</p></div>
+<div class="step"><div class="n">2</div><h3>面談</h3><p>ご希望や経験をお聞きし、条件の詳細をご案内します。</p></div>
+<div class="step"><div class="n">3</div><h3>研修／技術確認</h3><p>未経験の方は研修、経験者の方はお持ちの技術の確認を行います。</p></div>
+<div class="step"><div class="n">4</div><h3>業務委託契約</h3><p>条件にご納得いただけたら、業務委託契約を結びます。</p></div>
+<div class="step"><div class="n">5</div><h3>デビュー</h3><p>当サロンのセラピストとして施術を担当していただきます。</p></div>
+</div>
+</div>
+<div class="tool" style="margin-top:22px">
+<h3>応募文面を作成する</h3>
+<p class="sub">項目を入力すると、応募文面が作成されます。<strong>この内容はまだ送信されていません。</strong>応募の際は、作成された文面をコピーして、LINE公式アカウントのトークに貼り付けてお送りください。このページから送信されることはありません。</p>
+<div class="form-grid">
+<div>
+<label class="f" for="r-name">氏名</label>
+<input type="text" id="r-name" placeholder="例：ヤマダ タロウ" autocomplete="off" />
+</div>
+<div>
+<label class="f" for="r-contact">連絡先（LINE ID・電話番号・メールアドレスなど）</label>
+<input type="text" id="r-contact" placeholder="返信を受け取れる連絡先" autocomplete="off" />
+</div>
+<div>
+<label class="f" for="r-exp">施術の経験</label>
+<select id="r-exp">
+<option value="未経験">未経験（研修を受けたい）</option>
+<option value="経験あり">経験あり</option>
+<option value="ブランクあり">以前の経験はあるがブランクあり</option>
+</select>
+</div>
+<div>
+<label class="f" for="r-hope">ご希望（任意）</label>
+<input type="text" id="r-hope" placeholder="例：平日の夜のみ／週2日ほど など" autocomplete="off" />
+</div>
+</div>
+<div style="margin-top:16px">
+<label class="f">持っている技術（経験者の方、複数可）</label>
+<div class="tagrow" id="r-tagrow">
+<button type="button" class="tagbtn" aria-pressed="false">整体</button>
+<button type="button" class="tagbtn" aria-pressed="false">もみほぐし</button>
+<button type="button" class="tagbtn" aria-pressed="false">リフレクソロジー</button>
+<button type="button" class="tagbtn" aria-pressed="false">ヘッドケア</button>
+<button type="button" class="tagbtn" aria-pressed="false">アロマトリートメント</button>
+<button type="button" class="tagbtn" aria-pressed="false">ストレッチ</button>
+<button type="button" class="tagbtn" aria-pressed="false">その他</button>
+</div>
+</div>
+<div style="margin-top:16px">
+<label class="f" for="r-msg">作成される応募文面（そのまま編集できます）</label>
+<textarea id="r-msg" aria-live="polite"></textarea>
+</div>
+<div class="tool-actions">
+<button type="button" class="btn btn-dark" id="r-regen">文面を作り直す</button>
+<button type="button" class="btn btn-line" id="r-copy">応募文をコピーする</button>
+<span class="toast" id="r-toast" role="status"></span>
+</div>
+<p class="fineprint" style="margin-top:12px">報酬は施術料の60%（業務委託）です。それ以外の条件の詳細は面談の際にご案内しますので、気になる点は面談で遠慮なくご質問ください。</p>
+</div>
+</div>
+</section>
+<div class="wrap" style="margin-top:2px"><a href="#top" style="font-weight:700">← トップページに戻る</a></div>
+</div>
+
+<div id="view-article" hidden>
+<div class="wrap" style="padding-top:22px"><a href="#column" style="font-weight:700">← コラム一覧に戻る</a></div>
+<section class="block" style="padding-top:26px">
+<div class="wrap">
+<article class="article">
+<p class="kicker">COLUMN</p>
+<h2 class="sec serif">東三国で働く男性の「疲労感と腰の重さ」<br><span style="font-size:.62em;font-weight:500">考えられる要因とセルフケア、受診の目安</span></h2>
+<p class="article-meta">2026年10月26日｜東三国 男性専用サロン</p>
+<p class="body">「夕方、仕事を終えるころになると腰まわりが重く感じる」「休日にしっかり寝たはずなのに、体の疲れが抜けきらない気がする」。東三国や新大阪、江坂方面へ通勤する男性から、こうした声を聞くことがあります。もちろん感じ方には個人差があり、疲労感や腰の重さの背景は一つとは限りません。この記事では原因を断定するのではなく、考えられる要因を整理し、日常で試せるセルフケアと、医療機関に相談したほうがよい目安をまとめます。</p>
+
+<h3 class="art serif">悩みの整理：「重さ」は夕方に強くなりやすい</h3>
+<p class="body">朝はそうでもないのに、夕方から夜にかけて腰の重だるさや全身の疲労感が増してくる——このパターンは、デスクワーク中心の働き方の方に多い印象があります。重さの感じ方も、「腰だけが重い」「背中全体が張る感じがする」「脚までだるい」など人それぞれです。まずは「いつ、どこに、どんな重さを感じるか」を自分の言葉で整理しておくと、セルフケアの選び方も、専門家に相談するときの伝え方もスムーズになります。</p>
+
+<h3 class="art serif">考えられる要因</h3>
+<p class="body">疲労感や腰の重さには、生活習慣や姿勢など、いくつかの要因が重なっている場合があります。代表的なものを挙げますが、当てはまるかどうかは人によって異なります。</p>
+<ul class="body">
+<li><strong>長時間の座り姿勢</strong>：デスクワークで座り続けると、腰まわりの筋肉が同じ姿勢のまま固まりやすくなり、立ち上がったときに重さを感じることがあります。</li>
+<li><strong>運動不足</strong>：体を動かす機会が減ると血の巡りが滞りがちになり、重だるさを感じやすくなる場合があります。</li>
+<li><strong>姿勢のクセ</strong>：猫背や、椅子に浅く座って腰が丸まる姿勢などが続くと、腰への負担が偏ることがあります。</li>
+<li><strong>睡眠の量と質</strong>：睡眠時間が短い日や眠りが浅い日が続くと、疲労感が残りやすくなると感じる方もいます。</li>
+<li><strong>冷えや季節の変わり目</strong>：エアコンの効いた室内で過ごす時間が長いと、腰まわりが冷えて重さを感じることもあります。</li>
+<li><strong>心理的な負担</strong>：忙しさやストレスが続くと体の緊張が抜けにくくなり、疲労感につながる場合があります。</li>
+</ul>
+
+<h3 class="art serif">日常で試せるセルフケア</h3>
+<p class="body">特別な道具がなくても始められるものを中心にまとめました。痛みが強いときは無理をせず、違和感があれば中止してください。</p>
+<ul class="body">
+<li><strong>1時間に一度は立ち上がる</strong>：トイレや飲み物のついでに少し歩き、軽く伸びをするだけでも姿勢のリセットになります。</li>
+<li><strong>腰・お尻・太もも裏のストレッチ</strong>：寝転んで両膝を抱える、椅子に座って片脚を反対の膝に乗せて前傾するなど、呼吸を止めずにゆっくり行います。</li>
+<li><strong>湯船に浸かる</strong>：シャワーで済ませがちな日こそ、ぬるめのお湯に10〜15分ほど浸かって体を温めてみてください。</li>
+<li><strong>帰宅後に軽く歩く</strong>：一駅分歩く、夕食後に10分散歩するなど、無理のない範囲で体を動かす時間を作ります。</li>
+<li><strong>デスク環境の見直し</strong>：椅子の高さやモニターの位置、足裏が床につくかを確認し、腰が丸まりにくい座り方を意識します。</li>
+<li><strong>眠る前の過ごし方</strong>：就寝前のスマートフォンの時間を短くし、睡眠時間を確保することを優先します。</li>
+</ul>
+<p class="body">セルフケアは一度に全部をやろうとせず、続けられそうなものを一つ選ぶところから始めるのがおすすめです。</p>
+
+<h3 class="art serif">医療機関への受診を考える目安</h3>
+<p class="body">次のような様子がある場合は、セルフケアやサロンでのケアの前に、整形外科などの医療機関への相談をご検討ください。当サロンは医療機関ではなく、症状の診断や治療は行いません。</p>
+<ul class="body">
+<li>脚のしびれがある、脚に力が入りにくい感じがする</li>
+<li>安静にしていても強い痛みが続く</li>
+<li>発熱を伴っている</li>
+<li>排尿・排便の異常がある</li>
+<li>転倒や事故のあとから痛みが出た</li>
+<li>数週間たっても重さや痛みが続き、だんだん強くなっている</li>
+</ul>
+
+<div class="refbox">
+<h3 class="serif">サロンのご案内</h3>
+<p class="body">当サロンは、大阪市淀川区東三国二丁目にある男性専用の自宅サロンです。施術歴30年の男性セラピストが、リラクゼーションと整体を行っています。営業は17:00–22:00（最終受付 20:30目安）・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。</p>
+<p class="body">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって疲労や腰の重さがどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。</p>
+<p class="body" style="margin-bottom:0">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。そのほかの疑問は<a href="#faq">よくある質問</a>にもまとめています。</p>
+</div>
+</article>
+</div>
+</section>
+<div class="wrap" style="margin-top:2px"><a href="#column" style="font-weight:700">← コラム一覧に戻る</a></div>
+</div>
+
+<footer>
+<div class="wrap">
+<div class="cols-f">
+<div style="max-width:340px">
+<b class="serif">東三国 男性専用サロン</b><br>
+大阪市淀川区東三国二丁目／夜のリラクゼーション＆整体<br>
+施術者：平賀建人（施術歴30年・鍼灸師）
+</div>
+<div>
+<b>営業案内</b><br>
+17:00–22:00・完全予約制<br>
+ご予約は開院後にLINE公式アカウントで受付開始<br>
+<a class="btn btn-dark" style="margin-top:10px;padding:10px 18px;font-size:14px" href="#/recruit">セラピスト募集（業務委託）のご案内</a>
+</div>
+<div style="max-width:320px">
+<b>料金</b><br>
+60分 初回2,000円／2回目以降6,000円<br>
+90分 初回3,000円／2回目以降9,000円<br>
+お支払いは現金のみ
+</div>
+<div style="max-width:320px">
+<b>セルフケア資料ライブラリ</b><br>
+症状別のセルフケア資料を無料で公開しています。無料姿勢チェックの申込もこちらからできます。<br>
+<a href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener" style="font-weight:700">セルフケア資料ライブラリを見る →</a>
+</div>
+</div>
+<p class="fineprint" style="margin-top:22px">LINE公式アカウントのURL・営業日などの確定情報は、準備が整い次第、順次更新します。当サロンは医療機関ではなく、診断・治療を行うものではありません。</p>
+</div>
+</footer>
+
+<script>
+(function(){
+var nameEl=document.getElementById('f-name');
+var courseEl=document.getElementById('f-course');
+var date1El=document.getElementById('f-date1');
+var time1El=document.getElementById('f-time1');
+var date2El=document.getElementById('f-date2');
+var firstEl=document.getElementById('f-first');
+var msgEl=document.getElementById('f-msg');
+var toast=document.getElementById('toast');
+var tags=[];
+function fmtDate(v){
+if(!v) return '';
+var p=v.split('-'); if(p.length!==3) return v;
+var d=new Date(Number(p[0]),Number(p[1])-1,Number(p[2]));
+var w=['日','月','火','水','木','金','土'][d.getDay()];
+return Number(p[1])+'月'+Number(p[2])+'日（'+w+'）';
+}
+function build(){
+var lines=[];
+lines.push('東三国 男性専用サロン');
+lines.push('お名前：'+(nameEl.value.trim()||'（未入力）'));
+lines.push('ご利用：'+firstEl.value);
+lines.push('希望コース：'+courseEl.value);
+var d1=fmtDate(date1El.value);
+lines.push('第1希望：'+(d1? d1+' '+time1El.value: '日程は相談したい（時間帯：'+time1El.value+'）'));
+var d2=fmtDate(date2El.value);
+if(d2) lines.push('第2希望：'+d2);
+if(tags.length) lines.push('気になる部位：'+tags.join('、'));
+lines.push('よろしくお願いします。');
+msgEl.value=lines.join('\n');
+}
+document.getElementById('tagrow').addEventListener('click',function(e){
+var b=e.target.closest('.tagbtn'); if(!b) return;
+var on=b.getAttribute('aria-pressed')==='true';
+b.setAttribute('aria-pressed', on?'false':'true');
+var t=b.textContent.trim();
+if(on){ tags=tags.filter(function(x){return x!==t;});} else { tags.push(t);}
+build();
+});
+[nameEl,courseEl,date1El,time1El,date2El,firstEl].forEach(function(el){
+el.addEventListener('input',build); el.addEventListener('change',build);
+});
+document.getElementById('btn-regen').addEventListener('click',function(){ build(); toast.textContent='文面を作り直しました。';});
+document.getElementById('btn-copy').addEventListener('click',function(){
+build();
+var done=function(){ toast.textContent='コピーしました。LINEに貼り付けて送信してください。';};
+if(navigator.clipboard && navigator.clipboard.writeText){
+navigator.clipboard.writeText(msgEl.value).then(done,function(){ msgEl.select(); document.execCommand('copy'); done();});
+} else { msgEl.select(); document.execCommand('copy'); done();}
+});
+build();
+})();
+</script>
+<script>
+(function(){
+var nameEl=document.getElementById('r-name');
+var contactEl=document.getElementById('r-contact');
+var expEl=document.getElementById('r-exp');
+var hopeEl=document.getElementById('r-hope');
+var msgEl=document.getElementById('r-msg');
+var toast=document.getElementById('r-toast');
+if(!nameEl||!msgEl) return;
+var skills=[];
+function build(){
+var lines=[];
+lines.push('【セラピスト求人への応募】東三国 男性専用サロン');
+lines.push('氏名：'+(nameEl.value.trim()||'（未入力）'));
+lines.push('連絡先：'+(contactEl.value.trim()||'（未入力）'));
+lines.push('施術の経験：'+expEl.value);
+if(skills.length) lines.push('持っている技術：'+skills.join('、'));
+if(hopeEl.value.trim()) lines.push('希望：'+hopeEl.value.trim());
+lines.push('業務委託でのセラピスト募集に応募します。よろしくお願いします。');
+msgEl.value=lines.join('\n');
+}
+document.getElementById('r-tagrow').addEventListener('click',function(e){
+var b=e.target.closest('.tagbtn'); if(!b) return;
+var on=b.getAttribute('aria-pressed')==='true';
+b.setAttribute('aria-pressed', on?'false':'true');
+var t=b.textContent.trim();
+if(on){ skills=skills.filter(function(x){return x!==t;});} else { skills.push(t);}
+build();
+});
+[nameEl,contactEl,expEl,hopeEl].forEach(function(el){
+el.addEventListener('input',build); el.addEventListener('change',build);
+});
+document.getElementById('r-regen').addEventListener('click',function(){ build(); toast.textContent='文面を作り直しました。';});
+document.getElementById('r-copy').addEventListener('click',function(){
+build();
+var done=function(){ toast.textContent='文面をコピーしました。まだ送信されていません。LINEに貼り付けてお送りください。';};
+if(navigator.clipboard && navigator.clipboard.writeText){
+navigator.clipboard.writeText(msgEl.value).then(done,function(){ msgEl.select(); document.execCommand('copy'); done();});
+} else { msgEl.select(); document.execCommand('copy'); done();}
+});
+build();
+})();
+</script>
+<script>
+(function(){
+var main=document.getElementById('view-main');
+var rec=document.getElementById('view-recruit');
+var art=document.getElementById('view-article');
+if(!main||!rec) return;
+var homeTitle=document.title;
+var descEl=document.querySelector('meta[name="description"]');
+var homeDesc=descEl?descEl.getAttribute('content'):'';
+var ART_TITLE='東三国で働く男性の「疲労感と腰の重さ」｜考えられる要因とセルフケア、受診の目安';
+var ART_DESC='東三国・淀川区で、夕方になると腰が重い、休んでも疲れが抜けにくいと感じる男性へ。疲労感と腰の重さについて考えられる要因、日常で試せるセルフケア、医療機関への受診を考える目安を整理しました。';
+function route(){
+var h=location.hash;
+var isRec=h==='#/recruit';
+var isArt=!!art && h.indexOf('#/article/')===0;
+rec.hidden=!isRec;
+if(art) art.hidden=!isArt;
+main.hidden=isRec||isArt;
+if(isArt){
+document.title=ART_TITLE;
+if(descEl) descEl.setAttribute('content',ART_DESC);
+window.scrollTo(0,0);
+}else{
+document.title=homeTitle;
+if(descEl) descEl.setAttribute('content',homeDesc);
+if(isRec){ window.scrollTo(0,0); }
+else if(h && h.charAt(1)!=='/'){
+var t=document.getElementById(h.slice(1));
+if(t) t.scrollIntoView();
+}
+}
+}
+window.addEventListener('hashchange',route);
+route();
+})();
+</script>
+</body>
+</html>
