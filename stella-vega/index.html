@@ -1,0 +1,1359 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="ステラベガは芦屋の女性専用プライベートサロン。施術歴30年の男性セラピストによるオイルマッサージと美容整体。90分10,000円、完全予約制、シャワー完備。住所はご予約確定後にご案内します。" />
+    <link rel="icon" href="assets/hero.jpg" />
+    <title>ステラベガ｜芦屋の女性専用オイルマッサージ＆美容整体</title>
+    <meta property="og:title" content="ステラベガ｜芦屋の女性専用オイルマッサージ＆美容整体" />
+    <meta property="og:description" content="ステラベガは芦屋の女性専用プライベートサロン。施術歴30年の男性セラピストによるオイルマッサージと美容整体。90分10,000円、完全予約制、シャワー完備。住所はご予約確定後にご案内します。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/hero.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --navy:#0d1b2e;
+        --navy-2:#12263f;
+        --navy-3:#1a3355;
+        --gold:#c8a45c;
+        --gold-soft:#e3cd97;
+        --paper:#f7f3ea;
+        --paper-2:#efe8d8;
+        --ink:#22303f;
+        --ink-soft:#4c5a68;
+        --line:#d9cfb8;
+        --card:#fffdf8;
+        --on-navy:#eef1f5;
+        --on-navy-soft:#b9c6d4;
+        --shadow:0 18px 40px rgba(13,27,46,.14);
+        --radius:14px;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --paper:#0a1524;
+          --paper-2:#0e1d33;
+          --ink:#e9edf2;
+          --ink-soft:#aebccb;
+          --line:#2b425f;
+          --card:#122539;
+          --shadow:0 18px 40px rgba(0,0,0,.45);
+        }
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0;
+        background:var(--paper);
+        color:var(--ink);
+        font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+        font-size:16px;
+        line-height:1.85;
+        -webkit-font-smoothing:antialiased;
+      }
+      img{max-width:100%;display:block}
+      a{color:inherit}
+      .serif{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif}
+      .latin{font-family:"Cormorant Garamond",serif;letter-spacing:.22em}
+      .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+      /* ---------- header ---------- */
+      header.site{
+        position:fixed;inset:0 0 auto 0;z-index:50;
+        background:rgba(10,21,36,.82);
+        backdrop-filter:blur(10px);
+        border-bottom:1px solid rgba(200,164,92,.35);
+      }
+      .site-inner{max-width:1120px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+      .brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:#fff;flex:none}
+      .brand .star{color:var(--gold);font-size:18px;line-height:1}
+      .brand .name{font-family:"Shippori Mincho",serif;font-size:20px;font-weight:600;letter-spacing:.14em;white-space:nowrap}
+      .brand .sub{font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:.3em;color:var(--gold-soft);white-space:nowrap}
+      nav.main{display:flex;gap:13px}
+      nav.main a{color:#dfe7ef;text-decoration:none;font-size:13px;letter-spacing:.05em;white-space:nowrap}
+      @media (max-width:1500px){.brand .sub{display:none}}
+      @media (max-width:1180px){nav.main{gap:11px}}
+      nav.main a:hover{color:var(--gold-soft)}
+      .nav-cta{
+        background:var(--gold);color:#14263d !important;font-weight:700;
+        padding:7px 16px;border-radius:999px;
+      }
+      .nav-cta:hover{background:var(--gold-soft);color:#14263d !important}
+      .burger{display:none;background:none;border:0;color:#fff;font-size:24px;cursor:pointer;line-height:1;padding:6px}
+      @media (max-width:1024px){
+        nav.main{
+          display:none;position:absolute;top:60px;left:0;right:0;
+          flex-direction:column;gap:0;padding:10px 20px 18px;
+          background:rgba(10,21,36,.97);border-bottom:1px solid rgba(200,164,92,.35);
+        }
+        nav.main.open{display:flex}
+        nav.main a{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+        nav.main a:last-child{border-bottom:0}
+        .nav-cta{align-self:flex-start;margin-top:10px}
+        .burger{display:block}
+        .brand .sub{display:none}
+      }
+
+      /* ---------- hero ---------- */
+      .hero{
+        position:relative;color:#fff;
+        background:var(--navy);
+        padding:148px 0 84px;
+        overflow:hidden;
+      }
+      .hero-bg{position:absolute;inset:0}
+      .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.55}
+      .hero-bg::after{
+        content:"";position:absolute;inset:0;
+        background:linear-gradient(180deg,rgba(9,18,32,.55) 0%,rgba(9,18,32,.35) 45%,rgba(9,18,32,.88) 100%);
+      }
+      .hero .wrap{position:relative;z-index:1}
+      .hero .star-line{color:var(--gold-soft);font-size:13px;letter-spacing:.42em;margin:0 0 14px}
+      .hero h1{
+        font-family:"Shippori Mincho",serif;font-weight:600;
+        font-size:clamp(40px,7.5vw,64px);line-height:1.25;letter-spacing:.1em;margin:0;
+      }
+      .hero h1 .en{display:block;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(15px,2.4vw,20px);letter-spacing:.5em;color:var(--gold-soft);margin-top:12px}
+      .hero .lead{max-width:640px;margin:26px 0 0;font-size:16.5px;color:#e6ecf2}
+      .opening-banner{
+        display:inline-block;margin-top:28px;
+        background:var(--gold);color:#14263d;
+        font-family:"Shippori Mincho",serif;font-weight:700;
+        font-size:clamp(19px,3.4vw,26px);letter-spacing:.18em;
+        padding:12px 32px;border-radius:999px;
+        box-shadow:0 10px 26px rgba(0,0,0,.35);
+      }
+      .opening-banner small{
+        display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;
+        font-size:12.5px;letter-spacing:.08em;margin-top:2px;
+      }
+      .hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+      .hero-badges span{
+        border:1px solid rgba(227,205,151,.65);color:#f4ead0;
+        font-size:13px;letter-spacing:.08em;padding:6px 14px;border-radius:999px;
+        background:rgba(13,27,46,.45);
+      }
+      .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+      .btn{
+        display:inline-block;text-decoration:none;font-weight:700;letter-spacing:.06em;
+        padding:14px 30px;border-radius:999px;font-size:15px;
+      }
+      .btn-gold{background:var(--gold);color:#14263d}
+      .btn-gold:hover{background:var(--gold-soft)}
+      .btn-ghost{border:1px solid rgba(255,255,255,.55);color:#fff}
+      .btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+      .hero-facts{
+        display:flex;flex-wrap:wrap;gap:0;margin-top:52px;
+        border-top:1px solid rgba(227,205,151,.35);
+      }
+      .hero-facts div{padding:16px 28px 4px 0;margin-right:28px}
+      .hero-facts dt{font-size:12px;letter-spacing:.18em;color:var(--gold-soft)}
+      .hero-facts dd{margin:2px 0 0;font-family:"Shippori Mincho",serif;font-size:19px}
+
+      /* ---------- sections ---------- */
+      section{padding:84px 0}
+      section.tight{padding:60px 0}
+      .sec-head{max-width:720px;margin-bottom:44px}
+      .sec-head .kicker{
+        font-family:"Cormorant Garamond",serif;letter-spacing:.34em;font-size:13px;
+        color:#a07f37;margin:0 0 10px;text-transform:uppercase;
+      }
+      @media (prefers-color-scheme: dark){.sec-head .kicker{color:var(--gold-soft)}}
+      .sec-head h2{
+        font-family:"Shippori Mincho",serif;font-weight:600;
+        font-size:clamp(26px,4.4vw,36px);line-height:1.45;letter-spacing:.06em;margin:0;
+      }
+      .sec-head p{color:var(--ink-soft);margin:14px 0 0}
+      .navy-band{background:var(--navy);color:var(--on-navy)}
+      .navy-band .sec-head p{color:var(--on-navy-soft)}
+      .navy-band .sec-head .kicker{color:var(--gold-soft)}
+
+      /* trust strip */
+      .trust{background:var(--navy-2);color:var(--on-navy);padding:0}
+      .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);}
+      .trust .item{padding:26px 18px;text-align:center;border-left:1px solid rgba(200,164,92,.25)}
+      .trust .item:first-child{border-left:0}
+      .trust .num{font-family:"Shippori Mincho",serif;font-size:24px;color:var(--gold-soft)}
+      .trust .lbl{font-size:12.5px;letter-spacing:.1em;color:var(--on-navy-soft);margin-top:2px}
+      @media (max-width:720px){.trust .wrap{grid-template-columns:1fr 1fr}.trust .item{border-top:1px solid rgba(200,164,92,.25)}.trust .item:nth-child(-n+2){border-top:0}.trust .item:nth-child(odd){border-left:0}}
+
+      /* about */
+      .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+      @media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+      .about-grid figure{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+      .about-grid figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+      .about-copy p{color:var(--ink-soft)}
+      .about-copy p strong{color:var(--ink)}
+      .vega-note{
+        margin-top:22px;padding:18px 20px;border:1px solid var(--line);
+        border-radius:var(--radius);background:var(--card);
+      }
+      .vega-note .t{font-family:"Shippori Mincho",serif;font-weight:600;letter-spacing:.06em}
+      .vega-note p{margin:6px 0 0;font-size:14.5px}
+
+      /* menu */
+      .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+      @media (max-width:860px){.menu-grid{grid-template-columns:1fr}}
+      .menu-card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+      .menu-card img{width:100%;aspect-ratio:16/10;object-fit:cover}
+      .menu-card .body{padding:26px 28px 30px}
+      .menu-card h3{font-family:"Shippori Mincho",serif;font-size:22px;font-weight:600;letter-spacing:.05em;margin:0}
+      .menu-card h3 .en{display:block;font-family:"Cormorant Garamond",serif;font-size:12px;letter-spacing:.3em;color:#a07f37;margin-top:4px}
+      @media (prefers-color-scheme: dark){.menu-card h3 .en{color:var(--gold-soft)}}
+      .menu-card p{color:var(--ink-soft);font-size:15px}
+      .menu-card ul{margin:14px 0 0;padding:0;list-style:none}
+      .menu-card li{padding:7px 0 7px 22px;position:relative;font-size:14.5px;border-top:1px dashed var(--line)}
+      .menu-card li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:12px;top:10px}
+
+      /* concerns */
+      .concern-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+      @media (max-width:900px){.concern-grid{grid-template-columns:repeat(2,1fr)}}
+      @media (max-width:560px){.concern-grid{grid-template-columns:1fr}}
+      .concern{
+        background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+        padding:20px 22px;text-align:left;cursor:pointer;width:100%;
+        font-family:inherit;color:var(--ink);transition:border-color .2s, box-shadow .2s;
+      }
+      .concern:hover{border-color:var(--gold)}
+      .concern.active{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold), var(--shadow)}
+      .concern .t{font-family:"Shippori Mincho",serif;font-size:17.5px;font-weight:600;letter-spacing:.04em}
+      .concern .s{font-size:13px;color:var(--ink-soft);margin-top:2px}
+      .concern-detail{
+        margin-top:20px;background:var(--card);border:1px solid var(--gold);
+        border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);
+      }
+      .concern-detail h3{font-family:"Shippori Mincho",serif;font-size:21px;margin:0 0 8px}
+      .concern-detail p{color:var(--ink-soft);margin:0;font-size:15px}
+      .concern-detail .meridian{margin-top:12px;font-size:13.5px;color:#a07f37;letter-spacing:.05em}
+      @media (prefers-color-scheme: dark){.concern-detail .meridian{color:var(--gold-soft)}}
+
+      /* meridians */
+      .meridian-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+      @media (max-width:900px){.meridian-grid{grid-template-columns:repeat(3,1fr)}}
+      @media (max-width:560px){.meridian-grid{grid-template-columns:repeat(2,1fr)}}
+      .meridian{
+        border:1px solid rgba(200,164,92,.4);border-radius:12px;padding:16px 14px;text-align:center;
+        background:rgba(255,255,255,.03);
+      }
+      .meridian .org{font-family:"Shippori Mincho",serif;font-size:18px;color:#fff}
+      .meridian .flow{font-size:12px;color:var(--on-navy-soft);margin-top:3px;line-height:1.6}
+      .meridian-note{color:var(--on-navy-soft);font-size:14px;margin-top:22px;max-width:760px}
+
+      /* flow steps */
+      .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+      @media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+      @media (max-width:560px){.steps{grid-template-columns:1fr}}
+      .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 24px 26px}
+      .step .no{font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--gold);letter-spacing:.1em}
+      .step h3{font-family:"Shippori Mincho",serif;font-size:18px;margin:6px 0 6px;font-weight:600}
+      .step p{font-size:14px;color:var(--ink-soft);margin:0}
+
+      /* price */
+      .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+      @media (max-width:860px){.price-grid{grid-template-columns:1fr}}
+      .price-card{
+        background:var(--navy);color:var(--on-navy);border-radius:18px;padding:36px 36px 40px;
+        border:1px solid rgba(200,164,92,.5);text-align:center;
+        display:flex;flex-direction:column;justify-content:center;
+      }
+      .price-card .course{font-family:"Shippori Mincho",serif;font-size:20px;letter-spacing:.1em}
+      .price-card .amount{font-family:"Shippori Mincho",serif;font-size:52px;margin:10px 0 2px;color:#fff}
+      .price-card .amount small{font-size:20px}
+      .price-card .tax{font-size:12.5px;color:var(--on-navy-soft)}
+      .price-card ul{list-style:none;margin:22px auto 0;padding:18px 0 0;border-top:1px solid rgba(200,164,92,.35);text-align:left;max-width:340px;width:100%}
+      .price-card li{padding:5px 0 5px 22px;position:relative;font-size:14.5px}
+      .price-card li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:12px;top:8px}
+      .info-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+      .info-table th,.info-table td{padding:15px 20px;text-align:left;font-size:15px;vertical-align:top}
+      .info-table th{width:34%;font-family:"Shippori Mincho",serif;font-weight:600;background:var(--paper-2);border-bottom:1px solid var(--line);letter-spacing:.04em}
+      .info-table td{border-bottom:1px solid var(--line);color:var(--ink-soft)}
+      .info-table tr:last-child th,.info-table tr:last-child td{border-bottom:0}
+
+      /* therapist */
+      .therapist-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+      @media (max-width:860px){.therapist-grid{grid-template-columns:1fr}}
+      .therapist-grid figure{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+      .therapist-grid figure img{width:100%;aspect-ratio:1/1;object-fit:cover}
+      .qual{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}
+      .qual span{border:1px solid var(--gold);color:#8a6c2f;border-radius:999px;padding:5px 14px;font-size:13px;letter-spacing:.05em}
+      @media (prefers-color-scheme: dark){.qual span{color:var(--gold-soft)}}
+      .notice-box{
+        margin-top:20px;border:1px solid var(--line);border-radius:var(--radius);
+        background:var(--paper-2);padding:18px 20px;font-size:14px;color:var(--ink-soft);
+      }
+      @media (prefers-color-scheme: dark){.notice-box{background:var(--paper-2)}}
+      .notice-box .t{font-weight:700;color:var(--ink);font-family:"Shippori Mincho",serif;letter-spacing:.05em}
+
+      /* faq */
+      .faq-list{max-width:820px}
+      .faq{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);margin-bottom:12px;overflow:hidden}
+      .faq button{
+        width:100%;background:none;border:0;cursor:pointer;text-align:left;
+        padding:19px 22px;display:flex;justify-content:space-between;gap:16px;align-items:center;
+        font-family:"Shippori Mincho",serif;font-size:16.5px;font-weight:600;color:var(--ink);letter-spacing:.03em;
+      }
+      .faq button .mark{color:var(--gold);font-size:20px;line-height:1;flex:none;transition:transform .25s}
+      .faq.open button .mark{transform:rotate(45deg)}
+      .faq .a{display:none;padding:0 22px 20px;color:var(--ink-soft);font-size:14.5px}
+      .faq.open .a{display:block}
+      .faq .a p{margin:0}
+
+      /* access */
+      .access-band{position:relative;color:#fff;padding:0;overflow:hidden}
+      .access-band img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+      .access-band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,18,32,.9) 0%,rgba(9,18,32,.65) 55%,rgba(9,18,32,.3) 100%)}
+      .access-inner{position:relative;z-index:1;padding:84px 0}
+      .access-inner .kicker{font-family:"Cormorant Garamond",serif;letter-spacing:.34em;font-size:13px;color:var(--gold-soft);margin:0 0 10px}
+      .access-inner h2{font-family:"Shippori Mincho",serif;font-size:clamp(26px,4.4vw,36px);margin:0 0 16px;font-weight:600;letter-spacing:.06em}
+      .access-inner p{max-width:560px;color:#dbe4ec}
+      .stations{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+      .stations span{border:1px solid rgba(227,205,151,.6);border-radius:999px;padding:6px 16px;font-size:13.5px;color:#f4ead0;background:rgba(13,27,46,.4)}
+
+      /* series */
+      .series-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+      @media (max-width:900px){.series-grid{grid-template-columns:repeat(3,1fr)}}
+      @media (max-width:560px){.series-grid{grid-template-columns:repeat(2,1fr)}}
+      .sister{border:1px solid var(--line);border-radius:var(--radius);padding:20px 16px;text-align:center;background:var(--card)}
+      .sister .star{color:var(--gold);font-size:15px}
+      .sister .nm{font-family:"Shippori Mincho",serif;font-size:17px;font-weight:600;margin-top:4px;letter-spacing:.05em}
+      .sister .area{font-size:12.5px;color:var(--ink-soft);letter-spacing:.14em;margin-top:2px}
+      a.sister{display:block;text-decoration:none;color:inherit;transition:border-color .2s}
+      a.sister:hover{border-color:var(--gold)}
+      .sister.current{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+      .sister.current .area{color:#a07f37}
+      @media (prefers-color-scheme: dark){.sister.current .area{color:var(--gold-soft)}}
+
+      /* selfcare (free materials) */
+      .selfcare-card{
+        border:1px solid var(--gold);border-radius:18px;background:var(--card);
+        box-shadow:var(--shadow);padding:38px 40px;
+      }
+      @media (max-width:640px){.selfcare-card{padding:28px 22px}}
+      .selfcare-card h2{
+        font-family:"Shippori Mincho",serif;font-weight:600;
+        font-size:clamp(24px,4vw,32px);line-height:1.45;letter-spacing:.05em;margin:0;
+      }
+      .selfcare-card .kicker{
+        font-family:"Cormorant Garamond",serif;letter-spacing:.34em;font-size:13px;
+        color:#a07f37;margin:0 0 10px;text-transform:uppercase;
+      }
+      @media (prefers-color-scheme: dark){.selfcare-card .kicker{color:var(--gold-soft)}}
+      .selfcare-card p{color:var(--ink-soft);margin:14px 0 0;max-width:760px}
+      .selfcare-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+      .selfcare-chips a{
+        border:1px solid var(--gold);border-radius:999px;padding:6px 15px;
+        font-size:13.5px;letter-spacing:.04em;text-decoration:none;color:var(--ink);
+        background:var(--paper);
+      }
+      .selfcare-chips a:hover{background:var(--gold);color:#14263d}
+      .selfcare-cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+      .selfcare-note{font-size:13px;color:var(--ink-soft);margin-top:16px}
+      .selfcare-band{background:var(--navy-2);color:var(--on-navy)}
+      .selfcare-band .selfcare-card{background:transparent;border:0;box-shadow:none;padding:0}
+      .selfcare-band p{color:var(--on-navy-soft)}
+      .selfcare-band .selfcare-note{color:var(--on-navy-soft)}
+      .selfcare-band .selfcare-chips a{background:rgba(255,255,255,.04);color:var(--on-navy)}
+      .selfcare-band .selfcare-chips a:hover{background:var(--gold);color:#14263d}
+
+      /* recruit */
+      .pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+      @media (max-width:860px){.pillar-grid{grid-template-columns:1fr}}
+      .pillar{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 26px 28px}
+      .pillar .no{font-family:"Cormorant Garamond",serif;font-size:26px;color:var(--gold);letter-spacing:.1em}
+      .pillar h3{font-family:"Shippori Mincho",serif;font-size:19px;margin:6px 0 8px;font-weight:600;letter-spacing:.04em}
+      .pillar p{font-size:14.5px;color:var(--ink-soft);margin:0}
+      .recruit-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px}
+      @media (max-width:860px){.recruit-cols{grid-template-columns:1fr}}
+      .recruit-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px}
+      .recruit-box h3{font-family:"Shippori Mincho",serif;font-size:18.5px;font-weight:600;margin:0 0 6px;letter-spacing:.04em}
+      .recruit-box>p{font-size:14px;color:var(--ink-soft);margin:0 0 12px}
+      .recruit-box ul{margin:0;padding:0;list-style:none}
+      .recruit-box li{padding:7px 0 7px 22px;position:relative;font-size:14.5px;border-top:1px dashed var(--line)}
+      .recruit-box li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:12px;top:10px}
+      .recruit-note{font-size:14px;color:var(--ink-soft);margin-top:22px;max-width:820px}
+      .recruit-note strong{color:var(--ink)}
+      .apply-form{max-width:820px;background:var(--card);border:1px solid var(--gold);border-radius:18px;box-shadow:var(--shadow);padding:34px 36px}
+      @media (max-width:640px){.apply-form{padding:26px 20px}}
+      .apply-form h3{font-family:"Shippori Mincho",serif;font-size:20px;font-weight:600;margin:0 0 6px;letter-spacing:.04em}
+      .apply-form>p{font-size:14px;color:var(--ink-soft);margin:0 0 20px}
+      .field{margin-bottom:16px}
+      .field label{display:block;font-size:13.5px;font-weight:700;letter-spacing:.04em;margin-bottom:6px}
+      .field label .req{color:#b3543f;font-weight:700}
+      .field input,.field select,.field textarea{
+        width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;
+        background:var(--paper);color:var(--ink);font-family:inherit;font-size:15px;line-height:1.6;
+      }
+      .field textarea{resize:vertical;min-height:84px}
+      .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+      .apply-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+      .btn-navy{background:var(--navy);color:#fff;border:0;cursor:pointer;font-family:inherit}
+      .btn-navy:hover{background:var(--navy-3)}
+      .apply-msg{font-size:13.5px;color:#b3543f;min-height:1.4em}
+      .apply-msg.ok{color:#3d7a4a}
+      .apply-output{margin-top:22px;display:none}
+      .apply-output.show{display:block}
+      .apply-output label{display:block;font-size:13.5px;font-weight:700;letter-spacing:.04em;margin-bottom:6px}
+      .apply-output textarea{
+        width:100%;min-height:170px;padding:13px;border:1px solid var(--line);border-radius:10px;
+        background:var(--paper-2);color:var(--ink);font-family:inherit;font-size:14px;line-height:1.75;resize:vertical;
+      }
+
+      /* english */
+      .en-box{max-width:820px;border:1px solid var(--line);border-radius:18px;background:var(--card);padding:34px 36px;box-shadow:var(--shadow)}
+      .en-box h3{font-family:"Cormorant Garamond",serif;font-size:24px;letter-spacing:.12em;margin:0 0 6px;font-weight:600}
+      .en-box .sub{font-size:13px;color:var(--ink-soft);letter-spacing:.06em;margin-bottom:16px}
+      .en-box p{font-size:14.5px;color:var(--ink-soft)}
+      .en-box ul{margin:14px 0 0;padding-left:20px;font-size:14.5px;color:var(--ink-soft)}
+
+      /* column (articles) */
+      .column-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:860px}
+      @media (max-width:640px){.column-grid{grid-template-columns:1fr}}
+      a.column-card{
+        display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+        border-radius:var(--radius);padding:24px 26px;transition:border-color .2s;
+      }
+      a.column-card:hover{border-color:var(--gold)}
+      .column-card .tag,.article-head .tag{
+        display:inline-block;font-size:12px;letter-spacing:.1em;color:#8a6c2f;
+        border:1px solid var(--gold);border-radius:999px;padding:2px 12px;
+      }
+      @media (prefers-color-scheme: dark){.column-card .tag,.article-head .tag{color:var(--gold-soft)}}
+      .column-card h3{font-family:"Shippori Mincho",serif;font-size:19px;font-weight:600;margin:12px 0 6px;line-height:1.6;letter-spacing:.03em}
+      .column-card p{font-size:14px;color:var(--ink-soft);margin:0}
+      .column-card .date{font-size:12.5px;color:var(--ink-soft);margin-top:12px;letter-spacing:.06em}
+      .column-card .more{font-size:13.5px;color:#a07f37;margin-top:8px}
+      @media (prefers-color-scheme: dark){.column-card .more{color:var(--gold-soft)}}
+
+      /* article view */
+      .article-wrap{max-width:760px;margin:0 auto}
+      .article-head h1{
+        font-family:"Shippori Mincho",serif;font-weight:600;
+        font-size:clamp(26px,5vw,34px);line-height:1.5;letter-spacing:.05em;margin:16px 0 0;
+      }
+      .article-head .date{font-size:13px;color:var(--ink-soft);letter-spacing:.06em;margin-top:12px}
+      .article-head .lead{color:var(--ink-soft);margin:18px 0 0}
+      .article-body h2{
+        font-family:"Shippori Mincho",serif;font-size:clamp(21px,3.6vw,25px);font-weight:600;
+        letter-spacing:.05em;margin:46px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line);
+      }
+      .article-body p{color:var(--ink-soft);margin:0 0 14px}
+      .article-body ul{margin:0 0 16px;padding-left:1.3em;color:var(--ink-soft)}
+      .article-body li{margin:5px 0}
+      .article-body strong{color:var(--ink)}
+      .article-body a{color:#a07f37}
+      @media (prefers-color-scheme: dark){.article-body a{color:var(--gold-soft)}}
+      .article-links{
+        margin-top:40px;border:1px solid var(--line);border-radius:var(--radius);
+        background:var(--card);padding:22px 24px;
+      }
+      .article-links .t{font-family:"Shippori Mincho",serif;font-weight:600;letter-spacing:.05em;margin-bottom:10px}
+      .article-links ul{margin:0;padding:0;list-style:none}
+      .article-links li{padding:5px 0 5px 22px;position:relative;font-size:14.5px}
+      .article-links li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:12px;top:8px}
+      .article-links a{color:#a07f37}
+      @media (prefers-color-scheme: dark){.article-links a{color:var(--gold-soft)}}
+
+      /* soon note (opening soon) */
+      .soon-note{
+        margin-top:16px;padding:14px 18px;border:1px solid var(--gold);border-radius:var(--radius);
+        background:var(--card);color:var(--ink);font-size:14.5px;
+      }
+      .soon-note strong{font-family:"Shippori Mincho",serif;letter-spacing:.06em}
+
+      /* reserve */
+      .reserve{background:var(--navy);color:var(--on-navy);text-align:center}
+      .reserve h2{font-family:"Shippori Mincho",serif;font-size:clamp(26px,4.6vw,38px);font-weight:600;letter-spacing:.08em;margin:0}
+      .reserve p{color:var(--on-navy-soft);max-width:600px;margin:18px auto 0}
+      .reserve .btn{margin-top:30px}
+      .reserve .mini{font-size:13px;margin-top:20px;color:var(--on-navy-soft)}
+      .reserve .reserve-badge{
+        display:inline-block;background:var(--gold);color:#14263d;font-weight:700;
+        letter-spacing:.14em;padding:8px 24px;border-radius:999px;margin:0 auto 22px;font-size:15px;
+      }
+      .reserve .reserve-note{color:#f4ead0;font-size:15.5px}
+
+      footer.site{background:#081120;color:#8fa2b5;padding:44px 0 54px;font-size:13px}
+      footer.site .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start}
+      footer.site .brandline{font-family:"Shippori Mincho",serif;color:#e8edf2;font-size:16px;letter-spacing:.12em}
+      footer.site nav{display:flex;flex-wrap:wrap;gap:18px}
+      footer.site a{color:#8fa2b5;text-decoration:none}
+      footer.site a:hover{color:var(--gold-soft)}
+      footer.site .fine{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;line-height:1.8}
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="site-inner">
+        <a class="brand" href="#top">
+          <span class="star">✦</span>
+          <span class="name">ステラベガ</span>
+          <span class="sub">STELLA VEGA ・ ASHIYA</span>
+        </a>
+        <button class="burger" id="burger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+        <nav class="main" id="mainnav">
+          <a href="#about">コンセプト</a>
+          <a href="#menu">メニュー</a>
+          <a href="#concerns">お悩み別</a>
+          <a href="#price">料金・営業時間</a>
+          <a href="#therapist">セラピスト</a>
+          <a href="#faq">よくある質問</a>
+          <a href="#access">アクセス</a>
+          <a href="#column">コラム</a>
+          <a href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">セルフケア資料</a>
+          <a href="#recruit">セラピスト募集</a>
+          <a class="nav-cta" href="#reserve">近日開院予定</a>
+        </nav>
+      </div>
+    </header>
+
+    <div id="view-home">
+    <!-- HERO -->
+    <div class="hero" id="top">
+      <div class="hero-bg"><img src="assets/hero.jpg" alt="キャンドルの灯る落ち着いた施術ルームとシャワーブース" /></div>
+      <div class="wrap">
+        <p class="star-line">✦ STELLA VEGA ✦</p>
+        <h1>ステラベガ<span class="en">ASHIYA — WOMEN ONLY PRIVATE SALON</span></h1>
+        <div class="opening-banner">✦ 近日開院予定 ✦<small>ご予約の受付は開院後より開始いたします</small></div>
+        <p class="lead">
+          芦屋の静かな邸宅街で、星の名を冠した女性専用サロン。
+          施術歴30年の男性セラピストが、東洋医学の知恵とアロマの香りで、
+          お一人おひとりの体と心に寄り添うオイルマッサージと美容整体をお届けします。
+        </p>
+        <div class="hero-badges">
+          <span>女性専用</span>
+          <span>完全予約制</span>
+          <span>シャワー完備</span>
+          <span>男性セラピスト</span>
+          <span>住所は予約確定後にご案内</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#reserve">開院後に受付開始</a>
+          <a class="btn btn-ghost" href="#menu">メニューを見る</a>
+        </div>
+        <dl class="hero-facts">
+          <div><dt>料金</dt><dd>90分 10,000円</dd></div>
+          <div><dt>営業時間</dt><dd>17:00 – 22:00</dd></div>
+          <div><dt>営業日</dt><dd>月曜 – 土曜（日曜休み）</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- TRUST -->
+    <div class="trust">
+      <div class="wrap">
+        <div class="item"><div class="num">30年</div><div class="lbl">施術歴</div></div>
+        <div class="item"><div class="num">国家資格</div><div class="lbl">鍼灸師ほか有資格</div></div>
+        <div class="item"><div class="num">完全個室</div><div class="lbl">プライベート空間</div></div>
+        <div class="item"><div class="num">シャワー完備</div><div class="lbl">施術前後に利用可</div></div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-copy">
+            <div class="sec-head" style="margin-bottom:20px">
+              <p class="kicker">Concept</p>
+              <h2>六甲の麓、織姫星の名をいただく<br />大人のための隠れ家サロン</h2>
+            </div>
+            <p>
+              ステラベガは、阪神間の邸宅街・芦屋にある<strong>女性専用のプライベートサロン</strong>です。
+              施術はすべて、<strong>施術歴30年</strong>のセラピストが担当。鍼灸師としての東洋医学の知識を土台に、
+              アロマオイルのトリートメントと美容整体を組み合わせ、肩こり・腰痛・むくみ・冷えといった
+              日々のお悩みに、症状の背景から向き合います。
+            </p>
+            <p>
+              お部屋は完全個室、<strong>シャワー完備</strong>。施術の前後に汗やオイルを流して、
+              すっきりとお帰りいただけます。人目を気にせず、静かな夜のひとときをお過ごしください。
+            </p>
+            <div class="vega-note">
+              <div class="t">✦ 名前の由来 — ベガ（織姫星）</div>
+              <p>
+                ベガは、こと座の一等星で、日本では七夕の織姫星として親しまれてきました。
+                機織りの名手である織姫のように、一筋一筋ていねいに体をほぐし、
+                日常の疲れを織り直す場所でありたい——そんな願いを込めています。
+                姉妹店ステラポラリス（梅田）と同じ想いで運営する、ステラシリーズの芦屋店です。
+              </p>
+            </div>
+          </div>
+          <figure>
+            <img src="assets/room.jpg" alt="タオルとキャンドルが整えられた明るい施術ルーム" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu" style="background:var(--paper-2)">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Menu</p>
+          <h2>施術メニュー</h2>
+          <p>基本コースは90分・10,000円のひとつのみ。オイルマッサージと美容整体を、お体の状態に合わせて組み合わせます。</p>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card">
+            <img src="assets/massage.jpg" alt="キャンドルとタオルが整えられたオイルマッサージの施術ルーム" />
+            <div class="body">
+              <h3>オイルマッサージ<span class="en">AROMA OIL TREATMENT</span></h3>
+              <p>
+                アロマセラピストでもある施術者が、その日の体調とお好みに合わせて精油をブレンド。
+                経絡（けいらく）の流れを意識しながら、全身をゆったりとほぐしていきます。
+              </p>
+              <ul>
+                <li>背中・肩・腰を中心とした全身トリートメント</li>
+                <li>リンパの流れに沿った、むくみケア</li>
+                <li>精油は数種類からカウンセリングで選定</li>
+                <li>施術前後のシャワー利用可</li>
+              </ul>
+            </div>
+          </article>
+          <article class="menu-card">
+            <img src="assets/head.jpg" alt="目を閉じてヘッドマッサージを受ける女性" />
+            <div class="body">
+              <h3>美容整体<span class="en">BEAUTY SEITAI</span></h3>
+              <p>
+                パーソナルトレーナーの視点も取り入れた、姿勢と体の使い方に働きかける整体。
+                猫背や骨盤まわりのゆがみ感、フェイスラインのもたつきなど、見た目の印象にも関わるお悩みに。
+              </p>
+              <ul>
+                <li>姿勢評価にもとづく全身のバランス調整</li>
+                <li>頭・首・肩まわりのヘッドケアを含む構成</li>
+                <li>日常で続けられるセルフケアのアドバイス</li>
+                <li>オイルコースとの組み合わせも可能</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCERNS -->
+    <section id="concerns">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Guide by Concern</p>
+          <h2>お悩み別ガイド</h2>
+          <p>気になるお悩みを選ぶと、東洋医学の見方と、施術でのアプローチをご紹介します。体の地図＝経絡から読み解くのが、ステラベガのやり方です。</p>
+        </div>
+        <div class="concern-grid" id="concernGrid"></div>
+        <div class="concern-detail" id="concernDetail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- MERIDIANS -->
+    <section class="navy-band" id="meridians">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Meridian Guide</p>
+          <h2>経絡ガイド — 体を巡る12の流れ</h2>
+          <p>東洋医学では、体には「経絡」と呼ばれる気血の通り道があると考えます。ステラベガの施術は、この流れを整えることを土台にしています。</p>
+        </div>
+        <div class="meridian-grid" id="meridianGrid"></div>
+        <p class="meridian-note">
+          ※ 経絡の説明は東洋医学の伝統的な考え方にもとづくもので、施術はリラクゼーションと美容を目的としています。医療行為ではなく、鍼（はり）を使った施術は当サロンでは行いません。体調に不安がある場合は、まず医療機関へご相談ください。
+        </p>
+      </div>
+    </section>
+
+    <!-- FLOW -->
+    <section id="flow">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Flow</p>
+          <h2>ご利用の流れ</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="no">01</div><h3>ご予約</h3><p>開院後は完全予約制です。ご希望の日時をお知らせください。空き状況を確認して折り返しご連絡します。</p></div>
+          <div class="step"><div class="no">02</div><h3>場所のご案内</h3><p>ご予約が確定しましたら、サロンの住所と道順を個別にご案内します。プライバシー保護のため、住所は公開していません。</p></div>
+          <div class="step"><div class="no">03</div><h3>カウンセリング</h3><p>ご来店後、お体の状態やお悩み、香りのお好みをうかがいます。気になることは何でもお話しください。</p></div>
+          <div class="step"><div class="no">04</div><h3>お着替え・シャワー</h3><p>施術前にお着替えいただきます。ご希望の方はシャワーもご利用いただけます。</p></div>
+          <div class="step"><div class="no">05</div><h3>施術（90分）</h3><p>オイルマッサージと美容整体を組み合わせた施術を行います。強さは都度調整しますので、遠慮なくお声がけください。</p></div>
+          <div class="step"><div class="no">06</div><h3>アフターケア</h3><p>施術後はシャワーでオイルを流していただけます。お体の状態と、日常のセルフケアについてご説明します。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICE -->
+    <section id="price" style="background:var(--paper-2)">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Price &amp; Hours</p>
+          <h2>料金・営業時間</h2>
+          <p class="soon-note"><strong>近日開院予定：</strong>近日開院予定のため、ご予約の受付はまだ開始していません。受付開始はこのページでご案内します。</p>
+        </div>
+        <div class="price-grid">
+          <div class="price-card">
+            <div class="course">基本コース 90分</div>
+            <div class="amount">10,000<small>円</small></div>
+            <div class="tax">税込／追加料金なし</div>
+            <ul>
+              <li>オイルマッサージ＋美容整体の組み合わせ</li>
+              <li>カウンセリング込み</li>
+              <li>シャワーのご利用込み</li>
+              <li>精油のブレンド込み</li>
+            </ul>
+          </div>
+          <div>
+            <table class="info-table">
+              <tr><th>営業日</th><td>月曜〜土曜（日曜はお休みです）</td></tr>
+              <tr><th>営業時間</th><td>17:00〜22:00（最終受付は施術終了が22:00になる時間まで）</td></tr>
+              <tr><th>予約</th><td>完全予約制。前日までのご予約をおすすめします</td></tr>
+              <tr><th>対象</th><td>女性専用サロンです</td></tr>
+              <tr><th>場所</th><td>兵庫県芦屋市内（住所詳細はご予約確定後にご案内）</td></tr>
+              <tr><th>設備</th><td>完全個室・シャワー完備</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THERAPIST -->
+    <section id="therapist">
+      <div class="wrap">
+        <div class="therapist-grid">
+          <figure>
+            <img src="assets/aroma.jpg" alt="精油の瓶とストーン、ハーブを並べたアロマセラピーのイメージ" />
+          </figure>
+          <div>
+            <div class="sec-head" style="margin-bottom:16px">
+              <p class="kicker">Therapist</p>
+              <h2>セラピストについて</h2>
+            </div>
+            <p style="color:var(--ink-soft)">
+              施術は30年にわたり体のケアに携わってきた、男性セラピストが担当します。
+              鍼灸の国家資格を持つ立場から体の構造を読み解き、アロマと整体の技術を重ねてきました。
+              「その場しのぎではなく、背景から整える」ことがモットーです。
+            </p>
+            <div class="qual">
+              <span>鍼灸師（国家資格）</span>
+              <span>登録販売者</span>
+              <span>アロマセラピスト</span>
+              <span>パーソナルトレーナー</span>
+              <span>施術歴30年</span>
+            </div>
+            <div class="notice-box">
+              <p class="t">ご安心のためのお約束</p>
+              <p style="margin:6px 0 0">
+                当サロンは、女性の健康と美容のための健全なリラクゼーションサロンです。
+                性的なサービスは一切行っておりません。また、鍼（はり）を用いる施術も行いません。
+                施術中はタオルで体を覆い、プライバシーに配慮します。不安な点があれば、ご予約前に何でもお尋ねください。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="background:var(--paper-2)">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">FAQ</p>
+          <h2>よくある質問</h2>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- COLUMN -->
+    <section id="column">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Column</p>
+          <h2>コラム — 体と休息の読みもの</h2>
+          <p>日々のお悩みを、東洋医学の見方も交えて整理した読みものです。悩みの背景、日常でできるセルフケア、受診の目安までをまとめています。当サロンの施術の効果を保証する内容ではありません。</p>
+        </div>
+        <div class="column-grid">
+          <a class="column-card" href="#column-kounenki-ashiya">
+            <span class="tag">更年期と休息</span>
+            <h3>芦屋で更年期の不調と向き合う — ゆらぎ世代の休息の取り方</h3>
+            <p>ほてりや眠りの浅さ、疲れが抜けないといった更年期のゆらぎを整理し、考えられる要因と日常で取り入れたいセルフケア、受診の目安をまとめました。</p>
+            <div class="date">2026年10月26日</div>
+            <div class="more">記事を読む →</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELFCARE LIBRARY -->
+    <section id="selfcare">
+      <div class="wrap">
+        <div class="selfcare-card">
+          <p class="kicker">Free Self-Care Library</p>
+          <h2>セルフケア資料ライブラリ — おうちでできるケアを、無料で</h2>
+          <p>
+            肩こり、腰の重だるさ、むくみ、冷えといったお悩み別に整理したセルフケア資料を、
+            「セルフケア資料ライブラリ」で無料公開しています。ご自宅で無理なく続けられるケアの方法や、
+            体の状態に合わせた過ごし方のヒントを、症状ごとに分かりやすくまとめました。
+            施術の合間のセルフケアに、ぜひお役立てください。
+          </p>
+          <p>
+            また、ライブラリからは<strong>無料姿勢チェック</strong>のお申し込みもできます。
+            ご自身の姿勢の傾向を知り、日常のケアに活かしたい方は、ライブラリのページからお申し込みください。
+          </p>
+          <div class="selfcare-chips">
+            <a href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">肩こりのケア</a>
+            <a href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">腰の重だるさのケア</a>
+            <a href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">むくみ・冷えのケア</a>
+            <a href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">姿勢・猫背のケア</a>
+          </div>
+          <div class="selfcare-cta">
+            <a class="btn btn-gold" href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">資料ライブラリを見る（無料）</a>
+          </div>
+          <p class="selfcare-note">
+            ※ 資料はセルフケアの参考情報であり、医療行為に代わるものではありません。症状が強い場合や長引く場合は、医療機関へご相談ください。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCESS -->
+    <section class="access-band" id="access">
+      <img class="bg" src="assets/rokko.jpg" alt="六甲山から望む阪神間の夜景" />
+      <div class="wrap access-inner">
+        <p class="kicker">Access</p>
+        <h2>芦屋エリアのプライベートサロン</h2>
+        <p>
+          サロンは兵庫県芦屋市内のレンタルサロンで営業しています。
+          お客様のプライバシーを守るため、詳しい住所はご予約が確定した方にのみご案内しています。
+          最寄り駅からの道順もあわせてお送りしますので、初めての方もご安心ください。
+        </p>
+        <div class="stations">
+          <span>阪急 芦屋川駅</span>
+          <span>JR 芦屋駅</span>
+          <span>阪神 芦屋駅</span>
+        </div>
+        <p style="font-size:13.5px;margin-top:18px">
+          ※ ご予約の際に、ご利用になる駅をお知らせいただければ、最も分かりやすい道順をご案内します。
+        </p>
+      </div>
+    </section>
+
+    <!-- SERIES -->
+    <section id="series" class="tight">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Stella Series</p>
+          <h2>ステラシリーズの姉妹店</h2>
+          <p>星の名前を冠した女性専用サロンシリーズ。どの店舗も同じ想い・同じ料金体系で運営しています。</p>
+        </div>
+        <div class="series-grid">
+          <a class="sister" href="https://muse.ai/s/space-xnd6vukcxkxzxwxd/ENuhkW3JXehtaYlDN7icw2dlF6V1x-qUEXKa6zgy1Pg" target="_blank" rel="noopener"><div class="star">✦</div><div class="nm">ステラポラリス</div><div class="area">梅田</div></a>
+          <a class="sister" href="https://muse.ai/s/space-8-xiv6vu0xbxybqy/A2OLmnjNTGIc5XWKHpxOoDIazyv6rc7_C7btp_dwXkw" target="_blank" rel="noopener"><div class="star">✦</div><div class="nm">ステラシリウス</div><div class="area">難波</div></a>
+          <div class="sister current"><div class="star">✦</div><div class="nm">ステラベガ</div><div class="area">芦屋（当店）</div></div>
+          <a class="sister" href="https://muse.ai/s/space-7-xwy6vtxxxkxexvxog/FTs1YzyktxAKkP48oZy9-yAWDNPwtRo8Z3HuJPsLX3o" target="_blank" rel="noopener"><div class="star">✦</div><div class="nm">ステラスピカ</div><div class="area">三ノ宮</div></a>
+          <a class="sister" href="https://muse.ai/s/space-10-fxi6vtxnj0bxsx0/JDZaTV-SesHzbzBlO2Fxw_XC1KSa70Uva-FNZ85ZcS0" target="_blank" rel="noopener"><div class="star">✦</div><div class="nm">ステラアルタイル</div><div class="area">京都</div></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGLISH -->
+    <section class="tight" style="padding-top:0">
+      <div class="wrap">
+        <div class="en-box">
+          <h3>FOR INTERNATIONAL GUESTS</h3>
+          <div class="sub">Information in English — Stella Vega, Ashiya</div>
+          <p>
+            Stella Vega is a women-only private massage salon in Ashiya, Hyogo, near Kobe and Osaka.
+            Treatments combine aromatherapy oil massage with Japanese bodywork (seitai), provided by a male
+            therapist with 30 years of experience and a national acupuncture license (acupuncture itself is
+            not performed at this salon).
+          </p>
+          <ul>
+            <li>Course: 90 minutes — ¥10,000 (tax included, no extra charges)</li>
+            <li>Open Monday to Saturday, 17:00–22:00 (closed Sundays)</li>
+            <li>Reservation only. The address is shared after your booking is confirmed</li>
+            <li>Private room with shower — you can freshen up before and after your treatment</li>
+            <li>This is a professional wellness salon. No sexual services are offered</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECRUIT LINK -->
+    <section class="tight" style="background:var(--paper-2)">
+      <div class="wrap" style="text-align:center">
+        <p class="latin" style="color:var(--gold);font-size:13px;margin:0 0 10px">RECRUIT</p>
+        <h2 class="serif" style="font-size:clamp(22px,3.6vw,28px);margin:0;letter-spacing:.05em;font-weight:600">セラピスト募集（業務委託）</h2>
+        <p style="color:var(--ink-soft);max-width:640px;margin:14px auto 0">ステラベガでは、業務委託で一緒に働いてくださるセラピストを募集しています。募集条件・研修内容・応募フォームは、求人ページにまとめています。</p>
+        <p style="margin:24px 0 0"><a class="btn btn-gold" href="#recruit">求人ページを見る</a></p>
+      </div>
+    </section>
+
+    <!-- RESERVE -->
+    <section class="reserve" id="reserve">
+      <div class="wrap">
+        <p class="reserve-badge">✦ 近日開院予定</p>
+        <h2>ご予約・お問い合わせ</h2>
+        <p class="reserve-note">
+          近日開院予定のため、ご予約の受付はまだ開始していません。受付開始はこのページでご案内します。
+        </p>
+        <p>
+          開院後は、完全予約制でご予約を承ります。ご希望の日時（第2希望まで）とお名前をお知らせください。
+          空き状況を確認のうえ、場所の詳細とあわせて折り返しご連絡いたします。
+        </p>
+        <p class="mini">営業時間：月曜〜土曜 17:00〜22:00（日曜休み）／ 90分 10,000円 ／ 女性専用・完全個室・シャワー完備</p>
+      </div>
+    </section>
+
+    </div><!-- /view-home -->
+
+    <div id="view-recruit" hidden>
+    <!-- RECRUIT -->
+    <section id="recruit" style="background:var(--paper-2)">
+      <div class="wrap">
+        <p style="margin:0 0 26px;font-size:14px"><a href="#top" style="color:#a07f37">← トップページへ戻る</a></p>
+        <div class="sec-head">
+          <p class="kicker">Recruit</p>
+          <h2>セラピスト募集<br />（業務委託）</h2>
+          <p>
+            ステラベガでは、業務委託で一緒に働いてくださるセラピストを募集しています。
+            未経験の方も、すでに技術をお持ちの方も、それぞれの歩幅で始められる形をご用意しています。
+          </p>
+        </div>
+
+        <div class="pillar-grid">
+          <div class="pillar">
+            <div class="no">01</div>
+            <h3>雇用ではなく、業務委託</h3>
+            <p>
+              雇用契約ではなく業務委託での募集です。報酬は施術料の60%です。
+              働く曜日・時間は本人の希望に合わせて設定できますので、ご自身の生活リズムに合わせた働き方が可能です。
+              契約の進め方など、その他の詳細は面談の際にご案内します。
+            </p>
+          </div>
+          <div class="pillar">
+            <div class="no">02</div>
+            <h3>未経験者は研修無料</h3>
+            <p>
+              施術の経験がない方もご応募いただけます。デビューまでの研修は無料です。
+              基礎から一つずつ確認しながら進めますので、「興味はあるけれど未経験で不安」という方もご相談ください。
+            </p>
+          </div>
+          <div class="pillar">
+            <div class="no">03</div>
+            <h3>あなたの技術を、そのままメニューに</h3>
+            <p>
+              経験者の方は、これまで身につけてきた技術を活かせます。お持ちの技術は確認のうえ、
+              当サロンのメニューとしてそのまま取り入れられます。新しいことを覚えるより、得意なことで輝ける形を大切にしています。
+            </p>
+          </div>
+        </div>
+
+        <div class="recruit-cols">
+          <div class="recruit-box">
+            <h3>未経験者向け研修内容の例</h3>
+            <p>研修で扱う内容の一例です。進み具合に合わせて、無理のないペースで進めます。</p>
+            <ul>
+              <li>接客マナー（お迎え・お見送り、言葉づかい、カウンセリングの聞き方）</li>
+              <li>オイルマッサージの基礎（姿勢と体の使い方、基本の手技）</li>
+              <li>解剖学の基礎（施術に関わる筋肉と骨格の基礎知識）</li>
+              <li>衛生管理（タオル・リネンの扱い、手指消毒、備品の管理）</li>
+            </ul>
+          </div>
+          <div class="recruit-box">
+            <h3>経験者の技術メニュー化の例</h3>
+            <p>たとえば、次のような技術をお持ちの方は、そのままメニュー化の対象になります。</p>
+            <ul>
+              <li>整体・ボディケア</li>
+              <li>リフレクソロジー</li>
+              <li>ヘッドケア（ドライヘッドスパ等）</li>
+              <li>フェイシャル</li>
+              <li>その他、お持ちの技術があれば応募の際にご記入ください</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="recruit-note">
+          <strong>働く時間について：</strong>働く曜日・時間は、本人の希望に合わせて設定できます。
+          ご都合のよい時間帯を、応募の際や面談でお聞かせください。<br />
+          <strong>報酬について：</strong>業務委託の報酬は、施術料の60%です。
+          それ以外の詳細な条件は面談の際に個別にご案内しますので、気になる点は面談で遠慮なくお尋ねください。
+        </p>
+
+        <div class="sec-head" style="margin-top:52px">
+          <p class="kicker">Flow</p>
+          <h2>応募の流れ</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="no">01</div><h3>応募</h3><p>下のフォームに必要事項を入力すると、応募文が自動で作成されます。コピーして、普段お使いの連絡手段でお送りください。</p></div>
+          <div class="step"><div class="no">02</div><h3>面談</h3><p>ご希望やご経験をうかがい、働き方や詳細条件をご案内します。サロンの雰囲気もご確認いただけます。</p></div>
+          <div class="step"><div class="no">03</div><h3>研修／技術確認</h3><p>未経験の方は無料研修へ。経験者の方はお持ちの技術を確認し、メニュー化の相談をします。</p></div>
+          <div class="step"><div class="no">04</div><h3>業務委託契約</h3><p>条件にご納得いただけましたら、業務委託契約を結びます。</p></div>
+          <div class="step"><div class="no">05</div><h3>デビュー</h3><p>サロンのセラピストとして施術デビューです。慣れるまでは近くでフォローします。</p></div>
+        </div>
+
+        <div class="sec-head" style="margin-top:52px">
+          <p class="kicker">Application</p>
+          <h2>応募フォーム</h2>
+          <p>入力内容から応募文を自動で作成します。送信ボタンはありませんので、作成された文章をコピーしてご連絡ください。</p>
+        </div>
+        <form class="apply-form" id="applyForm" novalidate>
+          <h3>応募文を作成する</h3>
+          <p>※ このフォームの内容は、このページの中だけで文章に変換されます。外部へ自動送信されることはありません。</p>
+          <div class="field">
+            <label for="apName">お名前 <span class="req">※必須</span></label>
+            <input type="text" id="apName" autocomplete="name" placeholder="例：山田 花子" />
+          </div>
+          <div class="field">
+            <label for="apContact">ご連絡先（メールアドレスなど） <span class="req">※必須</span></label>
+            <input type="text" id="apContact" autocomplete="email" placeholder="例：hanako@example.com" />
+          </div>
+          <div class="field">
+            <label for="apExp">施術のご経験</label>
+            <select id="apExp">
+              <option value="未経験">未経験</option>
+              <option value="経験あり">経験あり</option>
+              <option value="ブランクあり（経験あり）">ブランクあり（以前経験あり）</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="apSkills">お持ちの技術（経験者の方）</label>
+            <input type="text" id="apSkills" placeholder="例：整体、リフレクソロジー、ヘッドケア など" />
+          </div>
+          <div class="field">
+            <label for="apHope">ご希望・伝えたいこと</label>
+            <textarea id="apHope" placeholder="例：週2回ほど、平日の夕方から入れたらと思っています。未経験ですが研修からお願いしたいです。"></textarea>
+          </div>
+          <div class="apply-actions">
+            <button type="submit" class="btn btn-gold" style="border:0;cursor:pointer;font-family:inherit">応募文を作成する</button>
+            <span class="apply-msg" id="applyMsg" role="status"></span>
+          </div>
+          <div class="apply-output" id="applyOutput">
+            <label for="apText">作成された応募文</label>
+            <textarea id="apText" readonly></textarea>
+            <div class="apply-actions">
+              <button type="button" class="btn btn-navy" id="apCopy">応募文をコピーする</button>
+              <span class="apply-msg ok" id="copyMsg" role="status"></span>
+            </div>
+            <p style="font-size:13px;color:var(--ink-soft);margin:12px 0 0">
+              コピーした応募文は、LINE・メールなど普段お使いの連絡手段に貼り付けてお送りください。内容をご確認のうえ、ご自身で送信をお願いします。
+            </p>
+          </div>
+        </form>
+        <p style="margin:36px 0 0;font-size:14px"><a href="#top" style="color:#a07f37">← トップページへ戻る</a></p>
+      </div>
+    </section>
+    </div><!-- /view-recruit -->
+
+    <div id="view-article" hidden>
+    <!-- ARTICLE: 更年期の不調と休息の取り方 -->
+    <section>
+      <div class="wrap">
+        <div class="article-wrap">
+          <p style="margin:0 0 26px;font-size:14px"><a href="#column" style="color:#a07f37">← コラム一覧へ戻る</a></p>
+          <div class="article-head">
+            <span class="tag">更年期と休息</span>
+            <h1>芦屋で更年期の不調と向き合う — ゆらぎ世代の休息の取り方</h1>
+            <div class="date">2026年10月26日｜ステラベガ（芦屋）コラム</div>
+            <p class="lead">
+              「最近、疲れがなかなか抜けない」「夜中に目が覚めてしまう」「急に顔がほてる」——40代後半から50代にかけて、
+              こうした変化を感じる方が増えてきます。いわゆる更年期と呼ばれる時期の過ごし方を、
+              芦屋で暮らす女性の日常を思い浮かべながら整理しました。あせらず、まずは自分の体の変化を知ることから始めましょう。
+            </p>
+          </div>
+          <div class="article-body">
+            <h2>更年期の悩みを整理する</h2>
+            <p>
+              更年期とは、閉経の前後およそ10年間を指す時期のことです。この時期に表れる心身の変化は「更年期症状」と呼ばれ、
+              日常生活に支障が出るほどつらい場合は「更年期障害」と呼ばれます。感じ方には大きな個人差がありますが、
+              たとえば次のような変化を訴える方がいます。
+            </p>
+            <ul>
+              <li>顔や首のほてり・のぼせ、急な発汗</li>
+              <li>寝つきの悪さ、夜中に目が覚める、眠りが浅い</li>
+              <li>肩こりや首のこわばり、頭の重さ</li>
+              <li>疲れが抜けにくい、全身のだるさ</li>
+              <li>イライラしやすい、気分が沈みがち、集中しにくい</li>
+              <li>手や関節のこわばり感</li>
+            </ul>
+            <p>
+              こうした変化は「年のせい」と片づけてしまいがちです。けれど、正体が分からないままだと不安が大きくなります。
+              まずは、自分の体にどんな変化が起きているのかを言葉にしてみることが、この時期との付き合い方の第一歩です。
+            </p>
+
+            <h2>考えられる要因</h2>
+            <p>
+              更年期の変化の背景には、女性ホルモン（エストロゲン）の分泌量が大きくゆらぎながら減っていくことがあるとされています。
+              このゆらぎが、自律神経のバランスにも影響すると考えられています。
+            </p>
+            <p>
+              また、この年代は仕事や家庭、親の介護など、環境の変化が重なりやすい時期でもあります。
+              睡眠の質の低下や運動量の減少、ストレスの蓄積といった生活面の要因が重なると、つらさを感じやすくなることもあります。
+              なお、動悸や発汗、体重の変化といった症状は、甲状腺の病気など更年期以外の要因でも見られることがあります。
+              「更年期だから」と決めつけず、気になる症状は医療機関で確認しておくことも大切です。
+            </p>
+
+            <h2>セルフケア — 日常で取り入れたい休息の工夫</h2>
+            <p>
+              医療機関への相談と並行して、日常の過ごし方を少し見直すことも、この時期の自分を支える土台になります。
+              特別な道具は要りません。無理のない範囲で取り入れやすい工夫を挙げます。
+            </p>
+            <ul>
+              <li><strong>入浴の時間をつくる：</strong>シャワーで済ませず、ぬるめのお湯にゆっくり浸かる習慣を。体が温まると、気持ちもほぐれやすくなります。</li>
+              <li><strong>軽い運動を日課に：</strong>ウォーキングやストレッチなど。芦屋川沿いの散歩のように景色のよい場所を選ぶと、気分転換も兼ねられます。</li>
+              <li><strong>眠る前の過ごし方を整える：</strong>寝室の温度や明るさを調整し、就寝前はスマートフォンを控えめにするなど、眠りに入りやすい環境を意識します。</li>
+              <li><strong>カフェインとお酒との付き合い方：</strong>夕方以降のカフェインや、眠るためのお酒は、眠りの浅さにつながることがあります。量と時間を見直してみてください。</li>
+              <li><strong>ほっとできる時間を持つ：</strong>好きな香りを生活に取り入れる、お茶の時間をゆっくり取るなど、自分がゆるむ時間を意識的につくる方が増えています。</li>
+              <li><strong>「何もしない時間」を予定に入れる：</strong>この時期は頑張りすぎないことも大切なセルフケアです。休息を後回しにしない工夫をしてみてください。</li>
+            </ul>
+            <p>
+              どれも小さなことですが、「休むこと」を自分の予定の中にきちんと置くことが、
+              この時期を心地よく過ごす助けになると考えられます。
+            </p>
+
+            <h2>受診の目安</h2>
+            <p>次のような場合は、婦人科や更年期の相談ができる医療機関、かかりつけ医への相談を検討してみてください。</p>
+            <ul>
+              <li>症状が強く、仕事や家事など日常生活に支障が出ている</li>
+              <li>つらさが数か月以上続いている、少しずつ強くなっている</li>
+              <li>気分の落ち込みが続き、眠れない日が続いている</li>
+              <li>動悸・発汗・体重の大きな変化など、更年期以外の要因も考えられる症状がある</li>
+            </ul>
+            <p>
+              医療機関では、ホルモン補充療法や漢方薬など、その方に合わせた選択肢を相談できる場合があります。
+              セルフケアと医療はどちらか一方ではなく、組み合わせて使うことが大切です。我慢しすぎず、頼れる先を持っておきましょう。
+            </p>
+
+            <h2>ステラベガのご案内 — 休む時間をつくる場所として</h2>
+            <p>
+              ステラベガは、芦屋市内にある女性専用のプライベートサロンです。施術歴30年のセラピストが、
+              オイルマッサージと美容整体を組み合わせた<strong>90分コース（10,000円・税込）</strong>をご提供しています。
+              営業は<strong>月曜〜土曜の17:00〜22:00（日曜休み）</strong>、完全予約制で、詳しい住所はご予約確定後にご案内します。
+              シャワー完備の完全個室ですので、施術の前後に身支度を整えてお帰りいただけます。
+            </p>
+            <p>
+              カウンセリングでは、その日の体調や気になることをうかがい、東洋医学の見方も交えながら施術を組み立てます。
+              精油は体調とお好みに合わせてブレンドしますので、「今日はとにかくゆっくり休みたい」という日も、そのままお越しください。
+              梅田の姉妹店<a href="https://muse.ai/s/space-xnd6vukcxkxzxwxd/ENuhkW3JXehtaYlDN7icw2dlF6V1x-qUEXKa6zgy1Pg" target="_blank" rel="noopener">ステラポラリス</a>も、同じ想いで運営しています。
+            </p>
+            <p>
+              なお、当サロンの施術はリラクゼーションと美容を目的としたもので、医療行為ではありません。
+              更年期の症状に対する効果を保証するものでもありません。つらい症状がある場合は、まず医療機関へご相談ください。
+              そのうえで、「ゆっくり休む時間を持ちたい」というときの選択肢のひとつとしてご利用いただければ幸いです。
+            </p>
+
+            <div class="article-links">
+              <div class="t">関連ページ</div>
+              <ul>
+                <li><a href="#menu">施術メニュー（オイルマッサージ・美容整体）</a></li>
+                <li><a href="#concerns">お悩み別ガイド</a></li>
+                <li><a href="#price">料金・営業時間</a></li>
+                <li><a href="#faq">よくある質問</a></li>
+                <li><a href="#reserve">ご予約・お問い合わせ</a></li>
+              </ul>
+            </div>
+            <p style="margin:36px 0 0;font-size:14px"><a href="#column" style="color:#a07f37">← コラム一覧へ戻る</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div><!-- /view-article -->
+
+    <footer class="site">
+      <div class="wrap">
+        <div>
+          <div class="brandline">✦ ステラベガ</div>
+          <div style="margin-top:6px">女性専用オイルマッサージ＆美容整体｜兵庫県芦屋市（住所は予約確定後にご案内）</div>
+        </div>
+        <nav>
+          <a href="#about">コンセプト</a>
+          <a href="#menu">メニュー</a>
+          <a href="#concerns">お悩み別ガイド</a>
+          <a href="#price">料金</a>
+          <a href="#faq">よくある質問</a>
+          <a href="#column">コラム</a>
+          <a href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">セルフケア資料ライブラリ</a>
+          <a href="#series">姉妹店</a>
+          <a href="#recruit">セラピスト募集</a>
+        </nav>
+        <div class="fine">
+          当サロンの施術はリラクゼーションおよび美容を目的としたもので、医療行為ではありません。鍼灸施術は行っておりません。性的なサービスは一切提供しておりません。
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ---------- mobile nav ----------
+      var burger = document.getElementById('burger');
+      var nav = document.getElementById('mainnav');
+      burger.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') nav.classList.remove('open');
+      });
+
+      // ---------- concerns ----------
+      var concerns = [
+        { t:'肩こり・首こり', s:'デスクワークやスマホで固まる首肩に', body:'長時間の同じ姿勢で固まった首・肩まわりは、東洋医学では「気血の巡りの滞り」と捉えます。施術では肩甲骨まわりから首筋までをオイルで温めながらほぐし、頭の重さを支える筋肉の緊張をゆるめます。美容整体で巻き肩の調整も組み合わせます。', m:'関わる経絡：膀胱経・胆経・小腸経' },
+        { t:'腰痛・腰の重だるさ', s:'立ち仕事・座り仕事のどちらにも', body:'腰は東洋医学で「腎」と深く関わる場所とされます。冷えや疲労が重なると重だるさが出やすい部位です。腰からお尻、太ももの裏までを丁寧にほぐし、骨盤まわりのバランスを整体で整えます。', m:'関わる経絡：膀胱経・腎経・督脈' },
+        { t:'むくみ・脚のだるさ', s:'夕方になると靴がきつい方に', body:'余分な水分が滞るむくみは、東洋医学では「脾」の働きの低下と関係づけられます。ふくらはぎから太ももへ、リンパと経絡の流れに沿って押し流すようにトリートメントし、軽やかな脚へ導きます。', m:'関わる経絡：脾経・腎経・膀胱経' },
+        { t:'冷え', s:'手足の冷たさ、エアコンの冷えに', body:'冷えは巡りの低下のサインです。温めたオイルで全身をゆっくりとほぐしながら、特にお腹・腰・足首まわりを重点的に。施術後のシャワーでさらに温まっていただくのもおすすめです。', m:'関わる経絡：腎経・脾経・三焦経' },
+        { t:'姿勢・猫背', s:'巻き肩、反り腰が気になる方に', body:'美容整体では、まず姿勢のクセを確認するところから始めます。胸まわりを開き、背中と骨盤のバランスを整えることで、立ち姿の印象も変わります。パーソナルトレーナーの視点から、日常の体の使い方もアドバイスします。', m:'関わる経絡：膀胱経・督脈・任脈' },
+        { t:'眠りの浅さ・疲れが取れない', s:'休んでもすっきりしない毎日に', body:'東洋医学では、疲れが抜けない状態を「心」と「腎」のバランスの乱れと捉えます。背中全体をゆったりしたリズムでほぐし、頭まわりのケアも組み合わせて、深く休める体へ。香りの力で気持ちの切り替えも助けます。', m:'関わる経絡：心経・腎経・膀胱経' },
+        { t:'お顔のむくみ・くすみ感', s:'フェイスラインをすっきりと', body:'頭・首・デコルテの滞りは、お顔の印象にも影響します。デコルテから首、頭まわりを丁寧にほぐすことで、巡りを促し、すっきりとした印象へ。首肩こりのケアとあわせての施術がおすすめです。', m:'関わる経絡：胃経・胆経・大腸経' },
+        { t:'生理前後の不調感', s:'周期にともなう重だるさやイライラに', body:'周期にともなう体の変化は、東洋医学では「肝」の働きと関係づけられます。お腹や腰を温めるようにほぐし、足の経絡を中心に巡りを整えます。香りは体調に合わせて穏やかなブレンドを選びます。※医療行為ではありません。症状が強い場合は医療機関へご相談ください。', m:'関わる経絡：肝経・腎経・脾経' },
+        { t:'全身の疲労感・リフレッシュ', s:'とにかく一度リセットしたい日に', body:'部位を問わず体全体が重いときは、全身の巡りを底上げする構成にします。背中・脚・腕・頭まで、90分をフルに使った総合ケアで、星空の下で深呼吸するようなリセット感をどうぞ。', m:'関わる経絡：全身の経絡をバランスよく' }
+      ];
+      var grid = document.getElementById('concernGrid');
+      var detail = document.getElementById('concernDetail');
+      function showConcern(i) {
+        var items = grid.querySelectorAll('.concern');
+        for (var j = 0; j < items.length; j++) items[j].classList.toggle('active', j === i);
+        var c = concerns[i];
+        detail.innerHTML = '<h3>' + c.t + '</h3><p>' + c.body + '</p><div class="meridian">' + c.m + '</div>';
+      }
+      concerns.forEach(function (c, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'concern';
+        b.innerHTML = '<div class="t">' + c.t + '</div><div class="s">' + c.s + '</div>';
+        b.addEventListener('click', function () { showConcern(i); });
+        grid.appendChild(b);
+      });
+      showConcern(0);
+
+      // ---------- meridians ----------
+      var meridians = [
+        ['肺経','呼吸と肌のうるおい'],['大腸経','巡りとすっきり感'],['胃経','消化と顔まわり'],
+        ['脾経','水分代謝とむくみ'],['心経','気持ちの落ち着き'],['小腸経','肩甲骨まわり'],
+        ['膀胱経','背中全体のライン'],['腎経','冷えと活力の土台'],['心包経','胸のつかえ感'],
+        ['三焦経','全身の巡りの調整'],['胆経','体の側面と頭まわり'],['肝経','周期とイライラ感']
+      ];
+      var mg = document.getElementById('meridianGrid');
+      meridians.forEach(function (m) {
+        var d = document.createElement('div');
+        d.className = 'meridian';
+        d.innerHTML = '<div class="org">' + m[0] + '</div><div class="flow">' + m[1] + '</div>';
+        mg.appendChild(d);
+      });
+
+      // ---------- faq ----------
+      var faqs = [
+        ['男性セラピストだと聞きました。不安なのですが…','施術者は男性セラピストです。そのことを事前に明記したうえで、施術中はタオルで体を丁寧に覆い、プライバシーに最大限配慮します。健全なリラクゼーションサロンとして運営しており、性的なサービスは一切行いません。ご不安な点はご予約前に何でもお尋ねください。'],
+        ['住所が載っていません。場所はどこですか？','お客様のプライバシー保護のため、住所は公開していません。兵庫県芦屋市内のレンタルサロンで営業しており、ご予約が確定しましたら住所と道順を個別にご案内します。'],
+        ['シャワーは使えますか？','はい、シャワー完備の施設で営業しています。施術前のお着替えの際や、施術後にオイルを流す際にご利用いただけます。'],
+        ['鍼（はり）はしてもらえますか？','当サロンでは鍼を使った施術は行っておりません。セラピストは鍼灸師の国家資格を持ち、その東洋医学の知識をオイルマッサージと美容整体に活かしています。'],
+        ['料金は90分10,000円以外にかかりますか？','基本コース90分・10,000円（税込）のみで、追加料金はありません。カウンセリング、精油のブレンド、シャワーのご利用もすべて含まれます。'],
+        ['初めてでも大丈夫ですか？','もちろんです。最初にカウンセリングでお体の状態やお悩みをうかがい、圧の強さも都度調整します。アロマの香りが苦手な方は、無香のキャリアオイルのみでも施術できます。'],
+        ['予約は当日でもできますか？','近日開院予定のため、現在はご予約を受け付けておりません。開院後は、空きがあれば当日のご案内も可能ですが、完全予約制のため、前日までのご予約をおすすめします。営業は月曜〜土曜の17:00〜22:00（日曜休み）です。']
+      ];
+      var fl = document.getElementById('faqList');
+      faqs.forEach(function (f, i) {
+        var box = document.createElement('div');
+        box.className = 'faq' + (i === 0 ? ' open' : '');
+        box.innerHTML = '<button type="button" aria-expanded="' + (i === 0) + '"><span>' + f[0] + '</span><span class="mark">＋</span></button><div class="a"><p>' + f[1] + '</p></div>';
+        box.querySelector('button').addEventListener('click', function () {
+          var open = box.classList.toggle('open');
+          this.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        fl.appendChild(box);
+      });
+
+      // ---------- recruit application form ----------
+      var applyForm = document.getElementById('applyForm');
+      var applyMsg = document.getElementById('applyMsg');
+      var applyOutput = document.getElementById('applyOutput');
+      var apText = document.getElementById('apText');
+      var copyMsg = document.getElementById('copyMsg');
+      applyForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('apName').value.trim();
+        var contact = document.getElementById('apContact').value.trim();
+        var exp = document.getElementById('apExp').value;
+        var skills = document.getElementById('apSkills').value.trim();
+        var hope = document.getElementById('apHope').value.trim();
+        if (!name || !contact) {
+          applyMsg.textContent = 'お名前とご連絡先をご入力ください。';
+          applyOutput.classList.remove('show');
+          return;
+        }
+        applyMsg.textContent = '';
+        var lines = [
+          '【セラピスト募集（業務委託）への応募】',
+          'サロン名：ステラベガ（芦屋）',
+          'お名前：' + name,
+          'ご連絡先：' + contact,
+          '施術のご経験：' + exp,
+          'お持ちの技術：' + (skills || '（なし／未経験）'),
+          'ご希望・伝えたいこと：' + (hope || '（特になし）'),
+          '',
+          'ホームページの募集を見て応募します。面談の機会をいただけますと幸いです。'
+        ];
+        apText.value = lines.join('\n');
+        copyMsg.textContent = '';
+        applyOutput.classList.add('show');
+        applyOutput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+      document.getElementById('apCopy').addEventListener('click', function () {
+        function done() { copyMsg.textContent = 'コピーしました。この文章を連絡手段に貼り付けてお送りください。'; }
+        function fallback() {
+          apText.focus();
+          apText.select();
+          try { document.execCommand('copy'); done(); }
+          catch (err) { copyMsg.textContent = 'コピーできませんでした。文章を選択して手動でコピーしてください。'; }
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(apText.value).then(done, fallback);
+        } else {
+          fallback();
+        }
+      });
+    </script>
+    <script>
+      // ---------- page router: home view / recruit view / article view ----------
+      (function () {
+        var home = document.getElementById('view-home');
+        var rec = document.getElementById('view-recruit');
+        var art = document.getElementById('view-article');
+        var baseTitle = document.title;
+        var metaDesc = document.querySelector('meta[name="description"]');
+        var ogTitle = document.querySelector('meta[property="og:title"]');
+        var ogDesc = document.querySelector('meta[property="og:description"]');
+        var baseDesc = metaDesc ? metaDesc.getAttribute('content') : '';
+        var articles = {
+          '#column-kounenki-ashiya': {
+            title: '更年期の不調と休息の取り方｜ステラベガ（芦屋）コラム',
+            desc: '芦屋で更年期のゆらぎと向き合う方へ。ほてりや眠りの浅さ、疲れが抜けないといった悩みの整理、考えられる要因、日常でできるセルフケア、受診の目安をまとめました。女性専用サロン ステラベガ（芦屋）のご案内も掲載しています。'
+          }
+        };
+        function route() {
+          var h = location.hash;
+          var isRecruit = h === '#recruit';
+          var isArticle = Object.prototype.hasOwnProperty.call(articles, h);
+          home.hidden = isRecruit || isArticle;
+          rec.hidden = !isRecruit;
+          art.hidden = !isArticle;
+          if (isArticle) {
+            document.title = articles[h].title;
+            if (metaDesc) metaDesc.setAttribute('content', articles[h].desc);
+            if (ogTitle) ogTitle.setAttribute('content', articles[h].title);
+            if (ogDesc) ogDesc.setAttribute('content', articles[h].desc);
+            window.scrollTo(0, 0);
+          } else {
+            document.title = baseTitle;
+            if (metaDesc) metaDesc.setAttribute('content', baseDesc);
+            if (ogTitle) ogTitle.setAttribute('content', baseTitle);
+            if (ogDesc) ogDesc.setAttribute('content', baseDesc);
+            if (isRecruit) {
+              window.scrollTo(0, 0);
+            } else if (h && h.length > 1) {
+              var el = document.querySelector(h);
+              if (el) el.scrollIntoView();
+            }
+          }
+        }
+        window.addEventListener('hashchange', route);
+        route();
+      })();
+    </script>
+  </body>
+</html>
