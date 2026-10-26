@@ -1,0 +1,1445 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="ステラアルタイルは京都の女性専用プライベートサロン。施術歴30年の男性セラピストによるオイルマッサージと美容整体。90分10,000円、完全予約制、シャワー完備。住所はご予約確定後にご案内します。" />
+    <meta property="og:title" content="ステラアルタイル｜京都の女性専用オイルマッサージ＆美容整体" />
+    <meta property="og:description" content="ステラアルタイルは京都の女性専用プライベートサロン。施術歴30年の男性セラピストによるオイルマッサージと美容整体。90分10,000円、完全予約制、シャワー完備。住所はご予約確定後にご案内します。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/hero.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/webp" href="assets/favicon.webp" />
+    <title>ステラアルタイル｜京都の女性専用オイルマッサージ＆美容整体</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --navy:#0d1b2e;
+        --navy-2:#12263f;
+        --navy-3:#1a3355;
+        --gold:#c8a45c;
+        --gold-soft:#e3cd97;
+        --paper:#f7f3ea;
+        --paper-2:#efe8d8;
+        --ink:#22303f;
+        --ink-soft:#4c5a68;
+        --line:#d9cfb8;
+        --card:#fffdf8;
+        --on-navy:#eef1f5;
+        --on-navy-soft:#b9c6d4;
+        --shadow:0 18px 40px rgba(13,27,46,.14);
+        --radius:14px;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --paper:#0a1524;
+          --paper-2:#0e1d33;
+          --ink:#e9edf2;
+          --ink-soft:#aebccb;
+          --line:#2b425f;
+          --card:#122539;
+          --shadow:0 18px 40px rgba(0,0,0,.45);
+        }
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0;
+        background:var(--paper);
+        color:var(--ink);
+        font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+        font-size:16px;
+        line-height:1.85;
+        -webkit-font-smoothing:antialiased;
+      }
+      img{max-width:100%;display:block}
+      a{color:inherit}
+      .serif{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif}
+      .latin{font-family:"Cormorant Garamond",serif;letter-spacing:.22em}
+      .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+      /* ---------- header ---------- */
+      header.site{
+        position:fixed;inset:0 0 auto 0;z-index:50;
+        background:rgba(10,21,36,.82);
+        backdrop-filter:blur(10px);
+        border-bottom:1px solid rgba(200,164,92,.35);
+      }
+      .site-inner{max-width:1320px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+      .brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:#fff;flex:none}
+      .brand .star{color:var(--gold);font-size:18px;line-height:1}
+      .brand .name{font-family:"Shippori Mincho",serif;font-size:20px;font-weight:600;letter-spacing:.14em;white-space:nowrap}
+      .brand .sub{font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:.3em;color:var(--gold-soft);white-space:nowrap}
+      nav.main{display:flex;gap:13px;align-items:center}
+      nav.main a{color:#dfe7ef;text-decoration:none;font-size:12.5px;letter-spacing:.02em;white-space:nowrap}
+      @media (max-width:1280px){.brand .sub{display:none}nav.main{gap:10px}}
+      @media (max-width:1180px){nav.main{gap:9px}nav.main a{font-size:12px}}
+      nav.main a:hover{color:var(--gold-soft)}
+      .nav-cta{
+        background:var(--gold);color:#14263d !important;font-weight:700;
+        padding:7px 16px;border-radius:999px;
+      }
+      .nav-cta:hover{background:var(--gold-soft);color:#14263d !important}
+      .burger{display:none;background:none;border:0;color:#fff;font-size:24px;cursor:pointer;line-height:1;padding:6px}
+      @media (max-width:820px){
+        nav.main{
+          display:none;position:absolute;top:60px;left:0;right:0;
+          flex-direction:column;gap:0;padding:10px 20px 18px;
+          background:rgba(10,21,36,.97);border-bottom:1px solid rgba(200,164,92,.35);
+        }
+        nav.main.open{display:flex}
+        nav.main a{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+        nav.main a:last-child{border-bottom:0}
+        .nav-cta{align-self:flex-start;margin-top:10px}
+        .burger{display:block}
+        .brand .sub{display:none}
+      }
+
+      /* ---------- hero ---------- */
+      .hero{
+        position:relative;color:#fff;
+        background:var(--navy);
+        padding:148px 0 84px;
+        overflow:hidden;
+      }
+      .hero-bg{position:absolute;inset:0}
+      .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.55}
+      .hero-bg::after{
+        content:"";position:absolute;inset:0;
+        background:linear-gradient(180deg,rgba(9,18,32,.55) 0%,rgba(9,18,32,.35) 45%,rgba(9,18,32,.88) 100%);
+      }
+      .hero .wrap{position:relative;z-index:1}
+      .hero .star-line{color:var(--gold-soft);font-size:13px;letter-spacing:.42em;margin:0 0 14px}
+      .hero h1{
+        font-family:"Shippori Mincho",serif;font-weight:600;
+        font-size:clamp(40px,7.5vw,64px);line-height:1.25;letter-spacing:.1em;margin:0;
+      }
+      .hero h1 .en{display:block;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(15px,2.4vw,20px);letter-spacing:.5em;color:var(--gold-soft);margin-top:12px}
+      .hero .lead{max-width:640px;margin:26px 0 0;font-size:16.5px;color:#e6ecf2}
+      .hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+      .hero-badges span{
+        border:1px solid rgba(227,205,151,.65);color:#f4ead0;
+        font-size:13px;letter-spacing:.08em;padding:6px 14px;border-radius:999px;
+        background:rgba(13,27,46,.45);
+      }
+      .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+      .btn{
+        display:inline-block;text-decoration:none;font-weight:700;letter-spacing:.06em;
+        padding:14px 30px;border-radius:999px;font-size:15px;
+      }
+      .btn-gold{background:var(--gold);color:#14263d}
+      .btn-gold:hover{background:var(--gold-soft)}
+      .btn-ghost{border:1px solid rgba(255,255,255,.55);color:#fff}
+      .btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+      .hero-facts{
+        display:flex;flex-wrap:wrap;gap:0;margin-top:52px;
+        border-top:1px solid rgba(227,205,151,.35);
+      }
+      .hero-facts div{padding:16px 28px 4px 0;margin-right:28px}
+      .hero-facts dt{font-size:12px;letter-spacing:.18em;color:var(--gold-soft)}
+      .hero-facts dd{margin:2px 0 0;font-family:"Shippori Mincho",serif;font-size:19px}
+
+      /* ---------- sections ---------- */
+      section{padding:84px 0}
+      section.tight{padding:60px 0}
+      .sec-head{max-width:720px;margin-bottom:44px}
+      .sec-head .kicker{
+        font-family:"Cormorant Garamond",serif;letter-spacing:.34em;font-size:13px;
+        color:#a07f37;margin:0 0 10px;text-transform:uppercase;
+      }
+      @media (prefers-color-scheme: dark){.sec-head .kicker{color:var(--gold-soft)}}
+      .sec-head h2{
+        font-family:"Shippori Mincho",serif;font-weight:600;
+        font-size:clamp(26px,4.4vw,36px);line-height:1.45;letter-spacing:.06em;margin:0;
+      }
+      .sec-head p{color:var(--ink-soft);margin:14px 0 0}
+      .navy-band{background:var(--navy);color:var(--on-navy)}
+      .navy-band .sec-head p{color:var(--on-navy-soft)}
+      .navy-band .sec-head .kicker{color:var(--gold-soft)}
+
+      /* trust strip */
+      .trust{background:var(--navy-2);color:var(--on-navy);padding:0}
+      .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);}
+      .trust .item{padding:26px 18px;text-align:center;border-left:1px solid rgba(200,164,92,.25)}
+      .trust .item:first-child{border-left:0}
+      .trust .num{font-family:"Shippori Mincho",serif;font-size:24px;color:var(--gold-soft)}
+      .trust .lbl{font-size:12.5px;letter-spacing:.1em;color:var(--on-navy-soft);margin-top:2px}
+      @media (max-width:720px){.trust .wrap{grid-template-columns:1fr 1fr}.trust .item{border-top:1px solid rgba(200,164,92,.25)}.trust .item:nth-child(-n+2){border-top:0}.trust .item:nth-child(odd){border-left:0}}
+
+      /* about */
+      .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+      @media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+      .about-grid figure{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+      .about-grid figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+      .about-copy p{color:var(--ink-soft)}
+      .about-copy p strong{color:var(--ink)}
+      .star-note{
+        margin-top:22px;padding:18px 20px;border:1px solid var(--line);
+        border-radius:var(--radius);background:var(--card);
+      }
+      .star-note .t{font-family:"Shippori Mincho",serif;font-weight:600;letter-spacing:.06em}
+      .star-note p{margin:6px 0 0;font-size:14.5px}
+
+      /* menu */
+      .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+      @media (max-width:860px){.menu-grid{grid-template-columns:1fr}}
+      .menu-card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+      .menu-card img{width:100%;aspect-ratio:16/10;object-fit:cover}
+      .menu-card .body{padding:26px 28px 30px}
+      .menu-card h3{font-family:"Shippori Mincho",serif;font-size:22px;font-weight:600;letter-spacing:.05em;margin:0}
+      .menu-card h3 .en{display:block;font-family:"Cormorant Garamond",serif;font-size:12px;letter-spacing:.3em;color:#a07f37;margin-top:4px}
+      @media (prefers-color-scheme: dark){.menu-card h3 .en{color:var(--gold-soft)}}
+      .menu-card p{color:var(--ink-soft);font-size:15px}
+      .menu-card ul{margin:14px 0 0;padding:0;list-style:none}
+      .menu-card li{padding:7px 0 7px 22px;position:relative;font-size:14.5px;border-top:1px dashed var(--line)}
+      .menu-card li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:12px;top:10px}
+
+      /* concerns */
+      .concern-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+      @media (max-width:900px){.concern-grid{grid-template-columns:repeat(2,1fr)}}
+      @media (max-width:560px){.concern-grid{grid-template-columns:1fr}}
+      .concern{
+        background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+        padding:20px 22px;text-align:left;cursor:pointer;width:100%;
+        font-family:inherit;color:var(--ink);transition:border-color .2s, box-shadow .2s;
+      }
+      .concern:hover{border-color:var(--gold)}
+      .concern.active{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold), var(--shadow)}
+      .concern .t{font-family:"Shippori Mincho",serif;font-size:17.5px;font-weight:600;letter-spacing:.04em}
+      .concern .s{font-size:13px;color:var(--ink-soft);margin-top:2px}
+      .concern-detail{
+        margin-top:20px;background:var(--card);border:1px solid var(--gold);
+        border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);
+      }
+      .concern-detail h3{font-family:"Shippori Mincho",serif;font-size:21px;margin:0 0 8px}
+      .concern-detail p{color:var(--ink-soft);margin:0;font-size:15px}
+      .concern-detail .meridian{margin-top:12px;font-size:13.5px;color:#a07f37;letter-spacing:.05em}
+      @media (prefers-color-scheme: dark){.concern-detail .meridian{color:var(--gold-soft)}}
+
+      /* meridians */
+      .meridian-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+      @media (max-width:900px){.meridian-grid{grid-template-columns:repeat(3,1fr)}}
+      @media (max-width:560px){.meridian-grid{grid-template-columns:repeat(2,1fr)}}
+      .meridian{
+        border:1px solid rgba(200,164,92,.4);border-radius:12px;padding:16px 14px;text-align:center;
+        background:rgba(255,255,255,.03);
+      }
+      .meridian .org{font-family:"Shippori Mincho",serif;font-size:18px;color:#fff}
+      .meridian .flow{font-size:12px;color:var(--on-navy-soft);margin-top:3px;line-height:1.6}
+      .meridian-note{color:var(--on-navy-soft);font-size:14px;margin-top:22px;max-width:760px}
+
+      /* flow steps */
+      .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+      @media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+      @media (max-width:560px){.steps{grid-template-columns:1fr}}
+      .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 24px 26px}
+      .step .no{font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--gold);letter-spacing:.1em}
+      .step h3{font-family:"Shippori Mincho",serif;font-size:18px;margin:6px 0 6px;font-weight:600}
+      .step p{font-size:14px;color:var(--ink-soft);margin:0}
+
+      /* price */
+      .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+      @media (max-width:860px){.price-grid{grid-template-columns:1fr}}
+      .price-card{
+        background:var(--navy);color:var(--on-navy);border-radius:18px;padding:36px 36px 40px;
+        border:1px solid rgba(200,164,92,.5);text-align:center;
+        display:flex;flex-direction:column;justify-content:center;
+      }
+      .price-card .course{font-family:"Shippori Mincho",serif;font-size:20px;letter-spacing:.1em}
+      .price-card .amount{font-family:"Shippori Mincho",serif;font-size:52px;margin:10px 0 2px;color:#fff}
+      .price-card .amount small{font-size:20px}
+      .price-card .tax{font-size:12.5px;color:var(--on-navy-soft)}
+      .price-card ul{list-style:none;margin:22px auto 0;padding:18px 0 0;border-top:1px solid rgba(200,164,92,.35);text-align:left;max-width:340px;width:100%}
+      .price-card li{padding:5px 0 5px 22px;position:relative;font-size:14.5px}
+      .price-card li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:12px;top:8px}
+      .info-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+      .info-table th,.info-table td{padding:15px 20px;text-align:left;font-size:15px;vertical-align:top}
+      .info-table th{width:34%;font-family:"Shippori Mincho",serif;font-weight:600;background:var(--paper-2);border-bottom:1px solid var(--line);letter-spacing:.04em}
+      .info-table td{border-bottom:1px solid var(--line);color:var(--ink-soft)}
+      .info-table tr:last-child th,.info-table tr:last-child td{border-bottom:0}
+
+      /* therapist */
+      .therapist-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+      @media (max-width:860px){.therapist-grid{grid-template-columns:1fr}}
+      .therapist-grid figure{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+      .therapist-grid figure img{width:100%;aspect-ratio:1/1;object-fit:cover}
+      .qual{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}
+      .qual span{border:1px solid var(--gold);color:#8a6c2f;border-radius:999px;padding:5px 14px;font-size:13px;letter-spacing:.05em}
+      @media (prefers-color-scheme: dark){.qual span{color:var(--gold-soft)}}
+      .notice-box{
+        margin-top:20px;border:1px solid var(--line);border-radius:var(--radius);
+        background:var(--paper-2);padding:18px 20px;font-size:14px;color:var(--ink-soft);
+      }
+      .notice-box .t{font-weight:700;color:var(--ink);font-family:"Shippori Mincho",serif;letter-spacing:.05em}
+
+      /* recruit */
+      .recruit-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:28px}
+      @media (max-width:860px){.recruit-pillars{grid-template-columns:1fr}}
+      .pillar{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:var(--radius);padding:24px 22px}
+      .pillar .no{font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:.28em;color:#a07f37;text-transform:uppercase}
+      @media (prefers-color-scheme: dark){.pillar .no{color:var(--gold-soft)}}
+      .pillar h3{font-family:"Shippori Mincho",serif;font-size:19px;font-weight:600;margin:8px 0 8px;letter-spacing:.04em;line-height:1.5}
+      .pillar p{font-size:14.5px;color:var(--ink-soft);margin:0;line-height:1.85}
+      .recruit-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+      @media (max-width:860px){.recruit-cols{grid-template-columns:1fr}}
+      .recruit-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 24px 26px}
+      .recruit-box h3{font-family:"Shippori Mincho",serif;font-size:18px;font-weight:600;margin:0 0 6px;letter-spacing:.04em}
+      .recruit-box .lead{font-size:14px;color:var(--ink-soft);margin:0 0 14px}
+      .recruit-box ul{list-style:none;margin:0;padding:0}
+      .recruit-box li{padding:9px 0 9px 22px;position:relative;font-size:14.5px;border-top:1px dashed var(--line)}
+      .recruit-box li:first-child{border-top:0}
+      .recruit-box li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:12px;top:12px}
+      .recruit-box li strong{font-weight:700}
+      .recruit-box li span{color:var(--ink-soft);font-size:13.5px;display:block;margin-top:1px}
+      .recruit-note{font-size:13px;color:var(--ink-soft);margin-top:14px}
+      .recruit-hours{background:var(--navy);color:var(--on-navy);border:1px solid rgba(200,164,92,.5);border-radius:var(--radius);padding:22px 24px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;margin-bottom:28px}
+      .recruit-hours .t{font-family:"Shippori Mincho",serif;font-size:17px;font-weight:600;letter-spacing:.05em}
+      .recruit-hours p{margin:4px 0 0;font-size:14px;color:var(--on-navy-soft);max-width:640px}
+      .recruit-hours .time{font-family:"Shippori Mincho",serif;font-size:19px;color:#fff;white-space:nowrap;border:1px solid rgba(227,205,151,.6);border-radius:999px;padding:8px 18px}
+      .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:32px}
+      @media (max-width:900px){.flow-steps{grid-template-columns:repeat(3,1fr)}}
+      @media (max-width:560px){.flow-steps{grid-template-columns:1fr 1fr}}
+      .flow-step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 14px;text-align:center}
+      .flow-step .no{font-family:"Cormorant Garamond",serif;font-size:22px;color:var(--gold);line-height:1}
+      .flow-step .ft{font-family:"Shippori Mincho",serif;font-weight:600;font-size:15px;margin-top:6px;letter-spacing:.04em}
+      .flow-step .fs{font-size:12.5px;color:var(--ink-soft);margin-top:4px;line-height:1.6}
+      .recruit-form-wrap{background:var(--navy);color:var(--on-navy);border-radius:18px;border:1px solid rgba(200,164,92,.5);padding:30px 32px}
+      @media (max-width:560px){.recruit-form-wrap{padding:24px 20px}}
+      .recruit-form-wrap h3{font-family:"Shippori Mincho",serif;font-size:21px;margin:0;letter-spacing:.05em}
+      .recruit-form-wrap>p{color:var(--on-navy-soft);font-size:14.5px;margin:10px 0 0}
+      .recruit-form{margin-top:20px;text-align:left}
+      .recruit-form label{display:block;font-size:13px;letter-spacing:.08em;color:var(--gold-soft);margin:16px 0 6px}
+      .recruit-form label:first-child{margin-top:0}
+      .recruit-form input,.recruit-form textarea,.recruit-form select{width:100%;background:rgba(9,18,32,.55);border:1px solid rgba(200,164,92,.35);border-radius:10px;color:#fff;font-family:inherit;font-size:15px;padding:11px 14px;line-height:1.6}
+      .recruit-form select option{color:#14263d}
+      .recruit-form input:focus,.recruit-form textarea:focus,.recruit-form select:focus{outline:2px solid var(--gold);outline-offset:1px}
+      .recruit-form textarea{min-height:90px;resize:vertical}
+      .recruit-form textarea.output{min-height:180px}
+      .recruit-form .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}
+      .recruit-form .hint{font-size:12.5px;color:var(--on-navy-soft);margin:12px 0 0;line-height:1.7}
+
+      /* recruit page */
+      .recruit-page{padding:112px 0 84px}
+      .recruit-page .sec-head h1{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(26px,4.4vw,36px);line-height:1.45;letter-spacing:.06em;margin:0}
+      .back-home{display:inline-block;color:#a07f37;text-decoration:none;font-size:14px;letter-spacing:.05em;margin-bottom:26px}
+      .back-home:hover{color:var(--gold)}
+      .back-home.bottom{margin:34px 0 0}
+      @media (prefers-color-scheme: dark){.back-home{color:var(--gold-soft)}}
+
+      /* faq */
+      .faq-list{max-width:820px}
+      .faq{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);margin-bottom:12px;overflow:hidden}
+      .faq button{
+        width:100%;background:none;border:0;cursor:pointer;text-align:left;
+        padding:19px 22px;display:flex;justify-content:space-between;gap:16px;align-items:center;
+        font-family:"Shippori Mincho",serif;font-size:16.5px;font-weight:600;color:var(--ink);letter-spacing:.03em;
+      }
+      .faq button .mark{color:var(--gold);font-size:20px;line-height:1;flex:none;transition:transform .25s}
+      .faq.open button .mark{transform:rotate(45deg)}
+      .faq .a{display:none;padding:0 22px 20px;color:var(--ink-soft);font-size:14.5px}
+      .faq.open .a{display:block}
+      .faq .a p{margin:0}
+
+      /* access */
+      .access-band{position:relative;color:#fff;padding:0;overflow:hidden}
+      .access-band img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+      .access-band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,18,32,.9) 0%,rgba(9,18,32,.65) 55%,rgba(9,18,32,.3) 100%)}
+      .access-inner{position:relative;z-index:1;padding:84px 0}
+      .access-inner .kicker{font-family:"Cormorant Garamond",serif;letter-spacing:.34em;font-size:13px;color:var(--gold-soft);margin:0 0 10px}
+      .access-inner h2{font-family:"Shippori Mincho",serif;font-size:clamp(26px,4.4vw,36px);margin:0 0 16px;font-weight:600;letter-spacing:.06em}
+      .access-inner p{max-width:560px;color:#dbe4ec}
+      .stations{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+      .stations span{border:1px solid rgba(227,205,151,.6);border-radius:999px;padding:6px 16px;font-size:13.5px;color:#f4ead0;background:rgba(13,27,46,.4)}
+
+      /* series */
+      .series-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+      @media (max-width:900px){.series-grid{grid-template-columns:repeat(3,1fr)}}
+      @media (max-width:560px){.series-grid{grid-template-columns:repeat(2,1fr)}}
+      .sister{border:1px solid var(--line);border-radius:var(--radius);padding:20px 16px;text-align:center;background:var(--card)}
+      a.sister{text-decoration:none;display:block}
+      a.sister:hover{border-color:var(--gold)}
+      .sister .star{color:var(--gold);font-size:15px}
+      .sister .nm{font-family:"Shippori Mincho",serif;font-size:17px;font-weight:600;margin-top:4px;letter-spacing:.05em}
+      .sister .area{font-size:12.5px;color:var(--ink-soft);letter-spacing:.14em;margin-top:2px}
+      .sister.current{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+      .sister.current .area{color:#a07f37}
+      @media (prefers-color-scheme: dark){.sister.current .area{color:var(--gold-soft)}}
+
+      /* english */
+      .en-box{max-width:820px;border:1px solid var(--line);border-radius:18px;background:var(--card);padding:34px 36px;box-shadow:var(--shadow)}
+      .en-box h3{font-family:"Cormorant Garamond",serif;font-size:24px;letter-spacing:.12em;margin:0 0 6px;font-weight:600}
+      .en-box .sub{font-size:13px;color:var(--ink-soft);letter-spacing:.06em;margin-bottom:16px}
+      .en-box p{font-size:14.5px;color:var(--ink-soft)}
+      .en-box ul{margin:14px 0 0;padding-left:20px;font-size:14.5px;color:var(--ink-soft)}
+
+      /* reserve */
+      .reserve{background:var(--navy);color:var(--on-navy);text-align:center}
+      .reserve h2{font-family:"Shippori Mincho",serif;font-size:clamp(26px,4.6vw,38px);font-weight:600;letter-spacing:.08em;margin:0}
+      .reserve p{color:var(--on-navy-soft);max-width:600px;margin:18px auto 0}
+      .reserve .btn{margin-top:30px}
+      .reserve .mini{font-size:13px;margin-top:20px;color:var(--on-navy-soft)}
+      .reserve-form{max-width:560px;margin:34px auto 0;text-align:left;background:rgba(255,255,255,.05);border:1px solid rgba(200,164,92,.4);border-radius:18px;padding:26px 28px}
+      .reserve-form label{display:block;font-size:13px;letter-spacing:.08em;color:var(--gold-soft);margin:16px 0 6px}
+      .reserve-form label:first-child{margin-top:0}
+      .reserve-form input,.reserve-form textarea{
+        width:100%;background:rgba(9,18,32,.55);border:1px solid rgba(200,164,92,.35);border-radius:10px;
+        color:#fff;font-family:inherit;font-size:15px;padding:11px 14px;line-height:1.6;
+      }
+      .reserve-form input:focus,.reserve-form textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+      .reserve-form textarea{min-height:130px;resize:vertical}
+      .reserve-form .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+      .reserve-form .hint{font-size:12.5px;color:var(--on-navy-soft);margin:0}
+      .copy-done{font-size:13.5px;color:var(--gold-soft);min-height:1.4em}
+
+      /* column (articles) */
+      .column-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+      @media (max-width:860px){.column-grid{grid-template-columns:1fr}}
+      .column-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;text-decoration:none;display:block;transition:border-color .2s, box-shadow .2s}
+      .column-card:hover{border-color:var(--gold);box-shadow:var(--shadow)}
+      .column-card .tag{font-size:12px;letter-spacing:.14em;color:#a07f37}
+      @media (prefers-color-scheme: dark){.column-card .tag{color:var(--gold-soft)}}
+      .column-card h3{font-family:"Shippori Mincho",serif;font-size:20px;font-weight:600;line-height:1.55;margin:8px 0 10px;letter-spacing:.03em}
+      .column-card p{font-size:14.5px;color:var(--ink-soft);margin:0}
+      .column-card .more{display:inline-block;margin-top:14px;font-size:13.5px;color:#a07f37;letter-spacing:.05em}
+      @media (prefers-color-scheme: dark){.column-card .more{color:var(--gold-soft)}}
+
+      /* article pages */
+      .article-meta{font-size:12.5px;letter-spacing:.14em;color:#a07f37;margin:0 0 6px}
+      @media (prefers-color-scheme: dark){.article-meta{color:var(--gold-soft)}}
+      .article-body{max-width:760px}
+      .article-body .lead{font-size:16.5px;color:var(--ink)}
+      .article-body h2{font-family:"Shippori Mincho",serif;font-size:22px;font-weight:600;letter-spacing:.04em;margin:42px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line);line-height:1.5}
+      .article-body p{color:var(--ink-soft);margin:0 0 14px}
+      .article-body p strong{color:var(--ink)}
+      .article-body ul{margin:0 0 16px;padding:0;list-style:none}
+      .article-body li{padding:8px 0 8px 22px;position:relative;font-size:15px;color:var(--ink-soft);border-top:1px dashed var(--line)}
+      .article-body li:first-child{border-top:0}
+      .article-body li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:12px;top:11px}
+      .article-body li strong{color:var(--ink)}
+      .article-body a{color:#a07f37}
+      @media (prefers-color-scheme: dark){.article-body a{color:var(--gold-soft)}}
+      .salon-box{margin-top:44px;border:1px solid var(--gold);border-radius:var(--radius);background:var(--card);padding:28px 30px;box-shadow:var(--shadow)}
+      .salon-box h2{border-bottom:0;margin:0 0 12px;padding-bottom:0;font-size:21px}
+      .salon-box .links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:16px;font-size:14.5px}
+
+      /* opening soon note */
+      .soon-note{border:1px solid var(--gold);border-radius:var(--radius);padding:16px 20px;font-size:14.5px;line-height:1.8}
+      .soon-note .t{font-family:"Shippori Mincho",serif;font-weight:700;font-size:17px;letter-spacing:.08em;display:block;margin-bottom:4px}
+      .hero .soon-note{max-width:640px;margin-top:28px;background:rgba(13,27,46,.6);color:#f4ead0}
+      .hero .soon-note .t{color:#fff;font-size:20px}
+      .reserve .soon-note{max-width:640px;margin:26px auto 0;text-align:left;background:rgba(13,27,46,.55);color:#f4ead0}
+      .reserve .soon-note .t{color:#fff}
+      .price-soon{margin:-22px 0 28px;max-width:720px;background:var(--card);color:var(--ink-soft)}
+      .price-soon .t{color:var(--ink)}
+
+      /* library */
+      .library{padding:56px 0 8px}
+      .library-card{
+        display:flex;flex-wrap:wrap;gap:22px 32px;align-items:center;justify-content:space-between;
+        background:var(--navy);color:var(--on-navy);border:1px solid rgba(200,164,92,.55);
+        border-radius:18px;padding:30px 34px;box-shadow:var(--shadow);
+      }
+      .library-card .kicker{font-family:"Cormorant Garamond",serif;letter-spacing:.34em;font-size:12.5px;color:var(--gold-soft);margin:0 0 8px;text-transform:uppercase}
+      .library-card h2{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(22px,3.6vw,28px);line-height:1.45;letter-spacing:.05em;margin:0}
+      .library-card p.body{color:var(--on-navy-soft);font-size:14.5px;line-height:1.85;margin:10px 0 0;max-width:700px}
+      .library-card .btn{flex:none}
+      @media (max-width:560px){.library-card{padding:24px 22px}}
+
+      footer.site{background:#081120;color:#8fa2b5;padding:44px 0 54px;font-size:13px}
+      footer.site .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start}
+      footer.site .brandline{font-family:"Shippori Mincho",serif;color:#e8edf2;font-size:16px;letter-spacing:.12em}
+      footer.site nav{display:flex;flex-wrap:wrap;gap:18px}
+      footer.site a{color:#8fa2b5;text-decoration:none}
+      footer.site a:hover{color:var(--gold-soft)}
+      footer.site .fine{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;line-height:1.8}
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="site-inner">
+        <a class="brand" href="#top">
+          <span class="star">✦</span>
+          <span class="name">ステラアルタイル</span>
+          <span class="sub">STELLA ALTAIR ・ KYOTO</span>
+        </a>
+        <button class="burger" id="burger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+        <nav class="main" id="mainnav">
+          <a href="#about">コンセプト</a>
+          <a href="#menu">メニュー</a>
+          <a href="#concerns">お悩み別</a>
+          <a href="#price">料金・営業時間</a>
+          <a href="#therapist">セラピスト</a>
+          <a href="#recruit" data-route="recruit">求人</a>
+          <a href="#faq">よくある質問</a>
+          <a href="#column">コラム</a>
+          <a href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">資料ライブラリ</a>
+          <a href="#access">アクセス</a>
+          <a class="nav-cta" href="#reserve">ご予約案内</a>
+        </nav>
+      </div>
+    </header>
+    <div id="pageHome">
+
+    <!-- HERO -->
+    <div class="hero" id="top">
+      <div class="hero-bg"><img src="assets/hero.webp" alt="格子戸とキャンドルの灯る落ち着いた施術ルームとシャワーブース" /></div>
+      <div class="wrap">
+        <p class="star-line">✦ STELLA ALTAIR ✦</p>
+        <h1>ステラアルタイル<span class="en">KYOTO — WOMEN ONLY PRIVATE SALON</span></h1>
+        <p class="lead">
+          古都・京都の夕暮れに、星の名を冠した女性専用サロン。
+          施術歴30年の男性セラピストが、東洋医学の知恵とアロマの香りで、
+          お一人おひとりの体と心に寄り添うオイルマッサージと美容整体をお届けします。
+        </p>
+        <div class="soon-note" role="note">
+          <span class="t">✦ 近日開院予定</span>
+          当サロンは近日開院予定です。ご予約の受付はまだ開始していません。受付開始はこのページでご案内します。
+        </div>
+        <div class="hero-badges">
+          <span>女性専用</span>
+          <span>完全予約制</span>
+          <span>シャワー完備</span>
+          <span>男性セラピスト</span>
+          <span>住所は予約確定後にご案内</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#reserve">ご予約のご案内</a>
+          <a class="btn btn-ghost" href="#menu">メニューを見る</a>
+        </div>
+        <dl class="hero-facts">
+          <div><dt>料金</dt><dd>90分 10,000円</dd></div>
+          <div><dt>営業時間</dt><dd>17:00 – 22:00</dd></div>
+          <div><dt>営業日</dt><dd>月曜 – 土曜（日曜休み）</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- TRUST -->
+    <div class="trust">
+      <div class="wrap">
+        <div class="item"><div class="num">30年</div><div class="lbl">施術歴</div></div>
+        <div class="item"><div class="num">国家資格</div><div class="lbl">鍼灸師ほか有資格</div></div>
+        <div class="item"><div class="num">完全個室</div><div class="lbl">プライベート空間</div></div>
+        <div class="item"><div class="num">シャワー完備</div><div class="lbl">施術前後に利用可</div></div>
+      </div>
+    </div>
+
+    <!-- LIBRARY -->
+    <section class="library" id="library" aria-label="セルフケア資料ライブラリのご案内">
+      <div class="wrap">
+        <div class="library-card">
+          <div>
+            <p class="kicker">Self-Care Library</p>
+            <h2>セルフケア資料ライブラリ</h2>
+            <p class="body">症状別のセルフケア資料が無料で読めるライブラリをご用意しています。肩こり・腰の重さ・むくみ・冷えなど、気になる症状に合わせた資料を登録なしでご覧いただけます。また、無料姿勢チェックのお申し込みも、こちらの資料ライブラリから行えます。施術の前後のケアや、日々のセルフケアにお役立てください。</p>
+          </div>
+          <a class="btn btn-gold" href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">資料ライブラリを見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-copy">
+            <div class="sec-head" style="margin-bottom:20px">
+              <p class="kicker">Concept</p>
+              <h2>京の夕暮れ、彦星の名をいただく<br />大人のための隠れ家サロン</h2>
+            </div>
+            <p>
+              ステラアルタイルは、京都の中心部にある<strong>女性専用のプライベートサロン</strong>です。
+              施術はすべて、<strong>施術歴30年</strong>のセラピストが担当。鍼灸師としての東洋医学の知識を土台に、
+              アロマオイルのトリートメントと美容整体を組み合わせ、肩こり・腰痛・むくみ・冷えといった
+              日々のお悩みに、症状の背景から向き合います。
+            </p>
+            <p>
+              お部屋は完全個室、<strong>シャワー完備</strong>。施術の前後に汗やオイルを流して、
+              すっきりとお帰りいただけます。観光の合間にも、お仕事帰りにも。
+              人目を気にせず、静かな夜のひとときをお過ごしください。
+            </p>
+            <div class="star-note">
+              <div class="t">✦ 名前の由来 — アルタイル（彦星）</div>
+              <p>
+                アルタイルは、わし座の一等星で、七夕の彦星（牽牛星）として親しまれてきました。
+                天の川のほとりで、年に一度の逢瀬を待つ星。
+                忙しい日々の中で、自分の体と静かに向き合う「再会」の時間をご用意したい——
+                そんな願いを込めています。姉妹店ステラポラリス（梅田）と同じ想いで運営する、ステラシリーズの京都店です。
+              </p>
+            </div>
+          </div>
+          <figure>
+            <img src="assets/room.webp" alt="障子と庭に面した和風の施術ルームに整えられたタオルとベッド" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu" style="background:var(--paper-2)">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Menu</p>
+          <h2>施術メニュー</h2>
+          <p>基本コースは90分・10,000円のひとつのみ。オイルマッサージと美容整体を、お体の状態に合わせて組み合わせます。</p>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card">
+            <img src="assets/massage.webp" alt="背中にオイルを垂らして行うオイルマッサージの施術風景" />
+            <div class="body">
+              <h3>オイルマッサージ<span class="en">AROMA OIL TREATMENT</span></h3>
+              <p>
+                アロマセラピストでもある施術者が、その日の体調とお好みに合わせて精油をブレンド。
+                経絡（けいらく）の流れを意識しながら、全身をゆったりとほぐしていきます。
+              </p>
+              <ul>
+                <li>背中・肩・腰を中心とした全身トリートメント</li>
+                <li>リンパの流れに沿った、むくみケア</li>
+                <li>精油は数種類からカウンセリングで選定</li>
+                <li>施術前後のシャワー利用可</li>
+              </ul>
+            </div>
+          </article>
+          <article class="menu-card">
+            <img src="assets/head.jpg" alt="目を閉じてヘッドマッサージを受ける女性" />
+            <div class="body">
+              <h3>美容整体<span class="en">BEAUTY SEITAI</span></h3>
+              <p>
+                パーソナルトレーナーの視点も取り入れた、姿勢と体の使い方に働きかける整体。
+                猫背や骨盤まわりのゆがみ感、フェイスラインのもたつきなど、見た目の印象にも関わるお悩みに。
+              </p>
+              <ul>
+                <li>姿勢評価にもとづく全身のバランス調整</li>
+                <li>頭・首・肩まわりのヘッドケアを含む構成</li>
+                <li>日常で続けられるセルフケアのアドバイス</li>
+                <li>オイルコースとの組み合わせも可能</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCERNS -->
+    <section id="concerns">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Guide by Concern</p>
+          <h2>お悩み別ガイド</h2>
+          <p>気になるお悩みを選ぶと、東洋医学の見方と、施術でのアプローチをご紹介します。体の地図＝経絡から読み解くのが、ステラアルタイルのやり方です。</p>
+        </div>
+        <div class="concern-grid" id="concernGrid"></div>
+        <div class="concern-detail" id="concernDetail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- MERIDIANS -->
+    <section class="navy-band" id="meridians">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Meridian Guide</p>
+          <h2>経絡ガイド — 体を巡る12の流れ</h2>
+          <p>東洋医学では、体には「経絡」と呼ばれる気血の通り道があると考えます。ステラアルタイルの施術は、この流れを整えることを土台にしています。</p>
+        </div>
+        <div class="meridian-grid" id="meridianGrid"></div>
+        <p class="meridian-note">
+          ※ 経絡の説明は東洋医学の伝統的な考え方にもとづくもので、施術はリラクゼーションと美容を目的としています。医療行為ではなく、鍼（はり）を使った施術は当サロンでは行いません。体調に不安がある場合は、まず医療機関へご相談ください。
+        </p>
+      </div>
+    </section>
+
+    <!-- FLOW -->
+    <section id="flow">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Flow</p>
+          <h2>ご利用の流れ</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="no">01</div><h3>ご予約</h3><p>完全予約制です。ご希望の日時をお知らせください。空き状況を確認して折り返しご連絡します。</p></div>
+          <div class="step"><div class="no">02</div><h3>場所のご案内</h3><p>ご予約が確定しましたら、サロンの住所と道順を個別にご案内します。プライバシー保護のため、住所は公開していません。</p></div>
+          <div class="step"><div class="no">03</div><h3>カウンセリング</h3><p>ご来店後、お体の状態やお悩み、香りのお好みをうかがいます。気になることは何でもお話しください。</p></div>
+          <div class="step"><div class="no">04</div><h3>お着替え・シャワー</h3><p>施術前にお着替えいただきます。ご希望の方はシャワーもご利用いただけます。</p></div>
+          <div class="step"><div class="no">05</div><h3>施術（90分）</h3><p>オイルマッサージと美容整体を組み合わせた施術を行います。強さは都度調整しますので、遠慮なくお声がけください。</p></div>
+          <div class="step"><div class="no">06</div><h3>アフターケア</h3><p>施術後はシャワーでオイルを流していただけます。お体の状態と、日常のセルフケアについてご説明します。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICE -->
+    <section id="price" style="background:var(--paper-2)">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Price &amp; Hours</p>
+          <h2>料金・営業時間</h2>
+        </div>
+        <p class="soon-note price-soon"><span class="t">近日開院予定</span>近日開院予定のため、ご予約の受付はまだ開始していません。受付開始はこのページでご案内します。下記の料金・営業時間は、開院後のご案内です。</p>
+        <div class="price-grid">
+          <div class="price-card">
+            <div class="course">基本コース 90分</div>
+            <div class="amount">10,000<small>円</small></div>
+            <div class="tax">税込／追加料金なし</div>
+            <ul>
+              <li>オイルマッサージ＋美容整体の組み合わせ</li>
+              <li>カウンセリング込み</li>
+              <li>シャワーのご利用込み</li>
+              <li>精油のブレンド込み</li>
+            </ul>
+          </div>
+          <div>
+            <table class="info-table">
+              <tr><th>営業日</th><td>月曜〜土曜（日曜はお休みです）</td></tr>
+              <tr><th>営業時間</th><td>17:00〜22:00（最終受付は施術終了が22:00になる時間まで）</td></tr>
+              <tr><th>予約</th><td>完全予約制。前日までのご予約をおすすめします</td></tr>
+              <tr><th>対象</th><td>女性専用サロンです</td></tr>
+              <tr><th>場所</th><td>京都府京都市内（住所詳細はご予約確定後にご案内）</td></tr>
+              <tr><th>設備</th><td>完全個室・シャワー完備</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THERAPIST -->
+    <section id="therapist">
+      <div class="wrap">
+        <div class="therapist-grid">
+          <figure>
+            <img src="assets/aroma.jpg" alt="精油の瓶とストーン、ハーブを並べたアロマセラピーのイメージ" />
+          </figure>
+          <div>
+            <div class="sec-head" style="margin-bottom:16px">
+              <p class="kicker">Therapist</p>
+              <h2>セラピストについて</h2>
+            </div>
+            <p style="color:var(--ink-soft)">
+              施術は30年にわたり体のケアに携わってきた、男性セラピストが担当します。
+              鍼灸の国家資格を持つ立場から体の構造を読み解き、アロマと整体の技術を重ねてきました。
+              「その場しのぎではなく、背景から整える」ことがモットーです。
+            </p>
+            <div class="qual">
+              <span>鍼灸師（国家資格）</span>
+              <span>登録販売者</span>
+              <span>アロマセラピスト</span>
+              <span>パーソナルトレーナー</span>
+              <span>施術歴30年</span>
+            </div>
+            <div class="notice-box">
+              <p class="t">ご安心のためのお約束</p>
+              <p style="margin:6px 0 0">
+                当サロンは、女性の健康と美容のための健全なリラクゼーションサロンです。
+                性的なサービスは一切行っておりません。また、鍼（はり）を用いる施術も行いません。
+                施術中はタオルで体を覆い、プライバシーに配慮します。不安な点があれば、ご予約前に何でもお尋ねください。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECRUIT LINK -->
+    <section class="tight" style="text-align:center">
+      <div class="wrap">
+        <p style="margin:0 0 18px;color:var(--ink-soft)">ステラアルタイルでは、セラピスト（業務委託）を募集しています。募集条件や応募方法は、求人ページでご案内しています。</p>
+        <a class="btn btn-gold" href="#recruit" data-route="recruit">求人ページを見る</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="background:var(--paper-2)">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">FAQ</p>
+          <h2>よくある質問</h2>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- COLUMN -->
+    <section id="column">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Column</p>
+          <h2>お悩みコラム</h2>
+          <p>日々のお悩みについて、考えられる要因やセルフケア、受診の目安をまとめた読みものです。体の状態を知ることが、無理のないケアの出発点になります。</p>
+        </div>
+        <div class="column-grid">
+          <a class="column-card" href="#article-headache" data-route="article-headache">
+            <div class="tag">頭痛・頭の重さ</div>
+            <h3>京都・河原町で頭痛が気になるときに</h3>
+            <p>お仕事帰りや観光の合間に、頭が重い、ズキズキする——。頭の痛みを感じるときに考えられる要因と、外出先でもできるセルフケア、医療機関への受診の目安をまとめました。</p>
+            <span class="more">記事を読む →</span>
+          </a>
+          <a class="column-card" href="#article-pms" data-route="article-pms">
+            <div class="tag">生理痛・PMSと休息</div>
+            <h3>京都で、生理痛・PMSが気になる日の休息の取り方</h3>
+            <p>下腹部の痛みや腰の重だるさ、イライラや眠気。周期にともなう不調感がある日に、無理をしない休息の取り方とセルフケア、受診の目安をご紹介します。</p>
+            <span class="more">記事を読む →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCESS -->
+    <section class="access-band" id="access">
+      <img class="bg" src="assets/kyoto.webp" alt="提灯の灯る祇園の町家通り、夕暮れの石畳" />
+      <div class="wrap access-inner">
+        <p class="kicker">Access</p>
+        <h2>京都・河原町／祇園エリアのプライベートサロン</h2>
+        <p>
+          サロンは京都市内のレンタルサロンで営業しています。
+          お客様のプライバシーを守るため、詳しい住所はご予約が確定した方にのみご案内しています。
+          最寄り駅からの道順もあわせてお送りしますので、初めての方もご安心ください。
+        </p>
+        <div class="stations">
+          <span>阪急 京都河原町駅</span>
+          <span>京阪 祇園四条駅</span>
+          <span>阪急 烏丸駅</span>
+        </div>
+        <p style="font-size:13.5px;margin-top:18px">
+          ※ ご予約の際に、ご利用になる駅をお知らせいただければ、最も分かりやすい道順をご案内します。
+        </p>
+      </div>
+    </section>
+
+    <!-- SERIES -->
+    <section id="series" class="tight">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">Stella Series</p>
+          <h2>ステラシリーズの姉妹店</h2>
+          <p>星の名前を冠した女性専用サロンシリーズ。どの店舗も同じ想い・同じ料金体系で運営しています。</p>
+        </div>
+        <div class="series-grid">
+          <a class="sister" href="https://muse.ai/s/space-xnd6vukcxkxzxwxd/ENuhkW3JXehtaYlDN7icw2dlF6V1x-qUEXKa6zgy1Pg"><div class="star">✦</div><div class="nm">ステラポラリス</div><div class="area">梅田</div></a>
+          <a class="sister" href="https://muse.ai/s/space-8-xiv6vu0xbxybqy/A2OLmnjNTGIc5XWKHpxOoDIazyv6rc7_C7btp_dwXkw"><div class="star">✦</div><div class="nm">ステラシリウス</div><div class="area">難波</div></a>
+          <a class="sister" href="https://muse.ai/s/space-9-qh6vu0xee2xwxu/KpB-RUFGFzLHxgZYIJ3yysCAiMP2bVW-5eQout8tRO8"><div class="star">✦</div><div class="nm">ステラベガ</div><div class="area">芦屋</div></a>
+          <a class="sister" href="https://muse.ai/s/space-7-xwy6vtxxxkxexvxog/FTs1YzyktxAKkP48oZy9-yAWDNPwtRo8Z3HuJPsLX3o"><div class="star">✦</div><div class="nm">ステラスピカ</div><div class="area">三ノ宮</div></a>
+          <div class="sister current"><div class="star">✦</div><div class="nm">ステラアルタイル</div><div class="area">京都（当店）</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGLISH -->
+    <section class="tight" style="padding-top:0">
+      <div class="wrap">
+        <div class="en-box">
+          <h3>FOR INTERNATIONAL GUESTS</h3>
+          <div class="sub">Information in English — Stella Altair, Kyoto</div>
+          <p>
+            Stella Altair is a women-only private massage salon in central Kyoto, within easy reach of the
+            Kawaramachi and Gion districts. Treatments combine aromatherapy oil massage with Japanese bodywork
+            (seitai), provided by a male therapist with 30 years of experience and a national acupuncture
+            license (acupuncture itself is not performed at this salon).
+          </p>
+          <ul>
+            <li>Course: 90 minutes — ¥10,000 (tax included, no extra charges)</li>
+            <li>Open Monday to Saturday, 17:00–22:00 (closed Sundays)</li>
+            <li>Reservation only. The address is shared after your booking is confirmed</li>
+            <li>Private room with shower — you can freshen up before and after your treatment</li>
+            <li>This is a professional wellness salon. No sexual services are offered</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVE -->
+    <section class="reserve" id="reserve">
+      <div class="wrap">
+        <h2>ご予約・お問い合わせ</h2>
+        <div class="soon-note" role="note">
+          <span class="t">近日開院予定</span>
+          近日開院予定のため、ご予約の受付はまだ開始していません。受付開始はこのページでご案内します。
+        </div>
+        <p>
+          開院後は完全予約制となります。下のフォームにご希望を入力すると、受付開始後にお送りいただく予約希望文をあらかじめ作成できます。
+          受付開始後は、内容をコピーして、LINE公式アカウントまたは SMS でお送りください。
+          空き状況を確認のうえ、場所の詳細とあわせて折り返しご連絡いたします。
+        </p>
+        <form class="reserve-form" id="reserveForm">
+          <label for="fName">お名前</label>
+          <input id="fName" type="text" autocomplete="name" placeholder="例：山田 花子" />
+          <label for="fDate1">ご希望日時（第1希望）</label>
+          <input id="fDate1" type="text" placeholder="例：11月7日（土）18:00" />
+          <label for="fDate2">ご希望日時（第2希望・任意）</label>
+          <input id="fDate2" type="text" placeholder="例：11月9日（月）19:00" />
+          <label for="fNote">気になるお悩み・ご要望（任意）</label>
+          <input id="fNote" type="text" placeholder="例：肩こりとむくみが気になります" />
+          <label for="fText">予約希望文（自動で作成されます）</label>
+          <textarea id="fText" readonly></textarea>
+          <div class="row">
+            <button class="btn btn-gold" type="button" id="copyBtn" style="border:0;cursor:pointer;margin-top:0">文面をコピーする</button>
+            <span class="copy-done" id="copyDone" aria-live="polite"></span>
+          </div>
+          <p class="hint">コースは基本コース90分・10,000円のみです。送信はされません。受付開始のご案内後に、コピーした文面を LINE / SMS に貼り付けてお送りください。</p>
+        </form>
+        <p class="mini">営業時間：月曜〜土曜 17:00〜22:00（日曜休み）／ 90分 10,000円 ／ 女性専用・完全個室・シャワー完備</p>
+      </div>
+    </section>
+
+    </div>
+
+    <!-- RECRUIT PAGE -->
+    <div id="pageRecruit" hidden>
+      <section class="recruit-page">
+      <div class="wrap">
+        <a class="back-home" href="#top" data-route="home">&larr; トップページへ戻る</a>
+        <div class="sec-head">
+          <p class="kicker">Recruit</p>
+          <h1>セラピスト募集（業務委託）</h1>
+          <p>ステラアルタイル（京都）では、一緒にサロンをつくっていただけるセラピストを募集しています。雇用ではなく業務委託での募集です。未経験の方も、すでに技術をお持ちの方も、それぞれの歩み方を大切にします。報酬は施術料の60%です。働く時間は、ご本人の希望に合わせて設定できます。その他の詳細は、面談の際にご案内します。</p>
+        </div>
+
+        <div class="recruit-pillars">
+          <article class="pillar">
+            <div class="no">Pillar 01</div>
+            <h3>雇用ではなく、業務委託です</h3>
+            <p>当サロンでの働き方は、雇用ではなく業務委託契約です。ご自身のペースや生活に合わせて関わり方を相談しながら決めていきます。契約内容や業務の範囲など、詳細条件は面談で丁寧にご案内しますので、ご不明な点は遠慮なくお尋ねください。</p>
+          </article>
+          <article class="pillar">
+            <div class="no">Pillar 02</div>
+            <h3>未経験者は研修無料</h3>
+            <p>「やってみたいけれど、経験がない」と不安な方もご安心ください。未経験の方は研修を無料で受けていただけます。接客の基本から施術の基礎まで、デビューに向けて一つひとつ確認しながら進めます。研修で費用をご負担いただくことはありません。</p>
+          </article>
+          <article class="pillar">
+            <div class="no">Pillar 03</div>
+            <h3>あなたの技術を、そのままメニューに</h3>
+            <p>経験者の方は、これまで身につけてきた技術をそのまま活かせます。お持ちの技術は、内容を確認したうえで当サロンのメニューとしてご提案できる形に一緒に整えます。ご自身の強みを活かした施術でお客様をお迎えください。</p>
+          </article>
+        </div>
+
+        <div class="recruit-cols">
+          <div class="recruit-box">
+            <h3>未経験の方へ — 研修内容の例</h3>
+            <p class="lead">未経験の方には、デビュー前に下記のような内容を研修で学んでいただくことを想定しています。あくまで内容の例です。進め方や順序は、面談でお一人おひとりに合わせてご案内します。</p>
+            <ul>
+              <li><strong>接客マナー</strong><span>お迎えからお見送りまで、言葉づかいや所作、プライバシーへの配慮</span></li>
+              <li><strong>オイルマッサージ基礎</strong><span>手の使い方、圧のかけ方、体の使い方など施術の土台となる技術</span></li>
+              <li><strong>解剖学の基礎</strong><span>筋肉や骨格など、施術を安全に行うために必要な体の基礎知識</span></li>
+              <li><strong>衛生管理</strong><span>タオルやリネンの扱い、手洗い・消毒、施術ルームの整え方</span></li>
+            </ul>
+            <p class="recruit-note">※ 上記は研修内容の例です。期間や時間数などは一律に定めておらず、面談でご相談のうえ決めます。</p>
+          </div>
+          <div class="recruit-box">
+            <h3>経験者の方へ — 技術のメニュー化の例</h3>
+            <p class="lead">すでに技術をお持ちの方は、その技術を当サロンのメニューとして活かせます。下記はメニュー化できる技術の例です。お持ちの技術がこれ以外の場合も、まずはご相談ください。</p>
+            <ul>
+              <li><strong>整体</strong><span>姿勢や体のバランスに働きかける整体の技術</span></li>
+              <li><strong>リフレクソロジー</strong><span>足裏を中心としたリフレクソロジーの技術</span></li>
+              <li><strong>ヘッドケア</strong><span>頭・首・肩まわりを中心としたヘッドケアの技術</span></li>
+              <li><strong>フェイシャル</strong><span>お顔まわりのケアに関する技術</span></li>
+            </ul>
+            <p class="recruit-note">※ メニュー化にあたっては、技術確認をさせていただいたうえで、コース名や内容を一緒に相談して決めます。</p>
+          </div>
+        </div>
+
+        <div class="recruit-hours">
+          <div>
+            <div class="t">報酬について（業務委託）</div>
+            <p>業務委託の報酬は、施術料の60%です。ご担当いただいた施術の料金に対して、60%をお支払いします。</p>
+          </div>
+          <div class="time">施術料の 60%</div>
+        </div>
+
+        <div class="recruit-hours">
+          <div>
+            <div class="t">働く時間について</div>
+            <p>働く時間は、ご本人の希望に合わせて設定できます。サロンの基本の営業時間は月〜土 17:00〜22:00ですが、その中でご希望の曜日や時間帯を、応募フォームの「ご希望」欄にお書きください。面談で詳しくうかがいます。</p>
+          </div>
+          <div class="time">希望に合わせて設定可</div>
+        </div>
+
+        <div class="sec-head" style="margin-bottom:20px">
+          <h2 style="font-size:clamp(22px,3.6vw,28px)">応募の流れ</h2>
+          <p>応募からデビューまでの流れです。どの段階でも、ご不明な点があればお気軽にお尋ねください。</p>
+        </div>
+        <div class="flow-steps" aria-label="応募の流れ">
+          <div class="flow-step"><div class="no">01</div><div class="ft">応募</div><div class="fs">下のフォームから応募文を作成してお送りください</div></div>
+          <div class="flow-step"><div class="no">02</div><div class="ft">面談</div><div class="fs">ご希望やご経験をうかがい、詳細条件をご案内します</div></div>
+          <div class="flow-step"><div class="no">03</div><div class="ft">研修／技術確認</div><div class="fs">未経験の方は研修、経験者の方は技術確認を行います</div></div>
+          <div class="flow-step"><div class="no">04</div><div class="ft">業務委託契約</div><div class="fs">条件を確認し、業務委託契約を結びます</div></div>
+          <div class="flow-step"><div class="no">05</div><div class="ft">デビュー</div><div class="fs">サロンでお客様をお迎えする施術が始まります</div></div>
+        </div>
+
+        <div class="recruit-form-wrap" id="apply">
+          <h3>応募フォーム</h3>
+          <p>下の項目を入力すると、応募文が自動で作成されます。内容をコピーして、LINE公式アカウントまたは SMS でお送りください。このページから送信されることはありません。報酬は施術料の60%（業務委託）です。その他の詳細条件は、面談の際にご案内します。</p>
+          <form class="recruit-form" id="recruitForm">
+            <label for="rName">氏名</label>
+            <input id="rName" type="text" autocomplete="name" placeholder="例：山田 花子" />
+            <label for="rContact">連絡先（電話番号・メール・LINEなど、返信できる連絡先）</label>
+            <input id="rContact" type="text" placeholder="例：090-0000-0000 ／ example@example.com" />
+            <label for="rExp">経験の有無</label>
+            <select id="rExp">
+              <option value="未経験">未経験</option>
+              <option value="経験あり（サロン勤務経験あり）">経験あり（サロン勤務経験あり）</option>
+              <option value="経験あり（個人活動・副業など）">経験あり（個人活動・副業など）</option>
+              <option value="経験あり（その他）">経験あり（その他）</option>
+            </select>
+            <label for="rSkill">持っている技術（経験者の方はお書きください。未経験の方は空欄で構いません）</label>
+            <textarea id="rSkill" placeholder="例：整体、リフレクソロジー、ヘッドケア など"></textarea>
+            <label for="rHope">ご希望（希望の曜日・時間帯、伝えたいことなど）</label>
+            <textarea id="rHope" placeholder="例：土曜の17:00〜22:00で相談したいです。未経験ですが研修からお願いしたいです。"></textarea>
+            <label for="rText">応募文（自動で作成されます）</label>
+            <textarea id="rText" class="output" readonly></textarea>
+            <div class="row">
+              <button class="btn btn-gold" type="button" id="recruitCopyBtn" style="border:0;cursor:pointer;margin-top:0">応募文をコピーする</button>
+              <span class="copy-done" id="recruitCopyDone" aria-live="polite"></span>
+            </div>
+            <p class="hint">当サロンは女性の健康と美容のための健全なリラクゼーションサロンです。性的なサービスは一切行っておりません。業務内容も健全な施術業務のみです。詳細条件は面談でご案内します。</p>
+          </form>
+        </div>
+        <a class="back-home bottom" href="#top" data-route="home">&larr; トップページへ戻る</a>
+      </div>
+      </section>
+    </div>
+
+    <!-- ARTICLE: HEADACHE -->
+    <div id="pageArticleHeadache" hidden>
+      <section class="recruit-page">
+      <div class="wrap">
+        <a class="back-home" href="#column" data-route="home">&larr; コラム一覧へ戻る</a>
+        <div class="article-body">
+          <p class="article-meta">お悩みコラム｜頭痛・頭の重さ</p>
+          <div class="sec-head" style="margin-bottom:24px">
+            <h1 style="font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(26px,4.4vw,36px);line-height:1.5;letter-spacing:.05em;margin:0">京都・河原町で頭痛が気になるときに</h1>
+          </div>
+          <p class="lead">
+            お仕事帰りや観光の合間に、頭が重い、ズキズキする、目の奥が痛む——。
+            「いつものこと」と我慢してしまいがちな頭の痛みについて、考えられる要因とセルフケア、受診の目安を整理しました。
+          </p>
+
+          <h2>まず、頭の痛み方を整理してみましょう</h2>
+          <p>
+            「頭痛」とひとくちに言っても、感じ方は人それぞれです。こめかみが脈打つようにズキズキする、
+            頭全体が締めつけられるように重い、目の奥がじんわり痛む、夕方になると頭がぼんやりする——。
+            痛む場所も、強さも、続く時間もさまざまです。
+          </p>
+          <p>
+            河原町は京都の中心地で、お仕事帰りの方も、観光やお買い物で長く歩いた方も行き交う場所です。
+            人混みや移動、画面を見る時間の長さなど、負担が重なりやすい環境でもあります。
+            当サロンでも「夕方になると決まって頭が重くなる」というお声をよくうかがいます。
+            まずは、ご自身の頭の痛みが「いつ・どこが・どのように」気になるのかを整理してみることが、ケアの出発点になります。
+          </p>
+
+          <h2>考えられる要因</h2>
+          <p>頭の痛みや重さの背景には、日常の習慣や環境が関わっていることがあります。一般に、要因として次のようなものが挙げられます。</p>
+          <ul>
+            <li><strong>長時間の同じ姿勢</strong>：パソコンやスマートフォンを見る時間が長いと、首・肩まわりの筋肉が緊張し続け、頭の重さにつながると考えられています</li>
+            <li><strong>目の疲れ</strong>：画面を凝視し続けることで、目のまわりの筋肉にも負担がかかります</li>
+            <li><strong>睡眠不足・生活リズムの乱れ</strong>：休みが足りない日が続くと、痛みを感じやすくなる方もいます</li>
+            <li><strong>水分不足や空腹</strong>：外出中は水分補給や食事が後回しになりがちです</li>
+            <li><strong>天候や気圧の変化</strong>：雨の日や天気が崩れる前に気になる、という方もいます</li>
+            <li><strong>温度差や冷え</strong>：冷房の効いた室内と屋外を行き来する季節は、体への負担が大きくなります</li>
+          </ul>
+          <p>
+            東洋医学では、頭まわりの不調を「気血の巡り」や経絡の滞りと関係づけて考えます。
+            当サロンの<a href="#concerns">お悩み別ガイド</a>でも、頭まわりに関わる経絡をご紹介していますので、あわせてご覧ください。
+          </p>
+
+          <h2>外出先でもできるセルフケア</h2>
+          <p>痛みが強くない範囲で、日常生活の中で取り入れやすい対処をまとめました。あくまで一時的な対処ですので、無理はなさらないでください。</p>
+          <ul>
+            <li><strong>姿勢を変える</strong>：1時間に一度は席を立つ、歩くなど、同じ姿勢を続けない工夫を</li>
+            <li><strong>首と肩をゆっくり動かす</strong>：首をゆっくり回す、肩をすくめてストンと落とすなど、痛みのない範囲で</li>
+            <li><strong>温める・冷やすを使い分ける</strong>：締めつけ感が気になるときは首・肩を温め、ズキズキするときはこめかみを冷やすと、楽に感じる方もいます</li>
+            <li><strong>水分をとる</strong>：外出時こそ、こまめな水分補給を意識してみてください</li>
+            <li><strong>目を休める</strong>：画面から目を離し、遠くを見る時間を数分でもつくる</li>
+            <li><strong>静かな場所で少し休む</strong>：明るい光や大きな音から離れ、深呼吸をして過ごす</li>
+          </ul>
+
+          <h2>こんなときは医療機関へ</h2>
+          <p>次のような場合は、我慢せず医療機関（脳神経外科、内科、頭痛外来など）への受診をご検討ください。</p>
+          <ul>
+            <li>これまでに経験したことのない激しい痛み、突然始まった痛みがある</li>
+            <li>手足のしびれや動かしにくさ、ろれつが回らない、見えにくい・二重に見えるなど、視界の異常をともなう</li>
+            <li>発熱や嘔吐をともなう</li>
+            <li>頭を強く打ったあとに痛みが出てきた</li>
+            <li>市販の痛み止めを使っても繰り返す、頻度や強さが増してきた</li>
+            <li>痛みのために、仕事や日常生活に支障が出ている</li>
+          </ul>
+          <p>
+            当サロンは医療機関ではなく、施術はリラクゼーションと美容を目的としたものです。診断や治療は行いませんので、
+            気になる症状がある場合はまず医療機関へご相談ください。
+          </p>
+
+          <div class="salon-box">
+            <h2>サロンのご案内 — ステラアルタイル（京都）</h2>
+            <p>
+              ステラアルタイルは、阪急 京都河原町駅・京阪 祇園四条駅からアクセスできる、京都市内の女性専用プライベートサロンです
+              （詳しい住所は、ご予約が確定した方にご案内しています）。
+              施術は、頭・首・肩まわりを丁寧にほぐすヘッドケアを含む美容整体と、オイルマッサージを組み合わせた構成です。
+              観光やお仕事で歩き疲れた夕方に、静かな個室でひと息つく時間としてご利用ください。
+            </p>
+            <p>
+              基本コースは90分・10,000円（税込）です。営業時間は月曜〜土曜の17:00〜22:00（日曜休み）、完全予約制で営業しています。
+            </p>
+            <div class="links">
+              <a href="#menu">施術メニューを見る</a>
+              <a href="#concerns">お悩み別ガイドを見る</a>
+              <a href="#price">料金・営業時間を見る</a>
+              <a href="#access">アクセスを見る</a>
+            </div>
+            <p style="margin-top:18px"><a class="btn btn-gold" href="#reserve">ご予約のご案内</a></p>
+          </div>
+        </div>
+        <a class="back-home bottom" href="#column" data-route="home">&larr; コラム一覧へ戻る</a>
+      </div>
+      </section>
+    </div>
+
+    <!-- ARTICLE: PMS -->
+    <div id="pageArticlePms" hidden>
+      <section class="recruit-page">
+      <div class="wrap">
+        <a class="back-home" href="#column" data-route="home">&larr; コラム一覧へ戻る</a>
+        <div class="article-body">
+          <p class="article-meta">お悩みコラム｜生理痛・PMSと休息</p>
+          <div class="sec-head" style="margin-bottom:24px">
+            <h1 style="font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(26px,4.4vw,36px);line-height:1.5;letter-spacing:.05em;margin:0">京都で、生理痛・PMSが気になる日の休息の取り方</h1>
+          </div>
+          <p class="lead">
+            生理の前後や生理中は、下腹部が痛む、腰が重だるい、なんとなくイライラする、眠くてたまらない——
+            そんな日が月に数日あるという方は少なくありません。
+            「休みたいけれど、予定があるから」と無理をしてしまう方のために、不調感の整理と、しんどい日の休息の取り方、受診の目安をまとめました。
+          </p>
+
+          <h2>悩みの整理 — 自分のパターンを知ることから</h2>
+          <p>
+            生理痛の感じ方は人それぞれで、同じ人でも月によって強さが変わります。
+            また、生理前に現れる心身の不調感はPMS（月経前症候群）と呼ばれ、イライラや落ち込み、眠気、むくみ、頭の重さなど、現れ方もさまざまです。
+          </p>
+          <p>
+            大切なのは、ご自身の場合「周期のどのあたりで、どんな不調感が出やすいのか」を知ることです。
+            手帳やアプリに周期と体調を簡単に記録しておくと、しんどくなりやすい時期を予測して、予定の立て方や休み方を調整しやすくなります。
+          </p>
+
+          <h2>考えられる要因</h2>
+          <p>周期にともなう不調感の背景には、次のような要因が関わっていると考えられています。</p>
+          <ul>
+            <li><strong>ホルモンバランスの変化</strong>：生理周期にともなう女性ホルモンの変動が、体の水分量や気持ちの揺れと関係すると考えられています。生理痛には、子宮を収縮させる物質（プロスタグランジン）の関与が知られています</li>
+            <li><strong>冷え</strong>：お腹や腰まわりが冷えると、重だるさを強く感じる方もいます</li>
+            <li><strong>睡眠不足やストレスの蓄積</strong>：疲れがたまっている時期と重なると、不調感も出やすくなります</li>
+            <li><strong>姿勢や体の使い方</strong>：長時間の同じ姿勢が続くと、腰まわりの重だるさにつながることがあります</li>
+          </ul>
+          <p>
+            東洋医学では、周期にともなう体の変化を「肝」や「腎」の働きと関係づけて考えます。
+            当サロンの<a href="#concerns">お悩み別ガイド</a>でも「生理前後の不調感」としてご紹介しています。
+          </p>
+
+          <h2>しんどい日の休息の取り方・セルフケア</h2>
+          <ul>
+            <li><strong>予定を詰め込まない</strong>：大切な用事以外は別の日に回すなど、「休むこと」も予定のうちに入れてみてください</li>
+            <li><strong>お腹と腰を温める</strong>：腹巻きやカイロ、温かい飲み物を。湯船にゆっくりつかる入浴は、体を温めながら気持ちを切り替える時間にもなります</li>
+            <li><strong>軽く体を動かす</strong>：しんどさが強い日は無理をせず、比較的楽な時間帯に、深呼吸をしながら背伸びをするなど、ゆったりした動きを</li>
+            <li><strong>食事と睡眠を整える</strong>：温かい食事をとり、夜は早めに休む。冷たいものやカフェインの摂りすぎが気になる方は、量を見直す方もいます</li>
+            <li><strong>ほっとできる環境をつくる</strong>：お好みの香りを身近に置く、照明を落として静かに過ごすなど、自分が落ち着ける過ごし方を見つけておくことも助けになります</li>
+          </ul>
+          <p>
+            市販薬を使う場合は、用法・用量を守ってください。使う機会が増えてきたと感じる場合は、医療機関への相談もご検討ください。
+          </p>
+
+          <h2>こんなときは医療機関へ</h2>
+          <p>次のような場合は、婦人科など医療機関への受診をご検討ください。</p>
+          <ul>
+            <li>痛み止めを使っても痛みがおさまらず、仕事や学校を休まざるを得ない日が続く</li>
+            <li>経血量が急に増えた、大きな塊が増えた</li>
+            <li>生理周期が大きく乱れてきた、生理以外の出血がある</li>
+            <li>めまいや立ちくらみなど、貧血のような症状がある</li>
+            <li>発熱をともなう強い痛みがある</li>
+            <li>年々、痛みが強くなっている気がする</li>
+          </ul>
+          <p>
+            当サロンは医療機関ではなく、施術はリラクゼーションと美容を目的としたものです。診断や治療は行いませんので、
+            気になる症状がある場合はまず医療機関へご相談ください。
+          </p>
+
+          <div class="salon-box">
+            <h2>サロンのご案内 — ステラアルタイル（京都）</h2>
+            <p>
+              ステラアルタイルは、阪急 京都河原町駅・京阪 祇園四条駅からアクセスできる、京都市内の女性専用プライベートサロンです
+              （詳しい住所は、ご予約が確定した方にご案内しています）。
+              周期にともなう重だるさが気になる日には、お腹や腰を温めるようにほぐす構成で、香りもその日の体調に合わせて穏やかなブレンドを選びます。
+              施術の強さは都度調整しますので、体調に合わせて遠慮なくお声がけください。
+            </p>
+            <p>
+              基本コースは90分・10,000円（税込）です。営業時間は月曜〜土曜の17:00〜22:00（日曜休み）、完全予約制で営業しています。
+            </p>
+            <div class="links">
+              <a href="#menu">施術メニューを見る</a>
+              <a href="#concerns">お悩み別ガイドを見る</a>
+              <a href="#price">料金・営業時間を見る</a>
+              <a href="#access">アクセスを見る</a>
+            </div>
+            <p style="margin-top:18px"><a class="btn btn-gold" href="#reserve">ご予約のご案内</a></p>
+          </div>
+        </div>
+        <a class="back-home bottom" href="#column" data-route="home">&larr; コラム一覧へ戻る</a>
+      </div>
+      </section>
+    </div>
+
+    <footer class="site">
+      <div class="wrap">
+        <div>
+          <div class="brandline">✦ ステラアルタイル</div>
+          <div style="margin-top:6px">女性専用オイルマッサージ＆美容整体｜京都府京都市（住所は予約確定後にご案内）</div>
+        </div>
+        <nav>
+          <a href="#about">コンセプト</a>
+          <a href="#menu">メニュー</a>
+          <a href="#concerns">お悩み別ガイド</a>
+          <a href="#price">料金</a>
+          <a href="#recruit" data-route="recruit">セラピスト募集</a>
+          <a href="#faq">よくある質問</a>
+          <a href="#column">コラム</a>
+          <a href="https://muse.ai/s/space-15-xvxs6vv74xoxs63/_7Sr6efvIlvit6V99fR0sJSPk33YshQtcmvwYGtkymY" target="_blank" rel="noopener">セルフケア資料ライブラリ</a>
+          <a href="#series">姉妹店</a>
+        </nav>
+        <div class="fine">
+          当サロンの施術はリラクゼーションおよび美容を目的としたもので、医療行為ではありません。鍼灸施術は行っておりません。性的なサービスは一切提供しておりません。
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ---------- mobile nav ----------
+      var burger = document.getElementById('burger');
+      var nav = document.getElementById('mainnav');
+      burger.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') nav.classList.remove('open');
+      });
+
+      // ---------- page routing (home / recruit / articles) ----------
+      var pageHome = document.getElementById('pageHome');
+      var pageRecruit = document.getElementById('pageRecruit');
+      var pageArticleHeadache = document.getElementById('pageArticleHeadache');
+      var pageArticlePms = document.getElementById('pageArticlePms');
+      var homeTitle = document.title;
+      var metaDesc = document.querySelector('meta[name="description"]');
+      var homeDesc = metaDesc ? metaDesc.getAttribute('content') : '';
+      var subPages = {
+        '#recruit': { el: pageRecruit, title: 'セラピスト募集｜ステラアルタイル（京都）', desc: 'ステラアルタイル（京都）のセラピスト募集ページ。業務委託での募集です。未経験者は研修無料、経験者はお持ちの技術をそのままメニュー化できます。報酬は施術料の60%、働く時間は希望に合わせて設定できます。' },
+        '#article-headache': { el: pageArticleHeadache, title: '京都・河原町で頭痛が気になるときに｜ステラアルタイル（京都）', desc: '京都・河原町エリアで頭痛や頭の重さが気になる方へ。考えられる要因、外出先でもできるセルフケア、医療機関への受診の目安と、河原町・祇園エリアの女性専用サロン「ステラアルタイル」のご案内です。' },
+        '#article-pms': { el: pageArticlePms, title: '京都で生理痛・PMSが気になる日の休息の取り方｜ステラアルタイル（京都）', desc: '生理痛やPMSでしんどい日に、京都で無理なく過ごすための休息の取り方。考えられる要因とセルフケア、受診の目安、女性専用プライベートサロン「ステラアルタイル」のご案内です。' }
+      };
+      subPages['#apply'] = subPages['#recruit'];
+      var currentSub = null;
+      function setHash(h) {
+        try {
+          if (h) history.pushState(null, '', h);
+          else history.pushState(null, '', location.pathname + location.search);
+        } catch (err) { /* sandboxed frame: hash update is best-effort */ }
+      }
+      function hideAllPages() {
+        pageHome.hidden = true;
+        pageRecruit.hidden = true;
+        pageArticleHeadache.hidden = true;
+        pageArticlePms.hidden = true;
+      }
+      function showSub(hash) {
+        var p = subPages[hash];
+        if (!p) return;
+        hideAllPages();
+        p.el.hidden = false;
+        currentSub = hash;
+        document.title = p.title;
+        if (metaDesc && p.desc) metaDesc.setAttribute('content', p.desc);
+        window.scrollTo(0, 0);
+      }
+      function showRecruit() { showSub('#recruit'); }
+      function showHome(anchor) {
+        hideAllPages();
+        pageHome.hidden = false;
+        currentSub = null;
+        document.title = homeTitle;
+        if (metaDesc) metaDesc.setAttribute('content', homeDesc);
+        if (anchor && anchor !== '#top') {
+          var el = document.querySelector(anchor);
+          if (el) { el.scrollIntoView(); return; }
+        }
+        window.scrollTo(0, 0);
+      }
+      function routeFromHash() {
+        var h = location.hash;
+        if (subPages[h]) showSub(h);
+        else if (currentSub) showHome(h && h !== '#' ? h : null);
+      }
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var href = a.getAttribute('href');
+          var route = a.getAttribute('data-route');
+          if (route === 'home') {
+            e.preventDefault();
+            showHome(href);
+            setHash(href === '#top' ? null : href);
+          } else if (subPages[href]) {
+            e.preventDefault();
+            showSub(href);
+            if (location.hash !== href) setHash(href);
+          } else if (currentSub) {
+            e.preventDefault();
+            showHome(href);
+            setHash(href === '#top' ? null : href);
+          }
+        });
+      });
+      window.addEventListener('hashchange', routeFromHash);
+      routeFromHash();
+
+      // ---------- concerns ----------
+      var concerns = [
+        { t:'肩こり・首こり', s:'デスクワークやスマホで固まる首肩に', body:'長時間の同じ姿勢で固まった首・肩まわりは、東洋医学では「気血の巡りの滞り」と捉えます。施術では肩甲骨まわりから首筋までをオイルで温めながらほぐし、頭の重さを支える筋肉の緊張をゆるめます。美容整体で巻き肩の調整も組み合わせます。', m:'関わる経絡：膀胱経・胆経・小腸経' },
+        { t:'腰痛・腰の重だるさ', s:'立ち仕事・座り仕事のどちらにも', body:'腰は東洋医学で「腎」と深く関わる場所とされます。冷えや疲労が重なると重だるさが出やすい部位です。腰からお尻、太ももの裏までを丁寧にほぐし、骨盤まわりのバランスを整体で整えます。', m:'関わる経絡：膀胱経・腎経・督脈' },
+        { t:'むくみ・脚のだるさ', s:'夕方になると靴がきつい方に', body:'余分な水分が滞るむくみは、東洋医学では「脾」の働きの低下と関係づけられます。ふくらはぎから太ももへ、リンパと経絡の流れに沿って押し流すようにトリートメントし、軽やかな脚へ導きます。京都の街歩きで疲れた脚にもおすすめです。', m:'関わる経絡：脾経・腎経・膀胱経' },
+        { t:'冷え', s:'手足の冷たさ、エアコンの冷えに', body:'冷えは巡りの低下のサインです。温めたオイルで全身をゆっくりとほぐしながら、特にお腹・腰・足首まわりを重点的に。施術後のシャワーでさらに温まっていただくのもおすすめです。', m:'関わる経絡：腎経・脾経・三焦経' },
+        { t:'姿勢・猫背', s:'巻き肩、反り腰が気になる方に', body:'美容整体では、まず姿勢のクセを確認するところから始めます。胸まわりを開き、背中と骨盤のバランスを整えることで、立ち姿の印象も変わります。パーソナルトレーナーの視点から、日常の体の使い方もアドバイスします。', m:'関わる経絡：膀胱経・督脈・任脈' },
+        { t:'眠りの浅さ・疲れが取れない', s:'休んでもすっきりしない毎日に', body:'東洋医学では、疲れが抜けない状態を「心」と「腎」のバランスの乱れと捉えます。背中全体をゆったりしたリズムでほぐし、頭まわりのケアも組み合わせて、深く休める体へ。香りの力で気持ちの切り替えも助けます。', m:'関わる経絡：心経・腎経・膀胱経' },
+        { t:'お顔のむくみ・くすみ感', s:'フェイスラインをすっきりと', body:'頭・首・デコルテの滞りは、お顔の印象にも影響します。デコルテから首、頭まわりを丁寧にほぐすことで、巡りを促し、すっきりとした印象へ。首肩こりのケアとあわせての施術がおすすめです。', m:'関わる経絡：胃経・胆経・大腸経' },
+        { t:'生理前後の不調感', s:'周期にともなう重だるさやイライラに', body:'周期にともなう体の変化は、東洋医学では「肝」の働きと関係づけられます。お腹や腰を温めるようにほぐし、足の経絡を中心に巡りを整えます。香りは体調に合わせて穏やかなブレンドを選びます。※医療行為ではありません。症状が強い場合は医療機関へご相談ください。', m:'関わる経絡：肝経・腎経・脾経' },
+        { t:'全身の疲労感・リフレッシュ', s:'とにかく一度リセットしたい日に', body:'部位を問わず体全体が重いときは、全身の巡りを底上げする構成にします。背中・脚・腕・頭まで、90分をフルに使った総合ケアで、星空の下で深呼吸するようなリセット感をどうぞ。', m:'関わる経絡：全身の経絡をバランスよく' }
+      ];
+      var grid = document.getElementById('concernGrid');
+      var detail = document.getElementById('concernDetail');
+      function showConcern(i) {
+        var items = grid.querySelectorAll('.concern');
+        for (var j = 0; j < items.length; j++) items[j].classList.toggle('active', j === i);
+        var c = concerns[i];
+        detail.innerHTML = '<h3>' + c.t + '</h3><p>' + c.body + '</p><div class="meridian">' + c.m + '</div>';
+      }
+      concerns.forEach(function (c, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'concern';
+        b.innerHTML = '<div class="t">' + c.t + '</div><div class="s">' + c.s + '</div>';
+        b.addEventListener('click', function () { showConcern(i); });
+        grid.appendChild(b);
+      });
+      showConcern(0);
+
+      // ---------- meridians ----------
+      var meridians = [
+        ['肺経','呼吸と肌のうるおい'],['大腸経','巡りとすっきり感'],['胃経','消化と顔まわり'],
+        ['脾経','水分代謝とむくみ'],['心経','気持ちの落ち着き'],['小腸経','肩甲骨まわり'],
+        ['膀胱経','背中全体のライン'],['腎経','冷えと活力の土台'],['心包経','胸のつかえ感'],
+        ['三焦経','全身の巡りの調整'],['胆経','体の側面と頭まわり'],['肝経','周期とイライラ感']
+      ];
+      var mg = document.getElementById('meridianGrid');
+      meridians.forEach(function (m) {
+        var d = document.createElement('div');
+        d.className = 'meridian';
+        d.innerHTML = '<div class="org">' + m[0] + '</div><div class="flow">' + m[1] + '</div>';
+        mg.appendChild(d);
+      });
+
+      // ---------- faq ----------
+      var faqs = [
+        ['男性セラピストだと聞きました。不安なのですが…','施術者は男性セラピストです。そのことを事前に明記したうえで、施術中はタオルで体を丁寧に覆い、プライバシーに最大限配慮します。健全なリラクゼーションサロンとして運営しており、性的なサービスは一切行いません。ご不安な点はご予約前に何でもお尋ねください。'],
+        ['住所が載っていません。場所はどこですか？','お客様のプライバシー保護のため、住所は公開していません。京都市内のレンタルサロンで営業しており、ご予約が確定しましたら住所と道順を個別にご案内します。河原町・祇園エリアからアクセスしやすい立地です。'],
+        ['シャワーは使えますか？','はい、シャワー完備の施設で営業しています。施術前のお着替えの際や、施術後にオイルを流す際にご利用いただけます。'],
+        ['鍼（はり）はしてもらえますか？','当サロンでは鍼を使った施術は行っておりません。セラピストは鍼灸師の国家資格を持ち、その東洋医学の知識をオイルマッサージと美容整体に活かしています。'],
+        ['料金は90分10,000円以外にかかりますか？','基本コース90分・10,000円（税込）のみで、追加料金はありません。カウンセリング、精油のブレンド、シャワーのご利用もすべて含まれます。'],
+        ['初めてでも大丈夫ですか？','もちろんです。最初にカウンセリングでお体の状態やお悩みをうかがい、圧の強さも都度調整します。アロマの香りが苦手な方は、無香のキャリアオイルのみでも施術できます。'],
+        ['観光の途中でも利用できますか？','はい。夕方17時からの営業ですので、観光やお買い物のあとのご利用にも向いています。シャワーで汗を流してから施術を受けていただけます。大きなお荷物がある場合は、ご予約の際にお知らせください。'],
+        ['予約は当日でもできますか？','開院後は、空きがあれば当日のご案内も可能ですが、完全予約制のため、前日までのご予約をおすすめします。営業は月曜〜土曜の17:00〜22:00（日曜休み）です。なお、現在は近日開院予定のため、ご予約の受付はまだ開始していません。']
+      ];
+      var fl = document.getElementById('faqList');
+      faqs.forEach(function (f, i) {
+        var box = document.createElement('div');
+        box.className = 'faq' + (i === 0 ? ' open' : '');
+        box.innerHTML = '<button type="button" aria-expanded="' + (i === 0) + '"><span>' + f[0] + '</span><span class="mark">＋</span></button><div class="a"><p>' + f[1] + '</p></div>';
+        box.querySelector('button').addEventListener('click', function () {
+          var open = box.classList.toggle('open');
+          this.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        fl.appendChild(box);
+      });
+
+      // ---------- reserve form ----------
+      var fName = document.getElementById('fName');
+      var fDate1 = document.getElementById('fDate1');
+      var fDate2 = document.getElementById('fDate2');
+      var fNote = document.getElementById('fNote');
+      var fText = document.getElementById('fText');
+      function buildText() {
+        var lines = ['ステラアルタイル（京都）の予約希望です。'];
+        lines.push('お名前：' + (fName.value.trim() || '（未入力）'));
+        lines.push('第1希望：' + (fDate1.value.trim() || '（未入力）'));
+        if (fDate2.value.trim()) lines.push('第2希望：' + fDate2.value.trim());
+        lines.push('コース：基本コース 90分 10,000円');
+        if (fNote.value.trim()) lines.push('気になるお悩み：' + fNote.value.trim());
+        lines.push('よろしくお願いいたします。');
+        fText.value = lines.join('\n');
+      }
+      [fName, fDate1, fDate2, fNote].forEach(function (el) {
+        el.addEventListener('input', buildText);
+      });
+      buildText();
+      document.getElementById('copyBtn').addEventListener('click', function () {
+        var done = document.getElementById('copyDone');
+        function ok() { done.textContent = 'コピーしました。LINE / SMS に貼り付けてお送りください。'; }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(fText.value).then(ok, function () {
+            fText.select();
+            document.execCommand('copy');
+            ok();
+          });
+        } else {
+          fText.select();
+          document.execCommand('copy');
+          ok();
+        }
+      });
+
+      // ---------- recruit form ----------
+      var rName = document.getElementById('rName');
+      var rContact = document.getElementById('rContact');
+      var rExp = document.getElementById('rExp');
+      var rSkill = document.getElementById('rSkill');
+      var rHope = document.getElementById('rHope');
+      var rText = document.getElementById('rText');
+      function buildRecruitText() {
+        if (!rText) return;
+        var lines = ['ステラアルタイル（京都）セラピスト募集への応募です。'];
+        lines.push('氏名：' + (rName.value.trim() || '（未入力）'));
+        lines.push('連絡先：' + (rContact.value.trim() || '（未入力）'));
+        lines.push('経験の有無：' + rExp.value);
+        if (rSkill.value.trim()) lines.push('持っている技術：' + rSkill.value.trim());
+        else lines.push('持っている技術：なし（未経験）');
+        if (rHope.value.trim()) lines.push('ご希望：' + rHope.value.trim());
+        lines.push('詳細条件は面談でうかがえればと思います。よろしくお願いいたします。');
+        rText.value = lines.join('\n');
+      }
+      if (rName && rContact && rExp && rSkill && rHope && rText) {
+        [rName, rContact, rSkill, rHope].forEach(function (el) {
+          el.addEventListener('input', buildRecruitText);
+        });
+        rExp.addEventListener('change', buildRecruitText);
+        buildRecruitText();
+        document.getElementById('recruitCopyBtn').addEventListener('click', function () {
+          var done = document.getElementById('recruitCopyDone');
+          function ok() { done.textContent = 'コピーしました。LINE / SMS に貼り付けてお送りください。'; }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(rText.value).then(ok, function () {
+              rText.select();
+              document.execCommand('copy');
+              ok();
+            });
+          } else {
+            rText.select();
+            document.execCommand('copy');
+            ok();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
