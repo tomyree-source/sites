@@ -1,0 +1,2156 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>お城検定・神社検定｜教科書で学び、試験に挑戦できるオリジナル検定</title>
+    <meta
+      name="description"
+      content="お城検定と神社検定のオリジナル検定サイト。天守・石垣・縄張や社殿建築・祭りと神事を学べる全5章の教科書で学び、20問の問題プールから出題される10問の試験に挑戦できます。7問以上正解で合格となり、認定番号つきの認定証を表示します。本検定は公的な資格ではなく、民間の認定です。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="お城検定・神社検定" />
+    <meta property="og:title" content="お城検定・神社検定｜教科書で学び、試験に挑戦できるオリジナル検定" />
+    <meta
+      property="og:description"
+      content="天守・石垣・縄張や社殿建築・祭りと神事を学べる教科書全5章と、10問の試験。7問以上正解で合格、認定証を発行します。公的な資格ではなく民間の認定です。"
+    />
+    <meta property="og:image" content="assets/castle.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "お城検定・神社検定",
+        "description": "お城検定と神社検定のオリジナル検定サイト。教科書で学び、試験に挑戦し、認定証を発行できます。本検定は公的な資格ではなく民間の認定です。",
+        "inLanguage": "ja"
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f6f1e6;
+        --bg-soft: #efe8d8;
+        --surface: #fffdf7;
+        --surface-2: #faf5ea;
+        --ink: #26221b;
+        --ink-soft: #4c463c;
+        --dim: #7a7263;
+        --line: #ddd2bd;
+        --line-strong: #c9ba97;
+        --accent: #b7412f; /* 朱 */
+        --accent-ink: #ffffff;
+        --indigo: #2f4a6b; /* 藍 */
+        --indigo-soft: #e3eaf2;
+        --gold: #a9852f;
+        --gold-soft: #f3ead3;
+        --ok: #2e6b3e;
+        --ok-bg: #e6f0e4;
+        --ng: #a83226;
+        --ng-bg: #f9e7e3;
+        --radius: 10px;
+        --header-bg: rgba(246, 241, 230, 0.92);
+        --shadow: 0 10px 30px rgba(60, 48, 20, 0.12);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #17140f;
+          --bg-soft: #1e1a14;
+          --surface: #221e17;
+          --surface-2: #29241b;
+          --ink: #ece4d3;
+          --ink-soft: #cfc4ab;
+          --dim: #a2967f;
+          --line: #3d362a;
+          --line-strong: #57492f;
+          --accent: #d95f47;
+          --accent-ink: #ffffff;
+          --indigo: #93b2d6;
+          --indigo-soft: #26313f;
+          --gold: #cfa856;
+          --gold-soft: #332b18;
+          --ok: #8fc79b;
+          --ok-bg: #22301f;
+          --ng: #ec9a8d;
+          --ng-bg: #38211c;
+          --header-bg: rgba(23, 20, 15, 0.92);
+          --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+        line-height: 1.75;
+        font-size: 16px;
+      }
+      .font-display { font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif; }
+      a { color: var(--indigo); }
+      img { max-width: 100%; }
+      button { font: inherit; cursor: pointer; }
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+      /* ---------- header ---------- */
+      header.site {
+        position: sticky; top: 0; z-index: 50;
+        background: var(--header-bg);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+      }
+      .header-inner {
+        max-width: 1080px; margin: 0 auto; padding: 10px 20px;
+        display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      }
+      .brand { text-decoration: none; color: var(--ink); display: flex; align-items: baseline; gap: 10px; }
+      .brand .brand-name { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 20px; letter-spacing: 0.06em; }
+      .brand .brand-sub { font-size: 11px; color: var(--dim); letter-spacing: 0.14em; }
+      @media (max-width: 640px) {
+        .brand { flex-wrap: wrap; gap: 2px 10px; }
+        .brand .brand-name { font-size: 18px; white-space: nowrap; }
+        nav.main { margin-left: 0; }
+      }
+      nav.main { margin-left: auto; }
+      nav.main ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px; }
+      nav.main a {
+        display: block; padding: 7px 11px; border-radius: 8px;
+        color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500;
+      }
+      nav.main a:hover { background: var(--bg-soft); }
+      nav.main a[aria-current="page"] { background: var(--indigo); color: #fff; }
+      @media (prefers-color-scheme: dark) {
+        nav.main a[aria-current="page"] { color: #141a22; background: var(--indigo); }
+      }
+
+      /* ---------- generic ---------- */
+      main { padding-bottom: 72px; }
+      .view { display: none; }
+      .view.active { display: block; }
+      h1.page-title {
+        font-family: "Noto Serif JP", serif; font-weight: 900;
+        font-size: clamp(26px, 5vw, 38px); line-height: 1.35; margin: 34px 0 8px;
+      }
+      .page-lead { color: var(--ink-soft); margin: 0 0 26px; max-width: 46em; }
+      .btn {
+        display: inline-block; border: 1px solid transparent; border-radius: var(--radius);
+        padding: 12px 22px; font-weight: 700; font-size: 15px; text-decoration: none;
+        background: var(--accent); color: var(--accent-ink); text-align: center;
+      }
+      .btn:hover { filter: brightness(1.07); }
+      .btn.indigo { background: var(--indigo); color: #fff; }
+      @media (prefers-color-scheme: dark) { .btn.indigo { color: #141a22; } }
+      .btn.ghost { background: transparent; color: var(--indigo); border-color: var(--indigo); }
+      .btn.gold { background: var(--gold); color: #fff; }
+      .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+      .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+      .note-box {
+        background: var(--surface-2); border: 1px solid var(--line);
+        border-radius: var(--radius); padding: 16px 18px; font-size: 14px; color: var(--ink-soft);
+      }
+      .note-box strong { color: var(--ink); }
+      .tag {
+        display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+        padding: 2px 10px; border-radius: 999px; background: var(--gold-soft); color: var(--gold);
+        border: 1px solid var(--line-strong);
+      }
+      .tag.pr { background: var(--accent); color: #fff; border-color: transparent; }
+      .sr-only {
+        position: absolute; width: 1px; height: 1px; overflow: hidden;
+        clip: rect(0 0 0 0); white-space: nowrap;
+      }
+
+      /* ---------- hero ---------- */
+      .hero {
+        border-bottom: 1px solid var(--line);
+        background:
+          radial-gradient(ellipse 60% 90% at 85% 0%, var(--gold-soft), transparent 60%),
+          var(--bg-soft);
+      }
+      .hero-inner { padding: 46px 0 40px; }
+      .hero h1 {
+        font-family: "Noto Serif JP", serif; font-weight: 900;
+        font-size: clamp(30px, 6vw, 46px); line-height: 1.4; margin: 0 0 14px; letter-spacing: 0.03em;
+      }
+      .hero h1 .accent { color: var(--accent); }
+      .hero h1 .indigo { color: var(--indigo); }
+      .hero p.lead { font-size: 17px; color: var(--ink-soft); max-width: 44em; margin: 0 0 18px; }
+      .disclaimer-band {
+        margin-top: 22px; background: var(--surface); border: 1px solid var(--gold);
+        border-radius: var(--radius); padding: 14px 18px; font-size: 14.5px;
+      }
+      .disclaimer-band strong { color: var(--accent); }
+
+      /* ---------- exam cards ---------- */
+      .exam-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 34px 0 8px; }
+      @media (max-width: 760px) { .exam-grid { grid-template-columns: 1fr; } }
+      .exam-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column;
+      }
+      .exam-card .imgbox { aspect-ratio: 16 / 8.2; overflow: hidden; }
+      .exam-card .imgbox img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+      .exam-card .cardbody { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+      .exam-card h2 { font-family: "Noto Serif JP", serif; font-size: 26px; margin: 0; font-weight: 900; }
+      .exam-card .subtitle { color: var(--dim); font-size: 13.5px; letter-spacing: 0.08em; margin: 0; }
+      .exam-card p.desc { color: var(--ink-soft); font-size: 15px; margin: 4px 0 10px; flex: 1; }
+      .exam-card .meta { font-size: 13px; color: var(--dim); border-top: 1px dashed var(--line); padding-top: 10px; }
+
+      /* ---------- sections / grades ---------- */
+      section.block { margin-top: 52px; }
+      section.block > h2 {
+        font-family: "Noto Serif JP", serif; font-weight: 900; font-size: clamp(22px, 4vw, 29px);
+        margin: 0 0 6px; padding-bottom: 10px; border-bottom: 2px solid var(--ink);
+        display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+      }
+      section.block > h2 .en { font-size: 12px; letter-spacing: 0.3em; color: var(--dim); font-family: "Noto Sans JP", sans-serif; font-weight: 500; }
+      section.block > .block-lead { color: var(--ink-soft); margin: 12px 0 20px; max-width: 46em; }
+      .grade-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      @media (max-width: 760px) { .grade-list { grid-template-columns: 1fr; } }
+      .grade {
+        background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--gold);
+        border-radius: var(--radius); padding: 20px 22px;
+      }
+      .grade .grade-name { font-family: "Noto Serif JP", serif; font-size: 24px; font-weight: 900; margin: 0 0 2px; }
+      .grade .grade-level { font-size: 12.5px; color: var(--accent); font-weight: 700; letter-spacing: 0.1em; margin: 0 0 8px; }
+      .grade p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+      .steps { counter-reset: step; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+      .step { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+      .step .num {
+        counter-increment: step; font-family: "Noto Serif JP", serif; font-weight: 900;
+        font-size: 15px; color: var(--gold); letter-spacing: 0.1em;
+      }
+      .step .num::after { content: " " counter(step, decimal-leading-zero); }
+      .step h3 { margin: 6px 0 6px; font-size: 17px; }
+      .step p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+
+      /* ---------- textbook ---------- */
+      .chapter-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+      .chapter-nav button {
+        border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-soft);
+        border-radius: 999px; padding: 7px 14px; font-size: 13.5px; font-weight: 500;
+      }
+      .chapter-nav button[aria-pressed="true"] { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+      @media (prefers-color-scheme: dark) { .chapter-nav button[aria-pressed="true"] { color: #141a22; } }
+      article.chapter { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 30px 32px; }
+      @media (max-width: 600px) { article.chapter { padding: 22px 20px; } }
+      article.chapter h2 { font-family: "Noto Serif JP", serif; font-size: clamp(21px, 4vw, 27px); margin: 0 0 4px; font-weight: 900; }
+      article.chapter .lead { font-family: "Noto Serif JP", serif; color: var(--accent); font-size: 16.5px; margin: 0 0 18px; }
+      article.chapter p.body-p { margin: 0 0 16px; color: var(--ink-soft); }
+      .points { background: var(--gold-soft); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 16px 20px 16px 38px; margin-top: 22px; }
+      .points h3 { margin: 0 0 8px 0; font-size: 15px; margin-left: -18px; }
+      .points ul { margin: 0; padding: 0; }
+      .points li { font-size: 14.5px; margin: 4px 0; }
+      .chapter-pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+
+      /* ---------- exam ---------- */
+      .exam-setup, .exam-result {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px 30px;
+      }
+      @media (max-width: 600px) { .exam-setup, .exam-result { padding: 20px; } }
+      .field { margin-bottom: 20px; }
+      .field label, .field .field-label { display: block; font-weight: 700; font-size: 14.5px; margin-bottom: 8px; }
+      .field input[type="text"] {
+        width: 100%; max-width: 420px; padding: 11px 14px; font: inherit;
+        border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); color: var(--ink);
+      }
+      .seg { display: flex; flex-wrap: wrap; gap: 8px; }
+      .seg button {
+        border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-soft);
+        border-radius: var(--radius); padding: 10px 18px; font-weight: 700; font-size: 15px;
+      }
+      .seg button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+      .progress { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; font-size: 13.5px; color: var(--dim); }
+      .progress .bar { flex: 1; height: 8px; background: var(--bg-soft); border-radius: 999px; overflow: hidden; border: 1px solid var(--line); }
+      .progress .bar i { display: block; height: 100%; background: var(--gold); transition: width 0.3s; }
+      .q-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px 28px; }
+      @media (max-width: 600px) { .q-card { padding: 20px; } }
+      .q-card .q-chapter { font-size: 12.5px; color: var(--gold); font-weight: 700; letter-spacing: 0.08em; }
+      .q-card h2 { font-size: clamp(18px, 3.6vw, 22px); line-height: 1.6; margin: 8px 0 20px; font-weight: 700; }
+      .choices { display: grid; gap: 10px; }
+      .choice {
+        text-align: left; border: 1.5px solid var(--line-strong); background: var(--surface);
+        color: var(--ink); border-radius: var(--radius); padding: 13px 16px; font-size: 15.5px; width: 100%;
+        display: flex; gap: 10px; align-items: baseline;
+      }
+      .choice .mark { font-weight: 700; color: var(--dim); flex: none; }
+      .choice:hover:not(:disabled) { border-color: var(--indigo); }
+      .choice:disabled { cursor: default; }
+      .choice.correct { border-color: var(--ok); background: var(--ok-bg); }
+      .choice.correct .mark { color: var(--ok); }
+      .choice.wrong { border-color: var(--ng); background: var(--ng-bg); }
+      .choice.wrong .mark { color: var(--ng); }
+      .explanation {
+        margin-top: 18px; border-radius: var(--radius); padding: 16px 18px; font-size: 15px;
+        border: 1px solid var(--line);
+      }
+      .explanation.ok { background: var(--ok-bg); border-color: var(--ok); }
+      .explanation.ng { background: var(--ng-bg); border-color: var(--ng); }
+      .explanation .verdict { font-weight: 900; font-size: 16.5px; margin: 0 0 6px; }
+      .explanation.ok .verdict { color: var(--ok); }
+      .explanation.ng .verdict { color: var(--ng); }
+      .explanation p { margin: 0; color: var(--ink-soft); }
+      .result-score { font-family: "Noto Serif JP", serif; font-size: clamp(34px, 7vw, 52px); font-weight: 900; margin: 6px 0; }
+      .result-badge {
+        display: inline-block; font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 20px;
+        padding: 6px 22px; border-radius: 999px; letter-spacing: 0.2em;
+      }
+      .result-badge.pass { background: var(--ok-bg); color: var(--ok); border: 2px solid var(--ok); }
+      .result-badge.fail { background: var(--ng-bg); color: var(--ng); border: 2px solid var(--ng); }
+
+      /* ---------- certificate ---------- */
+      .certificate {
+        position: relative; background: #fffdf7; color: #1e1b16;
+        border: 2px solid var(--gold); border-radius: 6px;
+        padding: 44px 30px 38px; text-align: center; box-shadow: var(--shadow); overflow: hidden;
+      }
+      .certificate::before {
+        content: ""; position: absolute; inset: 10px; border: 1px solid var(--gold); pointer-events: none;
+      }
+      .certificate .cert-en { font-size: 12px; letter-spacing: 0.45em; color: #6f675a; margin: 0; }
+      .certificate h2 { font-family: "Noto Serif JP", serif; font-size: clamp(34px, 7vw, 48px); letter-spacing: 0.25em; margin: 8px 0 0; font-weight: 900; color: #1e1b16; }
+      .certificate .cert-exam { font-family: "Noto Serif JP", serif; font-size: clamp(20px, 4.5vw, 27px); font-weight: 700; margin: 26px 0 0; }
+      .certificate .cert-text { font-size: 14.5px; line-height: 2; margin: 22px auto 0; max-width: 34em; }
+      .certificate .cert-name { font-family: "Noto Serif JP", serif; font-size: clamp(26px, 6vw, 36px); font-weight: 900; margin: 24px 0 0; }
+      .certificate .cert-name .sama { font-size: 0.6em; margin-left: 8px; }
+      .certificate .cert-foot {
+        display: flex; justify-content: space-between; align-items: flex-end; gap: 16px;
+        max-width: 480px; margin: 34px auto 0; text-align: left; font-size: 14px; flex-wrap: wrap;
+      }
+      .certificate .seal {
+        width: 68px; height: 68px; border: 3px solid #b7412f; border-radius: 50%;
+        color: #b7412f; font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 14px;
+        display: flex; align-items: center; justify-content: center; text-align: center;
+        line-height: 1.3; transform: rotate(-4deg); flex: none; margin-left: auto;
+      }
+      .certificate .cert-note { font-size: 11px; color: #6f675a; margin: 26px auto 0; max-width: 40em; line-height: 1.7; }
+      .cert-list { display: grid; gap: 12px; margin-top: 18px; }
+      .cert-row {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center;
+      }
+      .cert-row .cert-no { font-weight: 700; letter-spacing: 0.04em; }
+      .cert-row .grow { flex: 1; }
+      .verify-result { margin-top: 16px; }
+      .verify-result .ok-msg { background: var(--ok-bg); border: 1px solid var(--ok); color: var(--ink); border-radius: var(--radius); padding: 14px 18px; }
+      .verify-result .ng-msg { background: var(--ng-bg); border: 1px solid var(--ng); color: var(--ink); border-radius: var(--radius); padding: 14px 18px; }
+
+      /* ---------- blog / shop ---------- */
+      .post-list { display: grid; gap: 16px; }
+      .post-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px;
+      }
+      .post-card h3 { margin: 6px 0 8px; font-size: 19px; line-height: 1.55; }
+      .post-card h3 a { color: var(--ink); text-decoration: none; }
+      .post-card h3 a:hover { color: var(--accent); text-decoration: underline; }
+      .post-card p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+      .post-meta { display: flex; gap: 10px; align-items: center; font-size: 12.5px; color: var(--dim); flex-wrap: wrap; }
+      article.post { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 30px 32px; }
+      @media (max-width: 600px) { article.post { padding: 22px 20px; } }
+      article.post h2 { font-family: "Noto Serif JP", serif; font-size: clamp(21px, 4.5vw, 28px); line-height: 1.55; margin: 8px 0 14px; }
+      article.post p { color: var(--ink-soft); margin: 0 0 18px; }
+      .product-box { border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface-2); padding: 18px 20px; margin: 22px 0; }
+      .product-box h3 { margin: 0 0 4px; font-size: 16.5px; }
+      .product-box p { font-size: 14px; margin: 0 0 10px; }
+      .product-flex { display: flex; gap: 18px; align-items: flex-start; }
+      .product-cover { flex: none; width: 104px; }
+      .product-cover img { width: 104px; height: auto; display: block; border-radius: 4px; border: 1px solid var(--line); box-shadow: 0 4px 14px rgba(60,48,20,0.18); }
+      .product-cover .cover-note { font-size: 10.5px; color: var(--dim); text-align: center; margin: 6px 0 0; }
+      .product-main { flex: 1; min-width: 0; }
+      @media (max-width: 480px) { .product-cover { width: 84px; } .product-cover img { width: 84px; } }
+      .product-card .card-cover { margin: 0 0 14px; }
+      .product-card .card-cover img { width: 120px; height: auto; display: block; border-radius: 4px; border: 1px solid var(--line); box-shadow: 0 4px 14px rgba(60,48,20,0.18); }
+      .product-card .cover-note { font-size: 10.5px; color: var(--dim); margin: 6px 0 0; }
+      .pr-line { font-size: 12px; color: var(--dim); margin-top: 8px; }
+      .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      @media (max-width: 760px) { .shop-grid { grid-template-columns: 1fr; } }
+      .product-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; }
+      .product-card h3 { font-size: 18px; margin: 8px 0 4px; line-height: 1.55; }
+      .product-card .author { font-size: 13px; color: var(--dim); margin: 0 0 8px; }
+      .product-card p.desc { font-size: 14.5px; color: var(--ink-soft); margin: 0 0 14px; flex: 1; }
+      .product-card .price-note { font-size: 12.5px; color: var(--dim); margin: 10px 0 0; }
+
+      /* ---------- history ---------- */
+      table.history { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+      table.history th, table.history td { padding: 11px 14px; text-align: left; font-size: 14.5px; border-bottom: 1px solid var(--line); }
+      table.history th { background: var(--surface-2); font-size: 13px; color: var(--ink-soft); }
+      table.history tr:last-child td { border-bottom: none; }
+      .pass-label { color: var(--ok); font-weight: 700; }
+      .fail-label { color: var(--ng); font-weight: 700; }
+      @media (max-width: 640px) {
+        table.history, table.history tbody, table.history tr, table.history td { display: block; width: 100%; }
+        table.history thead { display: none; }
+        table.history tr { border-bottom: 1px solid var(--line); padding: 8px 0; }
+        table.history td { border-bottom: none; padding: 3px 14px; }
+        table.history td::before { content: attr(data-label) "："; font-weight: 700; font-size: 12.5px; color: var(--dim); }
+      }
+
+      /* ---------- events ---------- */
+      .event-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 6px; }
+      .event-filters button {
+        border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-soft);
+        border-radius: 999px; padding: 8px 18px; font-size: 14px; font-weight: 700;
+      }
+      .event-filters button[aria-pressed="true"] { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+      @media (prefers-color-scheme: dark) { .event-filters button[aria-pressed="true"] { color: #141a22; } }
+      .event-month {
+        font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 20px;
+        margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line-strong);
+      }
+      .event-list { display: grid; gap: 12px; }
+      .event-item {
+        display: flex; gap: 18px; background: var(--surface); border: 1px solid var(--line);
+        border-radius: 14px; padding: 18px 20px;
+      }
+      .event-item.ended { opacity: 0.6; }
+      .event-date {
+        flex: none; width: 116px; text-align: center; border-right: 1px dashed var(--line);
+        padding-right: 14px; display: flex; flex-direction: column; justify-content: flex-start; gap: 2px;
+      }
+      .event-date .d-main { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 21px; line-height: 1.3; }
+      .event-date .d-end { font-size: 12.5px; color: var(--dim); }
+      .event-main { flex: 1; min-width: 0; }
+      .event-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+      .tag.castle { background: var(--indigo-soft); color: var(--indigo); }
+      .tag.shrine { background: var(--gold-soft); color: var(--gold); }
+      .status { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; padding: 2px 10px; border-radius: 999px; }
+      .status.now { background: var(--accent); color: #fff; }
+      .status.soon { background: var(--surface-2); color: var(--ink-soft); border: 1px solid var(--line-strong); }
+      .status.done { background: var(--bg-soft); color: var(--dim); border: 1px solid var(--line); }
+      .event-item h3 { margin: 6px 0 2px; font-size: 18px; line-height: 1.55; }
+      .event-when { font-size: 13.5px; font-weight: 700; color: var(--accent); margin: 0; }
+      .event-place { font-size: 13.5px; color: var(--dim); margin: 2px 0 0; }
+      .event-desc { font-size: 14.5px; color: var(--ink-soft); margin: 6px 0 0; }
+      .event-note { font-size: 13px; color: var(--ink-soft); background: var(--surface-2); border-radius: 8px; padding: 8px 12px; margin-top: 10px; }
+      .event-src { font-size: 12.5px; color: var(--dim); margin: 8px 0 0; }
+      @media (max-width: 640px) {
+        .event-item { flex-direction: column; gap: 6px; padding: 16px; }
+        .event-date {
+          width: auto; text-align: left; border-right: none; border-bottom: 1px dashed var(--line);
+          padding: 0 0 8px; flex-direction: row; align-items: baseline; gap: 10px;
+        }
+      }
+
+      /* ---------- footer ---------- */
+      footer.site { border-top: 1px solid var(--line); background: var(--bg-soft); margin-top: 0; }
+      .footer-inner { max-width: 1080px; margin: 0 auto; padding: 34px 20px 44px; font-size: 13.5px; color: var(--ink-soft); }
+      .footer-inner nav ul { list-style: none; margin: 0 0 18px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+      .footer-inner nav a { color: var(--ink-soft); }
+      .footer-inner p { margin: 0 0 10px; max-width: 60em; }
+      .footer-inner .fine { font-size: 12px; color: var(--dim); }
+
+      /* ---------- print ---------- */
+      @media print {
+        header.site, footer.site, .no-print { display: none !important; }
+        body { background: #fff; }
+        main { padding: 0; }
+        .view { display: none !important; }
+        .view.active { display: block !important; }
+        .certificate { box-shadow: none; border-color: #a9852f; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="header-inner">
+        <a class="brand" href="#/">
+          <span class="brand-name">お城検定・神社検定</span>
+          <span class="brand-sub">ORIGINAL CERTIFICATION</span>
+        </a>
+        <nav class="main" aria-label="メインメニュー">
+          <ul>
+            <li><a href="#/" data-nav="home">トップ</a></li>
+            <li><a href="#/textbook/castle" data-nav="textbook">教科書</a></li>
+            <li><a href="#/exam/castle" data-nav="exam">受験</a></li>
+            <li><a href="#/certificate" data-nav="certificate">認定証・照合</a></li>
+            <li><a href="#/blog" data-nav="blog">ブログ</a></li>
+            <li><a href="#/events" data-nav="events">イベント予定表</a></li>
+            <li><a href="#/shop" data-nav="shop">ショップ</a></li>
+            <li><a href="#/history" data-nav="history">受験履歴</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="app">
+      <!-- ================= トップ ================= -->
+      <section class="view" id="view-home" aria-labelledby="home-h1">
+        <div class="hero">
+          <div class="wrap hero-inner">
+            <h1 id="home-h1">城と神社を、<span class="indigo">学んで</span>、<span class="accent">検定</span>で確かめる。</h1>
+            <p class="lead">
+              「お城検定」と「神社検定」は、天守・石垣・縄張から社殿建築・祭りと神事まで、日本の城と神社の文化を体系的に学べるオリジナル検定です。各検定とも教科書は全5章。読み終えたら、全20問の問題プールから出題される10問の試験に挑戦でき、7問以上の正解で合格となり、認定番号つきの認定証を表示します。
+            </p>
+            <div class="btn-row">
+              <a class="btn indigo" href="#/textbook/castle">教科書で学ぶ</a>
+              <a class="btn" href="#/exam/castle">試験に挑戦する</a>
+            </div>
+            <div class="disclaimer-band" role="note">
+              <strong>ご案内：</strong>本検定は、独自教材にもとづく<strong>民間の認定</strong>であり、国家資格などの<strong>公的な資格ではありません</strong>。既存の公式検定とも関係のない、オリジナルの検定です。
+            </div>
+          </div>
+        </div>
+
+        <div class="wrap">
+          <div class="exam-grid">
+            <article class="exam-card">
+              <div class="imgbox"><img src="assets/castle.webp" alt="白い天守がそびえる日本のお城のイラスト" /></div>
+              <div class="cardbody">
+                <p class="subtitle">CASTLE CERTIFICATION</p>
+                <h2>お城検定</h2>
+                <p class="desc">天守・石垣・縄張から名城の歴史まで。日本の城郭文化を体系的に学び、全20問のプールから出題される10問に挑戦します。</p>
+                <div class="btn-row" style="margin-top:0">
+                  <a class="btn indigo" href="#/textbook/castle">教科書を読む</a>
+                  <a class="btn ghost" href="#/exam/castle">受験する</a>
+                </div>
+                <p class="meta">教科書 全5章／問題プール 20問／出題 10問・7問以上で合格</p>
+              </div>
+            </article>
+            <article class="exam-card">
+              <div class="imgbox"><img src="assets/shrine.webp" alt="朱い鳥居と社殿のある神社のイラスト" /></div>
+              <div class="cardbody">
+                <p class="subtitle">SHRINE CERTIFICATION</p>
+                <h2>神社検定</h2>
+                <p class="desc">社殿建築・境内の歩き方・祭りと神事まで。神社の文化を体系的に学び、全20問のプールから出題される10問に挑戦します。</p>
+                <div class="btn-row" style="margin-top:0">
+                  <a class="btn indigo" href="#/textbook/shrine">教科書を読む</a>
+                  <a class="btn ghost" href="#/exam/shrine">受験する</a>
+                </div>
+                <p class="meta">教科書 全5章／問題プール 20問／出題 10問・7問以上で合格</p>
+              </div>
+            </article>
+          </div>
+
+          <section class="block" aria-labelledby="grades-h">
+            <h2 id="grades-h">級のご案内 <span class="en">GRADES</span></h2>
+            <p class="block-lead">各検定には、学習の深さに応じた3つの級があります。まずは3級から、教科書を読み進めながらステップアップしていく設計です。いずれの級も出題は10問・7問以上の正解で合格です。</p>
+            <div class="grade-list">
+              <div class="grade">
+                <p class="grade-name">3級</p>
+                <p class="grade-level">入門 ― まずはここから</p>
+                <p>城と神社の基礎知識を問う入門の級です。教科書の各章の「要点」を押さえれば十分に挑戦でき、初めての方や、これから城めぐり・神社めぐりを始めたい方に向けたレベルです。</p>
+              </div>
+              <div class="grade">
+                <p class="grade-name">2級</p>
+                <p class="grade-level">中級 ― 教科書をひととおり</p>
+                <p>教科書全5章の内容をひととおり理解していることが求められる中級の級です。天守の形式や石垣の技法、社殿の様式や祭神など、本文の細部まで読み込んで挑むレベルです。</p>
+              </div>
+              <div class="grade">
+                <p class="grade-name">1級</p>
+                <p class="grade-level">上級 ― 最上位の認定</p>
+                <p>歴史・建築・祭祀への深い知識に加え、現地で見分ける鑑識力が求められる最上位の級です。3級・2級の土台のうえに、名城や著名な神社への幅広い理解がある方の到達点です。</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" aria-labelledby="flow-h">
+            <h2 id="flow-h">受験の流れ <span class="en">HOW IT WORKS</span></h2>
+            <div class="steps">
+              <div class="step">
+                <p class="num">STEP</p>
+                <h3>教科書で学ぶ</h3>
+                <p>各検定の教科書（全5章）を読みます。各章末の「要点」が、そのまま試験の出題範囲です。</p>
+              </div>
+              <div class="step">
+                <p class="num">STEP</p>
+                <h3>試験を受ける</h3>
+                <p>級とお名前を入力して開始。問題プール20問から10問が出題され、回答のたびに解説を確認しながら進めます。</p>
+              </div>
+              <div class="step">
+                <p class="num">STEP</p>
+                <h3>認定証を受け取る</h3>
+                <p>7問以上の正解で合格。認定番号つきの認定証が表示され、印刷して手元に残せます。</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" aria-labelledby="home-events-h">
+            <h2 id="home-events-h">城と神社のイベント予定表 <span class="en">UPCOMING EVENTS</span></h2>
+            <p class="block-lead">これから開催されるお城と神社の行事を、日程順にまとめています。紅葉まつりやライトアップ、例大祭や七五三・初詣など、現地を訪れる計画づくりにご活用ください。</p>
+            <div id="home-events"></div>
+            <div class="btn-row">
+              <a class="btn indigo" href="#/events">イベント予定表をすべて見る</a>
+            </div>
+          </section>
+
+          <section class="block" aria-labelledby="fee-h">
+            <h2 id="fee-h">受験料とデータの取り扱い <span class="en">FEE &amp; DATA</span></h2>
+            <div class="note-box">
+              <p style="margin:0 0 10px"><strong>受験料：</strong>現在は無料で受験できます。正式な受験料は決定後にこのページでご案内します。</p>
+              <p style="margin:0"><strong>データの取り扱い：</strong>受験・採点・認定証の発行は、すべてお使いのブラウザの中で完結します。入力したお名前や受験履歴は、お使いの端末のブラウザ内（localStorage）にのみ保存され、<strong>サーバーへ送信・保存されることはありません</strong>。ブラウザのデータを消去すると履歴も消えますので、認定証は印刷して保管してください。</p>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ================= 教科書 ================= -->
+      <section class="view" id="view-textbook" aria-labelledby="textbook-h1">
+        <div class="wrap">
+          <h1 class="page-title" id="textbook-h1"></h1>
+          <p class="page-lead" id="textbook-lead"></p>
+          <div class="chapter-nav" id="chapter-nav" role="group" aria-label="章の選択"></div>
+          <div id="chapter-body"></div>
+          <div class="btn-row no-print">
+            <a class="btn" id="textbook-exam-link" href="#/exam/castle">この検定の試験を受ける</a>
+            <a class="btn ghost" href="#/">トップに戻る</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 受験 ================= -->
+      <section class="view" id="view-exam" aria-labelledby="exam-h1">
+        <div class="wrap">
+          <h1 class="page-title" id="exam-h1"></h1>
+          <p class="page-lead" id="exam-lead"></p>
+          <div id="exam-stage"></div>
+        </div>
+      </section>
+
+      <!-- ================= 認定証・照合 ================= -->
+      <section class="view" id="view-certificate" aria-labelledby="cert-h1">
+        <div class="wrap">
+          <h1 class="page-title" id="cert-h1">認定証・認定番号の照合</h1>
+          <p class="page-lead">合格すると、この端末のブラウザ内に認定証が保存されます。あわせて、認定番号の形式を確認できる照合フォームをご用意しています。</p>
+          <div id="cert-detail"></div>
+          <h2 class="font-display" style="font-size:22px;margin:38px 0 6px">この端末で発行した認定証</h2>
+          <div id="cert-list"></div>
+
+          <h2 class="font-display" style="font-size:22px;margin:42px 0 6px">認定番号の照合（形式確認）</h2>
+          <p style="color:var(--ink-soft);margin:0 0 14px;max-width:46em">
+            認定証に記載された認定番号（例：SHIRO-20261026-0001）を入力すると、番号の形式が正しいかどうかを確認できます。この照合は形式の確認のみです。<strong>正式な照合は今後の運用開始後にご案内します。</strong>
+          </p>
+          <form id="verify-form" class="exam-setup" style="max-width:560px">
+            <div class="field" style="margin-bottom:14px">
+              <label for="verify-input">認定番号</label>
+              <input type="text" id="verify-input" placeholder="SHIRO-20261026-0001" autocomplete="off" />
+            </div>
+            <button type="submit" class="btn indigo">形式を確認する</button>
+            <div class="verify-result" id="verify-result" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ================= ブログ ================= -->
+      <section class="view" id="view-blog" aria-labelledby="blog-h1">
+        <div class="wrap">
+          <h1 class="page-title" id="blog-h1">城と神社のブログ</h1>
+          <p class="page-lead">名城めぐりと神社めぐりの実践情報、そしてお城検定・神社検定に役立つ知識を発信しています。記事中のおすすめ本にはAmazon.co.jpへのリンク（PR）を含みます。</p>
+          <div id="blog-stage"></div>
+        </div>
+      </section>
+
+      <!-- ================= イベント予定表 ================= -->
+      <section class="view" id="view-events" aria-labelledby="events-h1">
+        <div class="wrap">
+          <h1 class="page-title" id="events-h1">城と神社のイベント予定表</h1>
+          <p class="page-lead">お城と神社でこれから開かれる行事を、日程順の予定表にまとめました。2026年10月〜2027年2月の開催分を掲載しています。各行事の出典リンクから、最新の実施状況を確認できます。</p>
+          <div class="event-filters" role="group" aria-label="イベントの絞り込み">
+            <button type="button" data-ev-filter="all" aria-pressed="true">すべて</button>
+            <button type="button" data-ev-filter="castle" aria-pressed="false">お城のイベント</button>
+            <button type="button" data-ev-filter="shrine" aria-pressed="false">神社のイベント</button>
+          </div>
+          <div id="events-stage"></div>
+          <div class="note-box" style="margin-top:30px">
+            <p style="margin:0 0 10px"><strong>ご利用にあたって：</strong>この予定表は、2026年10月27日時点で主催者・自治体・報道などの公開情報で確認できた行事をまとめたものです。日程・時間・料金は変更や中止になる場合があります。お出かけ前に、必ず各行事の出典リンクや主催者の公式案内で最新の情報をご確認ください。</p>
+            <p style="margin:0"><strong>長期の取り組み：</strong>福井県坂井市の丸岡城では、天守の保存修理工事が2027年11月までの予定で進められています。工事の様子はブログ記事「<a href="#/blog/maruoka-tenshu-repair-live-news">丸岡城、天守保存修理の現場をライブ中継で公開</a>」でも紹介しています。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= ショップ ================= -->
+      <section class="view" id="view-shop" aria-labelledby="shop-h1">
+        <div class="wrap">
+          <h1 class="page-title" id="shop-h1">ショップ ― お城グッズ・おすすめ本</h1>
+          <p class="page-lead">城めぐりと検定学習に役立つ、実在の書籍を紹介します。リンク先はAmazon.co.jpです。</p>
+          <p><span class="tag pr">PR</span> <span style="font-size:13px;color:var(--dim)">本ページの商品リンクはAmazonアソシエイト・リンクです。</span></p>
+          <div class="shop-grid" id="shop-grid"></div>
+          <div class="note-box" style="margin-top:26px">
+            <p style="margin:0">当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。価格・在庫はリンク先のAmazon.co.jpでご確認ください。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 受験履歴 ================= -->
+      <section class="view" id="view-history" aria-labelledby="history-h1">
+        <div class="wrap">
+          <h1 class="page-title" id="history-h1">受験履歴</h1>
+          <p class="page-lead">この端末のブラウザ内に保存された受験履歴です。サーバーには送信・保存されていません。ブラウザのデータを消去すると、この履歴も消えます。</p>
+          <div id="history-stage"></div>
+          <div class="btn-row no-print">
+            <button type="button" class="btn ghost" id="history-clear">履歴をすべて消去する</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site">
+      <div class="footer-inner">
+        <nav aria-label="フッターメニュー">
+          <ul>
+            <li><a href="#/">トップ</a></li>
+            <li><a href="#/textbook/castle">お城検定 教科書</a></li>
+            <li><a href="#/textbook/shrine">神社検定 教科書</a></li>
+            <li><a href="#/exam/castle">お城検定 受験</a></li>
+            <li><a href="#/exam/shrine">神社検定 受験</a></li>
+            <li><a href="#/certificate">認定証・照合</a></li>
+            <li><a href="#/blog">城と神社のブログ</a></li>
+            <li><a href="#/events">イベント予定表</a></li>
+            <li><a href="#/shop">ショップ</a></li>
+          </ul>
+        </nav>
+        <p><strong>お城検定・神社検定について：</strong>本検定は独自教材にもとづく民間の認定であり、<strong>公的な資格ではありません</strong>。既存の公式検定とも関係のないオリジナルの検定です。認定証は本サイトの試験に合格したことを証するものです。</p>
+        <p>受験履歴・認定証のデータは、お使いの端末のブラウザ内（localStorage）にのみ保存され、サーバーへ送信・保存されることはありません。</p>
+        <p class="fine">当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。</p>
+        <p class="fine">お城検定・神社検定 検定委員会</p>
+      </div>
+    </footer>
+
+    <script>
+      "use strict";
+      /* ================================================================
+         データ：教科書・問題プール（space-11「お城検定・神社検定」の
+         オリジナル教材をそのまま引き継いだもの）
+         ================================================================ */
+      var EXAMS = {
+        castle: {
+          id: "castle",
+          title: "お城検定",
+          subtitle: "城郭の歴史と建築を学ぶ",
+          description: "天守・石垣・縄張から名城の歴史まで。日本の城郭文化を体系的に学び、全20問のプールから出題される10問に挑戦します。",
+          certPrefix: "SHIRO",
+          chapters: [
+            {
+              id: "c1", title: "第1章 城の成り立ちと種類", lead: "城は立地によって姿を変える",
+              body: [
+                "日本の城は、戦国時代に大きく発展しました。山の地形そのものを防御に使う「山城」、丘陵や台地に築く「平山城」、平地に築く「平城」が基本の分類です。海や湖に面し水運と防御を兼ねた「水城（海城）」もあります。",
+                "初期の山城は、敵の侵入を防ぐための土の城でした。土塁を盛り、空堀を掘り、斜面を削って「竪堀」や「横堀」を巡らせます。やがて石垣と瓦葺きの建物を持つ城が現れ、織田信長が築いた安土城（1576年築城開始）で、天守を持つ近世城郭の原型が生まれたとされます。",
+                "江戸時代に入ると城は軍事拠点であると同時に、藩政の中心・権威の象徴になりました。立地も山城から平山城・平城へと移り、城下町と一体で整備されるようになります。"
+              ],
+              points: ["山城・平山城・平城・水城の4分類が基本", "安土城が近世城郭の出発点", "城は防御施設から、政庁・権威の象徴へ変化した"]
+            },
+            {
+              id: "c2", title: "第2章 天守と櫓", lead: "城の顔であり、最後の砦",
+              body: [
+                "天守は城の中心にそびえる高層建築で、物見・指揮の場であると同時に、城主の権威を示す象徴でした。屋根の頂には、火除け・魔除けの願いを込めた「鯱（しゃちほこ）」が置かれます。",
+                "天守の形式には大きく「望楼型」と「層塔型」があります。望楼型は、入母屋造の建物の上に物見櫓を載せた初期の形式で、姫路城や犬山城が代表例です。層塔型は、下層から上層へ規則正しく逓減する形式で、松本城などが知られます。",
+                "大天守と小天守の組み合わせ方にも、渡櫓でつなぐ「連結式」、複数の天守を直接つなぐ「連立式」、単独で立つ「独立式」があります。姫路城は連立式の代表で、大天守と3つの小天守が渡櫓で結ばれています。",
+                "天守の脇を固めるのが「櫓（やぐら）」です。二重櫓・三重櫓が城壁の要所に置かれ、内部は武器庫や見張り台として使われました。"
+              ],
+              points: ["鯱は火除け・魔除けの飾り", "形式は望楼型と層塔型、天守の接続は連結式・連立式・独立式", "五重天守が現存するのは姫路城と松本城のみ"]
+            },
+            {
+              id: "c3", title: "第3章 石垣と縄張", lead: "城の骨格を読む",
+              body: [
+                "石垣の積み方は時代とともに進化しました。自然石をほぼそのまま積む「野面積み」、石の接合面を加工して隙間を減らす「打込み接ぎ」、石を整形して隙間なく積む「切込み接ぎ」の順に高度になります。",
+                "石垣の隅（角）の部分は、長方形の石を交互に積む「算木積み」で強度を高めます。また、上部になるほど勾配が急になり反り返る石垣は「武者返し」と呼ばれ、熊本城の二様の石垣が有名です。",
+                "城の設計図にあたるのが「縄張」です。中心の「本丸」を、二の丸・三の丸といった「曲輪（くるわ）」が取り囲み、水堀・空堀・土塁で守ります。出入口は「虎口」と呼ばれ、直進できないよう折れ曲がらせ、内部に四角い空間「枡形」を設けて敵を足止めする工夫がされました。"
+              ],
+              points: ["積み方の進化：野面積み→打込み接ぎ→切込み接ぎ", "隅角部は算木積み、上に反る石垣は武者返し", "虎口と枡形で敵の侵入を遅らせる"]
+            },
+            {
+              id: "c4", title: "第4章 名城を歩く", lead: "現存天守と国宝の城",
+              body: [
+                "江戸時代以前に建てられ、今も天守が残る「現存12天守」は、弘前城・松本城・丸岡城・犬山城・彦根城・姫路城・松江城・備中松山城・丸亀城・松山城・宇和島城・高知城です。このうち姫路城・松本城・犬山城・彦根城・松江城の5城の天守が国宝に指定されています。",
+                "姫路城は白漆喰の姿から「白鷺城」の別名を持ち、1993年に日本で初めてユネスコ世界文化遺産に登録された城のひとつです。松本城は黒い天守で「烏城」とも呼ばれ、戦国期の姿を残します。",
+                "熊本城は加藤清正が築いた名城で、2016年の熊本地震で大きな被害を受けましたが、復旧が進み天守閣は2021年に復旧を終えました。城は今も地域の象徴として生き続けています。"
+              ],
+              points: ["現存12天守、国宝は5城（姫路・松本・犬山・彦根・松江）", "姫路城＝白鷺城、世界文化遺産", "松本城＝烏城、熊本城は加藤清正の築城"]
+            },
+            {
+              id: "c5", title: "第5章 城攻めと城の終焉", lead: "城が役目を終えるまで",
+              body: [
+                "1615年、江戸幕府は「一国一城令」を出し、大名の居城以外の城を取り壊させました。さらに武家諸法度で城の新築・修築には幕府の許可が必要となり、城の数は大きく減ります。",
+                "明治に入ると1873年に「廃城令」が出され、多くの城が取り壊されました。存続した城も、陸軍の敷地として使われたり、払い下げられたりして姿を消していきます。",
+                "失われゆく城への惜しむ声から保存運動が起こり、国宝保存法などを経て、現在は文化財として守られる時代になりました。失われた天守も、資料をもとに外観を復元する「復元天守」や、内部まで木造で再建する「木造復元」の取り組みが各地で進んでいます。"
+              ],
+              points: ["1615年 一国一城令で城は整理された", "1873年 廃城令で多くの城が解体された", "現在は文化財として保存・復元の時代"]
+            }
+          ],
+          questions: [
+            { id: "cq1", question: "姫路城の別名として正しいものはどれか。", choices: ["烏城", "白鷺城", "鯱城", "鶴ヶ城"], answer: 1, explanation: "姫路城は白漆喰で塗り固められた姿が白鷺のようだとして「白鷺城」と呼ばれます。烏城は松本城（岡山城も）です。", chapter: "c4" },
+            { id: "cq2", question: "天守の屋根に置かれる、火除け・魔除けの飾りはどれか。", choices: ["鯱", "鬼瓦", "懸魚", "鴟尾"], answer: 0, explanation: "鯱（しゃちほこ）は想像上の生き物で、水を吹いて火を消すと信じられ、天守の守りとして屋根の両端に置かれました。", chapter: "c2" },
+            { id: "cq3", question: "自然石をほぼそのまま積み上げる、最も古い石垣の技法はどれか。", choices: ["切込み接ぎ", "打込み接ぎ", "野面積み", "算木積み"], answer: 2, explanation: "野面積みは加工の少ない自然石を積む技法です。時代が下ると打込み接ぎ、切込み接ぎへと精密になっていきます。", chapter: "c3" },
+            { id: "cq4", question: "石垣の隅（角）の部分を、長方形の石を交互に積んで強くする技法はどれか。", choices: ["武者返し", "算木積み", "布積み", "乱積み"], answer: 1, explanation: "算木積みは石垣の出隅に長短の石を交互に組み、荷重に強い角を作る技法です。", chapter: "c3" },
+            { id: "cq5", question: "熊本城の石垣で知られ、上部ほど反り返って登りにくくした形状を何というか。", choices: ["扇の勾配", "武者返し", "忍び返し", "石落とし"], answer: 1, explanation: "武者返しは、上に行くほど勾配が急になり反り返る石垣で、武者がよじ登っても返されてしまうことに由来します。", chapter: "c3" },
+            { id: "cq6", question: "城の出入口を何というか。", choices: ["曲輪", "虎口", "馬出", "井楼"], answer: 1, explanation: "虎口（こぐち）は城の出入口のこと。敵が直進できないよう折れ曲がった構造にされることが多く、枡形と組み合わせて守りを固めました。", chapter: "c3" },
+            { id: "cq7", question: "城の中核となる区画を何というか。", choices: ["二の丸", "三の丸", "本丸", "西の丸"], answer: 2, explanation: "本丸は城の中心の曲輪で、天守や城主の御殿が置かれる最も重要な区画です。", chapter: "c3" },
+            { id: "cq8", question: "天守の形式のうち、入母屋造の建物上に物見櫓を載せた初期の形式はどれか。", choices: ["層塔型", "望楼型", "独立式", "連立式"], answer: 1, explanation: "望楼型は古い形式で、姫路城・犬山城の天守が代表例です。規則正しく逓減する形式は層塔型と呼ばれます。", chapter: "c2" },
+            { id: "cq9", question: "現存12天守のうち、天守が国宝に指定されている城の組み合わせとして正しいものはどれか。", choices: ["姫路城・松本城・犬山城・彦根城・松江城", "姫路城・松本城・熊本城・名古屋城・大坂城", "松本城・犬山城・弘前城・丸亀城・高知城", "彦根城・松江城・宇和島城・丸岡城・備中松山城"], answer: 0, explanation: "国宝天守は姫路・松本・犬山・彦根・松江の5城です。熊本城や名古屋城の天守は現存天守ではありません。", chapter: "c4" },
+            { id: "cq10", question: "五重の天守が現存する城はどれか。", choices: ["姫路城と松本城", "姫路城と熊本城", "松本城と彦根城", "犬山城と松江城"], answer: 0, explanation: "五重天守が江戸時代から残るのは姫路城と松本城の2城のみです。", chapter: "c4" },
+            { id: "cq11", question: "黒い外観の天守を持ち「烏城」とも呼ばれる城はどれか。", choices: ["姫路城", "松本城", "犬山城", "松山城"], answer: 1, explanation: "松本城の天守は黒漆塗りの下見板で覆われ、「烏城（からすじょう）」の別名を持ちます。", chapter: "c4" },
+            { id: "cq12", question: "天守を持つ近世城郭の出発点とされ、織田信長が築いた城はどれか。", choices: ["岐阜城", "清洲城", "安土城", "二条城"], answer: 2, explanation: "安土城は1576年から築かれ、五重の天守を持つ画期的な城でした。信長の死後まもなく焼失しています。", chapter: "c1" },
+            { id: "cq13", question: "大名の居城以外の城の破却を命じた、1615年の幕府の法令はどれか。", choices: ["廃城令", "一国一城令", "刀狩令", "禁中並公家諸法度"], answer: 1, explanation: "一国一城令により、各藩では居城ひとつを残して支城などが取り壊され、城の数は大きく減りました。", chapter: "c5" },
+            { id: "cq14", question: "1873年に出され、多くの城が取り壊される原因となった明治政府の法令はどれか。", choices: ["廃城令", "廃刀令", "地租改正", "太政官布告"], answer: 0, explanation: "廃城令では全国の城の存廃が決められ、存城以外は解体・払い下げの対象となりました。", chapter: "c5" },
+            { id: "cq15", question: "平地に築かれた城の分類はどれか。", choices: ["山城", "平山城", "平城", "水城"], answer: 2, explanation: "平城は平地に築かれる城で、江戸時代の城下町の中心として整備されました。堀や石垣で防御を補います。", chapter: "c1" },
+            { id: "cq16", question: "山の斜面を縦方向に掘って、敵の横への移動を妨げる堀はどれか。", choices: ["横堀", "竪堀", "水堀", "空堀"], answer: 1, explanation: "竪堀は斜面の等高線に直交して縦に掘られた堀で、敵が斜面を横移動して迂回するのを妨げます。", chapter: "c1" },
+            { id: "cq17", question: "門の内側に設けられた四角い空間で、入ってきた敵を周囲から攻撃できる仕掛けはどれか。", choices: ["枡形", "馬出", "石落とし", "狭間"], answer: 0, explanation: "枡形は門の内外に設けた方形の広場で、侵入した敵を足止めし、四方から攻撃できる構造になっています。", chapter: "c3" },
+            { id: "cq18", question: "熊本城を築いた大名は誰か。", choices: ["黒田官兵衛", "藤堂高虎", "加藤清正", "小早川隆景"], answer: 2, explanation: "熊本城は築城の名手とされる加藤清正によって慶長年間に築かれ、難攻不落の城として知られます。", chapter: "c4" },
+            { id: "cq19", question: "「日本100名城」を選定した団体はどれか。", choices: ["文化庁", "日本城郭協会", "国土交通省", "日本観光協会"], answer: 1, explanation: "日本100名城は日本城郭協会が2006年に選定したもので、続日本100名城と合わせて200城が選ばれています。", chapter: "c4" },
+            { id: "cq20", question: "姫路城がユネスコ世界文化遺産に登録された年はどれか。", choices: ["1973年", "1983年", "1993年", "2003年"], answer: 2, explanation: "姫路城は1993年に法隆寺とともに、日本で初めて世界文化遺産に登録されました。", chapter: "c4" }
+          ]
+        },
+        shrine: {
+          id: "shrine",
+          title: "神社検定",
+          subtitle: "神社の建築と祭りを学ぶ",
+          description: "社殿建築・境内の歩き方・祭りと神事まで。神社の文化を体系的に学び、全20問のプールから出題される10問に挑戦します。",
+          certPrefix: "JINJA",
+          chapters: [
+            {
+              id: "s1", title: "第1章 神社と神道の基礎", lead: "神をまつる場の成り立ち",
+              body: [
+                "神道は日本の風土の中で育まれた信仰で、山・川・岩・木などの自然や、祖先の霊などを神としてまつります。神の数は無数にあることから「八百万（やおよろず）の神」と表現されます。",
+                "神社は神をまつる施設で、全国におよそ8万社あるとされます。多くの神社は神社本庁の包括下にありますが、伊勢神宮のように独立した存在もあります。古代に朝廷から「式内社」として認められた神社は、格式の高い神社として今も知られます。",
+                "神が宿る対象は「御神体（ごしんたい）」と呼ばれ、鏡・剣などのほか、奈良県の大神神社のように三輪山そのものを御神体とし、本殿を持たない神社もあります。地域の守り神は「氏神」、その地域に住む人々は「氏子」と呼ばれます。"
+              ],
+              points: ["全国の神社はおよそ8万社", "御神体は物とは限らず、山そのものの場合もある", "地域の守り神は氏神、住民は氏子"]
+            },
+            {
+              id: "s2", title: "第2章 社殿建築", lead: "古代の穀倉から生まれた形",
+              body: [
+                "本殿の建築様式は、古代の穀倉や宮殿の形を受けるものが多いとされます。代表的な様式が「神明造」で、伊勢神宮の社殿がその典型です。切妻造の屋根に「千木（ちぎ）」と「堅魚木（かつおぎ）」を備える素朴で力強い形が特徴です。",
+                "出雲大社の「大社造」は、古代の宮殿建築の姿を伝えるとされる最古級の様式のひとつで、本殿は高床で、入り口が妻側にあるのが特徴です。「流造」は全国の神社で最も広く見られる様式で、屋根の前面が長く伸びて向拝を覆います。",
+                "八幡神社に多い「八幡造」は前殿と後殿を並べた複合的な構造、東照宮で知られる「権現造」は本殿と拝殿を石の間でつなぐ豪華な様式です。屋根材には茅葺・檜皮葺・銅板葺などがあり、地域や格式で異なります。"
+              ],
+              points: ["神明造＝伊勢神宮、大社造＝出雲大社", "最も広く見られるのは流造", "千木と堅魚木は本殿屋根の目印"]
+            },
+            {
+              id: "s3", title: "第3章 境内の歩き方", lead: "鳥居から本殿へ",
+              body: [
+                "神社の入口に立つ「鳥居」は、神の領域と人の世界との境界を示します。上の横木を「笠木」、その下の横木を「島木」、さらに下を通る横木を「貫（ぬき）」と呼びます。形には、笠木が直線的な神明系と、反りのある明神系などの系統があります。",
+                "鳥居をくぐって本殿へ向かう道が「参道」です。参道の中央は神が通る「正中」とされるため、少し端を歩くのが作法とされます。参道の脇には石灯籠、そして本殿の前には口を開けた「阿形」と口を閉じた「吽形」の一対の「狛犬」が置かれます。",
+                "参拝の前には「手水舎」で手と口を清めます。作法は、右手で柄杓を持ち左手を清め、柄杓を持ち替えて右手を清め、左手に水を受けて口をすすぎ、最後に柄杓を立てて柄を清めます。本殿前では、賽銭を入れて鈴を鳴らし、二礼二拍手一礼で拝礼するのが一般的な作法です。"
+              ],
+              points: ["鳥居の上部は笠木・島木、横木は貫", "狛犬は阿形（口を開く）と吽形（口を閉じる）の一対", "拝礼は二礼二拍手一礼、手水は左手から清める"]
+            },
+            {
+              id: "s4", title: "第4章 祭りと神事", lead: "神を迎え、もてなす行事",
+              body: [
+                "神社の祭りは、年に一度の最も重要な祭典「例祭（例大祭）」を中心に、稲作の周期に合わせた祈年祭・新嘗祭など、季節ごとに営まれます。神輿が氏子の町を練り歩く行事は「神幸祭（渡御）」と呼ばれます。",
+                "日本三大祭として知られるのは、京都の祇園祭、大阪の天神祭、東京の神田祭です。いずれも千年近い歴史を持ち、多くの人でにぎわう都市祭礼です。",
+                "伊勢神宮では、20年に一度、社殿を新しく造り替えて神を遷す「式年遷宮」が1300年近くにわたって続けられてきました。技術と伝統を次世代へ伝える意味も持つ、神宮最大の神事です。"
+              ],
+              points: ["最も重要な祭典は例祭、神輿の巡行は神幸祭", "三大祭は祇園祭・天神祭・神田祭", "伊勢神宮の式年遷宮は20年に一度"]
+            },
+            {
+              id: "s5", title: "第5章 全国の著名な神社", lead: "知っておきたい代表社",
+              body: [
+                "三重県の伊勢神宮は、天照大御神をまつる内宮と、豊受大御神をまつる外宮を中心とする神社の最高峰で、「お伊勢さん」と親しまれます。島根県の出雲大社は大国主大神をまつり、旧暦10月は全国の神が出雲に集まることから、出雲地方では「神在月」と呼びます。",
+                "広島県の厳島神社は海上に社殿が建つことで知られ、世界文化遺産に登録されています。京都の伏見稲荷大社は全国の稲荷神社の総本宮で、千本鳥居が連なる参道が見どころです。",
+                "大分県の宇佐神宮は全国の八幡神社の総本宮、奈良の春日大社は藤原氏の氏神で、境内の鹿は神の使い「神鹿」として大切にされています。茨城の鹿島神宮と千葉の香取神宮は、古くから東国の守りとして並び称される古社です。"
+              ],
+              points: ["伊勢神宮＝内宮・外宮、「お伊勢さん」", "出雲は神在月、厳島神社は海上の社殿で世界遺産", "八幡の総本宮は宇佐神宮、稲荷の総本宮は伏見稲荷大社"]
+            }
+          ],
+          questions: [
+            { id: "sq1", question: "伊勢神宮の式年遷宮は、何年に一度行われるか。", choices: ["10年", "20年", "33年", "60年"], answer: 1, explanation: "式年遷宮は20年に一度、社殿を造り替えて御神体を新宮へ遷す神事で、奈良時代末から1300年近く続いています。", chapter: "s4" },
+            { id: "sq2", question: "伊勢神宮の内宮にまつられる祭神はどれか。", choices: ["大国主大神", "天照大御神", "豊受大御神", "宇迦之御魂大神"], answer: 1, explanation: "内宮の祭神は皇室の祖神とされる天照大御神です。豊受大御神は外宮の祭神です。", chapter: "s5" },
+            { id: "sq3", question: "出雲大社の祭神はどれか。", choices: ["大国主大神", "少彦名神", "建御名方神", "天之御中主神"], answer: 0, explanation: "出雲大社の祭神は、国造りの神として知られる大国主大神です。", chapter: "s5" },
+            { id: "sq4", question: "鳥居の一番上の横木を何というか。", choices: ["貫", "島木", "笠木", "額束"], answer: 2, explanation: "鳥居の最上部の横木が笠木、その下の台が島木、柱を貫く横木が貫です。", chapter: "s3" },
+            { id: "sq5", question: "狛犬の一対のうち、口を開いたものを何というか。", choices: ["吽形", "阿形", "仁王形", "獅子形"], answer: 1, explanation: "口を開いた「阿形」と閉じた「吽形」で一対となり、「阿吽」は物事の始めと終わりを表すとされます。", chapter: "s3" },
+            { id: "sq6", question: "手水の作法で、最初に清めるのはどちらか。", choices: ["右手", "左手", "両手同時", "口"], answer: 1, explanation: "右手で柄杓を持ち、まず左手を清め、次に持ち替えて右手を清めるのが作法です。", chapter: "s3" },
+            { id: "sq7", question: "一般的な神社参拝の拝礼作法はどれか。", choices: ["一礼一拍手一礼", "二礼二拍手一礼", "二礼三拍手一礼", "三礼二拍手一礼"], answer: 1, explanation: "二礼二拍手一礼が一般的な作法です。出雲大社など四拍手で拝礼する神社もあります。", chapter: "s3" },
+            { id: "sq8", question: "注連縄に下げられる、白い稲妻形の紙を何というか。", choices: ["紙垂", "幣", "玉串", "神札"], answer: 0, explanation: "紙垂（しで）は神聖な場を示す飾りで、注連縄や玉串、神楽鈴などに付けられます。", chapter: "s3" },
+            { id: "sq9", question: "厳島神社の祭神として正しいものはどれか。", choices: ["宗像三女神", "木花之佐久夜毘売", "磐長姫命", "天宇受売命"], answer: 0, explanation: "厳島神社は市杵島姫命をはじめとする宗像三女神をまつり、海の神として信仰されてきました。", chapter: "s5" },
+            { id: "sq10", question: "伏見稲荷大社の主祭神はどれか。", choices: ["保食神", "宇迦之御魂大神", "大宮能売大神", "豊宇気毘売神"], answer: 1, explanation: "稲荷大神の中心は宇迦之御魂大神で、稲・食物・豊穣の神としてまつられます。", chapter: "s5" },
+            { id: "sq11", question: "神明造の代表的な神社はどれか。", choices: ["出雲大社", "伊勢神宮", "日光東照宮", "厳島神社"], answer: 1, explanation: "伊勢神宮の本殿は神明造の代表例です。出雲大社は大社造、日光東照宮は権現造です。", chapter: "s2" },
+            { id: "sq12", question: "本殿の屋根に付く装飾として正しい組み合わせはどれか。", choices: ["千木と堅魚木", "鯱と鬼瓦", "懸魚と虹梁", "高欄と擬宝珠"], answer: 0, explanation: "千木は屋根の両端で交差する部材、堅魚木は棟の上に並ぶ部材で、神明造や大社造の目印です。", chapter: "s2" },
+            { id: "sq13", question: "全国の八幡神社の総本宮はどれか。", choices: ["鶴岡八幡宮", "石清水八幡宮", "宇佐神宮", "筥崎宮"], answer: 2, explanation: "大分県の宇佐神宮は全国およそ4万社といわれる八幡神社の総本宮です。", chapter: "s5" },
+            { id: "sq14", question: "春日大社で、神の使いとして大切にされている動物はどれか。", choices: ["鶴", "鹿", "亀", "狐"], answer: 1, explanation: "春日大社の神は白い鹿に乗って来たと伝えられ、奈良の鹿は「神鹿」として古くから保護されてきました。", chapter: "s5" },
+            { id: "sq15", question: "三輪山そのものを御神体とし、本殿を持たない神社はどれか。", choices: ["大神神社", "石上神宮", "大和神社", "橿原神宮"], answer: 0, explanation: "奈良県の大神神社は拝殿から三輪山を拝む古代の信仰の形を残し、本殿を持ちません。", chapter: "s1" },
+            { id: "sq16", question: "神輿が氏子の地域を巡行する行事を何というか。", choices: ["神迎祭", "神幸祭", "鎮火祭", "御田植祭"], answer: 1, explanation: "神幸祭（渡御）は、神霊を神輿に遷して地域を巡る行事で、祭りの華やかな場面です。", chapter: "s4" },
+            { id: "sq17", question: "日本三大祭の組み合わせとして正しいものはどれか。", choices: ["祇園祭・天神祭・神田祭", "祇園祭・葵祭・時代祭", "天神祭・三社祭・山王祭", "神田祭・祇園祭・青森ねぶた祭"], answer: 0, explanation: "京都の祇園祭、大阪の天神祭、東京の神田祭が日本三大祭とされます。", chapter: "s4" },
+            { id: "sq18", question: "神社の責任者である神職の役職はどれか。", choices: ["住職", "宮司", "神主頭", "社家"], answer: 1, explanation: "宮司は一社における最高責任者の神職です。なお「住職」は寺院の役職です。", chapter: "s1" },
+            { id: "sq19", question: "出雲地方で、全国の神が集まるとされる旧暦10月を何というか。", choices: ["神無月", "神在月", "神迎月", "神帰月"], answer: 1, explanation: "他の地方では「神無月」と呼ぶ旧暦10月を、出雲では神々が集まるため「神在月」と呼びます。", chapter: "s5" },
+            { id: "sq20", question: "神社で最も重要な年間の祭典はどれか。", choices: ["歳旦祭", "例祭", "月次祭", "新嘗祭"], answer: 1, explanation: "例祭（例大祭）はその神社に縁の深い日に行われる、最も重要な祭典です。", chapter: "s4" }
+          ]
+        }
+      };
+
+      var GRADES = ["3級", "2級", "1級"];
+      var EXAM_QUESTION_COUNT = 10;
+      var PASS_LINE = 7;
+      var AFFILIATE_TAG = "cat22202-22";
+      var AFFILIATE_DISCLOSURE =
+        "当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。価格・在庫はリンク先でご確認ください。";
+
+      var PRODUCTS = [
+        { id: "zukan-nyumon", image: "assets/book-zukan.svg", title: "ゼロから分かる！ 図解日本の城入門", author: "小和田泰経", category: "入門書", description: "縄張・堀と石垣・天守のしくみまで、イラストでやさしく解説。城めぐり初心者が最初に持つ一冊として、検定の教科書と合わせて読むのにおすすめです。", baseUrl: "https://www.amazon.co.jp/dp/4418262156/ref=as_li_ss_tl", priceNote: "価格はAmazonでご確認ください" },
+        { id: "hyakumeijo", image: "assets/book-hyakumeijo.svg", title: "日本100名城に行こう 公式スタンプ帳つき", author: "公益財団法人 日本城郭協会", category: "ガイド・スタンプ帳", description: "日本100名城の公式ガイドブック。1城1ページで見どころを解説し、巻末がそのまま公式スタンプ帳になります。スタンプラリーを始めるならまずこの一冊。", baseUrl: "https://www.amazon.co.jp/dp/4651201148/ref=cm_sw_r_ffobk_cso_cp_apin_dp_913B5QHCZFQBMKWCXX17_1", priceNote: "価格はAmazonでご確認ください" },
+        { id: "hyakumeijo-zoku", image: "assets/book-hyakumeijo-zoku.svg", title: "日本100名城と続日本100名城に行こう 公式スタンプ帳つき", author: "公益財団法人 日本城郭協会", category: "ガイド・スタンプ帳", description: "100名城と続100名城、あわせて200城を一冊に収録した合本版。すでに100名城を巡り始めた人が、続編までまとめて持ち歩きたいときに便利です。", baseUrl: "https://www.amazon.co.jp/dp/4651200575/ref=cm_sw_r_ffobk_cso_cp_apin_dp_SS80DWZCNMR7XQENZZQ8", priceNote: "価格はAmazonでご確認ください" },
+        { id: "meijo37", image: "assets/book-meijo37.svg", title: "城好き気象予報士とめぐる名城37 天気が変えた戦国・近世の城", author: "久保井朝美", category: "読み物", description: "気象予報士の視点で37の名城をめぐる一冊。天気や気候が築城や戦にどう影響したかという切り口が新鮮で、城を見る目が変わります。", baseUrl: "https://www.amazon.co.jp/dp/4569856497/ref=cm_sw_r_mwn_dp_J24MZFF683RX4QJYBHEW", priceNote: "価格はAmazonでご確認ください" },
+        { id: "tsuchi-no-shiro", image: "assets/book-tsuchi.svg", title: "土の城指南", author: "西股総生", category: "専門書", description: "石垣の城だけでなく、土塁と堀で守る中世の「土の城」の歩き方を指南。縄張図の読み方や城跡の見方が身につき、山城歩きがぐっと深くなります。", baseUrl: "https://www.amazon.co.jp/dp/B00T7J493Y", priceNote: "Kindle版あり／価格はAmazonでご確認ください" },
+        { id: "sugoi-meijo50", image: "assets/book-meijo50.svg", title: "行った気になる！すごい名城 日本の城50", author: "香川元太郎・小和田哲男", category: "ビジュアルガイド", description: "日本各地から50の名城を、大迫力の写真と精密イラストで解説。次の城めぐりの行き先選びにも、自宅で眺めて楽しむ画報としても使えます。", baseUrl: "https://www.amazon.co.jp/dp/B0FJQS2D8V", priceNote: "Kindle版あり／価格はAmazonでご確認ください" }
+      ];
+
+      var BLOG_POSTS = [
+        {
+          slug: "osaka-castle-juyo-bunkazai-news", title: "【ニュース】大阪城天守閣が国の重要文化財に ― 文化審議会が答申",
+          excerpt: "2026年10月16日、国の文化審議会が大阪城天守閣を含む8件の建造物を新たに重要文化財に指定するよう文部科学大臣に答申しました。市民の寄附で建てられた復興天守の歩みと、検定の学習ポイントを整理します。",
+          category: "ニュース", castleName: "大阪城", productIds: ["sugoi-meijo50", "hyakumeijo"], date: "2026-10-27", relatedSlug: "osaka-castle-history",
+          body: [
+            "城と神社にまつわる新しい動きをお伝えする、ニュース記事の第1回です。出典は文化庁・大阪市の発表（2026年10月16日）です。2026年10月16日、国の文化審議会は、大阪城天守閣を含む8件の建造物を新たに重要文化財に指定するよう、文部科学大臣に答申しました。正式な指定は、このあとの官報告示をもって決まります。",
+            "【今回の答申で何が決まったのか】文化財の重要文化財への指定は、文化審議会が調査・審議を行い、文部科学大臣へ答申する、という手順で進みます。今回の答申は、その手続きが大阪城天守閣について進んだことを示すものです。ただし、答申の時点ではまだ正式な指定ではなく、官報に告示されてはじめて重要文化財となります。ニュースを読むときは「答申＝指定が内定した段階」「告示＝正式な指定」という区別を押さえておくと、報道の受け取り方が正確になります。",
+            "【いまの天守は、市民の寄附で建てられた復興天守】現在の大阪城天守閣は、1931年（昭和6年）に市民の寄附によって建てられた、鉄骨鉄筋コンクリート造の建物です。外観は5重、内部は8階という構造で、豊臣期の天守の姿を、屏風や文書の調査研究をもとに再現したものとされます。戦前に再建された天守の中でも本格的な復興として、「戦前唯一の本格的な復興天守」と位置づけられています。大阪城そのものの歴史――豊臣秀吉の築城から徳川幕府の再築、そして市民による復興までの流れは、このブログの「大阪城」の記事で詳しく紹介しています（記事末尾の関連リンクからどうぞ）。",
+            "【登録有形文化財、市指定を経て、国の重要文化財へ】大阪城天守閣は、これまでも文化財として段階を重ねてきました。1997年には国の登録有形文化財となり、2025年7月には大阪市の指定有形文化財となっています。今回の答申は、その次の段階として、国が指定する重要文化財への歩みが進んだことを意味します。建てられてからの年数だけでなく、市民の手で復興されたという経緯そのものが、文化財としての価値として評価されている点にも注目です。",
+            "【検定の学習ポイント】お城検定の教科書第4章・第5章と結びつくテーマです。第一に「復興天守と現存天守の違い」。現存天守は江戸時代以前に建てられ今に残る天守（現存12天守）で、大阪城の天守は戦後に先立つ1931年の再建であるため「復興天守」に分類されます。第二に「登録有形文化財と重要文化財の違い」。登録有形文化財は「登録」の制度で、届出を中心とした緩やかな保護のもとで活用を促す仕組み、重要文化財は「指定」の制度で、現状の変更に許可が要るなど、より手厚く厳格な保護を受ける仕組みです。同じ建物が登録から指定へ進むことがある、という今回の流れとあわせて整理しておきましょう。",
+            "正式な指定は官報告示の後となります。今後の動きがあれば、このブログでも続けてお伝えします。大阪城を訪れる機会があれば、天守を眺めるときに「市民が建てた復興天守」という物語を思い出してみてください。見え方が少し変わるはずです。"
+          ]
+        },
+        {
+          slug: "shuri-seiden-reopening-news", title: "首里城正殿、11月23日から一般公開へ――2019年の火災からの復元が大詰め",
+          excerpt: "2026年10月25日、毎日新聞が報じました。那覇市の首里城では、2019年の火災で全焼した正殿の復元工事が大詰めを迎え、11月23日から一般公開されます。琉球王国の中心だった城の歩みと、検定の学習ポイントを整理します。",
+          category: "ニュース", castleName: "首里城", productIds: ["hyakumeijo", "hyakumeijo-zoku"], date: "2026-10-27", relatedSlug: "kumamoto-fukko",
+          body: [
+            "城と神社にまつわる新しい動きをお伝えするニュース記事です。出典は毎日新聞（2026年10月25日）です。那覇市の首里城では、2022年に始まった正殿の復元工事がまもなく完了し、11月23日から一般公開されることになりました。2019年の火災で失われた正殿が、ふたたび人々の前に姿を現します。",
+            "【2019年の火災と、再建を繰り返してきた城】首里城では2019年10月31日に火災が発生し、正殿など7棟が全焼しました。ただ、首里城の建物が火災で失われるのは、歴史上初めてのことではありません。琉球王国時代にも3度の火災があり、そのたびに再建されてきました。さらに第二次世界大戦では、1945年に米軍の攻撃を受けて壊滅しています。戦後、跡地に建てられた琉球大学の移転を機に復元を望む声が上がり、1992年に正殿が完成しました。今回の復元と一般公開は、この「失われては建て直されてきた」長い歩みの最新の1ページです。",
+            "【琉球王国の政治と外交の中心】首里城は、約450年続いた琉球王国の国王らが住み、政治や宗教儀式の中心だった場所です。王国は朝貢貿易で中国の明や清と結びついており、首里城はその使者を歓待するなど外交の拠点でもありました。1879年の「琉球処分」により琉球王国は日本の一部に併合されて沖縄県になり、国王も首里城から退去させられました。日本の城郭の中でも、国王の宮殿であり外交の舞台でもあった点が、首里城の大きな個性です。",
+            "【新しい知見と「見せる復興」】今回の復元は、基本的な設計は踏襲しつつ、後の研究で判明した新たな知見も加えられているのが特徴です。外壁などの塗料は「久志間切弁柄」という天然由来の顔料であることが明らかになり、前回の復元に比べ深みのある赤になりました。また、県民や観光客の関心を高めるため、「見せる復興」をテーマに工事現場に見学エリアを設けたことも特徴です。沖縄県によると、これまでに60億円以上の寄付金が集まり、約43億円が復元費用の一部に充てられました。残りは、これから始まる北殿や南殿などの復元工事や、伝統的な建築技術を受け継ぐ人材の育成などに活用されるということです。",
+            "【検定の学習ポイント】お城検定の学習と結びつくテーマです。第一に「琉球王国と首里城の役割」。首里城は国王の居城であると同時に、政治・宗教儀式・外交の中心でした。第二に「復元における新知見の反映」。復元は単なる再現ではなく、研究の進展で分かったことを取り入れて精度を高めていく営みでもあります。第三に「『見せる復興』の意味」。工事の過程そのものを公開することで関心をつなぎ、寄付や人材育成へと広げていく考え方として押さえておきましょう。",
+            "正殿の一般公開は11月23日からです。首里城を訪れる機会があれば、深みのある赤の外壁を眺めながら、火災と再建を繰り返してきたこの城の歩みに思いを向けてみてください。"
+          ]
+        },
+        {
+          slug: "maruoka-tenshu-repair-live-news", title: "丸岡城、天守保存修理の現場をライブ中継で公開――説明会に約90人",
+          excerpt: "2026年10月26日、中日新聞が報じました。福井県坂井市の丸岡城で天守保存修理工事の説明会が開かれ、工事幕の内側の現場がライブ中継で公開されました。現存天守の保存修理と、検定の学習ポイントを整理します。",
+          category: "ニュース", castleName: "丸岡城", productIds: ["hyakumeijo", "sugoi-meijo50"], date: "2026-10-27", relatedSlug: "genzon-12-tabi",
+          body: [
+            "城と神社にまつわる新しい動きをお伝えするニュース記事です。出典は中日新聞（2026年10月26日）です。福井県坂井市の丸岡城で行われている天守保存修理工事の説明会が2026年10月24日に開かれ、工事現場の様子がライブ中継で公開されました。",
+            "【工事幕の内側をライブ中継で】説明会は、同市の丸岡城観光情報センター「丸岡城マチヨリマーケット」で開かれ、坂井市教育委員会が主催しました。参加者は、工事幕で囲われた内側の現場をライブ中継で見て、解体された屋根や壁の様子のほか、しゃちほこなどを見て工事の進み具合を確認しました。中継では、しっくい壁を解体した後の壁なども映し出されたということです。",
+            "【約90人が参加、立ち見も】説明会には約90人が参加し、ライブ中継は計3回開かれました。立ち見が出るほどの注目度の高さで、施工業者の現場主任が工事現場から中継し、参加者はセンター内のモニターに映し出された状況を確認しました。普段は見ることのできない修理途中の天守の姿が、多くの人の関心を集めたことがうかがえます。",
+            "【工期は2027年11月まで、耐震対策も】この保存修理工事の工期は、2026年3月から2027年11月までの予定です。屋根や壁などの経年劣化した場所の修理や、耐震対策などを行います。丸岡城の天守は、教科書でも学ぶ現存天守のひとつです。古い建物を長く守るためには、傷んだ部分を直し、地震への備えを加える工事が欠かせません。",
+            "【検定の学習ポイント】お城検定の教科書第4章・第5章と結びつくテーマです。第一に「現存天守の保存修理で何を直すのか」。屋根や壁など経年劣化した場所の修理が中心で、文化財としての姿を保ちながら手を入れることが原則です。第二に「工事中の公開の工夫」。幕で囲われて見えない現場をライブ中継で見せることで、工事期間中も人々の関心をつないでいます。第三に「耐震対策の意味」。地震の多い日本で歴史的な木造建築を守るには、劣化の修理とあわせて耐震への備えが欠かせない、という視点で整理しておきましょう。",
+            "工事は2027年11月まで続く予定です。修理を終えた天守が姿を現す日を待ちながら、こうした公開の機会を通じて「直されている今の丸岡城」にも目を向けてみてください。"
+          ]
+        },
+{
+slug: "itsukushima-heike", title: "厳島神社と海に浮かぶ社殿｜平清盛が愛した、朱の海上神殿",
+excerpt: "広島・宮島の厳島神社は、海そのものを境内とする神社です。宗像三女神をまつり、平清盛が整えたとされる社殿群と、海に立つ大鳥居の景観を解説します。",
+category: "神社めぐり", castleName: "厳島神社", productIds: ["sugoi-meijo50", "zukan-nyumon"], date: "2026-10-26",
+body: [
+"広島県廿日市市の宮島に鎮座する厳島神社は、海に浮かぶように建つ朱の社殿で知られます。島そのものが古くから神として崇められてきた場所で、社殿は陸ではなく海の上に築かれました。今回は、その独特な成り立ちをたどります。",
+"【宗像三女神をまつる】厳島神社の祭神は、市杵島姫命（いちきしまひめのみこと）・田心姫命（たごりひめのみこと）・湍津姫命（たぎつひめのみこと）の「宗像三女神」です。航海の安全を守る神として信仰され、海に社殿を構える意味とも結びつけて語られます。神社検定でも、厳島神社の祭神は基本知識です。",
+"【平清盛と社殿の整備】現在の社殿群の骨格は、平清盛がこの地を重んじて整えたものとされています。平安時代の寝殿造の趣を伝える本殿・拝殿・回廊が海上に展開する姿は、ほかの神社にはない景観です。本殿など多くの建物が国宝や重要文化財に指定され、1996年にはユネスコ世界文化遺産「厳島神社」として登録されました。",
+"【海に立つ大鳥居】厳島の象徴である大鳥居は、高さ約16メートルとされ、現在の鳥居は明治時代に再建されたものが受け継がれています。潮が満ちれば海に浮かび、引けば歩いてそばまで近づける――潮の満ち引きで景色が一変するのも厳島ならではの体験です。鳥居の扁額には「伊都岐島大明神」と書かれていることでも知られます。",
+"【検定の学習ポイント】神社検定の教科書第5章の名社の範囲です。「厳島神社の祭神は宗像三女神」「平清盛が社殿を整えたとされる」「世界文化遺産」の3点が要点です。海に建つ理由は「島自体を神として崇め、陸を傷つけないため」と説明されることもあわせて押さえておきましょう。",
+"厳島神社は、訪れる時間帯によってまったく違う表情を見せます。満潮と干潮、両方の姿を見比べられるよう、潮見表を確かめて出かけるのがおすすめです。"
+]
+},
+{
+slug: "kasuga-mantoro", title: "春日大社と万灯籠｜三千の燈籠に火が灯る、藤原氏の氏神",
+excerpt: "奈良の春日大社は、藤原氏の氏神をまつる神社です。本殿の春日造と、年2回・約3,000基の燈籠すべてに火が入る「万燈籠」の行事を紹介します。",
+category: "神社めぐり", castleName: "春日大社", productIds: ["hyakumeijo", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"奈良市の春日大社は、奈良時代に藤原氏の氏神として創建されたとされる神社です。朱塗りの回廊と、境内いっぱいに並ぶ石燈籠の景色で知られ、ユネスコ世界文化遺産「古都奈良の文化財」のひとつにもなっています。",
+"【藤原氏の氏神、四柱の神】春日大社の祭神は、武甕槌命（たけみかづちのみこと）・経津主命（ふつぬしのみこと）・天児屋根命（あめのこやねのみこと）・比売神（ひめがみ）の四柱で、あわせて春日四所明神と呼ばれます。藤原氏の隆盛とともに信仰を集め、およそ20年に一度の社殿の造り替え（式年造替）の伝統も受け継がれてきました。",
+"【本殿は春日造】春日大社の本殿は、国宝に指定された4棟の建物で、その形式は「春日造」と呼ばれます。建築様式の記事で触れたとおり、流造と並んで各地の神社に影響を与えた形式で、切妻の屋根を正面に長く差し掛ける姿が特徴です。神社検定の教科書第2章の範囲でもあります。",
+"【万燈籠の夜】春日大社には、奉納された石燈籠と釣燈籠があわせて約3,000基あるとされています。そのすべてに火を入れる行事が「万燈籠」で、節分の夜と8月の中元万燈籠の2回行われます。本殿の回廊に並ぶ釣燈籠の明かりと、参道の石燈籠の列は、千年以上続いてきた「灯り」の信仰のかたちです。",
+"【藤の花と鹿の社】藤原氏にちなみ、藤の花は春日大社の象徴です。境内の砂ずりの藤などが季節の見どころになります。また、神の使いとされる鹿は奈良公園一帯で大切に守られており、その由来は武甕槌命が白鹿に乗ってこの地に来たという伝承で語られます。",
+"【検定の学習ポイント】神社検定の教科書第2章・第5章にまたがるテーマです。「春日大社＝藤原氏の氏神」「本殿は春日造」「万燈籠は年2回」という3点を基本に、鹿が神の使いとされる伝承もあわせて覚えておきましょう。",
+"万燈籠の夜に訪れると、灯りの多さそのものが、長い歳月の祈りの積み重ねだと実感できます。日中の参拝とあわせて、機会があれば夜の行事にも足を運んでみてください。"
+]
+},
+{
+slug: "nikko-toshogu-chokoku", title: "日光東照宮の彫刻と眠り猫｜三猿・陽明門に見る権現造の粋",
+excerpt: "徳川家康をまつる日光東照宮。神厩舎の三猿、左甚五郎作と伝わる眠り猫、そして国宝・陽明門の彫刻群。権現造の社殿に込められた装飾の見どころを解説します。",
+category: "神社めぐり", castleName: "日光東照宮", productIds: ["meijo37", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"栃木県日光市の日光東照宮は、徳川家康を「東照大権現」としてまつる神社です。江戸時代初期に創建され、3代将軍・徳川家光の時代に現在の壮麗な社殿群へと造り替えられたとされています。1999年にはユネスコ世界文化遺産「日光の社寺」に登録されました。",
+"【本殿は権現造】東照宮の社殿は、本殿と拝殿を「石の間」でつなぐ「権現造」の代表例です。建築様式の記事でも取り上げたとおり、古い様式の簡素さとは対照的に、漆や極彩色、彫刻で飾り立てる江戸時代初期の様式美を見せます。家康を神としてまつる「東照宮」は、久能山や上野など各地にもありますが、日光はその中心です。",
+"【三猿は神厩舎にいます】「見ざる・言わざる・聞かざる」で知られる三猿の彫刻は、神厩舎（神馬をつなぐ厩）の長押にあります。猿の一生を描いた8面の彫刻のひとつで、子どもの時期を表す場面と説明されます。厩に猿の彫刻があるのは、馬を守る存在として猿が置かれてきた習わしによるものとされています。",
+"【眠り猫と想像の象】坂下門の上にある「眠り猫」は、名工・左甚五郎の作と伝えられる小さな彫刻です。その裏側には雀の彫刻があり、猫が眠るから雀も安心して遊べる、平和の象徴と解釈されることがあります。また、神楽殿の「想像の象」は、象を見たことのない職人が想像で彫ったと伝わる彫刻で、足の向きなどの不自然さがその証と語られます。",
+"【陽明門の彫刻群】国宝の陽明門は、500を超える彫刻で飾られ、「日暮の門（見ていて日が暮れる門）」の呼び名でも知られます。下から見上げると、柱のひとつに模様が上下逆さまになった「逆柱」があり、建物は未完成の状態にしておくことで災いを避ける、という考えで説明されることがあります。",
+"【検定の学習ポイント】神社検定の教科書第2章の権現造が中心です。「日光東照宮の祭神は徳川家康（東照大権現）」「三猿は神厩舎」「眠り猫は左甚五郎作と伝わる」の3点は定番の知識です。江戸城の記事とあわせて、徳川家と神社の関わりを整理しておきましょう。",
+"東照宮は、眺める距離で見えるものが変わる神社です。境内ではときどき足を止めて、彫刻の細部まで目を凝らしてみてください。"
+]
+},
+{
+slug: "dazaifu-tenmangu", title: "太宰府天満宮と学問の神様｜菅原道真をまつる天神さまの中心地",
+excerpt: "学問の神様として親しまれる菅原道真をまつる、福岡の太宰府天満宮。左遷と没後の天神信仰、飛梅の伝説、受験期の参拝で知られる「天神さま」の中心地を紹介します。",
+category: "神社めぐり", castleName: "太宰府天満宮", productIds: ["hyakumeijo", "hyakumeijo-zoku"], date: "2026-10-26",
+body: [
+"福岡県太宰府市の太宰府天満宮は、菅原道真をまつる神社です。全国の天満宮・天神社の中心のひとつとされ、学問の神様への参拝で一年を通じて受験生や学生でにぎわいます。",
+"【菅原道真と大宰府への左遷】菅原道真は、平安時代に学者・政治家として活躍し、右大臣にまで上った人物です。しかし政争に敗れ、延喜元年（901年）に大宰府へ左遷され、その2年後にこの地で没したとされています。没後に都で災いが相次いだことが、道真の霊をなだめ、やがて「天神」としてまつる信仰につながったと語られます。",
+"【天神信仰と学問の神様】道真が当代一の学者であったことから、天満宮の信仰は「学問の神様」として広がりました。一般に全国の天満宮の中心として、太宰府天満宮と京都の北野天満宮の名が挙げられます。太宰府の本殿は安土桃山時代に再建されたもので、重要文化財に指定されています。",
+"【飛梅と梅の社】道真が都を去るときに詠んだ歌で知られる「飛梅」は、道真を慕って一夜のうちに太宰府まで飛んできたという伝説の梅です。本殿前にはその伝承の梅が残り、境内には多くの梅が植えられ、早春には梅の名所として親しまれています。参道名物の「梅ヶ枝餅」も、道真にまつわる言い伝えで語られる菓子です。",
+"【受験シーズンの参拝】1月を中心に、合格を願う受験生と家族の参拝が続きます。絵馬には願いを書いた受験生の言葉が並び、太宰府の冬の風景になっています。学問は一夜にして成るものではない――道真の生き方は、学び続けることへの応援としても受け取られています。",
+"【検定の学習ポイント】神社検定の教科書第5章の範囲です。「太宰府天満宮の祭神は菅原道真」「天神信仰は学問の神として広がった」という基本を確認しておきましょう。人物が神としてまつられた例は、東照宮の家康とも並べて整理できます。",
+"太宰府へは、西鉄の太宰府駅から参道を歩く道のりも楽しみのひとつです。学問の神様に、日ごろの学びの報告を兼ねて参拝してみてください。"
+]
+},
+{
+slug: "matsuri-kihonteki", title: "神社の祭りの基礎知識｜例大祭・神輿・山車の役割を整理する",
+excerpt: "神社の祭りは、その神社にとって最重要な「例大祭」を頂点に、年間を通じて行われます。神輿や山車が町を巡る神幸祭の意味と、三大祭など祭りの基礎知識をまとめました。",
+category: "神社の知識", castleName: "", productIds: ["zukan-nyumon", "hyakumeijo"], date: "2026-10-26",
+body: [
+"神社の祭りというと、神輿の掛け声や屋台の並ぶ光景を思い浮かべる方が多いでしょう。ただ、祭りは単なるにぎわいではなく、神事の手順に沿って行われる年中行事の中心です。今回は、検定の学習にも役立つ祭りの基礎知識を整理します。",
+"【例大祭が、一年で最も重要な祭り】その神社に最も縁の深い日に行われる例祭（例大祭）は、年間の祭典の中で最も重要なものとされます。祭神の縁の日や、創建・遷座など神社の歴史に由来する日が選ばれることが多く、多くの場合、この例大祭がいわゆる「その神社のお祭り」です。検定の問題でも「最も重要な祭典は例祭」が定番です。",
+"【神輿と神幸祭の意味】神輿（みこし）は、祭りのときに神の霊を遷して戴く乗り物です。神輿が氏子の地域を巡行する行事を「神幸祭（渡御）」といいます。神が町に出て、氏子の暮らしを直接見守る――祭りの華やかさの中心には、こうした意味があります。神社検定の教科書第4章の要点です。",
+"【山車・山鉾という巡行のかたち】地域によっては、神輿とともに山車（だし）や山鉾が巡行します。京都・祇園祭の山鉾巡行は、豪華な懸装品で飾られた山と鉾が都大路を進む行事として知られます。神輿が「神を戴いて進む」のに対し、山車や山鉾はお囃子や人形飾りで祭りを彩る側面が強い、という違いとして整理できます。",
+"【三大祭と祭りの多様さ】日本三大祭として、京都の祇園祭・大阪の天神祭・東京の神田祭の名が挙げられます。祭りのあとには、神々と人々が食事を共にする意味を持つ「直会（なおらい）」が行われ、神事と宴がひと連なりになっているのも、祭りの大切な構造です。五穀豊穣を祈る祈年祭や、実りに感謝する新嘗祭など、稲作と結びついた祭りも年間行事の背骨になっています。",
+"【検定の学習ポイント】神社検定の教科書第4章の中心テーマです。「例祭は最も重要な祭典」「神輿の巡行は神幸祭（渡御）」「三大祭は祇園祭・天神祭・神田祭」という3点を、確実に押さえておきましょう。",
+"次のお祭りでは、神輿の巡行ルートや、担ぎ手の町内への注目してみてください。祭りの地図が、そのままその土地の氏子地域の地図だと気づくはずです。"
+]
+},
+{
+slug: "shichigosan-jinsei-girei", title: "七五三と人生の節目の参拝｜お宮参りから厄年まで、人生儀礼の歩き方",
+excerpt: "子どもの成長を祝う七五三は、人生の節目ごとに神社へ参拝する「人生儀礼」のひとつです。お宮参り・七五三・厄年・神前結婚式まで、参拝の節目を時代の意味とあわせて解説します。",
+category: "神社の知識", castleName: "", productIds: ["zukan-nyumon", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"晴れ着の子どもたちが千歳飴の袋を提げて歩く11月の境内。七五三は、日本の暮らしに深く根付いた参拝の行事です。今回は七五三を中心に、人生の節目に神社を訪れる「人生儀礼」の全体像を整理します。",
+"【七五三の由来と三つの祝い】七五三は、子どもの成長の節目を祝い、神に感謝と報告をする行事です。3歳の「髪置き」（髪を伸ばし始める）、5歳男児の「袴着」（初めて袴を着ける）、7歳女児の「帯解き」（帯を結ぶようになる）という、昔の成長の儀礼が組み合わさって形作られたとされています。祝いの時期は、一般に11月15日ごろとされます。",
+"【千歳飴と晴れ着の意味】七五三のお供えとして知られる千歳飴は、細く長い形に「長寿」の願いを込めた飴で、鶴亀などのめでたい絵柄の袋に入れて授かります。晴れ着で正装して参拝する姿そのものが、子どもの成長を神と家族に示す行事の中心にあります。",
+"【人生のはじまりの参拝――お宮参り】七五三より前の人生儀礼が、生まれて初めて氏神へ参る「お宮参り（初宮参り）」です。生後ひと月前後を目安に、子どもの誕生を報告し、健やかな成長を祈ります。13歳ごろの「十三参り」を節目にする地域もあります。厄払いも、年齢の節目にあわせて行われる代表的な参拝で、厄年には諸説ありますが、数え年の節目として広く案内されています。",
+"【大人になってからの節目】成人を祝う参拝、神前結婚式も、神社で行われる人生儀礼です。神前結婚式は、祭神の前に結婚を誓う儀式で、巫女の舞や三三九度など、日本の伝統的な婚礼の要素で構成されます。年齢を重ねた後の長寿の祝い（還暦・古希など）にあわせて参拝する人もいます。",
+"【検定の学習ポイント】神社検定の教科書第4章「祭りと神事」に関連する、暮らしの中の神社の姿です。「七五三は3歳・5歳・7歳の成長の祝い」「お宮参りは誕生の報告の参拝」という対比を整理し、人生儀礼は地域の氏神さまへの報告である、という視点を持っておきましょう。",
+"七五三の参拝は、子ども本人にとっては写真の中の思い出でもあります。家族の節目に地元の神社を訪れる習慣が、神社を暮らしの身近な存在にしてきました。"
+]
+},
+{
+slug: "chinju-no-mori", title: "鎮守の森と境内の自然｜御神木と社叢に残る、信仰と自然のかたち",
+excerpt: "神社のまわりの深い森は「鎮守の森」と呼ばれ、信仰によって守られてきたことで、都市の中にも豊かな自然が残りました。御神木や社叢、山そのものを拝む信仰を紹介します。",
+category: "神社の知識", castleName: "", productIds: ["tsuchi-no-shiro", "meijo37"], date: "2026-10-26",
+body: [
+"住宅地の中に、こんもりと深い緑が残っている場所があります。多くの場合、その中心には神社があります。今回は、神社の森――鎮守の森と、境内に残る自然の話です。",
+"【鎮守の森とは】神社を守るように広がる森を「鎮守の森」と呼びます。神の鎮まる場所として伐採を避けてきたため、開発の進んだ都市部でも、その土地本来の植生が残る貴重な空間になっています。植物学の分野では、社寺の森を「社叢（しゃそう）」と呼び、地域の自然を伝える手がかりとして研究の対象にもなっています。",
+"【御神木と注連縄】境内の中でひときわ大きな古木は「御神木」とされ、注連縄を巻いて神聖な木として守られます。樹齢数百年と伝わるクスノキやイチョウが、その神社の歴史そのものを物語る例も多くあります。木の大きさや形に、人々は神の宿る姿を見てきたのです。",
+"【自然そのものを拝む信仰】神社の中には、建物ではなく山や滝、岩そのものを御神体とするものがあります。奈良の大神神社は三輪山そのものを御神体とし本殿を持たないことで知られ、拝殿から山を拝む古い信仰の形を残しています。社殿が建てられる前から、自然への畏れが信仰の原点だったことを示す例です。",
+"【都市の自然としての価値】鎮守の森は、鳥や虫などの生き物のすみかとなり、地域の気温を穏やかにする働きもあると指摘されます。信仰が結果として自然保護の仕組みになっていた点は、鎮守の森が現代にも注目される理由です。参拝のついでに、足元の植物や聞こえる鳥の声に意識を向けてみると、境内の見え方が変わります。",
+"【検定の学習ポイント】神社検定の教科書第1章の自然信仰・古代の信仰と結びつくテーマです。「大神神社は三輪山を御神体とし、本殿を持たない」は試験でも問われます。鎮守の森は、神道の自然観を具体的に理解する入口として押さえておきましょう。",
+"次に神社を訪れたら、本殿だけでなく、境内の木々を一周眺めてみてください。その神社がどんな自然とともに生きてきたかが見えてきます。"
+]
+},
+{
+slug: "jinja-shakaku", title: "神社の社格と格式の話｜一宮・官幣大社から別表神社まで",
+excerpt: "神社には古くから「格式」の考え方があります。国ごとに最も格式が高いとされた一宮、明治以降の官国幣社の制度、そして現在の別表神社まで、社格の変遷を整理します。",
+category: "神社の知識", castleName: "", productIds: ["hyakumeijo-zoku", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"全国に約8万社あるとされる神社の中には、「一宮」「総本宮」といった言葉で格式を表される神社があります。今回は、神社の社格――格式の考え方が時代ごとにどう変わってきたかをたどります。",
+"【古代の社格と一宮】律令国家の時代、朝廷は全国の神社を神名帳に登録し、重要な神社には幣帛（へいはく）を奉る制度を整えました。やがて国ごと（旧国の単位）に、最も格式が高いとされる神社が「一宮」と呼ばれるようになり、次いで二宮・三宮と続く地域もありました。今も各地で「一宮」を名乗る神社が見られ、その土地の信仰の中心を示しています。",
+"【近代の官国幣社制度】明治時代になると、神社は国家の管理のもとで序列が整えられました。皇室から幣帛を受ける官幣社、国から受ける国幣社が置かれ、それぞれ大社・中社・小社の別がありました。さらに府県社・郷社・村社などの別も設けられ、地域の神社にも公的な格付けが及びました。この近代社格制度は、第二次世界大戦の終わりまで続きました。",
+"【戦後の別表神社という仕組み】戦後、神社は国家の管理を離れ、多くが神社本庁に加盟する宗教法人となりました。現在の神社本庁では、歴史や規模の点でとくに重要な神社が「別表神社」とされ、伊勢神宮を本宗として仰ぐ枠組みの中に位置づけられています。社格という言葉の意味合いは時代で変わり、今は序列というより、それぞれの神社の由緒を示すものとして理解されています。",
+"【総本宮・総本社という呼ばれ方】稲荷神社の伏見稲荷大社、天神社の太宰府天満宮や北野天満宮のように、同じ神をまつる神社の中心は「総本宮」「総本社」と呼ばれます。これは制度上の社格というより、信仰の広がりの中心を示す呼び方です。参拝のときに神社の由緒書きを読むと、こうした格式の手がかりが必ず記されています。",
+"【検定の学習ポイント】神社検定の教科書第1章・第5章の周辺知識です。「一宮は旧国ごとに最も格式が高いとされた神社」「近代には官幣社・国幣社の制度があった」という2点を基本として、現在は神社本庁の別表神社の仕組みに移っている流れまで整理しておきましょう。",
+"神社の格式は、格の高さを競うためのものではなく、その土地と神社の歴史の深さを表す目印です。由緒書きの一行に注目すると、参拝の味わいが増します。"
+]
+},
+{
+slug: "jinja-tabi-tanoshimi", title: "有名な神社をめぐる旅の楽しみ方｜伊勢・出雲・一宮めぐりの組み立て方",
+excerpt: "神社めぐりの旅は、行き先を決める段階から楽しめます。伊勢神宮や出雲大社のような名社への旅、一宮めぐりというテーマ旅、城と組み合わせる組み立て方を紹介します。",
+category: "神社めぐり", castleName: "", productIds: ["hyakumeijo", "hyakumeijo-zoku"], date: "2026-10-26",
+body: [
+"これまでこのブログでは、伊勢神宮・出雲大社・伏見稲荷大社・厳島神社・春日大社・日光東照宮・太宰府天満宮と、全国の有名な神社を取り上げてきました。今回は締めくくりとして、それらの神社を「旅」として巡る楽しみ方をまとめます。",
+"【テーマを決めると旅が絞れる】神社めぐりの旅は、テーマをひとつ決めると組み立てやすくなります。「建築様式を比べる旅」なら神明造の伊勢・大社造の出雲・権現造の日光を、「祭神で追う旅」なら天神さまの太宰府と北野を、という具合です。教科書で学んだ分類が、そのまま旅の設計図になります。",
+"【一宮めぐりという長く続く旅】旧国ごとに最も格式が高いとされた「一宮」を巡る旅も、根強い人気があります。地域の中心の神社を訪ねることは、その土地の歴史そのものに触れることです。100名城スタンプラリーの城めぐりと同様に、少しずつ、無理なく続けるのがコツです。二つのラリーを重ねると、旅の密度がぐっと上がります。",
+"【城と神社は、旅先で近い】城下町には大きな神社がそばにあることが多く、出雲大社と松江城、春日大社と奈良のまち歩き、太宰府天満宮と福岡の城跡など、城と神社を一日で巡れる組み合わせは全国にあります。このサイトの2つの検定の知識は、旅先でそのまま両方使えるのです。参道の店先で名物を味わう時間も、旅の大切な一部です。",
+"【旅の前に確かめること】神社の祭礼日や行事の日程は、公式の案内で確かめてから出かけましょう。例大祭の日は境内がにぎわう一方、神事の最中は公開範囲が限られる場合もあります。御朱印の受付時間や、写真撮影の可否も、神社ごとの案内に従うのが原則です。作法の記事と、参拝マナーの総まとめの記事を出発前に読み返しておくと安心です。",
+"【検定の学習ポイント】旅の実感は、検定の知識を定着させる最良の方法です。現地で見た社殿の様式、読んだ由緒書き、参加した祭りの印象は、問題文の中でも鮮明に思い出せます。学ぶ→旅する→また学ぶ、という循環が神社検定の上達法です。",
+"まずは近くの有名な神社ひとつから、テーマを決めた小さな旅に出てみてください。検定の勉強が、机の上だけのものではなくなります。"
+]
+},
+{
+slug: "sanpai-manner-matome", title: "参拝マナーの総まとめ｜服装・撮影・境内で気をつけること",
+excerpt: "これまでの参拝作法の記事を踏まえ、服装の考え方、写真撮影の注意、境内での振る舞いまで、参拝マナーを総まとめします。迷ったときの判断基準も整理しました。",
+category: "神社の知識", castleName: "", productIds: ["zukan-nyumon", "hyakumeijo"], date: "2026-10-26",
+body: [
+"参拝作法の基本は別の記事で手順を解説しました。今回はその実践編として、服装や撮影など、現地で迷いがちなポイントを総まとめします。作法の細部よりも「神前でどう振る舞うか」という全体の姿勢を整理します。",
+"【服装の考え方】普段の参拝に、決まった服装の決まりがあるわけではありません。ただし神に礼を尽くす場であるため、清潔感のある身だしなみが基本です。拝礼のときは帽子やサングラスを外すのが丁寧とされます。七五三や結婚式など、正式な参拝（正式参拝）では、正装でのぞむのが通例です。",
+"【写真撮影の注意】境内での撮影は、神社ごとに扱いが異なります。「撮影禁止」の表示がある場所では、表示に従うのが絶対です。本殿や拝殿の内部、神事や祭典の最中の撮影を禁じる神社は多くあります。また、他の参拝者が写り込む撮影や、参道の中央に長時間とどまる撮影は避けましょう。迷ったときは、社務所でひと言尋ねるのが確実です。",
+"【境内での振る舞い】参道の中央（正中）を避けて歩く、大きな声で騒がない、飲食は定められた場所で――といった配慮は、神聖な場所への敬意の表れです。神社によっては、ペットの同伴に制限がある場合や、手水舎の水の扱いに決まりがある場合もあります。境内の案内表示を読む習慣が、結果として一番のマナーになります。",
+"【お賽銭と拝礼の最終確認】お賽銭は投げずに静かに入れる、鈴は乱暴に鳴らさない、二礼二拍手一礼のあとは心を落ち着けて手を合わせる。お願いごとをする前に、住所と名前、心の中での感謝を先に伝える、という案内をする神社もあります。手順の正しさよりも、ひとつひとつの所作を丁寧に行うことが、参拝の本質です。",
+"【検定の学習ポイント】神社検定の教科書第3章「境内の歩き方と参拝作法」の総復習です。「正中を避けて歩く」「手水は左手から」「二礼二拍手一礼」の3点を軸に、服装・撮影は「神社ごとの案内に従う」という原則で整理しておきましょう。",
+"マナーの多くは、突き詰めれば「この場所を大切に思う気持ち」の表し方です。作法を覚えた上で、気持ちを込めて参拝する――それが総まとめの結論です。今回で神社の記事シリーズは一区切り。城の記事とあわせて、ブログの読み返しにもお役立てください。"
+]
+},
+{
+slug: "jinja-to-tera-no-chigai", title: "神社とお寺の違い｜鳥居と山門、参拝作法から見分けるポイント",
+excerpt: "神社は神道、お寺は仏教の施設。入口の鳥居や山門、参拝の作法、建物の名前など、現地で迷わないための見分け方を整理しました。神仏習合の歴史にも触れます。",
+category: "神社の知識", castleName: "", productIds: ["zukan-nyumon", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"神社検定のブログでは、今回から神社をテーマに取り上げます。学びの出発点として、まず「神社とお寺の違い」を整理しましょう。隣り合って建っていることも多い両者ですが、成り立ちも作法も大きく異なります。",
+"【まつる対象が違います】神社は神道の施設で、神をまつります。本殿に御神体を納め、参拝者は拝殿から拝礼します。一方のお寺は仏教の施設で、本堂に仏像をまつり、僧侶による修行や法要の場でもあります。責任者の呼び方も異なり、神社の神職の最高位は「宮司」、お寺の責任者は「住職」です。",
+"【入口と建物で見分ける】神社の入口の目印は鳥居で、境内には本殿・拝殿・社務所などが並びます。お墓は原則として神社にはありません。お寺の入口は山門で、本堂のほかに鐘楼や五重塔、墓地を備える寺も多くあります。地名や建物の名前が分からなくても、鳥居があるかどうかが最も分かりやすい手がかりです。",
+"【参拝作法の違い】神社では二礼二拍手一礼が一般的な作法で、柏手（手を打つ音）を神に届けます。お寺では拍手は打たず、胸の前で合掌して静かにお辞儀をするのが一般的とされています。お賽銭箱や鈴の有無も、見分けるヒントになります。",
+"【もとは一体だった神仏習合】長い歴史の中で、神と仏は一体のものとして信仰されてきました。これを神仏習合といいます。明治時代の神仏分離によって制度的に分けられたとされていますが、八幡神が菩薩の号を持つなど、その名残は今も各地の社寺に残っています。",
+"【検定の学習ポイント】神社検定の教科書第1章の範囲です。「宮司は神社、住職はお寺」という役職の対比は、試験でも問われる定番の知識です。見分け方の実感とあわせて覚えておきましょう。",
+"身近な神社とお寺を、違いを意識しながら見比べてみてください。城下町や門前町では城と社寺が近くに集まることも多いので、旅先では城めぐりと合わせて巡るのもおすすめです。下のおすすめ本は、城めぐりの参考にどうぞ。"
+]
+},
+{
+slug: "sanpai-saho-kihon", title: "参拝作法の基本｜手水の手順と二礼二拍手一礼を覚える",
+excerpt: "鳥居での一礼、参道の歩き方、手水の手順、そして二礼二拍手一礼まで。一般的な神社の参拝作法を、順番に沿って丁寧に解説します。",
+category: "神社の知識", castleName: "", productIds: ["zukan-nyumon", "hyakumeijo"], date: "2026-10-26",
+body: [
+"神社を訪れたとき、参拝の順序に自信が持てず、周りの人の様子を見ながら見よう見まねで済ませた経験はないでしょうか。作法の基本は一度覚えてしまえば簡単です。ここでは一般的な神社の参拝作法を、入口から順にたどります。",
+"【鳥居をくぐり、参道を歩く】鳥居の前で軽く一礼してくぐるのが、丁寧な作法とされています。参道の中央は「正中（せいちゅう）」と呼ばれ、神の通り道と考えられてきたため、参拝者は少し脇を歩くのが習わしです。まず手水舎で手と口を清めてから、拝殿へ進みます。",
+"【手水の作法】手順は次のとおりです。右手で柄杓を持ち、左手を清めます。次に柄杓を左手に持ち替え、右手を清めます。再び右手に持ち替え、左手に水を受けて口をすすぎます。最後に柄杓を立てて柄に水を流し、清めてから伏せて置きます。最初に清めるのは左手――ここは神社検定でも問われるポイントです。",
+"【拝殿での拝礼】拝殿の前では、お賽銭を静かに入れて鈴を鳴らし、二礼二拍手一礼を行います。深く二度お辞儀をし（礼）、胸の高さで二度柏手を打ち（拍手）、最後にもう一度深くお辞儀をします（礼）。住所と名前を心の中で伝えてからお願いをする、という案内をしている神社もあります。",
+"【神社ごとの例外もあります】作法には神社ごとの違いもあります。たとえば出雲大社では四拍手で拝礼すると案内されるなど、地域や神社の伝統による作法があります。迷ったときは、境内の案内表示に従うのが確実です。",
+"【検定の学習ポイント】神社検定の教科書第3章の中心テーマです。手水で「最初に清めるのは左手」、拝礼は「二礼二拍手一礼」という2点は、問題そのものになる知識です。実際の参拝の流れと結びつけて覚えましょう。",
+"次に神社を訪れたら、ぜひ作法を意識して参拝してみてください。一連の所作が整うと、境内の空気の感じ方まで変わってきます。"
+]
+},
+{
+slug: "torii-shurui-to-imi", title: "鳥居の種類と意味｜神明鳥居と明神鳥居、笠木・島木・貫の見分け方",
+excerpt: "鳥居は神域への入口を示す結界。直線的な神明鳥居と、反りのある明神鳥居の違い、笠木・島木・貫といった部材の名前と役割を解説します。",
+category: "神社の知識", castleName: "", productIds: ["sugoi-meijo50", "zukan-nyumon"], date: "2026-10-26",
+body: [
+"鳥居は神社の顔であり、日本の風景を象徴する建物でもあります。赤い鳥居、石の鳥居、海に立つ鳥居。その形には大きく2つの系統があり、部材にもそれぞれ名前があります。見分け方を覚えると、神社めぐりの解像度が一段上がります。",
+"【鳥居の役割】鳥居は、神が鎮まる神域と人の住む俗世との境界（結界）を示す門です。参道の入口に建つものを一の鳥居、次を二の鳥居と数え、大きな神社では複数の鳥居をくぐって拝殿へ進みます。くぐるときに一礼するのは、この境界を意識する作法といえます。",
+"【部材の名前を知る】鳥居の一番上の横木が「笠木（かさぎ）」です。その下で笠木を受ける台が「島木（しまき）」、柱を貫く横木が「貫（ぬき）」、中央で笠木と貫をつなぐ短い柱が「額束（がくづか）」です。名称は神社検定でも問われます。まず一番上の笠木を探すところから始めてみてください。",
+"【神明鳥居と明神鳥居】鳥居の形は、大きく「神明鳥居」と「明神鳥居」に分けられます。神明鳥居は全体が直線的で素朴な形で、伊勢神宮の宇治橋鳥居が代表例です。明神鳥居は笠木の両端が反り上がり、柱がわずかに内側へ傾く優美な形で、全国の多くの神社で見られます。まずはこの2つの見分けが基本です。",
+"【色と材質の違い】朱塗りの鳥居は稲荷神社などでおなじみで、朱には魔除けの意味が込められていると言われます。ほかに白木、石、銅など材質もさまざまで、厳島神社の海に立つ大鳥居のように、場所そのものが名所になっている例もあります。",
+"【検定の学習ポイント】神社検定の教科書第3章の範囲です。「一番上の横木は笠木」という部材の知識は頻出です。神明鳥居＝伊勢系、明神鳥居＝反りのある形、という系統の整理もあわせて押さえておきましょう。",
+"次に神社を訪れたら、鳥居の前で一度立ち止まって、笠木の反りと柱の傾きを確認してみてください。いつもの鳥居が、少し違って見えるはずです。"
+]
+},
+{
+slug: "komainu-mikata", title: "狛犬の見方｜阿形と吽形、玉乗り・子狛など個性の楽しみ方",
+excerpt: "参道の両脇に座る狛犬は、口を開いた阿形と閉じた吽形で一対。玉を踏んだもの、子狛を連れたものなど、神社ごとに違う表情と工夫の見方を紹介します。",
+category: "神社の知識", castleName: "", productIds: ["zukan-nyumon", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"参道の入口や拝殿の前で、参拝者を静かに見守る狛犬。どの神社にもいるようでいて、一対ごとに表情も姿も異なります。狛犬の見方を知ると、参拝のたびに新しい発見があります。",
+"【阿形と吽形の一対】向かって右の、口を開いた狛犬を「阿形（あぎょう）」、左の、口を閉じた狛犬を「吽形（うんぎょう）」といいます。阿吽は、言葉の始まりと終わり、物事の最初と最後を表すとされます。狛犬が魔除けとして神域の入口を守る役目を持つ、というのもよく聞く説明です。",
+"【狛犬の由来】もともとは、獅子と「狛犬（高麗犬）」と呼ばれる想像上の獣が左右一対で置かれたものが、やがて両方とも狛犬と呼ばれるようになったとされています。神社だけでなく、宮中や寺院にも置かれてきた歴史があります。古いものは木製で拝殿の中に置かれ、石造のものが参道に並ぶ形が広がっていきました。",
+"【玉と子狛の工夫】前足で玉（鞠）を押さえた狛犬や、子どもの狛犬を連れた「子狛」の狛犬が見られる神社があります。玉には願いや魔除けにまつわる意味が語られ、子狛は子孫の繁栄や子育ての願いと結びつけて紹介されることがあります。石工の腕の見せどころでもあり、地域の石工の流派によって「型」の違いを読み取る楽しみ方もあります。",
+"【狐やほかの眷属との違い】稲荷神社にいる狐は、狛犬とは別の存在で、稲荷大神の使い（眷属）とされます。鍵や玉、稲穂をくわえた姿が目印です。神社ごとに守り獣が違う点も、境内の楽しみのひとつです。",
+"【検定の学習ポイント】神社検定の教科書第3章の範囲です。「口を開いた方が阿形」という基本は、そのまま試験に出ます。阿吽という言葉の意味とあわせて、現地で確認しながら覚えましょう。",
+"お気に入りの狛犬を見つける旅もおすすめです。古い神社ほど個性的な狛犬が残っていることが多いので、参拝のときはぜひ足元にも注目してください。下のおすすめ本は城の本ですが、古い建物を訪ねる楽しさは共通しています。"
+]
+},
+{
+slug: "ise-jingu-shikinen-sengu", title: "伊勢神宮と式年遷宮｜20年に一度、社殿を建て替える1300年の神事",
+excerpt: "天照大御神をまつる内宮と、豊受大御神をまつる外宮。20年に一度、社殿を造り替えて御神体を遷す式年遷宮の仕組みと、技術を次世代へ伝える意味を解説します。",
+category: "神社めぐり", castleName: "伊勢神宮", productIds: ["hyakumeijo", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"三重県伊勢市の伊勢神宮は、神社の中でも特別な存在です。正式には「神宮」といい、内宮と外宮を中心に、多くの別宮や摂社・末社から成ります。その伊勢神宮で1300年近く続いてきた大きな神事が「式年遷宮」です。",
+"【内宮と外宮】内宮（皇大神宮）の祭神は、皇室の祖神とされる天照大御神です。外宮（豊受大神宮）には、衣食住をはじめ産業の神とされる豊受大御神がまつられます。参拝は外宮から内宮へ、という順序が案内されることの多い神宮です。神社検定でも、内宮と外宮の祭神の違いは基本知識として問われます。",
+"【式年遷宮の仕組み】式年遷宮は、20年に一度、御正殿をはじめとする社殿を造り替え、御神体を新しい宮へ遷す神事です。正殿の隣には常に同じ広さの敷地（御敷地）が用意され、そこに新しい社殿を建てます。御装束や神宝の数々も、この機会に新しく調製されます。社殿がいつも清新に保たれることを「常若（とこわか）」の思想で説明することもあります。",
+"【1300年続く周期】第1回の式年遷宮は、持統天皇の時代（690年）に行われたとされ、直近では2013年に第62回が行われました。次回は2033年が予定されています。20年という周期は、宮大工や工芸の職人が、若い世代へ技術を手渡していく節目としても機能してきたと指摘されます。",
+"【神明造の社殿】内宮・外宮の正殿は「神明造」で建てられています。高床の掘立柱、切妻の屋根、千木と堅魚木を持つ素朴で力強い形式は、建築様式の記事でも取り上げた最古級の様式のひとつです。遷宮のたびに同じ形が受け継がれてきました。",
+"【検定の学習ポイント】神社検定の教科書第4章・第5章にまたがる最重要テーマです。「式年遷宮は20年に一度」「内宮は天照大御神、外宮は豊受大御神」「正殿は神明造」の3点は確実に押さえておきましょう。",
+"伊勢神宮を訪れる機会があれば、正殿の隣に広がる御敷地にも目を向けてみてください。次の遷宮への準備が、静かに進んでいる場所です。"
+]
+},
+{
+slug: "izumo-taisha-kamiarizuki", title: "出雲大社と神在月｜全国の神が集まる旧暦10月の神事と、縁結びの社",
+excerpt: "祭神は大国主大神。旧暦10月、全国の神々が出雲に集まるとされるため、出雲では神無月ではなく神在月と呼びます。神在祭と大社造の本殿、四拍手の拝礼まで紹介します。",
+category: "神社めぐり", castleName: "出雲大社", productIds: ["hyakumeijo-zoku", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"島根県出雲市の出雲大社は、国造りと縁結びの神として知られる大国主大神をまつる神社です。旧暦10月の呼び名ひとつを取っても、出雲にはほかの土地と違う物語があります。",
+"【大国主大神と縁結び】出雲大社の祭神・大国主大神は、国造りの神として神話に登場し、人と人との縁を結ぶ神としても広く信仰されてきました。境内では結婚式も行われ、縁結びのご利益を求める参拝者で一年を通じてにぎわいます。本殿は「大社造」という古い建築様式で、国宝に指定されています。",
+"【神無月と神在月】旧暦10月は、全国の神々が出雲に集まるため、神のいなくなった土地では「神無月」と呼ぶ、という言い伝えがあります。一方、神々が集まる出雲では、同じ月を「神在月（かみありづき）」と呼びます。神社検定でも、この対比は代表的な出題ポイントです。",
+"【神在祭と十九社】神々は稲佐の浜に迎えられると伝えられ、旧暦10月11日ごろから17日ごろまで、神在祭の神事が行われます。期間中、神々は境内の「十九社」に滞在するとされ、参拝者は静かに手を合わせます。神在祭の日程は年によって変わるため、訪れる際は公式の案内で確認してください。",
+"【拝礼は四拍手】出雲大社の拝礼は、二礼四拍手一礼と案内されています。一般的な二礼二拍手一礼とは拍手の回数が異なります。また、神楽殿の大注連縄は、長さ約13メートル・重さ5トンに及ぶとされ、実物は写真の印象をはるかに上回る大きさです。",
+"【検定の学習ポイント】神社検定の教科書第5章の範囲です。「出雲大社の祭神は大国主大神」「旧暦10月は出雲では神在月」「本殿は大社造」の3点が基本です。拝礼の拍手が四拍手である点も、あわせて覚えておきましょう。",
+"出雲大社とあわせて、近くの松江城（国宝・現存天守）まで足を延ばす旅もおすすめです。神社と城、このサイトの2つのテーマを一度に楽しめます。"
+]
+},
+{
+slug: "fushimi-inari-senbon-torii", title: "伏見稲荷大社と千本鳥居｜稲荷山全体を巡る、朱い鳥居の信仰",
+excerpt: "全国の稲荷神社の総本宮、伏見稲荷大社。稲荷山に連なる千本鳥居は、願いを込めた奉納の鳥居です。祭神の宇迦之御魂大神と、おもかる石など山めぐりの見どころを解説します。",
+category: "神社めぐり", castleName: "伏見稲荷大社", productIds: ["hyakumeijo", "meijo37"], date: "2026-10-26",
+body: [
+"京都市伏見区の伏見稲荷大社は、全国に約3万社あるとされる稲荷神社の総本宮です。山全体に連なる朱い鳥居の列は、日本を代表する景観のひとつとして、国内外から多くの参拝者が訪れます。",
+"【稲荷大神と祭神】主祭神は宇迦之御魂大神（うかのみたまのおおかみ）を中心とする稲荷大神で、稲や食物、豊穣の神としてまつられてきました。もとは五穀豊穣の神として信仰され、やがて商売繁盛や産業の守り神として広く信仰されるようになりました。神社検定でも、伏見稲荷大社の祭神は基本知識です。",
+"【千本鳥居の成り立ち】参道に立ち並ぶ鳥居は、願いが「通る」ようにとの思いから奉納されてきたものです。鳥居を奉納する習慣は江戸時代に広がったとされ、現在では稲荷山の参道に千本を超える鳥居が連なるとされています。鳥居の裏側に目を向けると、奉納した人や企業の名と年月が刻まれています。",
+"【稲荷山を巡る】本殿の背後にそびえる稲荷山そのものが信仰の対象で、山中には大小無数のお塚（塚に神名を刻んだ石）もまつられています。四ツ辻からは京都市街が望め、山頂の一ノ峰まで歩けば、半日がかりの山めぐり参拝になります。途中の「おもかる石」は、願いを念じてから石灯籠の上の部分を持ち上げ、思ったより軽ければ願いが叶う、重ければ努力が必要と伝わる名所です。",
+"【狐は稲荷の使い】境内のあちこちに座る狐は、稲荷大神の使い（眷属）とされます。鍵や玉、巻物、稲穂などをくわえた姿で表され、狛犬とは役割の違う存在です。狐の表情の違いを探しながら歩くのも、伏見稲荷の楽しみです。",
+"【検定の学習ポイント】神社検定の教科書第5章の範囲です。「伏見稲荷大社の主祭神は宇迦之御魂大神」「稲荷神社の総本宮」という2点は確実に。千本鳥居が奉納の積み重ねであることも、文化として理解しておきましょう。",
+"伏見稲荷大社は、山頂まで歩くとまったく違う景色が見えてきます。時間に余裕を持って、稲荷山の一周に挑戦してみてください。"
+]
+},
+{
+slug: "goshuin-atsumekata", title: "御朱印の集め方とマナー｜参拝の証をいただくための基礎知識",
+excerpt: "御朱印は、参拝した証として社寺からいただく墨書と印。写経を納めた証に由来するとされます。御朱印帳の扱いから、いただくときのマナーまで、始める前に知っておきたいことを整理しました。",
+category: "神社の知識", castleName: "", productIds: ["hyakumeijo", "hyakumeijo-zoku"], date: "2026-10-26",
+body: [
+"神社やお寺を巡る楽しみとして定着した御朱印集め。旅行先で御朱印帳を広げる人の姿は、今では全国の社寺で日常の光景になりました。集め始める前に、由来とマナーを押さえておきましょう。",
+"【御朱印の由来】御朱印のもとは、写経を寺に納めたときにいただく受付印（納経印）であったとされます。それが次第に、参拝した証として社寺からいただくものへと広がりました。神社名や神名が墨で書かれ、印が押された御朱印は、安易な記念スタンプとは性質の異なるものとして扱われます。",
+"【御朱印帳の基本】御朱印は専用の御朱印帳にいただきます。蛇腹式の帳面が一般的で、表裏の両面にいただく人もいます。神社とお寺で帳面を分ける人もいますし、一緒の帳面に集める人もいます。社寺によっては、自社の御朱印帳への記帳に限る場合や、書き置き（あらかじめ用意された紙）のみの対応の場合もあるため、授与所で確認すると安心です。",
+"【いただくときのマナー】順番の基本は、まず参拝を済ませてから、社務所や授与所でお願いすることです。受付時間は社寺ごとに決まっており、祭事の最中などは対応できないこともあります。御朱印帳は両手で丁寧に渡し、いただいたらその場で広げて眺め回さず、感謝を伝えて受け取ります。初穂料（神社）や納経料（寺）の目安をあらかじめ確かめておくと、当日慌てません。",
+"【節度を持って楽しむ】月替わりや祭礼に合わせた限定の御朱印も増えていますが、本来は参拝の記録です。転売目的で集めることは、多くの社寺から戒められています。訪れた場所と日付の記録として大切に保管し、後で帳面をめくって旅を思い返す――それが御朱印本来の楽しみ方です。",
+"【検定の学習ポイント】御朱印そのものは教科書の直接の範囲ではありませんが、「参拝してからいただく」という順序は、神社検定の教科書第3章で学ぶ境内の歩き方・参拝の流れと深くつながっています。手水と拝礼の作法とセットで理解しておきましょう。",
+"このサイトの城めぐりでおなじみのスタンプラリーと似て見えますが、御朱印は信仰にもとづく参拝の証です。その違いをわきまえて集めると、帳面の重みが変わってきます。"
+]
+},
+{
+slug: "jinja-kenchiku-yoshiki", title: "神社の建築様式入門｜神明造・大社造・流造の見分け方",
+excerpt: "本殿の形には名前があります。伊勢神宮の神明造、出雲大社の大社造、全国に多い流造。屋根の形と入口の向きに注目する、社殿建築の見分け方の基本を解説します。",
+category: "神社の知識", castleName: "", productIds: ["zukan-nyumon", "tsuchi-no-shiro"], date: "2026-10-26",
+body: [
+"神社の本殿は、拝殿の奥にあって普段はよく見えない建物です。ところがこの本殿の形には、古くからの様式の名前があります。様式を知ると、姿の見えない本殿も、屋根の形から想像できるようになります。",
+"【神明造――伊勢神宮の形】神明造は、最も古い様式のひとつとされます。高床の掘立柱に切妻造・平入り（屋根の長い辺側に入口）の建物で、屋根の両端では「千木（ちぎ）」が交差し、棟の上には「堅魚木（かつおぎ）」が並びます。伊勢神宮の正殿が代表例で、古代の穀倉の姿を伝えたものと説明されます。装飾を抑えた直線的な美しさが特徴です。",
+"【大社造――出雲大社の形】大社造も古い様式で、切妻造・妻入り（屋根の短い辺側に入口）の大きな屋根が特徴です。出雲大社の本殿が代表例で、国宝に指定されています。入口の位置が神明造と違う点が、見分けの第一歩です。内部には太い柱（心御柱）が立つことでも知られます。",
+"【流造――全国に多い形】流造は、正面の屋根を長く流れるように延ばし、その下を向拝の庇とする形式です。賀茂社（上賀茂神社・下鴨神社）などが代表例とされ、全国の多くの神社で採用されている、最も普及した様式です。春日大社の春日造のように、神社ごとに名の付いた形式もあります。",
+"【権現造など、時代の下った形式】江戸時代の日光東照宮に代表される権現造は、本殿と拝殿を「石の間」と呼ぶ低い建物でつなぐ複合形式で、彫刻などの装飾が豊かです。古い様式が簡素で直線的なのに対して、時代が下るほど複雑で装飾的になる傾向は、城の天守や石垣の変化と並べて眺めると面白いところです。",
+"【検定の学習ポイント】神社検定の教科書第2章の中心テーマです。「神明造＝伊勢神宮」「大社造＝出雲大社」「千木と堅魚木は本殿屋根の装飾」という3点は、そのまま試験に出ます。流造と権現造も代表社とあわせて整理しましょう。",
+"次の参拝では、拝殿越しに本殿の屋根を眺めてみてください。千木と堅魚木が見えれば、古い様式の本殿である手がかりになります。"
+]
+},
+{
+slug: "omikuji-yomikata", title: "おみくじの読み方と結び方｜運勢の順番より大切な、和歌と項目の読み解き方",
+excerpt: "大吉・凶といった運勢の順番は、実は神社ごとに異なります。おみくじは和歌と個別の項目を読むもの。結果の結び方や持ち帰り方の習わしとあわせて解説します。",
+category: "神社の知識", castleName: "", productIds: ["meijo37", "hyakumeijo"], date: "2026-10-26",
+body: [
+"参拝の楽しみのひとつ、おみくじ。引いた瞬間に大吉か凶かで一喜一憂しがちですが、おみくじの本当の読みどころは、運勢のひと文字だけではありません。",
+"【おみくじの成り立ち】おみくじは、神の意思を問うくじ引きの伝統から生まれたとされます。今日広く見られる、和歌と運勢が書かれた形式のおみくじは、元三大師（良源）ゆかりの「元三大師御籤（みくじ）」が原型とされることがあります。籤（くじ）の番号で和歌を引き当てる仕組みは、この流れをくむものです。",
+"【運勢の順番は神社ごとに違う】大吉に続く順序は、実は神社によって異なります。中吉・小吉・吉・末吉といった並びも、吉の種類や凶の含まれ方も一律ではありません。そのため、順番そのものを他社と比べるより、自分の籤に書かれた内容を読むことに意味があります。凶が出ても、それは今後の注意を促す言葉として受け取るのが、おみくじ本来の向き合い方とされます。",
+"【和歌と項目を読む】おみくじには、運勢とともに和歌（神歌）が添えられ、願望・待ち人・失せ物・旅立ち・商売など、項目ごとの指針が書かれています。全体の吉凶で判断を終えず、自分の関心のある項目まで読むのが正しい読み方です。和歌は比喩が多いので、境内でゆっくり読み解く時間も、おみくじの楽しみのうちです。",
+"【結ぶか、持ち帰るか】引いたおみくじは、境内の結び所や木の枝に結んで帰る習わしがあります。悪い結果を境内に留めるために結ぶという説明もあれば、結果にかかわらず持ち帰って戒めにするという人もいます。どちらか一方だけが正しいという決まりではなく、社寺の案内に従えば問題ありません。利き手と反対の手で結ぶと願いが実りにくくなる分、実ったときの意味が大きい、といった言い伝えが語られることもあります。",
+"【検定の学習ポイント】おみくじは、神社検定の教科書第4章「祭りと神事」の周辺にある、神意を問う占いの文化です。参拝の作法（第3章）とあわせ、境内で行われる一連の行為として整理しておくと、知識が立体的になります。",
+"次におみくじを引いたら、大吉・凶の文字だけで閉じずに、和歌と項目の欄まで読んでみてください。短い言葉の中に、その時期の過ごし方のヒントが書かれています。"
+]
+},
+{
+slug: "kumamoto-fukko", title: "熊本城と復興の歩み｜地震から天守閣復旧、そして完全復旧への長い道",
+excerpt: "2016年の熊本地震で大きな被害を受けた熊本城。天守閣の復旧から、石垣や宇土櫓など城全体の復旧が今も続く歩みをたどります。加藤清正の築城から西南戦争まで、熊本城の歴史とあわせて整理しました。",
+category: "名城めぐり", castleName: "熊本城", productIds: ["hyakumeijo", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"熊本城については、石垣の「武者返し」を中心に紹介した記事がすでにあります。ここでは視点を変えて、2016年の熊本地震からの「復興の歩み」に焦点を当てます。熊本城の復旧は、城を復旧するとはどういうことかを考える、現代の大きな記録でもあります。",
+"【加藤清正の築城と西南戦争】熊本城は、築城の名手とされる加藤清正が慶長年間に築いた城で、難攻不落と称されました。明治時代の西南戦争（1877年）では、政府軍が籠城し、西郷隆盛率いる薩摩軍の攻撃に耐えた城としても知られています。天守などは戦争の直前に火災で焼失したとされていますが、石垣や宇土櫓は残りました。",
+"【熊本地震と被害】2016年4月の熊本地震では、熊本城も大きな被害を受けました。石垣が各所で崩れ、櫓に被害が出たほか、屋根瓦が落下するなどしました。宇土櫓は現存する櫓として貴重な存在でしたが、地震後に解体修理が行われることになりました。",
+"【天守閣の復旧と、続く全体復旧】大小の天守閣は2021年に復旧を終え、内部の展示も新しくなって公開されています。一方で、城全体の完全な復旧には長い年月がかかるとされ、石垣の積み直しや櫓の修理が計画的に進められています。崩れた石垣の石を一つひとつ記録し、元の位置に戻す作業は、文化財の復旧ならではの丁寧な工程です。",
+"【検定の学習ポイント】教科書第4章・第5章の範囲です。熊本城は「加藤清正の築城」「武者返し」「二様の石垣」とあわせて、現代の文化財復旧の事例としても押さえておきたい城です。現存の宇土櫓と、復旧した天守閣の違いにも注目しましょう。",
+"熊本城を訪れると、復旧の「過程そのもの」を見ることができます。完成した姿だけでなく、守り続ける今の姿にも、ぜひ目を向けてください。"
+]
+},
+{
+slug: "hikone-jokamachi", title: "彦根城と井伊家の城下町｜国宝天守と玄宮園、湖畔の町の歩き方",
+excerpt: "井伊家の居城として築かれた彦根城。天守が国宝の平山城の見どころと、琵琶湖に近い城下町の成り立ち、庭園の玄宮園まで、城と町を一緒に歩く楽しみを紹介します。",
+category: "名城めぐり", castleName: "彦根城", productIds: ["hyakumeijo", "zukan-nyumon"], date: "2026-10-26",
+body: [
+"彦根城は、国宝5城のひとつとして別の記事でも触れました。ここでは、築いた井伊家と、その城下町に注目します。城と町が一体で残る場所では、歩き方そのものが歴史の勉強になります。",
+"【井伊家と彦根開府】彦根藩の初代藩主は井伊直継ら井伊家で、徳川四天王のひとり井伊直政の家系です。直政は関ヶ原の戦いの功績で佐和山城を与えられましたが、その後、子の代に彦根山（金亀山）へ新しい城を築くことになったとされています。彦根城の築城には、近江の各地の城から資材や建物が移されたとも伝えられています。",
+"【天守と天秤櫓】彦根城の天守は三重三階で、華やかな破風を持つ姿が特徴です。天守が国宝に指定されているほか、天秤櫓はほかの城から移築されたと伝わる建物で、長い土塀とあわせて見どころとなっています。城は琵琶湖に近い丘陵に築かれた平山城で、天守からは湖の眺めも楽しめます。",
+"【玄宮園と城下町】ふもとの玄宮園は、井伊家の下屋敷の庭園で、池泉回遊式の庭園として整備されました。城下町は碁盤目状に整えられ、足軽組屋敷など武家地の面影が残る地域もあります。城・庭園・町並みを続けて歩くことで、江戸時代の地方都市の構造が見えてきます。",
+"【検定の学習ポイント】教科書第4章の国宝5城のひとつです。「彦根城＝井伊家」「天守は国宝」という基本に加え、平山城という立地分類（第1章）もあわせて確認しておきましょう。",
+"彦根城は、城の中だけでなく、町を歩く時間が楽しい城です。天守・玄宮園・城下町と、半日かけてゆっくり巡ってみてください。"
+]
+},
+{
+slug: "inuyama-kisogawa", title: "犬山城と木曽川の景観｜国宝天守から眺める川と城下町",
+excerpt: "木曽川の断崖の上に立つ犬山城。その天守は現存最古とされることがある国宝天守です。川がつくった地形と景観、成瀬家と城下町の関係から、犬山城の魅力を掘り下げます。",
+category: "名城めぐり", castleName: "犬山城", productIds: ["zukan-nyumon", "hyakumeijo"], date: "2026-10-26",
+body: [
+"国宝5城の紹介の中でも触れた犬山城を、ここでは「木曽川」という視点で掘り下げます。犬山城の姿は、川と切り離しては語れません。",
+"【断崖の上に立つ天守】犬山城は、木曽川に面した丘陵の先端に築かれた平山城です。背後を川に守られ、天守の南側に城下町が広がります。天守は望楼型で、その建築年代については現存最古とされることがありますが、年代の見方には諸説があるとされています。",
+"【成瀬家と犬山】江戸時代、犬山城は尾張藩の家老である成瀬家が治めた城として知られます。個人の所有する城として長く維持されてきた歴史も、犬山城の特徴のひとつです。天守が国宝に指定されている点は、国宝5城の整理と合わせて押さえておきましょう。",
+"【天守から眺める木曽川】天守の最上階からは、木曽川の流れと対岸の山並みが見渡せます。川は防御であると同時に、眺望そのものが城の価値でした。近くには木曽川の景勝として知られる一帯もあり、城と川の景観を一体で楽しめる場所です。城下町には武家屋敷の面影を残す通りもあり、歩いて巡ることができます。",
+"【検定の学習ポイント】教科書第2章の望楼型、第4章の国宝5城の両方にかかわる城です。「犬山城＝望楼型・国宝・木曽川」という組み合わせで整理すると、問題に対応しやすくなります。",
+"犬山城へ行ったら、天守の中だけでなく、最上階からの眺めと、川沿いの歩道からの眺めの両方を味わってください。見る方向で、城の表情が変わります。"
+]
+},
+{
+slug: "nijojo-kyoto", title: "二条城と徳川幕府の京都支配｜戦う城ではない、将軍の宿所の設計",
+excerpt: "京都の二条城は、徳川家康が将軍の宿所として築いた城。石垣や堀を持つ城でありながら、中心は二の丸御殿です。大政奉還の舞台にもなった二条城から、幕府の京都支配の仕組みを読み解きます。",
+category: "名城めぐり", castleName: "二条城", productIds: ["zukan-nyumon", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"これまでの記事で取り上げてきた城の多くは、戦いに備えた城でした。二条城は少し性格が違います。徳川幕府が京都に置いた拠点として、将軍の権威を示すために築かれた城です。",
+"【家康の築城と将軍の宿所】二条城は、徳川家康が1603年に築き始めたとされています。将軍が上洛した際の宿所であり、京都所司代など幕府の役人とも関わる、京都支配の拠点でした。堀や石垣、門を備えた城の形を持ちながら、天守は後年に取り壊され、中心となるのは御殿の建築です。",
+"【二の丸御殿と障壁画】国宝の二の丸御殿は、書院造の建築として知られ、内部の障壁画や欄間彫刻が見どころです。廊下を歩くと音が鳴る「鴬張り」は、防犯のための仕掛けとして語られることがありますが、その意図については諸説があるとされています。庭園とあわせて、戦う城とは違う、もてなしと権威の空間を感じることができます。",
+"【大政奉還の舞台】幕末の慶応3年（1867年）、二の丸御殿で徳川慶喜が大政奉還の意思を示したとされ、二条城は幕府の始まりと終わりの両方に立ち会った場所になりました。1994年にはユネスコ世界文化遺産「古都京都の文化財」のひとつに登録されています。",
+"【検定の学習ポイント】二条城の天守は現存しません。現存12天守の整理と混同しないように注意しましょう。教科書では「城は軍事拠点から政庁・権威の象徴へ変化した」（第1章）という流れの、代表的な実例として理解しておくと深まります。",
+"二条城は、城の見方を広げてくれる場所です。石垣や堀の「城らしさ」と、御殿の「宮殿らしさ」を、比べて歩いてみてください。"
+]
+},
+{
+slug: "edojo-higashigyoen", title: "江戸城の縄張りと今の皇居東御苑｜天守のない大城郭を歩く",
+excerpt: "徳川幕府の本拠だった江戸城に、天守は残っていません。それでも皇居東御苑を歩けば、天守台・石垣・門・櫓跡から日本最大級の城郭の縄張りを体感できます。大名庭園の跡とあわせて歩き方を紹介します。",
+category: "名城めぐり", castleName: "江戸城", productIds: ["hyakumeijo", "hyakumeijo-zoku"], date: "2026-10-26",
+body: [
+"江戸城は徳川幕府の本拠であり、日本最大級の城郭でした。今は皇居となり、天守そのものは残っていません。しかし一般に公開されている皇居東御苑を歩けば、その巨大な縄張りを体で感じることができます。",
+"【徳川の本拠としての江戸城】江戸城は、徳川家康が江戸に入った後に大規模に整備され、将軍の居城となりました。本丸・二の丸・三の丸、西の丸などを備え、周囲には内堀と外堀が巡らされました。城下町である江戸の町そのものが、堀と運河で守られる構造だったとされています。",
+"【失われた天守と、残る天守台】江戸城の天守は明暦の大火（1657年）で焼失し、その後は再建されなかったとされています。東御苑には天守台の石垣が残り、その規模から天守の大きさを想像することができます。富士見櫓や門、石垣の刻印を探しながら歩くのも、東御苑の楽しみです。",
+"【大名庭園と本丸の芝生】東御苑には、本丸の広い芝生や、二の丸庭園として整備された一画があります。かつての大名庭園の流れをくむ庭園も残され、城跡でありながら公園として憩える場所になっています。縄張図を手に、門から門へと進むと、曲輪の重なり方が少しずつ分かってきます。",
+"【検定の学習ポイント】教科書第1章・第3章の縄張りの知識が、そのまま役立つ場所です。「天守がなくても城は読める」という実感は、城跡歩き全般の力になります。江戸城の天守が現存しない理由も、あわせて整理しておきましょう。",
+"東京の真ん中に、こんなに大きな城の跡がある。その驚きを味わいに、東御苑を歩いてみてください。"
+]
+},
+{
+slug: "tenshu-naibu", title: "天守の内部構造｜急な階段・石落とし・柱の仕組みを読み解く",
+excerpt: "天守の中は、住むための空間ではありませんでした。急な階段、石落とし、狭間、そして太い柱の構造。現存天守の内部に残る仕掛けから、天守が「最後の砦」だった理由を解説します。",
+category: "城の知識", castleName: "", productIds: ["zukan-nyumon", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"天守の形式や見分け方については別の記事で紹介しました。今回は一歩踏み込んで、天守の「中」の話です。現存天守に登ると、現代の建物とはまったく違う空間の作りに驚かされます。",
+"【急な階段の意味】現存天守の階段は、驚くほど急です。これは、敵が攻め上りにくくするための工夫と説明されることがありますが、限られた床面積に各階を収める構造上の都合も大きかったとされています。階段が各階で違う位置に設けられ、真っ直ぐに上まで通っていないことも、内部構造の特徴です。手すりにつかまりながら、一段ずつ登ってみてください。",
+"【石落としと狭間】天守や櫓の壁際の床には、下に向けて開く「石落とし」が設けられることがあります。壁に寄せてきた敵を真上から攻撃するための仕掛けです。壁に開けられた小さな穴「狭間」は、鉄砲や弓を射るためのもので、形によって用途が分けられていたとされています。松本城などでは、内部から石落としや狭間の位置を確認できます。",
+"【柱と梁の構造】天守を支えるのは、太い柱と梁の組み合わせです。姫路城の大天守では、心柱と呼ばれる大きな柱が知られていますが、天守の構造は城ごとに異なり、すべてに心柱があるわけではありません。地震や風にどう耐える構造だったのかは、城ごとに研究が進められている分野でもあります。",
+"【検定の学習ポイント】教科書第2章の天守の範囲です。外観の分類（望楼型・層塔型）とあわせて、内部の石落とし・狭間といった防御設備も整理しておきましょう。第3章の枡形など、城全体の防御の考え方とも共通しています。",
+"天守に登ったら、眺めだけでなく足元と壁を見てください。階段の急さも、床の仕掛けも、すべてがこの建物の役割を語っています。"
+]
+},
+{
+slug: "shiro-zeme-rakujo", title: "戦国時代の城攻めと落城｜兵糧攻め・水攻めと、城が落ちる条件",
+excerpt: "城攻めは力押しだけではありませんでした。周囲を囲んで補給を断つ兵糧攻め、堤を築いて水に沈める水攻め、そして調略。戦国時代の代表的な攻城戦と、城が落ちる条件を整理します。",
+category: "城の知識", castleName: "", productIds: ["tsuchi-no-shiro", "meijo37"], date: "2026-10-26",
+body: [
+"城は守るために築かれましたが、歴史の上では、たくさんの城が攻められ、落ちてきました。戦国時代の城攻めの方法を知ると、城の防御設備の意味が逆側から見えてきます。",
+"【囲んで断つ、兵糧攻め】最も基本的な攻め方は、城を包囲して補給路を断つ「兵糧攻め（囲城）」です。豊臣秀吉による鳥取城の攻囲は、兵糧攻めの例として知られています。城側は米や水を蓄えて耐えますが、蓄えが尽きれば戦わずして城を開くことになりました。井戸や食糧庫が城の重要な設備だった理由がここにあります。",
+"【地形を使う水攻め】秀吉が備中高松城を攻めた際には、周囲に堤を築いて川の水を引き入れ、城を水に囲んだとされています。これが有名な「水攻め」です。水攻めは大規模な土木工事を短期間で行う必要があり、攻め手の組織力が問われる方法でした。地形を読む力は、築城でも攻城でも要だったのです。",
+"【力攻めと調略】正面から堀や石垣に迫る力攻めは、攻め手にも大きな損害が出ました。そのため、城内の武将を味方に引き入れる調略や、交渉による開城も、城攻めの重要な手段でした。落城は、必ずしも戦闘の結果とは限らなかったのです。",
+"【検定の学習ポイント】教科書には城攻め専門の章はありませんが、第1章の山城の防御、第3章の堀と虎口の工夫は、すべて「どう攻められるか」への備えです。守りの用語を、攻める側の視点で復習しておくと理解が立体的になります。",
+"城を訪れたとき、守る側と攻める側、両方の気持ちで地形を見てみてください。堀の深さも、門の曲がりも、新しい意味を持って見えてきます。"
+]
+},
+{
+slug: "fukko-vs-mokuzo", title: "復興天守と木造復元天守の違い｜コンクリートの城と、資料で甦る城",
+excerpt: "戦後に各地で再建された天守には、種類があります。外観を再現した復興天守・復元天守と、史料に基づいて木造で建て直す木造復元。熊本城や名古屋城、大阪城の例から、その違いと意味を整理します。",
+category: "城の知識", castleName: "", productIds: ["sugoi-meijo50", "hyakumeijo"], date: "2026-10-26",
+body: [
+"大阪城の記事で「復興天守」という言葉を使いました。実は、再建された天守にはいくつかの種類があり、その違いを知ると城の見学がぐっと正確になります。",
+"【復興天守と復元天守】戦後、各地で天守が鉄筋コンクリートなどで再建されました。焼失前の姿を外観の手がかりに再現したものは「復興天守」と呼ばれることが多く、大阪城の天守（1931年）や名古屋城の天守（1959年再建）が知られています。一方、発掘調査や古写真・図面などの史料に基づいて外観を再現したものは「復元天守」と呼ばれます。どちらも、江戸時代から残る「現存天守」とは区別されます。",
+"【木造復元という選択】近年増えているのが、伝統的な木造で天守や櫓を建て直す「木造復元（木造復元天守）」です。史料に基づいて構造や内部まで再現しようとする取り組みで、名古屋城では本丸御殿が木造で復元され、天守の木造復元も検討・計画が進められてきました。熊本城でも、復旧の中で櫓などの木造の修理・復元が行われています。",
+"【なぜ建て直すのか】再建された天守は、地域の象徴として親しまれてきました。一方で、文化財としての正確さを求める声も大きくなっています。大洲城や白石城など、木造で天守が復元された例もあり、建て直し方そのものが、その時代の城への考え方を映しているといえます。",
+"【検定の学習ポイント】教科書第5章の「復元天守」「木造復元」がそのまま要点です。現存天守・復興天守・復元天守・木造復元天守の4つを、代表例とあわせて区別できるようにしておきましょう。",
+"再建された天守を訪れたら、「いつの時代に、どんな考えで建て直されたのか」を案内表示で確認してみてください。天守そのものが、もうひとつの歴史資料です。"
+]
+},
+{
+slug: "sakura-koyo-meijo", title: "城と桜・紅葉の名所めぐり｜季節で変わる天守の表情を楽しむ",
+excerpt: "桜に映える弘前城、紅葉と水堀の松本城。四季折々に表情を変える城は、何度訪れても新しい発見があります。季節ごとに城を楽しむ視点と、訪れる時期の考え方を紹介します。",
+category: "名城めぐり", castleName: "", productIds: ["meijo37", "sugoi-meijo50"], date: "2026-10-26",
+body: [
+"城めぐりの楽しみ方として、季節の話は欠かせません。同じ城でも、桜の季節と紅葉の季節では、まったく違う表情を見せてくれます。",
+"【桜と城】桜の名所として知られる城は全国にあります。弘前城は、桜と天守・堀の組み合わせで知られ、堀に花びらが浮かぶ「花筏（はないかだ）」も名物です。姫路城や松本城、熊本城なども、桜の季節に多くの人が訪れる城として知られています。白い天守と淡い桜、黒い天守と桜、それぞれの対比が楽しめます。",
+"【紅葉と城】秋の城も見どころが豊富です。彦根城の玄宮園や二条城の庭園、松本城の堀端など、紅葉と建築の組み合わせが楽しめる場所が各地にあります。山城の城跡では、紅葉と石垣・土塁の対比も味わえます。気象予報士の視点で城をめぐる本でも、季節や天気が城の表情をどう変えるかが語られています。",
+"【季節を選ぶ楽しみ方】混雑を避けたい場合は、桜の見頃の前後や、平日の午前中が狙い目です。雪の季節の松本城や会津若松城（鶴ヶ城）のように、冬ならではの姿で知られる城もあります。季節ごとに城を訪ねる計画を立てること自体が、城めぐりの楽しみのひとつです。現地の最新の開花・紅葉情報は、公式案内で確認してから出かけましょう。",
+"【検定の学習ポイント】季節の知識そのものは試験範囲の中心ではありませんが、「弘前城＝現存12天守」「鶴ヶ城は現存天守ではない」など、名所として知られる城の基本情報は教科書第4章と結びついています。旅の計画と復習を兼ねて整理しておきましょう。",
+"城は一度行って終わりの場所ではありません。季節を変えた再訪で、お気に入りの城の新しい顔を見つけてください。"
+]
+},
+{
+slug: "hyakumeijo-zoku-tanoshimi", title: "日本100名城と続日本100名城の楽しみ方｜200城を巡る旅の組み立て方",
+excerpt: "スタンプラリーの始め方を紹介した続編として、200城を巡る旅の組み立て方を取り上げます。地域ごとのまとめ方、天守のない城跡の楽しみ方、続100名城の個性まで、長く続けるための工夫を紹介します。",
+category: "城めぐりの始め方", castleName: "", productIds: ["hyakumeijo", "hyakumeijo-zoku"], date: "2026-10-26",
+body: [
+"日本100名城スタンプラリーの始め方については、別の記事で紹介しました。ここではその先、続日本100名城まで含めた「200城をどう楽しむか」を取り上げます。",
+"【100名城と続100名城】日本100名城は日本城郭協会が2006年に選定し、続日本100名城は2017年に追加で選定されたとされています。合わせて200城。天守の残る有名な城だけでなく、山城の城跡や地域の歴史を伝える城館も多く含まれているのが特徴です。合本版の公式ガイドを使えば、200城を一冊で管理できます。",
+"【地域ごとに旅を組み立てる】200城制覇の現実的な進め方は、地域ごとに区切ることです。四国4城のように現存天守が集中する地域もあれば、山城が続く地域もあります。ひとつの旅で城だけでなく、その土地の城下町や郷土料理、温泉まで組み合わせると、旅そのものが豊かになります。無理のない計画が、長く続けるコツです。",
+"【天守のない城の楽しみ方】200城の多くは、天守の残らない城跡です。縄張図を読み、堀や土塁、石垣の痕跡をたどる歩き方が中心になります。土の城の歩き方を解説した本や、縄張りの基礎知識が、そのまま力になります。案内板や地元の資料館を合わせて訪れると、理解が一気に深まります。",
+"【検定の学習ポイント】「日本100名城を選定したのは日本城郭協会」は、お城検定の問題にも出る知識です。スタンプを集める旅と検定の勉強は、互いに助け合います。現地で見た城は、問題の中でも鮮明に思い出せるはずです。",
+"200城は、急ぐ必要のない大きな目標です。まずは近くの地域から、旅の計画を立ててみてください。検定の知識が、旅の解像度を上げてくれます。"
+]
+},
+        {
+          slug: "tenshu-types", title: "天守の種類と見分け方｜望楼型と層塔型を現地で判別するコツ",
+          excerpt: "天守の形式は大きく望楼型と層塔型の2つ。屋根の形と破風の付き方に注目すれば、現地でも見分けられるようになります。代表例とあわせて、判別のポイントを整理しました。",
+          category: "城の知識", castleName: "", productIds: ["zukan-nyumon", "sugoi-meijo50"], date: "2026-10-26",
+          body: [
+            "城を訪れて天守を見上げたとき、その形に注目したことはありますか。天守の形式を知ると、建てられた時代や城の性格まで読み取れるようになります。天守の形式は、大きく「望楼型」と「層塔型」の2つに分けられます。",
+            "【望楼型とは】望楼型は、入母屋造の大きな建物の上に、物見櫓を載せた形式です。もともと櫓だったものを発展させた初期の天守の形とされ、姫路城や犬山城の大天守が代表例です。大きな入母屋屋根を持ち、その上に小さな望楼が乗るため、屋根の段差や大きな破風が目印になります。",
+            "【層塔型とは】層塔型は、下の階から上の階へ、規則正しく小さくなりながら積み重なる形式です。松本城の天守が代表例とされます。最初から天守として設計された形式で、全体のバランスが整っているのが特徴です。",
+            "【現地での見分け方】まず屋根を見てください。ひときわ大きな入母屋屋根の上に櫓が乗っていれば望楼型、各階が均等に小さくなっていれば層塔型、というのが基本の判別法です。正面からだけでなく、斜めから眺めると屋根の重なり方がよく分かります。",
+            "【検定の学習ポイント】天守の形式は、お城検定の教科書第2章の中心テーマです。望楼型・層塔型という「形」の分類と、連結式・連立式・独立式という「つなぎ方」の分類は混同しやすいので、別々の軸として整理しておきましょう。",
+            "次に城へ行ったら、まず屋根に注目してみてください。形式が分かるだけで、天守の見え方がまったく変わります。"
+          ]
+        },
+        {
+          slug: "ishigaki-structure", title: "石垣を支える職人と構造｜穴太衆と間詰石の話",
+          excerpt: "積み方の種類の先にある、石垣の内側の話。石工集団・穴太衆の技と、間詰石や裏込石が果たす役割から、石垣が何百年も崩れずに残る理由を読み解きます。",
+          category: "城の知識", castleName: "", productIds: ["tsuchi-no-shiro", "zukan-nyumon"], date: "2026-10-26",
+          body: [
+            "石垣の積み方には、野面積み・打込み接ぎ・切込み接ぎという時代ごとの変化があります。では、そうして積まれた石垣は、なぜ何百年も崩れずに残ってきたのでしょうか。ここでは石垣の「構造」と、それを支えた職人たちの話をたどります。",
+            "【穴太衆という石工集団】近江国穴太（現在の滋賀県大津市あたり）を拠点とした石工集団が「穴太衆（あのうしゅう）」です。自然石を積み上げる野面積みの技に優れ、安土城の石垣を手がけたともされ、各地の築城に招かれたとされています。石垣の技術は、こうした専門の職人集団によって受け継がれてきました。",
+            "【石と石の間を埋める工夫】石垣の表面の大きな石の隙間には、「間詰石（はざまいし）」と呼ばれる小石が詰められます。さらに石垣の裏側には「裏込石（うらごめいし）」と呼ばれる小石の層があり、土の圧力を分散させる役割を果たしたとされます。表面の石だけが石垣なのではなく、見えない部分の積み重ねが全体を支えているのです。",
+            "【水を逃がすことが長持ちの秘訣】石垣にとって大敵なのが、内部にたまる水です。裏込石の層は水はけを良くする工夫でもあるとされ、現代の石垣の補修や積み直しでも、伝統的な構造の考え方が活かされています。",
+            "【検定の学習ポイント】教科書第3章では、積み方の3種と算木積みが要点です。そこに「誰が積んだのか」「内側はどうなっているのか」という構造の視点を足しておくと、石垣の問題への理解が一段深まります。",
+            "城で石垣を見るときは、大きな石の面だけでなく、石と石の間や、石垣の根元にも目を向けてみてください。職人の仕事が、そこに残っています。"
+          ]
+        },
+        {
+          slug: "himeji-history", title: "姫路城400年の歩み｜戦火を逃れ、世界遺産になった理由",
+          excerpt: "見どころの歩き方とは別に、歴史の側から姫路城をたどります。池田輝政の大改築、千姫ゆかりの西の丸、戦火を免れた経緯と昭和の大修理、そして世界遺産登録まで。",
+          category: "名城めぐり", castleName: "姫路城", productIds: ["hyakumeijo", "sugoi-meijo50"], date: "2026-10-26",
+          body: [
+            "姫路城の見どころや歩き方は、別の記事で詳しく紹介しました。ここでは視点を変えて、姫路城がたどってきた400年の歴史をたどります。今の姿が「奇跡」と呼ばれる理由が見えてきます。",
+            "【秀吉の城から、池田輝政の大改築へ】姫路城のある姫山には、もともと砦が築かれていました。羽柴秀吉（豊臣秀吉）がこの地を治めたときに天守を築いたとされ、その後、関ヶ原の戦いの功績で入城した池田輝政が大規模な改築を行い、現在の天守群の骨格が整ったとされています。",
+            "【西の丸と千姫】徳川秀忠の娘・千姫が本多忠刻に嫁いだことに伴い、西の丸が整備されたとされています。化粧櫓など、戦うためだけではない城の暮らしの跡が残る場所です。",
+            "【戦火を免れ、昭和の大修理へ】第二次世界大戦では姫路の市街地が空襲を受けましたが、天守は焼失を免れたと伝えられています。戦後には、老朽化した天守群を解体して修理する「昭和の大修理」が行われ、城は往時の姿を取り戻しました。",
+            "【世界遺産へ】1993年、姫路城は法隆寺などとともに、日本で初めてユネスコ世界文化遺産に登録された文化財のひとつとなりました。木造の天守群がほぼ完全な形で残ることが、世界的に評価されたのです。",
+            "【検定の学習ポイント】教科書第4章の範囲です。姫路城は「現存12天守」「国宝5城」「世界遺産」の3つが重なる城として頻出します。築城にかかわった人物と登録の年も、あわせて押さえておきましょう。",
+            "歩き方のガイドと歴史の知識、両方を持って登城すると、姫路城は何度でも新しい発見のある城になります。"
+          ]
+        },
+        {
+          slug: "kokuho-five", title: "国宝5城を比べてみる｜松本城を軸に五つの天守の個性",
+          excerpt: "天守が国宝に指定されているのは、姫路・松本・犬山・彦根・松江の5城だけ。黒い松本城を軸に、白亜の姫路城、水辺の犬山城、最も新しい国宝・松江城まで、それぞれの個性を比べます。",
+          category: "名城めぐり", castleName: "松本城", productIds: ["meijo37", "hyakumeijo"], date: "2026-10-26",
+          body: [
+            "現存12天守のうち、天守が国宝に指定されているのは5城だけです。姫路城・松本城・犬山城・彦根城・松江城。それぞれの個性を比べてみると、名前と特徴が自然に結びついて覚えられます。",
+            "【白と黒の対比】白漆喰の姫路城と、黒漆塗りの松本城は、よく対で語られます。松本城の天守は戦国時代末期に建てられ、石落としや狭間など戦うための仕掛けを残します。一方で、江戸時代に入ってから増築された月見櫓は、戦いのためではない優雅な造りで、時代の変化をひとつの天守の中に見ることができます。",
+            "【水辺の犬山城と、井伊家の彦根城】犬山城は木曽川に面した断崖の上に立ち、その天守は現存最古とされることがあります（諸説あります）。彦根城は井伊家の居城で、琵琶湖に近い丘陵に築かれた平山城です。天秤櫓など、ほかの城から移築されたと伝わる建物も見どころです。",
+            "【最も新しい国宝、松江城】松江城の天守は2015年に国宝に指定されました。柱に打ち付けられていた祈祷札から、築城の年代が裏付けられたことが評価の一因とされています。しゃちほこの大きさでも知られる、どっしりとした姿の天守です。",
+            "【検定の学習ポイント】国宝5城の顔ぶれは、教科書第4章の最頻出ポイントです。「白い姫路・黒い松本・水辺の犬山・井伊の彦根・新しい国宝の松江」というように、特徴とセットで整理しておくと確実です。",
+            "5城すべてを巡る旅は、それ自体が立派な目標になります。まずは近い1城から、比べてみる楽しさを味わってください。"
+          ]
+        },
+        {
+          slug: "genzon-12-tabi", title: "現存12天守をめぐる旅｜地域別に無理なく制覇する計画の立て方",
+          excerpt: "江戸時代以前の天守が残る12城は、北は青森・弘前から南は愛媛・宇和島まで点在します。全リストの確認と、四国4城をはじめ地域ごとにまとめて巡る計画の立て方を紹介します。",
+          category: "名城めぐり", castleName: "", productIds: ["hyakumeijo", "hyakumeijo-zoku"], date: "2026-10-26",
+          body: [
+            "「現存12天守」とは、江戸時代以前に建てられた天守が、今も残っている12の城のことです。再建された天守とは違い、建てられた当時の木材や構造を今に伝える、かけがえのない存在です。",
+            "【12城の顔ぶれ】弘前城・松本城・丸岡城・犬山城・彦根城・姫路城・松江城・備中松山城・丸亀城・松山城・宇和島城・高知城。東北から四国まで、日本列島に広く点在しています。このうち姫路・松本・犬山・彦根・松江の5城は国宝です。",
+            "【地域ごとにまとめて巡る】制覇のコツは、地域ごとに区切ることです。関西の姫路城と彦根城、中部の松本城・犬山城・丸岡城は、それぞれ旅の行程にまとめやすい組み合わせです。四国には丸亀城・松山城・宇和島城・高知城と4城が集中しており、四国一周の旅の軸になります。",
+            "【山城の備中松山城には準備を】備中松山城は、現存天守を持つ唯一の山城とされています。天守にたどり着くまで山道を登るため、歩きやすい靴と体力の準備が欠かせません。丸岡城の天守は現存最古とされることがありますが、年代については諸説あります。",
+            "【検定の学習ポイント】教科書第4章の要点そのものです。12城の名前と所在地、国宝5城との重なりを、地図を思い浮かべながら整理しておきましょう。旅の計画を立てること自体が、最高の復習になります。",
+            "期限はありません。1年に1城でも、12城を巡り終える頃には、城の見方が見違えるほど深まっているはずです。"
+          ]
+        },
+        {
+          slug: "shiro-types-location", title: "山城・平山城・平城は何が違う？｜立地で分かる城の性格",
+          excerpt: "城の分類は立地で決まります。山の地形そのものを防御に使う山城、丘陵に築く平山城、平地に築く平城。それぞれの守り方と代表例、訪れるときの注意点の違いを整理しました。",
+          category: "城の知識", castleName: "", productIds: ["tsuchi-no-shiro", "zukan-nyumon"], date: "2026-10-26",
+          body: [
+            "城のパンフレットや案内板で見かける「山城」「平山城」「平城」という言葉。これは城が建つ立地による分類で、守り方や訪れたときの歩き方まで変わってきます。違いが分かると、城跡の地形の読み方がぐっと面白くなります。",
+            "【山城】山の地形そのものを防御に使う城です。斜面を削って敵の横移動を防ぐ竪堀や、尾根を断ち切る堀切を巡らせ、土塁と空堀で守りました。戦国時代の城の中心的な形で、備中松山城や、城跡として知られる竹田城跡が代表例です。訪れる際は登山に近い準備が要ります。",
+            "【平山城】丘陵や台地に築く城です。近世城郭の主流で、姫路城や熊本城が代表例とされます。高い石垣と天守を持ちながら、ふもとに城下町を広げ、政庁としての機能も果たしました。山城ほどの登山にはなりませんが、坂や石段は多めです。",
+            "【平城】平地に築く城で、松本城が代表例です。地形の高さに頼れない分、広い水堀と高い石垣で守りを固めました。海や湖・川に面して水運と防御を兼ねた城は「水城（海城）」と呼ばれます。平城は駅から近いことが多く、街歩きの延長で楽しめるのも特徴です。",
+            "【検定の学習ポイント】教科書第1章の基礎です。時代が下るにつれて、城の中心は山城から平山城・平城へ移っていきました。分類と時代の流れをセットで押さえましょう。",
+            "次に城を訪れるときは、まず足元の地形を見てください。「なぜここに築いたのか」が分かると、その城の性格が見えてきます。"
+          ]
+        },
+        {
+          slug: "nawabari-basics", title: "縄張りとは何か｜本丸・二の丸・曲輪の役割を読む",
+          excerpt: "縄張りは城の設計図です。本丸を中心に曲輪が重なる構造と、虎口・枡形・馬出といった守りの工夫を知ると、天守のない城跡の歩き方まで根本から変わります。",
+          category: "城の知識", castleName: "", productIds: ["tsuchi-no-shiro", "zukan-nyumon"], date: "2026-10-26",
+          body: [
+            "「縄張り（なわばり）」とは、城の区画や堀・土塁の配置を決める設計のことです。天守が残っていない城跡でも、縄張りが読めれば、その城がどう守られていたかが立体的に見えてきます。",
+            "【曲輪と本丸・二の丸】城の中の区画を「曲輪（くるわ）」と呼びます。中心となるのが「本丸」で、天守や城主の御殿が置かれる最も重要な区画です。本丸を取り囲むように「二の丸」「三の丸」が配置され、外側の曲輪から順に敵を食い止める重層的な守りになっています。「西の丸」には、隠居した前城主や世継ぎの御殿が置かれることもありました。",
+            "【虎口と枡形】曲輪への出入口は「虎口（こぐち）」と呼ばれます。虎口は敵が直進できないよう折れ曲がらせ、その内側に四角い空間「枡形（ますがた）」を設けて、侵入した敵を足止めし、四方から攻撃できるようにした工夫が多くの城で見られます。門をくぐるときの「曲がり」に注目してみてください。",
+            "【縄張図の読み方】現地の案内板にある縄張図では、まず本丸の位置を確認し、そこから「攻める側ならどこから入るか」をたどってみるのがおすすめです。本丸を曲輪が取り囲む配置、曲輪を連ねる配置など、形の違いも見えてきます。",
+            "【検定の学習ポイント】教科書第3章の範囲です。本丸・曲輪・虎口・枡形は、用語そのものが試験に出ます。言葉の意味を、現地の地形と結びつけて覚えるのが近道です。",
+            "縄張りが読めるようになると、天守のない城跡こそ面白い、という感覚が芽生えます。まずは近くの城跡の案内板から始めてみてください。"
+          ]
+        },
+        {
+          slug: "osaka-castle-history", title: "大阪城の歴史と再建された天守｜豊臣・徳川・市民の三つの物語",
+          excerpt: "現在の大阪城の天守は、1931年に市民の寄付で復興されたもの。豊臣秀吉の築城、徳川幕府による再築、そして市民が建てた天守まで、三層に重なった歴史をたどります。",
+          category: "名城めぐり", castleName: "大阪城", productIds: ["sugoi-meijo50", "hyakumeijo"], date: "2026-10-26",
+          body: [
+            "大阪城の天守は、今も大阪の象徴です。ただしこの天守、江戸時代から残るものではありません。大阪城には、豊臣・徳川・市民という、三つの時代の物語が重なっています。",
+            "【豊臣秀吉の大坂城】豊臣秀吉は1583年から、大坂の石山本願寺があったとされる地に城を築き始めました。天下人の居城として壮大な城が築かれましたが、大坂の陣（1614〜1615年）によって豊臣家とともに落城します。",
+            "【徳川幕府による再築】徳川幕府は、豊臣期の縄張を埋め立て、その上に土を盛って新しい石垣と天守を築き直したとされています。今も大阪城で見られる高い石垣は、この徳川期のものです。地中には、豊臣期の石垣が眠っていることになります。",
+            "【市民が復興した天守】徳川期の天守は幕末に焼失しました。現在の天守は1931年、市民の寄付によって鉄骨鉄筋コンクリート造で復興されたもので、内部は博物館として公開されています。外観は豊臣期の天守を模したものとされ、城を市民の手で取り戻した象徴でもあります。",
+            "【地中の豊臣石垣】近年、大阪城では地中に残る豊臣期の石垣の発掘調査と公開の取り組みが進められています。地上の徳川の城と、地中の豊臣の城。ふたつの時代を重ねて見ることができる、稀有な場所です。",
+            "【検定の学習ポイント】大阪城の天守は「現存天守」ではなく「復興天守」です。教科書第5章にある、資料をもとに外観を再現する「復元天守」や、木造で再建する「木造復元」との違いを整理しておきましょう。",
+            "大阪城を訪れたら、天守だけでなく石垣と地形にも注目してください。時代の重なりが、この城の最大の見どころです。"
+          ]
+        },
+        {
+          slug: "hori-role", title: "城の堀の役割｜水堀・空堀と横矢の仕掛け",
+          excerpt: "堀はただの溝ではありません。水をたたえた水堀、深く掘り下げた空堀、斜面を守る竪堀、そして横から攻める横矢の仕掛け。堀の種類と役割を知ると、城の守りが立体的に見えてきます。",
+          category: "城の知識", castleName: "", productIds: ["tsuchi-no-shiro", "zukan-nyumon"], date: "2026-10-26",
+          body: [
+            "城を囲む堀は、ただの溝ではありません。敵の侵入を遅らせ、攻め方を限定し、時には物資の輸送路にもなる、城の防御の要です。堀の種類と役割を知ると、城の守りの全体像が見えてきます。",
+            "【水堀と空堀】水をたたえた「水堀」は、平城や平山城の守りの中心です。渡るには泳ぐか橋を渡るしかなく、攻め手を大きく制限しました。水堀は舟による物資の輸送にも使われたとされます。一方、水のない「空堀」は山城の中心的な防御で、深く掘り下げることで斜面の移動そのものを妨げました。",
+            "【竪堀・横堀と畝状竪堀】山城の斜面を縦方向に掘った溝が「竪堀」で、敵が斜面を横に移動するのを防ぎます。等高線に沿って横に巡らせるのが「横堀」です。竪堀を何本も並べてうね状にした「畝状竪堀（うねじょうたてぼり）」は、山城歩きの大きな見どころのひとつです。",
+            "【横矢の仕掛け】堀や石垣のラインをわざと屈曲させ、攻めてきた敵を横から攻撃できるようにした工夫を「横矢（よこや）掛かり」と呼びます。真っ直ぐな壁では死角になる足元も、出っ張りや折れがあることで横から狙えるのです。枡形と組み合わせて、侵入した敵を包み込むように攻撃する設計が多くの城で見られます。",
+            "【検定の学習ポイント】教科書第3章と、第1章の山城の防御にまたがる範囲です。水堀と空堀の使い分け、竪堀と横堀の区別は頻出なので、現地の写真と結びつけて覚えましょう。",
+            "城を訪れたら、堀の縁に立って「自分が攻める側だったらどうするか」を考えてみてください。堀の深さと形の意味が、体で分かります。"
+          ]
+        },
+        {
+          slug: "shiro-manners", title: "城めぐりのマナーと楽しみ方｜文化財を守りながら深く味わう",
+          excerpt: "石垣に登らない、遺構を傷つけない。城めぐりのマナーは、城を未来に残すための作法です。守るべきルールと、御城印や季節の再訪など、長く楽しむためのコツを紹介します。",
+          category: "城めぐりの始め方", castleName: "", productIds: ["hyakumeijo", "zukan-nyumon"], date: "2026-10-26",
+          body: [
+            "城めぐりの持ち物や歩き方の準備については、別の記事で紹介しました。ここでは、現地での「作法」と、城めぐりを長く深く楽しむための工夫を取り上げます。マナーは堅苦しい決まりではなく、城を次の世代に残すための知恵です。",
+            "【遺構を守るマナー】石垣や土塁には登らないこと、立入禁止の区域には入らないこと、石や土、植物を持ち帰らないこと。これが基本です。石垣は見た目以上にもろく、一度の登攀で石がずれることもあります。城跡の中には、私有地や、地域の信仰の場と重なる場所もあるので、案内表示には必ず従いましょう。",
+            "【撮影と見学のルール】撮影の可否は施設ごとに異なります。天守の内部は撮影禁止の城も多く、三脚やフラッシュに制限がある場合もあります。混雑時は通路を塞がず、ほかの見学者への配慮を忘れずに。分からないときは、現地のスタッフに確認するのが確実です。",
+            "【楽しみを深める工夫】登城の記念に集める「御城印」は、多くの城で頒布されており、その収益が城の保存に役立つ場合もあります。桜の季節、紅葉、雪景色と、季節を変えて同じ城を再訪するのもおすすめです。現地のガイドさんの解説を聞くと、ひとりでは気づけない石垣の刻印や地形の物語に出会えます。",
+            "【検定の学習ポイント】教科書第5章では、廃城令で多くの城が失われた歴史と、文化財として守られるようになった経緯を学びます。検定の知識は、城を「見る」力だけでなく、城を「守る」側の視点にもつながっています。",
+            "城は、訪れる人がマナーを守ることで守られてきました。ルールを味方につけて、末長く城めぐりを楽しんでいきましょう。"
+          ]
+        },
+        {
+          slug: "himeji-guide", title: "姫路城の見どころ完全ガイド｜白鷺城を120％楽しむ歩き方",
+          excerpt: "白漆喰の連立式天守で知られる姫路城。大天守・小天守・渡櫓の見方から、石垣と枡形のチェックポイントまで、初めての登城でも迷わない歩き方をまとめました。",
+          category: "名城めぐり", castleName: "姫路城", productIds: ["zukan-nyumon", "hyakumeijo", "sugoi-meijo50"], date: "2026-10-20",
+          body: [
+            "姫路城は、現存12天守のひとつであり、1993年に日本で初めてユネスコ世界文化遺産に登録された城のひとつです。白漆喰で塗り固められた姿から「白鷺城」と呼ばれます。",
+            "見どころの中心は、大天守と3つの小天守を渡櫓で結んだ「連立式」の天守群です。菱の門から本丸へ進む道は、直進できないよう何度も折れ曲がり、枡形や石落としといった防御の仕掛けが今も残ります。ただ天守を眺めるだけでなく、「敵がどう攻め、どう足止めされたか」を想像しながら歩くと、城の立体感がぐっと増します。",
+            "石垣にも注目してください。下部は緩やかで上部ほど急になる勾配、隅角部の算木積みなど、教科書で学んだ技法を実物で確認できます。天守最上層からは城下町と播磨平野が一望でき、鯱の意味や火除けの願いにも思いが届きます。",
+            "登城の前には、入門書で天守の形式と石垣の基礎をさらっておくと現地の楽しさが倍になります。下のおすすめ本は、実際に姫路城を歩くときに役立つものを選んでいます。"
+          ]
+        },
+        {
+          slug: "ishigaki-mikata", title: "石垣の見方が分かると城めぐりが10倍楽しい｜野面積みから切込み接ぎまで",
+          excerpt: "石垣は時代を映す鏡です。自然石の野面積み、隙間を減らした打込み接ぎ、整形した切込み接ぎの違いと、算木積み・武者返しの見分け方を解説します。",
+          category: "城の知識", castleName: "", productIds: ["zukan-nyumon", "tsuchi-no-shiro"], date: "2026-10-18",
+          body: [
+            "城を訪れたとき、つい天守ばかり見上げてしまいがちですが、足元の石垣こそ城の年代と技術が詰まった部分です。",
+            "最も古い技法が「野面積み」。自然石をほぼそのまま積むため、石と石の間に隙間が残ります。次に現れるのが「打込み接ぎ」で、接合面を加工して隙間を減らします。最も新しいのが「切込み接ぎ」で、石を四角く整形して隙間なく積み上げます。同じ城でも、築かれた時代の違う場所では積み方が違うことがあるので、歩きながら比べるのが楽しみです。",
+            "隅（角）の部分は要チェック。長方形の石を交互に積む「算木積み」で強度を高めています。また熊本城で有名な「武者返し」は、上に行くほど反り返る形状で、登ろうとした武者を返してしまうことに由来します。",
+            "石垣の見方が分かると、お城検定の第3章の問題も、暗記ではなく「見たことがある知識」として解けるようになります。まずは近くの城で、3つの積み方を探してみてください。"
+          ]
+        },
+        {
+          slug: "matsumoto-karasujo", title: "松本城・烏城の魅力｜黒い天守が語る戦国の緊張感",
+          excerpt: "黒漆塗りの下見板に覆われた松本城の天守は、姫路城の白と対をなす美しさ。五重天守が現存する2城のひとつとして、その見どころと歴史を紹介します。",
+          category: "名城めぐり", castleName: "松本城", productIds: ["meijo37", "hyakumeijo"], date: "2026-10-15",
+          body: [
+            "松本城の天守は、黒い外観から「烏城（からすじょう）」と呼ばれます。白い姫路城と並び称されることが多いのですが、黒さの理由は装飾ではなく実用です。黒漆塗りの下見板は、雨や雪から木材を守るための工夫でした。",
+            "松本城は、姫路城と並んで五重天守が現存する貴重な城です。戦国時代末期に建てられた天守には、石落としや鉄砲狭間など戦うための仕掛けが残り、後から増築された月見櫓との対比で、戦国から江戸へ移る時代の空気を感じられます。",
+            "天気が変わると城の表情も変わります。晴れた日に北アルプスを背に浮かぶ姿、水堀に映る逆さ天守、雪の日の白と黒のコントラスト。気象予報士の視点で城をめぐる本を読むと、訪れる季節や時間帯の選び方にもヒントが得られます。",
+            "松本城は、お城検定でも頻出の城です。教科書第4章と合わせて読むと、現存天守と国宝5城の整理が一気に進みます。"
+          ]
+        },
+        {
+          slug: "kumamoto-mushagaeshi", title: "熊本城と武者返し｜加藤清正の築城術を歩く",
+          excerpt: "築城の名手・加藤清正が築いた熊本城。登るほど急になる「武者返し」の石垣と、地震からの復旧が進む現在の姿から、城が地域の象徴であり続ける理由を考えます。",
+          category: "名城めぐり", castleName: "熊本城", productIds: ["zukan-nyumon", "sugoi-meijo50"], date: "2026-10-12",
+          body: [
+            "熊本城を築いたのは、築城の名手として知られる加藤清正です。慶長年間に築かれたこの城は、難攻不落と称されました。",
+            "最大の特徴が石垣の「武者返し」です。下部は緩やかな勾配なのに、上部になるほど急に反り返るため、よじ登ろうとしても途中で返されてしまいます。熊本城では高さの違う2つの石垣が連なる「二様の石垣」も見どころです。築城時期の違いが、石垣の形そのものに残っているのです。",
+            "2016年の熊本地震では大きな被害を受けましたが、復旧が進み、天守閣は2021年に復旧を終えました。崩れた石垣を元の位置に戻す作業は、石ひとつひとつを記録して積み直す気の遠くなるような工程です。城が単なる観光地ではなく、地域の人々の心の拠り所として守られていることが伝わってきます。",
+            "訪れる際は、復旧の過程そのものも含めて見学するのがおすすめです。城の強さと、守り続ける人の思いの両方に出会えます。"
+          ]
+        },
+        {
+          slug: "hyakumeijo-stamp-rally", title: "日本100名城スタンプラリーの始め方｜公式スタンプ帳と最初の5城",
+          excerpt: "期限なしでゆっくり楽しめる100名城スタンプラリー。公式スタンプ帳の使い方、最初に訪れたい関西・近郊の5城、無理なく続けるコツを紹介します。",
+          category: "城めぐりの始め方", castleName: "", productIds: ["hyakumeijo", "hyakumeijo-zoku"], date: "2026-10-10",
+          body: [
+            "日本100名城は、日本城郭協会が2006年に選定した100の名城です。各城に公式スタンプが設置され、公式スタンプ帳に押して集める「スタンプラリー」が人気です。最大の魅力は、期限がないこと。5年、10年とかけて、自分のペースで巡る人がたくさんいます。",
+            "始め方はシンプルです。まず公式スタンプ帳つきガイドブックを用意します。1城1ページで見どころがまとまっているので、予習と記録が一冊で済みます。スタンプ欄には所在地やアクセスも載っていて、旅の計画にも使えます。",
+            "最初の5城は、無理のない範囲からがおすすめです。関西なら姫路城・彦根城・竹田城跡・大坂城・和歌山城あたりが、日帰りや1泊で回りやすい組み合わせです。天守のある城と城跡を混ぜると、石垣や縄張の違いも楽しめます。",
+            "100城すべてのスタンプがそろうと、日本城郭協会に送って「登城完了認定」を受けることもできます。まずは検定で知識を固めてから、最初の一城に出かけてみてください。"
+          ]
+        },
+        {
+          slug: "shiro-meguri-junbi", title: "城めぐりの持ち物と歩き方｜山城で困らない初心者ガイド",
+          excerpt: "平城と山城では準備がまったく違います。靴・服装・水分・縄張図の読み方まで、初めての城歩きで失敗しないための実践ガイドです。",
+          category: "城めぐりの始め方", castleName: "", productIds: ["tsuchi-no-shiro", "hyakumeijo"], date: "2026-10-08",
+          body: [
+            "城めぐりは、平地の城と山城で必要な準備が大きく変わります。平城や平山城は街歩きの延長で楽しめますが、山城は軽い登山です。",
+            "まず靴。山城では石段や土の斜面を歩くため、滑りにくいトレッキングシューズや運動靴が必須です。サンダルや革靴では、竪堀や曲輪跡を前に引き返すことになりかねません。水分と帽子、雨具も忘れずに。山城の多くは日陰が少なく、売店もありません。",
+            "歩き方のコツは、最初に全体像をつかむことです。案内板の縄張図で本丸・二の丸・虎口の位置を確認し、「攻める側ならどこから入るか」を考えながら進むと、堀や土塁の意味が立体的に見えてきます。土の城の歩き方を解説した本で予習しておくと、現地での発見が増えます。",
+            "無理は禁物です。体力に合わせて城を選び、天候が悪い日は無理に登らないこと。検定の勉強で得た知識は、こうした実地の歩きでこそ自分のものになります。"
+          ]
+        }
+      ];
+    </script>
+    <script>
+      "use strict";
+      /* ================================================================
+         アプリ本体：ルーティング／教科書／受験／認定証／履歴
+         データはすべてブラウザ内（localStorage）にのみ保存される。
+         ================================================================ */
+      var LS_ATTEMPTS = "kentei.attempts.v1";
+      var LS_CERTS = "kentei.certificates.v1";
+      var PAGE_TITLES = {
+        home: "お城検定・神社検定｜教科書で学び、試験に挑戦できるオリジナル検定",
+        textbook: "教科書｜お城検定・神社検定",
+        exam: "受験｜お城検定・神社検定",
+        certificate: "認定証・照合｜お城検定・神社検定",
+        blog: "城と神社のブログ｜お城検定・神社検定",
+        events: "城と神社のイベント予定表｜お城検定・神社検定",
+        shop: "ショップ ― お城グッズ・おすすめ本｜お城検定・神社検定",
+        history: "受験履歴｜お城検定・神社検定"
+      };
+
+      function $(sel, root) { return (root || document).querySelector(sel); }
+      function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+      function esc(s) {
+        return String(s == null ? "" : s)
+          .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+      }
+      function loadJSON(key, fallback) {
+        try {
+          var raw = window.localStorage.getItem(key);
+          if (!raw) return fallback;
+          var v = JSON.parse(raw);
+          return v == null ? fallback : v;
+        } catch (e) { return fallback; }
+      }
+      function saveJSON(key, value) {
+        try { window.localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* 保存できない環境では履歴なしで動作 */ }
+      }
+      function fmtDate(iso) {
+        var d = new Date(iso);
+        if (isNaN(d.getTime())) return "";
+        return d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
+      }
+      function fmtDateTime(iso) {
+        var d = new Date(iso);
+        if (isNaN(d.getTime())) return "";
+        var hh = String(d.getHours()).padStart(2, "0");
+        var mm = String(d.getMinutes()).padStart(2, "0");
+        return fmtDate(iso) + " " + hh + ":" + mm;
+      }
+      function affiliateUrl(baseUrl) {
+        var sep = baseUrl.indexOf("?") >= 0 ? "&" : "?";
+        return baseUrl + sep + "tag=" + encodeURIComponent(AFFILIATE_TAG);
+      }
+      function productById(id) {
+        for (var i = 0; i < PRODUCTS.length; i++) if (PRODUCTS[i].id === id) return PRODUCTS[i];
+        return null;
+      }
+      function chapterTitle(exam, chapterId) {
+        for (var i = 0; i < exam.chapters.length; i++) if (exam.chapters[i].id === chapterId) return exam.chapters[i].title;
+        return "";
+      }
+      function shuffle(arr) {
+        var a = arr.slice();
+        for (var i = a.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+        return a;
+      }
+
+      /* ---------------- ルーティング ---------------- */
+      var currentExamId = "castle";
+      var currentChapterIdx = 0;
+      var selectedCertNo = null;
+
+      function parseRoute() {
+        var h = (location.hash || "#/").replace(/^#\/?/, "");
+        var parts = h.split("/").filter(function (s) { return s.length > 0; });
+        if (parts.length === 0) return { view: "home" };
+        if (parts[0] === "textbook" && EXAMS[parts[1]]) return { view: "textbook", examId: parts[1] };
+        if (parts[0] === "exam" && EXAMS[parts[1]]) return { view: "exam", examId: parts[1] };
+        if (parts[0] === "certificate") return { view: "certificate", certNo: parts[1] ? decodeURIComponent(parts[1]) : null };
+        if (parts[0] === "blog") return { view: "blog", slug: parts[1] || null };
+        if (parts[0] === "events") return { view: "events" };
+        if (parts[0] === "shop") return { view: "shop" };
+        if (parts[0] === "history") return { view: "history" };
+        return { view: "home" };
+      }
+
+      function route() {
+        var r = parseRoute();
+        $$(".view").forEach(function (v) { v.classList.remove("active"); });
+        var viewEl = $("#view-" + r.view);
+        if (viewEl) viewEl.classList.add("active");
+        $$("nav.main a[data-nav]").forEach(function (a) {
+          if (a.getAttribute("data-nav") === r.view) a.setAttribute("aria-current", "page");
+          else a.removeAttribute("aria-current");
+        });
+        document.title = PAGE_TITLES[r.view] || PAGE_TITLES.home;
+        if (r.view === "textbook") renderTextbook(r.examId);
+        if (r.view === "exam") renderExamSetup(r.examId);
+        if (r.view === "certificate") { selectedCertNo = r.certNo; renderCertificates(); }
+        if (r.view === "home") renderHomeEvents();
+        if (r.view === "blog") renderBlog(r.slug);
+        if (r.view === "events") renderEvents();
+        if (r.view === "shop") renderShop();
+        if (r.view === "history") renderHistory();
+        window.scrollTo(0, 0);
+      }
+      window.addEventListener("hashchange", route);
+
+      /* ---------------- 教科書 ---------------- */
+      function renderTextbook(examId) {
+        var exam = EXAMS[examId];
+        currentExamId = examId;
+        if (renderTextbook._exam !== examId) { currentChapterIdx = 0; renderTextbook._exam = examId; }
+        $("#textbook-h1").textContent = exam.title + " 教科書";
+        $("#textbook-lead").textContent = exam.description + " 全5章の各章末にある「要点」が、そのまま試験の出題範囲です。もう一方の検定の教科書は上のメニューから切り替えられます。";
+        var other = examId === "castle" ? "shrine" : "castle";
+        $("#textbook-lead").innerHTML = esc(exam.description) +
+          " 全5章の各章末にある「要点」が、そのまま試験の出題範囲です。" +
+          '<a href="#/textbook/' + other + '">' + esc(EXAMS[other].title) + "の教科書はこちら</a>。";
+        $("#textbook-exam-link").setAttribute("href", "#/exam/" + examId);
+        $("#textbook-exam-link").textContent = exam.title + "の試験を受ける";
+        var nav = $("#chapter-nav");
+        nav.innerHTML = "";
+        exam.chapters.forEach(function (ch, i) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.textContent = ch.title;
+          b.setAttribute("aria-pressed", i === currentChapterIdx ? "true" : "false");
+          b.addEventListener("click", function () {
+            currentChapterIdx = i;
+            renderTextbook(examId);
+            $("#chapter-body").scrollIntoView({ block: "start" });
+          });
+          nav.appendChild(b);
+        });
+        var ch = exam.chapters[currentChapterIdx];
+        var html = '<article class="chapter">';
+        html += "<h2>" + esc(ch.title) + "</h2>";
+        html += '<p class="lead">' + esc(ch.lead) + "</p>";
+        ch.body.forEach(function (p) { html += '<p class="body-p">' + esc(p) + "</p>"; });
+        html += '<div class="points"><h3>この章の要点</h3><ul>';
+        ch.points.forEach(function (pt) { html += "<li>" + esc(pt) + "</li>"; });
+        html += "</ul></div></article>";
+        html += '<div class="chapter-pager no-print">';
+        if (currentChapterIdx > 0) {
+          html += '<button type="button" class="btn ghost" id="ch-prev">← 前の章へ</button>';
+        } else { html += "<span></span>"; }
+        if (currentChapterIdx < exam.chapters.length - 1) {
+          html += '<button type="button" class="btn ghost" id="ch-next">次の章へ →</button>';
+        } else {
+          html += '<a class="btn" href="#/exam/' + examId + '">教科書はここまで ― 試験を受ける</a>';
+        }
+        html += "</div>";
+        $("#chapter-body").innerHTML = html;
+        var prev = $("#ch-prev"), next = $("#ch-next");
+        if (prev) prev.addEventListener("click", function () { currentChapterIdx--; renderTextbook(examId); window.scrollTo(0, 0); });
+        if (next) next.addEventListener("click", function () { currentChapterIdx++; renderTextbook(examId); window.scrollTo(0, 0); });
+      }
+
+      /* ---------------- 受験 ---------------- */
+      var examState = null;
+
+      function renderExamSetup(examId) {
+        var exam = EXAMS[examId];
+        currentExamId = examId;
+        examState = null;
+        $("#exam-h1").textContent = exam.title + " 受験";
+        var other = examId === "castle" ? "shrine" : "castle";
+        $("#exam-lead").innerHTML = esc(exam.description) +
+          " 問題プール20問から毎回ランダムに10問を出題します。" +
+          '<a href="#/exam/' + other + '">' + esc(EXAMS[other].title) + 'の受験はこちら</a>／' +
+          '<a href="#/textbook/' + examId + '">受験前に教科書を読む</a>';
+        var stage = $("#exam-stage");
+        var html = '<div class="exam-setup">';
+        html += '<div class="field"><span class="field-label" id="grade-label">受験する級</span><div class="seg" role="group" aria-labelledby="grade-label" id="grade-seg">';
+        GRADES.forEach(function (g, i) {
+          html += '<button type="button" data-grade="' + esc(g) + '" aria-pressed="' + (i === 0 ? "true" : "false") + '">' + esc(g) + "</button>";
+        });
+        html += "</div></div>";
+        html += '<div class="field"><label for="examinee-name">お名前（認定証に記載されます）</label>' +
+          '<input type="text" id="examinee-name" maxlength="50" placeholder="例：山田 太郎" autocomplete="name" /></div>';
+        html += '<div class="note-box" style="margin-bottom:20px"><p style="margin:0 0 8px"><strong>受験料：</strong>現在は無料で受験できます。正式な受験料は決定後にこのページでご案内します。</p>' +
+          '<p style="margin:0">出題は10問、7問以上の正解で合格です。回答するたびに正解と解説が表示されます。お名前と受験履歴はこの端末のブラウザ内（localStorage）にのみ保存され、サーバーへは送信されません。</p></div>';
+        html += '<button type="button" class="btn" id="exam-start">試験を開始する</button>';
+        html += '<p id="exam-error" style="color:var(--ng);font-weight:700;margin:12px 0 0" aria-live="polite"></p>';
+        html += "</div>";
+        stage.innerHTML = html;
+        var selectedGrade = GRADES[0];
+        $$("#grade-seg button").forEach(function (b) {
+          b.addEventListener("click", function () {
+            selectedGrade = b.getAttribute("data-grade");
+            $$("#grade-seg button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+          });
+        });
+        $("#exam-start").addEventListener("click", function () {
+          var name = $("#examinee-name").value.trim();
+          if (!name) {
+            $("#exam-error").textContent = "認定証に記載するお名前を入力してください。";
+            $("#examinee-name").focus();
+            return;
+          }
+          startExam(exam, selectedGrade, name);
+        });
+      }
+
+      function startExam(exam, grade, name) {
+        var picked = shuffle(exam.questions).slice(0, EXAM_QUESTION_COUNT).map(function (q) {
+          var order = shuffle(q.choices.map(function (_, i) { return i; }));
+          return {
+            q: q,
+            choices: order.map(function (i) { return q.choices[i]; }),
+            answerPos: order.indexOf(q.answer)
+          };
+        });
+        examState = { exam: exam, grade: grade, name: name, items: picked, idx: 0, score: 0, answered: false };
+        renderQuestion();
+      }
+
+      function renderQuestion() {
+        var st = examState;
+        var item = st.items[st.idx];
+        var stage = $("#exam-stage");
+        var pct = Math.round((st.idx / st.items.length) * 100);
+        var html = '<div class="progress"><span>第' + (st.idx + 1) + "問 ／ 全" + st.items.length + '問</span>' +
+          '<span class="bar"><i style="width:' + pct + '%"></i></span>' +
+          "<span>正解 " + st.score + "問</span></div>";
+        html += '<div class="q-card">';
+        html += '<p class="q-chapter">' + esc(chapterTitle(st.exam, item.q.chapter)) + "</p>";
+        html += "<h2>" + esc(item.q.question) + "</h2>";
+        html += '<div class="choices" id="choices">';
+        var marks = ["１", "２", "３", "４"];
+        item.choices.forEach(function (c, i) {
+          html += '<button type="button" class="choice" data-i="' + i + '"><span class="mark">' + marks[i] + "</span><span>" + esc(c) + "</span></button>";
+        });
+        html += "</div>";
+        html += '<div id="explanation-slot"></div>';
+        html += "</div>";
+        stage.innerHTML = html;
+        $$("#choices .choice").forEach(function (btn) {
+          btn.addEventListener("click", function () { answerQuestion(parseInt(btn.getAttribute("data-i"), 10)); });
+        });
+      }
+
+      function answerQuestion(choiceIdx) {
+        var st = examState;
+        if (!st || st.answered) return;
+        st.answered = true;
+        var item = st.items[st.idx];
+        var correct = choiceIdx === item.answerPos;
+        if (correct) st.score++;
+        $$("#choices .choice").forEach(function (btn, i) {
+          btn.disabled = true;
+          if (i === item.answerPos) btn.classList.add("correct");
+          else if (i === choiceIdx) btn.classList.add("wrong");
+        });
+        var last = st.idx === st.items.length - 1;
+        var html = '<div class="explanation ' + (correct ? "ok" : "ng") + '">';
+        html += '<p class="verdict">' + (correct ? "正解です" : "不正解 ― 正解は「" + esc(item.choices[item.answerPos]) + "」") + "</p>";
+        html += "<p>" + esc(item.q.explanation) + "</p></div>";
+        html += '<div class="btn-row"><button type="button" class="btn" id="q-next">' + (last ? "結果を見る" : "次の問題へ") + "</button></div>";
+        $("#explanation-slot").innerHTML = html;
+        $("#q-next").addEventListener("click", function () {
+          if (last) { finishExam(); }
+          else { st.idx++; st.answered = false; renderQuestion(); window.scrollTo(0, 0); }
+        });
+        $("#q-next").focus();
+      }
+
+      function makeCertNo(exam) {
+        var certs = loadJSON(LS_CERTS, []);
+        var d = new Date();
+        var ymd = String(d.getFullYear()) + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0");
+        var seq = String(certs.length + 1).padStart(4, "0");
+        var no = exam.certPrefix + "-" + ymd + "-" + seq;
+        var guard = 0;
+        while (certs.some(function (c) { return c.certNo === no; }) && guard < 1000) {
+          guard++;
+          no = exam.certPrefix + "-" + ymd + "-" + String(certs.length + 1 + guard).padStart(4, "0");
+        }
+        return no;
+      }
+
+      function finishExam() {
+        var st = examState;
+        var passed = st.score >= PASS_LINE;
+        var now = new Date().toISOString();
+        var attempts = loadJSON(LS_ATTEMPTS, []);
+        attempts.unshift({
+          examId: st.exam.id, examTitle: st.exam.title, grade: st.grade,
+          name: st.name, score: st.score, total: st.items.length, passed: passed, at: now
+        });
+        saveJSON(LS_ATTEMPTS, attempts);
+        var cert = null;
+        if (passed) {
+          cert = {
+            certNo: makeCertNo(st.exam), examId: st.exam.id, examTitle: st.exam.title,
+            grade: st.grade, holderName: st.name, score: st.score, total: st.items.length, issuedAt: now
+          };
+          var certs = loadJSON(LS_CERTS, []);
+          certs.unshift(cert);
+          saveJSON(LS_CERTS, certs);
+        }
+        var stage = $("#exam-stage");
+        var html = '<div class="exam-result" style="text-align:center">';
+        html += '<p style="margin:0;color:var(--dim);font-size:14px">' + esc(st.exam.title) + "（" + esc(st.grade) + "）の結果</p>";
+        html += '<p class="result-score">' + st.score + " <span style=\"font-size:0.5em\">／ " + st.items.length + "問正解</span></p>";
+        html += '<p><span class="result-badge ' + (passed ? "pass" : "fail") + '">' + (passed ? "合 格" : "不合格") + "</span></p>";
+        if (passed) {
+          html += '<p style="color:var(--ink-soft)">おめでとうございます。認定証を発行しました。</p>';
+          html += '<div class="btn-row" style="justify-content:center"><a class="btn gold" href="#/certificate/' + encodeURIComponent(cert.certNo) + '">認定証を見る・印刷する</a>' +
+            '<a class="btn ghost" href="#/history">受験履歴を見る</a></div>';
+        } else {
+          html += '<p style="color:var(--ink-soft)">合格ラインは' + PASS_LINE + '問以上の正解です。教科書で復習して、もう一度挑戦してみてください。</p>';
+          html += '<div class="btn-row" style="justify-content:center"><a class="btn indigo" href="#/textbook/' + st.exam.id + '">教科書で復習する</a>' +
+            '<a class="btn ghost" href="#/exam/' + st.exam.id + '">もう一度受験する</a></div>';
+        }
+        html += "</div>";
+        stage.innerHTML = html;
+        examState = null;
+        window.scrollTo(0, 0);
+      }
+
+      /* ---------------- 認定証・照合 ---------------- */
+      function certificateHTML(cert) {
+        var html = '<div class="certificate" id="certificate-print-area">';
+        html += '<p class="cert-en">CERTIFICATE</p>';
+        html += "<h2>認定証</h2>";
+        html += '<p class="cert-exam">' + esc(cert.examTitle) + " " + esc(cert.grade) + " 合格</p>";
+        html += '<p class="cert-text">下記の方は、本検定の教科書課程を学び、試験において' + cert.total + "問中" + cert.score + "問の正解をもって合格したことを証します。</p>";
+        html += '<p class="cert-name">' + esc(cert.holderName) + '<span class="sama">様</span></p>';
+        html += '<div class="cert-foot"><div><p style="margin:0">発行日：' + fmtDate(cert.issuedAt) + '</p><p style="margin:4px 0 0">認定番号：' + esc(cert.certNo) + '</p></div>' +
+          '<div style="text-align:center"><div class="seal">検定<br />認定</div><p style="margin:6px 0 0;font-size:12px;color:#6f675a">お城検定・神社検定 検定委員会</p></div></div>';
+        html += '<p class="cert-note">※ 本認定証は、独自教材によるオリジナル検定の合格を証するもので、国家資格・公的資格ではありません（民間の認定です）。</p>';
+        html += "</div>";
+        return html;
+      }
+
+      function renderCertificates() {
+        var certs = loadJSON(LS_CERTS, []);
+        var detail = $("#cert-detail");
+        var list = $("#cert-list");
+        var target = null;
+        if (selectedCertNo) {
+          for (var i = 0; i < certs.length; i++) if (certs[i].certNo === selectedCertNo) target = certs[i];
+        }
+        if (!target && certs.length > 0) target = certs[0];
+        if (target) {
+          detail.innerHTML = certificateHTML(target) +
+            '<p class="no-print" style="text-align:center;font-size:13px;color:var(--ink-soft);margin-top:16px">この認定証は印刷用レイアウトに対応しています。お使いのブラウザの印刷機能（メニューの「印刷」や共有ボタン）から、認定証だけを印刷・PDF保存できます。認定証のデータはこの端末のブラウザ内にのみ保存されています。</p>';
+        } else {
+          detail.innerHTML = '<div class="note-box">まだ認定証が発行されていません。試験に合格すると、ここに認定証が表示されます。<div class="btn-row"><a class="btn" href="#/exam/castle">試験に挑戦する</a></div></div>';
+        }
+        if (certs.length === 0) {
+          list.innerHTML = '<p style="color:var(--dim)">発行された認定証はありません。</p>';
+        } else {
+          var html = '<div class="cert-list">';
+          certs.forEach(function (c) {
+            html += '<div class="cert-row"><span class="cert-no">' + esc(c.certNo) + "</span>" +
+              "<span>" + esc(c.examTitle) + " " + esc(c.grade) + "</span>" +
+              '<span class="grow">' + esc(c.holderName) + " 様（" + c.score + "／" + c.total + "問）</span>" +
+              "<span>" + fmtDate(c.issuedAt) + "</span>" +
+              '<a class="btn ghost" style="padding:7px 14px;font-size:13.5px" href="#/certificate/' + encodeURIComponent(c.certNo) + '">表示</a></div>';
+          });
+          html += "</div>";
+          list.innerHTML = html;
+        }
+      }
+
+      $("#verify-form").addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        var v = $("#verify-input").value.trim().toUpperCase();
+        var box = $("#verify-result");
+        var m = /^(SHIRO|JINJA)-(\d{4})(\d{2})(\d{2})-(\d{4})$/.exec(v);
+        var validDate = false;
+        if (m) {
+          var mo = parseInt(m[3], 10), da = parseInt(m[4], 10);
+          validDate = mo >= 1 && mo <= 12 && da >= 1 && da <= 31;
+        }
+        if (m && validDate) {
+          box.innerHTML = '<div class="ok-msg"><strong>形式は正しい認定番号の形式です。</strong><br />入力された番号：' + esc(v) + '<br />なお、この確認は番号の形式のみを対象としています。<strong>正式な照合は今後の運用開始後にご案内します。</strong></div>';
+        } else {
+          box.innerHTML = '<div class="ng-msg"><strong>認定番号の形式と一致しません。</strong><br />認定番号は「SHIRO-20261026-0001」のように、SHIRO または JINJA で始まり、8桁の日付と4桁の番号がハイフンでつながった形式です。認定証の記載をご確認ください。なお、<strong>正式な照合は今後の運用開始後にご案内します。</strong></div>';
+        }
+      });
+
+      /* ---------------- イベント予定表 ----------------
+         2026年10月27日時点で、主催者・自治体・報道の公開情報で
+         確認できた行事のみを掲載。日程は変更される場合がある。 */
+      var EVENTS = [
+        { start: "2026-10-17", end: "2026-11-08", dateLabel: "2026年10月17日（土）〜11月8日（日）", name: "第73回 姫路城菊花展", place: "姫路城 三の丸広場（兵庫県姫路市）", type: "castle", kind: "展示", desc: "姫路菊花会の会員が育てた大菊などの作品が並ぶ、秋恒例の菊花展。会場の三の丸広場は、入城料のかからない無料区域です。", note: "無料区域で展示", sourceName: "はりまっぷ（姫路観光ナビ等の公式発表をもとに整理）", sourceUrl: "https://harimap.com/hyogo-kikukaten-2026/" },
+        { start: "2026-10-29", end: "2026-11-13", dateLabel: "2026年10月29日（木）〜11月13日（金）", name: "国宝松本城菊花展", place: "松本城（長野県松本市）", type: "castle", kind: "展示", desc: "松本市の公式観光情報に掲載されている、秋の松本城の菊花展です。", note: "", sourceName: "松本市公式観光サイト Visit Matsumoto", sourceUrl: "https://visitmatsumoto.com/en/event/index_1_2__35___.html" },
+        { start: "2026-10-31", end: "2026-11-29", dateLabel: "2026年10月31日（土）〜11月29日（日）", name: "郡上八幡城もみじまつり2026 〜天守炎上〜", place: "郡上八幡城（岐阜県郡上市）", type: "castle", kind: "紅葉まつり", desc: "紅葉に包まれる白亜の天守を楽しむ秋の恒例行事。11月13日（金）〜23日（月・祝）は日没〜20:00に夜間特別開城とライトアップ、11月21日（土）〜23日（月・祝）は和傘の共演もあります。期間中はフォトコンテストや鉄砲隊の演武なども行われます。", note: "入城料：大人400円・小人200円（まつり案内より）", sourceName: "STRAIGHT PRESS（郡上八幡産業振興公社の発表）", sourceUrl: "https://straightpress.jp/20261014/1728606" },
+        { start: "2026-10-31", end: "2026-11-01", dateLabel: "2026年10月31日（土）〜11月1日（日）", name: "寄居秋まつり（宗像神社秋季例大祭）", place: "宗像神社・寄居市街地（埼玉県大里郡寄居町）", type: "shrine", kind: "例大祭", desc: "11月第1日曜とその前日に行われる秋季例大祭。各町の山車の曳き回しが行われ、市街地は歩行者天国になります。10月31日は渡御（15:00〜20:20）、11月1日は祭典（10:00〜）・付祭り（11:00〜15:00）・還御（15:00〜）の予定です。", note: "観覧無料", sourceName: "EventBank プレス（寄居秋まつり実行委員会）", sourceUrl: "https://topics.smt.docomo.ne.jp/article/eventbank/region/eventbank-10650277" },
+        { start: "2026-11-01", end: "2026-11-01", dateLabel: "2026年11月1日（日）10:00〜12:00／13:00〜15:00", name: "姫路城 漆喰塗り体験会", place: "姫路城 三の丸広場（兵庫県姫路市）", type: "castle", kind: "体験", desc: "文化財修理に携わる職人の手ほどきを受けながら、壁漆喰と屋根目地漆喰の塗り方を体験できます。体験は1人5〜15分程度です。", note: "無料・申込不要（直接会場へ）／定員300人程度／雨天・荒天は11月8日（日）に順延", sourceName: "はりまっぷ（姫路市の発表をもとに整理）", sourceUrl: "https://harimap.com/himeji-castle-shikkui-taiken-20261101/" },
+        { start: "2026-11-02", end: "2026-11-04", dateLabel: "2026年11月2日（月）〜11月4日（水）", name: "唐津くんち（唐津神社秋季例大祭）", place: "唐津神社・唐津市街地（佐賀県唐津市）", type: "shrine", kind: "例大祭", desc: "ユネスコ無形文化遺産に登録されている唐津神社の秋季例大祭。曳山（ひきやま）が市街地を巡行する、唐津の秋を代表する祭りです。", note: "", sourceName: "読売新聞オンライン（Yahoo!ニュース）", sourceUrl: "https://news.yahoo.co.jp/articles/69baba43d9720ec4c905d3d1bd149821f895c3f9" },
+        { start: "2026-11-08", end: "2026-11-08", dateLabel: "2026年11月8日（日）", name: "火焚祭（おひたき）", place: "伏見稲荷大社（京都市伏見区）", type: "shrine", kind: "神事", desc: "秋の収穫を終え、稲荷大神の神恩に感謝する神事。全国の崇敬者から奉納された十数万本の火焚串が焚き上げられ、家内安全・万福招来が祈願されます。神事のあと、神楽舞の奉納もあります。", note: "伏見稲荷大社の年中行事の日程に基づく", sourceName: "京都通百科事典（伏見稲荷大社の年間行事）", sourceUrl: "https://www.kyototuu.jp/Jinjya/FushimiinariTaisya.html" },
+        { start: "2026-11-15", end: "2026-11-15", dateLabel: "2026年11月15日（日）", name: "七五三祭", place: "全国の神社（例：椿大神社・三重県鈴鹿市）", type: "shrine", kind: "人生儀礼", desc: "子どもの健やかな成長を祈る七五三は、例年11月15日が中心の日です。各地の神社で七五三祭や祈祷が行われ、11月初旬から月末にかけて、土日祝を中心に晴れ着の家族連れでにぎわいます。", note: "祈祷の受付時間・予約の要否は神社ごとに異なります。参拝先の公式案内でご確認ください", sourceName: "NEWSjp（椿大神社の七五三祭の準備の報道）", sourceUrl: "https://news.jp/i/1485443309349404907?c=39546741839462401" },
+        { start: "2026-11-20", end: "2027-02-14", dateLabel: "2026年11月20日（金）〜2027年2月14日（日）17:00〜22:00", name: "大阪城イルミナージュ", place: "大阪城 西の丸庭園（大阪市中央区）", type: "castle", kind: "イルミネーション", desc: "今年のテーマは「天下一統 光の章」。天守閣を背景に、豊臣秀吉の時代から現代へ続く大阪の歴史を光で描きます。船内を歩ける「光の南蛮貿易船」や、音楽に合わせて光る千成瓢箪などが見どころです。", note: "大人（中学生以上）2,000円・小人（1歳〜小学生）1,000円／期間中無休・雨天決行／点灯は21:30まで、最終入場21:00", sourceName: "NEWSjp（大阪城イルミナージュ開催案内）", sourceUrl: "https://news.jp/i/1479755850722951428" },
+        { start: "2026-11-20", end: "2027-01-11", dateLabel: "2026年11月20日（金）〜2027年1月11日（月・祝）17:00〜22:00（予定）", name: "姫路城イルミネーション「あたら夜の夢鏡」／大手前通りイルミネーション", place: "姫路城 三の丸広場・大手前通りほか（兵庫県姫路市）", type: "castle", kind: "ライトアップ", desc: "三の丸広場の光の演出と、姫路駅から姫路城へ続く大手前通り・姫山公園を結ぶ約2.5kmの光の回廊が同時期に楽しめます。11月20日には点灯セレモニーも予定されています。", note: "最新の実施日・順路・点灯時間は公式案内でご確認ください", sourceName: "はりまっぷ（公式案内をもとに整理）", sourceUrl: "https://harimap.com/himeji-castle-illumination-yumekagami-2026/" },
+        { start: "2026-11-20", end: "2026-12-04", dateLabel: "2026年11月20日（金）・21日（土）・27日（金）・28日（土）・12月4日（金）各日19:20開始（11月28日のみ18:00の回もあり）", name: "姫路城 備前丸 夜間特別入城", place: "姫路城 備前丸（兵庫県姫路市）", type: "castle", kind: "夜間特別入城", desc: "閉城後の備前丸にガイドと入る特別ツアー。全6回。ライトアップされた大天守を間近で眺められます。大天守の内部には入りません。", note: "中学生以上3,200円・小学生以下無料／要申込（公式案内から）／所要約70分", sourceName: "はりまっぷ（姫路観光コンベンションビューローの開催案内をもとに整理）", sourceUrl: "https://harimap.com/himeji-bizenmaru-night-tour-2026/" },
+        { start: "2026-11-23", end: "2026-11-23", openEnded: true, dateLabel: "2026年11月23日（月・祝）12:00〜 一般公開開始", name: "首里城正殿 一般公開開始", place: "首里城（沖縄県那覇市）", type: "castle", kind: "復元・公開", desc: "2019年の火災で全焼した正殿の復元工事が完了し、一般公開が始まる節目の日です。外壁の塗料に天然由来の顔料「久志間切弁柄」を用いるなど、新しい研究の知見も取り入れた復元になりました。", note: "正殿内部の観覧は日時指定の事前予約制（案内より）／11月22日は完成式のため休園、11月23日午前も休園／詳細は首里城公園の公式案内でご確認ください", sourceName: "毎日新聞（2026年10月25日）", sourceUrl: "https://mainichi.jp/articles/20261025/k00/00m/040/032000c" },
+        { start: "2026-11-23", end: "2026-11-23", dateLabel: "2026年11月23日（月・祝）", name: "新嘗祭（にいなめさい）", place: "伏見稲荷大社ほか全国の神社", type: "shrine", kind: "神事", desc: "その年に収穫された新穀を神に供え、豊作への感謝と国の平安を祈る祭祀です。伏見稲荷大社では、10月の抜穂祭で刈り取られた稲が供えられます。多くの神社で11月23日に行われます。", note: "伏見稲荷大社の年中行事の日程に基づく", sourceName: "京都通百科事典（伏見稲荷大社の年間行事）", sourceUrl: "https://www.kyototuu.jp/Jinjya/FushimiinariTaisya.html" },
+        { start: "2026-12-12", end: "2027-02-14", dateLabel: "2026年12月12日（土）〜2027年2月14日（日）", name: "松本城プロジェクションマッピング 2026-2027", place: "松本城（長野県松本市）", type: "castle", kind: "プロジェクションマッピング", desc: "国宝の天守に光の演出を映し出す、冬の松本城の恒例企画です。松本市の公式観光情報に掲載されています。", note: "上映時間などの詳細は松本市の公式観光情報でご確認ください", sourceName: "松本市公式観光サイト Visit Matsumoto", sourceUrl: "https://visitmatsumoto.com/en/event/index_1_2__35___.html" },
+        { start: "2026-12-15", end: "2026-12-18", dateLabel: "2026年12月15日（火）〜12月18日（金）", name: "春日若宮おん祭", place: "春日大社（奈良県奈良市）", type: "shrine", kind: "おん祭", desc: "春日大社の摂社・若宮の祭礼として知られる、冬の奈良を代表するお祭りです。春日大社の年間祭事では12月15日〜18日の日程で案内されています。", note: "神事・行列の時刻などの詳細は、春日大社の公式の祭事案内でご確認ください", sourceName: "春日大社 公式サイト（神事・行事）", sourceUrl: "https://www.kasugataisha.or.jp/events" },
+        { start: "2026-12-31", end: "2026-12-31", dateLabel: "2026年12月31日（木）", name: "年越大祓式・除夜祭", place: "全国の神社（春日大社・伏見稲荷大社など）", type: "shrine", kind: "神事", desc: "半年間の罪穢れを祓い、清らかな心身で新年を迎えるための神事です。多くの神社で大晦日に行われ、形代に穢れを移して祓う作法が知られます。", note: "開始時刻は神社ごとに異なります。各社の公式案内でご確認ください", sourceName: "春日大社 公式サイト（神事・行事）", sourceUrl: "https://www.kasugataisha.or.jp/events" },
+        { start: "2027-01-01", end: "2027-01-03", dateLabel: "2027年1月1日（金）〜1月3日（日）", name: "初詣・歳旦祭", place: "全国の神社", type: "shrine", kind: "年中行事", desc: "新しい年の始まりに神社へ参拝する初詣と、元旦に一年の平安を祈願する歳旦祭の時期です。伏見稲荷大社や八坂神社など著名な神社では、三が日に大きな人出が見込まれます。", note: "混雑する時間帯を避けた参拝も案内される時期です。各社の公式案内でご確認ください", sourceName: "京都観光情報（京都の初詣・歳旦祭の案内）", sourceUrl: "https://kyototravel.info/hatsumouderanking" },
+        { start: "2027-01-22", end: "2027-01-24", dateLabel: "2027年1月22日（金）〜1月24日（日）", name: "国宝松本城氷彫フェスティバル2027", place: "松本城公園（長野県松本市）", type: "castle", kind: "冬まつり", desc: "全国氷彫コンクール・チャンピオンシップを中心とする、松本の冬の風物詩。夜通し制作される氷彫作品が、国宝の天守と北アルプスを背景に並び、夜はライトアップされます。", note: "観覧無料（イベント案内より）", sourceName: "松本市公式観光サイト Visit Matsumoto", sourceUrl: "https://visitmatsumoto.com/en/event/index_1_2__35___.html" },
+        { start: "2027-02-03", end: "2027-02-03", dateLabel: "2027年2月3日（水）", name: "節分万燈籠", place: "春日大社（奈良県奈良市）", type: "shrine", kind: "神事・燈籠", desc: "境内の石燈籠と釣燈籠、あわせて約3,000基すべてに火を灯す万燈籠です。節分の日に行われ、所願成就が祈願されます（もう一つの万燈籠は8月14・15日の中元万燈籠）。", note: "点灯・参拝の時刻は春日大社の公式案内でご確認ください", sourceName: "春日大社 公式サイト（神事・行事）", sourceUrl: "https://www.kasugataisha.or.jp/events" }
+      ];
+
+      var eventFilter = "all";
+      var WD = ["日", "月", "火", "水", "木", "金", "土"];
+      function evDate(iso) { var p = iso.split("-"); return new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10)); }
+      function evStatus(ev, today) {
+        var s = evDate(ev.start), e = evDate(ev.end);
+        if (today > e) return ev.openEnded ? { key: "now", label: "公開中" } : { key: "done", label: "終了" };
+        if (today >= s) return { key: "now", label: ev.openEnded ? "公開開始" : "開催中" };
+        return { key: "soon", label: "開催予定" };
+      }
+      function eventItemHTML(ev, today) {
+        var st = evStatus(ev, today);
+        var s = evDate(ev.start), e = evDate(ev.end);
+        var dMain = (s.getMonth() + 1) + "/" + s.getDate();
+        var dEnd = "";
+        if (ev.end !== ev.start) dEnd = "〜 " + (e.getMonth() + 1) + "/" + e.getDate() + "（" + WD[e.getDay()] + "）";
+        else if (ev.openEnded) dEnd = "〜 公開開始";
+        var html = '<article class="event-item' + (st.key === "done" ? " ended" : "") + '">';
+        html += '<div class="event-date"><span class="d-main">' + dMain + '<span style="font-size:13px">（' + WD[s.getDay()] + "）</span></span>" +
+          (dEnd ? '<span class="d-end">' + esc(dEnd) + "</span>" : "") + "</div>";
+        html += '<div class="event-main"><div class="event-tags">' +
+          '<span class="tag ' + ev.type + '">' + (ev.type === "castle" ? "お城" : "神社") + "</span>" +
+          '<span class="tag">' + esc(ev.kind) + "</span>" +
+          '<span class="status ' + st.key + '">' + st.label + "</span></div>";
+        html += "<h3>" + esc(ev.name) + "</h3>";
+        html += '<p class="event-when">' + esc(ev.dateLabel) + "</p>";
+        html += '<p class="event-place">' + esc(ev.place) + "</p>";
+        html += '<p class="event-desc">' + esc(ev.desc) + "</p>";
+        if (ev.note) html += '<p class="event-note">' + esc(ev.note) + "</p>";
+        html += '<p class="event-src">出典：<a href="' + esc(ev.sourceUrl) + '" target="_blank" rel="noopener">' + esc(ev.sourceName) + "</a></p>";
+        html += "</div></article>";
+        return html;
+      }
+      function sortedEvents() {
+        return EVENTS.slice().sort(function (a, b) { return a.start < b.start ? -1 : a.start > b.start ? 1 : 0; });
+      }
+      function renderEvents() {
+        var stage = $("#events-stage");
+        $$(".event-filters button").forEach(function (b) {
+          b.setAttribute("aria-pressed", b.getAttribute("data-ev-filter") === eventFilter ? "true" : "false");
+        });
+        var today = new Date(); today.setHours(0, 0, 0, 0);
+        var list = sortedEvents().filter(function (ev) { return eventFilter === "all" || ev.type === eventFilter; });
+        if (list.length === 0) {
+          stage.innerHTML = '<div class="note-box">該当するイベントがありません。</div>';
+          return;
+        }
+        var html = "", lastMonth = "";
+        list.forEach(function (ev) {
+          var s = evDate(ev.start);
+          var mk = s.getFullYear() + "年" + (s.getMonth() + 1) + "月";
+          if (mk !== lastMonth) {
+            if (lastMonth) html += "</div>";
+            html += '<h2 class="event-month">' + mk + 'の行事</h2><div class="event-list">';
+            lastMonth = mk;
+          }
+          html += eventItemHTML(ev, today);
+        });
+        html += "</div>";
+        stage.innerHTML = html;
+      }
+      $$(".event-filters button").forEach(function (b) {
+        b.addEventListener("click", function () {
+          eventFilter = b.getAttribute("data-ev-filter");
+          renderEvents();
+        });
+      });
+      function renderHomeEvents() {
+        var box = $("#home-events");
+        if (!box) return;
+        var today = new Date(); today.setHours(0, 0, 0, 0);
+        var upcoming = sortedEvents().filter(function (ev) {
+          return ev.openEnded || evDate(ev.end) >= today;
+        }).slice(0, 5);
+        if (upcoming.length === 0) {
+          box.innerHTML = '<div class="note-box">現在掲載中の今後のイベントはありません。新しい開催情報が確認でき次第、予定表に追加します。</div>';
+          return;
+        }
+        var html = '<div class="event-list">';
+        upcoming.forEach(function (ev) { html += eventItemHTML(ev, today); });
+        html += "</div>";
+        box.innerHTML = html;
+      }
+
+      /* ---------------- ブログ ---------------- */
+      function productBoxHTML(p) {
+        var html = '<div class="product-box"><div class="product-flex">';
+        if (p.image) {
+          html += '<div class="product-cover"><img src="' + esc(p.image) + '" alt="『' + esc(p.title) + '』の表紙イメージ" loading="lazy" /><p class="cover-note">表紙イメージ（実際の表紙とは異なります）</p></div>';
+        }
+        html += '<div class="product-main">';
+        html += '<p style="margin:0 0 6px"><span class="tag pr">PR</span> <span class="tag">' + esc(p.category) + "</span></p>";
+        html += "<h3>" + esc(p.title) + "</h3>";
+        html += '<p style="color:var(--dim);font-size:13px">著者：' + esc(p.author) + "</p>";
+        html += "<p>" + esc(p.description) + "</p>";
+        html += '<a class="btn indigo" style="padding:9px 18px;font-size:14px" href="' + esc(affiliateUrl(p.baseUrl)) + '" target="_blank" rel="noopener sponsored">Amazonで見る</a>';
+        html += '<p class="pr-line">' + esc(p.priceNote) + "／リンク先：Amazon.co.jp</p>";
+        html += "</div></div></div>";
+        return html;
+      }
+
+      function renderBlog(slug) {
+        var stage = $("#blog-stage");
+        if (!slug) {
+          var html = '<div class="post-list">';
+          BLOG_POSTS.forEach(function (post) {
+            html += '<article class="post-card"><div class="post-meta"><span class="tag">' + esc(post.category) + "</span>" +
+              (post.castleName ? "<span>" + esc(post.castleName) + "</span>" : "") +
+              "<time datetime=\"" + post.date + "\">" + post.date.replace(/-/g, "/") + "</time></div>" +
+              '<h3><a href="#/blog/' + post.slug + '">' + esc(post.title) + "</a></h3>" +
+              "<p>" + esc(post.excerpt) + "</p></article>";
+          });
+          html += "</div>";
+          html += '<div class="note-box" style="margin-top:24px"><p style="margin:0;font-size:13px">' + esc(AFFILIATE_DISCLOSURE) + "</p></div>";
+          stage.innerHTML = html;
+          return;
+        }
+        var post = null;
+        BLOG_POSTS.forEach(function (p) { if (p.slug === slug) post = p; });
+        if (!post) {
+          stage.innerHTML = '<div class="note-box">記事が見つかりませんでした。<div class="btn-row"><a class="btn ghost" href="#/blog">ブログ一覧に戻る</a></div></div>';
+          return;
+        }
+        document.title = post.title + "｜城と神社のブログ";
+        var html = '<p class="no-print" style="margin:26px 0 0"><a href="#/blog">← ブログ一覧に戻る</a></p>';
+        html += '<article class="post" style="margin-top:14px">';
+        html += '<div class="post-meta"><span class="tag">' + esc(post.category) + "</span>" +
+          (post.castleName ? "<span>" + esc(post.castleName) + "</span>" : "") +
+          '<time datetime="' + post.date + '">' + post.date.replace(/-/g, "/") + "</time></div>";
+        html += "<h2>" + esc(post.title) + "</h2>";
+        post.body.forEach(function (para) { html += "<p>" + esc(para) + "</p>"; });
+        if (post.relatedSlug) {
+          var rel = null;
+          BLOG_POSTS.forEach(function (p) { if (p.slug === post.relatedSlug) rel = p; });
+          if (rel) {
+            html += '<div class="note-box" style="margin:22px 0"><p style="margin:0"><strong>関連記事：</strong><a href="#/blog/' + rel.slug + '">' + esc(rel.title) + "</a></p></div>";
+          }
+        }
+        var prods = post.productIds.map(productById).filter(function (p) { return !!p; });
+        if (prods.length > 0) {
+          html += '<h3 class="font-display" style="font-size:19px;margin:28px 0 4px">この記事のおすすめ本</h3>';
+          prods.forEach(function (p) { html += productBoxHTML(p); });
+          html += '<p class="pr-line">' + esc(AFFILIATE_DISCLOSURE) + "</p>";
+        }
+        html += "</article>";
+        html += '<div class="btn-row no-print"><a class="btn ghost" href="#/blog">ブログ一覧に戻る</a><a class="btn indigo" href="#/textbook/castle">お城検定の教科書を読む</a></div>';
+        stage.innerHTML = html;
+      }
+
+      /* ---------------- ショップ ---------------- */
+      function renderShop() {
+        var grid = $("#shop-grid");
+        var html = "";
+        PRODUCTS.forEach(function (p) {
+          html += '<article class="product-card"><div><span class="tag pr">PR</span> <span class="tag">' + esc(p.category) + "</span></div>" +
+            (p.image ? '<div class="card-cover"><img src="' + esc(p.image) + '" alt="『' + esc(p.title) + '』の表紙イメージ" loading="lazy" /><p class="cover-note">表紙イメージ（実際の表紙とは異なります）</p></div>' : "") +
+            "<h3>" + esc(p.title) + "</h3>" +
+            '<p class="author">著者：' + esc(p.author) + "</p>" +
+            '<p class="desc">' + esc(p.description) + "</p>" +
+            '<a class="btn indigo" href="' + esc(affiliateUrl(p.baseUrl)) + '" target="_blank" rel="noopener sponsored">Amazonで見る</a>' +
+            '<p class="price-note">' + esc(p.priceNote) + "</p></article>";
+        });
+        grid.innerHTML = html;
+      }
+
+      /* ---------------- 受験履歴 ---------------- */
+      function renderHistory() {
+        var attempts = loadJSON(LS_ATTEMPTS, []);
+        var stage = $("#history-stage");
+        var clearBtn = $("#history-clear");
+        if (attempts.length === 0) {
+          stage.innerHTML = '<div class="note-box">まだ受験履歴がありません。<div class="btn-row"><a class="btn" href="#/exam/castle">お城検定を受験する</a><a class="btn ghost" href="#/exam/shrine">神社検定を受験する</a></div></div>';
+          clearBtn.style.display = "none";
+          return;
+        }
+        clearBtn.style.display = "";
+        var html = '<div style="overflow-x:auto"><table class="history"><thead><tr><th>受験日時</th><th>検定</th><th>級</th><th>お名前</th><th>結果</th><th>合否</th></tr></thead><tbody>';
+        attempts.forEach(function (a) {
+          html += "<tr>" +
+            '<td data-label="受験日時">' + esc(fmtDateTime(a.at)) + "</td>" +
+            '<td data-label="検定">' + esc(a.examTitle) + "</td>" +
+            '<td data-label="級">' + esc(a.grade) + "</td>" +
+            '<td data-label="お名前">' + esc(a.name) + "</td>" +
+            '<td data-label="結果">' + a.score + "／" + a.total + "問</td>" +
+            '<td data-label="合否">' + (a.passed ? '<span class="pass-label">合格</span>' : '<span class="fail-label">不合格</span>') + "</td></tr>";
+        });
+        html += "</tbody></table></div>";
+        stage.innerHTML = html;
+      }
+
+      $("#history-clear").addEventListener("click", function () {
+        saveJSON(LS_ATTEMPTS, []);
+        saveJSON(LS_CERTS, []);
+        renderHistory();
+      });
+
+      route();
+    </script>
+  </body>
+</html>
