@@ -1,0 +1,1501 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="施術者・サロン経営者のためのセラピスト集客塾。集客とリピートづくりを学ぶ教材コラム全50本を掲載しています。集客塾は開講準備中、送客システムは構築中です。" />
+    <link rel="icon" href="data:," />
+    <title>セラピスト集客塾｜開講準備中 ― 集客とリピートづくりを学ぶ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f4f6f5;
+        --surface: #ffffff;
+        --surface-2: #eef2f0;
+        --ink: #1c2422;
+        --ink-2: #46524e;
+        --ink-3: #6b7773;
+        --line: #d9e0dd;
+        --accent: #0e6b5c;
+        --accent-strong: #0a5547;
+        --accent-soft: #e2efec;
+        --amber-bg: #fdf3e0;
+        --amber-line: #e8c87e;
+        --amber-ink: #7a5410;
+        --radius: 14px;
+        --shadow: 0 1px 2px rgba(20, 40, 35, .05), 0 8px 24px rgba(20, 40, 35, .06);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121716;
+          --surface: #1b2220;
+          --surface-2: #232b29;
+          --ink: #e8eeec;
+          --ink-2: #b7c2be;
+          --ink-3: #8b9894;
+          --line: #333d3a;
+          --accent: #4cc2ab;
+          --accent-strong: #7fd6c2;
+          --accent-soft: #1e3330;
+          --amber-bg: #2e2716;
+          --amber-line: #6b5724;
+          --amber-ink: #e9c979;
+          --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 16px;
+        line-height: 1.85;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px; }
+
+      /* ---------- Hero ---------- */
+      .hero { padding: 56px 0 8px; }
+      .hero-kicker {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 13px; font-weight: 700; letter-spacing: .08em;
+        color: var(--accent-strong);
+        background: var(--accent-soft);
+        border: 1px solid var(--line);
+        padding: 5px 14px; border-radius: 999px;
+      }
+      .hero-kicker .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+      h1 {
+        font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+        font-size: clamp(28px, 5.4vw, 44px);
+        line-height: 1.35; font-weight: 700;
+        margin: 20px 0 14px; letter-spacing: .01em;
+      }
+      h1 .accent { color: var(--accent-strong); }
+      .hero-lead { font-size: clamp(15px, 2.6vw, 17.5px); color: var(--ink-2); max-width: 720px; margin: 0; }
+
+      .notice {
+        margin-top: 28px;
+        background: var(--amber-bg);
+        border: 1.5px solid var(--amber-line);
+        border-radius: var(--radius);
+        padding: 20px 22px;
+        display: flex; gap: 16px; align-items: flex-start;
+      }
+      .notice svg { flex: none; margin-top: 4px; color: var(--amber-ink); }
+      .notice .notice-title { font-weight: 900; font-size: 18px; color: var(--amber-ink); margin: 0 0 4px; }
+      .notice p { margin: 0; color: var(--ink); font-size: 15px; }
+
+      /* ---------- Flow diagram ---------- */
+      .flow {
+        margin-top: 40px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 26px 24px 22px;
+      }
+      .flow-title { font-size: 13px; font-weight: 700; letter-spacing: .1em; color: var(--ink-3); margin: 0 0 18px; }
+      .flow-steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: stretch; }
+      .flow-step {
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 16px 14px;
+        text-align: center;
+      }
+      .flow-step svg { color: var(--accent-strong); }
+      .flow-step .fs-name { font-weight: 700; font-size: 15px; margin: 6px 0 2px; }
+      .flow-step .fs-desc { font-size: 12.5px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+      .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--ink-3); }
+      @media (max-width: 640px) {
+        .flow-steps { grid-template-columns: 1fr; }
+        .flow-arrow { transform: rotate(90deg); padding: 2px 0; }
+      }
+
+      /* ---------- Sections ---------- */
+      section { padding: 52px 0 4px; }
+      .sec-head { margin-bottom: 22px; }
+      .sec-head h2 {
+        font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+        font-size: clamp(22px, 4vw, 29px); font-weight: 700;
+        margin: 0 0 6px; line-height: 1.45;
+      }
+      .sec-head p { margin: 0; color: var(--ink-2); font-size: 15px; max-width: 700px; }
+
+      .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 24px;
+      }
+      .panel h3 { font-size: 17px; font-weight: 700; margin: 0 0 6px; display: flex; align-items: center; gap: 10px; }
+      .panel h3 svg { color: var(--accent-strong); flex: none; }
+      .panel p { margin: 0; color: var(--ink-2); font-size: 14.5px; }
+
+      .group-label {
+        font-size: 13px; font-weight: 700; letter-spacing: .1em;
+        color: var(--accent-strong);
+        margin: 30px 0 12px;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .group-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+      .group-label:first-of-type { margin-top: 4px; }
+
+      .feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      @media (max-width: 700px) { .feat-grid { grid-template-columns: 1fr; } }
+      .feat {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 20px 22px;
+        display: flex; gap: 16px; align-items: flex-start;
+      }
+      .feat .icon {
+        flex: none; width: 44px; height: 44px;
+        background: var(--accent-soft);
+        border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--accent-strong);
+      }
+      .feat h3 { font-size: 16px; font-weight: 700; margin: 0 0 4px; line-height: 1.5; }
+      .feat p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.75; }
+      .feat .tag {
+        display: inline-block; font-size: 11.5px; font-weight: 700;
+        color: var(--amber-ink); background: var(--amber-bg);
+        border: 1px solid var(--amber-line);
+        border-radius: 999px; padding: 1px 10px; margin-left: 8px; vertical-align: 2px;
+        white-space: nowrap;
+      }
+
+      /* ---------- Pricing ---------- */
+      .price-table {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .price-row {
+        display: flex; justify-content: space-between; align-items: baseline; gap: 20px;
+        padding: 18px 24px;
+      }
+      .price-row + .price-row { border-top: 1px solid var(--line); }
+      .price-row .p-name { font-weight: 700; font-size: 15.5px; }
+      .price-row .p-desc { font-size: 13px; color: var(--ink-2); margin-top: 2px; line-height: 1.65; }
+      .price-row .p-value { font-weight: 900; font-size: 19px; color: var(--accent-strong); white-space: nowrap; text-align: right; }
+      .price-row .p-value small { font-size: 12.5px; font-weight: 500; color: var(--ink-2); }
+      .price-note {
+        margin-top: 14px; font-size: 14px; color: var(--ink-2);
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: 10px; padding: 14px 18px;
+      }
+      @media (max-width: 560px) {
+        .price-row { flex-direction: column; gap: 4px; }
+        .price-row .p-value { text-align: left; }
+      }
+
+      /* ---------- Apply ---------- */
+      .apply {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 30px 26px;
+        text-align: center;
+      }
+      .apply svg { color: var(--accent-strong); }
+      .apply h2 {
+        font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+        font-size: clamp(20px, 3.6vw, 25px); margin: 10px 0 8px; line-height: 1.5;
+      }
+      .apply p { margin: 0 auto; color: var(--ink-2); font-size: 15px; max-width: 560px; }
+
+      /* ---------- Columns ---------- */
+      .col-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      @media (max-width: 700px) { .col-grid { grid-template-columns: 1fr; } }
+      .col-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 20px 22px; text-align: left; cursor: pointer; font: inherit; color: inherit;
+        display: block; width: 100%; transition: border-color .15s ease;
+      }
+      .col-card:hover, .col-card:focus-visible { border-color: var(--accent); outline: none; }
+      .col-card .c-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+      .col-card .c-num {
+        font-size: 12px; font-weight: 900; color: var(--accent-strong);
+        background: var(--accent-soft); border-radius: 999px; padding: 1px 10px;
+      }
+      .col-card .c-cat { font-size: 12px; font-weight: 700; color: var(--ink-3); letter-spacing: .04em; }
+      .col-card h3 { font-size: 16.5px; font-weight: 700; margin: 0 0 6px; line-height: 1.55; }
+      .col-card p { margin: 0; font-size: 13.5px; color: var(--ink-2); line-height: 1.75; }
+      .col-card .c-more { display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 700; color: var(--accent-strong); }
+
+      .col-article {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        box-shadow: var(--shadow); padding: 34px 30px 30px;
+      }
+      @media (max-width: 560px) { .col-article { padding: 26px 20px 24px; } }
+      .col-article .a-cat { font-size: 12.5px; font-weight: 700; letter-spacing: .06em; color: var(--accent-strong); margin: 0 0 8px; }
+      .col-article h2 {
+        font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+        font-size: clamp(21px, 4vw, 27px); line-height: 1.5; margin: 0 0 14px;
+      }
+      .col-article .a-lead { font-size: 15.5px; color: var(--ink-2); margin: 0 0 8px; }
+      .col-article h3 { font-size: 17px; font-weight: 700; margin: 26px 0 8px; line-height: 1.55; }
+      .col-article p { font-size: 15px; margin: 0 0 12px; }
+      .col-article ul, .col-article ol { margin: 0 0 14px; padding-left: 1.4em; }
+      .col-article li { font-size: 15px; margin-bottom: 6px; }
+      .col-article .voice {
+        background: var(--accent-soft); border-radius: 10px; padding: 14px 18px; margin: 0 0 14px;
+      }
+      .col-article .voice p { margin: 0 0 6px; font-size: 14.5px; }
+      .col-article .voice p:last-child { margin-bottom: 0; }
+      .col-article .voice .v-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--accent-strong); margin-bottom: 8px; }
+      .col-article .check {
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin: 18px 0 6px;
+      }
+      .col-article .check .ck-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--ink-3); margin: 0 0 8px; }
+      .col-article .check ul { margin: 0; }
+      .back-link {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-size: 14px; font-weight: 700; color: var(--accent-strong);
+        background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; margin-bottom: 18px;
+      }
+      .a-nav { display: flex; justify-content: space-between; gap: 14px; margin-top: 30px; border-top: 1px solid var(--line); padding-top: 18px; flex-wrap: wrap; }
+      .a-nav button {
+        font: inherit; font-size: 13.5px; font-weight: 700; color: var(--accent-strong);
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px;
+        padding: 10px 16px; cursor: pointer; max-width: 48%; text-align: left; line-height: 1.5;
+      }
+      .a-nav button.next { margin-left: auto; text-align: right; }
+      .a-nav button:hover { border-color: var(--accent); }
+      .a-nav button:disabled { opacity: .35; cursor: default; }
+      .a-nav button:disabled:hover { border-color: var(--line); }
+
+      footer {
+        margin-top: 64px;
+        border-top: 1px solid var(--line);
+        padding: 26px 0 40px;
+        color: var(--ink-3); font-size: 13px;
+      }
+      footer .f-name { font-weight: 700; color: var(--ink-2); font-size: 14px; margin-bottom: 4px; }
+      footer p { margin: 0; }
+    </style>
+    <style>
+      /* ============ Design v2 : visual refresh ============ */
+      :root {
+        --forest: #0b3d33;
+        --forest-2: #0e4a3e;
+        --mint: #8fd8c3;
+        --mint-soft: #cfe6dd;
+        --paper: #f6f4ee;
+        --cat-repeat: #0e6b5c; --cat-repeat-bg: #e2efec;
+        --cat-review: #a34d1c; --cat-review-bg: #f8e9dc;
+        --cat-web: #33587e; --cat-web-bg: #e2eaf3;
+        --cat-menu: #7d5f10; --cat-menu-bg: #f4edd6;
+        --cat-booking: #7e3542; --cat-booking-bg: #f6e3e6;
+        --cat-grow: #55661f; --cat-grow-bg: #ecefdb;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --forest: #0d2e27;
+          --forest-2: #123a31;
+          --mint: #7fd6c2;
+          --mint-soft: #a8cfc2;
+          --paper: #101413;
+          --cat-repeat: #4cc2ab; --cat-repeat-bg: #1e3330;
+          --cat-review: #eda768; --cat-review-bg: #3a2a1a;
+          --cat-web: #93b4d9; --cat-web-bg: #22303f;
+          --cat-menu: #d9be6a; --cat-menu-bg: #38311a;
+          --cat-booking: #e09aa6; --cat-booking-bg: #382227;
+          --cat-grow: #b3c476; --cat-grow-bg: #2c3319;
+        }
+      }
+      body { background: var(--paper); }
+      .wrap { max-width: 1080px; }
+      section { scroll-margin-top: 92px; }
+
+      /* ---------- Sticky in-page nav ---------- */
+      .topnav {
+        position: sticky; top: 12px; z-index: 50;
+        display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: 999px; box-shadow: var(--shadow);
+        padding: 8px 10px 8px 18px; margin-top: 16px;
+      }
+      .topnav-brand { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 14.5px; white-space: nowrap; }
+      .topnav-links { display: flex; gap: 2px; flex-wrap: wrap; margin-left: auto; }
+      .topnav-links a {
+        color: var(--ink-2); text-decoration: none; font-size: 13.5px; font-weight: 700;
+        padding: 5px 11px; border-radius: 999px; line-height: 1.5;
+      }
+      .topnav-links a:hover { background: var(--accent-soft); color: var(--accent-strong); }
+      .topnav-badge {
+        font-size: 11.5px; font-weight: 700; color: var(--amber-ink);
+        background: var(--amber-bg); border: 1px solid var(--amber-line);
+        border-radius: 999px; padding: 3px 11px; white-space: nowrap;
+      }
+      @media (max-width: 640px) {
+        .topnav { border-radius: 16px; }
+        .topnav-brand { display: none; }
+        .topnav-badge { display: none; }
+        .topnav-links { margin-left: 0; }
+      }
+
+      /* ---------- Hero panel ---------- */
+      .hero {
+        margin-top: 22px; padding: 48px 44px 38px;
+        background: var(--forest);
+        background-image: radial-gradient(rgba(255,255,255,.13) 1.2px, transparent 1.3px);
+        background-size: 22px 22px; background-position: right -40px top -10px;
+        border-radius: 24px; color: #eef5f1;
+        box-shadow: 0 18px 44px rgba(8, 42, 34, .28);
+      }
+      @media (max-width: 640px) { .hero { padding: 34px 22px 28px; border-radius: 18px; } }
+      .hero-kicker {
+        color: var(--mint-soft); background: rgba(255,255,255,.09);
+        border-color: rgba(255,255,255,.22);
+      }
+      .hero-kicker .dot { background: var(--mint); animation: pulse 2.4s ease-in-out infinite; }
+      @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+      .hero h1 { color: #ffffff; font-size: clamp(30px, 5.6vw, 47px); margin-top: 22px; }
+      .hero h1 .accent { color: var(--mint); }
+      .hero-lead { color: #cfdfd7; max-width: 760px; }
+      .hero-stats {
+        display: flex; gap: 0; flex-wrap: wrap; margin-top: 30px;
+        border-top: 1px solid rgba(255,255,255,.18); padding-top: 22px;
+      }
+      .hero-stat { padding-right: 30px; margin-right: 30px; border-right: 1px solid rgba(255,255,255,.18); }
+      .hero-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+      .hero-stat .hs-num { font-family: "Noto Serif JP", serif; font-size: 30px; font-weight: 700; line-height: 1.1; color: #fff; }
+      .hero-stat .hs-num small { font-size: 15px; color: var(--mint); margin-left: 2px; }
+      .hero-stat .hs-label { font-size: 12.5px; color: #b9cdc2; margin-top: 2px; }
+      @media (max-width: 560px) {
+        .hero-stat { padding-right: 18px; margin-right: 18px; }
+        .hero-stat .hs-num { font-size: 24px; }
+      }
+      .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+      .btn-primary, .btn-ghost {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 14.5px; font-weight: 700; text-decoration: none;
+        border-radius: 999px; padding: 11px 22px; line-height: 1.5;
+      }
+      .btn-primary { background: #ffffff; color: var(--forest); }
+      .btn-primary:hover { background: var(--mint); color: var(--forest); }
+      .btn-ghost { color: #eef5f1; border: 1px solid rgba(255,255,255,.4); }
+      .btn-ghost:hover { border-color: var(--mint); color: var(--mint); }
+      .hero .notice { margin-top: 30px; box-shadow: none; }
+      .hero .flow { margin-top: 18px; box-shadow: none; }
+
+      /* ---------- Flow steps with numbers ---------- */
+      .flow { counter-reset: step; }
+      .flow-step { position: relative; padding-top: 20px; }
+      .flow-step::before {
+        counter-increment: step; content: "0" counter(step);
+        display: block; font-family: "Noto Serif JP", serif;
+        font-size: 13px; font-weight: 700; letter-spacing: .14em;
+        color: var(--accent); margin-bottom: 6px;
+      }
+
+      /* ---------- Section heads ---------- */
+      .sec-head h2 { position: relative; padding-bottom: 12px; }
+      .sec-head h2::after {
+        content: ""; position: absolute; left: 0; bottom: 0;
+        width: 46px; height: 4px; border-radius: 2px; background: var(--accent);
+      }
+
+      /* ---------- Column filter ---------- */
+      .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 10px; }
+      .filter-chip {
+        font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer;
+        color: var(--ink-2); background: var(--surface);
+        border: 1px solid var(--line); border-radius: 999px; padding: 7px 15px; line-height: 1.5;
+      }
+      .filter-chip .fc-count { font-size: 11.5px; font-weight: 500; color: var(--ink-3); margin-left: 5px; }
+      .filter-chip:hover { border-color: var(--accent); color: var(--accent-strong); }
+      .filter-chip.active { background: var(--forest); border-color: var(--forest); color: #fff; }
+      .filter-chip.active .fc-count { color: var(--mint); }
+      .filter-count { font-size: 13px; color: var(--ink-3); margin: 0 0 14px; }
+
+      /* ---------- Column cards ---------- */
+      .col-card { position: relative; overflow: hidden; padding: 22px 24px; border-radius: 16px; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+      .col-card::after {
+        content: attr(data-num); position: absolute; top: 6px; right: 16px;
+        font-family: "Noto Serif JP", serif; font-size: 44px; font-weight: 700;
+        color: var(--surface-2); line-height: 1; pointer-events: none;
+      }
+      .col-card:hover, .col-card:focus-visible { transform: translateY(-3px); box-shadow: var(--shadow); }
+      .col-card .c-meta { position: relative; z-index: 1; }
+      .col-card h3, .col-card p, .col-card .c-more { position: relative; z-index: 1; }
+      .col-card .c-more { border-bottom: 2px solid var(--accent-soft); padding-bottom: 1px; }
+      .col-card:hover .c-more { border-bottom-color: var(--accent); }
+      .col-card[data-cat="リピートの仕組み"] .c-num { color: var(--cat-repeat); background: var(--cat-repeat-bg); }
+      .col-card[data-cat="口コミ・MEO"] .c-num { color: var(--cat-review); background: var(--cat-review-bg); }
+      .col-card[data-cat="Web・発信"] .c-num { color: var(--cat-web); background: var(--cat-web-bg); }
+      .col-card[data-cat="メニュー・料金"] .c-num { color: var(--cat-menu); background: var(--cat-menu-bg); }
+      .col-card[data-cat="予約管理"] .c-num { color: var(--cat-booking); background: var(--cat-booking-bg); }
+      .col-card[data-cat="集客の広げ方"] .c-num { color: var(--cat-grow); background: var(--cat-grow-bg); }
+
+      /* ---------- Panels / features ---------- */
+      .panel, .feat { transition: box-shadow .18s ease, border-color .18s ease; }
+      .panel:hover, .feat:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+      .feat .icon { border-radius: 50%; }
+
+      /* ---------- Pricing ---------- */
+      .price-row .p-value { font-family: "Noto Serif JP", serif; font-size: 22px; }
+
+      /* ---------- Apply : closing panel ---------- */
+      .apply { background: var(--forest); border-color: var(--forest); color: #eef5f1; border-radius: 24px; padding: 38px 26px; }
+      .apply svg { color: var(--mint); }
+      .apply h2 { color: #ffffff; }
+      .apply p { color: #cfdfd7; }
+
+      /* ---------- Article view ---------- */
+      .back-link {
+        position: sticky; top: 76px; z-index: 40;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+        padding: 8px 18px; box-shadow: var(--shadow);
+      }
+      .col-article { border-radius: 20px; }
+      .col-article h3 { border-left: 4px solid var(--accent); padding-left: 12px; }
+      .col-article .voice { border: 1px dashed var(--accent); }
+      .a-nav button { border-radius: 999px; }
+
+      /* ---------- Footer ---------- */
+      footer { border-top: 2px solid var(--ink); }
+      footer .f-name { font-family: "Noto Serif JP", serif; font-size: 15px; color: var(--ink); }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .hero-kicker .dot { animation: none; }
+        .col-card, .panel, .feat { transition: none; }
+        .col-card:hover { transform: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+
+      <nav class="topnav" aria-label="ページ内メニュー">
+        <span class="topnav-brand">セラピスト集客塾</span>
+        <div class="topnav-links">
+          <a href="#columns">教材コラム</a>
+          <a href="#audience">対象</a>
+          <a href="#system">送客システム</a>
+          <a href="#pricing">料金</a>
+          <a href="#apply">お申し込み</a>
+        </div>
+        <span class="topnav-badge">開講準備中</span>
+      </nav>
+
+      <!-- ===== Hero ===== -->
+      <div class="hero">
+        <span class="hero-kicker"><span class="dot"></span>セラピスト集客塾 ・ 開講準備中</span>
+        <h1>集客とリピートづくりを、<br />現場で使える形で学ぶ。<br /><span class="accent">セラピスト集客塾</span></h1>
+        <p class="hero-lead">施術者・サロン経営者のための、集客を学ぶ場です。方針は「新規集客より、まずリピート」。来てくださったお客様にもう一度選んでいただくための考え方と手順を、教材コラム全50本で学べます。</p>
+
+        <div class="hero-stats" aria-label="教材の概要">
+          <div class="hero-stat"><div class="hs-num">50<small>本</small></div><div class="hs-label">教材コラム</div></div>
+          <div class="hero-stat"><div class="hs-num">6<small>テーマ</small></div><div class="hs-label">カリキュラム構成</div></div>
+          <div class="hero-stat"><div class="hs-num">3<small>ステップ</small></div><div class="hs-label">読む・試す・見直す</div></div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn-primary" href="#columns">教材コラムを読む ↓</a>
+          <a class="btn-ghost" href="#system">構築中の送客システムを見る</a>
+        </div>
+
+        <div class="notice" role="status">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div>
+            <p class="notice-title">セラピスト向け集客塾は開講準備中です</p>
+            <p>送客システムは構築中です。受講・掲載のお申し込み受付は開始後にこのページでご案内します。</p>
+          </div>
+        </div>
+
+        <div class="flow" aria-label="学びの進み方">
+          <p class="flow-title">学びの進み方</p>
+          <div class="flow-steps">
+            <div class="flow-step">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <p class="fs-name">教材を読む</p>
+              <p class="fs-desc">集客コラム全50本を、テーマ別に読み進めます</p>
+            </div>
+            <div class="flow-arrow" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+            <div class="flow-step">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+              <p class="fs-name">現場で試す</p>
+              <p class="fs-desc">声かけ・フォロー・予約管理などを、自分のサロンで実践します</p>
+            </div>
+            <div class="flow-arrow" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+            <div class="flow-step">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+              <p class="fs-name">記録して見直す</p>
+              <p class="fs-desc">次回予約・再来・継続の記録を見返し、改善点を見つけます</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Curriculum (columns as teaching materials) ===== -->
+      <section aria-labelledby="col-h" id="columns">
+        <div class="sec-head">
+          <h2 id="col-h">学べる内容・教材 ― 集客コラム全50本</h2>
+          <p>この塾の教材は、集客コラム全50本です。「リピートの仕組み」「口コミ・MEO」「Web・発信」「メニュー・料金」「予約管理」「集客の広げ方」というテーマの並びが、そのままカリキュラムになっています。各教材には、現場で使える手順・声かけや文面の例・チェックポイントを収録しました。気になるテーマから読み進められます。</p>
+        </div>
+        <div class="filter-bar" id="filterBar" role="group" aria-label="テーマで絞り込み">
+          <button type="button" class="filter-chip active" data-filter="all">すべて<span class="fc-count">50</span></button>
+          <button type="button" class="filter-chip" data-filter="リピートの仕組み">リピートの仕組み<span class="fc-count">10</span></button>
+          <button type="button" class="filter-chip" data-filter="口コミ・MEO">口コミ・MEO<span class="fc-count">7</span></button>
+          <button type="button" class="filter-chip" data-filter="Web・発信">Web・発信<span class="fc-count">10</span></button>
+          <button type="button" class="filter-chip" data-filter="メニュー・料金">メニュー・料金<span class="fc-count">8</span></button>
+          <button type="button" class="filter-chip" data-filter="予約管理">予約管理<span class="fc-count">6</span></button>
+          <button type="button" class="filter-chip" data-filter="集客の広げ方">集客の広げ方<span class="fc-count">9</span></button>
+        </div>
+        <p class="filter-count" id="filterCount">全50本を表示しています</p>
+        <div class="col-grid" id="colGrid"></div>
+      </section>
+
+
+<!-- ===== Column articles (JSで表示切替) ===== -->
+      <section id="colArticleWrap" hidden aria-live="polite">
+        <button type="button" class="back-link" id="backToListTop">← 教材一覧に戻る</button>
+        <div id="colArticles"></div>
+      </section>
+
+
+      <!-- ===== Two sides ===== -->
+      <section aria-labelledby="sides-h" id="audience">
+        <div class="sec-head">
+          <h2 id="sides-h">対象は、施術者とサロン経営者</h2>
+          <p>一人で運営する方も、スタッフと運営する方も、自分の現場に合わせて取り入れられる内容です。</p>
+        </div>
+        <div class="two-col">
+          <div class="panel">
+            <h3>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              施術者・一人サロン
+            </h3>
+            <p>日々の接客の中で使う、次回予約の声かけ、来店後のフォロー、口コミへの対応などを学びます。自分の施術と予約の流れに、そのまま取り入れられます。</p>
+          </div>
+          <div class="panel">
+            <h3>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.7-5h14.6L21 9"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 20v-6h6v6"/></svg>
+              サロン経営者・複数スタッフのサロン
+            </h3>
+            <p>リピートの数え方、メニュー・料金の見直し方、口コミや発信の方針など、サロン全体で共有できる集客の考え方を学びます。</p>
+          </div>
+        </div>
+      </section>
+
+<!-- ===== Referral system (under construction) ===== -->
+      <section aria-labelledby="system-h" id="system">
+        <div class="sec-head">
+          <h2 id="system-h">構築中の送客システム</h2>
+          <p>現在構築中です。完成後は、集客塾で学んだ実践の場として使える仕組みを目指しています。お客様がサロンを探して予約する送客ポータルと、予約にひもづくカルテ管理を1つに統合する計画で、要点は以下のとおりです。</p>
+        </div>
+        <div class="feat-grid">
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg></div>
+            <div>
+              <h3>送客ポータルと予約導線</h3>
+              <p>お客様が症状や条件からサロンを探して予約でき、サロン側は予約を受け付けます。お気に入り・再予約にも対応します。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
+            <div>
+              <h3>カルテ管理とスタッフ管理</h3>
+              <p>予約にひもづけて施術の記録をカルテとして残し、スタッフの登録やスタッフ別の実績の確認も扱います。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="m9 9 2 2 4-4"/></svg></div>
+            <div>
+              <h3>口コミ・資格の表示と掲載機能</h3>
+              <p>口コミはサロン側が確認してから掲載の可否を決める形にし、資格確認バッジの表示、求人掲載、セミナーの開催・申込も扱います。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></div>
+            <div>
+              <h3>写真による姿勢分析<span class="tag">有料オプション</span></h3>
+              <p>写真を取り込むと姿勢を分析し、ストレッチやトレーニングのアドバイスを表示する機能です。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Pricing ===== -->
+      <section aria-labelledby="price-h" id="pricing">
+        <div class="sec-head">
+          <h2 id="price-h">送客システムの利用料金</h2>
+          <p>構築中の送客システムについて、決定している利用料金は以下のとおりです。</p>
+        </div>
+        <div class="price-table">
+          <div class="price-row">
+            <div>
+              <div class="p-name">送客手数料</div>
+              <div class="p-desc">ポータル経由の予約による売上に対する手数料</div>
+            </div>
+            <div class="p-value">売上の10<small>%</small></div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="p-name">求人掲載料</div>
+              <div class="p-desc">求人情報の掲載1件あたり</div>
+            </div>
+            <div class="p-value">1,000<small>円／件</small></div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="p-name">セミナー掲載料</div>
+              <div class="p-desc">セミナー募集の掲載1件あたり</div>
+            </div>
+            <div class="p-value">1,000<small>円／件</small></div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="p-name">写真姿勢分析プラン</div>
+              <div class="p-desc">写真取り込みによる姿勢分析とアドバイス表示（有料オプション）</div>
+            </div>
+            <div class="p-value">月額3,000<small>円</small></div>
+          </div>
+        </div>
+        <p class="price-note">月額プランの価格はサービス開始時にご案内します。</p>
+      </section>
+
+      <!-- ===== Apply ===== -->
+      <section aria-labelledby="apply-h" id="apply">
+        <div class="apply">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <h2 id="apply-h">お申し込みについて</h2>
+          <p>受講・掲載のお申し込み受付は開始後にこのページでご案内します。現在は受付を開始していません。</p>
+        </div>
+      </section>
+
+      <footer>
+        <p class="f-name">セラピスト集客塾（開講準備中）／送客システム（構築中）</p>
+        <p>このページは、開講・サービス開始に先立つ事前のご案内です。内容は開始時点の提供内容と異なる場合があります。</p>
+      </footer>
+
+    </main>
+    <script>
+      var COLUMNS = [
+      {
+        cat: 'リピートの仕組み',
+        title: 'リピートされるサロンの共通点 ― その場で次回予約を取る仕組み',
+        desc: '技術の上手さだけではリピートは決まりません。次回予約が自然に決まるサロンに共通する、接客の流れと仕組みを解説します。',
+        body: '<p class="a-lead">「施術には満足してくれたはずなのに、次につながらない」。そんなとき、原因は技術よりも「次回への橋渡し」が用意されていないことにあります。リピートされるサロンには、次回予約をその場で取るための流れが、接客の中に組み込まれています。</p>' +
+        '<h3>共通点1：終わりの15分に「次回の話」が入っている</h3>' +
+        '<p>リピート率の高いサロンでは、施術後の着替え・会計の時間に、必ず次回の話題が出ます。ポイントは、施術直後の体の状態を一緒に確認しながら話すこと。「今日はここが張っていましたね」という観察を共有すると、お客様自身が「また来た方がいいな」と感じやすくなります。営業トークではなく、体の記録を伝える姿勢が大切です。</p>' +
+        '<h3>共通点2：提案する日付は「候補を2つ」まで絞る</h3>' +
+        '<p>「いつがいいですか？」と丸投げすると、お客様は考え込むうちに「また連絡します」で終わりがちです。「この状態だと、2週間後か3週間後あたりが目安です。◯日と△日、どちらが都合よさそうですか？」と、目安と候補日をセットで出すと決めやすくなります。予定が合わなければ、その場で別の候補を出せばよく、会話が途切れません。</p>' +
+        '<div class="voice"><p class="v-label">声かけ例</p><p>「今日ほぐしたところは、放っておくとまた張りやすい部分です。次は2〜3週間後くらいに見せていただけると安心です。◯日の同じ時間か、△日の夕方、空いていますよ。」</p></div>' +
+        '<h3>共通点3：取れなかった場合の受け皿がある</h3>' +
+        '<p>その場で決まらないお客様にも、必ず「次に連絡するきっかけ」を残します。LINE公式アカウントへの登録を案内し、「空きが出たらお知らせしますね」と一言添える。カルテには「次回未定・LINE登録済み」と記録しておき、後日のフォローにつなげます。次回予約は「取るか、フォローの約束をするか」のどちらかで終えるのが共通点です。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>施術後に体の状態を言葉で共有しているか</li><li>次回の目安時期と候補日を2つ提示しているか</li><li>決まらなかった場合のフォロー手段（LINE登録など）を案内しているか</li><li>カルテに次回予約の有無と理由を記録しているか</li></ul></div>'
+      },
+      {
+        cat: 'リピートの仕組み',
+        title: '新規集客よりリピートを優先すべき理由',
+        desc: '広告で新規を追い続けるほど、現場は疲弊します。リピートを軸にすると経営も接客も安定する、その理由を整理します。',
+        body: '<p class="a-lead">集客というと、つい「新しいお客様を増やすこと」を考えがちです。けれどサロンの現場では、一度来てくださった方にもう一度来ていただく方が、はるかに少ない労力で、安定した予約につながります。ここではリピート優先の考え方を整理します。</p>' +
+        '<h3>理由1：新規のお客様は「知ってもらう」コストが毎回かかる</h3>' +
+        '<p>初めてのお客様には、場所、料金、施術内容、自分の人柄、すべてをゼロから知ってもらう必要があります。広告費も時間もかかります。一方、来店済みのお客様は体験を通じてサロンを理解しています。「また行きたい」と思ってもらうためのハードルは、新規に比べものにならないほど低いのです。</p>' +
+        '<h3>理由2：予約表が安定し、施術に集中できる</h3>' +
+        '<p>リピートのお客様が土台にあると、来週・再来週の予約表が早い段階で埋まっていきます。「今日は予約が入るだろうか」という不安が減ると、接客や技術の向上に時間を使えるようになります。新規の波に振り回される営業から、計画的に回る営業へ変わるのが、リピート軸の大きな利点です。</p>' +
+        '<h3>理由3：紹介はリピート客から生まれる</h3>' +
+        '<p>「あのサロン、よかったよ」と家族や同僚に勧めてくれるのは、たいてい複数回来ているお客様です。1回だけのお客様は勧めるほどの確信が持てません。つまりリピートを増やすことは、紹介というもう一つの集客経路を育てることでもあります。</p>' +
+        '<h3>優先順位の付け方</h3>' +
+        '<p>新規集客をやめる必要はありません。順番の問題です。まず「来てくれた方が次も来る流れ」を整え、それから新規の入口を広げる。土台ができていない状態で広告だけ増やすと、せっかく来たお客様が1回で離れてしまい、穴の空いたバケツに水を注ぐ状態になります。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>直近1か月の予約のうち、2回目以降のお客様の割合を把握しているか</li><li>集客の時間と費用を、新規とリピートでどう配分しているか書き出したか</li><li>「次回につなげる接客」が、広告より先に整っているか</li></ul></div>'
+      },
+      {
+        cat: 'リピートの仕組み',
+        title: '初回来店で次回予約につなげる声かけの例',
+        desc: '初回のお客様は「様子見」で来ています。帰り際の数分で次につなげるための、場面別の声かけ例を紹介します。',
+        body: '<p class="a-lead">初回のお客様の多くは、サロンを試している段階です。次回予約につながるかどうかは、施術中と帰り際の声かけで大きく変わります。売り込みではなく「その方の体と予定に寄り添う提案」として伝えるのがコツです。</p>' +
+        '<h3>施術中：体の状態を「一緒に確認する」言葉を使う</h3>' +
+        '<p>施術中は、触れて分かったことを短く実況するように伝えます。「右の肩甲骨まわり、左より張っていますね」「ここ、押すと響きますか？」と共有すると、お客様は自分の体への関心が高まり、施術後の提案を受け止める土壌ができます。専門用語を並べるより、左右差や硬さなど、本人も確かめられる表現が有効です。</p>' +
+        '<h3>施術後：変化と「残っている課題」を分けて伝える</h3>' +
+        '<div class="voice"><p class="v-label">声かけ例</p><p>「今日は肩の動きがだいぶ軽くなりましたね。ただ、首の付け根の張りは一度では取りきれないので、様子を見ながら続けた方が楽だと思います。」</p><p>「次は2週間後くらいが目安です。◯日か△日なら、この時間帯が空いています。」</p></div>' +
+        '<p>良くなった点だけを言うと「もう大丈夫そう」で終わります。変化と、次に見るべきポイントの両方を伝えると、次回来店の理由が具体的になります。もちろん、体の状態には個人差があるため、断定的な言い方は避け、「目安」として伝えます。</p>' +
+        '<h3>断られたとき：気持ちよく引く一言を用意する</h3>' +
+        '<p>「予定が分からなくて」という返事は自然なことです。「大丈夫です、無理のないときで。気になったらLINEからいつでもどうぞ」と笑顔で引く方が、印象は良くなります。しつこさは初回で最も避けたい要素です。代わりに、LINE登録や次回使える案内など、連絡の入口だけは残しておきましょう。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>施術中に体の状態を共有する声かけをしているか</li><li>施術後に「変化」と「次に見るポイント」を両方伝えているか</li><li>次回の目安と候補日を具体的に出しているか</li><li>断られたときの引き際の一言を決めているか</li></ul></div>'
+      },
+      {
+        cat: 'リピートの仕組み',
+        title: '3週間以内の再来を促すフォローの仕方',
+        desc: '次回予約が取れなかったお客様へのフォローは、タイミングと文面で結果が変わります。来店後フォローの組み立て方を解説します。',
+        body: '<p class="a-lead">その場で次回予約が決まらなかったお客様でも、来店後のフォロー次第で3週間以内の再来につながることが少なくありません。大切なのは、売り込みの連絡ではなく「気にかけてくれている」と伝わる連絡にすることです。</p>' +
+        '<h3>フォロー1：当日〜翌日のお礼メッセージ</h3>' +
+        '<p>来店当日か翌日に、短いお礼を送ります。内容は「ご来店のお礼」と「施術で気になった点のひと言」だけ。長文やクーポンの詰め込みは避けます。この時点では予約を促さず、つながりを温めることが目的です。</p>' +
+        '<div class="voice"><p class="v-label">文面例</p><p>「昨日はご来店ありがとうございました。施術中にお話しした肩の張り、今日のお加減はいかがですか。また気になることがあれば、いつでもご連絡ください。」</p></div>' +
+        '<h3>フォロー2：1週間後の様子伺い</h3>' +
+        '<p>1週間ほど経ったら、体の様子を尋ねる短いメッセージを送ります。返信があれば会話の中で次回の相談に進み、返信がなければ無理に追いません。この「様子伺い」があるだけで、ほかのサロンとの差になります。</p>' +
+        '<h3>フォロー3：3週間目前の「目安時期」のお知らせ</h3>' +
+        '<p>施術時に伝えた目安時期（例：2〜3週間後）が近づいたタイミングで、空き状況とあわせて知らせます。「来週の◯日・△日に空きがあります」と具体的な空きを出すと、予定と照らし合わせやすくなります。送るのはこの3回まで。それ以上は間隔を空け、月1回程度の通常配信に切り替えます。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>お礼・1週間後・目安時期の3段階に分けて送っているか</li><li>各メッセージが「売り込み」ではなく「様子伺い」になっているか</li><li>送信記録をカルテに残し、送りすぎを防いでいるか</li><li>返信があった場合の返し方を決めているか</li></ul></div>'
+      },
+      {
+        cat: 'リピートの仕組み',
+        title: '休眠客を呼び戻すLINE・メッセージの送り方',
+        desc: '3か月以上来ていないお客様への連絡は、文面ひとつで印象が決まります。負担に感じさせない呼び戻しの工夫を紹介します。',
+        body: '<p class="a-lead">しばらく来店のないお客様（休眠客）は、新規のお客様よりずっと来店のハードルが低い存在です。ただ、久しぶりの連絡が「割引のお知らせ」だけだと、広告として流されてしまいます。呼び戻しは「思い出してもらう」ことが目的です。</p>' +
+        '<h3>送る前に：カルテを見返して「その人だけのひと言」を作る</h3>' +
+        '<p>休眠客全員に同じ文面を送るのではなく、カルテのメモから一人ひとりの話題を拾います。「前回お話ししていたお仕事の繁忙期、落ち着きましたか」のようなひと言があるだけで、定型文との差は歴然です。人数が多い場合は、最終来店が近い順に少しずつ送りましょう。</p>' +
+        '<div class="voice"><p class="v-label">文面例</p><p>「◯◯様、お久しぶりです。前回いらしたときは、お仕事がお忙しい時期でしたね。その後お体の調子はいかがですか。最近は夕方の枠に空きが出やすくなっています。ご都合のよいときがあれば、ぜひお声がけください。」</p></div>' +
+        '<h3>値引きは「理由」とセットで、最初からは出さない</h3>' +
+        '<p>再来のきっかけとして割引を使う場合は、「◯周年のお礼」「季節の変わり目のご案内」など理由を添えます。理由のない大幅値引きは、通常価格への信頼を下げ、次回の定価来店を遠ざけます。まずは通常のご案内で反応を見て、反応が薄い層にだけ後日、限定的な案内を検討する順番が安全です。</p>' +
+        '<h3>送る頻度と止めどき</h3>' +
+        '<p>呼び戻しの個別連絡は、1人のお客様に対して年2〜3回までが目安です。反応がなければ通常の一斉配信のみに切り替え、しつこく追わないこと。ブロックされるほどの頻度は、将来の再来の芽まで摘んでしまいます。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>送信前にカルテを見返し、個別のひと言を入れているか</li><li>割引には理由を添えているか、最初から大きな値引きを出していないか</li><li>送信履歴を記録し、同じ人に短期間で重ねていないか</li></ul></div>'
+      },
+      {
+        cat: '口コミ・MEO',
+        title: '口コミを増やす自然な頼み方',
+        desc: '「口コミをお願いします」と言いづらい方へ。お客様の負担にならず、書いてもらいやすくなるタイミングと頼み方を紹介します。',
+        body: '<p class="a-lead">口コミはサロンの信頼を支える大切な材料ですが、お願いする側は遠慮しがちです。コツは「タイミング」「具体性」「手間の小ささ」の3つ。お願いそのものを仕組み化しておくと、毎回気まずい思いをせずに済みます。</p>' +
+        '<h3>タイミング：満足の言葉をもらった直後が最適</h3>' +
+        '<p>「楽になりました」「また来ます」とお客様が前向きな言葉をくれた瞬間が、一番のお願いどきです。その流れで「よかったら、その感想をGoogleの口コミに書いていただけると励みになります」と続けると自然です。逆に、不満そうな様子や急いでいる様子が見える日は、無理にお願いしない判断も大切です。</p>' +
+        '<div class="voice"><p class="v-label">声かけ例</p><p>「そう言っていただけると嬉しいです。もしよければ、今日の感想を口コミに一言だけ書いていただけませんか。こちらから開けますので、1分ほどで終わります。」</p></div>' +
+        '<h3>手間を小さくする：QRコードと短い案内を用意</h3>' +
+        '<p>「検索して、店名を入れて、星を押して…」という手順の多さが最大の壁です。口コミ投稿画面に直接つながるQRコードを会計場所や待合に置き、「スマホをかざすだけ」の状態にしておきましょう。自宅で書く方には、LINEであとからリンクを送る方法も用意しておくと親切です。</p>' +
+        '<h3>書いてもらう内容は指定しない</h3>' +
+        '<p>「星5つをお願いします」「こう書いてください」という誘導は、ルール違反になりかねず、信頼も損ないます。お願いするのは「感想を書いていただくこと」まで。内容と評価はお客様の自由です。また、割引と引き換えに口コミを募る形も避けましょう。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>口コミ投稿画面へのQRコードを用意しているか</li><li>お願いするタイミング（満足の言葉の直後）を決めているか</li><li>評価や文面の指定、見返りの提示をしていないか</li><li>スタッフがいる場合は、お願いの仕方を店内で統一しているか</li></ul></div>'
+      },
+      {
+        cat: '口コミ・MEO',
+        title: '口コミへの返信の書き方 ― 良い口コミ・厳しい口コミ両方',
+        desc: '口コミへの返信は、書いた本人だけでなく「これから来る人」が読んでいます。好意的な声にも厳しい声にも使える返信の型を紹介します。',
+        body: '<p class="a-lead">口コミへの返信は、投稿者へのお礼であると同時に、サロンの姿勢を示す公開の文章です。返信の丁寧さを見て来店を決める人もいます。良い口コミ・厳しい口コミ、それぞれの返信の型を持っておきましょう。</p>' +
+        '<h3>良い口コミへの返信：具体的に触れてお礼を伝える</h3>' +
+        '<p>「ありがとうございます」だけの定型文では、読む側に温度が伝わりません。口コミの中の一文に触れて返すと、一人ひとりに向き合っている印象になります。ただし個人が特定される情報や、施術内容の詳細を返信に書くのは避けてください。</p>' +
+        '<div class="voice"><p class="v-label">返信例（良い口コミ）</p><p>「口コミありがとうございます。施術後の『体が軽くなった』というお言葉、とても励みになります。またお疲れのときは、いつでもお越しください。次回も丁寧に対応いたします。」</p></div>' +
+        '<h3>厳しい口コミへの返信：言い訳より「受け止め」と「事実確認」</h3>' +
+        '<p>厳しい内容には、まず不快な思いをさせたことへのお詫びから入ります。反論したくなる内容でも、公開の場で言い争う形は避けましょう。事実と異なる点がある場合は「当日は◯◯の対応をしておりました」と事実だけを落ち着いて添え、詳しい話は個別の連絡へ誘導します。</p>' +
+        '<div class="voice"><p class="v-label">返信例（厳しい口コミ）</p><p>「このたびはご期待に沿えず、申し訳ございませんでした。いただいたご指摘は真摯に受け止め、接客の流れを見直します。よろしければ、詳しい状況をお聞かせいただけますと幸いです。お電話または公式LINEにてご連絡をお待ちしております。」</p></div>' +
+        '<h3>運用のルール：期間を決めて、感情で書かない</h3>' +
+        '<p>返信は「見つけたらすぐ」ではなく、週に1回など確認する曜日を決めてまとめて行うと、感情的な文章になりにくく、抜けも出ません。厳しい口コミほど一晩置いてから書くくらいでちょうど良いです。返信文は誰が書いても同じ温度になるよう、店内で型を共有しておきましょう。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>良い口コミには内容に触れた具体的なお礼を返しているか</li><li>厳しい口コミにはお詫び→受け止め→個別連絡への誘導の順で書いているか</li><li>個人が特定される情報や施術の詳細を返信に書いていないか</li><li>返信する曜日・担当を決めているか</li></ul></div>'
+      },
+      {
+        cat: '口コミ・MEO',
+        title: 'Googleマップ（MEO）の基本設定とプロフィールの整え方',
+        desc: '「近くのマッサージ」で見つけてもらうための第一歩。Googleビジネスプロフィールの基本項目を、整える順番に沿って解説します。',
+        body: '<p class="a-lead">地域のお客様の多くは、Googleマップで「近くのサロン」を探します。Googleビジネスプロフィール（店舗情報）の整備は、広告費をかけずに始められる集客の土台です。ここでは基本設定を「登録直後にやること」の順に紹介します。</p>' +
+        '<h3>ステップ1：基本情報を正確にそろえる</h3>' +
+        '<p>店名、住所、電話番号、営業時間は、ホームページやSNSの表記と一字一句そろえます。表記ゆれ（例：住所の「丁目」の書き方の違い）は、お客様の混乱と検索表示の不利につながります。定休日や祝日の営業は「特別営業時間」で都度更新し、「行ったら閉まっていた」を防ぎましょう。</p>' +
+        '<h3>ステップ2：カテゴリとサービスを具体的に登録する</h3>' +
+        '<p>メインカテゴリは実態に合ったものを1つ。加えて、提供しているメニューを「サービス」として個別に登録します（例：オイルマッサージ90分、整体60分）。お客様はメニュー単位で探すことも多いため、料金とあわせて載せておくと、来店前の不安が減ります。</p>' +
+        '<h3>ステップ3：写真は「入口・室内・施術の様子」の3種をそろえる</h3>' +
+        '<ul><li>入口・外観：初めての方が迷わずたどり着けるための写真。看板や目印が写るものを</li><li>室内：清潔感と広さが伝わる、明るい写真を複数枚</li><li>施術・備品：使用するベッドやタオル、オイルなどの小物も安心材料になります</li></ul>' +
+        '<p>写真は一度載せたら終わりではなく、季節や模様替えのタイミングで追加していくと「営業している店」として伝わります。</p>' +
+        '<h3>ステップ4：最新情報の投稿と口コミ返信を習慣にする</h3>' +
+        '<p>「最新情報」機能で、空き状況の傾向や季節のご案内を月に数回投稿します。前のコラムで紹介した口コミ返信とあわせて、プロフィールが「生きている」状態を保つことが、見る側の安心につながります。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>店名・住所・電話番号・営業時間が他媒体と一致しているか</li><li>メニューがサービスとして個別に登録されているか</li><li>外観・室内・施術まわりの写真がそろっているか</li><li>特別営業時間（祝日・臨時休業）を更新する担当を決めているか</li></ul></div>'
+      },
+      {
+        cat: 'Web・発信',
+        title: 'ホームページで必ず伝えるべき5つの情報',
+        desc: '初めての方がホームページで確認するのは、意外なほど基本的なことです。不安を減らし予約につなげる5つの必須情報を整理します。',
+        body: '<p class="a-lead">ホームページを見た方が予約をやめる理由の多くは、「情報が足りなくて不安」です。デザインの凝り方より先に、基本情報が抜けなく載っているかを確認しましょう。必須の5つを紹介します。</p>' +
+        '<h3>1. 料金と時間（総額が分かる書き方で）</h3>' +
+        '<p>コース名・時間・料金は表で一覧にし、追加料金がかかる場合はその条件も明記します。「当日の支払い総額がイメージできる」ことが大切です。初回料金や指名料なども、後出しにならないよう同じ場所に書きます。</p>' +
+        '<h3>2. 場所と行き方（最寄り駅からの道順）</h3>' +
+        '<p>住所と地図に加えて、最寄り駅からの徒歩分数と、目印を使った道順を文章で添えます。レンタルサロンやマンションの一室など入口が分かりにくい場合は、建物の入口写真や「到着したらご連絡ください」といった当日の案内まで書いておくと、当日の迷子や遅刻が減ります。</p>' +
+        '<h3>3. 営業時間と予約方法（今どうすれば予約できるか）</h3>' +
+        '<p>営業日・時間と、「予約はLINEから」「予約サイトから」といった具体的な手順を、ページの目立つ位置に置きます。受付を開始していない・準備中の場合は、その旨を正直に書くことも信頼につながります。</p>' +
+        '<h3>4. 施術者について（顔と経歴が見えること）</h3>' +
+        '<p>誰に施術されるのか分からないことは、初めての方の大きな不安です。施術者の写真、資格、経歴、得意な手技を載せましょう（詳しくは第22回「専門性の打ち出し方」で扱います）。</p>' +
+        '<h3>5. 当日の流れと持ち物・注意事項</h3>' +
+        '<p>受付から施術、会計までの流れ、着替えの有無、シャワーの有無、支払い方法（現金のみ等）、キャンセルについての案内をまとめます。来店後のイメージが湧くと、予約の心理的ハードルが下がります。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>料金表だけで支払い総額がイメージできるか</li><li>駅からの道順と当日の到着時の案内があるか</li><li>予約方法がページ上部ですぐ分かるか</li><li>施術者の写真と経歴が載っているか</li><li>支払い方法とキャンセルの案内が明記されているか</li></ul></div>'
+      },
+      {
+        cat: 'Web・発信',
+        title: '症状キーワードで見つけてもらうロングテール集客の考え方',
+        desc: '「整体」一語では大手に埋もれます。「肩こり×地域」「産後の腰の重さ」など、悩み×地域の組み合わせで見つけてもらう考え方です。',
+        body: '<p class="a-lead">検索で見つけてもらうためには、お客様が実際に打ち込む言葉でページを用意することが大切です。「整体」「マッサージ」のような大きな言葉は競合が多く、小さなサロンは埋もれてしまいます。そこで有効なのが、悩みと地域を組み合わせた「ロングテール」の考え方です。</p>' +
+        '<h3>ロングテールとは：「悩み×地域×場面」の組み合わせ</h3>' +
+        '<p>たとえば「肩こり 梅田」「デスクワーク 腰の重さ 大阪」「産後 骨盤まわり ケア 芦屋」のように、悩み・地域・生活場面を組み合わせた検索は、一つひとつの検索数は少なくても、探している方の目的がはっきりしています。来店につながりやすいのは、むしろこうした具体的な検索です。</p>' +
+        '<h3>記事の作り方：1ページに1つの悩み</h3>' +
+        '<ol><li>お客様からよく聞く悩みを、カルテや会話の中から拾う</li><li>その悩みが起きやすい生活場面（仕事・家事・育児・運動）を書く</li><li>自宅でできるセルフケアを、無理のない範囲で紹介する</li><li>「自分では難しい部分はサロンで」という形で、施術の案内につなげる</li><li>対応エリアや最寄り駅を本文に自然に入れる</li></ol>' +
+        '<h3>書いてはいけない表現に注意</h3>' +
+        '<p>症状を扱う以上、表現には線引きが必要です。「治ります」「改善します」といった効能の断定は書かず、「ほぐすお手伝いをします」「楽になったというお声をいただくことがあります」のような、事実と感想の範囲にとどめます。誇張した表現は、読む側の信頼も損ないます。</p>' +
+        '<h3>続けるコツ：月2〜4本、定番の悩みから</h3>' +
+        '<p>記事は資産として積み上がります。まずは来店理由の多い悩み（肩・腰・首・脚のむくみなど）から月2〜4本を目安に書き、季節の悩みを後から足していくと、無理なく続けられます。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>記事のテーマが「悩み×地域×場面」になっているか</li><li>1ページ1テーマに絞っているか</li><li>効能の断定表現が入っていないか</li><li>セルフケアなど、読む側に役立つ内容が先に来ているか</li></ul></div>'
+      },
+      {
+        cat: 'メニュー・料金',
+        title: '選びやすいメニュー表と価格帯の作り方',
+        desc: 'メニューが多いほど選ばれるわけではありません。初めての方が迷わず選べるメニュー表の組み方と、価格帯の考え方を紹介します。',
+        body: '<p class="a-lead">メニュー表は「店の品揃え一覧」ではなく、お客様が自分に合うコースを選ぶための案内です。種類が多すぎたり、違いが分からなかったりすると、選ぶ前に離脱してしまいます。選びやすさの基準で見直してみましょう。</p>' +
+        '<h3>原則1：コースは「目的」と「時間」で分ける</h3>' +
+        '<p>基本の分け方は、①目的（全身のほぐし／オイル／整体など）、②時間（60分・90分・120分）の2軸だけに絞ります。手技の名前を並べるより、「全身しっかり90分」「短時間で集中60分」のように、受ける側の都合で選べる名前付けが分かりやすいです。細かい組み合わせはオプションで吸収します。</p>' +
+        '<h3>原則2：価格帯は3段階、真ん中を「おすすめ」にする</h3>' +
+        '<p>同じ手技で時間が3段階あると、多くの方は真ん中を選びます。一番人気にしたいコースを真ん中に置き、「一番選ばれています」とひと言添えるのが基本の形です。最安コースはお試し用として割り切り、最長コースは常連向けに置くと、価格帯に役割が生まれます。</p>' +
+        '<h3>原則3：迷う方への「選び方ガイド」を添える</h3>' +
+        '<div class="voice"><p class="v-label">メニュー表の書き方例</p><p>「初めての方は90分がおすすめです。全身を一通りほぐすと、気になる部分に時間をかける余裕もできます。お時間がない日は60分で、気になる部分を集中的にどうぞ。」</p></div>' +
+        '<p>このような2〜3行の案内があるだけで、「どれを選べばいいか分からない」という離脱が減ります。電話やLINEで聞かれることが多い質問ほど、メニュー表に先回りして書いておく価値があります。</p>' +
+        '<h3>見直しのタイミング</h3>' +
+        '<p>四半期に一度、実際に予約が入ったコースの割合を確認します。ほとんど選ばれないコースは、統合するか、名前と説明を見直すサインです。メニュー表は作って終わりではなく、予約の実態に合わせて整えるものです。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>コースの違いが「目的と時間」で説明できるか</li><li>おすすめコースが一目で分かるか</li><li>迷う方向けの選び方ガイドがあるか</li><li>選ばれていないコースの見直し時期を決めているか</li></ul></div>'
+      },
+      {
+        cat: 'メニュー・料金',
+        title: '回数券の設計と提案のタイミング',
+        desc: '回数券は「割引の道具」ではなく、通う計画を一緒につくる道具です。設計の考え方と、押し売りにならない提案の順番を解説します。',
+        body: '<p class="a-lead">回数券は、リピートの仕組みとして有効な反面、売り方を間違えると信頼を落とします。「お得だから買わせる」ではなく「その方の通い方に合うなら選択肢として提示する」という姿勢で設計と提案を考えましょう。</p>' +
+        '<h3>設計1：回数と有効期限は「無理なく使い切れる」範囲に</h3>' +
+        '<p>回数は5回・10回が扱いやすい範囲です。有効期限は、想定する来店ペースから逆算します。たとえば月1回の来店なら、5回券で半年程度が目安。期限が短すぎると「使い切れなかった」という不満のもとになります。使い切れなかった場合の扱い（延長・差額での利用など）も、販売前に決めて明記しておきます。</p>' +
+        '<h3>設計2：割引率は「続けやすさ」が伝わる範囲に</h3>' +
+        '<p>1回あたりの単価が少し下がる程度（目安として1割前後）に抑え、過度な値引き競争にしないことが長続きの条件です。特典は金額だけでなく、「予約の優先案内」「オプション1回分」など、通う体験に結びつく形も検討できます。</p>' +
+        '<h3>提案のタイミング：2〜3回目の来店が基本</h3>' +
+        '<p>初回でいきなり提案すると、警戒されるのが普通です。2〜3回通って施術との相性が分かった段階で、「◯◯さんは月1回ペースで来てくださっているので、回数券の方が1回あたりはお得になります。よければ資料だけお渡ししますね」と、事実ベースで提示します。断られても通常料金で気持ちよく通っていただける空気を保つことが何より大切です。</p>' +
+        '<h3>管理：販売記録と残回数を必ず残す</h3>' +
+        '<p>販売日、残回数、期限はカルテと台帳の両方で管理し、来店のたびに残回数を口頭でも伝えます。「あと何回残っているか分からない」という状態は、トラブルの典型パターンです。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>回数と期限が、想定ペースで使い切れる設計か</li><li>使い切れなかった場合の扱いを決めて明記しているか</li><li>提案は2〜3回目の来店以降にしているか</li><li>販売記録と残回数の管理方法が決まっているか</li></ul></div>'
+      },
+      {
+        cat: '集客の広げ方',
+        title: '紹介が生まれる接客と仕組みづくり',
+        desc: '広告より強いのは、通っている方からの紹介です。紹介が自然に生まれる接客の積み重ねと、頼み方の仕組みを紹介します。',
+        body: '<p class="a-lead">紹介は「お願いして生まれるもの」というより、「勧めたくなる体験を重ねた結果」として生まれます。そのうえで、紹介しやすくする小さな仕組みを用意しておくと、良い体験が紹介につながる確率が上がります。</p>' +
+        '<h3>土台：紹介したくなる体験の3要素</h3>' +
+        '<ul><li>期待との一致：ホームページや口コミで見た印象と、実際の体験がずれないこと</li><li>覚えられるひと言：施術中に伝えた体の特徴など、「あの先生、こう言ってくれた」と人に話せる要素があること</li><li>話しやすい話題性：季節のケアやセルフケアの知識など、家族に共有したくなる小さな情報があること</li></ul>' +
+        '<p>この3つがそろうと、お客様の日常会話の中にサロンが登場しやすくなります。</p>' +
+        '<h3>仕組み1：紹介カード・LINEの共有文を用意する</h3>' +
+        '<p>口頭だけの紹介は、店名や場所が正確に伝わりにくいものです。店舗情報と予約方法が載った小さなカード、またはLINEでそのまま転送できる紹介文を用意しておくと、紹介する側の手間が減ります。「よければ、体のことで困っている方がいたら渡してください」と、押し付けない渡し方が基本です。</p>' +
+        '<h3>仕組み2：紹介へのお礼は「気持ち」が伝わる形で</h3>' +
+        '<p>紹介してくれた方へのお礼は、次回来店時のひと言のお礼が基本です。特典を付ける場合は、紹介した側・された側の両方に無理のない小さなもの（オプションの追加など）に留め、金額の大きさで競わないようにします。特典目的の紹介は長続きしません。</p>' +
+        '<h3>頼むタイミング</h3>' +
+        '<div class="voice"><p class="v-label">声かけ例</p><p>「いつもありがとうございます。もし周りで、同じように肩の張りで困っている方がいたら、ご紹介いただけると嬉しいです。このカードをお渡ししておきますね。」</p></div>' +
+        '<p>満足の言葉をもらったときや、回数券を購入されたときなど、信頼が積み上がった場面が頼みどきです。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>ホームページの印象と実際の体験にずれがないか</li><li>紹介カードや共有文など、紹介しやすくする道具があるか</li><li>紹介へのお礼の形をあらかじめ決めているか</li><li>紹介元の記録をカルテに残しているか</li></ul></div>'
+      },
+      {
+        cat: 'Web・発信',
+        title: 'Instagramで施術の日常を伝える投稿の続け方',
+        desc: '映える写真がなくても続けられます。施術の日常を無理なく発信し続けるための、テーマの決め方と投稿のリズムを紹介します。',
+        body: '<p class="a-lead">Instagramは「すごい投稿」をする場所ではなく、サロンの日常と人柄を少しずつ知ってもらう場所です。続けるための設計を先に決めておくと、ネタ探しに疲れずに済みます。</p>' +
+        '<h3>投稿テーマを4種類に固定する</h3>' +
+        '<ul><li>空き状況：今週・来週の空き枠のお知らせ（予約に直結する実用情報）</li><li>セルフケア：自宅でできる簡単なストレッチや過ごし方のヒント</li><li>サロンの日常：タオルの準備、オイルの紹介、室内の様子など裏側の風景</li><li>施術者のこと：学んでいること、資格の勉強、休日の過ごし方など人柄が伝わる内容</li></ul>' +
+        '<p>この4種を順番に回すだけで、月に8〜12本の投稿が無理なく組めます。毎回ゼロから考える必要がなくなります。</p>' +
+        '<h3>写真の撮り方：明るさと統一感だけ意識する</h3>' +
+        '<p>高価な機材は不要です。昼の自然光で撮る、背景に生活感のある物を入れない、同じフィルターで統一する。この3点だけでも、プロフィール全体の印象は大きく整います。お客様を撮影する場合は、必ず許可を取り、顔が写らない形にするなど配慮を徹底してください。</p>' +
+        '<h3>ストーリーズは「日常の速報」として使う</h3>' +
+        '<p>当日の空き、来店へのお礼、明日の営業案内など、軽い情報はストーリーズ向きです。投稿（フィード）は残る情報、ストーリーズは流れる情報、と役割を分けると迷いません。プロフィールには予約方法（LINEや予約サイトへのリンク）と営業時間を明記し、投稿から予約までの道筋を切らないようにします。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>投稿テーマを数種類に固定し、順番に回しているか</li><li>プロフィールに予約方法と営業時間が書かれているか</li><li>お客様の写真を使う場合の許可ルールを決めているか</li><li>投稿の頻度が「続く範囲」に収まっているか（週1〜3回が目安）</li></ul></div>'
+      },
+      {
+        cat: 'Web・発信',
+        title: 'LINE公式アカウントの基本運用 ― 登録直後のあいさつ・配信頻度',
+        desc: 'LINE公式は「登録してもらってから」が本番です。あいさつメッセージの作り方と、ブロックされない配信頻度の考え方を解説します。',
+        body: '<p class="a-lead">LINE公式アカウントは、リピートづくりの中心になる連絡手段です。ただし運用を間違えると、ブロックされて二度と届かなくなります。登録直後のあいさつと配信の設計から整えましょう。</p>' +
+        '<h3>登録直後のあいさつ：3点を短く伝える</h3>' +
+        '<div class="voice"><p class="v-label">あいさつ文の例</p><p>「友だち登録ありがとうございます。◯◯（サロン名）の△△です。このLINEでは、空き状況のお知らせと、季節に合わせたセルフケアを月2〜3回お届けします。ご予約はこのトークから『予約希望』と送っていただくだけで大丈夫です。」</p></div>' +
+        '<p>伝えるのは、①誰のアカウントか、②何が届くか（頻度も含めて）、③予約の方法、の3点です。長文や特典の連打は避けます。約束した頻度を守ること自体が信頼になります。</p>' +
+        '<h3>配信頻度：月2〜4回が目安、内容は「役立つ：お知らせ＝7：3」</h3>' +
+        '<p>毎回が予約の催促だと、開かれなくなります。セルフケアや季節の過ごし方など読んで得のある内容を中心にし、空き状況のお知らせはその中に自然に含める配分がおすすめです。配信の曜日と時間帯は、自分の主な客層の生活リズムに合わせて固定すると、読む習慣がつきやすくなります。</p>' +
+        '<h3>個別対応のルール</h3>' +
+        '<p>予約の問い合わせへの返信は、当日中に返すことを目標にします。対応できる時間帯（例：営業時間内）をあいさつやプロフィールに明記しておくと、夜中の即レス期待に振り回されずに済みます。また、来店後のお礼や再来フォロー（第4回参照）は一斉配信ではなく個別メッセージで行うのが基本です。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>あいさつに「誰か・何が届くか・予約方法」が入っているか</li><li>配信頻度を月2〜4回に収め、内容の配分を決めているか</li><li>返信できる時間帯を明示しているか</li><li>個別のフォローと一斉配信を使い分けているか</li></ul></div>'
+      },
+      {
+        cat: '予約管理',
+        title: '予約のダブルブッキングを防ぐ管理の工夫',
+        desc: 'LINE、電話、予約サイト…窓口が多いほど重なりやすくなります。二重予約を防ぐための、記録の一元化と確認の習慣を紹介します。',
+        body: '<p class="a-lead">ダブルブッキングは、お客様の信頼を一度に失う事故です。原因のほとんどは「複数の窓口の予約を、1か所で見ていなかった」ことにあります。高価なシステムの前に、運用の工夫で防げる部分が多くあります。</p>' +
+        '<h3>工夫1：予約表は「1つ」に決める</h3>' +
+        '<p>LINE、SMS、電話、予約サイトなど窓口が複数あっても、最終的な予約表は1か所（カレンダーアプリ等）に集約します。新しい予約が入ったら、その場で予約表に転記するのが鉄則です。「あとでまとめて」は転記漏れのもとです。窓口ごとに担当がいる場合は、転記した人が分かる形にしておくと確認がしやすくなります。</p>' +
+        '<h3>工夫2：仮押さえと確定を色分けする</h3>' +
+        '<p>「調整中」の予定と「確定」の予約を同じ見た目で入れると、空き枠の判断を誤ります。色やマークで区別し、調整中の予定は期限（例：翌日まで）を決めて、確定しなければ外すルールにしましょう。</p>' +
+        '<h3>工夫3：毎朝と施術前の「2回確認」</h3>' +
+        '<ol><li>朝：その日の予約表と、各窓口の新着メッセージを見比べる</li><li>施術前：次の予約の時間とコースを声に出して確認する</li><li>夕方：翌日の予約に重なりがないか最終確認し、リマインドを送る</li></ol>' +
+        '<p>この3回の確認を習慣にするだけで、重なりの多くは事前に気づけます。レンタルサロンを併用する場合は、施設側の予約との照合も朝の確認に含めてください。</p>' +
+        '<h3>起きてしまったときの対応も決めておく</h3>' +
+        '<p>万一重なった場合は、先に確定していた予約を優先し、もう一方には速やかに連絡して代替日を複数提示します。言い訳より先に、謝罪と具体的な代案を出すことが信頼回復の近道です。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>予約表が1か所に集約されているか</li><li>予約が入ったその場で転記するルールになっているか</li><li>仮押さえと確定を区別しているか</li><li>朝・施術前・夕方の確認が習慣になっているか</li></ul></div>'
+      },
+      {
+        cat: '予約管理',
+        title: 'キャンセル・無断キャンセルへの対応と伝え方',
+        desc: 'キャンセルはゼロにはできません。大切なのは、起きたときの対応と、起きにくくする事前の伝え方です。両面から整理します。',
+        body: '<p class="a-lead">キャンセル対応は感情的になりやすいテーマです。けれど、対応の型を先に決めておくと、現場で迷わず、角も立ちにくくなります。「事前の伝え方」「当日の対応」「無断キャンセルの場合」の3段構えで考えましょう。</p>' +
+        '<h3>事前：キャンセルポリシーは予約時に伝える</h3>' +
+        '<p>「キャンセルは前日までにご連絡ください」「当日キャンセルは次回予約時にご相談ください」など、店の方針は予約の確定時点で明示します。予約確認メッセージやホームページに書いておくと、後から伝えるより角が立ちません。料金を請求する場合は、その条件も含めて事前に明記することが前提です。</p>' +
+        '<h3>当日：まずは体調や事情を気遣う一文から</h3>' +
+        '<div class="voice"><p class="v-label">連絡文の例</p><p>「ご連絡ありがとうございます。お体の具合はいかがですか。ご無理のない日程で、改めてご予約をお待ちしています。来週ですと◯日・△日に空きがございます。」</p></div>' +
+        '<p>責める調子ではなく、代替日を添えて返すと、そのまま再予約につながることが多くあります。キャンセルした側も申し訳なさを感じている場合が大半です。</p>' +
+        '<h3>無断キャンセル：1回で決めつけず、記録で判断する</h3>' +
+        '<p>無断キャンセルのときは、当日に短い確認メッセージを1回送り、来店履歴に記録します。1回で一律に制限を設けるのではなく、繰り返す場合に「次回は事前のご連絡をお願いします」「ご予約は当日枠のみとさせていただきます」など、段階的な対応をカルテの記録に基づいて判断します。感情ではなく記録で対応を決めることが、公平さと自分の心の安定の両方につながります。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>キャンセルポリシーが予約時に伝わる形になっているか</li><li>キャンセル連絡への返信文の型を用意しているか</li><li>無断キャンセルを記録し、対応を記録に基づいて決めているか</li><li>代替日の提示までセットで返信しているか</li></ul></div>'
+      },
+      {
+        cat: 'メニュー・料金',
+        title: '値上げの伝え方とタイミング',
+        desc: '値上げは怖いものですが、伝え方次第で受け止め方は変わります。理由の示し方、予告期間、常連への配慮を整理します。',
+        body: '<p class="a-lead">材料費や家賃の上昇、技術の向上など、値上げには正当な理由があります。問題は金額そのものより「伝え方」と「タイミング」です。丁寧に進めれば、値上げは信頼を落とす出来事にはなりません。</p>' +
+        '<h3>タイミング：1〜2か月前からの予告が基本</h3>' +
+        '<p>値上げは、実施の1〜2か月前から予告します。店内掲示、ホームページ、LINE配信で繰り返し知らせ、「知らなかった」という来店時の驚きをなくすことが第一です。来店中のお客様には、会計時ではなく施術後の落ち着いたタイミングで、口頭でも一言添えると丁寧です。</p>' +
+        '<h3>理由の伝え方：事情と「良くする点」をセットで</h3>' +
+        '<div class="voice"><p class="v-label">案内文の例</p><p>「いつもありがとうございます。◯月より、施術料金を一部改定させていただきます。使用するオイルやタオルなどの品質を維持し、より丁寧な施術時間をお取りするための見直しです。ご理解いただけますと幸いです。」</p></div>' +
+        '<p>「物価が上がったので」だけでは受け身に聞こえます。品質の維持や、施術時間・設備などお客様側の体験がどう保たれる（良くなる）のかとセットで伝えると、納得感が変わります。</p>' +
+        '<h3>常連への配慮：回数券の扱いを先に決める</h3>' +
+        '<p>販売済みの回数券は、購入時の条件のまま使えるようにするのが基本です。値上げ前に回数券の購入を案内する場合は、その旨も含めて案内すると、常連にとっての「移行期間」になります。ただし駆け込み購入を煽る表現は避け、あくまで選択肢の提示に留めましょう。</p>' +
+        '<h3>金額の決め方</h3>' +
+        '<p>値上げ幅は、原価の上昇分と、近隣の相場、自分の技術・実績の現在地を照らして決めます。細かく刻むより、数年に一度、理由とともに分かりやすく見直す方が、お客様にとっても予定が立てやすい形です。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>1〜2か月前から複数経路で予告しているか</li><li>理由と「体験がどう保たれるか」をセットで伝えているか</li><li>回数券など既存の約束の扱いを先に決めたか</li><li>来店時に初めて知るお客様が出ない段取りになっているか</li></ul></div>'
+      },
+      {
+        cat: 'メニュー・料金',
+        title: '押し売りにならないオプション提案の仕方',
+        desc: 'オプション提案は「その方に合う場合だけ、根拠と一緒に」提示すれば押し売りにはなりません。提案の3原則を紹介します。',
+        body: '<p class="a-lead">オプション（追加メニュー）の提案は、売上づくりであると同時に、お客様の満足を上げる手段でもあります。違いを分けるのは「誰に・何を・どう勧めるか」。押し売りにならない提案の原則を整理します。</p>' +
+        '<h3>原則1：提案するのは「施術中に気になった点」があるときだけ</h3>' +
+        '<p>全員に毎回同じオプションを勧めるのは押し売りの典型です。施術中に「脚のむくみが強い」「頭皮が硬い」など、実際に触れて気になった点がある場合に限り、その部分に合うオプションを提示します。根拠が体の状態にある提案は、お客様にも「自分のことを見てくれている」と伝わります。</p>' +
+        '<h3>原則2：効果ではなく「内容と時間と料金」を正直に</h3>' +
+        '<div class="voice"><p class="v-label">声かけ例</p><p>「今日は脚の張りが強かったので、よければ次回、脚集中のオプション（15分・◯◯円）を足すこともできます。今日このあとお時間に余裕があれば、今からでも大丈夫です。」</p></div>' +
+        '<p>効能を断定する言い方は避け、何をするのか・何分か・いくらかを明確にします。「今日でなくても大丈夫」と逃げ道を用意することも、信頼を保つ大切な要素です。</p>' +
+        '<h3>原則3：断られたら、それ以上は触れない</h3>' +
+        '<p>一度断られたオプションは、その日のうちに再度勧めないのはもちろん、次回来店時も「前回お断りいただいたもの」として記録しておきます。記録があると、別のスタッフが誤って繰り返し勧める事故も防げます。提案の履歴はカルテに残しましょう。</p>' +
+        '<h3>提案しやすい仕掛け：メニュー表に組み込む</h3>' +
+        '<p>各コースの説明に「こんな方に：脚の重さが気になる方は、脚集中オプションの追加が人気です」のように添えておくと、口頭の提案がゼロからではなく「表にあったあれですね」という確認で済み、双方の負担が下がります。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>提案の根拠が、その日の体の状態にあるか</li><li>内容・時間・料金を明確に伝えているか</li><li>「今日でなくても大丈夫」と伝えているか</li><li>断られた記録をカルテに残しているか</li></ul></div>'
+      },
+      {
+        cat: '予約管理',
+        title: '一人サロンの時間管理と予約枠の組み方',
+        desc: '一人サロンは「詰め込むほど稼げる」わけではありません。休憩と準備時間を含めた、続く予約枠の組み方を解説します。',
+        body: '<p class="a-lead">一人サロンでは、予約枠の組み方がそのまま体力と接客の質を決めます。空き時間がもったいなく見えても、準備・片付け・休憩を削ると、施術の質と自分の体にしわ寄せが来ます。続く枠組みの考え方を紹介します。</p>' +
+        '<h3>枠の基本形：施術時間＋前後30分を「ひと枠」と考える</h3>' +
+        '<p>90分のコースなら、準備・カウンセリング・着替え・会計・片付け・カルテ記入を含め、2時間枠として扱うのが現実的です。予約表には施術時間だけを並べず、この「ひと枠」で区切ると、遅れが次のお客様に波及しにくくなります。</p>' +
+        '<h3>1日の上限を先に決める</h3>' +
+        '<ul><li>1日の施術人数の上限（例：3〜4名）を決め、それ以上は受けない</li><li>連続施術は2本まで、間に30分以上の休憩を必ず入れる</li><li>事務時間（LINE返信・記事作成・経理）を週の予定に固定で入れる</li></ul>' +
+        '<p>上限を決めることは、機会を捨てることではなく、明日の質を守ることです。体調を崩して休業する方が、はるかに大きな損失になります。</p>' +
+        '<h3>枠の「型」を作ると判断が速くなる</h3>' +
+        '<p>開始時刻を毎回ばらばらにせず、「10時・13時・16時・19時開始」のように開始時刻の型を固定すると、お客様も覚えやすく、自分の生活リズムも整います。レンタルサロンを併用する場合は、移動時間を含めた型にしておくことが大切です。</p>' +
+        '<h3>空き時間の使い方も計画に含める</h3>' +
+        '<p>空き時間は、カルテ整理、発信（Instagramや記事）の下書き、仕入れなど「予約が入らなかったときの仕事リスト」を用意しておくと、焦らず有効に使えます。リストがあるだけで、空き時間の不安はかなり減ります。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>施術時間に前後の準備時間を含めて枠を組んでいるか</li><li>1日の施術人数と連続施術の上限を決めているか</li><li>開始時刻の型が固定されているか</li><li>空き時間用の仕事リストがあるか</li></ul></div>'
+      },
+      {
+        cat: '集客の広げ方',
+        title: 'レンタルサロンを活用する集客上のメリット',
+        desc: '固定店舗を持たずに始められるレンタルサロン。集客の面から見た利点と、使うときに押さえる注意点を整理します。',
+        body: '<p class="a-lead">レンタルサロンは「固定費を抑えて始める手段」として語られがちですが、集客の観点からも利点があります。立地とエリアを柔軟に選べることが、そのまま集客の選択肢になります。</p>' +
+        '<h3>メリット1：集客したいエリアで営業できる</h3>' +
+        '<p>自宅や自店の立地にとらわれず、お客様が多い駅前エリアで施術できます。「梅田で受けたい」「三宮で受けたい」という需要のある場所に出ていけるのは、集客上の大きな利点です。エリアごとにホームページやプロフィールを用意すると、地域検索（第10回のロングテール）とも相性が良くなります。</p>' +
+        '<h3>メリット2：固定費が小さい分、価格と時間に余裕を持てる</h3>' +
+        '<p>家賃の固定費がない分、初回料金の設定や、施術時間を長めに取るなどの工夫に余裕が生まれます。「数をこなさないと成り立たない」という焦りから離れ、一人ひとりに時間をかける営業スタイルと相性が良い形態です。</p>' +
+        '<h3>メリット3：曜日・拠点を分けて検証できる</h3>' +
+        '<p>曜日ごとに拠点を変えたり、期間を区切って別のエリアで試したりできます。どのエリアに自分の客層が多いかを、大きな投資なしに確かめられるのは、将来の店舗展開を考えるうえでも貴重な材料です。</p>' +
+        '<h3>注意点：案内の分かりやすさと予約の照合</h3>' +
+        '<ul><li>場所の案内は詳しく：住所・入口の写真・到着時の連絡方法まで用意する（第9回参照）</li><li>施設の予約と自店の予約を必ず照合し、二重の取り違えを防ぐ（第16回参照）</li><li>シャワーや備品など施設設備の有無は、確認できた範囲だけを正確に案内する</li></ul>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>集客したいエリアと曜日の組み合わせを決めているか</li><li>拠点ごとの案内ページ（行き方・設備）を用意しているか</li><li>施設予約と顧客予約の照合手順があるか</li><li>設備の案内が確認済みの事実だけになっているか</li></ul></div>'
+      },
+      {
+        cat: '集客の広げ方',
+        title: '地域で選ばれるための専門性の打ち出し方 ― 資格・経歴の見せ方',
+        desc: '「資格を持っている」だけでは伝わりません。資格と経歴を、お客様の言葉に翻訳して見せる方法を紹介します。',
+        body: '<p class="a-lead">資格や長い経歴は、地域で選ばれるための強い材料です。ただし、資格名を並べるだけでは、初めての方には「何が得意な人なのか」が伝わりません。見せ方の工夫で、専門性は伝わり方が変わります。</p>' +
+        '<h3>工夫1：資格名のあとに「だから何ができるか」を添える</h3>' +
+        '<div class="voice"><p class="v-label">書き方の例</p><p>「鍼灸師（国家資格）。東洋医学の考え方を取り入れ、体の状態に合わせてほぐし方を組み立てます。」</p><p>「パーソナルトレーナー資格を併せ持ち、施術後に自宅でできる簡単なケアもあわせてご案内します。」</p></div>' +
+        '<p>資格の正式名称とあわせて、その資格が施術にどう生きるかを一文で添えます。お客様は「資格の名前」ではなく「自分に何をしてくれるか」で判断しています。</p>' +
+        '<h3>工夫2：経歴は「年数＋具体的な場面」で書く</h3>' +
+        '<p>「施術歴30年」だけより、「施術歴30年。サロン勤務、施術の講師、技術セミナーの指導も経験」のように、場面が見える書き方の方が信頼につながります。ただし、確認できない実績数値や、実在しない肩書きを盛ることは絶対に避けてください。一度盛った情報は、後々必ず負担になります。</p>' +
+        '<h3>工夫3：得意分野を「悩みの言葉」で看板にする</h3>' +
+        '<p>専門性の看板は、お客様の悩みの言葉で書くのが原則です。「美容整体が専門」より、「姿勢や体のラインが気になる方のケアが得意です」の方が、自分ごととして読んでもらえます。ホームページのトップ、Googleのプロフィール、名刺で同じ看板にそろえると、認知が積み重なります。</p>' +
+        '<h3>写真も専門性の一部</h3>' +
+        '<p>白衣やユニフォーム姿、施術風景、資格証の一部など、視覚情報も専門性を伝えます。人物写真は清潔感のある明るいものを選び、定期的に差し替えましょう。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>各資格に「施術にどう生きるか」の一文が付いているか</li><li>経歴が年数だけでなく場面つきで書かれているか</li><li>得意分野がお客様の悩みの言葉で表現されているか</li><li>看板の文言が媒体ごとにそろっているか</li></ul></div>'
+      },
+      {
+        cat: 'リピートの仕組み',
+        title: 'リピートの数え方 ― 3つの基準と改善の見方',
+        desc: '「リピート率」は数え方で意味が変わります。その場で次回予約・3週間以内の再来・半年以上の継続、3基準の定義と見方を解説します。',
+        body: '<p class="a-lead">リピートを増やしたいなら、まず「何をもってリピートと数えるか」を決める必要があります。ここでは3つの基準を定義し、それぞれの数字から何が読み取れるかを整理します。</p>' +
+        '<h3>基準1：その場で次回予約</h3>' +
+        '<p>来店したその日に、次回の予約が入った割合です。接客の流れ（第1回・第3回）が機能しているかを測る指標で、数え方は「次回予約が入った来店数 ÷ 全来店数」。この数字が低い場合は、声かけのタイミングや候補日の提示方法を見直します。</p>' +
+        '<h3>基準2：3週間以内の再来</h3>' +
+        '<p>次回予約が取れなかった方も含め、3週間以内に再来した割合です。来店後のフォロー（第4回）の成果を測る指標で、「3週間以内に再来した人数 ÷ 前回来店した人数」で数えます。低い場合は、お礼メッセージや様子伺いの実施率をまず確認してください。フォローを送っていない人に再来を求めるのは順序が逆です。</p>' +
+        '<h3>基準3：半年以上の継続</h3>' +
+        '<p>初回から半年以上、間隔を空けずに通い続けている方の割合です。施術の満足度そのものと、通いやすい条件（料金・立地・予約の取りやすさ）の総合指標といえます。低い場合は、単発の接客ではなく、料金設計や回数券（第12回）、来店ペースの提案の仕方を見直します。</p>' +
+        '<h3>数字の見方：月ごとに、3つ並べて眺める</h3>' +
+        '<ul><li>基準1だけ低い → 接客の締め方（次回提案の流れ）に課題</li><li>基準2だけ低い → 来店後フォローの実施に課題</li><li>基準3だけ低い → 価格・通いやすさ・満足度の定着に課題</li></ul>' +
+        '<p>3つを並べると「どこで途切れているか」が見えます。一度に全部を直そうとせず、一番低い1か所から手をつけるのが、続けられる見直し方です。数字はカルテや予約表の記録から数えるだけでも十分で、専用の仕組みは必須ではありません。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>3基準それぞれの定義を店内で共有しているか</li><li>月に一度、3つの数字を並べて確認しているか</li><li>一番低い基準に対応する施策から手をつけているか</li><li>数字の元になる記録（次回予約の有無・フォロー実施）がカルテに残っているか</li></ul></div>'
+      },
+      {
+        cat: '集客の広げ方',
+        title: '季節の変わり目に合わせた提案の組み方',
+        desc: '季節の変わり目は、体の話題が自然に生まれる時期です。効能を断定せず、季節の過ごし方と結びつけた提案の組み方を紹介します。',
+        body: '<p class="a-lead">春の新生活、梅雨、夏の冷房、秋の乾燥、冬の寒さ。季節の変わり目は、お客様の体調の話題が生まれやすく、来店のきっかけを作りやすい時期です。提案は「季節の過ごし方」の文脈に載せるのがポイントです。</p>' +
+        '<h3>組み方1：季節の話題から入る</h3>' +
+        '<ul><li>春：新生活や引っ越しで、体に力が入りやすい時期。環境の変化と体の話題を結ぶ</li><li>梅雨：湿度と気圧の変化で、体が重く感じやすい時期。室内での過ごし方の工夫とセットで</li><li>夏：冷房の効いた室内と屋外の温度差。脚の冷えやだるさの話題が出やすい</li><li>秋：乾燥と日照時間の変化。年末に向けて忙しくなる前のケアを提案しやすい</li><li>冬：寒さで体が縮こまりやすい時期。温める過ごし方の話題と相性が良い</li></ul>' +
+        '<h3>組み方2：表現は「季節の感じ方」の範囲に留める</h3>' +
+        '<p>季節の提案で注意したいのは、体の不調と施術を短絡的に結ぶ表現です。「この施術で◯◯が治ります」といった断定は避け、「寒い時期は体がこわばりやすいので、温めながらほぐすコースをご用意しています」のように、過ごし方と施術内容の紹介の範囲で書きます。お客様の感想を紹介する場合も、個人の感想であることが分かる形にします。</p>' +
+        '<h3>組み方3：発信と店内を同じテーマでそろえる</h3>' +
+        '<p>その季節のテーマを決めたら、LINE配信、Instagram、店内の掲示、施術後の声かけを同じテーマでそろえます。月に何度も違う場所で同じ話題に触れると、「そういえば」と思い出してもらえる機会が増えます。テーマは欲張らず、1シーズンに1〜2個に絞るのがコツです。</p>' +
+        '<h3>組み方4：季節メニューは「期間と理由」を明示する</h3>' +
+        '<p>季節限定のコースやオプションを作る場合は、提供期間と、その季節に合わせた内容である理由を添えます。終わりの時期が決まっていることは、来店の予定を立てる後押しにもなります。翌年も使えるよう、実施した内容と反応は記録に残しておきましょう。</p>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>季節のテーマを1〜2個に絞っているか</li><li>表現が「季節の感じ方と過ごし方」の範囲に収まっているか</li><li>発信・店内・声かけのテーマがそろっているか</li><li>季節メニューの期間と理由が明示されているか</li></ul></div>'
+      },
+      {
+        cat: 'リピートの仕組み',
+        title: 'カルテに残すべき情報の書き方 ― 次回に活きる記録',
+        desc: '次回来店時に「前回の続き」から始められるかどうかは、カルテの書き方で決まります。残すべき項目と書き方のコツを整理します。',
+        body: '<p class="a-lead">カルテは記録のための記録ではありません。次回来たときに、前回の状態・会話・提案を思い出し、途切れない接客をするための道具です。書く項目を決めておくと、記入の負担も減ります。</p>' +
+        '<h3>残すべき項目1：体の状態は「場所と左右差」で書く</h3>' +
+        '<p>「肩が張っていた」だけでは次回に比較できません。「右肩甲骨内側に強い張り、左は軽度」のように、場所と左右差、施術後の変化まで書くと、次回の確認が具体的になります。お客様自身の言葉（重い、だるい等）もそのまま残すと、会話の再現に役立ちます。</p>' +
+        '<h3>残すべき項目2：会話の話題を1行だけ残す</h3>' +
+        '<p>仕事の繁忙期、家族の行事、趣味の話など、次回の声かけにつながる話題を1行メモします。これがあるだけで、来店直後の会話が「お久しぶりです」で終わらず、前回の続きから始められます。個人情報を必要以上に詳しく書く必要はありません。</p>' +
+        '<h3>残すべき項目3：提案と反応をセットで残す</h3>' +
+        '<p>次回予約の提案をしたか、候補日は何だったか、回数券やオプションへの反応はどうだったかを残します。断られた内容を記録しておくことで、同じ提案を繰り返してしまう事故を防げます。</p>' +
+        '<div class="voice"><p class="v-label">記録の書き方例</p><p>「「右腰に張り。施術後は可動域が広がる。本人曰く『朝が一番重い』。次回目安3週間後を提案、予定未定のためLINEフォロー予定。お仕事の繁忙期は月末まで。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>体の状態を場所と左右差で書いているか</li><li>会話の話題を1行残しているか</li><li>提案内容とお客様の反応を記録しているか</li><li>記入にかかる時間を3分以内に収めているか</li></ul></div>'
+      },
+      {
+        cat: 'リピートの仕組み',
+        title: '施術後に伝える「次回までの過ごし方」の提案',
+        desc: '施術して終わりではなく、帰宅後の過ごし方を1つだけ提案すると、次回来店までの体験が変わります。無理のない提案の仕方を紹介します。',
+        body: '<p class="a-lead">施術の効果を長持ちさせるかどうかは、実は帰宅後の過ごし方にも左右されます。ただし、あれもこれもと注意点を並べると聞き流されてしまいます。提案は1回に1つ、が原則です。</p>' +
+        '<h3>提案は「今日触れた場所」に結びつける</h3>' +
+        '<p>その日の施術で気になった場所に結びつけると、提案に根拠が生まれます。たとえば脚の張りが強かった方には入浴後の過ごし方、肩の張りが強かった方には仕事中の姿勢の工夫など、状態に合ったものを1つだけ選びます。</p>' +
+        '<h3>断定せず、目安として伝える</h3>' +
+        '<p>体の反応には個人差があります。「これで治ります」ではなく、「無理のない範囲で試してみてください」「合わないと感じたらやめてください」と、選択権をお客様に残す言い方にします。効能の断定はしないことが、長期的な信頼につながります。</p>' +
+        '<h3>次回に「どうでしたか」と聞くまでが提案</h3>' +
+        '<p>提案したらカルテに残し、次回来店時に結果を聞きます。この往復があると、お客様は「見てもらえている」と感じ、セルフケアの継続率も上がります。続かなかった場合も責めず、別の方法を一緒に探す姿勢が大切です。</p>' +
+        '<div class="voice"><p class="v-label">声かけ例</p><p>「「今日は脚の張りが強かったので、今夜は湯船にゆっくりつかってみてください。次回、朝の重さがどうだったか教えてくださいね。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>提案を1回に1つに絞っているか</li><li>その日の体の状態に結びつけた提案になっているか</li><li>断定的な表現を避け、目安として伝えているか</li><li>提案内容をカルテに残し、次回に結果を聞いているか</li></ul></div>'
+      },
+      {
+        cat: '口コミ・MEO',
+        title: '口コミが集まりやすいプロフィール文の書き方',
+        desc: 'Googleのビジネス説明文は、初めての方が読む短い自己紹介です。誰向けに、何が得意で、どう予約するかが伝わる書き方を解説します。',
+        body: '<p class="a-lead">Googleビジネスプロフィールの説明文は、検索結果で店を選ぶ際の判断材料になります。長い文章である必要はありません。「誰のための店か」「何が得意か」「どうやって予約するか」の3点が短く伝わることが大切です。</p>' +
+        '<h3>1文目で「誰向けか」を言い切る</h3>' +
+        '<p>冒頭は対象を明確にします。「デスクワークで肩や首の張りが気になる方へ」のように、悩みと対象を入れると、自分ごととして読んでもらえます。地域名も冒頭に入れると、地域検索との相性も良くなります。</p>' +
+        '<h3>得意分野は2つまで、具体的に</h3>' +
+        '<p>あれもこれもと並べると印象がぼやけます。主力の手技や対応したい悩みを2つまでに絞り、資格や経歴は根拠として短く添えます。料金や所要時間の目安も入れると、来店前の不安が減ります。</p>' +
+        '<h3>最後は予約方法で締める</h3>' +
+        '<p>文章の最後は行動の案内で締めます。「ご予約はLINE公式アカウントから」「営業時間は◯時から◯時まで」など、今どうすればよいかが分かる一文を置きます。準備中・受付前の場合は、その旨を正直に書くことも信頼につながります。</p>' +
+        '<div class="voice"><p class="v-label">書き方の例</p><p>「「梅田駅近くで、デスクワークによる肩・首の張りが気になる方のためのサロンです。オイルマッサージと美容整体を中心に、体の状態に合わせて施術を組み立てます。ご予約は公式LINEからお願いいたします。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>冒頭で対象と地域が伝わるか</li><li>得意分野が2つまでに絞られているか</li><li>最後に予約方法が明記されているか</li><li>ホームページの表記と矛盾していないか</li></ul></div>'
+      },
+      {
+        cat: '口コミ・MEO',
+        title: '地図検索で迷わせない営業時間・定休日の見せ方',
+        desc: '「行ったら閉まっていた」は最も避けたい体験です。営業時間と臨時休業の更新ルールを決め、迷わせない表示にする方法を紹介します。',
+        body: '<p class="a-lead">地図検索で来店を決めた方の多くは、営業時間を見て動いています。情報が古いまま放置されると、来店したのに閉まっていたという体験につながり、口コミにも残ります。更新の仕組みを先に決めておきましょう。</p>' +
+        '<h3>基本の営業時間は全媒体でそろえる</h3>' +
+        '<p>Google、ホームページ、SNS、予約サイトで営業時間と定休日の表記をそろえます。曜日によって時間が違う場合は、その違いも含めて正確に登録します。表記の揺れは混乱のもとです。</p>' +
+        '<h3>臨時休業と祝日は「特別営業時間」で先に登録する</h3>' +
+        '<p>祝日の営業や臨時休業は、決まった時点でGoogleの特別営業時間に登録します。当日朝の対応では間に合わないことが多いため、月末に翌月分をまとめて確認する習慣が有効です。</p>' +
+        '<h3>一人サロンは「予約状況で変わる」ことを補足する</h3>' +
+        '<p>一人運営の場合、予約が埋まれば実質受付終了になります。その場合は説明文や最新情報投稿で「完全予約制のため、当日の受付は空き状況によります」と補足し、電話やLINEでの確認を案内します。</p>' +
+        '<div class="voice"><p class="v-label">運用例</p><p>「「毎月末に翌月の営業カレンダーを確認し、祝日と臨時休業をGoogleとホームページの両方に反映する。変更があった週はLINEでも一言お知らせする。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>全媒体の営業時間が一致しているか</li><li>翌月分の特別営業時間を月末に確認しているか</li><li>完全予約制など実態に合った補足が書かれているか</li><li>臨時休業の告知を複数経路で行っているか</li></ul></div>'
+      },
+      {
+        cat: 'Web・発信',
+        title: 'ブログを続けるネタ出し ― 会話とカルテから記事を作る',
+        desc: '記事のネタは新しく探すものではなく、日々の会話の中にあります。来店時の質問や体の悩みを、個人が分からない形で記事化する方法です。',
+        body: '<p class="a-lead">発信が続かない一番の理由は、ネタ探しに時間を使いすぎることです。実際には、お客様から受ける質問や、施術中に繰り返し説明している内容こそ、検索される記事の種になります。</p>' +
+        '<h3>よく聞かれる質問を、その場でメモする</h3>' +
+        '<p>「どのくらいの間隔で通えばいいですか」「着替えはありますか」など、繰り返し聞かれる質問は、そのまま記事やQ&Aの材料です。質問されたらカルテの隅やスマホに1行メモする習慣をつけます。</p>' +
+        '<h3>個人が特定されない形に一般化する</h3>' +
+        '<p>記事化するときは、特定の個人の話として書かず、「デスクワークの方に多い悩み」のように一般化します。年齢や職業などの属性も、本人と結びつく情報は出しません。これが守れれば、現場の知恵を安心して発信できます。</p>' +
+        '<h3>月に1回、メモを記事候補リストにまとめる</h3>' +
+        '<p>メモが溜まったら月1回、優先順位をつけて記事候補にします。季節に合うもの、よく聞かれるものから書くと、無理なく月2から4本のペースが作れます。</p>' +
+        '<div class="voice"><p class="v-label">記事化の例</p><p>「「施術中によく聞かれる『どのくらいのペースで通うのが目安ですか』という質問を、『通う間隔の目安と考え方』という記事にする。個人の症例ではなく、生活リズムに合わせた考え方として一般化して書く。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>質問や説明した内容をその場でメモしているか</li><li>記事化の際に個人が特定されない形にしているか</li><li>月1回、記事候補を整理する時間を決めているか</li><li>効能の断定表現が入っていないか確認しているか</li></ul></div>'
+      },
+      {
+        cat: 'Web・発信',
+        title: 'スマホで撮るサロンの写真 ― 清潔感を伝える基本',
+        desc: '写真の上手さより、明るさと整理整頓が伝わるかどうかです。スマホだけで撮れる、室内・備品・施術風景の撮影ポイントを紹介します。',
+        body: '<p class="a-lead">ホームページやGoogleに載せる写真は、設備の豪華さよりも清潔感と安心感で選ばれます。プロのカメラがなくても、撮る前のひと手間で印象は大きく変わります。</p>' +
+        '<h3>撮る前：写る範囲だけ片付けと拭き掃除をする</h3>' +
+        '<p>写真は思ったより広く写ります。ベッドまわり、洗面、待合など、写る範囲の乱れや水回りの汚れを先に整えます。タオルは新しいものに替え、色味をそろえると清潔感が出ます。</p>' +
+        '<h3>光は昼の自然光、フラッシュは使わない</h3>' +
+        '<p>昼間にカーテンを開けて撮ると、明るく柔らかい写真になります。蛍光灯の色が混ざると黄色く見えるため、できれば自然光のみで撮ります。逆光になる窓際は避け、撮る位置を変えて試します。</p>' +
+        '<h3>人は写さないか、許可と配慮を徹底する</h3>' +
+        '<p>お客様が写る写真は原則として撮りません。施術風景が必要な場合は、モデル役の方に事前に許可を取り、掲載場所と期間も伝えます。スタッフの手元だけ、備品だけでも十分に雰囲気は伝わります。</p>' +
+        '<div class="voice"><p class="v-label">撮影チェック例</p><p>「「午前中の明るい時間に、入口・室内全景・ベッドまわり・使用するオイルやタオルの4カットを撮る。撮った直後に拡大して、余計な物が写っていないか確認する。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>撮影前に写る範囲の片付けと清掃をしたか</li><li>自然光で撮り、明るさがそろっているか</li><li>お客様が写っていないか、写る場合は許可を取ったか</li><li>同じ写真を長期間使い続けていないか</li></ul></div>'
+      },
+      {
+        cat: 'Web・発信',
+        title: '発信カレンダーの作り方 ― Google投稿・Instagram・LINEの使い分け',
+        desc: '媒体ごとに役割を決めると、発信が重複せず続きます。週単位の小さなカレンダーで回す方法を紹介します。',
+        body: '<p class="a-lead">あれもこれもと全媒体に同じ内容を流すと、作業は増えるのに効果は分散します。媒体ごとに役割を決め、週の予定として固定すると、発信は日常業務の中に収まります。</p>' +
+        '<h3>役割分担：残る情報、流れる情報、届ける情報</h3>' +
+        '<p>ホームページとGoogle投稿は「検索で見つけた人が読む残る情報」、Instagramのストーリーズは「当日の空きなどの流れる情報」、LINEは「来店した方へ届ける情報」と分けます。ひとつの素材を、媒体に合わせて言い換えて使い回すのが基本です。</p>' +
+        '<h3>週の型を決める：月曜に空き、木曜に役立つ内容</h3>' +
+        '<p>たとえば月曜に今週の空き状況、木曜にセルフケアなどの役立つ内容、土曜にサロンの日常という型を決めます。型があると、毎回ゼロから考えずに済み、読む側にもリズムが伝わります。</p>' +
+        '<h3>作り置き：写真と下書きを空き時間に溜める</h3>' +
+        '<p>忙しい週でも止まらないよう、写真と文章の下書きを空き時間に数本分作り置きします。季節のテーマは月単位で先に決めておくと、下書きづくりが速くなります。</p>' +
+        '<div class="voice"><p class="v-label">1週間の例</p><p>「「月曜：今週の空き状況をLINEとストーリーズへ／木曜：セルフケアをInstagram投稿とGoogle投稿へ／土曜：サロンの日常をストーリーズへ。内容は同じ週のテーマでそろえる。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>媒体ごとの役割が決まっているか</li><li>週の投稿の型が固定されているか</li><li>下書きの作り置きが数本分あるか</li><li>月単位で季節テーマを先に決めているか</li></ul></div>'
+      },
+      {
+        cat: 'メニュー・料金',
+        title: '初回お試し価格の設計と、通常価格への移行の伝え方',
+        desc: '初回価格は安さの競争のためではなく、相性を確かめてもらうためにあります。設計の考え方と、2回目以降の案内の仕方を解説します。',
+        body: '<p class="a-lead">初回割引は新規の入口として有効ですが、設計を間違えると「安いときだけ来る方」ばかりが増えます。目的は値引きではなく、施術との相性を確かめてもらうことに置きます。</p>' +
+        '<h3>割引幅は「試しやすさ」が伝わる範囲に</h3>' +
+        '<p>大幅な値引きは、通常価格への不信感にもつながります。初回は時間を短くした体験コースにする、初回のみの特典は小さくするなど、価格以外の形も含めて設計します。原価と自分の時間を割らない範囲が前提です。</p>' +
+        '<h3>初回時に、通常価格を先に伝えておく</h3>' +
+        '<p>2回目以降の料金は、初回来店の時点でメニュー表で明示します。後から知る形になると不信感が生まれます。「初回はお試し価格、通常はこちらです」と最初から透明にすることが、移行をスムーズにします。</p>' +
+        '<h3>2回目の提案は、価格ではなく体の状態から</h3>' +
+        '<p>次回の提案は割引の期限ではなく、その方の体の状態と目安時期から話します。価格の話は最後に添える程度に留めると、押し売りの印象を避けられます。</p>' +
+        '<div class="voice"><p class="v-label">案内の例</p><p>「「初回は相性を確かめていただくお試し価格です。通常はこちらの料金になります。通うかどうかは、今日の施術後の体の感じを見てからで大丈夫です。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>初回価格の目的が相性確認になっているか</li><li>通常価格が初回時点で明示されているか</li><li>次回提案が体の状態を根拠にしているか</li><li>割引幅が原価と時間を割っていないか</li></ul></div>'
+      },
+      {
+        cat: 'メニュー・料金',
+        title: 'オプションの組み合わせ ― セット提案の作り方',
+        desc: 'バラバラに並んだオプションは選ばれにくいものです。悩み別に組み合わせた小さなセットにすると、選びやすさが変わります。',
+        body: '<p class="a-lead">オプションは単品で並べるより、悩みに合わせた組み合わせとして提示した方が、お客様にとって意味が伝わります。セット化は値引きのためではなく、選びやすくするための工夫です。</p>' +
+        '<h3>悩み別に2から3個のセットを作る</h3>' +
+        '<p>脚の重さが気になる方向け、頭や目を使う仕事の方向けなど、よくある悩み別に組み合わせます。各セットは時間と料金を明記し、基本コースに足す形にします。種類を増やしすぎないことが大切です。</p>' +
+        '<h3>セット名は内容が想像できる言葉に</h3>' +
+        '<p>凝った名前より、「脚集中ケア」「頭・肩集中ケア」のように、受ける場所と目的が分かる名前が選ばれます。メニュー表では基本コースの近くに置き、施術中の提案と結びつけます。</p>' +
+        '<h3>反応を見て、残すセットを決める</h3>' +
+        '<p>四半期ごとに、どのセットが選ばれたかを確認します。選ばれないセットは、組み合わせか名前を見直すか、思い切って外します。現場の反応で入れ替える前提で作ると、作りっぱなしになりません。</p>' +
+        '<div class="voice"><p class="v-label">メニュー表の例</p><p>「「脚の重さが気になる方へ：脚集中オプション15分。ふくらはぎから太ももまでを集中的にほぐします。基本コースへの追加のみでご利用いただけます。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>悩み別にセットが作られているか</li><li>セット名から内容が想像できるか</li><li>時間と料金が明記されているか</li><li>選ばれていないセットの見直し時期を決めているか</li></ul></div>'
+      },
+      {
+        cat: '予約管理',
+        title: '前日リマインドの送り方 ― 当日キャンセルを減らす一文',
+        desc: '前日のひと言で、当日の無断キャンセルや遅刻は大きく減ります。リマインドに入れるべき情報と、送るタイミングを整理します。',
+        body: '<p class="a-lead">当日になってからのキャンセルや、時間を間違えての来店は、多くの場合「うっかり」です。前日リマインドは、そのうっかりを防ぐための実務的な連絡です。</p>' +
+        '<h3>入れる情報は4点だけ：日時、コース、場所、連絡方法</h3>' +
+        '<p>リマインドは短く、確認すべき情報だけを入れます。日時とコース、レンタルサロンの場合は場所と到着時の連絡方法、そして変更したい場合の連絡先です。長文や宣伝を混ぜないことが、読んでもらうコツです。</p>' +
+        '<h3>送るタイミングは前日の夕方まで</h3>' +
+        '<p>前日の夕方までに送ると、その日のうちに予定の調整ができます。当日朝では、変更の連絡を受けても枠を活かしにくくなります。送る曜日や時間帯は自分の業務の型に組み込み、送り忘れを防ぎます。</p>' +
+        '<h3>返信がなくても追送しない</h3>' +
+        '<p>リマインドへの返信は必須にせず、「ご確認をお願いします」ではなく「お待ちしています」の形にします。返信がない場合に追加で何度も送ると負担になります。無断が続く方への対応は、記録に基づいて別途判断します。</p>' +
+        '<div class="voice"><p class="v-label">文面例</p><p>「「明日◯月◯日◯時から、90分コースでご予約を承っています。場所は◯◯です。到着されましたら、このLINEへご一報ください。変更のご希望があれば、本日中にご連絡いただけると助かります。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>日時・コース・場所・連絡方法が入っているか</li><li>前日夕方までに送る運用になっているか</li><li>宣伝や長文が混ざっていないか</li><li>返信を強要する文面になっていないか</li></ul></div>'
+      },
+      {
+        cat: '予約管理',
+        title: '返信時間を決めて疲弊しない予約対応',
+        desc: '即レスを続けるほど、施術と生活が削られます。対応時間帯を決めて伝えることで、丁寧さと自分の時間の両方を守る方法です。',
+        body: '<p class="a-lead">LINEやSMSでの予約対応は便利な反面、夜間や施術中にも連絡が届き、休まらない感覚につながりがちです。対応のルールを決めて先に伝えておくことが、長く続けるための工夫です。</p>' +
+        '<h3>対応時間帯を決めて、プロフィールに明記する</h3>' +
+        '<p>たとえば「メッセージへの返信は営業時間内に行います」と、LINEのあいさつやホームページに明記します。決めて伝えておけば、お客様も待つことが前提になり、即レスへの期待が下がります。</p>' +
+        '<h3>施術中は返信しない、を徹底する</h3>' +
+        '<p>施術中の返信は、目の前のお客様への配慮を欠きます。施術の合間にまとめて返す型を作り、予約表の確認とセットで行います。緊急の変更連絡に気づけるよう、休憩ごとの確認までは徹底します。</p>' +
+        '<h3>定型文を用意して、考える時間を減らす</h3>' +
+        '<p>空き状況の案内、予約確定、前日リマインド、変更への返信など、よく使う文面は定型として保存します。名前と日時だけを差し替える形にすると、対応が速く、ミスも減ります。</p>' +
+        '<div class="voice"><p class="v-label">あいさつの例</p><p>「「ご予約・お問い合わせへの返信は、営業時間内（◯時から◯時）に順次行います。施術中は返信が遅れる場合がありますが、当日中にご連絡いたします。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>対応時間帯を決めて明記しているか</li><li>施術中に返信しないルールになっているか</li><li>よく使う文面が定型として保存されているか</li><li>当日中に返すという約束が守れる範囲か</li></ul></div>'
+      },
+      {
+        cat: '集客の広げ方',
+        title: '近隣店舗とのつながり方 ― 相互に紹介し合える関係づくり',
+        desc: '美容室やカフェなど、客層が重なる近隣店との関係は、広告に頼らない集客の土台になります。始め方と続けるコツを紹介します。',
+        body: '<p class="a-lead">地域で長く続くサロンは、近隣のお店との関係を持っていることが多いものです。無理に営業をかけるのではなく、日常の関係から始めるのが自然です。</p>' +
+        '<h3>まずは自分が客として通うことから</h3>' +
+        '<p>近隣の美容室、カフェ、整体以外の専門店などに、まず自分がお客として通います。関係ができてから、自店の名刺やカードを置いてもらえるか相談するのが順番です。いきなりの持ち込みは警戒されます。</p>' +
+        '<h3>紹介し合う条件は対等に、小さく始める</h3>' +
+        '<p>相手のお客様にも自店のお客様にもメリットがある形を考えます。まずはカードの相互設置など、小さな形から始め、反応を見ます。金銭のやり取りを伴う紹介契約は、仕組みが複雑になるため最初は避けた方が無難です。</p>' +
+        '<h3>紹介してもらったら、必ずお礼と報告を</h3>' +
+        '<p>紹介で来店があったら、紹介してくれたお店に一言お礼を伝えます。この報告があるかどうかで、関係の続き方が変わります。お客様の個人情報や施術内容は伝えないのがルールです。</p>' +
+        '<div class="voice"><p class="v-label">声かけ例</p><p>「「いつもお世話になっています。もし体のことで困っているお客様がいらしたら、うちのカードを渡していただけると嬉しいです。こちらでも、◯◯さんのお店をご案内しますね。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>まず自分が客として通う関係から始めているか</li><li>相互に負担のない小さな形から始めているか</li><li>紹介があった際のお礼と報告をしているか</li><li>お客様の個人情報を相手に伝えていないか</li></ul></div>'
+      },
+      {
+        cat: '集客の広げ方',
+        title: 'チラシを小さく試す方法 ― 配布エリアと反応の見方',
+        desc: 'チラシは大きく刷る前に、小さく試すのが鉄則です。配布エリアの決め方、載せる情報、反応の測り方を整理します。',
+        body: '<p class="a-lead">デジタル集客が中心の時代でも、地域密着のサロンではチラシが効く場面があります。ただし最初から大量に作ると、失敗したときの負担が大きくなります。小さく試して、反応を見てから広げます。</p>' +
+        '<h3>エリアは商圏の核心に絞る</h3>' +
+        '<p>配布エリアは、実際に来店しやすい範囲に絞ります。駅からの動線、住宅街のまとまり、近隣店舗の立地を見て、まずは数百枚単位で試します。広く薄くより、狭く濃くが基本です。</p>' +
+        '<h3>載せるのは、対象・料金・場所・予約方法だけ</h3>' +
+        '<p>チラシは読む時間が短いため、情報を絞ります。誰向けか、主力コースの料金、場所と行き方、予約方法の4点に絞り、詳しくはホームページやLINEへ誘導します。効能をうたう表現は載せません。</p>' +
+        '<h3>反応は専用の手がかりで測る</h3>' +
+        '<p>チラシ専用の案内（持参での案内、専用の合言葉など）を用意し、何件の問い合わせがあったかを数えます。反応がなければ、エリアか中身のどちらかを変えて、もう一度小さく試します。</p>' +
+        '<div class="voice"><p class="v-label">進め方の例</p><p>「「まずは最寄り駅周辺と近隣の住宅街に300枚だけ配布し、2週間で問い合わせ数を数える。反応があったエリアだけ、次回は範囲を広げる。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>配布エリアが商圏の核心に絞られているか</li><li>載せる情報が4点に絞られているか</li><li>反応を数える手がかりを用意しているか</li><li>最初から大量印刷をしていないか</li></ul></div>'
+      },
+      {
+        cat: 'リピートの仕組み',
+        title: '節目に合わせた案内 ― 誕生日や季節の節目をきっかけに',
+        desc: '節目の案内は、売り込みではなく思い出してもらうきっかけです。負担にならない送り方と、避けるべき使い方を整理します。',
+        body: '<p class="a-lead">しばらく来店のない方への連絡は、きっかけがあると自然になります。誕生日や季節の節目など、相手にとっても受け取りやすいタイミングを使うのがコツです。</p>' +
+        '<h3>使う節目は、相手にとって自然なものだけ</h3>' +
+        '<p>誕生日、季節の変わり目、来店からちょうどの節月など、説明のつくタイミングに限ります。根拠のない頻繁な案内は、宣伝として受け取られます。個人情報の扱いにも配慮し、誕生日を使う場合は取得した経緯が明確な範囲に限ります。</p>' +
+        '<h3>文面は近況伺いが中心、特典は添える程度に</h3>' +
+        '<p>主役は近況を気遣う一文です。特典を付ける場合も小さなものに留め、期限で急かす表現は避けます。「お時間があれば」という余白を残すと、受け取る側の負担が下がります。</p>' +
+        '<h3>送った記録を残し、頻度を管理する</h3>' +
+        '<p>節目の案内も、送った日と内容をカルテに残します。個別フォローや休眠客への連絡と重なって、短期間に何通も届く状態を防ぐためです。</p>' +
+        '<div class="voice"><p class="v-label">文面例</p><p>「「◯◯様、お誕生日おめでとうございます。季節の変わり目で、体も疲れが出やすい時期です。ご都合のよいときがあれば、ぜひリフレッシュにお越しください。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>使う節目に説明がつくか</li><li>近況伺いが中心の文面になっているか</li><li>特典で急かす表現になっていないか</li><li>送信記録が残され、他の連絡と重なっていないか</li></ul></div>'
+      },
+      {
+        cat: '口コミ・MEO',
+        title: '口コミ返信を続ける運用 ― 週1回の確認を仕組みにする',
+        desc: '返信は気づいたときでは漏れます。確認する曜日と担当を決め、無理なく続ける運用の作り方を紹介します。',
+        body: '<p class="a-lead">口コミへの返信の大切さは分かっていても、日々の業務に追われると後回しになります。続けるための鍵は、やる気ではなく仕組みです。</p>' +
+        '<h3>確認は週1回、曜日と時間を固定する</h3>' +
+        '<p>たとえば月曜の開店前に15分、Googleの口コミとメッセージを確認する時間を固定します。新しい口コミへの返信、営業時間の変更がないかの確認までを、この時間にまとめます。</p>' +
+        '<h3>返信文の型を3種類用意しておく</h3>' +
+        '<p>好意的な口コミ、具体的な指摘のある口コミ、厳しい口コミの3種類の型を用意しておくと、その場で悩まずに書けます。型はあくまで骨組みで、内容に触れる一文は毎回変えます。</p>' +
+        '<h3>厳しい口コミは、その場で書かず一晩置く</h3>' +
+        '<p>感情が動いた状態で書いた返信は、公開の場に残ります。厳しい内容ほど、下書きだけ作って一晩置き、翌日に読み直してから投稿する運用にします。スタッフがいる場合は、別の目で読んでもらうのも有効です。</p>' +
+        '<div class="voice"><p class="v-label">運用例</p><p>「「月曜の開店前に15分、口コミ確認の時間を取る。新着があれば型に沿って返信し、厳しい内容は火曜に再読してから投稿する。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>確認する曜日と時間が固定されているか</li><li>返信文の型が3種類用意されているか</li><li>厳しい口コミへの返信を一晩置く運用になっているか</li><li>営業時間などプロフィールの確認も同時に行っているか</li></ul></div>'
+      },
+      {
+        cat: 'Web・発信',
+        title: '予約ボタンの置き方 ― 迷わせない導線の作り方',
+        desc: '予約したいと思った瞬間にボタンがないと、離脱が起きます。ページ内での予約導線の置き方と、文言の工夫を解説します。',
+        body: '<p class="a-lead">ホームページの目的が予約であるなら、予約への導線は「探させるもの」ではなく「常に見えるもの」にします。小さな配置の工夫で、問い合わせへの移行率は変わります。</p>' +
+        '<h3>ボタンは上部、料金の後、施術者紹介の後の3か所</h3>' +
+        '<p>初めての方が予約を決めるのは、料金を確認した直後と、施術者への安心感を持った直後が多いものです。ページ上部に加えて、この2か所の直後に予約ボタンを置くと、決心した瞬間を逃しません。</p>' +
+        '<h3>ボタンの文言は行動が分かる言葉に</h3>' +
+        '<p>「こちら」ではなく、「LINEで予約する」「予約サイトで空きを見る」のように、押した先で何が起きるかが分かる文言にします。電話番号の場合は、営業時間とあわせて表示します。</p>' +
+        '<h3>受付していない場合は、正直な案内に変える</h3>' +
+        '<p>開業前や受付を止めている期間は、押しても進めないボタンを置かないことが大切です。「現在、受付を開始していません。開始時期はこのページでご案内します」という案内に置き換える方が、信頼を損ないません。</p>' +
+        '<div class="voice"><p class="v-label">配置の例</p><p>「「ページ上部に固定表示、料金表の直後と施術者紹介の直後に同じボタンを置く。文言は『LINEで予約する』に統一し、リンク先の方法と一致させる。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>決心しやすい場所にボタンが置かれているか</li><li>ボタンの文言から押した先の行動が分かるか</li><li>受付していない期間は正直な案内に切り替えているか</li><li>ボタンと実際の予約方法が一致しているか</li></ul></div>'
+      },
+      {
+        cat: 'Web・発信',
+        title: 'よくある質問ページが、予約前の不安を消す理由',
+        desc: '初めての方は、施術の内容よりも当日の細かなことを不安に感じています。よくある質問を先回りして載せる効果と作り方を解説します。',
+        body: '<p class="a-lead">予約をためらう理由の多くは、大きな不安ではなく小さな疑問の積み重ねです。「着替えはあるのか」「支払いは何が使えるか」。こうした疑問に先に答えておくページが、よくある質問です。</p>' +
+        '<h3>質問は、実際に聞かれたものから集める</h3>' +
+        '<p>作り手が想像した質問ではなく、実際に電話やLINE、来店時に聞かれた質問を集めます。月に数件ずつ溜まる質問メモが、そのまま質問ページの材料になります。</p>' +
+        '<h3>答えは短く、具体的に</h3>' +
+        '<p>1つの質問への答えは2から3文に絞り、具体的な内容（着替えの有無、所要時間、支払い方法など）を明確に書きます。曖昧な答えは不安を消しません。答えられない内容は無理に作らず、問い合わせへの案内で締めます。</p>' +
+        '<h3>質問ページは集客記事からもつなげる</h3>' +
+        '<p>症状や悩みの記事の最後に、関連する質問へのリンクを置くと、読んだ方がそのまま不安を解消して予約へ進めます。質問ページは単体で置くより、記事と行き来できる形が有効です。</p>' +
+        '<div class="voice"><p class="v-label">質問の例</p><p>「「『施術の前に着替えますか』『支払いは現金のみですか』『当日はどのくらい前に着けばよいですか』など、実際に聞かれた質問をそのまま見出しにする。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>実際に聞かれた質問を材料にしているか</li><li>答えが短く具体的に書かれているか</li><li>記事から質問ページへつながる導線があるか</li><li>新しい質問を定期的に追加しているか</li></ul></div>'
+      },
+      {
+        cat: 'メニュー・料金',
+        title: '60分と90分で迷う方への、時間の選び方ガイド',
+        desc: '時間の違いが分からないと、短い方か安い方だけで選ばれてしまいます。時間ごとの内容の違いを、受ける側の言葉で説明する方法です。',
+        body: '<p class="a-lead">コースの時間選びは、初めての方にとって意外と難しい判断です。「60分で全身できますか」という質問が多いのは、時間と内容の関係が見えていないためです。</p>' +
+        '<h3>時間ごとに「できること」を具体的に書く</h3>' +
+        '<p>60分は気になる部分を中心に、90分は全身に加えて気になる部分を長めに、120分は全身をゆっくり、のように、時間ごとの配分を言葉にします。専門用語ではなく、受ける側の体験の言葉で書くのがコツです。</p>' +
+        '<h3>迷う方へのおすすめを明示する</h3>' +
+        '<p>「初めての方は90分がおすすめです。全身を一通り確認でき、次回以降の組み立ての参考にもなります」のように、理由とセットでおすすめを示します。おすすめがあることで、選ぶ負担が下がります。</p>' +
+        '<h3>当日の変更可否も伝えておく</h3>' +
+        '<p>当日の体の状態を見て時間を延ばせる場合は、その旨も案内します。逆に、予約状況で変更できない場合は、事前に伝えておくと当日の行き違いが防げます。</p>' +
+        '<div class="voice"><p class="v-label">ガイド文の例</p><p>「「全身をしっかりほぐしたい方は90分が目安です。お時間がない日や、気になる部分だけ集中的に見てほしい日は60分をお選びください。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>時間ごとにできることが具体的に書かれているか</li><li>迷う方向けのおすすめと理由があるか</li><li>当日の時間変更の可否が伝わっているか</li><li>メニュー表とホームページで説明がそろっているか</li></ul></div>'
+      },
+      {
+        cat: '予約管理',
+        title: 'スタッフが増えたときの予約・カルテ共有ルール',
+        desc: '一人から複数人になると、口頭の共有だけでは行き違いが起きます。予約とカルテの共有ルールを最小限から作る方法を紹介します。',
+        body: '<p class="a-lead">スタッフが増えたサロンで起きやすいのが、予約の伝達漏れとカルテの書き方のばらつきです。大がかりな仕組みの前に、共有のルールを文章で決めておくことが先です。</p>' +
+        '<h3>予約は1か所の表で全員が見る</h3>' +
+        '<p>担当ごとに別の表を持つと、部屋やベッドの重なりが見えなくなります。予約表は全員が同じものを見て、入った予約はその場で反映するルールにします。変更やキャンセルも、気づいた人がすぐ反映し、口頭だけの伝達で終わらせません。</p>' +
+        '<h3>カルテの必須項目を決め、書き方をそろえる</h3>' +
+        '<p>体の状態、提案内容、次回予約の有無など、最低限書く項目を決めて共有します。誰が読んでも経過が分かることが目的で、詳しさよりも項目の統一を優先します。個人情報の取り扱い範囲もこの機会に決めておきます。</p>' +
+        '<h3>週1回、15分の共有時間を取る</h3>' +
+        '<p>週に一度、来週の予約状況と気になるお客様の経過を短く共有する時間を作ります。問題が大きくなる前に、小さな行き違いを解消する場になります。</p>' +
+        '<div class="voice"><p class="v-label">ルールの例</p><p>「「予約の追加と変更は、その場で共通の予約表に反映する。カルテは体の状態・提案・次回の有無の3項目を必須とし、月曜の朝に15分、全員で来週の予約を確認する。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>全員が同じ予約表を見ているか</li><li>カルテの必須項目が決まっているか</li><li>変更を口頭だけで終わらせないルールがあるか</li><li>週1回の共有時間が確保されているか</li></ul></div>'
+      },
+      {
+        cat: '集客の広げ方',
+        title: '勉強会・体験会を開いて専門性を伝える方法',
+        desc: '小さな勉強会や体験会は、広告では伝わらない専門性を届ける場になります。無理のない規模での始め方を解説します。',
+        body: '<p class="a-lead">セミナーや勉強会は、集客の場であると同時に、地域での専門性を示す場でもあります。最初から大きな会場や人数を目指さず、少人数で確実に回せる形から始めます。</p>' +
+        '<h3>テーマは参加者の悩みに直結させる</h3>' +
+        '<p>「姿勢と日常の過ごし方」「季節の変わり目のセルフケア」など、参加者が自分のこととして聞けるテーマにします。専門知識の披露ではなく、参加者が持ち帰って使える内容を中心に構成します。</p>' +
+        '<h3>規模は少人数、時間は60から90分</h3>' +
+        '<p>初めは定員5名前後、60から90分が運営しやすい規模です。会場は自店やレンタルスペースで十分です。申込方法とキャンセル時の連絡方法は、募集の時点で明記します。</p>' +
+        '<h3>終わりに次の一歩を用意する</h3>' +
+        '<p>参加後の案内として、個別の相談や通常の施術への導線を用意します。ただし、その場での強い勧誘は避け、資料を持ち帰ってもらう形に留めます。参加者の声は、許可を取ったうえで次回の案内に活用できます。</p>' +
+        '<div class="voice"><p class="v-label">募集文の例</p><p>「「少人数のセルフケア勉強会を開催します。定員5名、参加費と持ち物、申込方法を明記し、無理な勧誘は行わない旨も添えて案内する。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>テーマが参加者の悩みに直結しているか</li><li>定員と時間が運営できる規模に収まっているか</li><li>申込とキャンセルの方法が募集時に明記されているか</li><li>終了後の案内が押し付けになっていないか</li></ul></div>'
+      },
+      {
+        cat: '集客の広げ方',
+        title: '求人ページが集客にもつながる理由と書き方',
+        desc: 'スタッフ募集のページは、求職者だけでなくお客様も読んでいます。働く環境の透明さが、店への信頼にもつながる書き方を紹介します。',
+        body: '<p class="a-lead">求人ページは応募のためだけのものではありません。どんな方針で店を運営し、スタッフをどう大切にしているかは、お客様が店を選ぶ材料にもなります。</p>' +
+        '<h3>条件は具体的に、良い面も大変な面も書く</h3>' +
+        '<p>業務委託か雇用か、報酬の考え方、研修の有無、営業時間の決め方など、働く条件は具体的に書きます。良い面だけを並べるより、大変な面も含めて正直に書く方が、応募後のミスマッチも減り、読むお客様にも誠実さが伝わります。</p>' +
+        '<h3>店の考え方を、求職者向けの言葉で書く</h3>' +
+        '<p>「リピートを大切にする店です」「無理な営業はしません」など、接客の方針を求人ページにも書きます。これは求職者への約束であると同時に、お客様への宣言にもなります。</p>' +
+        '<h3>応募方法は開始してから載せる</h3>' +
+        '<p>受付チャネルが決まっていない段階では、押しても進めない応募ボタンを置きません。「現在は募集の受付を開始していません」と正直に書き、開始後に案内を更新します。準備中の情報を、受付中であるかのように見せないことが大切です。</p>' +
+        '<div class="voice"><p class="v-label">書き方の例</p><p>「「業務委託、未経験の方は研修無料、経験のある方はお持ちの技術をメニュー化できます。営業時間は本人の希望に合わせて相談のうえ決めます。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>契約形態や報酬の考え方が具体的に書かれているか</li><li>良い面だけでなく大変な面にも触れているか</li><li>店の接客方針が求人ページにも書かれているか</li><li>受付を開始していない募集を、受付中のように見せていないか</li></ul></div>'
+      },
+      {
+        cat: 'リピートの仕組み',
+        title: '来店間隔が空いた理由を、責めずに聞く聞き方',
+        desc: '間隔が空いた方への接し方で、その後の関係が決まります。理由を聞くときの言葉選びと、聞いた内容の活かし方を整理します。',
+        body: '<p class="a-lead">久しぶりに来店した方に「どうして空いたのですか」と聞くと、尋問のように響くことがあります。理由は聞き方次第で、改善の材料にも、関係を遠ざける原因にもなります。</p>' +
+        '<h3>聞くのは尋問ではなく、次回の提案のため</h3>' +
+        '<p>目的は、その方の生活リズムに合った来店間隔や曜日を一緒に考えることです。「お仕事が忙しい時期でしたか」など、答えやすい形で尋ね、返ってきた答えは言い訳としてではなく情報として受け取ります。</p>' +
+        '<h3>理由ごとに、次回の案内を変える</h3>' +
+        '<p>忙しさが理由なら短時間コースや遅い時間の枠を、料金が理由なら無理のないペースの提案を、効果の実感が薄いことが理由なら施術内容の見直しを、というように、理由に合わせた次の一手を用意します。</p>' +
+        '<h3>聞いた内容はカルテに残す</h3>' +
+        '<p>間隔が空いた理由と、次回に配慮すべき点はカルテに残します。別のスタッフが対応しても、同じ配慮ができるようにするためです。体調や家庭の事情など、踏み込みすぎた記録は避け、接客に必要な範囲に留めます。</p>' +
+        '<div class="voice"><p class="v-label">声かけ例</p><p>「「少し間が空きましたね。お忙しい時期でしたか。次回は、お仕事の波に合わせて、短めのコースでこまめにという形もできますよ。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>理由を次回の提案に活かす目的で聞いているか</li><li>答えやすい形で尋ねているか</li><li>理由に合わせた次回の案内を用意しているか</li><li>聞いた内容を必要な範囲でカルテに残しているか</li></ul></div>'
+      },
+      {
+        cat: '口コミ・MEO',
+        title: '写真つき口コミが増える店内の工夫',
+        desc: '文章だけより、写真のある口コミは読む側の判断材料になります。お願いではなく、写真を撮りたくなる環境づくりを紹介します。',
+        body: '<p class="a-lead">口コミに写真が添えられていると、室内の様子や清潔感が伝わりやすくなります。ただし、写真付きで書いてくださいと直接頼むより、撮りやすい環境を整える方が自然です。</p>' +
+        '<h3>撮りたくなる場所を1か所作る</h3>' +
+        '<p>入口の看板まわりや、季節の小物を置いた一角など、写真に収めたくなる場所を意図的に作ります。明るく、背景がすっきりしていることが条件です。撮影が歓迎であることが伝わる小さな案内も置けます。</p>' +
+        '<h3>施術前後の写真は、ルールを明確にする</h3>' +
+        '<p>姿勢や体の変化を写真で残すサービスを行う場合は、撮影の目的、保存方法、本人の確認なく公開しないことを、事前に説明し同意を取ります。お客様の写真を店の宣伝に使うことは、書面での許可がある場合に限ります。</p>' +
+        '<h3>自分たちから先に写真を充実させる</h3>' +
+        '<p>口コミの写真を期待する前に、店側の公式写真を充実させます。Googleやホームページの写真が整っている店ほど、お客様の写真も添えられやすくなります。</p>' +
+        '<div class="voice"><p class="v-label">店内の例</p><p>「「入口に季節の案内と小さな看板を置き、明るく写真に収めやすい一角を作る。室内の公式写真は季節ごとに撮り直し、古い写真と入れ替える。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>写真に収めたくなる場所が店内にあるか</li><li>お客様の写真の撮影と利用のルールが明確か</li><li>公式写真が季節ごとに更新されているか</li><li>写真の掲載をお願いする際に許可を徹底しているか</li></ul></div>'
+      },
+      {
+        cat: 'Web・発信',
+        title: 'LINEを使わない方への案内を残す ― 電話・SMS・店頭の役割',
+        desc: 'お客様全員がLINEを使うわけではありません。年齢層や事情に合わせて、複数の連絡手段を用意しておく考え方を整理します。',
+        body: '<p class="a-lead">集客の連絡手段はLINEが中心になりがちですが、電話やSMS、店頭での案内が合うお客様もいます。手段を1つに絞ると、その手段を使わない層が静かに離れていきます。</p>' +
+        '<h3>手段ごとに役割を決める</h3>' +
+        '<p>電話は当日の変更や急ぎの連絡、SMSは電話番号しか分からない方への短い案内、LINEは継続的なフォロー、というように役割を分けます。どの手段でも、予約の確定内容は同じ予約表に集約します。</p>' +
+        '<h3>営業電話への配慮を仕組みにする</h3>' +
+        '<p>連絡手段を用意することと、頻繁に電話をかけることは別です。お客様への電話連絡は、予約に関する必要な連絡に限ります。発信の頻度や時間帯のルールを決めておくと、相手の負担にも自分の負担にもなりません。</p>' +
+        '<h3>店頭で次の連絡方法を確認する</h3>' +
+        '<p>来店時に「次回のご案内はLINEと電話のどちらがよいですか」と確認し、カルテに残します。本人の希望に沿った手段で連絡することが、ブロックや離脱を防ぐ一番の方法です。</p>' +
+        '<div class="voice"><p class="v-label">確認の例</p><p>「「会計時に『次回の空き状況のご案内は、LINEとお電話どちらがよろしいですか』と確認し、希望をカルテの連絡欄に記録する。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>連絡手段ごとに役割が決まっているか</li><li>電話連絡の頻度と時間帯のルールがあるか</li><li>来店時に希望する連絡方法を確認しているか</li><li>どの手段の予約も1つの予約表に集約されているか</li></ul></div>'
+      },
+      {
+        cat: 'メニュー・料金',
+        title: '値引きに頼らないキャンペーンの作り方',
+        desc: '割引だけのキャンペーンは、終わった後の通常価格への戻りを難しくします。体験の価値を足す形のキャンペーン設計を紹介します。',
+        body: '<p class="a-lead">新規や再来のきっかけ作りにキャンペーンは有効ですが、値引き一辺倒になると、価格だけが理由のお客様が増えます。値段を下げる代わりに、体験に何かを足す設計を考えます。</p>' +
+        '<h3>足すのは時間、内容、情報のいずれか</h3>' +
+        '<p>期間限定でオプションを少し足す、季節に合わせた内容を加える、セルフケアの資料を渡すなど、価格以外の価値を足します。原価が大きく増えない形を選ぶと、無理なく続けられます。</p>' +
+        '<h3>対象と期間を絞り、理由を添える</h3>' +
+        '<p>全員に常時行うものはキャンペーンではありません。季節の変わり目、新生活の時期など理由のあるタイミングに絞り、期間を明示します。理由と期間があることで、通常価格への信頼は保たれます。</p>' +
+        '<h3>結果を記録し、来年使える形に残す</h3>' +
+        '<p>実施した内容、期間、反応の件数を記録に残します。手応えがあったものは翌年の同じ時期に再び使え、毎年ゼロから考える負担が減ります。反応が薄かったものは、理由を考えて静かに外します。</p>' +
+        '<div class="voice"><p class="v-label">実施例</p><p>「「季節の変わり目の2週間だけ、基本コースに頭のケアを10分追加する案内を行う。値引きは行わず、実施後に問い合わせと予約の件数を記録する。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>値引き以外の価値を足す形になっているか</li><li>対象と期間が絞られ、理由が添えられているか</li><li>原価が大きく増えない設計になっているか</li><li>結果を記録し、翌年に活かせる形で残しているか</li></ul></div>'
+      },
+      {
+        cat: '集客の広げ方',
+        title: '1年の集客カレンダー ― 繁忙期と閑散期の準備',
+        desc: '集客は思いつきではなく、季節の波に合わせた準備で変わります。1年を俯瞰して、発信と案内を先に決めておく方法を紹介します。',
+        body: '<p class="a-lead">サロンの忙しさには季節の波があります。新生活の春、夏の疲れが出る時期、年末の駆け込みなど、訪れる波に合わせて準備しておくと、慌ただしい場当たり対応が減ります。</p>' +
+        '<h3>まず、自分の店の波を記録から知る</h3>' +
+        '<p>過去の予約表や売上記録を見返し、月ごとに忙しさの傾向を把握します。一般論の季節感より、自分の店の実績が確かな材料です。記録がない年は、今年から月ごとの件数を残すことが最初の一歩です。</p>' +
+        '<h3>閑散期の前に、休眠客と発信の準備をする</h3>' +
+        '<p>波が下がる時期の直前に、休眠客への案内（第5回）や季節の記事（第24回）の準備を進めます。閑散期に入ってから慌てるのではなく、1か月前に仕込むのがカレンダーの考え方です。</p>' +
+        '<h3>繁忙期は新規より、既存客の予約確保を優先する</h3>' +
+        '<p>枠が埋まりやすい時期は、いつものお客様が予約を取れなくなる事態を防ぐことが先です。早めの次回予約の案内と、枠の使い方の工夫で、大切な土台を守ります。</p>' +
+        '<div class="voice"><p class="v-label">カレンダーの例</p><p>「「月ごとに『季節のテーマ』『発信する記事』『案内する相手』を1行ずつ書き出す。閑散期の1か月前に休眠客への案内を準備し、繁忙期は常連の先行案内を優先する。」」</p></div>' +
+        '<div class="check"><p class="ck-label">チェックポイント</p><ul><li>月ごとの忙しさの傾向を記録から把握しているか</li><li>閑散期の1か月前に準備を始めているか</li><li>繁忙期は既存客の予約確保を優先しているか</li><li>1年分のテーマと案内が1枚にまとまっているか</li></ul></div>'
+      }
+    ];
+      var colGrid = document.getElementById('colGrid');
+      var colArticles = document.getElementById('colArticles');
+      var columnsSection = document.getElementById('columns');
+      var articleWrap = document.getElementById('colArticleWrap');
+      COLUMNS.forEach(function (c, i) {
+        var n = i + 1;
+        var card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'col-card';
+        card.dataset.cat = c.cat;
+        card.dataset.num = n;
+        card.innerHTML = '<span class="c-meta"><span class="c-num">第' + n + '回</span><span class="c-cat">' + c.cat + '</span></span><h3>' + c.title + '</h3><p>' + c.desc + '</p><span class="c-more">教材を読む →</span>';
+        card.addEventListener('click', function () { openColumn(n); });
+        colGrid.appendChild(card);
+        var art = document.createElement('article');
+        art.className = 'col-article';
+        art.id = 'column-' + n;
+        art.hidden = true;
+        art.innerHTML = '<p class="a-cat">セラピスト集客塾 教材 第' + n + '回 ｜ ' + c.cat + '</p><h2>' + c.title + '</h2>' + c.body +
+          '<div class="a-nav">' +
+          '<button type="button" class="prev"' + (n === 1 ? ' disabled' : '') + '>← 前の教材</button>' +
+          '<button type="button" class="next"' + (n === COLUMNS.length ? ' disabled' : '') + '>次の教材 →</button>' +
+          '</div>';
+        if (n > 1) art.querySelector('.prev').addEventListener('click', function () { openColumn(n - 1); });
+        if (n < COLUMNS.length) art.querySelector('.next').addEventListener('click', function () { openColumn(n + 1); });
+        colArticles.appendChild(art);
+      });
+      var filterBar = document.getElementById('filterBar');
+      var filterCount = document.getElementById('filterCount');
+      if (filterBar) {
+        filterBar.addEventListener('click', function (e) {
+          var chip = e.target.closest('.filter-chip');
+          if (!chip) return;
+          var chips = filterBar.querySelectorAll('.filter-chip');
+          for (var i = 0; i < chips.length; i++) chips[i].classList.toggle('active', chips[i] === chip);
+          var f = chip.dataset.filter;
+          var shown = 0;
+          var cards = colGrid.children;
+          for (var j = 0; j < cards.length; j++) {
+            var match = (f === 'all' || cards[j].dataset.cat === f);
+            cards[j].style.display = match ? '' : 'none';
+            if (match) shown++;
+          }
+          filterCount.textContent = (f === 'all') ? '全50本を表示しています' : '「' + f + '」の教材 ' + shown + '本を表示しています';
+        });
+      }
+      function openColumn(n) {
+        columnsSection.hidden = true;
+        articleWrap.hidden = false;
+        var arts = colArticles.children;
+        for (var i = 0; i < arts.length; i++) arts[i].hidden = (i !== n - 1);
+        if (history.replaceState) history.replaceState(null, '', '#column-' + n);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      function showList() {
+        articleWrap.hidden = true;
+        columnsSection.hidden = false;
+        if (history.replaceState) history.replaceState(null, '', '#columns');
+        document.getElementById('columns').scrollIntoView({ behavior: 'smooth' });
+      }
+      document.getElementById('backToListTop').addEventListener('click', showList);
+      (function () {
+        var m = location.hash.match(/^#column-(\d+)$/);
+        if (m) {
+          var n = parseInt(m[1], 10);
+          if (n >= 1 && n <= COLUMNS.length) {
+            columnsSection.hidden = true;
+            articleWrap.hidden = false;
+            var arts = colArticles.children;
+            for (var i = 0; i < arts.length; i++) arts[i].hidden = (i !== n - 1);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
