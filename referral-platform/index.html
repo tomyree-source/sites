@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="施術者・サロン向けに、顧客向け送客ポータルとカルテ管理を1つに統合したサービスの紹介ページです。現在準備中です。" />
+    <link rel="icon" href="data:," />
+    <title>送客×カルテ統合プラットフォーム｜準備中</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f4f6f5;
+        --surface: #ffffff;
+        --surface-2: #eef2f0;
+        --ink: #1c2422;
+        --ink-2: #46524e;
+        --ink-3: #6b7773;
+        --line: #d9e0dd;
+        --accent: #0e6b5c;
+        --accent-strong: #0a5547;
+        --accent-soft: #e2efec;
+        --amber-bg: #fdf3e0;
+        --amber-line: #e8c87e;
+        --amber-ink: #7a5410;
+        --radius: 14px;
+        --shadow: 0 1px 2px rgba(20, 40, 35, .05), 0 8px 24px rgba(20, 40, 35, .06);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121716;
+          --surface: #1b2220;
+          --surface-2: #232b29;
+          --ink: #e8eeec;
+          --ink-2: #b7c2be;
+          --ink-3: #8b9894;
+          --line: #333d3a;
+          --accent: #4cc2ab;
+          --accent-strong: #7fd6c2;
+          --accent-soft: #1e3330;
+          --amber-bg: #2e2716;
+          --amber-line: #6b5724;
+          --amber-ink: #e9c979;
+          --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 16px;
+        line-height: 1.85;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px; }
+
+      /* ---------- Hero ---------- */
+      .hero { padding: 56px 0 8px; }
+      .hero-kicker {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 13px; font-weight: 700; letter-spacing: .08em;
+        color: var(--accent-strong);
+        background: var(--accent-soft);
+        border: 1px solid var(--line);
+        padding: 5px 14px; border-radius: 999px;
+      }
+      .hero-kicker .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+      h1 {
+        font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+        font-size: clamp(28px, 5.4vw, 44px);
+        line-height: 1.35; font-weight: 700;
+        margin: 20px 0 14px; letter-spacing: .01em;
+      }
+      h1 .accent { color: var(--accent-strong); }
+      .hero-lead { font-size: clamp(15px, 2.6vw, 17.5px); color: var(--ink-2); max-width: 720px; margin: 0; }
+
+      .notice {
+        margin-top: 28px;
+        background: var(--amber-bg);
+        border: 1.5px solid var(--amber-line);
+        border-radius: var(--radius);
+        padding: 20px 22px;
+        display: flex; gap: 16px; align-items: flex-start;
+      }
+      .notice svg { flex: none; margin-top: 4px; color: var(--amber-ink); }
+      .notice .notice-title { font-weight: 900; font-size: 18px; color: var(--amber-ink); margin: 0 0 4px; }
+      .notice p { margin: 0; color: var(--ink); font-size: 15px; }
+
+      /* ---------- Flow diagram ---------- */
+      .flow {
+        margin-top: 40px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 26px 24px 22px;
+      }
+      .flow-title { font-size: 13px; font-weight: 700; letter-spacing: .1em; color: var(--ink-3); margin: 0 0 18px; }
+      .flow-steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: stretch; }
+      .flow-step {
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 16px 14px;
+        text-align: center;
+      }
+      .flow-step svg { color: var(--accent-strong); }
+      .flow-step .fs-name { font-weight: 700; font-size: 15px; margin: 6px 0 2px; }
+      .flow-step .fs-desc { font-size: 12.5px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+      .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--ink-3); }
+      @media (max-width: 640px) {
+        .flow-steps { grid-template-columns: 1fr; }
+        .flow-arrow { transform: rotate(90deg); padding: 2px 0; }
+      }
+
+      /* ---------- Sections ---------- */
+      section { padding: 52px 0 4px; }
+      .sec-head { margin-bottom: 22px; }
+      .sec-head h2 {
+        font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+        font-size: clamp(22px, 4vw, 29px); font-weight: 700;
+        margin: 0 0 6px; line-height: 1.45;
+      }
+      .sec-head p { margin: 0; color: var(--ink-2); font-size: 15px; max-width: 700px; }
+
+      .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 24px;
+      }
+      .panel h3 { font-size: 17px; font-weight: 700; margin: 0 0 6px; display: flex; align-items: center; gap: 10px; }
+      .panel h3 svg { color: var(--accent-strong); flex: none; }
+      .panel p { margin: 0; color: var(--ink-2); font-size: 14.5px; }
+
+      .group-label {
+        font-size: 13px; font-weight: 700; letter-spacing: .1em;
+        color: var(--accent-strong);
+        margin: 30px 0 12px;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .group-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+      .group-label:first-of-type { margin-top: 4px; }
+
+      .feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      @media (max-width: 700px) { .feat-grid { grid-template-columns: 1fr; } }
+      .feat {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 20px 22px;
+        display: flex; gap: 16px; align-items: flex-start;
+      }
+      .feat .icon {
+        flex: none; width: 44px; height: 44px;
+        background: var(--accent-soft);
+        border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--accent-strong);
+      }
+      .feat h3 { font-size: 16px; font-weight: 700; margin: 0 0 4px; line-height: 1.5; }
+      .feat p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.75; }
+      .feat .tag {
+        display: inline-block; font-size: 11.5px; font-weight: 700;
+        color: var(--amber-ink); background: var(--amber-bg);
+        border: 1px solid var(--amber-line);
+        border-radius: 999px; padding: 1px 10px; margin-left: 8px; vertical-align: 2px;
+        white-space: nowrap;
+      }
+
+      /* ---------- Pricing ---------- */
+      .price-table {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .price-row {
+        display: flex; justify-content: space-between; align-items: baseline; gap: 20px;
+        padding: 18px 24px;
+      }
+      .price-row + .price-row { border-top: 1px solid var(--line); }
+      .price-row .p-name { font-weight: 700; font-size: 15.5px; }
+      .price-row .p-desc { font-size: 13px; color: var(--ink-2); margin-top: 2px; line-height: 1.65; }
+      .price-row .p-value { font-weight: 900; font-size: 19px; color: var(--accent-strong); white-space: nowrap; text-align: right; }
+      .price-row .p-value small { font-size: 12.5px; font-weight: 500; color: var(--ink-2); }
+      .price-note {
+        margin-top: 14px; font-size: 14px; color: var(--ink-2);
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: 10px; padding: 14px 18px;
+      }
+      @media (max-width: 560px) {
+        .price-row { flex-direction: column; gap: 4px; }
+        .price-row .p-value { text-align: left; }
+      }
+
+      /* ---------- Apply ---------- */
+      .apply {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 30px 26px;
+        text-align: center;
+      }
+      .apply svg { color: var(--accent-strong); }
+      .apply h2 {
+        font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+        font-size: clamp(20px, 3.6vw, 25px); margin: 10px 0 8px; line-height: 1.5;
+      }
+      .apply p { margin: 0 auto; color: var(--ink-2); font-size: 15px; max-width: 560px; }
+
+      footer {
+        margin-top: 64px;
+        border-top: 1px solid var(--line);
+        padding: 26px 0 40px;
+        color: var(--ink-3); font-size: 13px;
+      }
+      footer .f-name { font-weight: 700; color: var(--ink-2); font-size: 14px; margin-bottom: 4px; }
+      footer p { margin: 0; }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+
+      <!-- ===== Hero ===== -->
+      <div class="hero">
+        <span class="hero-kicker"><span class="dot"></span>施術者・サロン向けサービス</span>
+        <h1>送客とカルテ管理を、<br />ひとつの仕組みに。<br /><span class="accent">送客×カルテ統合プラットフォーム</span></h1>
+        <p class="hero-lead">
+          お客様がサロンを探して予約する「顧客向けポータル」と、予約にひもづく「カルテ管理」を1つに統合した、施術者・サロンのためのサービスです。集客の入り口から施術後の記録までを、別々のツールに分けずに扱えるようにすることを目指して開発を進めています。
+        </p>
+
+        <div class="notice" role="status">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div>
+            <p class="notice-title">現在準備中です</p>
+            <p>サービスの開始時期は決まり次第このページでご案内します。このページは開始に先立つ事前のご案内です。</p>
+          </div>
+        </div>
+
+        <div class="flow" aria-label="サービスの流れ">
+          <p class="flow-title">サービスの流れ</p>
+          <div class="flow-steps">
+            <div class="flow-step">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <p class="fs-name">探す・予約する</p>
+              <p class="fs-desc">お客様がポータルでサロンを検索し、そのまま予約へ進みます</p>
+            </div>
+            <div class="flow-arrow" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+            <div class="flow-step">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+              <p class="fs-name">予約を受ける</p>
+              <p class="fs-desc">サロン側は予約をスタッフとひもづけて管理できます</p>
+            </div>
+            <div class="flow-arrow" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+            <div class="flow-step">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+              <p class="fs-name">カルテに残す</p>
+              <p class="fs-desc">施術の記録はカルテとして残り、次回の来店につながります</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Two sides ===== -->
+      <section aria-labelledby="sides-h">
+        <div class="sec-head">
+          <h2 id="sides-h">使う人は、2つの立場</h2>
+          <p>お客様向けのポータルと、サロン側の管理画面が同じ仕組みの中でつながっています。</p>
+        </div>
+        <div class="two-col">
+          <div class="panel">
+            <h3>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              お客様（顧客向けポータル）
+            </h3>
+            <p>気になる症状や条件からサロンを探し、口コミや資格情報を確認して予約できます。気に入ったサロンはお気に入りに登録し、再予約もスムーズに行えます。</p>
+          </div>
+          <div class="panel">
+            <h3>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.7-5h14.6L21 9"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 20v-6h6v6"/></svg>
+              施術者・サロン（管理側）
+            </h3>
+            <p>予約とカルテをまとめて管理し、スタッフごとの実績の確認、求人掲載、セミナーの開催までを扱えます。掲載前の口コミチェックなど、サロン側で確認してから公開する仕組みも備えています。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Features ===== -->
+      <section aria-labelledby="feat-h">
+        <div class="sec-head">
+          <h2 id="feat-h">主な機能</h2>
+          <p>試作版で実装している機能の範囲をご紹介します。</p>
+        </div>
+
+        <p class="group-label">送客・予約</p>
+        <div class="feat-grid">
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg></div>
+            <div>
+              <h3>ポータルからの送客と予約導線</h3>
+              <p>顧客向けポータルにサロンを掲載し、閲覧から予約までをひと続きの導線で案内します。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="m14 10 7-7"/><path d="m3 21 7-7"/></svg></div>
+            <div>
+              <h3>症状からの逆引き検索</h3>
+              <p>お客様が気になる症状から、それに対応するサロンや手技を探せる検索方法を用意しています。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div>
+            <div>
+              <h3>条件フィルタ検索</h3>
+              <p>エリアや対応手技などの条件で絞り込んでサロンを探せます。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
+            <div>
+              <h3>お気に入り・再予約</h3>
+              <p>お客様がサロンをお気に入りに登録でき、以前利用したサロンへの再予約も行えます。</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="group-label">信頼の仕組み</p>
+        <div class="feat-grid">
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="m9 9 2 2 4-4"/></svg></div>
+            <div>
+              <h3>口コミの掲載前チェック</h3>
+              <p>投稿された口コミは、サロン側が内容を確認してから掲載の可否を決められます。掲載しないことにした口コミは、運営側でも把握できる形にしています。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <div>
+              <h3>資格確認バッジ</h3>
+              <p>施術者の資格を確認できた場合に、そのことが分かるバッジをプロフィールに表示します。</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="group-label">日々の運営</p>
+        <div class="feat-grid">
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
+            <div>
+              <h3>カルテ管理</h3>
+              <p>お客様ごとの施術記録をカルテとして蓄積し、予約とあわせて確認できます。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="M16 19h.01"/></svg></div>
+            <div>
+              <h3>スタッフ管理</h3>
+              <p>スタッフの登録、予約とのひもづけ、スタッフ別の実績の確認ができます。</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="group-label">掲載・学び</p>
+        <div class="feat-grid">
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+            <div>
+              <h3>求人掲載</h3>
+              <p>サロンの求人情報をポータル上に掲載できます。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.5"/></svg></div>
+            <div>
+              <h3>セミナーの開催・申込</h3>
+              <p>セミナーを開催する側は募集を掲載でき、参加する側は検索して申し込むことができます。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <div>
+              <h3>マンガブログ（2種類）</h3>
+              <p>サロン向けには集客のノウハウを、お客様向けには各手技療法がどのようなものかを、それぞれマンガ形式のブログで紹介します。お客様向けの解説は、サロンの対応手技とも結びつけられます。</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></div>
+            <div>
+              <h3>写真による姿勢分析<span class="tag">有料オプション</span></h3>
+              <p>写真を取り込むと姿勢を分析し、ストレッチやトレーニングのアドバイスを表示する機能です。有料オプションとして提供します。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Pricing ===== -->
+      <section aria-labelledby="price-h">
+        <div class="sec-head">
+          <h2 id="price-h">料金</h2>
+          <p>決定している料金は以下のとおりです。</p>
+        </div>
+        <div class="price-table">
+          <div class="price-row">
+            <div>
+              <div class="p-name">送客手数料</div>
+              <div class="p-desc">ポータル経由の予約による売上に対する手数料</div>
+            </div>
+            <div class="p-value">売上の10<small>%</small></div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="p-name">求人掲載料</div>
+              <div class="p-desc">求人情報の掲載1件あたり</div>
+            </div>
+            <div class="p-value">1,000<small>円／件</small></div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="p-name">セミナー掲載料</div>
+              <div class="p-desc">セミナー募集の掲載1件あたり</div>
+            </div>
+            <div class="p-value">1,000<small>円／件</small></div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="p-name">写真姿勢分析プラン</div>
+              <div class="p-desc">写真取り込みによる姿勢分析とアドバイス表示（有料オプション）</div>
+            </div>
+            <div class="p-value">月額3,000<small>円</small></div>
+          </div>
+        </div>
+        <p class="price-note">月額プランの価格はサービス開始時にご案内します。</p>
+      </section>
+
+      <!-- ===== Apply ===== -->
+      <section aria-labelledby="apply-h">
+        <div class="apply">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <h2 id="apply-h">お申し込みについて</h2>
+          <p>掲載・ご利用のお申し込み受付は、サービス開始後にこのページでご案内します。現在はお申し込み・お問い合わせの受付を開始していません。</p>
+        </div>
+      </section>
+
+      <footer>
+        <p class="f-name">送客×カルテ統合プラットフォーム（準備中）</p>
+        <p>このページは、サービス開始に先立つ事前のご案内です。内容は開始時点の提供内容と異なる場合があります。</p>
+      </footer>
+
+    </main>
+  </body>
+</html>
