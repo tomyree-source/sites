@@ -137,7 +137,8 @@ nav.fab-panel ul a:focus-visible{outline:3px solid var(--gold);outline-offset:-1
 .hero2-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:54% 46%;min-height:520px}
 .hero2-copy{padding:52px 44px 44px 20px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 .hero2-eyebrow{margin:0;font-size:12.5px;letter-spacing:.14em;font-weight:700;color:var(--hero-amber)}
-.hero2-title{margin:16px 0 18px;font-size:clamp(34px,4.6vw,52px);line-height:1.3;font-weight:600;letter-spacing:.03em;color:var(--ink)}
+.hero2-title{margin:16px 0 14px;font-size:clamp(29px,3.9vw,44px);line-height:1.38;font-weight:600;letter-spacing:.03em;color:var(--ink)}
+.hero2-catch{margin:0 0 16px;font-size:clamp(19px,2.3vw,25px);line-height:1.5;font-weight:600;letter-spacing:.05em;color:var(--teal)}
 .hero2-lead{margin:0;font-size:16.5px;line-height:1.85;color:var(--ink2);max-width:32em}
 .hero2-actions{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
 .hero2-cta{background:var(--hero-green);color:var(--hero-green-ink);min-height:54px;padding:14px 28px;font-size:15.5px;border-radius:999px;box-shadow:0 8px 22px rgba(36,72,58,.22)}
@@ -161,7 +162,8 @@ nav.fab-panel ul a:focus-visible{outline:3px solid var(--gold);outline-offset:-1
 .hero2-grid{grid-template-columns:1fr;min-height:0}
 .hero2-visual{order:-1;height:30svh;min-height:210px}
 .hero2-copy{padding:22px 20px 26px;margin-top:-22px;position:relative;background:var(--hero-face);border-radius:18px 18px 0 0}
-.hero2-title{font-size:31px;margin:10px 0 12px}
+.hero2-title{font-size:26px;margin:10px 0 10px}
+.hero2-catch{font-size:19px;margin:0 0 12px}
 .hero2-lead{font-size:15px;line-height:1.8}
 .hero2-actions{margin-top:20px}
 .hero2-cta{width:100%;justify-content:center}
@@ -290,6 +292,38 @@ footer b{color:var(--ink)}
 .library-text p{margin:0;color:var(--ink2);font-size:15px}
 .library-actions{flex:0 0 auto}
 .fineprint{font-size:12px;color:var(--muted)}
+/* books & goods shelf */
+.shelf-pr{border:1px dashed var(--line2);border-radius:10px;padding:10px 14px;font-size:12.5px;color:var(--ink2);background:var(--surface);margin:0 0 18px}
+.shelf-pr b{color:var(--gold);letter-spacing:.08em}
+.shelf-filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.shelf-filter{border:1px solid var(--line2);background:var(--surface);color:var(--ink2);border-radius:999px;padding:7px 18px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.shelf-filter[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.shelf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.shelf-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.shelf-grid{grid-template-columns:1fr}}
+.pick{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.pick[hidden]{display:none}
+.pick-visual{height:148px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;text-align:center;color:#fff}
+.pick-visual .pv-kind{font-size:11px;letter-spacing:.22em;font-weight:700;opacity:.85}
+.pick-visual .pv-title{font-size:19px;line-height:1.45;font-weight:600}
+.pick-visual .pv-sub{font-size:12px;opacity:.85}
+.pick-visual.c-book1{background:#2e4a3e}.pick-visual.c-book2{background:#6d5316}.pick-visual.c-book3{background:#33594d}
+.pick-visual.c-goods1{background:#ece4d3;color:var(--ink)}.pick-visual.c-goods2{background:#f0e3c2;color:var(--ink)}.pick-visual.c-goods3{background:#e6ddc9;color:var(--ink)}
+@media (prefers-color-scheme: dark){.pick-visual.c-goods1,.pick-visual.c-goods2,.pick-visual.c-goods3{background:#232a23;color:var(--ink)}}
+.pick-visual svg{width:34px;height:34px}
+.pick-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pick-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pick-badge{background:var(--gold);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;border-radius:6px;padding:2px 8px}
+.pick-badge.goods{background:var(--teal)}
+.pick-date{font-size:12px;color:var(--muted)}
+.pick h3{margin:0;font-size:17.5px;line-height:1.5}
+.pick .author{font-size:13px;color:var(--muted);margin:0}
+.pick p.desc{margin:0;color:var(--ink2);font-size:14px;flex:1}
+.pick .buy{margin-top:6px;border-top:1px dashed var(--line2);padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pick .buy a{font-weight:700;font-size:14px;text-decoration:none}
+.pick .buy a:hover{text-decoration:underline}
+.pick .ext{font-size:11.5px;color:var(--muted)}
+.shelf-note{font-size:12.5px;color:var(--muted);margin:14px 0 0}
 /* language switch */
 .lang-switch{display:flex;align-items:center;border:1px solid var(--line2);border-radius:999px;padding:2px;gap:2px;background:var(--surface);flex:0 0 auto;margin-left:auto}
 .lang-switch button{border:none;background:transparent;color:var(--ink2);font:inherit;font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;cursor:pointer;letter-spacing:.05em;line-height:1.3}
@@ -317,7 +351,8 @@ footer b{color:var(--ink)}
 <div class="hero2-grid">
 <div class="hero2-copy">
 <p class="hero2-eyebrow" data-i18n="heroPlace">大阪市淀川区・東三国 ｜ 北辰堂（男性専用・自宅サロン）</p>
-<h1 class="serif hero2-title" data-i18n="heroTitle">仕事帰りに、<br>静かに整える。</h1>
+<h1 class="serif hero2-title" data-i18n="heroTitle">東三国の男性向け<br>リラクゼーション・整体｜北辰堂</h1>
+<p class="hero2-catch serif" data-i18n="heroCatch">仕事帰りに、静かに整える。</p>
 <p class="hero2-lead" data-i18n="heroLead">東三国の自宅の一室で開く男性専用サロン「北辰堂」。施術歴30年の平賀建人が、整体とリラクゼーションを行います。</p>
 <div class="hero2-actions">
 <a class="btn hero2-cta" href="#menu" data-i18n="heroCta">初回メニューを見る</a>
@@ -671,6 +706,112 @@ footer b{color:var(--ink)}
 <p data-i18n="col3Text">疲れているはずなのに布団に入ってもなかなか寝つけない、眠っても疲れが残る感じがする——夜の眠りにまつわるお悩みについて、考えられる要因と夜の過ごし方の見直し、医療機関へ相談する目安を整理しました。</p>
 <span class="more" data-i18n="colMore">記事を読む →</span>
 </a>
+</div>
+</section>
+
+<!-- BOOKS & GOODS -->
+<section class="block" id="books-goods">
+<div class="wrap">
+<p class="kicker">NEW BOOKS &amp; GOODS</p>
+<h2 class="sec serif" data-i18n="shelfTitle">新着の本とおすすめ商品</h2>
+<p class="sec-lead" data-i18n="shelfLead">体の仕組みやセルフケアを学べる本と、ご自宅でのケアに使える道具を紹介するコーナーです。コラムやセルフケア資料ライブラリとあわせて、日々のケアの見直しにお役立てください。新しい本・商品が入るたびに、こちらへ追加していきます。</p>
+<p class="shelf-pr"><b>PR</b>　<span data-i18n="shelfPr">このコーナーのリンクは、Amazonアソシエイト・プログラムによるアフィリエイトリンク（検索結果へのリンク）を含みます。価格・在庫・仕様は変動しますので、リンク先の表示をご確認ください。</span></p>
+<div class="shelf-filters" role="group" aria-label="表示の切り替え">
+<button type="button" class="shelf-filter" data-filter="all" aria-pressed="true" data-i18n="shelfAll">すべて</button>
+<button type="button" class="shelf-filter" data-filter="book" aria-pressed="false" data-i18n="shelfBooksBtn">本だけ見る</button>
+<button type="button" class="shelf-filter" data-filter="goods" aria-pressed="false" data-i18n="shelfGoodsBtn">商品だけ見る</button>
+<span class="pick-date" style="align-self:center" data-i18n="shelfUpdated">2026年10月30日 更新</span>
+</div>
+<div class="shelf-grid" id="shelf-grid">
+<article class="pick" data-kind="book">
+<div class="pick-visual c-book1">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>
+<span class="pv-kind">BOOK</span>
+<span class="pv-title serif">世界一伸びる<br>ストレッチ</span>
+</div>
+<div class="pick-body">
+<div class="pick-meta"><span class="pick-badge" data-i18n="badgeNew">新着の本</span><span class="pick-date">2026年10月紹介</span></div>
+<h3 class="serif" data-i18n="b1Title">『世界一伸びるストレッチ』</h3>
+<p class="author" data-i18n="b1Author">中野ジェームズ修一 著</p>
+<p class="desc" data-i18n="b1Desc">部位ごとのストレッチを写真と図で紹介し、入門書として長く読まれている一冊。デスクワークの合間や帰宅後に取り入れる動きを探したいときに、まず開きやすい本です。</p>
+<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E4%B8%96%E7%95%8C%E4%B8%80%E4%BC%B8%E3%81%B3%E3%82%8B%E3%82%B9%E3%83%88%E3%83%AC%E3%83%83%E3%83%81+%E4%B8%AD%E9%87%8E%E3%82%B8%E3%82%A7%E3%83%BC%E3%83%A0%E3%82%BA%E4%BF%AE%E4%B8%80&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
+</div>
+</article>
+<article class="pick" data-kind="book">
+<div class="pick-visual c-book2">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>
+<span class="pv-kind">BOOK</span>
+<span class="pv-title serif">スタンフォード式<br>疲れない体</span>
+</div>
+<div class="pick-body">
+<div class="pick-meta"><span class="pick-badge" data-i18n="badgeNew">新着の本</span><span class="pick-date">2026年10月紹介</span></div>
+<h3 class="serif" data-i18n="b2Title">『スタンフォード式 疲れない体』</h3>
+<p class="author" data-i18n="b2Author">山田知生 著</p>
+<p class="desc" data-i18n="b2Desc">スタンフォード大学スポーツ医局での実践をもとに、疲労との向き合い方や回復の考え方をまとめた本。「疲労感と腰の重さ」のコラムとあわせて読みたい一冊です。</p>
+<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%89%E5%BC%8F+%E7%96%B2%E3%82%8C%E3%81%AA%E3%81%84%E4%BD%93+%E5%B1%B1%E7%94%B0%E7%9F%A5%E7%94%9F&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
+</div>
+</article>
+<article class="pick" data-kind="book">
+<div class="pick-visual c-book3">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>
+<span class="pv-kind">BOOK</span>
+<span class="pv-title serif">最高の体調</span>
+</div>
+<div class="pick-body">
+<div class="pick-meta"><span class="pick-badge" data-i18n="badgeNew">新着の本</span><span class="pick-date">2026年10月紹介</span></div>
+<h3 class="serif" data-i18n="b3Title">『最高の体調』</h3>
+<p class="author" data-i18n="b3Author">鈴木祐 著</p>
+<p class="desc" data-i18n="b3Desc">日々の疲れや不調感への向き合い方を、食事・環境・習慣の見直しの視点で整理した読み物。夜の過ごし方や眠りのコラムと関心が近い方へ。</p>
+<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E6%9C%80%E9%AB%98%E3%81%AE%E4%BD%93%E8%AA%BF+%E9%88%B4%E6%9C%A8%E7%A5%90&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
+</div>
+</article>
+<article class="pick" data-kind="goods">
+<div class="pick-visual c-goods1">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+<span class="pv-kind">GOODS</span>
+<span class="pv-title serif">フォームローラー</span>
+<span class="pv-sub" data-i18n="g1Sub">背中・脚まわりのセルフケアに</span>
+</div>
+<div class="pick-body">
+<div class="pick-meta"><span class="pick-badge goods" data-i18n="badgeGoods">おすすめ商品</span><span class="pick-date">2026年10月紹介</span></div>
+<h3 class="serif" data-i18n="g1Title">フォームローラー</h3>
+<p class="author" data-i18n="g1Spec">筒状タイプ／長さ・硬さに種類あり</p>
+<p class="desc" data-i18n="g1Desc">背中や脚の下に置いて、体重を預けながらゆっくり動かす筒状のセルフケア道具。施術後のセルフケア指導でも話題に挙がる定番で、置き場所を取りにくい短いタイプもあります。</p>
+<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
+</div>
+</article>
+<article class="pick" data-kind="goods">
+<div class="pick-visual c-goods2">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="9" cy="9" r="1.4" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.4" fill="currentColor" stroke="none"/></svg>
+<span class="pv-kind">GOODS</span>
+<span class="pv-title serif">マッサージボール</span>
+<span class="pv-sub" data-i18n="g2Sub">肩甲骨まわり・足裏などピンポイントに</span>
+</div>
+<div class="pick-body">
+<div class="pick-meta"><span class="pick-badge goods" data-i18n="badgeGoods">おすすめ商品</span><span class="pick-date">2026年10月紹介</span></div>
+<h3 class="serif" data-i18n="g2Title">マッサージボール</h3>
+<p class="author" data-i18n="g2Spec">ボールタイプ／硬さ・大きさに種類あり</p>
+<p class="desc" data-i18n="g2Desc">壁と背中の間に挟んだり、椅子に座って使ったりと、狙った場所に圧をかけやすい小さなボール。フォームローラーでは届きにくい肩甲骨まわりやお尻、足裏のケアに使われます。</p>
+<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E3%83%9E%E3%83%83%E3%82%B5%E3%83%BC%E3%82%B8%E3%83%9C%E3%83%BC%E3%83%AB+%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
+</div>
+</article>
+<article class="pick" data-kind="goods">
+<div class="pick-visual c-goods3">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 15h18l-1.6 4.2a2 2 0 0 1-1.9 1.3H6.5a2 2 0 0 1-1.9-1.3L3 15z"/><path d="M7 11c0-1.5 1.5-1.5 1.5-3M12 11c0-1.5 1.5-1.5 1.5-3M17 11c0-1.5 1.5-1.5 1.5-3"/></svg>
+<span class="pv-kind">GOODS</span>
+<span class="pv-title serif">炭酸タイプの入浴剤</span>
+<span class="pv-sub" data-i18n="g3Sub">湯船に浸かる習慣づくりに</span>
+</div>
+<div class="pick-body">
+<div class="pick-meta"><span class="pick-badge goods" data-i18n="badgeGoods">おすすめ商品</span><span class="pick-date">2026年10月紹介</span></div>
+<h3 class="serif" data-i18n="g3Title">炭酸タイプの入浴剤</h3>
+<p class="author" data-i18n="g3Spec">タブレット／香りの種類が豊富</p>
+<p class="desc" data-i18n="g3Desc">シャワーで済ませがちな日の、湯船に浸かるきっかけに。香りやタイプがいろいろあるので、夜のリラックスタイム用に好みで選べます。用法・用量や対象は商品ごとの表示をご確認ください。</p>
+<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E5%85%A5%E6%B5%B4%E5%89%A4+%E7%82%AD%E9%85%B8+%E3%82%BF%E3%83%96%E3%83%AC%E3%83%83%E3%83%88&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
+</div>
+</article>
+</div>
+<p class="shelf-note" data-i18n="shelfNote">※本の内容や商品の使用感には個人差があります。痛みやしびれなど気になる症状があるときは、セルフケアの前に医療機関への相談をご検討ください。紹介する本・商品は順次入れ替え・追加します。</p>
 </div>
 </section>
 
@@ -1123,6 +1264,7 @@ footer b{color:var(--ink)}
 <li><a href="#booking" data-i18n="navBooking">ご予約</a></li>
 <li><a href="#faq" data-i18n="navFaq">よくある質問</a></li>
 <li><a href="#/recruit" data-i18n="navRecruit">セラピスト募集</a></li>
+<li><a href="#books-goods" data-i18n="navShelf">本と商品</a></li>
 <li><a href="#access" data-i18n="navAccess">アクセス</a></li>
 </ul>
 </nav>
@@ -1360,10 +1502,23 @@ route();
 var EN={
 brand:"Hokushindo",
 brandSub:"HOKUSHINDO · HIGASHI-MIKUNI MEN'S SALON",
-navAbout:"About",navFirst:"For First-Time Guests",navMenu:"Menu",navFlow:"Your Visit",navBooking:"Booking",navFaq:"FAQ",navRecruit:"Therapists Wanted",navAccess:"Access",
+navAbout:"About",navFirst:"For First-Time Guests",navMenu:"Menu",navFlow:"Your Visit",navBooking:"Booking",navFaq:"FAQ",navRecruit:"Therapists Wanted",navShelf:"Books & Goods",navAccess:"Access",
+shelfTitle:"New Books & Recommended Goods",
+shelfLead:"A corner introducing books for learning about the body and self-care, and tools you can use for care at home. Use it together with our columns and the Self-Care Library to rethink your everyday care. New books and goods are added here as they arrive.",
+shelfPr:"The links in this corner include Amazon Associates affiliate links (to search results). Prices, stock, and specifications change, so please check the details on the linked page.",
+shelfAll:"All",shelfBooksBtn:"Books only",shelfGoodsBtn:"Goods only",shelfUpdated:"Updated October 30, 2026",
+badgeNew:"New book",badgeGoods:"Recommended",buyLink:"Search on Amazon →",
+b1Title:"'The World's Most Effective Stretch'",b1Author:"by James Shuichi Nakano",b1Desc:"A long-read introductory book presenting stretches for each body part with photos and diagrams. An easy first book to open when you are looking for movements to fit into desk-work breaks or time after coming home.",
+b2Title:"'The Stanford Method for a Fatigue-Free Body'",b2Author:"by Tomoo Yamada",b2Desc:"Based on practice at Stanford University's sports medicine program, this book sets out how to think about fatigue and recovery. A good companion read for our column on fatigue and a heavy lower back.",
+b3Title:"'Peak Condition'",b3Author:"by Yu Suzuki",b3Desc:"A readable book organizing how to approach everyday tiredness and feeling unwell, through the lens of reviewing food, environment, and habits. For readers whose interests are close to our columns on evenings and sleep.",
+g1Sub:"For self-care of the back and legs",g1Title:"Foam Roller",g1Spec:"Cylinder type / various lengths and firmness",g1Desc:"A cylinder-shaped self-care tool you place under your back or legs and move slowly while resting your weight on it. A staple that also comes up in aftercare guidance; shorter types that take up little storage space are also available.",
+g2Sub:"Pinpoint care for shoulder blades and soles",g2Title:"Massage Ball",g2Spec:"Ball type / various firmness and sizes",g2Desc:"A small ball that makes it easy to apply pressure where you want it — wedged between a wall and your back, or used while seated. Often used for areas a foam roller cannot reach well, such as around the shoulder blades, the hips, and the soles of the feet.",
+g3Sub:"For building a soaking habit",g3Title:"Carbonated Bath Additives",g3Spec:"Tablets / a wide range of scents",g3Desc:"A prompt to soak in the tub on days you would otherwise just shower. With many scents and types available, choose by preference for your evening wind-down time. Please check each product's label for usage and suitability.",
+shelfNote:"*Book contents and how goods feel to use vary by person. If you have concerning symptoms such as pain or numbness, please consider consulting a medical professional before self-care. The books and goods introduced here are rotated and added to over time.",
 heroPlace:"Higashimikuni, Yodogawa-ku, Osaka | Hokushindo — Men only / Home salon",
 heroStatus:"Now accepting bookings | Bookings are taken through our official LINE account (Hokushindo).",
-heroTitle:"Quietly reset,<br>after work.",
+heroTitle:"Men's Relaxation &amp; Seitai Bodywork in Higashimikuni — Hokushindo",
+heroCatch:"Quietly reset, after work.",
 heroLead:"Hokushindo is a men-only home salon in Higashimikuni. Kento Hiraga, with 30 years of experience, provides seitai bodywork and relaxation in one quiet room of his home.",
 heroSubCta:"See how booking works",
 heroTherapist:"Hokushindo — Therapist: Kento Hiraga",
@@ -1755,6 +1910,23 @@ fabPanel.querySelectorAll('a').forEach(function(a){
 a.addEventListener('click',function(){ closeFab(false); });
 });
 window.addEventListener('hashchange',function(){ closeFab(false); });
+})();
+</script>
+<script>
+(function(){
+var grid=document.getElementById('shelf-grid');
+if(!grid) return;
+var btns=document.querySelectorAll('.shelf-filter');
+var cards=grid.querySelectorAll('.pick');
+btns.forEach(function(btn){
+btn.addEventListener('click',function(){
+var f=btn.getAttribute('data-filter');
+btns.forEach(function(b){ b.setAttribute('aria-pressed', b===btn?'true':'false'); });
+cards.forEach(function(card){
+card.hidden = !(f==='all' || card.getAttribute('data-kind')===f);
+});
+});
+});
 })();
 </script>
 </body>
