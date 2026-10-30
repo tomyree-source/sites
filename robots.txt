@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tomyree-source.github.io/sites/stella-polaris/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/stella-spica/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/stella-sirius/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/stella-vega/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/stella-altair/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/higashimikuni/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/yinyang-harmony/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/aroma-notes/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/castle-shrine-exam/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/selfcare-library/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/referral-platform/sitemap.xml
+Sitemap: https://tomyree-source.github.io/sites/astrology-calendar/sitemap.xml
