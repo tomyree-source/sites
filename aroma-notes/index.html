@@ -790,6 +790,10 @@
         html { scroll-behavior: auto; }
         .post-card, .cat-card { transition: none; }
       }
+      .oil-name a { color: inherit; text-decoration: none; }
+      .oil-name a:hover { text-decoration: underline; }
+      a.oil-page-link { display: inline-block; margin-top: 8px; font-size: 0.86rem; font-weight: 700; color: var(--moss-deep); text-decoration: underline; text-underline-offset: 3px; }
+      a.post-card { text-decoration: none; color: inherit; text-align: left; }
     </style>
   </head>
   <body>
@@ -977,7 +981,7 @@
                   <li><strong data-i18n="wa_p3t">暮らしの場面</strong><span data-i18n="wa_p3">冬至のゆず湯、ヒノキ風呂、楊枝や香木の文化など、香りのある暮らしは日本の生活文化そのものです</span></li>
                 </ul>
                 <div class="wa-actions">
-                  <button class="btn-primary" type="button" data-article-link="learn-waseiyu" data-i18n="wa_cta1">特集記事「和精油入門」を読む</button>
+                  <a class="btn-primary" href="articles/learn-waseiyu.html" data-i18n="wa_cta1">特集記事「和精油入門」を読む</a>
                   <button class="hero-textlink" type="button" id="openZukanBtnWa" data-i18n="wa_cta2">図鑑で和精油を絞り込む →</button>
                 </div>
               </div>
@@ -2531,15 +2535,15 @@
         if (!learnGrid) return;
         learnGrid.innerHTML = "";
         LEARN_ARTICLES.forEach(function (a) {
-          var card = document.createElement("button");
-          card.type = "button"; card.className = "post-card";
+          var card = document.createElement("a");
+          card.className = "post-card";
+          card.href = "articles/" + a.id + ".html";
           card.innerHTML =
             '<img src="' + a.img + '" alt="' + a.alt + '" loading="lazy" />' +
             '<span class="post-body">' +
               '<span class="post-meta"><span class="tag">' + pillarName(a.pillar) + "</span><span>" + a.date + "</span></span>" +
               "<h3>" + a.title + "</h3><p>" + a.excerpt + "</p>" +
               '<span class="read">解説記事を読む →</span></span>';
-          card.addEventListener("click", function () { openArticle(a.id); });
           learnGrid.appendChild(card);
         });
       }
@@ -2892,14 +2896,14 @@
           return '<button type="button" data-oil-article="' + aid + '">' + (typeof locTitle === "function" ? locTitle(a) : a.title) + "</button>";
         }).join("");
         card.innerHTML =
-          '<div><h3 class="oil-name"><span class="fam-dot fam-' + o.family + '" aria-hidden="true"></span>' + mainName + '</h3>' +
+          '<div><h3 class="oil-name"><span class="fam-dot fam-' + o.family + '" aria-hidden="true"></span><a href="oils/' + o.id + '.html">' + mainName + "</a></h3>" +
           '<span class="oil-sub">' + sub + "</span></div>" +
           '<div class="oil-tags">' + tags + "</div>" +
           '<p class="oil-desc">' + (en && oe.desc ? oe.desc : o.desc) + "</p>" +
           (metaRows ? '<dl class="oil-meta">' + metaRows + "</dl>" : "") +
           (cautionText ? '<p class="oil-caution">' + cautionText + "</p>" : "") +
           oilShopHtml(o, en) +
-          '<div class="oil-articles"><span class="oa-label">' + (en ? "Featured in these articles" : "紹介されている記事") + "</span>" + artBtns + "</div>";
+          '<div class="oil-articles"><span class="oa-label">' + (en ? "Featured in these articles" : "紹介されている記事") + "</span>" + artBtns + '<a class="oil-page-link" href="oils/' + o.id + '.html">精油プロフィールページ →</a>' + "</div>";
         card.querySelectorAll("[data-oil-article]").forEach(function (b) {
           b.addEventListener("click", function () { openArticle(b.getAttribute("data-oil-article")); });
         });
@@ -3467,10 +3471,10 @@ renderLearn = function () {
   if (!learnGrid) return;
   learnGrid.innerHTML = "";
   LEARN_ARTICLES.forEach(function (a) {
-    var card = document.createElement("button");
-    card.type = "button"; card.className = "post-card";
+    var card = document.createElement("a");
+    card.className = "post-card";
+    card.href = "articles/" + a.id + ".html";
     card.innerHTML = '<img src="' + a.img + '" alt="' + a.alt + '" loading="lazy" /><span class="post-body"><span class="post-meta"><span class="tag">' + pillarName(a.pillar) + "</span><span>" + locDate(a) + '</span></span><h3>' + locTitle(a) + "</h3><p>" + locExcerpt(a) + '</p><span class="read">' + STR_EN.learnRead + "</span></span>";
-    card.addEventListener("click", function () { openArticle(a.id); });
     learnGrid.appendChild(card);
   });
 };
