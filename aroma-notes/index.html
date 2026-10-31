@@ -84,7 +84,8 @@
             { "@type": "BlogPosting", "headline": "アロマディフューザー3タイプ比較 ― アロマストーン・超音波式・水なし式を仕組みと手入れで選ぶ", "image": "https://tomyree-source.github.io/sites/aroma-notes/assets/fig-diffuser.webp" },
             { "@type": "BlogPosting", "headline": "ハッカ油スプレーの活用術 ― 登録販売者の視点で見る使い方と注意点", "image": "https://tomyree-source.github.io/sites/aroma-notes/assets/article-hakka.webp" },
             { "@type": "BlogPosting", "headline": "精油プロフィール：ティートリー ― 成分・香り・伝統的な使われ方と注意点", "image": "https://tomyree-source.github.io/sites/aroma-notes/assets/fig-teatree.webp" },
-            { "@type": "BlogPosting", "headline": "精油プロフィール：オレンジスイート ― 甘酸っぱい柑橘の香りと、使い切りのコツ", "image": "https://tomyree-source.github.io/sites/aroma-notes/assets/fig-orange.webp" }
+            { "@type": "BlogPosting", "headline": "精油プロフィール：オレンジスイート ― 甘酸っぱい柑橘の香りと、使い切りのコツ", "image": "https://tomyree-source.github.io/sites/aroma-notes/assets/fig-orange.webp" },
+            { "@type": "BlogPosting", "headline": "和精油入門 ― ヒノキ・ユズ・クロモジなど、日本の植物の香りを学ぶ", "image": "https://tomyree-source.github.io/sites/aroma-notes/assets/fig-waseiyu.webp" }
           ]
         }
       ]
@@ -741,6 +742,44 @@
       }
       .zl-btn:hover { background: var(--moss-soft); }
 
+      /* Wa-seiyu feature (Japanese essential oils) */
+      .wa-shell {
+        background: linear-gradient(160deg, var(--moss-soft) 0%, var(--surface) 62%);
+        border: 1px solid var(--line); border-radius: 22px; padding: 28px;
+      }
+      @media (max-width: 640px) { .wa-shell { padding: 20px 16px; border-radius: 18px; } }
+      .wa-top { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 30px; align-items: center; }
+      @media (max-width: 820px) { .wa-top { grid-template-columns: 1fr; gap: 18px; } }
+      .wa-fig { margin: 0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); background: var(--surface); }
+      .wa-fig img { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; object-position: 50% 32%; }
+      @media (max-width: 820px) { .wa-fig img { aspect-ratio: 16 / 10; } }
+      .wa-badge {
+        display: inline-block; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em;
+        color: var(--moss-deep); background: var(--surface); border: 1px solid var(--moss);
+        border-radius: 999px; padding: 3px 13px; margin-bottom: 12px;
+      }
+      .wa-top h3 { font-family: "Shippori Mincho", serif; font-size: clamp(1.45rem, 3.4vw, 1.95rem); line-height: 1.5; margin: 0 0 12px; }
+      .wa-top p { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.9; margin: 0 0 12px; }
+      .wa-points { list-style: none; margin: 14px 0 18px; padding: 0; display: grid; gap: 8px; }
+      .wa-points li { display: flex; gap: 10px; align-items: baseline; font-size: 0.92rem; color: var(--ink); line-height: 1.7; }
+      .wa-points li::before { content: ""; flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: var(--clay); transform: translateY(-1px); }
+      .wa-points li strong { color: var(--moss-deep); white-space: nowrap; }
+      .wa-actions { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+      .wa-oil-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-top: 26px; }
+      .wa-oil {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 16px 18px; text-align: left; font: inherit; color: inherit; cursor: pointer; width: 100%;
+        display: flex; flex-direction: column; gap: 6px;
+        transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+      }
+      .wa-oil:hover { border-color: var(--moss); transform: translateY(-2px); box-shadow: var(--shadow); }
+      .wa-oil:focus-visible { outline: 3px solid var(--clay); outline-offset: 2px; }
+      .wa-oil .wa-oil-name { font-family: "Shippori Mincho", serif; font-weight: 700; font-size: 1.12rem; display: flex; align-items: center; gap: 4px; }
+      .wa-oil .wa-oil-latin { font-size: 0.76rem; color: var(--ink-faint); font-style: italic; }
+      .wa-oil .wa-oil-desc { font-size: 0.87rem; color: var(--ink-soft); line-height: 1.75; margin: 0; }
+      .wa-oil .wa-oil-go { margin-top: auto; font-size: 0.83rem; font-weight: 700; color: var(--clay); }
+      .wa-note { font-size: 0.8rem; color: var(--ink-faint); line-height: 1.7; margin: 16px 0 0; }
+
       .lang-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--surface); flex: 0 0 auto; }
       .lang-switch button { font: inherit; font-size: 0.82rem; font-weight: 700; border: none; background: transparent; color: var(--ink-soft); padding: 6px 13px; cursor: pointer; line-height: 1.4; }
       .lang-switch button[aria-pressed="true"] { background: var(--moss-deep); color: #f4f1e4; }
@@ -777,7 +816,7 @@
             <div class="hero-copy">
               <p class="hero-eyebrow"><span class="en">AROMA LEARNING NOTE</span><span class="jp" data-i18n="hero_eyebrow_sub">アロマセラピーの学習サイト</span></p>
               <h1 data-i18n-html="hero_h1">香りを、<br /><span class="accent">順番</span>に学ぶ。</h1>
-              <p class="hero-sub" data-i18n="hero_lead">基礎と安全な使い方から、精油15種の図鑑、毎日のセルフケア、ブレンドの考え方まで。初めてでも迷わない順番で学べます。</p>
+              <p class="hero-sub" data-i18n="hero_lead">基礎と安全な使い方から、精油19種の図鑑、毎日のセルフケア、ブレンドの考え方まで。初めてでも迷わない順番で学べます。日本の植物から生まれる「和精油」の特集も加わりました。</p>
               <div class="hero-actions">
                 <button class="btn-primary hero-cta-main" type="button" id="openGuideBtn" data-i18n="hero_cta1">学習ガイドから始める</button>
                 <button class="hero-textlink" type="button" id="openZukanBtnHero" data-i18n="hero_cta2">精油図鑑を開く →</button>
@@ -801,7 +840,7 @@
             <p class="route-title"><span class="en">LEARNING ROUTE</span><strong data-i18n="route_title">学ぶ順番</strong></p>
             <ol class="route-steps">
               <li><span class="route-no">1</span><span class="route-text"><strong data-i18n="route1">基礎を知る</strong><small data-i18n="route1_s">精油とは・安全な使い方</small></span></li>
-              <li><span class="route-no">2</span><span class="route-text"><strong data-i18n="route2">精油を知る</strong><small data-i18n="route2_s">全15種の図鑑</small></span></li>
+              <li><span class="route-no">2</span><span class="route-text"><strong data-i18n="route2">精油を知る</strong><small data-i18n="route2_s">全19種の図鑑</small></span></li>
               <li><span class="route-no">3</span><span class="route-text"><strong data-i18n="route3">セルフケアを試す</strong><small data-i18n="route3_s">呼吸・入浴・休息</small></span></li>
               <li><span class="route-no">4</span><span class="route-text"><strong data-i18n="route4">ブレンドを考える</strong><small data-i18n="route4_s">希釈とキャリアオイル</small></span></li>
             </ol>
@@ -918,7 +957,71 @@
         <section class="block" id="zukan">
           <div class="sec-head"><h2 data-i18n="zukan_h">精油プロフィール図鑑</h2><span class="en">Oil Encyclopedia</span></div>
           <p class="rank-lead" data-i18n="zukan_lead">学びの記事と読み物に登場する精油を、1本ずつ図鑑にまとめました。五十音順の一覧と、休息・気分転換・集中・入浴などのテーマからの絞り込みで探せます。各精油の香りの系統や学名、紹介されている記事へのリンク付きです。</p>
-          <p style="margin:0;"><button class="btn-primary" type="button" id="openZukanBtn" data-i18n="zukan_open">図鑑を開く（全15種）→</button></p>
+          <p style="margin:0;"><button class="btn-primary" type="button" id="openZukanBtn" data-i18n="zukan_open">図鑑を開く（全19種）→</button></p>
+        </section>
+
+        <section class="block" id="waseiyu" aria-labelledby="waseiyu-heading">
+          <div class="sec-head"><h2 id="waseiyu-heading" data-i18n="wa_h">特集 ― 和精油</h2><span class="en">Wa-Seiyu · Japanese Oils</span></div>
+          <div class="wa-shell">
+            <div class="wa-top">
+              <figure class="wa-fig">
+                <img src="assets/fig-waseiyu.webp" alt="障子のある和室の窓辺で、ヒノキの枝と精油の小瓶を手にする案内役ラヴィと、木の盆に載ったユズの実と精油の小瓶のイラスト" loading="lazy" />
+              </figure>
+              <div>
+                <span class="wa-badge" data-i18n="wa_badge">特集 FEATURE</span>
+                <h3 data-i18n="wa_h3">日本の森と里山の香りを、学ぶ。</h3>
+                <p data-i18n="wa_lead">和精油は、日本で育った植物から得られる精油の総称です。湯船に浮かべるユズ、木の香りのヒノキ、古くから国産香料として知られるクロモジ、すっと鼻に抜ける和種ハッカ——この国の暮らしのそばにあった植物たちが、香りの主役になります。この特集では、代表的な和精油を「産地と里山」「蒸留のものづくり」「暮らしの場面」の3つの切り口で学びます。</p>
+                <ul class="wa-points">
+                  <li><strong data-i18n="wa_p1t">産地と里山</strong><span data-i18n="wa_p1">高知のユズ、四国・吉野のヒノキ、北海道・北見のハッカなど、産地と結びついた香りです</span></li>
+                  <li><strong data-i18n="wa_p2t">蒸留の工夫</strong><span data-i18n="wa_p2">間伐材や葉・枝、加工で残る果皮など、もともとある素材を活かして蒸留する取り組みが各地で進んでいます</span></li>
+                  <li><strong data-i18n="wa_p3t">暮らしの場面</strong><span data-i18n="wa_p3">冬至のゆず湯、ヒノキ風呂、楊枝や香木の文化など、香りのある暮らしは日本の生活文化そのものです</span></li>
+                </ul>
+                <div class="wa-actions">
+                  <button class="btn-primary" type="button" data-article-link="learn-waseiyu" data-i18n="wa_cta1">特集記事「和精油入門」を読む</button>
+                  <button class="hero-textlink" type="button" id="openZukanBtnWa" data-i18n="wa_cta2">図鑑で和精油を絞り込む →</button>
+                </div>
+              </div>
+            </div>
+            <div class="wa-oil-grid" role="list" aria-label="代表的な和精油">
+              <button type="button" class="wa-oil" role="listitem" data-wa-oil="hinoki">
+                <span class="wa-oil-name"><span class="fam-dot fam-woody" aria-hidden="true"></span><span data-i18n="wa_o1n">ヒノキ</span></span>
+                <span class="wa-oil-latin">Chamaecyparis obtusa</span>
+                <span class="wa-oil-desc" data-i18n="wa_o1d">木部や葉から水蒸気蒸留で得られる、清々しい木の香り。ヒノキ風呂で知られる、日本を代表する樹木の香りです。</span>
+                <span class="wa-oil-go" data-i18n="wa_go">図鑑で見る →</span>
+              </button>
+              <button type="button" class="wa-oil" role="listitem" data-wa-oil="yuzu">
+                <span class="wa-oil-name"><span class="fam-dot fam-citrus" aria-hidden="true"></span><span data-i18n="wa_o2n">ユズ</span></span>
+                <span class="wa-oil-latin">Citrus junos</span>
+                <span class="wa-oil-desc" data-i18n="wa_o2d">果皮から得られる、日本生まれの柑橘の香り。和の柑橘らしいほろ苦さがあり、冬至のゆず湯でも親しまれてきました。</span>
+                <span class="wa-oil-go" data-i18n="wa_go">図鑑で見る →</span>
+              </button>
+              <button type="button" class="wa-oil" role="listitem" data-wa-oil="kuromoji">
+                <span class="wa-oil-name"><span class="fam-dot fam-woody" aria-hidden="true"></span><span data-i18n="wa_o3n">クロモジ</span></span>
+                <span class="wa-oil-latin">Lindera umbellata</span>
+                <span class="wa-oil-desc" data-i18n="wa_o3d">葉や枝から得られる、上品で奥行きのある香り。リナロールを多く含み、和菓子の楊枝の木としても知られます。</span>
+                <span class="wa-oil-go" data-i18n="wa_go">図鑑で見る →</span>
+              </button>
+              <button type="button" class="wa-oil" role="listitem" data-wa-oil="sugi">
+                <span class="wa-oil-name"><span class="fam-dot fam-woody" aria-hidden="true"></span><span data-i18n="wa_o4n">スギ</span></span>
+                <span class="wa-oil-latin">Cryptomeria japonica</span>
+                <span class="wa-oil-desc" data-i18n="wa_o4d">日本の固有種で、植林面積の大きい身近な木。葉や木部から得られる、凛とした森の香りです。</span>
+                <span class="wa-oil-go" data-i18n="wa_go">図鑑で見る →</span>
+              </button>
+              <button type="button" class="wa-oil" role="listitem" data-wa-oil="hakka">
+                <span class="wa-oil-name"><span class="fam-dot fam-herbal" aria-hidden="true"></span><span data-i18n="wa_o5n">ハッカ（和種ハッカ）</span></span>
+                <span class="wa-oil-latin">Mentha canadensis（和種ハッカ）</span>
+                <span class="wa-oil-desc" data-i18n="wa_o5d">メントールを多く含む、すっとする清涼感の香り。北海道・北見は、世界的なハッカの産地だった歴史を持ちます。</span>
+                <span class="wa-oil-go" data-i18n="wa_go">図鑑で見る →</span>
+              </button>
+              <button type="button" class="wa-oil" role="listitem" data-wa-oil="aomori-hiba">
+                <span class="wa-oil-name"><span class="fam-dot fam-woody" aria-hidden="true"></span><span data-i18n="wa_o6n">青森ヒバ</span></span>
+                <span class="wa-oil-latin">Thujopsis dolabrata</span>
+                <span class="wa-oil-desc" data-i18n="wa_o6d">青森を中心に分布するヒノキ科の木。ヒノキチオールを含む、深く落ち着いた木の香りが特徴です。</span>
+                <span class="wa-oil-go" data-i18n="wa_go">図鑑で見る →</span>
+              </button>
+            </div>
+            <p class="wa-note" data-i18n="wa_note">※ 和精油も精油であることに変わりはなく、使い方はほかの精油と同じ安全原則が当てはまります。原液を直接肌につけないこと、肌に使う際は希釈すること、初めての精油はパッチテストから始めることを守ってください。詳しくは下の「安全に学ぶために」をご覧ください。</p>
+          </div>
         </section>
 
         <section class="block" id="safety">
@@ -1132,6 +1235,7 @@
         <li><a href="#pillars" data-nav data-i18n="nav_pillars">学びの柱</a></li>
         <li><a href="#learn" data-nav data-i18n="nav_learn">学ぶ</a></li>
         <li><a href="#zukan" id="navZukan" data-i18n="nav_zukan">精油図鑑</a></li>
+        <li><a href="#waseiyu" data-nav data-i18n="nav_wa">特集 ― 和精油</a></li>
         <li><a href="#articles" data-nav data-i18n="nav_reading">読み物</a></li>
         <li><a href="#safety" data-nav data-i18n="nav_safety">安全情報</a></li>
         <li><a href="#profile" data-nav data-i18n="nav_profile">運営者について</a></li>
@@ -1794,6 +1898,537 @@
             { asin: "B0FC66FMQG", note: "生活の木 公式アマゾン店の商品で、オレンジスイート・ラベンダー・ペパーミントの精油5mlが各1本入ったセットです。オレンジスイート単品の香りを確かめたい方や、既存のプロフィール記事で紹介したラベンダーと比べながら香りを学びたい方に合うセットです。" }
           ],
           recommend: "この記事のテーマに合わせて、オレンジスイートを含む3本セットを1点紹介します。今回の主役のオレンジスイートに加え、プロフィール第1回のラベンダー、ブレンド例にも登場したペパーミントが入っているため、香りを比べながら学べる構成です。"
+        },
+        {
+          id: "learn-winter", pillar: "selfcare", cat: "learn", date: "学習記事",
+          title: "秋から冬へ ― 乾燥する季節の芳香浴と休息の整え方",
+          excerpt: "秋から冬にかけて空気が乾燥してくる季節に、部屋の環境の整え方、芳香浴の基本、就寝前と朝の香りの切り替え、香りを系統で選ぶ考え方を、案内役のラヴィがやさしく整理します。器具の扱い方と安全上の注意もあわせて学べる、セルフケアの実践の1本です。",
+          img: "assets/fig-winter.webp", alt: "秋の木々が見える窓辺で、ディフューザーの香りとともにくつろぐラヴィと、精油の小瓶、ドライオレンジ、ブランケットのイラスト",
+          body:
+            '<p>こんにちは、案内役のラヴィです。秋が深まり、朝晩の空気がひんやりしてきましたね。この季節は外の空気の水分が減り、暖房を使い始めることで、部屋の中も乾燥しやすくなります。今回は、乾燥する季節に合わせた芳香浴と休息の整え方を一緒に学びましょう。することは難しくありません。「部屋の環境」「芳香浴の基本」「小さな習慣」の3つを、無理のない範囲で整えていくお話です。</p>' +
+            '<h2>季節の変わり目と部屋の環境</h2>' +
+            '<p>秋から冬にかけては、部屋の環境が少しずつ変わっていく時期です。まずは次の3点を意識してみてください。</p>' +
+            '<ul><li><strong>湿度を見える化する</strong>：湿度計を置くと、乾燥の度合いが目で分かります。加湿器を使う場合は、製品の取り扱い説明書に従い、水の交換やお手入れをこまめに行いましょう</li>' +
+            '<li><strong>換気を忘れない</strong>：寒くなると窓を開ける機会が減りますが、空気の入れ替えは香りを楽しむ上でも大切です。一日に数回、短時間でも窓を開けて空気を入れ替える習慣がおすすめです</li>' +
+            '<li><strong>香りの強さの目安</strong>：香りは「部屋に入ったときに、ほのかに感じる」くらいが目安です。強く感じるようなら量が多いサインかもしれません。人の鼻は香りに慣れやすいので、量を増やす前に、換気をして一度リセットするのがコツです</li></ul>' +
+            '<h2>芳香浴の基本をおさらい</h2>' +
+            '<p>芳香浴は、香りを空間に広げて楽しむ方法です。器具には、電源を使わず自分の周りだけを穏やかに香らせるアロマストーン、水と精油をミスト状に広げる超音波式、水を使わず精油をそのまま噴霧して広げる噴霧式など、いくつかのタイプがあります。タイプごとの違いは、学習記事 <button type="button" class="pillar-link" data-article-link="diffuser-compare">「アロマディフューザー3タイプ比較」</button> で詳しく解説しています。</p>' +
+            '<ul><li>どの器具も、<strong>取り扱い説明書に従うこと</strong>が大前提です。使える精油の種類・使用量・お手入れ方法は製品ごとに異なります</li>' +
+            '<li>香らせ続ける時間は区切りましょう。長時間つけっぱなしにせず、30分〜1時間ほど香らせたら一度止めて換気する、という間欠的な楽しみ方が目安とされています</li>' +
+            '<li>香りが強すぎると感じたら、器具を止めて窓を開け、換気して香りを弱めてから再開してください</li></ul>' +
+            '<h2>休息の小さな習慣</h2>' +
+            '<p>乾燥する季節こそ、休息の時間を「香りで区切る」工夫が役立ちます。</p>' +
+            '<ul><li><strong>就寝前の切り替え</strong>：寝る30分ほど前に照明を少し落とし、穏やかな香りに切り替えます。布団に入る前には一度換気をして、香りがほのかに残る程度に整えると、部屋全体が「休む場所」に切り替わりやすくなります</li>' +
+            '<li><strong>朝の切り替え</strong>：起きたらカーテンを開けて光を取り込み、柑橘系など軽やかな香りに切り替えます。朝の香りは一日の始まりの合図として、伝統的に暮らしの中で親しまれてきました</li>' +
+            '<li><strong>続けるコツ</strong>：毎日きちんとやろうとせず、「夜はこの香り」「朝はこの香り」と決めて置く場所と時間を固定すると、無理なく習慣になりやすくなります。体調のすぐれない日は、香りのない日があっても大丈夫です</li></ul>' +
+            '<h2>香りの選び方は「系統」で考える</h2>' +
+            '<p>香り選びに迷ったら、1本ずつではなく「系統」で考えると整理しやすくなります。</p>' +
+            '<ul><li><strong>柑橘系</strong>（オレンジスイート・レモンなど）：軽やかで明るい印象の系統です。朝の支度や、部屋の空気を切り替えたい場面で選ばれることが多いとされています</li>' +
+            '<li><strong>ハーブ系</strong>（ラベンダー・ローズマリー・ティートリーなど）：すっきりした印象の系統です。ラベンダーは伝統的に、就寝前の静かな時間や入浴の香り付けなど、休息の場面で使われてきました</li>' +
+            '<li><strong>木の香り（樹木系）</strong>（シダーウッド・ヒノキなど）：香りの土台になる落ち着いた系統です。読書や静かに過ごす夜の時間のお供として親しまれてきました</li></ul>' +
+            '<p>系統をまたいで2〜3種類を組み合わせるのも楽しみのひとつですが、最初は1系統ずつ確かめるのがおすすめです。香りの感じ方には個人差がありますので、その日の好みと体調に合わせて、無理のない量で楽しんでください。</p>' +
+            '<h2>安全に楽しむための注意点</h2>' +
+            '<p>季節のケアを長く続けるために、次の点は必ず守ってください。</p>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈し、濃度1％程度を目安にしてください</li>' +
+            '<li>初めて使う精油は、二の腕の内側など目立たない場所で少量を試すパッチテストを行ってください</li>' +
+            '<li>お風呂の湯に精油の原液を直接入れないでください。入浴で香りを楽しみたい場合は入浴剤を使うなど、原液がそのまま肌に触れない方法を選んでください</li>' +
+            '<li>目や粘膜には使わないでください</li>' +
+            '<li>妊娠中・授乳中の方、乳幼児、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li>' +
+            '<li>ペットのいる環境では、換気と使用量に配慮し、ペットが香りのある部屋から自由に出入りできる状態で使ってください</li>' +
+            '<li>器具は取り扱い説明書に従い、就寝中や外出中のつけっぱなしは避けてください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断・治療の案内ではありません。体調不良が続く場合は、セルフケアで判断せず医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>乾燥する季節の芳香浴は、「部屋の環境を整える」「器具の説明書に従い、つけっぱなしにしない」「就寝前と朝で香りを切り替える」「系統で香りを選ぶ」の4点が柱です。どれも小さな工夫の積み重ねです。できることからひとつずつ、あなたの暮らしのリズムに合わせて取り入れてみてくださいね。</p>' +
+            '<h2>公式SNSのご案内</h2>' +
+            '<p>新しい学習記事のお知らせや、季節に合わせたセルフケアのヒントは、アロマと休息の手帖の公式SNSでもお届けしています。Instagram／Threads ともに <strong>@aroma.techo</strong> です。学びの続きを日常の合間に受け取りたい方は、こちらもご覧ください。</p>' +
+            '<div class="sns-actions">' +
+              '<a class="sns-btn sns-btn--ig" href="https://www.instagram.com/aroma.techo/" target="_blank" rel="noopener noreferrer" aria-label="Instagramでアロマと休息の手帖（@aroma.techo）をフォローする">' +
+                '<span class="sns-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></span>' +
+                '<span class="sns-label"><small>Instagram</small><span>@aroma.techo をフォロー</span></span>' +
+                '<span class="sns-arrow" aria-hidden="true">→</span></a>' +
+              '<a class="sns-btn sns-btn--threads" href="https://www.threads.net/@aroma.techo" target="_blank" rel="noopener noreferrer" aria-label="Threadsでアロマと休息の手帖（@aroma.techo）をフォローする">' +
+                '<span class="sns-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15.3 12.1c-.25 1.35-1.28 2.35-2.62 2.35a2.85 2.85 0 1 1 2.85-2.85c0 .75-.12 1.95-.23 2.75-.08.62.36 1.15.97 1.15 1.62 0 2.81-1.9 2.81-4.5C20.08 6.45 16.5 3 12.02 3 6.52 3 2.08 7.13 2.08 12.22c0 5.1 4.44 9.23 9.94 9.23 2.37 0 4.52-.78 6.14-2.08"/></svg></span>' +
+                '<span class="sns-label"><small>Threads</small><span>@aroma.techo をフォロー</span></span>' +
+                '<span class="sns-arrow" aria-hidden="true">→</span></a>' +
+            '</div>',
+          products: [
+            { asin: "B0G4VW29T7", note: "TOKAIZの噴霧式アロマディフューザーです。水を使わず、精油を噴霧して香りを広げるタイプです。この記事で学んだ「水を使わないタイプ」の実例として紹介します。ご使用の際は、製品の取り扱い説明書に従ってください。" }
+          ],
+          recommend: "この記事のテーマに合わせて、乾燥する季節の芳香浴で登場した「水を使わない噴霧式」の実例として、このサイトで既に紹介しているTOKAIZ 噴霧式アロマディフューザーを1点紹介します。価格は¥3,380（調査時点の参考価格）として掲載しています。最新の価格はAmazon.co.jpの商品ページでご確認ください。"
+        },
+        {
+          id: "learn-waseiyu", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "和精油入門 ― ヒノキ・ユズ・クロモジなど、日本の植物の香りを学ぶ",
+          excerpt: "特集記事です。和精油とは、日本で育った植物から得られる精油の総称。ヒノキ、ユズ、クロモジ、スギ、青森ヒバ、和種ハッカの6種を、産地と里山、間伐材などを活かす蒸留の工夫、ゆず湯やヒノキ風呂といった暮らしの場面とあわせて、案内役のラヴィがまとめてご案内します。",
+          img: "assets/fig-waseiyu.webp", alt: "障子のある和室の窓辺で、ヒノキの枝と精油の小瓶を手にする案内役ラヴィと、木の盆に載ったユズの実と精油の小瓶のイラスト",
+          body:
+            '<p>こんにちは、案内役のラヴィです。今回の特集は「和精油（わせいゆ）」です。和精油とは、日本で育った植物から得られる精油の総称で決まった規格の名前ではありませんが、近年は各地の蒸留所や林業の現場から生まれる香りとして注目を集めています。ラベンダーやティートリーなど海外の植物が中心だった精油の学びに、日本の森と里山の香りを加えてみましょう。</p>' +
+            '<h2>代表的な和精油6種</h2>' +
+            '<ul><li><strong>ヒノキ</strong>（学名：<em>Chamaecyparis obtusa</em>、ヒノキ科）：木部や葉を水蒸気蒸留して得る、清々しい木の香り。ヒノキ風呂の香りとして親しまれてきました</li>' +
+            '<li><strong>ユズ</strong>（学名：<em>Citrus junos</em>、ミカン科）：果皮から得る和の柑橘。ほろ苦さのある爽やかな香りで、冬至のゆず湯の習慣でも知られます。高知県などが主な産地として知られています</li>' +
+            '<li><strong>クロモジ</strong>（学名：<em>Lindera umbellata</em>、クスノキ科）：葉や枝から得る、リナロールを多く含む上品な香り。和菓子の楊枝の材料としても知られる木です</li>' +
+            '<li><strong>スギ</strong>（学名：<em>Cryptomeria japonica</em>、ヒノキ科）：日本の固有種で植林面積の大きい身近な木。葉や木部から、凛とした森の香りが得られます</li>' +
+            '<li><strong>青森ヒバ</strong>（学名：<em>Thujopsis dolabrata</em>、ヒノキ科）：青森を中心に分布するアスナロの木部や葉から得る、ヒノキチオールを含む深い木の香りです</li>' +
+            '<li><strong>ハッカ（和種ハッカ）</strong>（学名：<em>Mentha canadensis</em>、シソ科）：メントールが主成分の清涼感のある香り。北海道・北見は、かつて世界的なハッカの産地だった歴史を持ちます</li></ul>' +
+            '<p>それぞれの精油の詳しいデータは、この記事の下部にある図鑑リンクから1種ずつ確認できます。ヒノキとハッカについては、専用のプロフィール記事も用意しています。</p>' +
+            '<h2>蒸留の工夫 ― あるものを活かすものづくり</h2>' +
+            '<p>和精油の現場でよく聞かれるのが、間伐材や剪定した枝葉、ユズの加工で残る果皮など、もともとある素材を活かして蒸留する取り組みです。森の手入れで生まれた素材が香りになることで、山の仕事と暮らしの香りがつながります。購入の際は、海外の精油と同じように、学名・抽出部位・抽出方法・原産地（産地）の表示があるものを選ぶと、品質を見分けやすくなります。</p>' +
+            '<h2>暮らしの場面で楽しむ</h2>' +
+            '<ul><li><strong>入浴の香り付け</strong>：原液を湯に直接入れるのではなく、入浴剤を使う、洗い場にアロマストーンを置くなど、原液がそのまま肌に触れない方法で楽しみます。ゆず湯やヒノキ風呂の文化は、その暮らしの知恵の表れです</li>' +
+            '<li><strong>部屋の芳香浴</strong>：ヒノキやスギ、クロモジなど木の香りはベースノートとして長く残るため、読書や就寝前の静かな時間のお供に選ばれることがあります</li>' +
+            '<li><strong>季節の切り替え</strong>：ユズは冬の、ハッカは暑い季節の香りとして、季節感と結びつけて楽しむのも和精油ならではの味わい方です</li></ul>' +
+            '<h2>ブレンドの考え方</h2>' +
+            '<p>和精油同士の組み合わせは、香りの学びの練習にも向いています。たとえばユズ（トップノート）にヒノキ（ベースノート）を合わせると、和の柑橘と木の土台が重なる組み合わせになります。クロモジはリナロールを含むため、ラベンダーなどフローラル・ハーブ系の香りとも組み合わせの例が挙げられます。滴数の配分は、まず少量から香りの変化を確かめてください。</p>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<p>和精油も精油であることに変わりはなく、安全原則はほかの精油とまったく同じです。</p>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈し、濃度1％程度を目安にしてください</li>' +
+            '<li>初めて使う精油は、二の腕の内側など目立たない場所で少量を試すパッチテストを行ってください</li>' +
+            '<li>お風呂の湯に原液を直接入れないでください</li>' +
+            '<li>目や粘膜には使わないでください。妊娠中・授乳中の方、乳幼児、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li>' +
+            '<li>柑橘系のユズは開封後の香りの変化が早いため、早めの使い切りが目安です。保管は冷暗所で、子どもの手の届かない場所に置いてください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>和精油を学ぶときは、これまでの精油と同じ「学名・香り・成分・伝統的な使われ方・注意点」の5点に、「産地」を加えた6点でノートにまとめると、日本の植物らしい個性が見えてきます。身近な森や里山の植物が香りの主役になる――それが和精油の学びの一番の楽しさです。</p>' +
+            '<h2>公式SNSのご案内</h2>' +
+            '<p>新しい学習記事のお知らせや、季節に合わせたセルフケアのヒントは、アロマと休息の手帖の公式SNSでもお届けしています。Instagram／Threads ともに <strong>@aroma.techo</strong> です。学びの続きを日常の合間に受け取りたい方は、こちらもご覧ください。</p>' +
+            '<div class="sns-actions">' +
+              '<a class="sns-btn sns-btn--ig" href="https://www.instagram.com/aroma.techo/" target="_blank" rel="noopener noreferrer" aria-label="Instagramでアロマと休息の手帖（@aroma.techo）をフォローする">' +
+                '<span class="sns-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></span>' +
+                '<span class="sns-label"><small>Instagram</small><span>@aroma.techo をフォロー</span></span>' +
+                '<span class="sns-arrow" aria-hidden="true">→</span></a>' +
+              '<a class="sns-btn sns-btn--threads" href="https://www.threads.net/@aroma.techo" target="_blank" rel="noopener noreferrer" aria-label="Threadsでアロマと休息の手帖（@aroma.techo）をフォローする">' +
+                '<span class="sns-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15.3 12.1c-.25 1.35-1.28 2.35-2.62 2.35a2.85 2.85 0 1 1 2.85-2.85c0 .75-.12 1.95-.23 2.75-.08.62.36 1.15.97 1.15 1.62 0 2.81-1.9 2.81-4.5C20.08 6.45 16.5 3 12.02 3 6.52 3 2.08 7.13 2.08 12.22c0 5.1 4.44 9.23 9.94 9.23 2.37 0 4.52-.78 6.14-2.08"/></svg></span>' +
+                '<span class="sns-label"><small>Threads</small><span>@aroma.techo をフォロー</span></span>' +
+                '<span class="sns-arrow" aria-hidden="true">→</span></a>' +
+            '</div>',
+          products: [
+            { asin: "B0F8HP7CBT", note: "和精油の代表格、和種ハッカのスプレータイプ。北見ハッカ通商の製品で、ハッカの清涼感のある香りを手軽に確認できます。" },
+            { asin: "B0FLY84GRM", note: "黒胡桃材のアロマストーン。ヒノキなど木の香りの和精油を、自分の周りだけで穏やかに楽しむ芳香浴に向いています。" }
+          ],
+          recommend: "特集に合わせて、和精油の入口になる2点を紹介します。和種ハッカはスプレータイプで香りを確かめやすく、木の香りの和精油はアロマストーンで穏やかに楽しむのがおすすめです。"
+        },
+        {
+          id: "learn-hinoki", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：ヒノキ ― 清々しい木の香りと、ヒノキ風呂の文化",
+          excerpt: "和精油の代表格、ヒノキの専用プロフィールです。学名Chamaecyparis obtusaなどの基本データ、木部と葉で異なる抽出部位、清々しい木の香りの特徴、ヒノキ風呂をはじめ伝統的に親しまれてきた場面、注意点をセットで学びます。",
+          img: "assets/fig-waseiyu.webp", alt: "障子のある和室の窓辺で、ヒノキの枝と精油の小瓶を手にする案内役ラヴィと、木の盆に載ったユズの実と精油の小瓶のイラスト",
+          body:
+            '<p>ヒノキは、日本の山々に育つヒノキ科の常緑樹で、古くから建築材や浴槽の材料として暮らしに寄り添ってきた木です。精油プロフィールとして、和精油の代表格であるヒノキを、基本データ・香り・伝統的な使われ方・注意点のセットで学びます。和精油全体の入り口は、特集記事 <button type="button" class="pillar-link" data-article-link="learn-waseiyu">「和精油入門」</button> もあわせてご覧ください。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：<em>Chamaecyparis obtusa</em></li>' +
+            '<li><strong>科名</strong>：ヒノキ科</li>' +
+            '<li><strong>抽出部位</strong>：木部・葉（製品により異なります）</li>' +
+            '<li><strong>抽出法</strong>：水蒸気蒸留法</li>' +
+            '<li><strong>香りの系統</strong>：樹木系（ウッディ系）</li>' +
+            '<li><strong>香りの立ち上がり</strong>：ベースノート（長く残る土台の香りです）</li>' +
+            '<li><strong>主な成分</strong>：α-ピネンなどを含むことが知られています</li></ul>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>新しく削ったヒノキ材のような、清々しくすっきりした木の香りです。木部から得たものと葉から得たものでは印象が少し異なり、葉のほうが青みのある爽やかさが立つとされることがあります。産地の表示がある製品も多く、四国や吉野など、産地ごとに香りを比べるのも学びの楽しみです。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>ヒノキの香りは、ヒノキ風呂の文化として日本の暮らしに深く根付いてきました。浴槽そのものの木の香りを楽しむ習慣が、その代表例です。現代のアロマセラピーでは、芳香浴で部屋に森の空気を添える場面や、読書・就寝前の静かな時間の香りとして親しまれています。いずれも「香りを楽しむ暮らしの工夫」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>使い方：芳香浴と入浴まわりの工夫</h2>' +
+            '<p>楽しみ方の中心は芳香浴です。アロマストーンに数滴落とすと、自分の周りだけで穏やかに香ります。入浴で香りを楽しみたい場合は、原液を湯に直接入れるのではなく、入浴剤を使うか、洗い場にアロマストーンを置くなど、原液がそのまま肌に触れない方法を選んでください。肌に使う場合は、必ずキャリアオイルで希釈し、濃度1％程度を目安にします。濃度の計算は学習記事 <button type="button" class="pillar-link" data-article-link="learn-blend">「希釈と濃度の計算入門」</button> で解説しています。</p>' +
+            '<h2>ブレンド相性の例</h2>' +
+            '<ul><li><strong>ユズ</strong>：和の柑橘の軽やかさに、木の土台が重なる和精油同士の組み合わせです</li>' +
+            '<li><strong>ラベンダー</strong>：木の香りにフローラルなやわらかさが添わる組み合わせです</li>' +
+            '<li><strong>クロモジ</strong>：同じ日本の木同士、上品な香りが重なる組み合わせです</li></ul>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。飲用もしないでください</li>' +
+            '<li>初めて使う精油は、二の腕の内側など目立たない場所で少量を試すパッチテストを行ってください</li>' +
+            '<li>妊娠中・授乳中の方、乳幼児、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li>' +
+            '<li>目や粘膜には使わず、保管は冷暗所で、子どもの手の届かない場所に置いてください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>ヒノキは「同じ木でも抽出部位（木部／葉）で香りの印象が変わる」ことを学べる好例です。購入時に抽出部位の表示を確認する習慣は、ほかの精油選びにもそのまま役立ちます。産地の表示とあわせて、ラベルの読み方を身につけましょう。</p>',
+          products: [
+            { asin: "B0FLY84GRM", note: "黒胡桃材のアロマストーン。ヒノキのような木の香りを、自分の周りだけで穏やかに楽しむ芳香浴に向いています。" },
+            { asin: "B091JZPDQ9", note: "20種類の精油を5mlずつ試せるセット。ヒノキ系を含む樹木系と、ほかの系統の香りの違いを比べる学習に向いています。" }
+          ],
+          recommend: "ヒノキの学びには、香りを穏やかに広げるアロマストーンがおすすめです。樹木系とほかの系統を比べたい方は、少量ずつ多種類が揃うセットもあわせてどうぞ。"
+        },
+        {
+          id: "learn-hakka", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：ハッカ（和種ハッカ） ― メントールの清涼感と、北見のハッカ文化",
+          excerpt: "和精油のひとつ、和種ハッカの専用プロフィールです。学名や主成分メントールなどの基本データ、すっとする清涼感のある香りの特徴、北海道・北見の産地の歴史、伝統的に使われてきた場面、そして刺激の強い精油だからこそ大切な注意点をセットで学びます。",
+          img: "assets/article-hakka.webp", alt: "木のテーブルの上に置かれた無地のスプレーボトルと、フレッシュなミントの葉",
+          body:
+            '<p>ハッカ（和種ハッカ）は、日本で栽培されてきたシソ科の植物で、その精油は和精油の代表格のひとつです。北海道・北見は、かつて世界的なハッカの産地だった歴史を持ち、今も北見ハッカ通商がその文化を伝えています。専用記事 <button type="button" class="pillar-link" data-article-link="hakka-uses">「ハッカ油スプレーの活用術」</button> では使い方を掘り下げているので、この記事ではプロフィールとして基本データと注意点を整理します。和精油全体の入り口は特集記事 <button type="button" class="pillar-link" data-article-link="learn-waseiyu">「和精油入門」</button> からどうぞ。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：<em>Mentha canadensis</em>（和種ハッカ）</li>' +
+            '<li><strong>科名</strong>：シソ科</li>' +
+            '<li><strong>抽出部位</strong>：葉・茎</li>' +
+            '<li><strong>抽出法</strong>：水蒸気蒸留法</li>' +
+            '<li><strong>香りの系統</strong>：ハーブ系</li>' +
+            '<li><strong>主な成分</strong>：メントールが主成分とされています</li></ul>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>鼻にすっと抜ける、清涼感の強い香りです。ペパーミントと比べると、メントールの輪郭がはっきりした、シャープな印象と表現されることがあります。和種ハッカはメントールの含有率が高い品種として知られてきました。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>ハッカ油は日本の暮らしの中で長く親しまれてきた香りのアイテムです。ハンカチに少量つけて香りを楽しむ、暑い季節の外出のお供にするなど、清涼感のある香りを身近に置く工夫として伝統的に使われてきました。食品添加物として紅茶などの香り付けに使われる製品もありますが、区分の異なる製品もあるため、用途に合った製品表示を確認して選んでください。</p>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<p>ハッカ油は刺激の強い精油です。次の点を必ず守ってください。</p>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈し、低濃度から始めてください</li>' +
+            '<li>目や粘膜の近くでは使わないでください。乳幼児の近くでの使用は、メントールの刺激の面から控えめにし、製品表示の対象年齢や注意書きを必ず確認してください</li>' +
+            '<li>初めて使う場合はパッチテストを行い、赤み・かゆみが出たら使用を中止してください</li>' +
+            '<li>アルコールを含むスプレー製品は火気に注意し、高温の場所に置かないでください</li>' +
+            '<li>妊娠中・授乳中の方、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>ハッカは「同じミントの仲間でも、品種によって成分の顔ぶれが違う」ことを学べる精油です。ペパーミントのプロフィールと並べて読むと、学名と成分表示を確認する習慣の大切さがよく分かります。</p>',
+          products: [
+            { asin: "B0F8HP7CBT", note: "北見ハッカ通商のスプレータイプ。和種ハッカの清涼感のある香りを、手軽に確認できます。" }
+          ],
+          recommend: "この記事のテーマに合わせて、北見ハッカ通商のハッカ油スプレーを1点紹介します。使い方と注意点は、専用記事「ハッカ油スプレーの活用術」とあわせてご確認ください。"
+        },
+        {
+          id: "learn-ylang", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：イランイラン ― 華やかな花の香りと、量の加減の大切さ",
+          excerpt: "フローラル系の代表格、イランイランの専用プロフィールです。学名Cananga odorataなどの基本データ、甘く華やかな香りの特徴、伝統的に使われてきた場面、少量でも印象が強い精油だからこその注意点をセットで学びます。",
+          img: "assets/article-oil.webp", alt: "木のテーブルの上に並んだ精油の小瓶とハーブ、オレンジのスライス",
+          body:
+            '<p>イランイランは、東南アジア原産のバンレイシ科の樹木の花から得られる精油です。初めての精油の選び方の記事では、フローラル系の代表例として名前が挙がりました。専用プロフィールとして、基本データ・香り・伝統的な使われ方・注意点をセットで学びます。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：<em>Cananga odorata</em></li>' +
+            '<li><strong>科名</strong>：バンレイシ科</li>' +
+            '<li><strong>抽出部位</strong>：花</li>' +
+            '<li><strong>抽出法</strong>：水蒸気蒸留法（蒸留の段階により「エクストラ」「1番」などのグレード表記が見られることがあります）</li>' +
+            '<li><strong>香りの系統</strong>：フローラル系</li>' +
+            '<li><strong>主な成分</strong>：リナロールなどを含むことが知られています</li></ul>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>甘く濃厚で、エキゾチックとも表現される華やかな花の香りです。少量でも印象が強く、香らせすぎると重く感じやすい精油のため、滴数の加減が学びのポイントになります。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>原産地の暮らしでは、花を身の回りに置くなど、香りを楽しむ場面で親しまれてきたとされています。現代のアロマセラピーでは、香水の原料としても知られ、芳香浴やブレンドのアクセントとして伝統的に使われてきました。いずれも「香りを楽しむ場面」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>ブレンド相性の例</h2>' +
+            '<ul><li><strong>オレンジスイート</strong>：重くなりがちな花の香りに、柑橘の軽やかさが添わる組み合わせです</li>' +
+            '<li><strong>サンダルウッド</strong>：華やかさに木の土台が重なり、落ち着いた印象になる組み合わせです</li></ul>' +
+            '<p>どちらの場合も、イランイランは少なめの滴数から始めるのが組み立てやすい目安です。</p>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈し、低濃度から始めてください</li>' +
+            '<li>香りが強く感じられる精油のため、芳香浴では少量から始め、頭痛や気分の悪さを感じたら換気して使用を中止してください</li>' +
+            '<li>初めて使う精油はパッチテストを行ってください</li>' +
+            '<li>妊娠中・授乳中の方、乳幼児、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>イランイランは「香りの強さと量の関係」を学べる精油です。1滴の違いで印象が大きく変わるため、ブレンド学習では滴数の記録が特に役立つ1本です。</p>',
+          products: [
+            { asin: "B091JZPDQ9", note: "20種類の精油を5mlずつ試せるセット。イランイランなどフローラル系の香りを、ほかの系統と比べながら学べます。" }
+          ],
+          recommend: "イランイランのような個性の強い花の香りは、少量ずつ多種類が揃うセットで、ほかの系統と比べながら学ぶのがおすすめです。"
+        },
+        {
+          id: "learn-sandalwood", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：サンダルウッド ― 深みのある木の香りと、原料を知る視点",
+          excerpt: "樹木系の代表格、サンダルウッドの専用プロフィールです。学名Santalum albumなどの基本データ、甘さのある深い木の香りの特徴、お香の文化をはじめ伝統的に使われてきた場面、原料の持続可能性という視点と注意点をセットで学びます。",
+          img: "assets/article-oil.webp", alt: "木のテーブルの上に並んだ精油の小瓶とハーブ、オレンジのスライス",
+          body:
+            '<p>サンダルウッド（白檀）は、インドなどで育つビャクダン科の樹木の心材から得られる精油です。初めての精油の選び方の記事では、樹木系の代表例として紹介されました。専用プロフィールとして、基本データ・香り・伝統的な使われ方・注意点をセットで学びます。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：<em>Santalum album</em>（インド産白檀として知られる種類）</li>' +
+            '<li><strong>科名</strong>：ビャクダン科</li>' +
+            '<li><strong>抽出部位</strong>：心材</li>' +
+            '<li><strong>抽出法</strong>：水蒸気蒸留法</li>' +
+            '<li><strong>香りの系統</strong>：樹木系（ウッディ系）</li>' +
+            '<li><strong>香りの立ち上がり</strong>：ベースノート（長く残る土台の香りです）</li>' +
+            '<li><strong>主な成分</strong>：α-サンタロールなどを含むことが知られています</li></ul>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>甘さを含んだ、深くまろやかな木の香りです。ヒノキやシダーウッドの清々しさとは違い、重みのある穏やかさが特徴とされています。香りの持続が長いのも、ベースノートらしい個性です。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>白檀は、お香や扇子などの香木としてアジアの暮らしで長く親しまれてきました。現代のアロマセラピーでは、芳香浴で静かな時間の香りとして、また香水の土台の香りとして伝統的に使われています。いずれも「香りを楽しむ場面」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>原料を知る視点</h2>' +
+            '<p>サンダルウッドは、育つのに長い年月がかかる木で、原料の持続可能性への配慮が大切とされる精油の代表例です。産地や種類（学名）の表示を確認し、植林された原料から得られたものをうたう製品など、背景の分かるものを選ぶ視点も、学びの一部として覚えておきましょう。</p>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈してください</li>' +
+            '<li>初めて使う精油はパッチテストを行ってください</li>' +
+            '<li>妊娠中・授乳中の方、乳幼児、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li>' +
+            '<li>保管は冷暗所で立てて置き、子どもの手の届かない場所に保管してください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>サンダルウッドは「精油の背景にある原料と産地」を考えるきっかけになる1本です。学名と産地の表示を確認する習慣は、品質の見分け方の基礎そのものです。</p>',
+          products: [
+            { asin: "B091JZPDQ9", note: "20種類の精油を5mlずつ試せるセット。サンダルウッドなど樹木系の香りを、ほかの系統と比べながら学べます。" }
+          ],
+          recommend: "サンダルウッドは単品では高価になりやすい精油です。まずはセットで香りの印象を確かめ、気に入ったら学名・産地の表示のある単品を探す順番がおすすめです。"
+        },
+        {
+          id: "learn-cedarwood", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：シダーウッド ― 落ち着いた木の香りと、種類の見分け方",
+          excerpt: "樹木系のシダーウッドの専用プロフィールです。アトラスシダーなど種類によって学名が異なる点、落ち着いた木の香りの特徴、伝統的に使われてきた場面、注意点をセットで学びます。精油セットの記事で「まず開けたい5本」に挙がった1本です。",
+          img: "assets/article-oil.webp", alt: "木のテーブルの上に並んだ精油の小瓶とハーブ、オレンジのスライス",
+          body:
+            '<p>シダーウッドは、針葉樹の木部から得られる樹木系の精油です。精油20本セットの記事では「まず開けたい5本」の1本に挙げられました。専用プロフィールとして、基本データ・香り・伝統的な使われ方・注意点をセットで学びます。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：種類によって異なります。アトラスシダーは <em>Cedrus atlantica</em> と表示されることが多くあります</li>' +
+            '<li><strong>科名</strong>：マツ科（アトラスシダーの場合）</li>' +
+            '<li><strong>抽出部位</strong>：木部</li>' +
+            '<li><strong>抽出法</strong>：水蒸気蒸留法</li>' +
+            '<li><strong>香りの系統</strong>：樹木系（ウッディ系）</li>' +
+            '<li><strong>香りの立ち上がり</strong>：ベースノート（長く残る土台の香りです）</li>' +
+            '<li><strong>主な成分</strong>：セスキテルペン類を含むことが知られています</li></ul>' +
+            '<p>「シダーウッド」という名前でも原料の木が複数あるため、購入時は学名を確認することが大切です。これはラベンダーのプロフィールで学んだ「名前が同じでも種類が複数ある」注意点と同じ考え方です。</p>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>落ち着いた、乾いた木の香りです。ヒノキの清々しさ、サンダルウッドの甘い深みと比べると、素朴で飾らない印象と表現されることがあります。香りの持続が長く、ブレンドの土台に向いています。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>シダーの木は、古くから建材や保管箱の材料として使われてきた歴史があります。現代のアロマセラピーでは、読書や就寝前の静かな時間の芳香浴、衣類の保管まわりの香り付けなどに伝統的に使われてきました。いずれも「香りを楽しむ場面」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>ブレンド相性の例</h2>' +
+            '<ul><li><strong>オレンジスイート</strong>：軽やかなトップノートに、木の土台を添える組み合わせです</li>' +
+            '<li><strong>ラベンダー</strong>：木の落ち着きに、フローラルなやわらかさが重なる組み合わせです</li></ul>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈してください</li>' +
+            '<li>初めて使う精油はパッチテストを行ってください</li>' +
+            '<li>妊娠中・授乳中の方、乳幼児、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li>' +
+            '<li>種類によって注意点が異なる場合があるため、製品表示の学名と注意書きを確認してください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>シダーウッドは「通称が同じでも学名が違う精油がある」ことを学べる代表例です。ラベルで学名を確認する習慣を、ここでもう一度確かめておきましょう。</p>',
+          products: [
+            { asin: "B091JZPDQ9", note: "20種類の精油を5mlずつ試せるセット。シダーウッドなど樹木系の香りを、ほかの系統と比べながら学べます。" }
+          ],
+          recommend: "シダーウッドはセットで香りを確かめやすい精油です。単品で購入する際は、学名の表示を確認してから選ぶのがおすすめです。"
+        },
+        {
+          id: "learn-jasmine", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：ジャスミン ― 溶剤抽出で得る花の香りと、「アブソリュート」の学び",
+          excerpt: "ジャスミンの専用プロフィールです。基礎の記事で「溶剤抽出法」の例として登場した花を深掘りし、得られたものが「アブソリュート」と呼ばれ精油と区別される理由、甘く濃厚な香りの特徴、伝統的に使われてきた場面、注意点をセットで学びます。",
+          img: "assets/article-oil.webp", alt: "木のテーブルの上に並んだ精油の小瓶とハーブ、オレンジのスライス",
+          body:
+            '<p>ジャスミンは、白い花の甘い香りで知られるモクセイ科の植物です。基礎の学習記事「精油とは何か」では、熱に弱い花から香りを得る「溶剤抽出法」の例として登場しました。専用プロフィールとして、その学びをもう一段深めます。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：<em>Jasminum officinale</em> など（種類により異なります）</li>' +
+            '<li><strong>科名</strong>：モクセイ科</li>' +
+            '<li><strong>抽出部位</strong>：花</li>' +
+            '<li><strong>抽出法</strong>：溶剤抽出法（得られたものは「アブソリュート」と呼ばれます）</li>' +
+            '<li><strong>香りの系統</strong>：フローラル系</li>' +
+            '<li><strong>主な成分</strong>：酢酸ベンジルなどを含むことが知られています</li></ul>' +
+            '<h2>「精油」と「アブソリュート」の違い</h2>' +
+            '<p>水蒸気蒸留や圧搾で得られる精油と違い、ジャスミンのように熱に弱い花は、溶剤を使って香りの成分を取り出す方法で得られます。この方法で得られたものは「アブソリュート」と呼ばれ、精油とは区別されることがあります。ラベルで抽出法を確認すると、製品の素性が読み取りやすくなります。</p>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>甘く濃厚で、温かみのある花の香りです。少量でも存在感が強く、ブレンドでは「1滴で印象が変わる」タイプとされています。花の香りを集めるのに多くの花が必要とされるため、価格が高くなりやすいことでも知られています。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>ジャスミンの花は、お茶の香り付けをはじめ、香りを楽しむ文化の中で長く親しまれてきました。現代のアロマセラピーでは、香水の原料として、また芳香浴やブレンドのアクセントとして伝統的に使われています。いずれも「香りを楽しむ場面」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<ul><li>原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで低濃度に希釈してください</li>' +
+            '<li>香りの印象が強いため、芳香浴では少量から始めてください</li>' +
+            '<li>初めて使う場合はパッチテストを行ってください</li>' +
+            '<li>妊娠中・授乳中の方、乳幼児、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>ジャスミンは「抽出法によって呼び名が変わる」ことを学べる代表例です。基礎の記事と並べて読み返すと、抽出法の理解が一段深まります。</p>',
+          products: [
+            { asin: "B091JZPDQ9", note: "20種類の精油を5mlずつ試せるセット。フローラル系の香りの顔ぶれを、ほかの系統と比べながら学べます。" }
+          ],
+          recommend: "ジャスミンのアブソリュートは高価なものが多いため、まずはフローラル系の香りの傾向をセットで学び、抽出法の表示を確認しながら単品を探す順番がおすすめです。"
+        },
+        {
+          id: "learn-geranium", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：ゼラニウム ― バラに似た花の香りと、葉から得る精油の個性",
+          excerpt: "フローラル系のゼラニウムの専用プロフィールです。学名Pelargonium graveolensなどの基本データ、花ではなく葉から得る点、バラに似ると表現される香りの特徴、伝統的に使われてきた場面、注意点をセットで学びます。",
+          img: "assets/fig-lavender.webp", alt: "ラベンダーの花束を持つ案内役と、鉢植えのラベンダー、精油の小瓶のイラスト",
+          body:
+            '<p>ゼラニウムは、フウロソウ科の植物の葉から得られる精油です。初めての精油の選び方の記事では、フローラル系の代表例として紹介されました。専用プロフィールとして、基本データ・香り・伝統的な使われ方・注意点をセットで学びます。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：<em>Pelargonium graveolens</em></li>' +
+            '<li><strong>科名</strong>：フウロソウ科</li>' +
+            '<li><strong>抽出部位</strong>：葉（花ではありません）</li>' +
+            '<li><strong>抽出法</strong>：水蒸気蒸留法</li>' +
+            '<li><strong>香りの系統</strong>：フローラル系</li>' +
+            '<li><strong>主な成分</strong>：シトロネロール、ゲラニオールなどを含むことが知られています</li></ul>' +
+            '<p>園芸で親しまれる「ゼラニウム」と同じ仲間の植物ですが、精油は花ではなく葉から得られます。抽出部位の違いは、ラベルの読み方を学ぶ良い例です。</p>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>バラに似た甘い花の香りに、葉らしい青みのある爽やかさが重なった香りと表現されることがあります。フローラル系の中では、甘さの中にすっきりした一面を持つ個性です。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>ゼラニウムは、香水や化粧品の香り付けの原料として長く使われてきた歴史があります。現代のアロマセラピーでは、芳香浴やブレンドで花の香りを楽しむ場面に伝統的に使われています。いずれも「香りを楽しむ場面」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>ブレンド相性の例</h2>' +
+            '<ul><li><strong>ラベンダー</strong>：花の香り同士が重なり、やわらかな印象になる組み合わせです</li>' +
+            '<li><strong>ベルガモット</strong>：柑橘の軽やかさが加わり、明るい印象になる組み合わせです</li></ul>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈してください</li>' +
+            '<li>初めて使う精油はパッチテストを行ってください</li>' +
+            '<li>妊娠中・授乳中の方、乳幼児、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>ゼラニウムは「花の香りなのに抽出部位は葉」という、ラベルの読み解きが楽しい精油です。「香りの系統」と「抽出部位」は別の情報だという視点を覚えておきましょう。</p>',
+          products: [
+            { asin: "B091JZPDQ9", note: "20種類の精油を5mlずつ試せるセット。ゼラニウムなどフローラル系の香りを、ほかの系統と比べながら学べます。" }
+          ],
+          recommend: "ゼラニウムは、まずはセットで香りの印象を確かめ、バラ系の香りとの違いをノートに書き分ける学び方がおすすめです。"
+        },
+        {
+          id: "learn-bergamot", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：ベルガモット ― 紅茶で知られる柑橘と、光毒性の注意点",
+          excerpt: "柑橘系のベルガモットの専用プロフィールです。アールグレイ紅茶の香り付けで知られる果実の基本データ、爽やかでほのかに苦みのある香りの特徴、伝統的に使われてきた場面、そして柑橘系の中でも特に大切な光毒性（光感作）の注意点をセットで学びます。",
+          img: "assets/article-oil.webp", alt: "木のテーブルの上に並んだ精油の小瓶とハーブ、オレンジのスライス",
+          body:
+            '<p>ベルガモットは、イタリアなどで栽培されるミカン科の柑橘です。アールグレイ紅茶の香り付けで名前を知っている方も多いでしょう。初めての精油の選び方の記事では、柑橘系の代表例として紹介されました。専用プロフィールとして、基本データ・香り・伝統的な使われ方・注意点をセットで学びます。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：<em>Citrus bergamia</em></li>' +
+            '<li><strong>科名</strong>：ミカン科</li>' +
+            '<li><strong>抽出部位</strong>：果皮</li>' +
+            '<li><strong>抽出法</strong>：圧搾法</li>' +
+            '<li><strong>香りの系統</strong>：シトラス系（柑橘系）</li>' +
+            '<li><strong>香りの立ち上がり</strong>：トップノート（最初に香り立ち、比較的早く消えていくタイプです）</li>' +
+            '<li><strong>主な成分</strong>：リモネン、酢酸リナリルなどを含むことが知られています</li></ul>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>柑橘の爽やかさに、ほのかな苦みと花のようなニュアンスが重なった香りと表現されることがあります。オレンジスイートの素直な甘さと比べると、大人びた印象の柑橘です。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>ベルガモットは、紅茶の香り付けや香水の原料として長く親しまれてきました。現代のアロマセラピーでは、朝の支度や気分を切り替えたい場面の芳香浴などに伝統的に使われています。いずれも「香りを楽しむ場面」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>安全に使うための注意点 ― 光毒性を必ず確認</h2>' +
+            '<p>ベルガモットは、柑橘系の中でも光毒性（光感作）への注意が特に大切な精油です。</p>' +
+            '<ul><li>ベルガモットには、光毒性の成分（ベルガプテンなど）を含むものがあります。肌に使った後に日光に当たると、肌トラブルの原因になる場合があります</li>' +
+            '<li>肌に使う場合は、製品表示の注意を必ず守り、使用後は日光を避けてください。光毒性の成分を除去した「フロクマリンフリー（ベルガプテンフリー）」と表示された製品もあります</li>' +
+            '<li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈し、初めて使う精油はパッチテストを行ってください</li>' +
+            '<li>柑橘系は開封後の香りの変化が早いため、早めに使い切るのが目安です</li>' +
+            '<li>妊娠中・授乳中の方、乳幼児、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>オレンジスイートのプロフィールで「光毒性は種類によって心配の度合いが違う」と学びました。ベルガモットはその対極にある例です。同じ柑橘系でも注意点が違う――精油を1本ずつ学ぶ意味が、ここによく表れています。</p>',
+          products: [
+            { asin: "B091JZPDQ9", note: "20種類の精油を5mlずつ試せるセット。ベルガモットなど柑橘系の香りを、ほかの柑橘と比べながら学べます。" }
+          ],
+          recommend: "ベルガモットは、まずはセットで香りを確かめるのがおすすめです。肌に使う目的で単品を探す場合は、光毒性への配慮が表示された製品（フロクマリンフリー等）を選んでください。"
+        },
+        {
+          id: "learn-peppermint", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：ペパーミント ― 清涼感のあるハーブの香りと、和種ハッカとの違い",
+          excerpt: "ハーブ系のペパーミントの専用プロフィールです。学名Mentha piperitaなどの基本データ、メントールの清涼感のある香りの特徴、伝統的に使われてきた場面、和種ハッカとの比べ方、注意点をセットで学びます。",
+          img: "assets/article-hakka.webp", alt: "木のテーブルの上に置かれた無地のスプレーボトルと、フレッシュなミントの葉",
+          body:
+            '<p>ペパーミントは、シソ科の多年草から得られるハーブ系の代表的な精油です。初めての精油の選び方と精油セットの記事の両方に登場し、セットの記事では「まず開けたい5本」の1本に挙げられました。専用プロフィールとして、基本データ・香り・伝統的な使われ方・注意点をセットで学びます。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：<em>Mentha piperita</em>（ウォーターミントとスペアミントの交配種とされています）</li>' +
+            '<li><strong>科名</strong>：シソ科</li>' +
+            '<li><strong>抽出部位</strong>：葉・花穂など地上部</li>' +
+            '<li><strong>抽出法</strong>：水蒸気蒸留法</li>' +
+            '<li><strong>香りの系統</strong>：ハーブ系</li>' +
+            '<li><strong>主な成分</strong>：メントール、メントンなどを含むことが知られています</li></ul>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>すっとする清涼感に、ほのかな甘さが重なった香りです。和種ハッカと比べると、メントールのシャープさの中に丸みがある印象と表現されることがあります。2つを並べて香ると、学名と品種の違いが香りの違いとして実感できます。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>ペパーミントは、ハーブティーやお菓子の香り付けなど、食の文化でも親しまれてきた植物です。現代のアロマセラピーでは、集中したい作業時間のお供や、気分を切り替えたい場面の芳香浴などに伝統的に使われてきました。いずれも「香りを楽しむ場面」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>ブレンド相性の例</h2>' +
+            '<ul><li><strong>オレンジスイート</strong>：柑橘の甘さに清涼感が加わり、すっきりした印象になる組み合わせです</li>' +
+            '<li><strong>ローズマリー</strong>：ハーブ同士の、清々しい印象が重なる組み合わせです</li>' +
+            '<li><strong>ラベンダー</strong>：清涼感にフローラルなやわらかさが添わる組み合わせです</li></ul>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈し、低濃度から始めてください</li>' +
+            '<li>目や粘膜の近くでは使わないでください。乳幼児の近くでの使用は、メントールの刺激の面から控えめにしてください</li>' +
+            '<li>初めて使う精油はパッチテストを行ってください</li>' +
+            '<li>妊娠中・授乳中の方、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>ペパーミントと和種ハッカは、どちらも「メントールの香り」でありながら、学名も香りの印象も異なります。図鑑で2つを並べて比べることが、ミントの仲間を学ぶ一番の近道です。</p>',
+          products: [
+            { asin: "B0FC66FMQG", note: "生活の木 公式アマゾン店の3本セット。ペパーミントに加え、ブレンド例に登場したオレンジスイートとラベンダーが入っています。" },
+            { asin: "B0F8HP7CBT", note: "和種ハッカのスプレータイプ。ペパーミントと香りを比べる学びの相方におすすめです。" }
+          ],
+          recommend: "ペパーミントを学ぶなら、ブレンド例の3種が揃う生活の木のセットがおすすめです。和種ハッカのスプレーと並べると、ミントの仲間の香りの違いがよく分かります。"
+        },
+        {
+          id: "learn-eucalyptus", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：ユーカリ ― 1,8-シネオールの清涼感と、種類の多さへの注意",
+          excerpt: "ユーカリの専用プロフィールです。ユーカリ・グロブルスなど種類によって学名が異なる点、主成分1,8-シネオールのすっきりした香りの特徴、伝統的に使われてきた場面、注意点をセットで学びます。",
+          img: "assets/hero-aroma.webp", alt: "精油の小瓶とユーカリ、ラベンダーを並べた静物写真",
+          body:
+            '<p>ユーカリは、オーストラリア原産のフトモモ科の樹木です。ティートリーのプロフィール記事では、ブレンドの組み合わせ例として名前が挙がりました。同じフトモモ科の仲間として並べて学ぶと、理解が深まります。専用プロフィールとして、基本データ・香り・伝統的な使われ方・注意点をセットで学びます。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：種類によって異なります。代表的なユーカリ・グロブルスは <em>Eucalyptus globulus</em> と表示されます。ほかにレモンの香りのユーカリ・シトリオドラ、やわらかな印象のユーカリ・ラディアータなどがあります</li>' +
+            '<li><strong>科名</strong>：フトモモ科</li>' +
+            '<li><strong>抽出部位</strong>：葉</li>' +
+            '<li><strong>抽出法</strong>：水蒸気蒸留法</li>' +
+            '<li><strong>香りの系統</strong>：ハーブ系</li>' +
+            '<li><strong>主な成分</strong>：1,8-シネオールを多く含むことが知られています</li></ul>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>すっと鼻に抜ける、清涼感のある香りです。ティートリーのシャープさと似た系統ながら、より軽やかで広がりのある印象と表現されることがあります。種類によってはレモン様の香りを持つものもあり、「ユーカリ」という一言では括りきれない幅の広さが個性です。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>オーストラリアでは、ユーカリの葉が古くから暮らしの中で親しまれてきたとされています。現代のアロマセラピーでは、季節の変わり目の芳香浴や、部屋の空気を切り替えたい場面、掃除の際の香り付けなどに伝統的に使われてきました。いずれも「香りを楽しむ場面」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>ブレンド相性の例</h2>' +
+            '<ul><li><strong>ティートリー</strong>：同じフトモモ科同士、清涼感のある香りが重なる組み合わせです</li>' +
+            '<li><strong>ラベンダー</strong>：すっきりした香りに、フローラルなやわらかさが添わる組み合わせです</li>' +
+            '<li><strong>レモン</strong>：柑橘の軽やかさが加わり、明るい印象になる組み合わせです</li></ul>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈し、低濃度から始めてください</li>' +
+            '<li>1,8-シネオールを多く含む種類は、乳幼児の近くでの使用に注意が必要とされています。対象年齢など製品表示の注意書きを必ず確認してください</li>' +
+            '<li>初めて使う精油はパッチテストを行ってください</li>' +
+            '<li>妊娠中・授乳中の方、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li>' +
+            '<li>ペットのいる環境では、換気と使用量に配慮してください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>ユーカリは「種類の多さ」が学びの核心です。購入の際は通称だけでなく学名を確認し、どのユーカリなのかを意識して選ぶ習慣をつけましょう。</p>',
+          products: [
+            { asin: "B091JZPDQ9", note: "20種類の精油を5mlずつ試せるセット。ユーカリなどハーブ系の香りを、ほかの系統と比べながら学べます。" }
+          ],
+          recommend: "ユーカリは種類が多い精油です。まずはセットで香りの傾向を掴み、単品を選ぶ段階では学名（グロブルス／ラディアータ等）を必ず確認してください。"
+        },
+        {
+          id: "learn-lemon", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：レモン ― 圧搾法のみずみずしい香りと、柑橘の保存のコツ",
+          excerpt: "柑橘系のレモンの専用プロフィールです。学名Citrus limonなどの基本データ、果実そのものに近い爽やかな香りの特徴、伝統的に使われてきた場面、光毒性と酸化の早さという柑橘系の注意点をセットで学びます。",
+          img: "assets/article-oil.webp", alt: "木のテーブルの上に並んだ精油の小瓶とハーブ、オレンジのスライス",
+          body:
+            '<p>レモンは、ミカン科の柑橘の果皮から圧搾法で得られる精油です。基礎の記事では圧搾法の代表例として、初めての精油の選び方の記事では柑橘系の代表例として登場しました。専用プロフィールとして、基本データ・香り・伝統的な使われ方・注意点をセットで学びます。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：<em>Citrus limon</em></li>' +
+            '<li><strong>科名</strong>：ミカン科</li>' +
+            '<li><strong>抽出部位</strong>：果皮</li>' +
+            '<li><strong>抽出法</strong>：圧搾法（柑橘類の果皮を圧搾して得る方法です）</li>' +
+            '<li><strong>香りの系統</strong>：シトラス系（柑橘系）</li>' +
+            '<li><strong>香りの立ち上がり</strong>：トップノート（最初に香り立ち、比較的早く消えていくタイプです）</li>' +
+            '<li><strong>主な成分</strong>：リモネンを多く含むことが知られています</li></ul>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>レモンの果実そのままの、みずみずしく爽やかな香りです。オレンジスイートと比べると甘さより酸味の輪郭がはっきりしていて、柑橘系の中でも「きりっとした明るさ」が特徴とされています。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>レモンの香りは、料理や飲み物の香り付けとして暮らしに深く根付いてきました。現代のアロマセラピーでは、朝の支度や掃除のあとの空間、気分を切り替えたい場面の芳香浴などに伝統的に使われています。いずれも「香りを楽しむ場面」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>ブレンド相性の例</h2>' +
+            '<ul><li><strong>ローズマリー</strong>：柑橘の明るさに、ハーブの清々しさが重なる組み合わせです</li>' +
+            '<li><strong>ユーカリ</strong>：清涼感のある香り同士、すっきりした印象になる組み合わせです</li>' +
+            '<li><strong>ヒノキ</strong>：和の木の土台に、柑橘の軽やかさが添わる組み合わせです</li></ul>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<ul><li>圧搾法で得た柑橘系の精油には光毒性（光感作）への注意が必要とされるものがあります。肌に使った後は日光を避け、製品表示の注意を守ってください</li>' +
+            '<li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈し、初めて使う精油はパッチテストを行ってください</li>' +
+            '<li>柑橘系は酸化しやすいため、開封後は半年以内を目安に使い切るのがおすすめです。保管は冷暗所で、キャップをしっかり閉めてください</li>' +
+            '<li>妊娠中・授乳中の方、乳幼児、持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>レモンは、オレンジスイートと同じ「圧搾法・トップノート・酸化の早さ」を持ちながら、香りの印象と光毒性の注意点が異なる好例です。柑橘系3種（オレンジ／レモン／ベルガモット）を並べた比べ学習がおすすめです。</p>',
+          products: [
+            { asin: "B091JZPDQ9", note: "20種類の精油を5mlずつ試せるセット。レモンなど柑橘系の香りを、オレンジやベルガモットと比べながら学べます。" }
+          ],
+          recommend: "レモンは、柑橘系の比べ学習に向いた1本です。まずはセットでオレンジ・ベルガモットとの違いを確かめ、使い切りの目安とあわせて覚えてください。"
+        },
+        {
+          id: "learn-rosemary", pillar: "profile", cat: "learn", date: "学習記事",
+          title: "精油プロフィール：ローズマリー ― すっきりしたハーブの香りと、ケモタイプの学び",
+          excerpt: "ハーブ系のローズマリーの専用プロフィールです。学名Salvia rosmarinusなどの基本データ、清涼感のあるハーブの香りの特徴、料理ハーブとしての文化、成分の傾向で分ける「ケモタイプ」という考え方、注意点をセットで学びます。",
+          img: "assets/article-oil.webp", alt: "木のテーブルの上に並んだ精油の小瓶とハーブ、オレンジのスライス",
+          body:
+            '<p>ローズマリーは、地中海沿岸原産のシソ科の常緑低木で、料理ハーブとしても広く知られる植物です。初めての精油の選び方の記事ではハーブ系の代表例として、ティートリーの記事ではブレンドの組み合わせ例として登場しました。専用プロフィールとして、基本データ・香り・伝統的な使われ方・注意点をセットで学びます。</p>' +
+            '<h2>基本データ</h2>' +
+            '<ul><li><strong>学名</strong>：<em>Salvia rosmarinus</em>（旧学名 <em>Rosmarinus officinalis</em> と表示されることもあります）</li>' +
+            '<li><strong>科名</strong>：シソ科</li>' +
+            '<li><strong>抽出部位</strong>：葉・花穂など地上部</li>' +
+            '<li><strong>抽出法</strong>：水蒸気蒸留法</li>' +
+            '<li><strong>香りの系統</strong>：ハーブ系</li>' +
+            '<li><strong>主な成分</strong>：1,8-シネオール、カンファー、α-ピネンなどを含むことが知られています</li></ul>' +
+            '<h2>ケモタイプという考え方</h2>' +
+            '<p>ローズマリーは、同じ植物でも産地や生育環境によって成分の傾向が異なることが知られ、成分の特徴で分けた「ケモタイプ」（例：シネオールタイプ、カンファータイプ、ベルベノンタイプ）という考え方で語られる代表的な精油です。購入時にケモタイプの表示がある製品は、成分の傾向を意識して選ぶ学びになります。</p>' +
+            '<h2>香りの特徴</h2>' +
+            '<p>すっきりと清涼感のある、シャープなハーブの香りです。ラベンダーのやわらかさとは対照的で、輪郭のはっきりした印象と表現されることがあります。</p>' +
+            '<h2>伝統的に使われてきた場面</h2>' +
+            '<p>ローズマリーは、料理の香り付けをはじめ、地中海沿岸の暮らしの中で長く親しまれてきたハーブです。現代のアロマセラピーでは、作業や勉強の時間のお供、朝の芳香浴などに伝統的に使われてきました。いずれも「香りを楽しむ場面」として伝えられてきたもので、このサイトでは効能を断定する表現はしません。</p>' +
+            '<h2>ブレンド相性の例</h2>' +
+            '<ul><li><strong>レモン</strong>：柑橘の明るさが重なり、清々しい印象になる組み合わせです</li>' +
+            '<li><strong>ペパーミント</strong>：ハーブ同士、清涼感のある香りが重なる組み合わせです</li>' +
+            '<li><strong>シダーウッド</strong>：シャープな香りに木の土台が加わる組み合わせです</li></ul>' +
+            '<h2>安全に使うための注意点</h2>' +
+            '<ul><li>精油の原液を直接肌に付けないでください。肌に使う場合はキャリアオイルで希釈し、低濃度から始めてください</li>' +
+            '<li>初めて使う精油はパッチテストを行ってください</li>' +
+            '<li>妊娠中・授乳中の方、乳幼児、てんかんなど持病のある方、通院・服薬中の方は、使用前に専門家にご相談ください</li>' +
+            '<li>ケモタイプによって成分の傾向が異なるため、製品表示の成分・注意書きを確認してください</li></ul>' +
+            '<div class="caution"><strong>ご注意</strong>この記事の内容は一般的な学習・情報提供を目的としたもので、医療行為や診断ではありません。肌に異常が出た場合は使用を中止し、症状が続く場合は医療機関にご相談ください。</div>' +
+            '<h2>学びのポイント</h2>' +
+            '<p>ローズマリーは「ケモタイプ」という一段深い概念に出会える精油です。学名の次に成分の傾向まで目を向ける習慣は、精油選びの精度を大きく上げてくれます。</p>',
+          products: [
+            { asin: "B091JZPDQ9", note: "20種類の精油を5mlずつ試せるセット。ローズマリーなどハーブ系の香りを、ほかの系統と比べながら学べます。" }
+          ],
+          recommend: "ローズマリーは、まずはセットで香りの傾向を掴むのがおすすめです。単品を選ぶ際は、ケモタイプの表示がある製品だと成分の学びが深まります。"
         }
       ];
 
@@ -1950,7 +2585,8 @@
         { id: "focus",   name: "集中・作業",       nameEn: "Focus & Work" },
         { id: "bath",    name: "入浴",             nameEn: "Bathing" },
         { id: "living",  name: "暮らし・生活まわり", nameEn: "Daily Life" },
-        { id: "blend",   name: "ブレンド学習",     nameEn: "Blending Study" }
+        { id: "blend",   name: "ブレンド学習",     nameEn: "Blending Study" },
+        { id: "wa",      name: "和精油",           nameEn: "Japanese Oils (Wa-Seiyu)" }
       ];
       var OIL_FAMILIES = {
         citrus: { name: "柑橘系",     nameEn: "Citrus" },
@@ -1965,9 +2601,16 @@
       };
       var OIL_ROWS = ["あ", "か", "さ", "た", "な", "は", "ま", "や", "ら", "わ"];
       var OILS = [
+        { id: "aomori-hiba", name: "青森ヒバ", reading: "あおもりひば", row: "あ", en: "Aomori Hiba", family: "woody", note: "base",
+          latin: "Thujopsis dolabrata", fam: "ヒノキ科", famEn: "Cypress family (Cupressaceae)",
+          part: "木部・葉", partEn: "Wood & leaves", method: "水蒸気蒸留法", methodEn: "Steam distillation",
+          comp: "ヒノキチオールなどが知られています", compEn: "Known for hinokitiol, among others",
+          themes: ["wa", "relax"], articles: ["learn-waseiyu"],
+          desc: "青森県を中心に分布するヒノキ科の常緑樹、アスナロ（青森ヒバ）から得られる和精油です。木部や葉を水蒸気蒸留して得られ、ヒノキに似て、より深く落ち着いた木の香りとされています。和精油特集の学習記事「和精油入門」で紹介しています。",
+          caution: "原液を直接肌につけず、肌に使う場合は希釈してください。初めて使う精油はパッチテストから始めてください。" },
         { id: "ylang", name: "イランイラン", reading: "いらんいらん", row: "あ", en: "Ylang-ylang", family: "floral",
-          themes: [], articles: ["oil-howto"],
-          desc: "初めての精油の選び方の記事で、フローラル系の代表例として紹介されています。花の華やかな香りの系統で、少量でも印象が強いため、使いすぎに注意したい系統とされています。" },
+          themes: [], articles: ["learn-ylang", "oil-howto"],
+          desc: "初めての精油の選び方の記事で、フローラル系の代表例として紹介されています。花の華やかな香りの系統で、少量でも印象が強いため、使いすぎに注意したい系統とされています。専用の学習記事「精油プロフィール：イランイラン」で詳しく学べます。" },
         { id: "orange", name: "オレンジ", reading: "おれんじ", row: "あ", en: "Orange (Sweet Orange)", family: "citrus", note: "top",
           latin: "Citrus sinensis", fam: "ミカン科", famEn: "Rue family (Rutaceae)",
           part: "果皮", partEn: "Fruit peel", method: "圧搾法", methodEn: "Cold pressing",
@@ -1975,19 +2618,33 @@
           themes: ["refresh"], articles: ["oil-howto", "learn-basics", "oil-set20", "learn-orange"],
           desc: "柑橘系の代表例です。明るく軽やかな香りで、朝の時間や気分転換のお供に選ばれることが多い系統として紹介されています。柑橘類の果皮を圧搾して得る「圧搾法」の代表例でもあります。精油セットの記事では「スイートオレンジ」の名前で、「まず開けたい5本」の1本に挙げられています。学習記事「精油プロフィール：オレンジスイート」では、基本データ・香りの特徴・使い切りのコツをまとめて学べます。",
           caution: "柑橘系は開封後の香りの変化が早いため、早めに使い切るのが目安です。オレンジスイートは開封後、半年以内を目安に使い切るのがおすすめとされています。" },
+        { id: "kuromoji", name: "クロモジ", reading: "くろもじ", row: "か", en: "Kuromoji", family: "woody",
+          latin: "Lindera umbellata", fam: "クスノキ科", famEn: "Laurel family (Lauraceae)",
+          part: "葉・枝", partEn: "Leaves & twigs", method: "水蒸気蒸留法", methodEn: "Steam distillation",
+          comp: "リナロールを多く含むことが知られています", compEn: "Known to be rich in linalool",
+          themes: ["wa", "relax", "blend"], articles: ["learn-waseiyu", "learn-kuromoji"],
+          desc: "日本の山地に自生するクスノキ科の落葉低木から得られる和精油です。葉や枝を水蒸気蒸留して得られ、リナロールを多く含む、上品で奥行きのある香りとされています。クロモジの枝は、和菓子に添える高級な楊枝の材料としても知られてきました。和精油特集の学習記事「和精油入門」で紹介しています。",
+          caution: "原液を直接肌につけず、肌に使う場合は希釈してください。初めて使う精油はパッチテストから始めてください。" },
         { id: "sandalwood", name: "サンダルウッド", reading: "さんだるうっど", row: "さ", en: "Sandalwood", family: "woody", note: "base",
-          themes: ["relax"], articles: ["oil-howto"],
-          desc: "樹木系の代表例です。落ち着いた深みのある香りの系統で、読書や就寝前の静かな時間に向くとして紹介されています。" },
+          themes: ["relax"], articles: ["learn-sandalwood", "oil-howto"],
+          desc: "樹木系の代表例です。落ち着いた深みのある香りの系統で、読書や就寝前の静かな時間に向くとして紹介されています。専用の学習記事「精油プロフィール：サンダルウッド」で詳しく学べます。" },
         { id: "cedarwood", name: "シダーウッド", reading: "しだーうっど", row: "さ", en: "Cedarwood", family: "woody", note: "base",
-          themes: ["relax"], articles: ["oil-howto", "oil-set20"],
-          desc: "樹木系の精油です。精油セットの記事では「まず開けたい5本」の1本に挙げられ、読書や就寝前の静かな時間におすすめされています。ヒノキ系と並ぶ樹木系の候補として登場します。" },
+          themes: ["relax"], articles: ["learn-cedarwood", "oil-howto", "oil-set20"],
+          desc: "樹木系の精油です。精油セットの記事では「まず開けたい5本」の1本に挙げられ、読書や就寝前の静かな時間におすすめされています。ヒノキ系と並ぶ樹木系の候補として登場します。専用の学習記事「精油プロフィール：シダーウッド」で詳しく学べます。" },
+        { id: "sugi", name: "スギ", reading: "すぎ", row: "さ", en: "Sugi (Japanese Cedar)", family: "woody", note: "base",
+          latin: "Cryptomeria japonica", fam: "ヒノキ科", famEn: "Cypress family (Cupressaceae)",
+          part: "葉・木部", partEn: "Leaves & wood", method: "水蒸気蒸留法", methodEn: "Steam distillation",
+          comp: "セスキテルペン類を含むことが知られています", compEn: "Known to contain sesquiterpenes",
+          themes: ["wa", "relax"], articles: ["learn-waseiyu"],
+          desc: "日本の固有種で、各地に植林されてきた身近な針葉樹から得られる和精油です。葉や木部を水蒸気蒸留して得られ、凛とした森の香りとされています。間伐材や葉などの素材を活かして蒸留する取り組みが、各地の林業地で進んでいます。和精油特集の学習記事「和精油入門」で紹介しています。",
+          caution: "原液を直接肌につけず、肌に使う場合は希釈してください。初めて使う精油はパッチテストから始めてください。" },
         { id: "jasmine", name: "ジャスミン", reading: "じゃすみん", row: "さ", en: "Jasmine", family: "floral",
           method: "溶剤抽出法（アブソリュート）", methodEn: "Solvent extraction (absolute)",
-          themes: [], articles: ["learn-basics"],
-          desc: "基礎の記事で、熱に弱い花から香りを得る「溶剤抽出法」の例として紹介されています。この方法で得られたものは「アブソリュート」と呼ばれ、精油とは区別されることがあります。" },
+          themes: [], articles: ["learn-jasmine", "learn-basics"],
+          desc: "基礎の記事で、熱に弱い花から香りを得る「溶剤抽出法」の例として紹介されています。この方法で得られたものは「アブソリュート」と呼ばれ、精油とは区別されることがあります。専用の学習記事「精油プロフィール：ジャスミン」で詳しく学べます。" },
         { id: "geranium", name: "ゼラニウム", reading: "ぜらにうむ", row: "さ", en: "Geranium", family: "floral",
-          themes: [], articles: ["oil-howto"],
-          desc: "フローラル系の代表例として、初めての精油の選び方の記事で紹介されています。花の華やかな香りの系統で、少量でも印象が強い系統です。" },
+          themes: [], articles: ["learn-geranium", "oil-howto"],
+          desc: "フローラル系の代表例として、初めての精油の選び方の記事で紹介されています。花の華やかな香りの系統で、少量でも印象が強い系統です。専用の学習記事「精油プロフィール：ゼラニウム」で詳しく学べます。" },
         { id: "teatree", name: "ティートリー", reading: "てぃーとりー", row: "た", en: "Tea Tree", family: "herbal",
           latin: "Melaleuca alternifolia", fam: "フトモモ科", famEn: "Myrtle family (Myrtaceae)",
           part: "葉", partEn: "Leaves", method: "水蒸気蒸留法", methodEn: "Steam distillation",
@@ -1996,23 +2653,37 @@
           desc: "オーストラリア原産、フトモモ科の植物の葉を水蒸気蒸留して得られる精油です。シャープで清涼感があり、「清潔感のある香り」として紹介されることが多い香りです。伝統的には、芳香浴や部屋の香り付け、掃除の際の香り付けなどに使われてきました。",
           caution: "精油の中では肌への刺激を感じやすいほうとされています。原液を直接肌につけず、肌に使う場合は低濃度から始め、パッチテストを行ってください。酸化しやすいため、開封後は早めに使い切りましょう。" },
         { id: "hakka", name: "ハッカ（和種ハッカ）", reading: "はっか", row: "は", en: "Japanese Mint (Hakka)", family: "herbal",
+          latin: "Mentha canadensis（和種ハッカ）", latinEn: "Mentha canadensis (Japanese mint)",
+          fam: "シソ科", famEn: "Mint family (Lamiaceae)",
+          part: "葉・茎", partEn: "Leaves & stems", method: "水蒸気蒸留法", methodEn: "Steam distillation",
           comp: "主成分はメントール", compEn: "Main component: menthol",
-          themes: ["refresh"], articles: ["hakka-uses", "learn-breathing", "oil-set20"],
-          desc: "日本で栽培されてきた和種ハッカから得られる精油です。主成分はメントールで、すっとする清涼感のある香りが特徴です。北海道・北見の北見ハッカ通商が代表的なメーカーとして知られ、ハッカ油スプレーが売れ筋として紹介されています。",
+          themes: ["wa", "refresh"], articles: ["learn-hakka", "hakka-uses", "learn-waseiyu", "learn-breathing", "oil-set20"],
+          desc: "日本で栽培されてきた和種ハッカから得られる和精油です。主成分はメントールで、すっとする清涼感のある香りが特徴です。北海道・北見の北見ハッカ通商が代表的なメーカーとして知られ、ハッカ油スプレーが売れ筋として紹介されています。専用の学習記事「精油プロフィール：ハッカ（和種ハッカ）」で、基本データから注意点まで学べます。",
           caution: "目や粘膜の近くでは使わないでください。乳幼児の近くでの使用は、メントールの刺激の面から控えめにし、製品表示の注意書きを必ず確認してください。" },
         { id: "hinoki", name: "ヒノキ", reading: "ひのき", row: "は", en: "Hinoki", family: "woody", note: "base",
-          themes: ["relax", "bath"], articles: ["oil-howto", "oil-set20", "bath-enjoy"],
-          desc: "樹木系の代表例として紹介されている、日本の木の精油です。入浴剤の記事では、ゆずやよもぎと並んで「和の素材タイプ」の例にも名前が挙がっています。精油セットの記事では、シダーウッドと並ぶ樹木系の候補として登場します。" },
+          latin: "Chamaecyparis obtusa", fam: "ヒノキ科", famEn: "Cypress family (Cupressaceae)",
+          part: "木部・葉", partEn: "Wood & leaves", method: "水蒸気蒸留法", methodEn: "Steam distillation",
+          comp: "α-ピネンなどを含むことが知られています", compEn: "Known to contain α-pinene, among others",
+          themes: ["wa", "relax", "bath"], articles: ["learn-hinoki", "learn-waseiyu", "oil-howto", "oil-set20", "bath-enjoy"],
+          desc: "日本の山々に育つヒノキ科の常緑樹から得られる、代表的な和精油です。木部や葉を水蒸気蒸留して得られ、清々しい木の香りが特徴とされています。ヒノキ風呂の香りとしても親しまれてきました。専用の学習記事「精油プロフィール：ヒノキ」で、基本データから注意点まで学べます。",
+          caution: "原液を直接肌につけず、肌に使う場合は希釈してください。初めて使う精油はパッチテストから始めてください。" },
         { id: "bergamot", name: "ベルガモット", reading: "べるがもっと", row: "は", en: "Bergamot", family: "citrus", note: "top",
-          themes: ["refresh"], articles: ["oil-howto"],
-          desc: "柑橘系の代表例です。明るく軽やかな香りの系統で、朝の時間や気分転換のお供に選ばれることが多いと紹介されています。",
-          caution: "柑橘系は開封後の香りの変化が早いため、早めに使い切るのが目安です。" },
+          themes: ["refresh"], articles: ["learn-bergamot", "oil-howto"],
+          desc: "柑橘系の代表例です。明るく軽やかな香りの系統で、朝の時間や気分転換のお供に選ばれることが多いと紹介されています。専用の学習記事「精油プロフィール：ベルガモット」で、光毒性などの注意点まで学べます。",
+          caution: "柑橘系は開封後の香りの変化が早いため、早めに使い切るのが目安です。ベルガモットには光毒性（光感作）の成分を含むものがあるため、肌に使った後は日光を避けるなど、製品表示の注意を守ってください。" },
         { id: "peppermint", name: "ペパーミント", reading: "ぺぱーみんと", row: "は", en: "Peppermint", family: "herbal",
-          themes: ["focus", "refresh"], articles: ["oil-howto", "oil-set20"],
-          desc: "ハーブ系の精油です。すっきりした清涼感のある香りで、精油セットの記事では「まず開けたい5本」の1本に挙げられ、集中したい作業時間のお供として紹介されています。" },
+          themes: ["focus", "refresh"], articles: ["learn-peppermint", "oil-howto", "oil-set20"],
+          desc: "ハーブ系の精油です。すっきりした清涼感のある香りで、精油セットの記事では「まず開けたい5本」の1本に挙げられ、集中したい作業時間のお供として紹介されています。専用の学習記事「精油プロフィール：ペパーミント」で詳しく学べます。" },
         { id: "eucalyptus", name: "ユーカリ", reading: "ゆーかり", row: "や", en: "Eucalyptus", family: "herbal",
-          themes: ["blend"], articles: ["learn-teatree"],
-          desc: "ティートリーの記事で、香りの相性がよいとされるブレンドの組み合わせ例として名前が挙がっています。すっきりした清涼感のある香りとして知られる精油です。" },
+          themes: ["blend"], articles: ["learn-eucalyptus", "learn-teatree"],
+          desc: "ティートリーの記事で、香りの相性がよいとされるブレンドの組み合わせ例として名前が挙がっています。すっきりした清涼感のある香りとして知られる精油です。専用の学習記事「精油プロフィール：ユーカリ」で詳しく学べます。" },
+        { id: "yuzu", name: "ユズ", reading: "ゆず", row: "や", en: "Yuzu", family: "citrus", note: "top",
+          latin: "Citrus junos", fam: "ミカン科", famEn: "Rue family (Rutaceae)",
+          part: "果皮", partEn: "Fruit peel", method: "水蒸気蒸留法・圧搾法", methodEn: "Steam distillation / Cold pressing",
+          comp: "リモネンなどを含むことが知られています", compEn: "Known to contain limonene, among others",
+          themes: ["wa", "refresh", "bath"], articles: ["learn-waseiyu", "bath-enjoy"],
+          desc: "日本で古くから栽培されてきた柑橘、ユズの果皮から得られる和精油です。レモンやオレンジとは違う、ほろ苦さのある爽やかな香りが特徴とされています。冬至に湯船へユズを浮かべる「ゆず湯」の習慣でも親しまれてきました。主な産地として高知県などが知られています。和精油特集の学習記事「和精油入門」で紹介しています。",
+          caution: "柑橘系は開封後の香りの変化が早いため、早めに使い切るのが目安です。原液を直接肌につけず、肌に使う場合は希釈してください。" },
         { id: "lavender", name: "ラベンダー", reading: "らべんだー", row: "ら", en: "Lavender", family: "herbal", note: "middle",
           latin: "Lavandula angustifolia（真正ラベンダー）", latinEn: "Lavandula angustifolia (true lavender)",
           fam: "シソ科", famEn: "Mint family (Lamiaceae)",
@@ -2024,35 +2695,44 @@
           caution: "比較的扱いやすい精油とされますが、原液を直接肌につける使い方は避け、希釈して使ってください。「ラベンダー」という名前でも種類が複数あるため、学名を確認して選ぶ習慣を付けましょう。" },
         { id: "lemon", name: "レモン", reading: "れもん", row: "ら", en: "Lemon", family: "citrus", note: "top",
           method: "圧搾法", methodEn: "Cold pressing",
-          themes: ["refresh", "blend"], articles: ["oil-howto", "learn-basics", "learn-teatree"],
-          desc: "柑橘系の代表例です。圧搾法で得られる精油の代表例でもあり、果実そのものに近いみずみずしい香りが特徴とされています。ティートリーの記事では、ブレンドの組み合わせ例にも登場します。",
+          themes: ["refresh", "blend"], articles: ["learn-lemon", "oil-howto", "learn-basics", "learn-teatree"],
+          desc: "柑橘系の代表例です。圧搾法で得られる精油の代表例でもあり、果実そのものに近いみずみずしい香りが特徴とされています。ティートリーの記事では、ブレンドの組み合わせ例にも登場します。専用の学習記事「精油プロフィール：レモン」で詳しく学べます。",
           caution: "柑橘系は開封後の香りの変化が早いため、早めに使い切るのが目安です。" },
         { id: "rosemary", name: "ローズマリー", reading: "ろーずまりー", row: "ら", en: "Rosemary", family: "herbal",
-          themes: ["blend"], articles: ["oil-howto", "learn-teatree"],
-          desc: "ハーブ系の代表例として、初めての精油の選び方の記事で紹介されています。ティートリーの記事では、ブレンドの組み合わせ例にも名前が挙がっています。" }
+          themes: ["blend"], articles: ["learn-rosemary", "oil-howto", "learn-teatree"],
+          desc: "ハーブ系の代表例として、初めての精油の選び方の記事で紹介されています。ティートリーの記事では、ブレンドの組み合わせ例にも名前が挙がっています。専用の学習記事「精油プロフィール：ローズマリー」で詳しく学べます。" }
       ];
       var OIL_EN = {
-        ylang: { desc: "Introduced in the first-oil guide as a representative floral — a gorgeous floral family whose impression is strong even in small amounts, so take care not to overuse it." },
+        "aomori-hiba": { desc: "A Japanese essential oil obtained from asunaro (Aomori hiba), a cypress-family evergreen distributed mainly in Aomori Prefecture. Steam-distilled from the wood and leaves, its scent is said to resemble hinoki yet be deeper and calmer. It is introduced in the wa-seiyu feature lesson “An Introduction to Japanese Essential Oils.”",
+          caution: "Never apply it undiluted to skin; dilute it for skin use. With a new oil, start with a patch test." },
+        ylang: { desc: "Introduced in the first-oil guide as a representative floral — a gorgeous floral family whose impression is strong even in small amounts, so take care not to overuse it. You can study it in depth in the dedicated lesson “Essential Oil Profile: Ylang-Ylang.”" },
         orange: { desc: "A representative citrus oil with a bright, light scent, introduced as a family often chosen for mornings and refreshment. It is also the representative example of cold pressing from citrus peel. In the set article it appears as “sweet orange,” one of the recommended first five to open. The lesson “Essential Oil Profile: Sweet Orange” gathers its basic data, scent character and tips for using it up in one place.",
           caution: "Citrus oils change scent quickly after opening, so try to use them up early. For sweet orange, using it up within about six months of opening is given as a guideline." },
-        sandalwood: { desc: "A representative woody oil with a calm, deep scent, introduced as suited to reading and quiet time before sleep." },
-        cedarwood: { desc: "A woody oil. In the set article it is one of the recommended first five to open, suggested for reading and quiet time before sleep, and appears alongside hinoki types as a woody candidate." },
-        jasmine: { desc: "Introduced in the basics lesson as the example of solvent extraction, a method for heat-sensitive flowers. What is obtained this way is called an “absolute” and is sometimes distinguished from essential oils." },
-        geranium: { desc: "Introduced in the first-oil guide as a representative floral — a gorgeous floral family with a strong impression even in small amounts." },
+        sandalwood: { desc: "A representative woody oil with a calm, deep scent, introduced as suited to reading and quiet time before sleep. You can study it in depth in the dedicated lesson “Essential Oil Profile: Sandalwood.”" },
+        cedarwood: { desc: "A woody oil. In the set article it is one of the recommended first five to open, suggested for reading and quiet time before sleep, and appears alongside hinoki types as a woody candidate. You can study it in depth in the dedicated lesson “Essential Oil Profile: Cedarwood.”" },
+        kuromoji: { desc: "A Japanese essential oil obtained from a laurel-family deciduous shrub native to Japan's mountain districts. Steam-distilled from the leaves and twigs, it is rich in linalool and said to have a refined scent with depth. Kuromoji twigs have also long been known as the material of fine toothpicks served with Japanese sweets. It is introduced in the wa-seiyu feature lesson “An Introduction to Japanese Essential Oils.”",
+          caution: "Never apply it undiluted to skin; dilute it for skin use. With a new oil, start with a patch test." },
+        sugi: { desc: "A Japanese essential oil obtained from sugi (Japanese cedar), an endemic conifer planted widely across Japan. Steam-distilled from the leaves and wood, it is said to have a crisp forest scent. In forestry regions, work is progressing to distill from materials such as thinned wood and leaves. It is introduced in the wa-seiyu feature lesson “An Introduction to Japanese Essential Oils.”",
+          caution: "Never apply it undiluted to skin; dilute it for skin use. With a new oil, start with a patch test." },
+        jasmine: { desc: "Introduced in the basics lesson as the example of solvent extraction, a method for heat-sensitive flowers. What is obtained this way is called an “absolute” and is sometimes distinguished from essential oils. You can study it in depth in the dedicated lesson “Essential Oil Profile: Jasmine.”" },
+        geranium: { desc: "Introduced in the first-oil guide as a representative floral — a gorgeous floral family with a strong impression even in small amounts. You can study it in depth in the dedicated lesson “Essential Oil Profile: Geranium.”" },
         teatree: { desc: "An oil obtained by steam-distilling the leaves of a plant in the myrtle family native to Australia. A sharp, cooling scent, often introduced as a “clean-feeling” scent. It has traditionally been used for aromatic bathing, scenting rooms, and scenting while cleaning.",
           caution: "Tea tree is among the oils that can feel more stimulating to skin. Never apply it undiluted; for skin use start at a low concentration and do a patch test. It oxidizes easily, so use it up early after opening." },
-        hakka: { desc: "An oil obtained from Japanese mint grown in Japan. Its main component is menthol, giving a crisp, cooling scent. Kitami Hakka Tsusho of Kitami, Hokkaido, is known as its representative maker, and its mint oil spray is introduced as a popular product.",
+        hakka: { desc: "A Japanese essential oil obtained from Japanese mint (hakka) grown in Japan. Its main component is menthol, giving a crisp, cooling scent. Kitami Hakka Tsusho of Kitami, Hokkaido, is known as its representative maker, and its mint oil spray is introduced as a popular product. The dedicated lesson “Essential Oil Profile: Hakka (Japanese Mint)” covers everything from its basic data to its cautions.",
           caution: "Do not use it near the eyes or mucous membranes. Around infants, keep use modest because of menthol's stimulation, and always check the product label." },
-        hinoki: { desc: "A Japanese tree oil introduced as a representative woody oil. In the bath-additive article it is also named, alongside yuzu and mugwort, as an example of Japanese-ingredient types." },
-        bergamot: { desc: "A representative citrus oil with a bright, light scent, introduced as a family often chosen for mornings and refreshment.",
-          caution: "Citrus oils change scent quickly after opening, so try to use them up early." },
-        peppermint: { desc: "A herbal oil with a crisp, cooling scent. In the set article it is one of the first five to open, introduced as a companion for focused work time." },
-        eucalyptus: { desc: "Named in the tea tree article as an example of a blending partner said to pair well. An oil known for a crisp, cooling scent." },
+        hinoki: { desc: "A representative Japanese essential oil obtained from hinoki, a cypress-family evergreen growing in Japan's mountains. Steam-distilled from the wood and leaves, it is characterized by a clean, refreshing woody scent, and has long been familiar as the scent of hinoki baths. The dedicated lesson “Essential Oil Profile: Hinoki” covers everything from its basic data to its cautions.",
+          caution: "Never apply it undiluted to skin; dilute it for skin use. With a new oil, start with a patch test." },
+        bergamot: { desc: "A representative citrus oil with a bright, light scent, introduced as a family often chosen for mornings and refreshment. The dedicated lesson “Essential Oil Profile: Bergamot” covers it in depth, including cautions such as phototoxicity.",
+          caution: "Citrus oils change scent quickly after opening, so try to use them up early. Some bergamot oils contain phototoxic (photosensitizing) components — after skin use, avoid sunlight and follow the cautions on the product label." },
+        peppermint: { desc: "A herbal oil with a crisp, cooling scent. In the set article it is one of the first five to open, introduced as a companion for focused work time. You can study it in depth in the dedicated lesson “Essential Oil Profile: Peppermint.”" },
+        eucalyptus: { desc: "Named in the tea tree article as an example of a blending partner said to pair well. An oil known for a crisp, cooling scent. You can study it in depth in the dedicated lesson “Essential Oil Profile: Eucalyptus.”" },
+        yuzu: { desc: "A Japanese essential oil obtained from the peel of yuzu, a citrus cultivated in Japan since ancient times. Unlike lemon or orange, it is characterized by a refreshing scent with a gentle bitterness, and has long been familiar through the custom of floating yuzu in the bath at the winter solstice (yuzu-yu). Kochi Prefecture is among its well-known producing regions. It is introduced in the wa-seiyu feature lesson “An Introduction to Japanese Essential Oils.”",
+          caution: "Citrus oils change scent quickly after opening, so try to use them up early. Never apply it undiluted to skin; dilute it for skin use." },
         lavender: { desc: "Aromatherapy's representative oil, obtained by steam-distilling the flower spikes. Its scent is floral yet also has a herbal freshness. It has traditionally been used in rest situations — quiet time before sleep, scenting baths, and scenting linens.",
           caution: "Although considered relatively easy to handle, avoid applying it undiluted to skin — dilute it for use. Several kinds share the name “lavender,” so build the habit of checking the Latin name when choosing." },
-        lemon: { desc: "A representative citrus oil, and also a representative example of cold pressing, characterized by a fresh scent close to the fruit itself. It also appears as a blending example in the tea tree article.",
+        lemon: { desc: "A representative citrus oil, and also a representative example of cold pressing, characterized by a fresh scent close to the fruit itself. It also appears as a blending example in the tea tree article. You can study it in depth in the dedicated lesson “Essential Oil Profile: Lemon.”",
           caution: "Citrus oils change scent quickly after opening, so try to use them up early." },
-        rosemary: { desc: "Introduced in the first-oil guide as a representative herbal oil. It is also named as a blending example in the tea tree article." }
+        rosemary: { desc: "Introduced in the first-oil guide as a representative herbal oil. It is also named as a blending example in the tea tree article. You can study it in depth in the dedicated lesson “Essential Oil Profile: Rosemary.”" }
       };
 
       /* ===== 図鑑の商品紹介（メーカー別・アフィリエイト） =====
@@ -2405,7 +3085,7 @@ var LANG = "ja";
 var UI_EN = {
   pr_bar: "PR: Some articles on this site contain advertising (affiliate links) | A learning-focused site",
   brand_name: "Aroma & Rest Notes", brand_badge: "Learning Site",
-  nav_guide: "Getting Started", nav_pillars: "Four Pillars", nav_learn: "Lessons", nav_zukan: "Oil Encyclopedia", nav_reading: "Reading", nav_safety: "Safety", nav_profile: "About", nav_sns: "Social", nav_new: "New Books & Products",
+  nav_guide: "Getting Started", nav_pillars: "Four Pillars", nav_learn: "Lessons", nav_zukan: "Oil Encyclopedia", nav_wa: "Feature — Wa-Seiyu", nav_reading: "Reading", nav_safety: "Safety", nav_profile: "About", nav_sns: "Social", nav_new: "New Books & Products",
   new_h: "New Books & Products", new_updated: "Featured in October 2026",
   new_lead: "A corner introducing books that deepen your learning and products newly featured on this site: three books for grounding the basics and understanding how scent works, and three recently featured items chosen from essential oils, diffusers and bath goods.",
   new_f_all: "All", new_f_book: "Books", new_f_product: "New products",
@@ -2430,7 +3110,7 @@ var UI_EN = {
   fab_menu: "Menu",
   zukan_h: "Essential Oil Encyclopedia",
   zukan_lead: "Every essential oil that appears in the lessons and reading articles, collected into an encyclopedia you can browse oil by oil. Search the Japanese syllabary order, or filter by theme — rest, refreshment, focus, bathing and more. Each entry lists its scent family, Latin name where given, and links to the articles that feature it.",
-  zukan_open: "Open the encyclopedia (15 oils) →",
+  zukan_open: "Open the encyclopedia (19 oils) →",
   zukan_title: "Essential Oil Encyclopedia",
   zukan_intro: "This encyclopedia collects the essential oils featured in this site's lessons and reading articles. Each description stays within what the articles introduce, plus general scent characteristics. Essential oils are for enjoying scent; nothing here guarantees any effect. Before use, please also read “Learning Safely.”",
   zukan_pr_h: "Advertising notice (PR)",
@@ -2438,15 +3118,29 @@ var UI_EN = {
   zukan_theme_label: "Filter by theme", zukan_row_label: "Browse by syllabary row",
   zukan_caution_h: "Please note",
   zukan_caution: "Never apply undiluted essential oil directly to the skin, and never ingest it. If you are pregnant or breastfeeding, an infant, or living with a medical condition, consult a professional such as a doctor or pharmacist before use. See “Learning Safely” on the top page for details.",
+  wa_h: "Feature — Wa-Seiyu (Japanese Oils)", wa_badge: "FEATURE",
+  wa_h3: "Learn the scents of Japan's forests and satoyama.",
+  wa_lead: "Wa-seiyu is the collective name for essential oils obtained from plants grown in Japan. Yuzu floated in the bath, the woody scent of hinoki, kuromoji — long known as a Japanese aromatic wood — and hakka, which passes crisply through the nose: the plants that have stood beside daily life in this country take the starring role as scents. This feature studies the representative wa-seiyu from three angles — producing regions and satoyama, the craft of distillation, and scenes of daily life.",
+  wa_p1t: "Regions & satoyama", wa_p1: "Scents tied to their places of origin — yuzu from Kochi, hinoki from Shikoku and Yoshino, hakka from Kitami, Hokkaido, and more",
+  wa_p2t: "Distillation ingenuity", wa_p2: "Across Japan, work is progressing to distill from materials that already exist — thinned wood, leaves and branches, and peel left over from processing",
+  wa_p3t: "Scenes of daily life", wa_p3: "Yuzu baths at the winter solstice, hinoki baths, the culture of toothpicks and fragrant woods — a life with scent is Japanese living culture itself",
+  wa_cta1: "Read the feature lesson “An Introduction to Japanese Oils”", wa_cta2: "Filter the encyclopedia to wa-seiyu →", wa_go: "View in encyclopedia →",
+  wa_o1n: "Hinoki", wa_o1d: "A clean woody scent steam-distilled from the wood and leaves. The Japanese tree scent known through hinoki baths.",
+  wa_o2n: "Yuzu", wa_o2d: "A Japanese-born citrus scent from the peel. Its gentle bitterness, particular to Japanese citrus, has long been familiar through winter-solstice yuzu baths.",
+  wa_o3n: "Kuromoji", wa_o3d: "A refined scent with depth, from the leaves and twigs. Rich in linalool, and also known as the wood of toothpicks served with Japanese sweets.",
+  wa_o4n: "Sugi", wa_o4d: "An endemic Japanese species, and a familiar tree planted over a large area. A crisp forest scent from the leaves and wood.",
+  wa_o5n: "Hakka (Japanese mint)", wa_o5d: "A cooling scent rich in menthol. Kitami, Hokkaido has a history as a once world-leading mint-producing region.",
+  wa_o6n: "Aomori Hiba", wa_o6d: "A cypress-family tree distributed mainly around Aomori. A deep, settled woody scent containing hinokitiol.",
+  wa_note: "Note: wa-seiyu are still essential oils, and the same safety principles apply as for other oils. Never apply them undiluted to skin; dilute for skin use; and start any new oil with a patch test. See “Learning Safely” below for details.",
   hero_h1: "Scent, learned<br />in the right <span class=\"accent\">order</span>.",
-  hero_lead: "From the basics and safe use to an encyclopedia of 15 essential oils, everyday self-care and how to think about blending — a clear order that never leaves beginners lost.",
+  hero_lead: "From the basics and safe use to an encyclopedia of 19 essential oils, everyday self-care and how to think about blending — a clear order that never leaves beginners lost. A new feature on “wa-seiyu,” essential oils born from Japanese plants, has also been added.",
   tp1: "Aromatherapy Basics", tp2: "Essential Oil Profiles", tp3: "Self-Care Practice", tp4: "Blending & Materials",
   hero_eyebrow_sub: "A learning site for aromatherapy",
   hero_cta1: "Start with the learning guide", hero_cta2: "Open the oil encyclopedia →",
   hero_guide_tag: "Your guide — Ravi",
   route_title: "The learning route",
   route1: "Learn the basics", route1_s: "What oils are · Safe use",
-  route2: "Meet the oils", route2_s: "Encyclopedia of 15 oils",
+  route2: "Meet the oils", route2_s: "Encyclopedia of 19 oils",
   route3: "Try self-care", route3_s: "Breathing · Bathing · Rest",
   route4: "Think in blends", route4_s: "Dilution & carrier oils",
   hero_disc: "The content of this site is for general learning and information only; it is not medical care or diagnosis. If you have concerns about your health, please consult a medical professional.",
@@ -2651,7 +3345,77 @@ var LEARN_EN = {
   e: "The third essential-oil profile is sweet orange, a representative citrus oil. With guide Ravi, learn its basic data — Latin name Citrus sinensis and cold pressing — its sweet, fresh scent character, blending examples with lavender and others, and the storage tip particular to citrus oils: use it up within about six months of opening.",
   b: '<p>Hello, this is Ravi, your guide. The third essential-oil profile is sweet orange. It is a name heard often as a representative citrus oil, but once you grasp its basic data — Latin name, extraction method, main components — the impression of its scent becomes much more three-dimensional. This time we also learn, as a set, the “tips for using it up” that help you get along well with citrus oils.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Citrus sinensis</em></li><li><strong>Family</strong>: Rue family (Rutaceae)</li><li><strong>Extracted part</strong>: Fruit peel</li><li><strong>Extraction method</strong>: Cold pressing (pressing the peel of citrus fruit)</li><li><strong>Scent family</strong>: Citrus</li><li><strong>Note</strong>: Top note (scents first, and fades relatively quickly)</li><li><strong>Main components</strong>: Known to be rich in limonene</li></ul><p>Cold pressing is the representative extraction method for citrus oils, also introduced in the basics lesson. Because it is obtained by pressing the peel, its scent is said to stay close to the fruit itself.</p><h2>Scent character</h2><p>A sweet, fresh scent, just like the orange fruit itself. Compared with lemon, another citrus oil, its sour edge feels softer — a sweet, mellow impression — and it is considered one of the most approachable scents among citrus oils. For a first citrus oil, its scent is easy to picture.</p><h2>Situations of traditional use</h2><p>Sweet orange\'s bright scent has traditionally been used in times of refreshment, in morning routines, and in aromatic bathing when you want to change the air of a room. Placing one scent in the morning light as a signal for the start of the day is one such piece of daily-life ingenuity in which it has long been familiar. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>Blending examples</h2><p>Here are three combinations often named as examples of scent pairing. They are examples of scent combinations only, and do not guarantee any effect.</p><ul><li><strong>Lavender</strong>: a floral softness layered over the sweet citrus scent</li><li><strong>Cedarwood</strong>: a calm woody base added under the light top note</li><li><strong>Peppermint</strong>: a cooling clarity added to the citrus sweetness, for a crisper impression</li></ul><p>For the drop balance, start with more sweet orange and less of the partner oil, adjusting while you check how the scent changes.</p><h2>How to use: aromatic bathing is the center</h2><p>The center of enjoyment is aromatic bathing. Put a few drops in a diffuser or on an aroma stone, and enjoy the scent with ventilation. As a top note its scent rises quickly and also changes quickly, so using small amounts scene by scene lets you enjoy it at its freshest.</p><p>For skin use, always dilute in a carrier oil. As a guideline, 2 drops of essential oil in 10 ml of carrier oil gives a concentration of about 1% (calculated with one drop as about 0.05 ml). The thinking and steps of the calculation are explained in detail in the lesson <button type="button" class="pillar-link" data-article-link="learn-blend">“Dilution & Concentration Math — Carrier Oils and How to Build a Blend,”</button> so please read it together with this one.</p><h2>Cautions for safe use</h2><p>To keep learning pleasantly, always observe the following:</p><ul><li>Never apply undiluted essential oil directly to skin</li><li>With an oil you are using for the first time, do a patch test with a small amount on an inconspicuous area such as the inner upper arm</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition, or taking medication, consult a specialist before use</li><li>Take care that it does not get into the eyes, and do not use it near the eyes or mucous membranes</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Storage, and tips for using it up</h2><p>Citrus essential oils oxidize easily, so aim to use sweet orange up within about six months of opening. Store it in a cool, dark place, in its amber bottle, and close the cap firmly after each use. Do not forget to keep it out of children\'s reach.</p><p>As for phototoxicity, unlike bergamot, sweet orange is generally considered a type with little concern. Even so, avoid applying it undiluted to skin that will be exposed to sunlight. For skin use, dilution is always the principle.</p><h2>Learning points</h2><p>Lined up beside lavender and tea tree, sweet orange shows a characteristically citrus individuality: “cold pressing, top note, quick oxidation.” As with the previous two oils, summarizing it in a notebook under five points — Latin name, scent, components, traditional uses, cautions — makes comparison learning easier. Including the use-it-up guideline is the trick to getting along well with citrus oils.</p><h2>Follow us on social media</h2><p>News of new lessons and seasonal self-care hints are also shared on this site\'s official social accounts. Both Instagram and Threads are <strong>@aroma.techo</strong>. If you would like the continuation of your learning in the gaps of daily life, please take a look there too.</p><div class="sns-actions"><a class="sns-btn sns-btn--ig" href="https://www.instagram.com/aroma.techo/" target="_blank" rel="noopener noreferrer" aria-label="Follow Aroma & Rest Notes (@aroma.techo) on Instagram"><span class="sns-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></span><span class="sns-label"><small>Instagram</small><span>Follow @aroma.techo</span></span><span class="sns-arrow" aria-hidden="true">→</span></a><a class="sns-btn sns-btn--threads" href="https://www.threads.net/@aroma.techo" target="_blank" rel="noopener noreferrer" aria-label="Follow Aroma & Rest Notes (@aroma.techo) on Threads"><span class="sns-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15.3 12.1c-.25 1.35-1.28 2.35-2.62 2.35a2.85 2.85 0 1 1 2.85-2.85c0 .75-.12 1.95-.23 2.75-.08.62.36 1.15.97 1.15 1.62 0 2.81-1.9 2.81-4.5C20.08 6.45 16.5 3 12.02 3 6.52 3 2.08 7.13 2.08 12.22c0 5.1 4.44 9.23 9.94 9.23 2.37 0 4.52-.78 6.14-2.08"/></svg></span><span class="sns-label"><small>Threads</small><span>Follow @aroma.techo</span></span><span class="sns-arrow" aria-hidden="true">→</span></a></div>',
   r: "Matching the article's theme, we introduce one three-oil set containing sweet orange. Alongside this profile's star, sweet orange, it includes lavender from the first profile and peppermint, which also appeared in the blending examples — a set built for learning while comparing scents.",
-  n: { B0FC66FMQG: "A product from the official Tree of Life Amazon store: a set of three 5 ml essential oils — sweet orange, lavender and peppermint, one bottle each. A set suited to checking the scent of sweet orange on its own, and to learning while comparing it with the lavender introduced in the earlier profile article." } }
+  n: { B0FC66FMQG: "A product from the official Tree of Life Amazon store: a set of three 5 ml essential oils — sweet orange, lavender and peppermint, one bottle each. A set suited to checking the scent of sweet orange on its own, and to learning while comparing it with the lavender introduced in the earlier profile article." } },
+"learn-winter": { t: "From Autumn to Winter — Aromatic Bathing & Rest in the Dry Season",
+  e: "As the air grows drier from autumn into winter, guide Ravi gently organizes how to set up your room environment, the basics of aromatic bathing, switching scents before sleep and in the morning, and how to think about choosing scents by family — together with device handling and safety notes. A self-care practice lesson.",
+  b: '<p>Hello, this is Ravi, your guide. Autumn is deepening, and the morning and evening air has turned chilly. In this season the air outside holds less moisture, and once heating comes on, rooms dry out more easily too. Today, let us learn together how to arrange aromatic bathing and rest for the dry season. Nothing here is difficult: it is about gently setting up three things — your room environment, the basics of aromatic bathing, and small habits — within a range that asks nothing unreasonable of you.</p><h2>The change of season, and your room environment</h2><p>From autumn into winter, your room environment gradually changes. Start by keeping these three points in mind:</p><ul><li><strong>Make humidity visible</strong>: placing a hygrometer lets you see the dryness with your own eyes. If you use a humidifier, follow the product\'s instruction manual and keep up with water changes and care</li><li><strong>Do not forget ventilation</strong>: as it gets colder we open windows less often, but exchanging the air matters for enjoying scent too. Opening a window a few times a day, even briefly, is a good habit</li><li><strong>A guideline for scent strength</strong>: scent is about right when you notice it faintly as you enter the room. If it feels strong, that may be a sign there is too much. Our noses adapt to scent easily, so before adding more, ventilate once to reset</li></ul><h2>Reviewing the basics of aromatic bathing</h2><p>Aromatic bathing is a way of enjoying scent by spreading it through a space. Devices come in several types: aroma stones, which use no power and scent gently just around you; ultrasonic types, which spread water and oil as a mist; and nebulizing types, which atomize the oil itself without water. The differences between types are explained in detail in the lesson <button type="button" class="pillar-link" data-article-link="diffuser-compare">“Comparing 3 Diffuser Types.”</button></p><ul><li>With every device, <strong>following the instruction manual</strong> is the great premise. Which oils can be used, how much, and how to care for the device all differ by product</li><li>Give scenting a time limit. Rather than leaving a device running for long stretches, scenting for about 30 minutes to an hour, then stopping and ventilating, is considered a good intermittent guideline</li><li>If a scent feels too strong, stop the device, open a window, ventilate to weaken the scent, and only then resume</li></ul><h2>Small habits of rest</h2><p>In the dry season especially, dividing rest time with scent is a useful piece of ingenuity.</p><ul><li><strong>Switching before sleep</strong>: about 30 minutes before bed, dim the lights slightly and switch to a gentle scent. Ventilating once before getting into bed, so that only a faint scent remains, helps the whole room switch into “a place to rest”</li><li><strong>Switching in the morning</strong>: on waking, open the curtains to let in light and switch to a light scent such as citrus. Morning scent has traditionally been familiar in daily life as a signal for the start of the day</li><li><strong>The trick to continuing</strong>: rather than doing it perfectly every day, fix the place and time — “this scent at night, this scent in the morning” — and habits form without strain. On days when you feel unwell, a scent-free day is perfectly fine</li></ul><h2>Choosing scents: think by family</h2><p>When choosing scents feels difficult, thinking by “family” rather than bottle by bottle makes organizing easier.</p><ul><li><strong>Citrus</strong> (sweet orange, lemon, and others): a light, bright family. It is often chosen for morning routines and moments when you want to change the air of a room</li><li><strong>Herbal</strong> (lavender, rosemary, tea tree, and others): a clean, crisp family. Lavender has traditionally been used in rest situations — quiet time before sleep, scenting a bath</li><li><strong>Woody</strong> (cedarwood, hinoki, and others): a settled family that forms the base of a scent. It has long been familiar as a companion to reading and quiet evenings</li></ul><p>Combining two or three oils across families is one of the pleasures, but at first, confirming one family at a time is recommended. Scent perception varies by person, so enjoy amounts that ask nothing unreasonable of you, matched to the day\'s preferences and your condition.</p><h2>Cautions for enjoying scent safely</h2><p>To keep enjoying seasonal care for a long time, always observe the following:</p><ul><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil to a guideline of about 1%</li><li>With an oil you are using for the first time, do a patch test with a small amount on an inconspicuous area such as the inner upper arm</li><li>Never put undiluted essential oil directly into bath water. To enjoy scent in the bath, choose a method where the oil never touches skin directly, such as using a bath additive</li><li>Do not use oils on eyes or mucous membranes</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition, or under treatment or medication, consult a specialist before use</li><li>In homes with pets, take care with ventilation and amounts, and use scent only where pets can freely leave the scented room</li><li>Follow each device\'s instruction manual, and do not leave devices running while sleeping or away from home</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care, diagnosis or treatment guidance. If poor health continues, do not judge by self-care — consult a medical professional.</div><h2>Learning points</h2><p>Aromatic bathing in the dry season rests on four pillars: setting up your room environment; following device manuals and not leaving them running; switching scents between bedtime and morning; and choosing scents by family. Each is a small piece of ingenuity. Take them up one at a time, starting with what you can do, and fit them to the rhythm of your own daily life.</p><h2>Follow us on social media</h2><p>News of new lessons and seasonal self-care hints are also shared on this site\'s official social accounts. Both Instagram and Threads are <strong>@aroma.techo</strong>. If you would like the continuation of your learning in the gaps of daily life, please take a look there too.</p><div class="sns-actions"><a class="sns-btn sns-btn--ig" href="https://www.instagram.com/aroma.techo/" target="_blank" rel="noopener noreferrer" aria-label="Follow Aroma & Rest Notes (@aroma.techo) on Instagram"><span class="sns-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></span><span class="sns-label"><small>Instagram</small><span>Follow @aroma.techo</span></span><span class="sns-arrow" aria-hidden="true">→</span></a><a class="sns-btn sns-btn--threads" href="https://www.threads.net/@aroma.techo" target="_blank" rel="noopener noreferrer" aria-label="Follow Aroma & Rest Notes (@aroma.techo) on Threads"><span class="sns-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15.3 12.1c-.25 1.35-1.28 2.35-2.62 2.35a2.85 2.85 0 1 1 2.85-2.85c0 .75-.12 1.95-.23 2.75-.08.62.36 1.15.97 1.15 1.62 0 2.81-1.9 2.81-4.5C20.08 6.45 16.5 3 12.02 3 6.52 3 2.08 7.13 2.08 12.22c0 5.1 4.44 9.23 9.94 9.23 2.37 0 4.52-.78 6.14-2.08"/></svg></span><span class="sns-label"><small>Threads</small><span>Follow @aroma.techo</span></span><span class="sns-arrow" aria-hidden="true">→</span></a></div>',
+  r: "Matching this lesson's theme, we introduce one item already featured on this site — the TOKAIZ nebulizing aroma diffuser — as a real example of the waterless nebulizing type that appeared in the lesson. Its price is listed as ¥3,380 (a reference price at the time of research). Please check the latest price on the Amazon.co.jp product page.",
+  n: { B0G4VW29T7: "TOKAIZ's nebulizing aroma diffuser — a type that atomizes essential oil to spread its scent, without using water. Introduced as a real example of the “waterless type” learned in this lesson. When using it, please follow the product's instruction manual." } },
+"learn-waseiyu": { t: "An Introduction to Japanese Essential Oils (Wa-Seiyu) — Learning the Scents of Japan's Plants: Hinoki, Yuzu, Kuromoji & More",
+  e: "A feature lesson. Wa-seiyu is the collective name for essential oils obtained from plants grown in Japan. Guide Ravi introduces six oils — hinoki, yuzu, kuromoji, sugi, Aomori hiba and Japanese mint (hakka) — together with their producing regions and satoyama landscapes, distillation work that makes use of thinned wood and other local materials, and scenes of daily life such as yuzu baths and hinoki baths.",
+  b: '<p>Hello, this is Ravi, your guide. This feature is about “wa-seiyu” — Japanese essential oils. Wa-seiyu is not the name of a formal standard, but a collective term for essential oils obtained from plants grown in Japan, and in recent years these scents, born in local distilleries and forestry sites across the country, have been drawing attention. Let us add the scents of Japan\'s forests and satoyama to a field of learning that has centered on overseas plants such as lavender and tea tree.</p><h2>Six representative wa-seiyu</h2><ul><li><strong>Hinoki</strong> (Latin name: <em>Chamaecyparis obtusa</em>, cypress family): a clean, refreshing woody scent steam-distilled from the wood and leaves, long familiar as the scent of hinoki baths</li><li><strong>Yuzu</strong> (<em>Citrus junos</em>, rue family): a Japanese citrus oil from the peel, with a refreshing scent carrying a gentle bitterness, known through the winter-solstice custom of yuzu baths. Kochi Prefecture is among its well-known producing regions</li><li><strong>Kuromoji</strong> (<em>Lindera umbellata</em>, laurel family): a refined scent rich in linalool, from the leaves and twigs. The wood is also known as the material of fine toothpicks served with Japanese sweets</li><li><strong>Sugi</strong> (<em>Cryptomeria japonica</em>, cypress family): an endemic species planted widely across Japan; a crisp forest scent from the leaves and wood</li><li><strong>Aomori hiba</strong> (<em>Thujopsis dolabrata</em>, cypress family): a deep woody scent containing hinokitiol, from the wood and leaves of asunaro trees distributed mainly around Aomori</li><li><strong>Hakka (Japanese mint)</strong> (<em>Mentha canadensis</em>, mint family): a cooling scent whose main component is menthol. Kitami, Hokkaido, has a history as a once world-leading mint-producing region</li></ul><p>Detailed data for each oil can be checked one by one from the encyclopedia links at the bottom of this lesson. Hinoki and hakka also have their own dedicated profile lessons.</p><h2>Distillation ingenuity — making use of what is already there</h2><p>At wa-seiyu production sites, one often hears of work to distill from materials that already exist — thinned wood, pruned branches and leaves, and peel left over from yuzu processing. When materials born from tending the forest become scent, the work of the mountains connects with the scents of daily life. When buying, as with overseas oils, choosing products that show the Latin name, extracted part, extraction method and place of origin makes quality easier to judge.</p><h2>Enjoying them in daily life</h2><ul><li><strong>Scenting a bath</strong>: rather than putting undiluted oil directly into the water, enjoy it in ways where the oil never touches skin directly — using a bath additive, or placing an aroma stone in the washing area. The cultures of yuzu baths and hinoki baths are expressions of this daily-life wisdom</li><li><strong>Aromatic bathing in a room</strong>: woody scents such as hinoki, sugi and kuromoji linger as base notes, and are sometimes chosen as companions for reading and quiet time before sleep</li><li><strong>Switching with the seasons</strong>: enjoying yuzu as a winter scent and hakka as a scent for the hot season, tied to the feel of the season, is a way of savoring that is particular to wa-seiyu</li></ul><h2>How to think about blending</h2><p>Combinations within wa-seiyu also suit scent-learning practice. Pairing yuzu (a top note) with hinoki (a base note), for example, layers a Japanese citrus over a woody foundation. Because kuromoji contains linalool, combinations with floral and herbal scents such as lavender are also named as examples. For drop balance, start small and check how the scent changes.</p><h2>Cautions for safe use</h2><p>Wa-seiyu are still essential oils, and the safety principles are exactly the same as for other oils.</p><ul><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil to a guideline of about 1%</li><li>With an oil you are using for the first time, do a patch test with a small amount on an inconspicuous area such as the inner upper arm</li><li>Never put undiluted essential oil directly into bath water</li><li>Do not use oils on eyes or mucous membranes. If you are pregnant or breastfeeding, an infant, living with a medical condition, or under treatment or medication, consult a specialist before use</li><li>Yuzu, a citrus oil, changes scent quickly after opening, so try to use it up early. Store oils in a cool, dark place, out of children\'s reach</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>When learning wa-seiyu, summarize each oil in a notebook under six points — the usual five (Latin name, scent, components, traditional uses, cautions) plus “place of origin” — and the individuality of Japanese plants comes into view. That familiar plants of the forests and satoyama near us can star as scents is the greatest pleasure of learning wa-seiyu.</p>',
+  r: "Matching the feature, we introduce two items that make an entry point to wa-seiyu. Japanese mint is easy to check as a scent in spray form, and woody wa-seiyu are best enjoyed gently on an aroma stone.",
+  n: { B0F8HP7CBT: "A spray type of Japanese mint (hakka), a representative wa-seiyu. A Kitami Hakka Tsusho product that lets you check mint's cooling scent easily.", B0FLY84GRM: "A black-walnut aroma stone. Suited to enjoying woody wa-seiyu such as hinoki gently, just around you, in aromatic bathing." } },
+"learn-hinoki": { t: "Essential Oil Profile: Hinoki — A Clean Woody Scent, and the Culture of Hinoki Baths",
+  e: "A dedicated profile of hinoki, a representative wa-seiyu: its basic data including the Latin name Chamaecyparis obtusa, extraction parts that differ between wood and leaves, its clean woody scent, situations of traditional use beginning with hinoki baths, and its cautions, learned as a set.",
+  b: '<p>Hinoki is a cypress-family evergreen growing in Japan\'s mountains, a tree that has stood close to daily life for centuries as a building material and as the material of bathtubs. As an essential-oil profile, we learn this representative wa-seiyu as a set: basic data, scent, traditional uses and cautions. For the entrance to wa-seiyu as a whole, please also read the feature lesson <button type="button" class="pillar-link" data-article-link="learn-waseiyu">“An Introduction to Japanese Essential Oils.”</button></p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Chamaecyparis obtusa</em></li><li><strong>Family</strong>: Cypress family (Cupressaceae)</li><li><strong>Extracted part</strong>: Wood / leaves (differs by product)</li><li><strong>Extraction method</strong>: Steam distillation</li><li><strong>Scent family</strong>: Woody</li><li><strong>Note</strong>: Base note (a foundation scent that lingers)</li><li><strong>Main components</strong>: Known to contain α-pinene, among others</li></ul><h2>Scent character</h2><p>A clean, crisp woody scent, like freshly shaved hinoki timber. Oils from the wood and from the leaves differ slightly in impression — the leaf type is sometimes said to carry a fresher, greener brightness. Many products show their place of origin, and comparing scents from regions such as Shikoku and Yoshino is one of the pleasures of learning.</p><h2>Situations of traditional use</h2><p>Hinoki\'s scent is deeply rooted in Japanese daily life through the culture of hinoki baths, where the scent of the wooden tub itself is enjoyed. In modern aromatherapy it is familiar in aromatic bathing that adds the air of a forest to a room, and as a scent for reading and quiet time before sleep. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>How to use: aromatic bathing, and ideas around the bath</h2><p>The center of enjoyment is aromatic bathing. A few drops on an aroma stone scent gently, just around you. To enjoy scent in the bath, do not put undiluted oil directly into the water — use a bath additive, or place an aroma stone in the washing area, so the oil never touches skin directly. For skin use, always dilute in a carrier oil to a guideline of about 1%. The concentration math is explained in the lesson <button type="button" class="pillar-link" data-article-link="learn-blend">“Dilution & Concentration Math.”</button></p><h2>Blending examples</h2><ul><li><strong>Yuzu</strong>: a pairing within wa-seiyu — the lightness of a Japanese citrus over a woody foundation</li><li><strong>Lavender</strong>: a floral softness added to the woody scent</li><li><strong>Kuromoji</strong>: two Japanese trees layered together, for a refined combined scent</li></ul><h2>Cautions for safe use</h2><ul><li>Never apply undiluted essential oil directly to skin, and never ingest it</li><li>With an oil you are using for the first time, do a patch test with a small amount on an inconspicuous area such as the inner upper arm</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition, or under treatment or medication, consult a specialist before use</li><li>Do not use oils on eyes or mucous membranes. Store in a cool, dark place, out of children\'s reach</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>Hinoki is a fine example for learning that “even from the same tree, the impression changes with the extracted part (wood / leaves).” The habit of checking the extracted part when buying serves you directly when choosing other oils too. Build your label-reading skill together with the place-of-origin display.</p>',
+  r: "For learning hinoki, an aroma stone that spreads scent gently is recommended. If you want to compare woody scents with other families, a set with many kinds in small amounts is also a good companion.",
+  n: { B0FLY84GRM: "A black-walnut aroma stone. Suited to enjoying woody scents such as hinoki gently, just around you, in aromatic bathing.", B091JZPDQ9: "A set to try 20 kinds of essential oils at 5 ml each. Suited to learning the differences between woody oils including hinoki types and the other families." } },
+"learn-hakka": { t: "Essential Oil Profile: Hakka (Japanese Mint) — Menthol's Cooling Scent, and Kitami's Mint Culture",
+  e: "A dedicated profile of Japanese mint (hakka), one of the wa-seiyu: its basic data including menthol as its main component, its crisp, cooling scent, the producing region history of Kitami, Hokkaido, situations of traditional use, and the cautions that matter precisely because it is a strongly stimulating oil, learned as a set.",
+  b: '<p>Hakka (Japanese mint) is a mint-family plant grown in Japan, and its oil is one of the representative wa-seiyu. Kitami, Hokkaido, has a history as a once world-leading mint-producing region, and Kitami Hakka Tsusho still carries that culture today. The dedicated article <button type="button" class="pillar-link" data-article-link="hakka-uses">“Using Japanese Mint Oil Spray”</button> goes deeper into usage, so this lesson organizes the profile — basic data and cautions. For the entrance to wa-seiyu as a whole, start from the feature lesson <button type="button" class="pillar-link" data-article-link="learn-waseiyu">“An Introduction to Japanese Essential Oils.”</button></p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Mentha canadensis</em> (Japanese mint)</li><li><strong>Family</strong>: Mint family (Lamiaceae)</li><li><strong>Extracted part</strong>: Leaves & stems</li><li><strong>Extraction method</strong>: Steam distillation</li><li><strong>Scent family</strong>: Herbal</li><li><strong>Main components</strong>: Menthol is its main component</li></ul><h2>Scent character</h2><p>A strongly cooling scent that passes crisply through the nose. Compared with peppermint, it is sometimes described as having a sharper impression, with a clear outline of menthol. Japanese mint has long been known as a variety with a high menthol content.</p><h2>Situations of traditional use</h2><p>Mint oil has long been familiar in Japanese daily life as a scent item. It has traditionally been used in ingenuity for keeping a cooling scent close — a small amount on a handkerchief, a companion for going out in the hot season. Some products are food-additive grade and used to flavor drinks such as tea, but because products of different categories also exist, check the product labeling and choose one suited to your purpose.</p><h2>Cautions for safe use</h2><p>Mint oil is a strongly stimulating essential oil. Always observe the following:</p><ul><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil and start at a low concentration</li><li>Do not use it near the eyes or mucous membranes. Around infants, keep use modest because of menthol\'s stimulation, and always check the target age and cautions on the product label</li><li>With a first use, do a patch test, and stop if redness or itching appears</li><li>Spray products containing alcohol are flammable — keep them away from fire and out of hot places</li><li>If you are pregnant or breastfeeding, living with a medical condition, or under treatment or medication, consult a specialist before use</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>Hakka teaches that “even within the mint family, the component lineup differs by variety.” Read it alongside the peppermint profile and the importance of checking Latin names and component labeling becomes clear.</p>',
+  r: "Matching the article's theme, we introduce one item — Kitami Hakka Tsusho's mint oil spray. Please check its uses and cautions together with the dedicated article “Using Japanese Mint Oil Spray.”",
+  n: { B0F8HP7CBT: "Kitami Hakka Tsusho's spray type. Lets you check Japanese mint's cooling scent easily." } },
+"learn-ylang": { t: "Essential Oil Profile: Ylang-Ylang — A Gorgeous Floral Scent, and Why Amount Matters",
+  e: "A dedicated profile of ylang-ylang, a representative floral oil: its basic data including the Latin name Cananga odorata, its sweet, gorgeous scent, situations of traditional use, and the cautions that matter because its impression is strong even in small amounts, learned as a set.",
+  b: '<p>Ylang-ylang is an essential oil obtained from the flowers of a custard-apple-family tree native to Southeast Asia. In the first-oil guide it was named as a representative floral. As a dedicated profile, we learn its basic data, scent, traditional uses and cautions as a set.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Cananga odorata</em></li><li><strong>Family</strong>: Custard apple family (Annonaceae)</li><li><strong>Extracted part</strong>: Flowers</li><li><strong>Extraction method</strong>: Steam distillation (grade labels such as “extra” and “No.1,” by distillation stage, are sometimes seen)</li><li><strong>Scent family</strong>: Floral</li><li><strong>Main components</strong>: Known to contain linalool, among others</li></ul><h2>Scent character</h2><p>A sweet, rich floral scent, also described as exotic. Its impression is strong even in small amounts, and scenting too much can make it feel heavy — so judging the number of drops is the learning point of this oil.</p><h2>Situations of traditional use</h2><p>In its regions of origin, the flowers are said to have been familiar in daily life, placed around the person to enjoy their scent. In modern aromatherapy it is also known as a perfume ingredient, and has traditionally been used in aromatic bathing and as an accent in blends. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>Blending examples</h2><ul><li><strong>Sweet orange</strong>: a citrus lightness added to a floral scent that can turn heavy</li><li><strong>Sandalwood</strong>: a woody foundation under the gorgeousness, for a calmer impression</li></ul><p>In both cases, starting ylang-ylang with fewer drops makes the blend easier to build.</p><h2>Cautions for safe use</h2><ul><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil and start at a low concentration</li><li>Because its scent can feel strong, start with a small amount in aromatic bathing; if you feel a headache or unwell, ventilate and stop use</li><li>With a new oil, do a patch test</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition, or under treatment or medication, consult a specialist before use</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>Ylang-ylang teaches the relationship between scent strength and amount. Because a single drop changes the impression greatly, recording drop counts is especially useful in blending study.</p>',
+  r: "For a distinctive floral scent like ylang-ylang, learning with a set that gathers many kinds in small amounts — comparing it with other families — is recommended.",
+  n: { B091JZPDQ9: "A set to try 20 kinds of essential oils at 5 ml each. Lets you learn floral scents such as ylang-ylang while comparing them with other families." } },
+"learn-sandalwood": { t: "Essential Oil Profile: Sandalwood — A Deep Woody Scent, and the Perspective of Knowing the Raw Material",
+  e: "A dedicated profile of sandalwood, a representative woody oil: its basic data including the Latin name Santalum album, its deep woody scent with sweetness, situations of traditional use beginning with incense culture, the perspective of raw-material sustainability, and its cautions, learned as a set.",
+  b: '<p>Sandalwood (byakudan) is an essential oil obtained from the heartwood of a sandalwood-family tree grown in India and elsewhere. In the first-oil guide it was introduced as a representative woody oil. As a dedicated profile, we learn its basic data, scent, traditional uses and cautions as a set.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Santalum album</em> (the kind known as Indian sandalwood)</li><li><strong>Family</strong>: Sandalwood family (Santalaceae)</li><li><strong>Extracted part</strong>: Heartwood</li><li><strong>Extraction method</strong>: Steam distillation</li><li><strong>Scent family</strong>: Woody</li><li><strong>Note</strong>: Base note (a foundation scent that lingers)</li><li><strong>Main components</strong>: Known to contain α-santalol, among others</li></ul><h2>Scent character</h2><p>A deep, mellow woody scent with sweetness. Unlike the cleanness of hinoki or cedarwood, it is characterized by a weighty calmness. Its long-lasting scent is also a base-note trait.</p><h2>Situations of traditional use</h2><p>Byakudan has long been familiar in Asian daily life as a fragrant wood for incense and fans. In modern aromatherapy it has traditionally been used as a scent for quiet time in aromatic bathing, and as a foundation scent in perfumes. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>The perspective of knowing the raw material</h2><p>Sandalwood is a tree that takes many years to grow, and it is a representative oil for which care about raw-material sustainability matters. Checking the origin and kind (Latin name) on the label, and choosing products whose background is visible — for example, oils stated to come from planted raw material — is also part of the learning.</p><h2>Cautions for safe use</h2><ul><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil</li><li>With a new oil, do a patch test</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition, or under treatment or medication, consult a specialist before use</li><li>Store upright in a cool, dark place, out of children\'s reach</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>Sandalwood is an oil that prompts you to think about the raw material and origin behind a scent. The habit of checking Latin names and origins is itself the foundation of judging quality.</p>',
+  r: "Sandalwood can be expensive as a single oil. First check its impression in a set, and if you like it, look for a single oil that shows its Latin name and origin.",
+  n: { B091JZPDQ9: "A set to try 20 kinds of essential oils at 5 ml each. Lets you learn woody scents such as sandalwood while comparing them with other families." } },
+"learn-cedarwood": { t: "Essential Oil Profile: Cedarwood — A Settled Woody Scent, and How to Tell Its Kinds Apart",
+  e: "A dedicated profile of cedarwood, a woody oil: how its Latin name differs by kind (Atlas cedar and others), its settled woody scent, situations of traditional use, and its cautions, learned as a set. One of the “first five to open” from the set article.",
+  b: '<p>Cedarwood is a woody essential oil obtained from the wood of conifers. In the 20-oil set article it was one of the “first five to open.” As a dedicated profile, we learn its basic data, scent, traditional uses and cautions as a set.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: differs by kind. Atlas cedar is often shown as <em>Cedrus atlantica</em></li><li><strong>Family</strong>: Pine family (Pinaceae), in the case of Atlas cedar</li><li><strong>Extracted part</strong>: Wood</li><li><strong>Extraction method</strong>: Steam distillation</li><li><strong>Scent family</strong>: Woody</li><li><strong>Note</strong>: Base note (a foundation scent that lingers)</li><li><strong>Main components</strong>: Known to contain sesquiterpenes</li></ul><p>Several different trees share the name “cedarwood,” so checking the Latin name when buying is essential. This is the same thinking as the caution learned in the lavender profile — “several kinds can share one name.”</p><h2>Scent character</h2><p>A settled, dry woody scent. Compared with hinoki\'s cleanness and sandalwood\'s sweet depth, it is sometimes described as plain and unadorned. It lasts long and suits the foundation of a blend.</p><h2>Situations of traditional use</h2><p>Cedar wood has a history of use as a building material and as material for storage boxes. In modern aromatherapy it has traditionally been used in aromatic bathing for reading and quiet time before sleep, and for scenting around stored clothing. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>Blending examples</h2><ul><li><strong>Sweet orange</strong>: a woody foundation under a light top note</li><li><strong>Lavender</strong>: a floral softness layered over woody calm</li></ul><h2>Cautions for safe use</h2><ul><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil</li><li>With a new oil, do a patch test</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition, or under treatment or medication, consult a specialist before use</li><li>Cautions can differ by kind — check the Latin name and warnings on the product label</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>Cedarwood is a representative example for learning that “oils sharing a common name can have different Latin names.” Let us confirm once more the habit of checking the Latin name on the label.</p>',
+  r: "Cedarwood is an oil whose scent is easy to check in a set. When buying a single oil, check the Latin name shown before choosing.",
+  n: { B091JZPDQ9: "A set to try 20 kinds of essential oils at 5 ml each. Lets you learn woody scents such as cedarwood while comparing them with other families." } },
+"learn-jasmine": { t: "Essential Oil Profile: Jasmine — A Floral Scent Obtained by Solvent Extraction, and Learning the “Absolute”",
+  e: "A dedicated profile of jasmine: a deeper look at the flower that appeared in the basics lesson as the example of solvent extraction — why what is obtained is called an “absolute” and distinguished from essential oils, its sweet, rich scent, situations of traditional use, and its cautions, learned as a set.",
+  b: '<p>Jasmine is an oleaster-family plant known for the sweet scent of its white flowers. In the basics lesson “What Are Essential Oils?” it appeared as the example of solvent extraction, a method for heat-sensitive flowers. As a dedicated profile, we take that learning one step deeper.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Jasminum officinale</em>, among others (differs by kind)</li><li><strong>Family</strong>: Oleaster family (Oleaceae)</li><li><strong>Extracted part</strong>: Flowers</li><li><strong>Extraction method</strong>: Solvent extraction (the result is called an “absolute”)</li><li><strong>Scent family</strong>: Floral</li><li><strong>Main components</strong>: Known to contain benzyl acetate, among others</li></ul><h2>The difference between an “essential oil” and an “absolute”</h2><p>Unlike essential oils obtained by steam distillation or cold pressing, heat-sensitive flowers such as jasmine are obtained by using a solvent to draw out the scent components. What is obtained this way is called an “absolute” and is sometimes distinguished from essential oils. Checking the extraction method on the label makes a product\'s nature easier to read.</p><h2>Scent character</h2><p>A sweet, rich floral scent with warmth. Its presence is strong even in small amounts, and in blends it is considered a type where “one drop changes the impression.” Because gathering the scent requires many flowers, it is also known for tending to be expensive.</p><h2>Situations of traditional use</h2><p>Jasmine flowers have long been familiar in cultures that enjoy scent, including the scenting of tea. In modern aromatherapy it has traditionally been used as a perfume ingredient, and as an accent in aromatic bathing and blends. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>Cautions for safe use</h2><ul><li>Never apply it undiluted to skin. For skin use, dilute at a low concentration in a carrier oil</li><li>Because its scent impression is strong, start with a small amount in aromatic bathing</li><li>With a first use, do a patch test</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition, or under treatment or medication, consult a specialist before use</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>Jasmine is a representative example for learning that “the name changes with the extraction method.” Reading it alongside the basics lesson deepens your understanding of extraction methods by one more level.</p>',
+  r: "Jasmine absolutes are often expensive. First learn the tendencies of floral scents in a set, then look for a single product while checking the extraction method shown.",
+  n: { B091JZPDQ9: "A set to try 20 kinds of essential oils at 5 ml each. Lets you learn the lineup of floral scents while comparing them with other families." } },
+"learn-geranium": { t: "Essential Oil Profile: Geranium — A Rose-Like Floral Scent, and an Oil Obtained from Leaves",
+  e: "A dedicated profile of geranium, a floral oil: its basic data including the Latin name Pelargonium graveolens, the point that it is obtained from leaves rather than flowers, its scent often described as resembling rose, situations of traditional use, and its cautions, learned as a set.",
+  b: '<p>Geranium is an essential oil obtained from the leaves of a geranium-family plant. In the first-oil guide it was introduced as a representative floral. As a dedicated profile, we learn its basic data, scent, traditional uses and cautions as a set.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Pelargonium graveolens</em></li><li><strong>Family</strong>: Geranium family (Geraniaceae)</li><li><strong>Extracted part</strong>: Leaves (not the flowers)</li><li><strong>Extraction method</strong>: Steam distillation</li><li><strong>Scent family</strong>: Floral</li><li><strong>Main components</strong>: Known to contain citronellol and geraniol, among others</li></ul><p>It is a relative of the “geranium” familiar in gardening, but the oil is obtained from the leaves, not the flowers. This difference in extracted part is a good example for learning to read labels.</p><h2>Scent character</h2><p>Its scent is often described as a sweet floral scent resembling rose, layered with a fresh, leafy greenness. Among floral oils, it has the individuality of a crisp side within the sweetness.</p><h2>Situations of traditional use</h2><p>Geranium has a long history of use as a scenting ingredient for perfumes and cosmetics. In modern aromatherapy it has traditionally been used where floral scents are enjoyed — aromatic bathing and blends. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>Blending examples</h2><ul><li><strong>Lavender</strong>: two floral scents layered together, for a soft impression</li><li><strong>Bergamot</strong>: a citrus lightness added, for a brighter impression</li></ul><h2>Cautions for safe use</h2><ul><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil</li><li>With a new oil, do a patch test</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition, or under treatment or medication, consult a specialist before use</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>Geranium is an oil that makes label-reading fun — “a floral scent, yet the extracted part is the leaf.” Remember the perspective that “scent family” and “extracted part” are separate pieces of information.</p>',
+  r: "For geranium, first check the impression of its scent in a set, and note in your notebook how it differs from rose-family scents.",
+  n: { B091JZPDQ9: "A set to try 20 kinds of essential oils at 5 ml each. Lets you learn floral scents such as geranium while comparing them with other families." } },
+"learn-bergamot": { t: "Essential Oil Profile: Bergamot — The Citrus Known from Tea, and the Phototoxicity Caution",
+  e: "A dedicated profile of bergamot, a citrus oil: the basic data of the fruit known for scenting Earl Grey tea, its refreshing scent with a hint of bitterness, situations of traditional use, and — especially important among citrus oils — the phototoxicity (photosensitization) caution, learned as a set.",
+  b: '<p>Bergamot is a rue-family citrus cultivated in Italy and elsewhere. Many people know its name from the scenting of Earl Grey tea. In the first-oil guide it was introduced as a representative citrus. As a dedicated profile, we learn its basic data, scent, traditional uses and cautions as a set.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Citrus bergamia</em></li><li><strong>Family</strong>: Rue family (Rutaceae)</li><li><strong>Extracted part</strong>: Fruit peel</li><li><strong>Extraction method</strong>: Cold pressing</li><li><strong>Scent family</strong>: Citrus</li><li><strong>Note</strong>: Top note (scents first, and fades relatively quickly)</li><li><strong>Main components</strong>: Known to contain limonene and linalyl acetate, among others</li></ul><h2>Scent character</h2><p>Its scent is often described as citrus freshness layered with a faint bitterness and a floral nuance. Compared with sweet orange\'s straightforward sweetness, it is a more grown-up citrus impression.</p><h2>Situations of traditional use</h2><p>Bergamot has long been familiar as a scenting for tea and as a perfume ingredient. In modern aromatherapy it has traditionally been used in aromatic bathing for morning routines and moments when you want to change your mood. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>Cautions for safe use — always check phototoxicity</h2><p>Among citrus oils, bergamot is one for which the phototoxicity (photosensitization) caution matters especially.</p><ul><li>Some bergamot oils contain phototoxic components (such as bergapten). Exposure to sunlight after skin use can cause skin trouble</li><li>For skin use, always follow the cautions on the product label, and avoid sunlight after use. Products labeled “furocoumarin-free (bergapten-free),” with the phototoxic components removed, also exist</li><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil, and with a new oil, do a patch test</li><li>Citrus oils change scent quickly after opening, so try to use them up early</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition, or under treatment or medication, consult a specialist before use</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>In the sweet orange profile we learned that “the degree of phototoxicity concern differs by kind.” Bergamot is the opposite-pole example. That cautions differ even within the citrus family is exactly why oils are learned one bottle at a time.</p>',
+  r: "For bergamot, first check the scent in a set. If you look for a single oil for skin use, choose a product that shows consideration for phototoxicity (such as furocoumarin-free).",
+  n: { B091JZPDQ9: "A set to try 20 kinds of essential oils at 5 ml each. Lets you learn citrus scents such as bergamot while comparing them with other citrus oils." } },
+"learn-peppermint": { t: "Essential Oil Profile: Peppermint — A Cooling Herbal Scent, and Its Difference from Japanese Mint",
+  e: "A dedicated profile of peppermint, a herbal oil: its basic data including the Latin name Mentha piperita, its cooling menthol scent, situations of traditional use, how to compare it with Japanese mint (hakka), and its cautions, learned as a set.",
+  b: '<p>Peppermint is a representative herbal essential oil obtained from a mint-family perennial. It appears in both the first-oil guide and the set article, where it was one of the “first five to open.” As a dedicated profile, we learn its basic data, scent, traditional uses and cautions as a set.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Mentha piperita</em> (considered a hybrid of water mint and spearmint)</li><li><strong>Family</strong>: Mint family (Lamiaceae)</li><li><strong>Extracted part</strong>: Leaves, flower spikes and other aerial parts</li><li><strong>Extraction method</strong>: Steam distillation</li><li><strong>Scent family</strong>: Herbal</li><li><strong>Main components</strong>: Known to contain menthol and menthone, among others</li></ul><h2>Scent character</h2><p>A cooling scent with a hint of sweetness layered over it. Compared with Japanese mint, it is sometimes described as having a roundness within menthol\'s sharpness. Placing the two side by side lets you feel how differences of Latin name and variety become differences of scent.</p><h2>Situations of traditional use</h2><p>Peppermint is a plant long familiar in food culture too, as herbal tea and as a scenting for sweets. In modern aromatherapy it has traditionally been used as a companion for focused work time, and in aromatic bathing for moments when you want to change your mood. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>Blending examples</h2><ul><li><strong>Sweet orange</strong>: a cooling clarity added to citrus sweetness, for a crisper impression</li><li><strong>Rosemary</strong>: two herbs layered together, for a fresh impression</li><li><strong>Lavender</strong>: a floral softness added to the cooling scent</li></ul><h2>Cautions for safe use</h2><ul><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil and start at a low concentration</li><li>Do not use it near the eyes or mucous membranes. Around infants, keep use modest because of menthol\'s stimulation</li><li>With a new oil, do a patch test</li><li>If you are pregnant or breastfeeding, living with a medical condition, or under treatment or medication, consult a specialist before use</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>Peppermint and Japanese mint are both “menthol scents,” yet their Latin names and scent impressions differ. Comparing the two side by side in the encyclopedia is the best shortcut to learning the mint family.</p>',
+  r: "To learn peppermint, the Tree of Life set of three — which gathers all three blending examples — is recommended. Placed beside a Japanese mint spray, the scent differences within the mint family become clear.",
+  n: { B0FC66FMQG: "A three-oil set from the official Tree of Life Amazon store. Alongside peppermint, it contains sweet orange and lavender, which appeared in the blending examples.", B0F8HP7CBT: "A spray type of Japanese mint. Recommended as a learning partner for comparing scents with peppermint." } },
+"learn-eucalyptus": { t: "Essential Oil Profile: Eucalyptus — The Cooling Scent of 1,8-Cineole, and Care Over Its Many Kinds",
+  e: "A dedicated profile of eucalyptus: how its Latin name differs by kind (such as Eucalyptus globulus), its crisp scent from the main component 1,8-cineole, situations of traditional use, and its cautions, learned as a set.",
+  b: '<p>Eucalyptus is a myrtle-family tree native to Australia. In the tea tree profile it was named as an example of a blending partner. Learning it side by side with tea tree, a fellow myrtle-family oil, deepens understanding. As a dedicated profile, we learn its basic data, scent, traditional uses and cautions as a set.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: differs by kind. The representative blue gum is shown as <em>Eucalyptus globulus</em>. Others include lemon-scented Eucalyptus citriodora and the gentler-impression Eucalyptus radiata</li><li><strong>Family</strong>: Myrtle family (Myrtaceae)</li><li><strong>Extracted part</strong>: Leaves</li><li><strong>Extraction method</strong>: Steam distillation</li><li><strong>Scent family</strong>: Herbal</li><li><strong>Main components</strong>: Known to be rich in 1,8-cineole</li></ul><h2>Scent character</h2><p>A cooling scent that passes crisply through the nose. It belongs to a family similar to tea tree\'s sharpness, yet is sometimes described as lighter and more expansive. Some kinds carry a lemon-like scent, and this breadth — too wide to sum up in the single word “eucalyptus” — is its individuality.</p><h2>Situations of traditional use</h2><p>In Australia, eucalyptus leaves are said to have long been familiar in daily life. In modern aromatherapy it has traditionally been used in aromatic bathing at the change of seasons, in moments when you want to change the air of a room, and for scenting while cleaning. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>Blending examples</h2><ul><li><strong>Tea tree</strong>: two myrtle-family oils layered together, for a cooling combined scent</li><li><strong>Lavender</strong>: a floral softness added to the crisp scent</li><li><strong>Lemon</strong>: a citrus lightness added, for a brighter impression</li></ul><h2>Cautions for safe use</h2><ul><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil and start at a low concentration</li><li>Kinds rich in 1,8-cineole are considered to need care around infants. Always check the target age and cautions on the product label</li><li>With a new oil, do a patch test</li><li>If you are pregnant or breastfeeding, living with a medical condition, or under treatment or medication, consult a specialist before use</li><li>In homes with pets, take care with ventilation and amounts</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>The heart of learning eucalyptus is “the number of its kinds.” When buying, check the Latin name rather than the common name alone, and build the habit of choosing with awareness of which eucalyptus it is.</p>',
+  r: "Eucalyptus is an oil with many kinds. First grasp the tendency of its scent in a set; when choosing a single oil, always check the Latin name (globulus, radiata, and so on).",
+  n: { B091JZPDQ9: "A set to try 20 kinds of essential oils at 5 ml each. Lets you learn herbal scents such as eucalyptus while comparing them with other families." } },
+"learn-lemon": { t: "Essential Oil Profile: Lemon — The Fresh Scent of Cold Pressing, and Storage Tips for Citrus Oils",
+  e: "A dedicated profile of lemon, a citrus oil: its basic data including the Latin name Citrus limon, its fresh scent close to the fruit itself, situations of traditional use, and the citrus cautions of phototoxicity and quick oxidation, learned as a set.",
+  b: '<p>Lemon is an essential oil obtained by cold pressing from the peel of a rue-family citrus. In the basics lesson it appeared as the representative example of cold pressing, and in the first-oil guide as a representative citrus. As a dedicated profile, we learn its basic data, scent, traditional uses and cautions as a set.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Citrus limon</em></li><li><strong>Family</strong>: Rue family (Rutaceae)</li><li><strong>Extracted part</strong>: Fruit peel</li><li><strong>Extraction method</strong>: Cold pressing (pressing the peel of citrus fruit)</li><li><strong>Scent family</strong>: Citrus</li><li><strong>Note</strong>: Top note (scents first, and fades relatively quickly)</li><li><strong>Main components</strong>: Known to be rich in limonene</li></ul><h2>Scent character</h2><p>A fresh, juicy scent, just like the lemon fruit itself. Compared with sweet orange, the outline of sourness is clearer than sweetness, and among citrus oils it is characterized by a “crisp brightness.”</p><h2>Situations of traditional use</h2><p>Lemon\'s scent is deeply rooted in daily life as a scenting for food and drinks. In modern aromatherapy it has traditionally been used in aromatic bathing for morning routines, for the space after cleaning, and for moments when you want to change your mood. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>Blending examples</h2><ul><li><strong>Rosemary</strong>: a herbal freshness layered over the citrus brightness</li><li><strong>Eucalyptus</strong>: two cooling scents together, for a crisp impression</li><li><strong>Hinoki</strong>: a citrus lightness added over a Japanese woody foundation</li></ul><h2>Cautions for safe use</h2><ul><li>Some citrus oils obtained by cold pressing are considered to need a phototoxicity (photosensitization) caution. After skin use, avoid sunlight and follow the cautions on the product label</li><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil, and with a new oil, do a patch test</li><li>Citrus oils oxidize easily, so aim to use them up within about six months of opening. Store in a cool, dark place and close the cap firmly</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition, or under treatment or medication, consult a specialist before use</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>Lemon shares “cold pressing, top note, quick oxidation” with sweet orange, yet its scent impression and phototoxicity cautions differ — a fine example. Comparative learning across the three citrus oils (orange, lemon, bergamot) is recommended.</p>',
+  r: "Lemon is an oil suited to comparative learning within the citrus family. First check its differences from orange and bergamot in a set, and learn it together with the use-it-up guideline.",
+  n: { B091JZPDQ9: "A set to try 20 kinds of essential oils at 5 ml each. Lets you learn citrus scents such as lemon while comparing them with orange and bergamot." } },
+"learn-rosemary": { t: "Essential Oil Profile: Rosemary — A Crisp Herbal Scent, and Learning the Chemotype",
+  e: "A dedicated profile of rosemary, a herbal oil: its basic data including the Latin name Salvia rosmarinus, its crisp herbal scent, its culture as a culinary herb, the idea of the “chemotype” — dividing by component tendency — and its cautions, learned as a set.",
+  b: '<p>Rosemary is a mint-family evergreen shrub native to the Mediterranean coast, a plant also widely known as a culinary herb. In the first-oil guide it appeared as a representative herbal oil, and in the tea tree article as a blending example. As a dedicated profile, we learn its basic data, scent, traditional uses and cautions as a set.</p><h2>Basic data</h2><ul><li><strong>Latin name</strong>: <em>Salvia rosmarinus</em> (also shown under its former name <em>Rosmarinus officinalis</em>)</li><li><strong>Family</strong>: Mint family (Lamiaceae)</li><li><strong>Extracted part</strong>: Leaves, flower spikes and other aerial parts</li><li><strong>Extraction method</strong>: Steam distillation</li><li><strong>Scent family</strong>: Herbal</li><li><strong>Main components</strong>: Known to contain 1,8-cineole, camphor and α-pinene, among others</li></ul><h2>The idea of the chemotype</h2><p>Rosemary is known for differing component tendencies even within the same plant, depending on origin and growing environment, and it is a representative oil spoken of through the idea of the “chemotype” — divisions by component character (for example, cineole type, camphor type, verbenone type). Products that show the chemotype on the label become a lesson in choosing with component tendencies in mind.</p><h2>Scent character</h2><p>A crisp, cooling, sharp herbal scent. In contrast to lavender\'s softness, it is sometimes described as having a clear-cut impression.</p><h2>Situations of traditional use</h2><p>Rosemary is an herb long familiar in the daily life of the Mediterranean coast, beginning with the scenting of food. In modern aromatherapy it has traditionally been used as a companion for work and study time, and in morning aromatic bathing. All of these have been passed down as “situations for enjoying scent,” and this site does not state effects as certainties.</p><h2>Blending examples</h2><ul><li><strong>Lemon</strong>: a citrus brightness layered in, for a fresh impression</li><li><strong>Peppermint</strong>: two herbs layered together, for a cooling combined scent</li><li><strong>Cedarwood</strong>: a woody foundation added under the sharp scent</li></ul><h2>Cautions for safe use</h2><ul><li>Never apply undiluted essential oil directly to skin. For skin use, dilute in a carrier oil and start at a low concentration</li><li>With a new oil, do a patch test</li><li>If you are pregnant or breastfeeding, an infant, living with a medical condition such as epilepsy, or under treatment or medication, consult a specialist before use</li><li>Because component tendencies differ by chemotype, check the components and cautions on the product label</li></ul><div class="caution"><strong>Please note</strong>This article is for general learning and information; it is not medical care or diagnosis. If skin abnormality appears, stop use, and if symptoms continue, consult a medical professional.</div><h2>Learning points</h2><p>Rosemary is an oil where you meet the one-step-deeper concept of the “chemotype.” The habit of looking beyond the Latin name to component tendencies greatly raises the precision of your oil choosing.</p>',
+  r: "For rosemary, first grasp the tendency of its scent in a set. When choosing a single oil, a product that shows its chemotype deepens the component learning.",
+  n: { B091JZPDQ9: "A set to try 20 kinds of essential oils at 5 ml each. Lets you learn herbal scents such as rosemary while comparing them with other families." } }
 };
 function EN(a) { var d = ART_EN[a.id] || LEARN_EN[a.id]; return (LANG === "en" && d) ? d : null; }
 function locTitle(a) { var d = EN(a); return d ? d.t : a.title; }
@@ -2909,6 +3673,32 @@ if (typeof setLang === "function" && typeof renderZukan === "function") {
         g.hidden = !(f === "all" || g.getAttribute("data-new-kind") === f);
       });
     });
+  });
+})();
+</script>
+<script>
+/* ===== 和精油特集：カードと絞り込みボタンの動作 ===== */
+(function () {
+  function openWaZukan(oilId) {
+    if (typeof openZukan !== "function") return;
+    if (typeof zukanTheme !== "undefined") {
+      /* 図鑑を「和精油」テーマで開く（openZukan(oilId) は all に戻すため、先に oilId なしで開いてからテーマを差し替える） */
+      if (oilId) { openZukan(oilId); return; }
+      openZukan();
+    } else {
+      openZukan(oilId);
+    }
+    if (!oilId && typeof zukanTheme !== "undefined" && typeof renderZukan === "function") {
+      zukanTheme = "wa";
+      renderZukan();
+      var zv = document.getElementById("zukanView");
+      if (zv) { window.scrollTo({ top: 0 }); }
+    }
+  }
+  var waBtn = document.getElementById("openZukanBtnWa");
+  if (waBtn) waBtn.addEventListener("click", function () { openWaZukan(null); });
+  document.querySelectorAll("[data-wa-oil]").forEach(function (b) {
+    b.addEventListener("click", function () { openWaZukan(b.getAttribute("data-wa-oil")); });
   });
 })();
 </script>
