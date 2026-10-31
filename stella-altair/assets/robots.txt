@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tomyree-source.github.io/sites/stella-altair/assets/sitemap.xml
