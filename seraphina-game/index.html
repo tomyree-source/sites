@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<title>セラフィナ ―試作版― 序章＋第1章「降臨」</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Noto Sans JP",sans-serif;background:#10131f;color:#fff;overflow:hidden}
+#app{position:relative;width:100%;max-width:480px;height:100dvh;margin:0 auto;background:#000;overflow:hidden;box-shadow:0 0 40px rgba(0,0,0,.6)}
+#bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:opacity.45s}
+#shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,10,24,.25) 0%,rgba(8,10,24,0) 30%,rgba(8,10,24,0) 52%,rgba(8,10,24,.88) 82%)}
+#hud{position:absolute;top:0;left:0;right:0;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;background:linear-gradient(to bottom,rgba(8,10,24,.78),rgba(8,10,24,0));z-index:5}
+#hud.row{display:flex;align-items:center;gap:8px;font-size:13px}
+#hud.lbl{font-weight:700;color:#ffe9a8;white-space:nowrap;text-shadow:0 1px 3px #000}
+#barwrap{flex:1;height:10px;background:rgba(255,255,255,.22);border-radius:99px;overflow:hidden}
+#bar{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#ffd76e,#ff9ecb);transition:width.6s}
+#hud.num{font-weight:700;min-width:26px;text-align:right;text-shadow:0 1px 3px #000}
+#hud.sub{display:flex;justify-content:space-between;margin-top:3px;font-size:11.5px;color:#eaf2ff;text-shadow:0 1px 3px #000}
+#stagec{color:#ffd9ec;font-weight:600}
+#menu{position:absolute;top:calc(64px + env(safe-area-inset-top));right:8px;display:flex;flex-direction:column;gap:6px;z-index:6}
+#menu button{background:rgba(16,20,40,.72);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:7px 12px;font-size:12.5px;font-weight:700;min-width:64px;cursor:pointer;backdrop-filter:blur(3px)}
+#menu button.on{background:#ffd76e;color:#442c00;border-color:#ffd76e}
+#textbox{position:absolute;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));background:rgba(12,15,32,.86);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:14px 16px 18px;min-height:132px;cursor:pointer;z-index:4;backdrop-filter:blur(4px)}
+#who{font-size:14px;font-weight:800;color:#ffd76e;margin-bottom:5px;min-height:18px}
+#text{font-size:16.5px;line-height:1.75;letter-spacing:.02em;word-break:break-all}
+#next{position:absolute;right:14px;bottom:8px;font-size:13px;color:#ffd9ec;animation:bob 1.1s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+#choices{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:stretch;gap:14px;padding:0 34px;background:rgba(6,8,20,.55);z-index:8}
+#choices button{background:rgba(255,252,240,.97);color:#33302a;border:none;border-radius:14px;padding:17px 14px;font-size:16px;font-weight:700;line-height:1.5;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.45);min-height:60px}
+#choices button:active{transform:scale(.98)}
+#choices.q{text-align:center;color:#fff;font-size:14px;font-weight:700;text-shadow:0 2px 6px #000;margin-bottom:2px}
+#title{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 26px calc(34px + env(safe-area-inset-bottom));background-size:cover;background-position:center top}
+#title::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,12,28,.05) 40%,rgba(10,12,28,.82))}
+#title>*{position:relative}
+#title h1{font-size:37px;letter-spacing:.14em;text-shadow:0 3px 14px rgba(0,0,0,.75);text-align:center}
+#title.subt{margin-top:6px;font-size:14.5px;color:#ffe9a8;text-shadow:0 2px 8px #000;text-align:center;line-height:1.7}
+#title button{width:100%;max-width:320px;margin-top:12px;padding:15px;border:none;border-radius:99px;font-size:16.5px;font-weight:800;cursor:pointer;min-height:54px}
+#btnStart{background:linear-gradient(90deg,#ffd76e,#ffb3d9);color:#4a2c00}
+#btnLoadT{background:rgba(255,255,255,.92);color:#333}
+#title.note{margin-top:14px;font-size:11.5px;color:#dfe8ff;text-align:center;line-height:1.6;text-shadow:0 1px 4px #000}
+.modal{position:absolute;inset:0;z-index:30;display:none;background:rgba(5,7,18,.9);padding:calc(18px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));overflow-y:auto}
+.modal h2{font-size:18px;margin-bottom:12px;color:#ffd76e}
+.modal.close{position:sticky;top:0;float:right;background:#ffd76e;color:#442c00;border:none;border-radius:99px;padding:9px 18px;font-weight:800;font-size:14px;cursor:pointer;min-height:44px}
+.slot{width:100%;text-align:left;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:13px 14px;margin-bottom:9px;font-size:14px;line-height:1.55;cursor:pointer;min-height:56px}
+.slot small{color:#bcd0ff}
+#loglist{font-size:14.5px;line-height:1.8}
+#loglist.lw{color:#ffd76e;font-weight:700}
+#toast{position:absolute;left:50%;transform:translateX(-50%);bottom:170px;z-index:40;background:rgba(20,24,48,.95);border:1px solid rgba(255,255,255,.35);color:#fff;padding:10px 18px;border-radius:99px;font-size:13.5px;display:none;white-space:nowrap}
+@media(min-width:481px){#app{border-left:1px solid #333;border-right:1px solid #333}}
+</style>
+</head>
+<body>
+<div id="app">
+<img id="bg" alt="">
+<div id="shade"></div>
+<div id="hud">
+<div class="row"><span class="lbl">蝕まれ度</span><div id="barwrap"><div id="bar"></div></div><span class="num" id="shokunum">0</span></div>
+<div class="sub"><span id="stagec">輪はぴかぴか、翼もふんわり</span><span>癒し <b id="iyashinum">0</b></span></div>
+</div>
+<div id="menu">
+<button id="mSave">セーブ</button>
+<button id="mLoad">ロード</button>
+<button id="mLog">ログ</button>
+<button id="mAuto">オート</button>
+<button id="mTitle">題名へ</button>
+</div>
+<div id="textbox"><div id="who"></div><div id="text"></div><div id="next">▼</div></div>
+<div id="choices"><div class="q">――どうする？</div></div>
+<div id="title">
+<h1>セラフィナ</h1>
+<div class="subt">― 試作版 ―<br>序章「フィレンツェの天使」＋ 第1章「降臨」</div>
+<button id="btnStart">はじめから</button>
+<button id="btnLoadT">つづきから（ロード）</button>
+<div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、短編ビジュアルノベルです。</div>
+</div>
+<div class="modal" id="saveModal"><button class="close" data-close="saveModal">閉じる</button><h2 id="saveTitle">セーブ</h2><div id="slots"></div></div>
+<div class="modal" id="logModal"><button class="close" data-close="logModal">閉じる</button><h2>バックログ</h2><div id="loglist"></div></div>
+<div id="toast"></div>
+</div>
+<script>
+"use strict";
+const SCENES = {"p0": {"bg": "02-florence", "next": "p1", "lines": [["", "1500年ごろ。イタリア、フィレンツェ。赤い屋根の上に、朝の光がゆっくりと広がっていく。"], ["", "大聖堂の鐘が鳴ると、市場には焼きたてのパンの香りと、職人たちの元気な話し声があふれた。"], ["セラフィナ", "おはようございます。今日も、いい天気になりそうですね"], ["", "見習い天使セラフィナの仕事は、目立たない場所で、疲れた人のそばにいることだった。"], ["", "重い石材を運ぶ職人の肩にそっと手を置けば、不思議と荷が軽くなる。絵筆を持つ手が震える若い画家のそばに立てば、震えが少しずつ収まっていく。"], ["セラフィナ", "がんばりすぎなくて、大丈夫ですよ。ほら、深呼吸。……ね、少し楽になったでしょう"], ["", "誰も、天使がそばにいたことには気づかない。それでいいのだと、セラフィナはいつも思っていた。"], ["", "昼には市場で荷運びを手伝い、夕方には教会の階段でうたた寝する老人に、そっと毛布のような温かさを置いていく。"], ["セラフィナ", "お礼は要りませんよ。わたしは、ただの通りすがりですから"]]}, "p1": {"bg": "02-florence", "next": "p2", "lines": [["", "セラフィナに大げさな力はない。ただ、疲れた人に、とても敏感だった。"], ["", "誰かが小さくため息をつくと、背中の羽根がふるっと震える。放っておけなくて、つい近づいてしまうのだ。"], ["ガブリエラ", "セラフィナ。よくやってるみたいね"], ["セラフィナ", "ガブリエラ先輩！　えへへ、見ていてくれたんですか"], ["ガブリエラ", "ええ。だからこそ、次の大きな任務は、あなたに任せたいの"], ["", "先輩天使ガブリエラが差し出した封筒には、見たことのない形の文字と、聞いたことのない地名が、丁寧に書かれていた。"], ["セラフィナ", "わたしが、大きな任務……？　本当に、わたしでいいんですか"], ["ガブリエラ", "あなただから、よ。疲れた人を見つける力は、天界でも随一なんですから"], ["", "セラフィナは封筒を両手で受け取って、何度も小さく頷いた。羽根が、緊張と誇りで小さく震えていた。"]]}, "p2": {"bg": "02-florence", "next": "c0", "lines": [["ガブリエラ", "行き先は、遠い東の島国。日本の、大阪という街よ"], ["セラフィナ", "おおさか……。前回の降臨から、もう五百年も経つというのに？"], ["ガブリエラ", "ええ。世界は大きく変わったわ。人も、街も、食べ物もね。……くれぐれも、現地に染まりすぎないように"], ["", "五百年。セラフィナにとっては、長いお昼寝くらいの時間のはずだった。"], ["セラフィナ", "分かりました。行ってきます。疲れた人がいるのなら、どこへでも"], ["", "こうして見習い天使は、五百年ぶりの地上任務へと旅立った。――まさかあんなことになるなんて、この時はまだ、知る由もなく。"], ["セラフィナ", "先輩の言う通り、染まりすぎないように気をつけます。わたしは天使ですから、しっかりと！"]]}, "c0": {"bg": "11-descending-sky", "next": "c1", "lines": [["", "雲を抜けると、夜の海のような、光の粒の広がりが見えてきた。"], ["セラフィナ", "わあ……！　星が、地面に落ちているみたいです"], ["", "それは星ではなかった。街の明かり、車の明かり、眠らない店の明かり。五百年前にはなかった、数えきれないほどの光だった。"], ["セラフィナ", "すごい、すごいです……！　あれ全部、人が作った明かりなんですか？"], ["", "あまりの眩しさに目を細めるセラフィナ。その小さな翼は、まだ真っ白に輝いていた。"], ["セラフィナ", "大阪、見えました。セラフィナ、降臨します！"], ["", "降りていくにつれて、街の音が少しずつ近づいてきた。電車の音、人々の声、店の呼び込み。五百年前にはなかった、忙しくて温かい音。"], ["セラフィナ", "なんだか、胸がどきどきします。怖いのとは、少し違う……楽しみ、なのかもしれません"]]}, "c1": {"bg": "03-osaka-arrival", "next": "c2", "lines": [["", "大阪、到着。最初の試練は、人混みだった。"], ["セラフィナ", "ひゃっ。……あ、すみません。……わっ、そちらからも人が……！"], ["", "四方八方から流れてくる人の波。五百年前のフィレンツェの、祭りの日よりもずっと賑やかだ。"], ["", "行き交う人々の手には、薄くて光る板。文字や絵が映る、不思議な道具だった。"], ["セラフィナ", "みなさん、あの板を逆さに持って……あ、いえ。逆だったのは、わたしの方でした"], ["", "真似して持ってみたら、映る文字が全部さかさまだったのである。セラフィナはそっと、板を持ち直した。"], ["セラフィナ", "落ち着いて、観察です、観察。……あの方の肩、震えてますね。疲れた人が、こんなにたくさん"], ["", "駅の天井は高く、案内の文字は光り、床は磨かれて靴音が響く。フィレンツェの大聖堂とは違うけれど、ここにも人の祈りのような、真剣な空気があった。"], ["セラフィナ", "まずは、この街の歩き方を覚えなくては。右側ですか、左側ですか……郷に入っては、ですね"]]}, "c2": {"bg": "12-vending-machine", "next": null, "lines": [["セラフィナ", "……あ！　この箱、光ってます。中に飲み物が並んでいるのに、店員さんがいません"], ["", "自動販売機。お金を入れると、冷たい飲み物が「がしゃん」と落ちてくる、現代の不思議な箱である。"], ["セラフィナ", "無人なのに、働いている箱……？　五百年で、箱まで働くようになったんですね"], ["", "販売機の前を行く人々は、誰も驚かない。驚いているのは、五百年ぶりの天使だけだった。"], ["セラフィナ", "ええと、どれにしましょう。任務の前に、まず一口いただきます"], ["", "並んだボタンの向こうで、色とりどりの缶と瓶が、静かに出番を待っていた。"]], "choices": [{"text": "あまいジュースに挑戦する", "shoku": 8, "iyashi": 0, "next": "r1a"}, {"text": "無難にお水にする", "shoku": 1, "iyashi": 0, "next": "r1b"}]}, "r1a": {"bg": "12-vending-machine", "next": "c3", "lines": [["", "一口飲んだ瞬間、セラフィナの目がまん丸になった。"], ["セラフィナ", "あま……！　甘くて、冷たくて、しゅわしゅわします！　果物が口の中で踊っているみたいです！"], ["", "通りすがりの子どもが、嬉しそうに笑う天使を二度見した。"], ["", "翼は、気のせいか少しだけ――ほんの少しだけ、色が薄くなった気がした。本人は、もちろん気づいていない。"], ["セラフィナ", "任務の前の腹ごしらえ、完了です！　……あれ、今の言い方、少し人間みたいですね"]]}, "r1b": {"bg": "12-vending-machine", "next": "c3", "lines": [["セラフィナ", "お水、おいしいです。故郷の泉みたいに、すっと体に入っていきます"], ["", "慎ましく喉を潤す天使を、販売機の明かりが静かに照らしていた。翼はまだ、ぴかぴかのままである。"], ["セラフィナ", "よし、落ち着きました。任務、開始です！"], ["", "販売機は今日も、来る人来る人に、冷たい一本を手渡し続けるのだろう。無人の箱の、静かな働きぶりに、セラフィナは小さく頭を下げた。"]]}, "c3": {"bg": "26-automatic-door", "next": "c4", "lines": [["", "駅の建物に入ろうとすると、目の前の扉が――"], ["セラフィナ", "わっ！　扉が、勝手に開きました！　どなたか中から開けて……いませんね？"], ["", "自動ドア。人が近づくだけで開く、親切な扉である。セラフィナは確認のため三度通って、三度とも驚いた。"], ["通りすがりの人", "お姉さん、さっきから何往復してるん？"], ["セラフィナ", "す、すみません！　確認です、確認なんです！　……便利な世の中ですねえ"], ["", "笑って手を振る通行人。怒る人はいなかった。大阪の人は、少しだけ優しいのかもしれない。"], ["セラフィナ", "扉にまで気を遣う国なんですね。開くたびに『どうぞ』って言われているみたいです"], ["", "セラフィナは最後にもう一度だけ扉を通り、今度は小さくお辞儀をしてから、駅の奥へ進んだ。"]]}, "c4": {"bg": "14-ic-gate", "next": null, "lines": [["", "改札。薄いカードを機械にかざすと、小さな音が鳴って、扉が開く場所。"], ["セラフィナ", "あの音……『ピッ』。みなさん、あの音と一緒に通っているんですね"], ["", "セラフィナも、見よう見まねでカードをそっとかざしてみた。"], ["セラフィナ", "ピッ！　……開きました！　わたしまで、つい『ピッ』って言ってしまいました"], ["", "小さな音と一緒に扉が開くのが、なんだか小さな魔法みたいで、セラフィナは少し嬉しくなっていた。"], ["", "周りの人々は慣れた手つきでカードをかざし、足早に通り抜けていく。その流れの速さに、セラフィナは目を丸くした。"]], "choices": [{"text": "嬉しくて、もう一度ピッとする", "shoku": 6, "iyashi": 0, "next": "r2a"}, {"text": "落ち着いて、一度だけにする", "shoku": 2, "iyashi": 0, "next": "r2b"}]}, "r2a": {"bg": "14-ic-gate", "next": "c5", "lines": [["駅員さん", "お客さん、そのカードは入場済みですよー"], ["セラフィナ", "あっ、すみません！　つい楽しくて……この音、なんだか癖になりますね"], ["", "駅員さんは笑って許してくれた。セラフィナの頭の輪が、ほんの少しだけ薄くなったのを、その場の誰も気づかなかった。"], ["セラフィナ", "ピッ、は一日一回まで。……覚えました。多分"], ["", "改札の向こうでは、次の電車の案内が流れていた。セラフィナは慌てて小走りになり、翼が少しだけはみ出しそうになった。"]]}, "r2b": {"bg": "14-ic-gate", "next": "c5", "lines": [["セラフィナ", "一度で十分です。……十分です。……ちょっとだけ、もう一度したかったですけど"], ["", "名残惜しそうに改札を離れる天使。現代の誘惑は、小さな音の形でも、そっとやってくる。"], ["セラフィナ", "我慢も任務のうち、です。ええ、任務のうち"]]}, "c5": {"bg": "15-crowded-train", "next": null, "lines": [["", "電車の中は、立ったままうとうとする人、画面を見つめる人、ため息を飲み込む人でいっぱいだった。"], ["セラフィナ", "（羽根が震えています……この車両、疲れた人がこんなに）"], ["", "吊り革につかまる会社員の肩が、小さく震えている。目は閉じているのに、眉間には深い皺が寄っていた。"], ["セラフィナ", "（わたしの仕事は、こういう人のそばにいることです）"], ["", "フィレンツェでも、大阪でも。疲れた人の姿は、五百年経っても変わらなかった。"], ["", "混んだ車内では、誰も大きな声を出さない。静かに耐えて、静かに譲って、静かに眠る。それもこの街の、優しさの形なのかもしれない。"], ["セラフィナ", "（大丈夫ですよ。少しだけ、わたしが見ていますから）"]], "choices": [{"text": "肩にそっと手を置く（天使のやり方で）", "shoku": 2, "iyashi": 8, "next": "r3a"}, {"text": "静かに見守るだけにする", "shoku": 0, "iyashi": 3, "next": "r3b"}]}, "r3a": {"bg": "15-crowded-train", "next": "c6", "lines": [["", "セラフィナがそっと手を置くと、会社員の眉間の皺が、ゆっくりとほどけていった。"], ["会社員", "……あれ。少し、楽になった気がする。気のせい、かな"], ["セラフィナ", "気のせいじゃ、ありませんよ。今日もおつかれさまです"], ["", "聞こえないはずの声に、会社員はなぜか小さく頷いて、安心した顔でそっと目を閉じた。"], ["", "車両のざわめきは変わらない。それでも、一人の人の肩の力が抜けた。それで十分だと、セラフィナは思った。"], ["", "電車が駅に近づくと、会社員は鞄を持ち直し、少しだけ伸びをして立ち上がった。その足取りは、乗ってきた時より軽かった。"]]}, "r3b": {"bg": "15-crowded-train", "next": "c6", "lines": [["", "セラフィナは騒がず、ただ近くで見守った。それでも不思議と、周りの空気が少しだけ和らいだ気がした。"], ["セラフィナ", "直接じゃなくても、そばにいるだけでいいことも、ありますよね"], ["", "見守ることも、立派な仕事のひとつ。五百年の間、セラフィナがずっと続けてきたことだった。"], ["", "会社員は小さく深呼吸をして、少しだけ穏やかな顔で目を閉じた。"]]}, "c6": {"bg": "04-conveni-pudding", "next": null, "lines": [["", "夜でも眩しく光る店。扉を開けると、涼しい空気と、おいしそうな香りが迎えてくれた。"], ["セラフィナ", "ここがコンビニ……。二十四時間開いている、まるで小さな神殿みたいな場所ですね。明るくて、食べ物があって、誰でも入れる"], ["", "棚には色とりどりの菓子、温かい料理、飲み物、雑誌、傘まで。五百年前の市場が、そのまま小さな店に詰め込まれたようだった。"], ["セラフィナ", "あ……あれは。黄色くて、つやつやしていて、カップの中で光っている、あの子は……"], ["", "プリン。現代日本が誇る、小さくて、しかし偉大な発明である。"], ["セラフィナ", "天使の食事には、こんな色のものは、ありませんでした……"], ["", "温かいお弁当の棚、冷たい飲み物の棚、お菓子の棚。小さな店の中に、一日分の暮らしが全部そろっている。"], ["セラフィナ", "この国は、夜に働く人のために、夜の間も店を開けておくんですね。……優しい仕組みです"]], "choices": [{"text": "プリンと、気になるお菓子も買う", "shoku": 9, "iyashi": 0, "next": "r4a"}, {"text": "プリンは、ひとつだけにする", "shoku": 4, "iyashi": 0, "next": "r4b"}]}, "r4a": {"bg": "04-conveni-pudding", "next": "c7", "lines": [["セラフィナ", "プリンと、この丸いのと、この袋と……あと、これも気になります！"], ["", "気づけば、買い物かごはお菓子でいっぱいになっていた。レジの店員さんが、少し驚いた顔をした。"], ["店員さん", "袋、お分けしますか？"], ["セラフィナ", "お願いします！　……わたし、いつの間に、こんなに"], ["", "翼の白さが、またほんの少しだけ薄くなっていた。本人は、プリンしか見ていない。"], ["セラフィナ", "これは任務に必要な買い物です。……たぶん、きっと、おそらく"]]}, "r4b": {"bg": "04-conveni-pudding", "next": "c7", "lines": [["セラフィナ", "ひとつだけ。……ひとつだけですよ、セラフィナ"], ["", "自分に言い聞かせるように頷いて、プリンを大事に両手で持った。その姿は、五百年前と何も変わらない、慎ましい天使だった。"], ["セラフィナ", "いただきます。……！　とろけます……。これは、危険なおいしさです"], ["", "ほんの一口で頬が緩む。天使は小さくため息をついて、もう一口、丁寧に味わった。"]]}, "c7": {"bg": "13-escalator", "next": "c8", "lines": [["", "駅の大きな建物の中。階段が、自分で動いていた。"], ["セラフィナ", "階段が……動いています！　立っているだけで、上へ運んでくれるんですか？"], ["", "エスカレーター。大阪では右側に立って、左側を急ぐ人のために空けるのが、暗黙の約束だという。"], ["セラフィナ", "右に立つ街と、左に立つ街がある……。同じ国の中でも違うんですね。旅は、学びです"], ["", "律儀に右側に立って運ばれていく天使。周りの人々は、そんな天使に気づかず、それぞれの目的地へ急いでいた。"], ["セラフィナ", "わたしも、ちゃんと大阪の人みたいに立ててますか？"], ["", "隣に立った学生が、器用に片手で本を読みながら運ばれていく。セラフィナは感心して、その背中を見送った。"], ["セラフィナ", "みなさん、この動く階段の上で、とても落ち着いていますね。慣れって、すごいです"]]}, "c8": {"bg": "20-dotonbori-bridge", "next": null, "lines": [["", "夕方。川沿いの橋の上は、写真を撮る人、笑う人、食べ歩く人で賑わっていた。"], ["セラフィナ", "道頓堀……。看板が大きくて、光が水に映って、まるでお祭りの夜みたいです"], ["", "屋台からは、ソースの香ばしい香り。丸く焼かれた小さな食べ物が、鉄板の上で上手に踊っている。"], ["屋台の主", "たこ焼き、焼きたてやでー！　お姉ちゃん、寄ってきなー"], ["セラフィナ", "たこ、焼き……。丸くて、熱くて、とても、おいしそうな……！"], ["", "セラフィナの羽根が、今度は食欲の方へ向かって、小さく震えていた。"], ["", "橋の上では、大きな人形の看板が腕を広げ、かにの看板が足を動かし、街全体が誰かを歓迎しているようだった。"]], "choices": [{"text": "たこ焼きを食べて、関西の言葉を真似する", "shoku": 8, "iyashi": 0, "next": "r5a"}, {"text": "橋の上から、静かに景色を眺める", "shoku": 2, "iyashi": 2, "next": "r5b"}]}, "r5a": {"bg": "20-dotonbori-bridge", "next": "c9", "lines": [["セラフィナ", "あつっ、あつあつ……！　でも、おいしいです！　外はかりっと、中はとろっとろです！"], ["屋台の主", "うまいこと言うなあ。……で、どうや、この味"], ["セラフィナ", "最高です！　……あの、『なんでやねん』って言うと褒められるって、本当ですか？"], ["屋台の主", "ははっ、今のは使い方がちゃうけど、まあ合格や！"], ["", "笑う屋台の主人と、笑う天使。頭の輪は夕日に紛れて、だいぶ見えにくくなっていた。"], ["セラフィナ", "なんでやねん……。難しいですけど、温かい言葉ですね"], ["", "屋台の主は、セラフィナの分のソースを少しだけ多めにかけてくれた。言葉は荒くても、手つきはとても優しかった。"]]}, "r5b": {"bg": "20-dotonbori-bridge", "next": "c9", "lines": [["", "セラフィナは橋の欄干にもたれて、水面に揺れる光を、静かに眺めた。"], ["セラフィナ", "五百年前のフィレンツェにも、川と橋がありました。……国は違っても、夕方の川は、人の心を休ませますね"], ["", "行き交う人々の笑い声を聞きながら、天使はしばらく、その景色の中に立っていた。"], ["", "その穏やかな横顔は、紛れもなく、癒しの天使のものだった。"], ["セラフィナ", "おいしいものも、楽しい音も、たくさんありました。でも、こうして静かに立つ時間も、この街はくれるんですね"]]}, "c9": {"bg": "23-otsukaresama", "next": "c10", "lines": [["", "帰り道。駅のベンチに、うつむく人がいた。"], ["", "スーツには少し皺が寄り、手には重そうな鞄。今日一日を、精一杯に生きた人の姿だった。"], ["セラフィナ", "（羽根が、強く震えています。この人です。今日わたしが会いに来たのは、きっと、この人）"], ["", "セラフィナは音もなく隣に座り、そっと声をかけた。姿は見えなくても、言葉が届くことは、ある。"], ["セラフィナ", "今日もおつかれさまです。あなたのがんばり、ちゃんと届いていますよ"], ["", "人はふっと顔を上げ、理由もなく少し笑って、重い鞄を持ち直して歩き出した。その背中は、来た時より少しだけ、軽そうだった。"], ["セラフィナ", "よかった。……今日も、ちゃんとお役に立てたみたいです"], ["", "ベンチを離れる時、セラフィナは小さく手を振った。相手には見えていなくても、それが彼女の挨拶だった。"], ["セラフィナ", "明日も、誰かのそばにいられますように"]]}, "c10": {"bg": "22-night-view", "next": "c11", "lines": [["", "夜。借りた小さな部屋の窓から、大阪の夜景が見えた。"], ["セラフィナ", "明かりが、こんなにたくさん。……あの明かりのひとつひとつに、今日みたいな一日があるんですね"], ["", "プリンの空きカップが、テーブルの端に置いてある。自動販売機のジュースの缶も、仲良く並んでいた。"], ["セラフィナ", "わたし、今日一日で、ずいぶんいろんなものを好きになってしまいました"], ["セラフィナ", "でも、疲れた人のそばにいることは、忘れていません。それだけは、ちゃんと覚えています"], ["", "窓の外では、街が静かに眠り始めていた。天使の長い一日も、そろそろ終わろうとしている。"], ["セラフィナ", "フィレンツェの夜は、鐘の音で終わりました。大阪の夜は、明かりが少しずつ消えていくんですね"], ["", "買ってきたお菓子の袋が、椅子の背に掛けてある。明日の分だと、セラフィナは自分に言い訳をしていた。"]]}, "c11": {"bg": "28-report-sleep", "next": "BRANCH", "lines": [["", "天界への報告書を書き始めたセラフィナだったが――"], ["セラフィナ", "ええと、『大阪は眩しくて、ピッという音が楽しくて、プリンは危険なほどおいしくて……』"], ["セラフィナ", "……あれ。これ、報告書じゃなくて、日記みたいになってますね……"], ["", "ペンを持ったまま、こっくり、こっくり。やがて、小さな寝息が聞こえてきた。"], ["", "見習い天使の、大阪一日目が終わる。――さて、彼女はどこまで、染まったのだろう。"], ["", "答えは、薄くなった輪と、少しだけ軽くなった翼と、お菓子の袋の中に、静かに眠っていた。"]]}, "e_high": {"bg": "28-report-sleep", "next": "teaser", "lines": [["", ""], ["", "報告書の半分は、食べ物の感想で埋まっていた。輪は薄く、翼はほんのりと色づいて――いや、本人の言葉を借りれば、『気のせい』らしい。"], ["セラフィナ", "明日は日本橋に行ってみようと思います。フィギュアというものを、この目で確かめなければ！"], ["", "使命感と好奇心が、見事に混ざり合っていた。――この調子では、先輩のガブリエラが心配する日も、近いかもしれない。"], ["", "それでも、ベンチの人の背中を軽くした手の温かさは、本物のままだった。"], ["セラフィナ", "染まっても、わたしはわたしです。……たぶん、きっと。おやすみなさい、大阪"]]}, "e_mid": {"bg": "28-report-sleep", "next": "teaser", "lines": [["", ""], ["", "報告書には、任務の記録と一緒に、小さな感想が添えられていた。『ピッの音は楽しい』『プリンはおいしい』と。"], ["セラフィナ", "染まる、というより……馴染む、です。きっと。たぶん"], ["", "翼はまだ白い。でも、確かに一日目の朝の色ではなくなっていた。"], ["", "馴染むことと、忘れないこと。その両方を抱えて、天使の大阪の日々は続いていく。"], ["セラフィナ", "明日は、もう少しだけ、この街のことを知りたいです"]]}, "e_low": {"bg": "28-report-sleep", "next": "teaser", "lines": [["", ""], ["", "報告書は丁寧で、模範的で、少しだけ堅かった。翼も輪も、降臨の時と変わらない輝きのままである。"], ["セラフィナ", "任務は順調です。……ただ、プリンという食べ物だけは、少し気をつけた方がいいかもしれません"], ["", "慎ましい天使の大阪生活は、まだ始まったばかり。本当の意味での『蝕まれ』は、これからなのかもしれない。"], ["", "それでも、疲れた人のそばに立つ姿勢は、五百年前から何ひとつ変わっていなかった。"], ["セラフィナ", "おやすみなさい。明日も、いい日になりますように"]]}, "teaser": {"bg": "05-maid-cafe", "next": "fin", "lines": [["", "――次回予告。第2章『日本橋どっぷり』"], ["セラフィナ", "ここが、日本橋……！　電気と、夢と、紙袋の街……！"], ["", "メイドカフェでは、天使の衣装が『本格的なコスプレ』と間違われて――"], ["セラフィナ", "もえもえ……きゅん、ですか？　真剣にやりますね！"], ["", "フィギュアのお店、同人ショップ、ゲームセンター。セラフィナの日本橋巡りは、まだまだ続く。どうぞ、お楽しみに。"], ["セラフィナ", "日本橋……。なんだか、胸がどきどきします。楽しみな方の、どきどきです"], ["", "そして、自分の姿そっくりのフィギュアとの出会いが、彼女を待っていることなど、まだ誰も知らない。"]]}, "fin": {"bg": "01-key-visual", "next": null, "end": true, "lines": [["", "『セラフィナ ―試作版―』序章＋第1章、おしまい。"], ["", "遊んでくださって、ありがとうございました。今日もおつかれさまです。"]]}};
+const TITLE_IMG = "assets/01-key-visual.webp";
+const SAVE_KEY = "seraphina_proto_save_";
+let S = null;
+let autoTimer = null;
+function newState(){ return {scene:"p0", line:0, shoku:0, iyashi:0, log:[]};}
+function stageComment(v){
+if(v>=30) return "すっかり染まる兆し……本人は笑顔";
+if(v>=20) return "輪と翼が、だいぶ薄れてきた気がする";
+if(v>=10) return "輪がほんの少し薄れた気が……本人は無自覚";
+if(v>=1) return "まだぴかぴか。でも何か始まっている";
+return "輪はぴかぴか、翼もふんわり";
+}
+function updateHUD(){
+document.getElementById("shokunum").textContent = S.shoku;
+document.getElementById("iyashinum").textContent = S.iyashi;
+document.getElementById("bar").style.width = Math.min(100, S.shoku/35*100) + "%";
+document.getElementById("stagec").textContent = stageComment(S.shoku);
+}
+function endingFor(v){ return v>=26? "e_high": (v>=15? "e_mid": "e_low");}
+function showScene(){
+const sc = SCENES[S.scene];
+document.getElementById("bg").src = "assets/" + sc.bg + ".webp";
+const line = sc.lines[S.line];
+document.getElementById("who").textContent = line[0] || "";
+document.getElementById("text").textContent = line[1];
+document.getElementById("next").style.display = "";
+updateHUD();
+}
+function pushLog(){
+const sc = SCENES[S.scene]; const line = sc.lines[S.line];
+S.log.push([line[0], line[1]]);
+if(S.log.length>400) S.log.shift();
+}
+function advance(){
+if(!S) return;
+pushLog();
+const sc = SCENES[S.scene];
+if(S.line < sc.lines.length-1){ S.line++; showScene(); scheduleAuto(); return;}
+// scene end
+if(sc.choices){ stopAuto(); showChoices(sc); return;}
+let nxt = sc.next;
+if(nxt === "BRANCH"){ nxt = endingFor(S.shoku);}
+if(!nxt || sc.end){ stopAuto(); toTitle(true); return;}
+S.scene = nxt; S.line = 0; showScene(); scheduleAuto();
+}
+function showChoices(sc){
+const box = document.getElementById("choices");
+box.querySelectorAll("button").forEach(b=>b.remove());
+sc.choices.forEach(ch=>{
+const b = document.createElement("button");
+b.textContent = ch.text;
+b.onclick = (e)=>{ e.stopPropagation();
+S.shoku += ch.shoku||0; S.iyashi += ch.iyashi||0;
+S.log.push(["", ch.text]);
+box.style.display = "none";
+S.scene = ch.next; S.line = 0; showScene();
+};
+box.appendChild(b);
+});
+box.style.display = "flex";
+}
+function startGame(){ S = newState(); document.getElementById("title").style.display="none"; showScene();}
+function toTitle(finished){
+stopAuto();
+const t = document.getElementById("title");
+t.style.display = "flex";
+if(finished) toast("おしまい。ありがとうございました");
+}
+function toast(msg){
+const el = document.getElementById("toast"); el.textContent = msg; el.style.display="block";
+setTimeout(()=>{ el.style.display="none";}, 2200);
+}
+function openSlots(mode){
+const modal = document.getElementById("saveModal");
+document.getElementById("saveTitle").textContent = mode==="save"? "セーブ": "ロード";
+const wrap = document.getElementById("slots"); wrap.innerHTML = "";
+for(let i=1;i<=6;i++){
+const raw = localStorage.getItem(SAVE_KEY+i);
+const b = document.createElement("button"); b.className="slot";
+if(raw){
+const d = JSON.parse(raw);
+b.innerHTML = "スロット"+i+"<br><small>"+d.date+"／場面："+d.scene+"／蝕まれ度 "+d.shoku+"・癒し "+d.iyashi+"</small>";
+} else {
+b.innerHTML = "スロット"+i+"<br><small>（空き）</small>";
+}
+b.onclick = ()=>{
+if(mode==="save"){
+if(!S){ toast("まだ始まっていません"); return;}
+const d = {scene:S.scene, line:S.line, shoku:S.shoku, iyashi:S.iyashi, log:S.log, date:new Date().toLocaleString("ja-JP")};
+localStorage.setItem(SAVE_KEY+i, JSON.stringify(d));
+toast("スロット"+i+"にセーブしました"); openSlots("save");
+} else {
+const raw2 = localStorage.getItem(SAVE_KEY+i);
+if(!raw2){ toast("データがありません"); return;}
+const d = JSON.parse(raw2);
+S = {scene:d.scene, line:d.line, shoku:d.shoku, iyashi:d.iyashi, log:d.log||[]};
+document.getElementById("title").style.display="none";
+modal.style.display="none"; showScene(); toast("ロードしました");
+}
+};
+wrap.appendChild(b);
+}
+modal.style.display="block";
+}
+function openLog(){
+const list = document.getElementById("loglist");
+if(!S || S.log.length===0){ list.textContent = "まだ記録がありません。";}
+else{
+list.innerHTML = S.log.map(l=> l[0]? '<div><span class="lw">'+l[0]+"</span>　"+l[1]+"</div>": "<div>"+l[1]+"</div>").join("");
+}
+document.getElementById("logModal").style.display="block";
+}
+function stopAuto(){
+if(autoTimer){ clearTimeout(autoTimer); autoTimer=null;}
+document.getElementById("mAuto").classList.remove("on");
+}
+function scheduleAuto(){
+if(!document.getElementById("mAuto").classList.contains("on")) return;
+stopAutoKeep();
+autoTimer = setTimeout(advance, 2400);
+}
+function stopAutoKeep(){ if(autoTimer){ clearTimeout(autoTimer); autoTimer=null;}}
+document.getElementById("textbox").addEventListener("click", ()=>{ if(S && document.getElementById("title").style.display==="none") advance();});
+document.getElementById("btnStart").addEventListener("click", startGame);
+document.getElementById("btnLoadT").addEventListener("click", ()=>openSlots("load"));
+document.getElementById("mSave").addEventListener("click", e=>{ e.stopPropagation(); openSlots("save");});
+document.getElementById("mLoad").addEventListener("click", e=>{ e.stopPropagation(); openSlots("load");});
+document.getElementById("mLog").addEventListener("click", e=>{ e.stopPropagation(); openLog();});
+document.getElementById("mTitle").addEventListener("click", e=>{ e.stopPropagation(); toTitle(false);});
+document.getElementById("mAuto").addEventListener("click", function(e){
+e.stopPropagation();
+if(this.classList.contains("on")){ stopAuto();}
+else{ this.classList.add("on"); scheduleAuto(); toast("オート再生 ON");}
+});
+document.querySelectorAll("[data-close]").forEach(b=> b.addEventListener("click", ()=>{ document.getElementById(b.dataset.close).style.display="none";}));
+document.getElementById("title").style.backgroundImage = "url('" + TITLE_IMG + "')";
+S = newState();
+document.getElementById("bg").src = "assets/02-florence.webp";
+updateHUD();
+</script>
+</body>
+</html>
