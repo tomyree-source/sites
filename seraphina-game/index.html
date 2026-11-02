@@ -116,7 +116,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <div class="modal" id="saveModal"><button class="close" data-close="saveModal">閉じる</button><h2 id="saveTitle">セーブ</h2><div id="slots"></div></div>
 <div class="modal" id="logModal"><button class="close" data-close="logModal">閉じる</button><h2>バックログ</h2><div id="loglist"></div></div>
 <div id="freeAction" class="free"><div id="freeContent"></div></div>
-<div class="modal" id="collectionModal"><button class="close" data-close="collectionModal">閉じる</button><h2>コレクション図鑑</h2><div class="coltabs"><button data-coltab="goods">グッズ</button><button data-coltab="endings">エンディング</button><button data-coltab="gallery">場面回想</button></div><div id="collectionBody"></div></div>
+<div class="modal" id="collectionModal"><button class="close" data-close="collectionModal">閉じる</button><h2>コレクション図鑑</h2><div class="coltabs"><button data-coltab="goods">グッズ</button><button data-coltab="endings">エンディング</button><button data-coltab="gallery">場面回想</button><button data-coltab="videos">動画</button></div><div id="collectionBody"></div></div>
 <div class="modal" id="soundModal"><button class="close" data-close="soundModal">閉じる</button><h2>音の設定</h2><div id="soundBody"></div></div>
 <div class="modal" id="dataModal"><button class="close" data-close="dataModal">閉じる</button><h2>データ引き継ぎ</h2><p class="colnote">セーブデータと図鑑・設定を、別のブラウザや端末へ移せます。書き出したコード（またはファイル）を、移したい先で読み込んでください。読み込むと、そのブラウザの今のデータは上書きされます。</p><p class="colnote"><b>書き出し</b>：コードを作ってコピーするか、ファイルで保存してください。</p><button class="slot" id="btnExportCode">コードを作る</button><textarea id="dataExportText" class="databox" readonly placeholder="ここに引き継ぎコードが表示されます"></textarea><button class="slot" id="btnExportFile">ファイルで保存</button><p class="colnote"><b>読み込み</b>：コードを貼り付けるか、保存したファイルを選んでから「読み込む」を押してください。</p><textarea id="dataImportText" class="databox" placeholder="引き継ぎコードを貼り付け"></textarea><input type="file" id="dataImportFile" class="datafile" accept=".txt,.json"><button class="slot" id="btnImportData">読み込む</button><p class="colnote" id="dataMsg"></p></div>
 <div id="videoModal"><video id="gameVideo" playsinline preload="auto"></video><button id="btnVideoSkip">スキップ ▶▶</button></div>
@@ -420,6 +420,9 @@ function openCollection(tab){
 renderCollection(tab||"goods");
 document.getElementById("collectionModal").style.display="block";
 }
+const VIDEO_DEFS = [
+{file:"intro.mp4", name:"セラフィナ紹介動画", desc:"見習い天使セラフィナの紹介動画です（29秒）。"}
+];
 function renderCollection(tab){
 const body = document.getElementById("collectionBody"); if(!body) return;
 document.querySelectorAll("[data-coltab]").forEach(b=>b.classList.toggle("on", b.dataset.coltab===tab));
@@ -429,6 +432,11 @@ return;
 }
 if(tab==="gallery"){
 body.innerHTML = '<p class="colnote">到達済みの章だけ、代表場面を見返せます。</p><div class="itemgrid">' + CHAPTER_DEFS.map(ch=>{ const got=!!seraphinaCollection.chapters[ch.id]; return '<div class="itemcard '+(got?'':'locked')+'"><img src="'+(got?assetSrc(ch.img):assetSrc('01-key-visual'))+'" alt=""><div class="itemname">'+(got?ch.name:'？？？')+'</div><p>'+(got?ch.desc:'まだ到達していない章です。')+'</p></div>';}).join("") + '</div>';
+return;
+}
+if(tab==="videos"){
+body.innerHTML = '<p class="colnote">紹介動画を見られます。</p><div class="itemgrid">' + VIDEO_DEFS.map(vd=>'<div class="itemcard"><div class="itemname">'+vd.name+'</div><p>'+vd.desc+'</p><button data-video="'+vd.file+'" style="margin-top:8px;background:#ffd76e;color:#3a2c00;border:none;border-radius:99px;padding:9px 20px;font-weight:800;cursor:pointer">▶ 再生</button></div>').join("") + '</div>';
+body.querySelectorAll("[data-video]").forEach(b=>b.addEventListener("click",()=>playGameVideo(b.dataset.video)));
 return;
 }
 const total = Object.keys(ITEMS).length, owned = Object.keys(ITEMS).filter(id=>seraphinaCollection.items[id]).length;
