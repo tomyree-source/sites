@@ -38,6 +38,15 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 #title .subtitle{margin-top:8px;font-size:16px;letter-spacing:.06em;color:#ffe9a8;text-shadow:0 2px 8px #000;text-align:center}
 #title.subt{margin-top:6px;font-size:14.5px;color:#ffe9a8;text-shadow:0 2px 8px #000;text-align:center;line-height:1.7}
 #title button{width:100%;max-width:320px;margin-top:12px;padding:15px;border:none;border-radius:99px;font-size:16.5px;font-weight:800;cursor:pointer;min-height:54px}
+#seasonBadge{margin-top:12px;padding:6px 16px;border:1.5px solid #e8c877;border-radius:999px;background:rgba(10,18,48,.72);color:#ffe9a8;font-size:14px;letter-spacing:.08em;text-align:center;max-width:calc(100vw - 52px);box-sizing:border-box}
+#seasonBadge[hidden]{display:none}
+#title{background-color:#0b1030;background-image:none !important;justify-content:flex-start}
+#seasonVisual{display:block;flex:none;width:calc(100% + 52px);height:32vh;margin:0 -26px 12px;background-size:cover;background-repeat:no-repeat;box-shadow:0 6px 28px rgba(0,0,0,.5)}
+#title h1{font-size:23px}
+#title .subtitle{font-size:14px;margin-top:6px}
+#title #seasonBadge{margin-top:9px;padding:5px 14px;font-size:13px}
+#title button{min-height:46px;padding:11px;margin-top:9px;font-size:15.5px}
+#title .note{display:none}
 #btnStart{background:linear-gradient(90deg,#ffd76e,#ffb3d9);color:#4a2c00}
 #btnLoadT{background:rgba(255,255,255,.92);color:#333}
 #btnOpT{background:rgba(255,255,255,.92);color:#333}
@@ -92,8 +101,10 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <div id="textbox"><div id="who"></div><div id="text"></div><div id="next">▼</div></div>
 <div id="choices"><div class="q">――どうする？</div></div>
 <div id="title">
+<div id="seasonVisual"></div>
 <h1>見習い天使セラフィナ</h1>
 <div class="subtitle">― オタロードに降臨しちゃいました ―</div>
+<div id="seasonBadge" hidden></div>
 
 <button id="btnStart">はじめから</button>
 <button id="btnLoadT">つづきから（ロード）</button>
@@ -706,7 +717,41 @@ setTimeout(()=>location.reload(), 600);
 dataMsg("読み込めませんでした："+((err && err.message)? err.message: "形式が正しくありません"));
 }
 });
-document.getElementById("title").style.backgroundImage = "url('" + TITLE_IMG + "')";
+/* ===== 季節連動（タイトル画面の帯・期間はこの表で管理。季節の追加は1行） ===== */
+const SEASON_TITLE = {
+xmas:{from:[12,20], to:[12,25], img:"25-christmas-lights", badge:"\uD83C\uDF84 クリスマス期間中", pos:"50% 20%"},
+newyear:{from:[1,1], to:[1,7], img:"27-hatsumode", badge:"\uD83C\uDF8D お正月期間中", pos:"40% 18%"}
+};
+function seasonFor(date){
+const md = (date.getMonth()+1)*100 + date.getDate();
+for(const k of Object.keys(SEASON_TITLE)){
+const c = SEASON_TITLE[k], f = c.from[0]*100 + c.from[1], e = c.to[0]*100 + c.to[1];
+if(f<=e ? (md>=f && md<=e) : (md>=f || md<=e)) return k;
+}
+return null;
+}
+function currentSeason(){
+try{
+const q = new URLSearchParams(location.search).get("season");
+if(q && SEASON_TITLE[q]) return q;
+if(q==="off") return null;
+}catch(e){}
+return seasonFor(new Date());
+}
+function applySeasonTitle(){
+const t = document.getElementById("title");
+const key = currentSeason();
+const conf = key? SEASON_TITLE[key]: null;
+const v = document.getElementById("seasonVisual");
+if(v){
+v.style.backgroundImage = "url('" + assetSrc(conf? conf.img: "01-key-visual") + "')";
+v.style.backgroundPosition = conf? conf.pos: "50% 22%";
+}
+t.style.backgroundImage = "none";
+const b = document.getElementById("seasonBadge");
+if(b){ if(conf){ b.textContent = conf.badge; b.hidden = false; } else { b.hidden = true; } }
+}
+applySeasonTitle();
 /* ===== 音の拡張：BGM・効果音・決め台詞ボイス・全台詞読み上げ ===== */
 const AUDIO_KEY = "seraphina_audio_v1";
 function loadAudioSettings(){
