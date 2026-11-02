@@ -38,15 +38,14 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 #title .subtitle{margin-top:8px;font-size:16px;letter-spacing:.06em;color:#ffe9a8;text-shadow:0 2px 8px #000;text-align:center}
 #seasonBadge{margin-top:12px;padding:6px 16px;border:1.5px solid #e8c877;border-radius:999px;background:rgba(10,18,48,.72);color:#ffe9a8;font-size:14px;letter-spacing:.08em;text-align:center;max-width:calc(100vw - 52px);box-sizing:border-box}
 #seasonBadge[hidden]{display:none}
-#seasonVisual{display:none}
+#title{background-color:#0b1030;background-image:none !important;justify-content:flex-start}
+#seasonVisual{display:block;flex:none;width:calc(100% + 52px);height:32vh;margin:0 -26px 12px;background-size:cover;background-repeat:no-repeat;box-shadow:0 6px 28px rgba(0,0,0,.5)}
 #sampleTag{position:absolute;top:calc(8px + env(safe-area-inset-top));left:12px;z-index:5;font-size:11px;color:rgba(255,255,255,.75);background:rgba(0,0,0,.35);padding:2px 8px;border-radius:99px;letter-spacing:.06em}
-#title.seasonal{background-color:#0b1030;background-image:none !important;justify-content:flex-start}
-#title.seasonal #seasonVisual{display:block;flex:none;width:calc(100% + 52px);height:32vh;margin:0 -26px 12px;background-size:cover;background-repeat:no-repeat;box-shadow:0 6px 28px rgba(0,0,0,.5)}
-#title.seasonal h1{font-size:23px}
-#title.seasonal .subtitle{font-size:14px;margin-top:6px}
-#title.seasonal #seasonBadge{margin-top:9px;padding:5px 14px;font-size:13px}
-#title.seasonal button{min-height:46px;padding:11px;margin-top:9px;font-size:15.5px}
-#title.seasonal .note{display:none}
+#title h1{font-size:23px}
+#title .subtitle{font-size:14px;margin-top:6px}
+#title #seasonBadge{margin-top:9px;padding:5px 14px;font-size:13px}
+#title button{min-height:46px;padding:11px;margin-top:9px;font-size:15.5px}
+#title .note{display:none}
 #title.subt{margin-top:6px;font-size:14.5px;color:#ffe9a8;text-shadow:0 2px 8px #000;text-align:center;line-height:1.7}
 #title button{width:100%;max-width:320px;margin-top:12px;padding:15px;border:none;border-radius:99px;font-size:16.5px;font-weight:800;cursor:pointer;min-height:54px}
 #btnStart{background:linear-gradient(90deg,#ffd76e,#ffb3d9);color:#4a2c00}
@@ -104,7 +103,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <div id="choices"><div class="q">――どうする？</div></div>
 <div id="title">
 <div id="seasonVisual"></div>
-<div id="sampleTag">見本 v2</div>
+<div id="sampleTag">見本 v3</div>
 <h1>見習い天使セラフィナ</h1>
 <div class="subtitle">― オタロードに降臨しちゃいました ―</div>
 <div id="seasonBadge" hidden></div>
@@ -152,14 +151,9 @@ function applySeasonTitle(){
 const t = document.getElementById("title");
 const conf = SEASON_TITLE[currentSeason()] || null;
 const v = document.getElementById("seasonVisual");
-if(conf){
-v.style.backgroundImage = "url('" + conf.img + "')";
-v.style.backgroundPosition = conf.pos;
+v.style.backgroundImage = "url('" + (conf? conf.img: TITLE_IMG) + "')";
+v.style.backgroundPosition = conf? conf.pos: "50% 22%";
 t.style.backgroundImage = "none";
-} else {
-v.style.backgroundImage = "";
-t.style.backgroundImage = "url('" + TITLE_IMG + "')";
-}
 t.classList.toggle("seasonal", !!conf);
 const b = document.getElementById("seasonBadge");
 if(b){ if(conf){ b.textContent = conf.badge; b.hidden = false; } else { b.hidden = true; } }
