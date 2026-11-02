@@ -41,6 +41,9 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 #btnStart{background:linear-gradient(90deg,#ffd76e,#ffb3d9);color:#4a2c00}
 #btnLoadT{background:rgba(255,255,255,.92);color:#333}
 #btnOpT{background:rgba(255,255,255,.92);color:#333}
+#btnDataT{background:rgba(255,255,255,.92);color:#333}
+.databox{width:100%;min-height:96px;box-sizing:border-box;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.55;margin:2px 0 10px}
+.datafile{display:block;width:100%;box-sizing:border-box;color:#dfe8ff;font-size:13px;margin:2px 0 10px}
 #videoModal{position:absolute;inset:0;z-index:35;display:none;background:#000}
 #gameVideo{width:100%;height:100%;object-fit:contain;background:#000}
 #btnVideoSkip{position:absolute;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));background:rgba(20,24,48,.88);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:99px;padding:11px 20px;font-size:14.5px;font-weight:700;cursor:pointer;min-height:46px}
@@ -82,6 +85,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="mLog">ログ</button>
 <button id="mCollection">図鑑</button>
 <button id="mSound">音設定</button>
+<button id="mData">データ</button>
 <button id="mAuto">オート</button>
 <button id="mTitle">題名へ</button>
 </div>
@@ -95,6 +99,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="btnLoadT">つづきから（ロード）</button>
 <button id="btnCollectionT">コレクション図鑑</button>
 <button id="btnOpT">オープニングを見る</button>
+<button id="btnDataT">データ引き継ぎ</button>
 <div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、短編ビジュアルノベルです。</div>
 </div>
 <div class="modal" id="saveModal"><button class="close" data-close="saveModal">閉じる</button><h2 id="saveTitle">セーブ</h2><div id="slots"></div></div>
@@ -102,6 +107,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <div id="freeAction" class="free"><div id="freeContent"></div></div>
 <div class="modal" id="collectionModal"><button class="close" data-close="collectionModal">閉じる</button><h2>コレクション図鑑</h2><div class="coltabs"><button data-coltab="goods">グッズ</button><button data-coltab="endings">エンディング</button><button data-coltab="gallery">場面回想</button></div><div id="collectionBody"></div></div>
 <div class="modal" id="soundModal"><button class="close" data-close="soundModal">閉じる</button><h2>音の設定</h2><div id="soundBody"></div></div>
+<div class="modal" id="dataModal"><button class="close" data-close="dataModal">閉じる</button><h2>データ引き継ぎ</h2><p class="colnote">セーブデータと図鑑・設定を、別のブラウザや端末へ移せます。書き出したコード（またはファイル）を、移したい先で読み込んでください。読み込むと、そのブラウザの今のデータは上書きされます。</p><p class="colnote"><b>書き出し</b>：コードを作ってコピーするか、ファイルで保存してください。</p><button class="slot" id="btnExportCode">コードを作る</button><textarea id="dataExportText" class="databox" readonly placeholder="ここに引き継ぎコードが表示されます"></textarea><button class="slot" id="btnExportFile">ファイルで保存</button><p class="colnote"><b>読み込み</b>：コードを貼り付けるか、保存したファイルを選んでから「読み込む」を押してください。</p><textarea id="dataImportText" class="databox" placeholder="引き継ぎコードを貼り付け"></textarea><input type="file" id="dataImportFile" class="datafile" accept=".txt,.json"><button class="slot" id="btnImportData">読み込む</button><p class="colnote" id="dataMsg"></p></div>
 <div id="videoModal"><video id="gameVideo" playsinline preload="auto"></video><button id="btnVideoSkip">スキップ ▶▶</button></div>
 <div id="toast"></div>
 </div>
@@ -549,7 +555,94 @@ return;
 }
 const pos=craneState.pos; stopCraneTimer(); resolveCrane(pos);
 }
-window.SeraphinaGames = {judgeCrane:judgeCrane, drawGacha:drawGacha, resolveCrane:resolveCrane, drawGachaOnce:drawGachaOnce, buyItem:buyItem, enterFreeDest:enterFreeDest, applyFreeOption:applyFreeOption, nextFree:nextFree, finishInterlude:finishInterlude, normalizeState:normalizeState, ITEMS:ITEMS, GACHA_POOL:GACHA_POOL, CRANE_POOL:CRANE_POOL};
+/* ===== セーブデータ引き継ぎ（書き出し／読み込み） ===== */
+const TRANSFER_PREFIX = "SERAPHINA_SAVE_V1:";
+function b64encodeUtf8(str){
+const bytes = [];
+for(let i=0;i<str.length;i++){
+const c = str.charCodeAt(i);
+if(c<0x80){ bytes.push(c); }
+else if(c<0x800){ bytes.push(0xC0|(c>>6), 0x80|(c&0x3F)); }
+else if(c>=0xD800 && c<=0xDBFF && i+1<str.length && str.charCodeAt(i+1)>=0xDC00 && str.charCodeAt(i+1)<=0xDFFF){
+const cp = 0x10000 + ((c-0xD800)*0x400) + (str.charCodeAt(i+1)-0xDC00);
+bytes.push(0xF0|(cp>>18), 0x80|((cp>>12)&0x3F), 0x80|((cp>>6)&0x3F), 0x80|(cp&0x3F)); i++;
+}
+else if(c>=0xD800 && c<=0xDFFF){ bytes.push(0xEF,0xBF,0xBD); }
+else{ bytes.push(0xE0|(c>>12), 0x80|((c>>6)&0x3F), 0x80|(c&0x3F)); }
+}
+const b64chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+let out = "";
+for(let i=0;i<bytes.length;i+=3){
+const b0 = bytes[i], has1 = i+1<bytes.length, has2 = i+2<bytes.length;
+const b1 = has1? bytes[i+1]: 0, b2 = has2? bytes[i+2]: 0;
+out += b64chars.charAt(b0>>2) + b64chars.charAt(((b0&3)<<4)|(b1>>4)) + (has1? b64chars.charAt(((b1&15)<<2)|(b2>>6)): "=") + (has2? b64chars.charAt(b2&63): "=");
+}
+return out;
+}
+function b64decodeUtf8(b64){
+const b64chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+const clean = String(b64).replace(/\s+/g, "").replace(/=+$/, "");
+if(clean.length % 4 === 1) throw new Error("コードの形式が正しくありません");
+const bytes = [];
+let buf = 0, nbits = 0;
+for(let i=0;i<clean.length;i++){
+const v = b64chars.indexOf(clean.charAt(i));
+if(v<0) throw new Error("コードの形式が正しくありません");
+buf = (buf<<6)|v; nbits += 6;
+if(nbits>=8){ nbits -= 8; bytes.push((buf>>nbits)&0xFF); }
+}
+let out = "";
+for(let i=0;i<bytes.length;){
+const b0 = bytes[i];
+if(b0<0x80){ out += String.fromCharCode(b0); i += 1; }
+else if(b0>=0xC2 && b0<=0xDF && i+1<bytes.length){ out += String.fromCharCode(((b0&0x1F)<<6)|(bytes[i+1]&0x3F)); i += 2; }
+else if(b0>=0xE0 && b0<=0xEF && i+2<bytes.length){ out += String.fromCharCode(((b0&0x0F)<<12)|((bytes[i+1]&0x3F)<<6)|(bytes[i+2]&0x3F)); i += 3; }
+else if(b0>=0xF0 && b0<=0xF4 && i+3<bytes.length){ const cp = ((b0&0x07)<<18)|((bytes[i+1]&0x3F)<<12)|((bytes[i+2]&0x3F)<<6)|(bytes[i+3]&0x3F); const cc = cp-0x10000; out += String.fromCharCode(0xD800+(cc>>10), 0xDC00+(cc&0x3FF)); i += 4; }
+else throw new Error("コードの形式が正しくありません");
+}
+return out;
+}
+function transferKeys(){
+const ks = [];
+for(let i=1;i<=6;i++) ks.push(SAVE_KEY+i);
+ks.push(COLLECTION_KEY); ks.push(AUDIO_KEY); ks.push(VIDEO_SEEN_KEY);
+return ks;
+}
+function exportSaveData(){
+const entries = {};
+transferKeys().forEach(k=>{ const v = localStorage.getItem(k); if(v!==null && v!==undefined) entries[k] = String(v); });
+const payload = {app:"seraphina-game", kind:"save-transfer", version:1, exportedAt:new Date().toISOString(), entries:entries};
+return TRANSFER_PREFIX + b64encodeUtf8(JSON.stringify(payload));
+}
+function importSaveData(str){
+if(typeof str!=="string") throw new Error("コードが入力されていません");
+let s = str.trim();
+if(!s) throw new Error("コードが入力されていません");
+if(s.indexOf(TRANSFER_PREFIX)===0){ s = s.slice(TRANSFER_PREFIX.length).trim(); }
+else if(s.indexOf("SERAPHINA_")===0){ throw new Error("対応していない形式のコードです"); }
+let payload = null;
+try{ payload = JSON.parse(b64decodeUtf8(s)); }catch(e){ if(e && typeof e.message==="string" && e.message.indexOf("コード")===0) throw e; throw new Error("コードを読み取れませんでした"); }
+if(!payload || typeof payload!=="object" || Array.isArray(payload)) throw new Error("コードの内容が正しくありません");
+if(payload.app!=="seraphina-game" || payload.kind!=="save-transfer") throw new Error("セラフィナの引き継ぎコードではないようです");
+const entries = payload.entries;
+if(!entries || typeof entries!=="object" || Array.isArray(entries)) throw new Error("コードの内容が正しくありません");
+const keys = transferKeys();
+const accepted = {};
+Object.keys(entries).forEach(k=>{
+if(keys.indexOf(k)<0) return;
+const v = entries[k];
+if(typeof v!=="string") throw new Error("コードの内容が正しくありません");
+if(k===VIDEO_SEEN_KEY){ if(v!=="1") throw new Error("コードの内容が正しくありません"); }
+else{ try{ JSON.parse(v); }catch(e2){ throw new Error("コードの中のデータが壊れています"); } }
+accepted[k] = v;
+});
+keys.forEach(k=>{
+if(Object.prototype.hasOwnProperty.call(accepted, k)) localStorage.setItem(k, accepted[k]);
+else localStorage.removeItem(k);
+});
+return Object.keys(accepted).length;
+}
+window.SeraphinaGames = {judgeCrane:judgeCrane, drawGacha:drawGacha, resolveCrane:resolveCrane, drawGachaOnce:drawGachaOnce, buyItem:buyItem, enterFreeDest:enterFreeDest, applyFreeOption:applyFreeOption, nextFree:nextFree, finishInterlude:finishInterlude, normalizeState:normalizeState, ITEMS:ITEMS, GACHA_POOL:GACHA_POOL, CRANE_POOL:CRANE_POOL, exportSaveData:exportSaveData, importSaveData:importSaveData, transferKeys:transferKeys};
 
 document.getElementById("btnCollectionT").addEventListener("click", e=>{ e.stopPropagation(); openCollection("goods");});
 document.getElementById("mCollection").addEventListener("click", e=>{ e.stopPropagation(); openCollection("goods");});
@@ -567,6 +660,52 @@ if(this.classList.contains("on")){ stopAuto();}
 else{ this.classList.add("on"); scheduleAuto(); toast("オート再生 ON");}
 });
 document.querySelectorAll("[data-close]").forEach(b=> b.addEventListener("click", ()=>{ document.getElementById(b.dataset.close).style.display="none";}));
+/* ===== データ引き継ぎUI ===== */
+function dataMsg(msg){ const el = document.getElementById("dataMsg"); if(el) el.textContent = msg; }
+function openDataTransfer(){
+dataMsg("");
+document.getElementById("dataModal").style.display = "block";
+}
+document.getElementById("btnDataT").addEventListener("click", e=>{ e.stopPropagation(); openDataTransfer(); });
+document.getElementById("mData").addEventListener("click", e=>{ e.stopPropagation(); openDataTransfer(); });
+document.getElementById("btnExportCode").addEventListener("click", ()=>{
+const code = exportSaveData();
+document.getElementById("dataExportText").value = code;
+dataMsg("引き継ぎコードを作りました。コピーして、移したい先で読み込んでください。");
+});
+document.getElementById("btnExportFile").addEventListener("click", ()=>{
+const code = exportSaveData();
+document.getElementById("dataExportText").value = code;
+const blob = new Blob([code], {type:"text/plain"});
+const a = document.createElement("a");
+a.href = URL.createObjectURL(blob);
+a.download = "seraphina-save-data.txt";
+document.body.appendChild(a);
+a.click();
+setTimeout(()=>{ try{ URL.revokeObjectURL(a.href); }catch(e){} if(a.remove) a.remove(); }, 400);
+dataMsg("ファイル seraphina-save-data.txt を保存しました。");
+});
+document.getElementById("dataImportFile").addEventListener("change", e=>{
+const f = e.target && e.target.files && e.target.files[0];
+if(!f) return;
+const r = new FileReader();
+r.onload = ()=>{ document.getElementById("dataImportText").value = String(r.result || ""); dataMsg("ファイルの内容を読み込み欄に入れました。「読み込む」を押してください。"); };
+r.onerror = ()=>{ dataMsg("ファイルを読めませんでした"); };
+r.readAsText(f);
+});
+document.getElementById("btnImportData").addEventListener("click", ()=>{
+const str = document.getElementById("dataImportText").value;
+if(!str || !str.trim()){ dataMsg("コードが入力されていません"); return; }
+if(!confirm("読み込むと、このブラウザの今のセーブデータ・図鑑・設定は上書きされます。よろしいですか？")) return;
+try{
+const n = importSaveData(str);
+dataMsg("読み込みました（"+n+"件のデータ）。画面を再読み込みします。");
+toast("データを読み込みました");
+setTimeout(()=>location.reload(), 600);
+}catch(err){
+dataMsg("読み込めませんでした："+((err && err.message)? err.message: "形式が正しくありません"));
+}
+});
 document.getElementById("title").style.backgroundImage = "url('" + TITLE_IMG + "')";
 /* ===== 音の拡張：BGM・効果音・決め台詞ボイス・全台詞読み上げ ===== */
 const AUDIO_KEY = "seraphina_audio_v1";
