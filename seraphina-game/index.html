@@ -76,6 +76,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="mLoad">ロード</button>
 <button id="mLog">ログ</button>
 <button id="mCollection">図鑑</button>
+<button id="mSound">音設定</button>
 <button id="mAuto">オート</button>
 <button id="mTitle">題名へ</button>
 </div>
@@ -93,6 +94,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <div class="modal" id="logModal"><button class="close" data-close="logModal">閉じる</button><h2>バックログ</h2><div id="loglist"></div></div>
 <div id="freeAction" class="free"><div id="freeContent"></div></div>
 <div class="modal" id="collectionModal"><button class="close" data-close="collectionModal">閉じる</button><h2>コレクション図鑑</h2><div class="coltabs"><button data-coltab="goods">グッズ</button><button data-coltab="endings">エンディング</button><button data-coltab="gallery">場面回想</button></div><div id="collectionBody"></div></div>
+<div class="modal" id="soundModal"><button class="close" data-close="soundModal">閉じる</button><h2>音の設定</h2><div id="soundBody"></div></div>
 <div id="toast"></div>
 </div>
 <script>
@@ -113,6 +115,7 @@ if(v>=1) return "まだぴかぴか。でも何か始まっている";
 return "輪はぴかぴか、翼もふんわり";
 }
 function updateHUD(){
+audioMoneyWatch();
 document.getElementById("shokunum").textContent = S.shoku;
 document.getElementById("iyashinum").textContent = S.iyashi;
 document.getElementById("moneynum").textContent = (S.money||0).toLocaleString("ja-JP");
@@ -127,6 +130,7 @@ function branchFor(token){ const t = BR[token]; if(!t) return null; if(t.kind===
 function showScene(){
 const sc = SCENES[S.scene];
 recordSceneProgress(S.scene);
+audioSceneHook();
 if(sc.interlude){ document.getElementById("bg").src = assetSrc(sc.bg); startInterlude(sc.interlude, sc.target); return; }
 hideFree();
 document.getElementById("bg").src = assetSrc(sc.bg);
@@ -135,6 +139,7 @@ document.getElementById("who").textContent = line[0] || "";
 document.getElementById("text").textContent = line[1];
 document.getElementById("next").style.display = "";
 updateHUD();
+onLineShown();
 }
 function pushLog(){
 const sc = SCENES[S.scene]; const line = sc.lines[S.line];
@@ -161,7 +166,7 @@ box.querySelectorAll("button").forEach(b=>b.remove());
 sc.choices.forEach((ch, ci)=>{
 const b = document.createElement("button");
 b.textContent = ch.text;
-b.onclick = (e)=>{ e.stopPropagation();
+b.onclick = (e)=>{ e.stopPropagation(); seTap();
 S.shoku += ch.shoku||0; S.iyashi += ch.iyashi||0; if(ch.flag){ S.flags = S.flags||{}; S.flags[ch.flag] = (S.flags[ch.flag]||0) + (ch.fv||1); }
 applyChoiceReward(S.scene, ci);
 S.log.push(["", ch.text]);
@@ -172,9 +177,10 @@ box.appendChild(b);
 });
 box.style.display = "flex";
 }
-function startGame(){ hideFree(); S = newState(); document.getElementById("title").style.display="none"; showScene();}
+function startGame(){ audioUserStart(); hideFree(); S = newState(); document.getElementById("title").style.display="none"; showScene();}
 function toTitle(finished){
 stopAuto(); hideFree();
+audioToTitle();
 const t = document.getElementById("title");
 t.style.display = "flex";
 if(finished) toast("おしまい。ありがとうございました");
@@ -334,6 +340,7 @@ if(!ITEMS[id]) return false;
 let newly = false;
 if(S &&!S.items[id]){ S.items[id]=true; newly=true;}
 if(!seraphinaCollection.items[id]){ seraphinaCollection.items[id]=true; newly=true; saveCollectionData();}
+if(newly) seItem();
 return newly;
 }
 function mergeCollectionFromRun(){
@@ -488,7 +495,7 @@ return GACHA_POOL[Math.floor(v*GACHA_POOL.length)];
 function drawGachaOnce(rng){
 if(!S ||!S.free) return null;
 if(S.money<300){ S.free.gachaMsg="所持金が足りません。ガチャは1回300円です。"; renderFree(); return null;}
-S.money -= 300;
+S.money -= 300; seGacha();
 const id = drawGacha(rng);
 if(S.items[id]){ S.money += 100; S.free.gachaMsg="ダブりでした："+ITEMS[id].name+"。ダブり分として100円が戻りました。";}
 else { grantItem(id); S.free.gachaMsg="出ました："+ITEMS[id].name+"。図鑑に登録しました。";}
@@ -499,7 +506,7 @@ function resolveCrane(pos){
 if(!S ||!S.free) return false;
 if(S.money<200){ S.free.craneMsg="所持金が足りません。クレーンゲームは1回200円です。"; renderFree(); return false;}
 S.money -= 200;
-const ok = judgeCrane(pos);
+const ok = judgeCrane(pos); if(ok) seCraneOK(); else seCraneNG();
 if(!ok){ S.free.craneMsg="あと少しで落ちてしまいました。景品はありませんが、本編の進行には影響しません。"; updateHUD(); renderFree(); return false;}
 const unowned = CRANE_POOL.filter(id=>!S.items[id]);
 if(!unowned.length){ S.money += 100; S.free.craneMsg="成功！　景品は全部そろっていたので、交換券として100円分が戻りました。";}
@@ -525,7 +532,7 @@ window.SeraphinaGames = {judgeCrane:judgeCrane, drawGacha:drawGacha, resolveCran
 document.getElementById("btnCollectionT").addEventListener("click", e=>{ e.stopPropagation(); openCollection("goods");});
 document.getElementById("mCollection").addEventListener("click", e=>{ e.stopPropagation(); openCollection("goods");});
 document.querySelectorAll("[data-coltab]").forEach(b=> b.addEventListener("click", ()=>renderCollection(b.dataset.coltab)));
-document.getElementById("textbox").addEventListener("click", ()=>{ if(S && document.getElementById("title").style.display==="none") advance();});
+document.getElementById("textbox").addEventListener("click", ()=>{ audioTap(); if(S && document.getElementById("title").style.display==="none") advance();});
 document.getElementById("btnStart").addEventListener("click", startGame);
 document.getElementById("btnLoadT").addEventListener("click", ()=>openSlots("load"));
 document.getElementById("mSave").addEventListener("click", e=>{ e.stopPropagation(); openSlots("save");});
@@ -539,6 +546,312 @@ else{ this.classList.add("on"); scheduleAuto(); toast("オート再生 ON");}
 });
 document.querySelectorAll("[data-close]").forEach(b=> b.addEventListener("click", ()=>{ document.getElementById(b.dataset.close).style.display="none";}));
 document.getElementById("title").style.backgroundImage = "url('" + TITLE_IMG + "')";
+/* ===== 音の拡張：BGM・効果音・決め台詞ボイス・全台詞読み上げ ===== */
+const AUDIO_KEY = "seraphina_audio_v1";
+function loadAudioSettings(){
+const d = {bgm:true, bgmVol:2, voice:true, voiceVol:2, tts:false};
+try{ const raw = localStorage.getItem(AUDIO_KEY); if(!raw) return d; const p = JSON.parse(raw); if(!p || typeof p!=="object") return d;
+return {bgm: p.bgm!==false, bgmVol:[1,2,3].indexOf(p.bgmVol)>=0? p.bgmVol:2, voice: p.voice!==false, voiceVol:[1,2,3].indexOf(p.voiceVol)>=0? p.voiceVol:2, tts: p.tts===true};
+}catch(e){ return d; }
+}
+let audioSet = loadAudioSettings();
+function saveAudioSettings(){ try{ localStorage.setItem(AUDIO_KEY, JSON.stringify(audioSet)); }catch(e){} }
+const VOICE_CLIPS = {"p0:2": "v_sera_01.mp3", "p0:5": "v_sera_02.mp3", "p2:4": "v_sera_03.mp3", "c0:5": "v_sera_04.mp3", "c9:4": "v_sera_05.mp3", "r3a:2": "v_sera_06.mp3", "n14:6": "v_sera_07.mp3", "t1:5": "v_sera_08.mp3", "v1:3": "v_sera_09.mp3", "k2:3": "v_sera_10.mp3", "g_last:4": "v_sera_11.mp3", "end_special:7": "v_sera_12.mp3", "end_stay:7": "v_sera_13.mp3", "end_return:7": "v_sera_14.mp3", "t1:1": "v_lucia_01.mp3", "t1:3": "v_lucia_02.mp3", "t1:6": "v_lucia_03.mp3", "t11:5": "v_lucia_04.mp3", "t13:4": "v_lucia_05.mp3", "t_last:3": "v_lucia_06.mp3", "t_last:6": "v_lucia_07.mp3", "p1:4": "v_gab_01.mp3", "p1:7": "v_gab_02.mp3", "p2:2": "v_gab_03.mp3", "v1:1": "v_gab_04.mp3", "v2:3": "v_gab_05.mp3", "v_end_high:1": "v_gab_06.mp3", "v_end_low:3": "v_gab_07.mp3"};
+const BGM_THEMES = {
+title:{bpm:76,lead:"triangle",lv:0.13,hat:false,don:false,mel:[72,0,0,76,0,0,79,0,76,0,0,74,0,0,0,0,72,0,0,76,0,0,79,0,81,0,79,0,76,0,0,0],bass:[48,0,0,0,0,0,0,0,45,0,0,0,0,0,0,0,41,0,0,0,0,0,0,0,43,0,0,0,0,0,0,0],pad:[[60,64,67],[57,60,64],[53,57,60],[55,59,62]]},
+heaven:{bpm:66,lead:"sine",lv:0.15,hat:false,don:false,mel:[72,76,79,84,79,76,72,76,74,79,81,86,81,79,74,0,72,76,79,84,88,84,79,76,74,71,72,0,0,0,0,0],bass:[48,0,0,0,0,0,0,0,43,0,0,0,0,0,0,0,41,0,0,0,0,0,0,0,43,0,0,0,0,0,0,0],pad:[[60,64,67],[59,62,67],[53,57,60],[55,59,62]]},
+osaka:{bpm:108,lead:"triangle",lv:0.12,hat:true,don:false,mel:[72,0,74,76,0,79,0,76,74,0,72,0,74,0,0,0,69,0,72,74,0,76,0,74,72,0,74,0,76,0,0,0],bass:[48,0,0,0,53,0,0,0,48,0,0,0,55,0,0,0,45,0,0,0,53,0,0,0,48,0,0,0,55,0,0,0],pad:[[60,64,67],[60,65,69],[60,64,67],[59,62,67]]},
+nipponbashi:{bpm:124,lead:"square",lv:0.06,hat:true,don:false,mel:[76,76,0,79,0,79,81,0,79,0,76,0,74,76,0,0,76,76,0,79,0,84,81,79,76,0,74,0,76,0,0,0],bass:[45,0,45,0,45,0,45,0,41,0,41,0,41,0,41,0,43,0,43,0,43,0,43,0,48,0,48,0,50,0,50,0],pad:[[57,60,64],[53,57,60],[55,59,62],[60,64,67]]},
+night:{bpm:60,lead:"sine",lv:0.14,hat:false,don:false,mel:[69,0,0,0,72,0,0,0,71,0,69,0,67,0,0,0,69,0,0,0,72,0,76,0,74,0,0,0,0,0,0,0],bass:[45,0,0,0,0,0,0,0,41,0,0,0,0,0,0,0,43,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0],pad:[[57,60,64],[53,57,60],[55,59,62],[52,55,59]]},
+shrine:{bpm:56,lead:"sine",lv:0.14,hat:false,don:false,mel:[72,0,0,0,0,0,76,0,0,0,0,0,79,0,0,0,76,0,0,0,0,0,74,0,0,0,0,0,72,0,0,0],bass:[48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,43,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],pad:[[60,64,67],[55,60,64],[57,60,64],[59,62,67]]},
+lucia:{bpm:116,lead:"square",lv:0.06,hat:true,don:false,mel:[69,0,72,0,76,0,72,0,77,0,76,0,72,71,0,0,69,0,72,0,76,0,79,0,81,0,79,76,77,0,76,0],bass:[45,0,0,45,0,0,45,0,41,0,0,41,0,0,41,0,43,0,0,43,0,0,43,0,45,0,45,0,47,0,49,0],pad:[[57,60,64],[53,57,60],[55,59,62],[57,60,64]]},
+gabriela:{bpm:88,lead:"triangle",lv:0.13,hat:false,don:false,mel:[67,0,0,72,0,0,71,0,72,0,0,0,74,0,76,0,79,0,0,76,0,0,74,0,72,0,71,0,72,0,0,0],bass:[48,0,0,0,55,0,0,0,53,0,0,0,55,0,0,0,45,0,0,0,53,0,0,0,48,0,0,0,55,0,0,0],pad:[[60,64,67],[55,59,62],[57,60,65],[60,64,67]]},
+festival:{bpm:128,lead:"square",lv:0.06,hat:true,don:true,mel:[72,0,76,0,79,0,76,79,81,0,79,0,76,0,74,0,72,0,76,0,79,0,84,0,81,79,76,74,72,0,0,0],bass:[48,0,48,0,43,0,43,0,45,0,45,0,48,0,55,0,48,0,48,0,43,0,43,0,45,0,50,0,48,0,0,0],pad:[[60,64,67],[59,62,67],[57,60,64],[60,64,67]]},
+ending:{bpm:72,lead:"triangle",lv:0.13,hat:false,don:false,mel:[76,0,0,0,74,0,72,0,74,0,0,0,0,0,0,0,76,0,0,0,79,0,76,0,74,0,72,0,74,0,0,0],bass:[48,0,0,0,0,0,0,0,41,0,0,0,0,0,0,0,45,0,0,0,0,0,0,0,43,0,0,0,0,0,0,0],pad:[[60,64,67],[53,57,60],[57,60,64],[55,59,62]]}
+};
+const BGM_NIPPON_BG = {"01-ota-road":1,"05-maid-cafe":1,"02-maid-cafe-cheki":1,"13-maid-cafe":1,"10-maid-cafe-inspection":1,"06-figure-shop":1,"06-figure-shop-mirror":1,"11-figure-unboxing":1,"12-figure-shelf":1,"03-rhythm-game":1,"04-crane-game":1,"14-crane-game-duel":1,"05-doujin-shop":1,"06-junk-shop":1,"25-junk-treasure":1,"07-cosplay-shop":1,"09-card-shop":1,"10-used-bookstore":1,"15-collab-cafe":1,"16-limited-goods-queue":1,"04-gacha-trap":1,"05-gacha-jackpot":1};
+const BGM_HEAVEN_BG = {"02-florence":1,"11-descending-sky":1,"30-report-to-heaven":1,"26-return-talk-city-view":1};
+const BGM_SHRINE_BG = {"03-meeting-amaterasu":1,"04-amaterasu-tea":1,"07-meeting-kannon":1,"08-kannon-and-seraphina":1,"27-hatsumode":1,"02-sumiyoshi-bridge":1,"media-generation-09-inari-shrine-visit-0-7e512796-f25c-4f0e-a7e9-71e9c4941395":1,"media-generation-17-ema-wishes-0-c75692b5-a001-43a1-a169-a553e70f1339":1,"media-generation-26-healing-together-kannon-0-3fdee95a-7810-46fd-8688-e2b79935e7dd":1,"media-generation-28-sumiyoshi-dusk-farewell-0-9ec7dd29-1cd8-47c4-90d2-a3e53721b3e2":1};
+const BGM_NIGHT_BG = {"22-night-view":1,"27-nipponbashi-neon-night":1,"28-osaka-sunset-tadaima":1,"28-dusk-walk":1,"24-kotatsu":1,"23-first-snow":1,"25-christmas-lights":1,"18-tsukimi":1,"media-generation-29-window-lights-night-0-37a01af4-7bfe-4aa5-b02b-962a52478ada":1};
+const BGM_FEST_BG = {"11-summer-festival":1,"13-fireworks":1,"media-generation-19-festival-night-0-f58d3bb3-6560-4839-9008-6c3c8917476c":1};
+function themeForScene(sid, bg){
+if(!sid) return "title";
+if(sid.indexOf("end_")===0) return "ending";
+if(sid.indexOf("INT")===0) return "osaka";
+if(bg && BGM_FEST_BG[bg]) return "festival";
+if((bg && BGM_SHRINE_BG[bg]) || sid[0]==="k") return "shrine";
+if(sid[0]==="v") return "gabriela";
+if(sid[0]==="t") return "lucia";
+if(bg && BGM_NIGHT_BG[bg]) return "night";
+if((bg && BGM_HEAVEN_BG[bg]) || sid[0]==="p" || sid[0]==="g") return "heaven";
+if((bg && BGM_NIPPON_BG[bg]) || sid[0]==="n" || sid[0]==="f") return "nipponbashi";
+return "osaka";
+}
+let AC = null, bgmGain = null, seGain = null, noiseBuf = null;
+let wantTheme = "title";
+let bgmCur = {theme:null, step:0, next:0, timer:null};
+let lastMoney = null, lastAudioScene = null;
+let voiceEl = null;
+function audioCtx(){
+try{
+if(!AC){
+const Ctor = (typeof window!=="undefined")? (window.AudioContext || window.webkitAudioContext): null;
+if(!Ctor) return null;
+AC = new Ctor();
+bgmGain = AC.createGain(); bgmGain.connect(AC.destination);
+seGain = AC.createGain(); seGain.connect(AC.destination);
+applyAudioVolumes();
+}
+if(AC.state==="suspended"){ const p = AC.resume(); if(p && p.catch) p.catch(()=>{}); }
+return AC;
+}catch(e){ return null; }
+}
+function applyAudioVolumes(){
+try{
+if(bgmGain) bgmGain.gain.value = [0.20,0.42,0.68][audioSet.bgmVol-1] || 0.42;
+if(seGain) seGain.gain.value = 0.9;
+}catch(e){}
+}
+function mf(m){ return 440*Math.pow(2,(m-69)/12); }
+function toneAt(m, t, dur, type, vol, dest){
+if(!AC) return;
+try{
+const o = AC.createOscillator(), g = AC.createGain();
+o.type = type; o.frequency.value = mf(m);
+g.gain.setValueAtTime(0.0001, t);
+g.gain.exponentialRampToValueAtTime(Math.max(vol,0.0002), t+0.02);
+g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
+o.connect(g); g.connect(dest || bgmGain);
+o.start(t); o.stop(t+dur+0.05);
+}catch(e){}
+}
+function padAt(m, t, dur, vol){
+if(!AC) return;
+try{
+const o = AC.createOscillator(), g = AC.createGain();
+o.type = "triangle"; o.frequency.value = mf(m);
+g.gain.setValueAtTime(0.0001, t);
+g.gain.linearRampToValueAtTime(vol, t+Math.min(0.5, dur*0.3));
+g.gain.setValueAtTime(vol, t+dur*0.7);
+g.gain.linearRampToValueAtTime(0.0001, t+dur);
+o.connect(g); g.connect(bgmGain);
+o.start(t); o.stop(t+dur+0.05);
+}catch(e){}
+}
+function hatAt(t, vol){
+if(!AC) return;
+try{
+if(!noiseBuf){ noiseBuf = AC.createBuffer(1, Math.floor(AC.sampleRate*0.08), AC.sampleRate); const d = noiseBuf.getChannelData(0); for(let i=0;i<d.length;i++) d[i] = Math.random()*2-1; }
+const s = AC.createBufferSource(); s.buffer = noiseBuf;
+const f = AC.createBiquadFilter(); f.type = "highpass"; f.frequency.value = 6500;
+const g = AC.createGain();
+g.gain.setValueAtTime(vol, t);
+g.gain.exponentialRampToValueAtTime(0.0001, t+0.045);
+s.connect(f); f.connect(g); g.connect(bgmGain);
+s.start(t); s.stop(t+0.07);
+}catch(e){}
+}
+function donAt(t){
+if(!AC) return;
+try{
+const o = AC.createOscillator(), g = AC.createGain();
+o.type = "sine";
+o.frequency.setValueAtTime(150, t);
+o.frequency.exponentialRampToValueAtTime(52, t+0.16);
+g.gain.setValueAtTime(0.28, t);
+g.gain.exponentialRampToValueAtTime(0.0001, t+0.22);
+o.connect(g); g.connect(bgmGain);
+o.start(t); o.stop(t+0.25);
+}catch(e){}
+}
+function bgmScheduleStep(th, step, t, spb){
+const m = th.mel[step];
+if(m) toneAt(m, t, Math.min(0.55, spb*3.2), th.lead, th.lv, bgmGain);
+const b = th.bass[step];
+if(b) toneAt(b, t, spb*1.9, "sine", 0.17, bgmGain);
+if(step%8===0){ const ch = th.pad[Math.floor(step/8)%th.pad.length]; if(ch) ch.forEach(n=>padAt(n, t, spb*8.2, 0.028)); }
+if(th.hat && step%4===2) hatAt(t, 0.045);
+if(th.don && step%8===0) donAt(t);
+if(th.don && step%8===5) donAt(t);
+}
+function bgmTick(){
+if(!AC || !bgmCur.theme) return;
+const th = BGM_THEMES[bgmCur.theme]; if(!th) return;
+const spb = 60/th.bpm/4;
+try{
+while(bgmCur.next < AC.currentTime + 0.45){
+bgmScheduleStep(th, bgmCur.step, Math.max(bgmCur.next, AC.currentTime+0.02), spb);
+bgmCur.step = (bgmCur.step+1) % th.mel.length;
+bgmCur.next += spb;
+}
+}catch(e){}
+}
+function bgmStart(theme){
+bgmStop();
+if(!AC || !BGM_THEMES[theme]) return;
+bgmCur.theme = theme; bgmCur.step = 0; bgmCur.next = AC.currentTime + 0.08;
+bgmCur.timer = setInterval(bgmTick, 180);
+bgmTick();
+}
+function bgmStop(){
+if(bgmCur.timer){ clearInterval(bgmCur.timer); bgmCur.timer = null; }
+bgmCur.theme = null;
+}
+function setTheme(name){
+wantTheme = name;
+if(!audioSet.bgm){ bgmStop(); return; }
+if(!AC) return;
+if(bgmCur.theme===name && bgmCur.timer) return;
+bgmStart(name);
+}
+function audioUserStart(){
+const c = audioCtx();
+if(c && audioSet.bgm) bgmStart(wantTheme);
+}
+function audioToTitle(){
+stopVoice(); stopSpeak();
+setTheme("title");
+}
+function audioTap(){
+audioUserStart();
+seTap();
+}
+function audioSceneHook(){
+try{
+if(!S) return;
+const sc = SCENES[S.scene]; if(!sc) return;
+setTheme(themeForScene(S.scene, sc.bg));
+if(sc.interlude && lastAudioScene!==S.scene) seFanfare();
+lastAudioScene = S.scene;
+}catch(e){}
+}
+function audioMoneyWatch(){
+try{
+if(!S) return;
+const m = S.money||0;
+if(lastMoney===null){ lastMoney = m; return; }
+if(m>lastMoney) seCoin(true);
+else if(m<lastMoney) seCoin(false);
+lastMoney = m;
+}catch(e){}
+}
+function seTone(m, delay, dur, type, vol){
+if(!AC) return;
+try{ toneAt(m, AC.currentTime + (delay||0), dur, type, vol, seGain); }catch(e){}
+}
+function seTap(){ if(!AC) return; seTone(88, 0, 0.07, "square", 0.05); }
+function seCoin(up){
+if(!AC) return;
+if(up){ seTone(79, 0, 0.08, "sine", 0.16); seTone(88, 0.07, 0.14, "sine", 0.16); }
+else { seTone(88, 0, 0.08, "sine", 0.13); seTone(76, 0.07, 0.13, "sine", 0.13); }
+}
+function seGacha(){
+if(!AC) return;
+try{
+const t = AC.currentTime;
+const o = AC.createOscillator(), g = AC.createGain();
+o.type = "square";
+o.frequency.setValueAtTime(620, t);
+o.frequency.exponentialRampToValueAtTime(180, t+0.24);
+g.gain.setValueAtTime(0.07, t);
+g.gain.exponentialRampToValueAtTime(0.0001, t+0.26);
+o.connect(g); g.connect(seGain);
+o.start(t); o.stop(t+0.28);
+}catch(e){}
+seTone(64, 0.27, 0.1, "sine", 0.2);
+seTone(88, 0.34, 0.16, "sine", 0.16);
+}
+function seCraneOK(){ if(!AC) return; [76,83,88,95].forEach((m,i)=>seTone(m, i*0.09, 0.16, "sine", 0.15)); }
+function seCraneNG(){
+if(!AC) return;
+try{
+const t = AC.currentTime;
+const o = AC.createOscillator(), g = AC.createGain();
+o.type = "sawtooth";
+o.frequency.setValueAtTime(196, t);
+o.frequency.exponentialRampToValueAtTime(98, t+0.22);
+g.gain.setValueAtTime(0.06, t);
+g.gain.exponentialRampToValueAtTime(0.0001, t+0.24);
+o.connect(g); g.connect(seGain);
+o.start(t); o.stop(t+0.26);
+}catch(e){}
+}
+function seItem(){ if(!AC) return; seTone(93, 0, 0.12, "sine", 0.13); seTone(100, 0.08, 0.2, "sine", 0.12); }
+function seFanfare(){ if(!AC) return; [72,76,79,84].forEach((m,i)=>seTone(m, i*0.09, 0.34, "triangle", 0.14)); }
+function voiceSrc(name){ return (typeof AUDIOURI!=="undefined" && AUDIOURI[name])? AUDIOURI[name]: "assets/audio/" + name; }
+function stopVoice(){
+try{ if(voiceEl){ voiceEl.pause(); voiceEl = null; } }catch(e){}
+}
+function playVoice(file){
+if(!audioSet.voice) return;
+try{
+if(typeof Audio==="undefined") return;
+stopVoice(); stopSpeak();
+voiceEl = new Audio(voiceSrc(file));
+voiceEl.volume = [0.45,0.75,1][audioSet.voiceVol-1] || 0.75;
+const p = voiceEl.play();
+if(p && p.catch) p.catch(()=>{});
+}catch(e){}
+}
+function ttsAvailable(){
+try{ return typeof speechSynthesis!=="undefined" && typeof SpeechSynthesisUtterance!=="undefined"; }catch(e){ return false; }
+}
+const TTS_PITCH = {"セラフィナ":1.15,"ルチア":1.05,"ガブリエラ":0.9,"モコ":1.4,"ノワール":1.3};
+function stopSpeak(){
+if(!ttsAvailable()) return;
+try{ speechSynthesis.cancel(); }catch(e){}
+}
+function speakLine(who, text){
+if(!audioSet.tts || !ttsAvailable() || !text) return;
+try{
+speechSynthesis.cancel();
+const u = new SpeechSynthesisUtterance(text);
+u.lang = "ja-JP";
+u.rate = 1.12;
+u.pitch = TTS_PITCH[who] || 1.0;
+try{
+const vs = speechSynthesis.getVoices();
+if(vs && vs.length){ for(let i=0;i<vs.length;i++){ if((vs[i].lang||"").indexOf("ja")===0){ u.voice = vs[i]; break; } } }
+}catch(e){}
+speechSynthesis.speak(u);
+}catch(e){}
+}
+function onLineShown(){
+try{
+if(!S) return;
+const sc = SCENES[S.scene]; if(!sc || sc.interlude) return;
+const line = sc.lines[S.line]; if(!line) return;
+if(S.scene.indexOf("end_")===0 && S.line===0) seFanfare();
+const key = S.scene + ":" + S.line;
+if(VOICE_CLIPS[key]){ playVoice(VOICE_CLIPS[key]); }
+else { stopVoice(); speakLine(line[0]||"", line[1]||""); }
+}catch(e){}
+}
+function renderSoundSettings(){
+const body = document.getElementById("soundBody"); if(!body) return;
+const onoff = v => v? "オン": "オフ";
+const vol = v => ["小","中","大"][v-1] || "中";
+let html = '<p class="colnote">音の設定は、この端末に保存されます。BGMは端末の中で合成しているオリジナル曲で、場面に合わせて自動で切り替わります。</p>';
+html += '<button class="slot" id="sbBgm">BGM：'+onoff(audioSet.bgm)+'</button>';
+html += '<button class="slot" id="sbBgmVol">BGM音量：'+vol(audioSet.bgmVol)+'</button>';
+html += '<button class="slot" id="sbVoice">決め台詞ボイス：'+onoff(audioSet.voice)+'</button>';
+html += '<button class="slot" id="sbVoiceVol">ボイス音量：'+vol(audioSet.voiceVol)+'</button>';
+html += '<button class="slot" id="sbTts">全台詞読み上げ：'+onoff(audioSet.tts)+'</button>';
+html += '<p class="colnote">'+(ttsAvailable()? "読み上げは端末の音声合成（日本語）を使います。決め台詞ボイスのある行では、ボイスが優先されます。": "この端末・ブラウザでは音声合成が使えないため、読み上げは利用できません。")+'</p>';
+body.innerHTML = html;
+const bind = (id, fn)=>{ const el = document.getElementById(id); if(el) el.addEventListener("click", fn); };
+bind("sbBgm", ()=>{ audioSet.bgm = !audioSet.bgm; saveAudioSettings(); if(audioSet.bgm){ audioUserStart(); setTheme(wantTheme); } else bgmStop(); renderSoundSettings(); });
+bind("sbBgmVol", ()=>{ audioSet.bgmVol = audioSet.bgmVol%3 + 1; saveAudioSettings(); applyAudioVolumes(); audioUserStart(); renderSoundSettings(); });
+bind("sbVoice", ()=>{ audioSet.voice = !audioSet.voice; saveAudioSettings(); if(!audioSet.voice) stopVoice(); renderSoundSettings(); });
+bind("sbVoiceVol", ()=>{ audioSet.voiceVol = audioSet.voiceVol%3 + 1; saveAudioSettings(); if(voiceEl) voiceEl.volume = [0.45,0.75,1][audioSet.voiceVol-1] || 0.75; renderSoundSettings(); });
+bind("sbTts", ()=>{ audioSet.tts = !audioSet.tts; saveAudioSettings(); if(!audioSet.tts) stopSpeak(); renderSoundSettings(); });
+}
+function openSound(){
+renderSoundSettings();
+document.getElementById("soundModal").style.display = "block";
+}
+document.getElementById("mSound").addEventListener("click", e=>{ e.stopPropagation(); audioUserStart(); openSound(); });
+if(document.addEventListener) document.addEventListener("pointerdown", ()=>{ audioUserStart(); }, {once:true});
 S = newState();
 document.getElementById("bg").src = "assets/02-florence.webp";
 updateHUD();
