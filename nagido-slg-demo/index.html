@@ -110,6 +110,29 @@ body { font-family:"Hiragino Mincho ProN","Yu Mincho","游明朝",serif; color:#
 
 }
 </style>
+<style>
+/* ===== 全幅共通パネル修正（2026-11-02） =====
+   図鑑・鑑賞／カルテの開閉（.on クラス）と、縦にはみ出すパネルの内部スクロールを全幅で整備する。
+   スマホ用パッチ（上記 @media ブロック）は変更していない。根拠は production-slg-panel-fix-2026-11-02.md */
+
+/* 開閉の基本ルール：.on が無いときは非表示（FT/KT画面は .on の付け外しのみで開閉する。他画面は style.display で開閉するため衝突しない） */
+#ftscreen:not(.on),#ktscreen:not(.on){ display:none; }
+
+/* 縦にはみ出すパネルは内部スクロールし、上下の端が切れないようにする（ステータス画面を含む） */
+#statpop,#ftscreen,#ktscreen{ overflow-y:auto; justify-content:flex-start; max-height:100vh; max-height:100dvh; }
+/* 手帳など z-index:8 のパネルから開いても前面に出るようにする */
+#ftscreen,#ktscreen{ z-index:9; }
+#statbody{ width:100%; }
+
+/* 図鑑・カルテの内枠（従来は全幅で定義が無く、インラインスタイル頼みだった） */
+.nbwrap{ width:100%; max-width:720px; margin:0 auto; text-align:left; }
+.nbhead{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:8px; }
+.nbttl{ font-size:17px; color:#ffd98a; }
+#ftbody,#ktbody{ width:100%; }
+
+/* 図鑑・カルテへの導線ボタンの受け皿（第10・第11ブロックがボタンを追加する先。レイアウトには参加させない） */
+.tbtns,.mbox{ display:contents; }
+</style>
 </head>
 <body>
 <div id="stage">
@@ -117,6 +140,7 @@ body { font-family:"Hiragino Mincho ProN","Yu Mincho","游明朝",serif; color:#
 <img id="bgimg" alt=""><img id="chara" alt=""><div id="bg">凪</div>
 <div id="status"></div>
 <div id="menu">
+<div class="mbox">
 <button onclick="showStatus(true)">ステータス</button>
 <button onclick="toggleLog()">ログ</button>
 <button onclick="UX.notebook()">手帳</button>
@@ -126,6 +150,7 @@ body { font-family:"Hiragino Mincho ProN","Yu Mincho","游明朝",serif; color:#
 <button onclick="UX.quickSave()">Qセーブ</button>
 <button onclick="UX.quickLoad()">Qロード</button>
 <button onclick="NAGI.openSettings()">設定</button>
+</div>
 </div>
 <div id="recallbar"><span id="recallname">回想中</span><button class="btn" onclick="UX.endRecall()">回想を終わる</button></div>
 <div id="choices"></div>
@@ -144,12 +169,14 @@ body { font-family:"Hiragino Mincho ProN","Yu Mincho","游明朝",serif; color:#
 <div id="title" class="screen" style="display:none">
 <h1>凪堂</h1>
 <p>― セラピスト修行記 ―<br>ツボを覚え、アロマを極めろ。正しいツボと正しい香りで完全改善すれば、女性客との信頼が深まっていく。19歳の修行期から始まる育成SLG。</p>
+<div class="tbtns">
 <button class="bigbtn" onclick="startGame()">はじめから</button>
 <button class="btn" onclick="loadGame(true)">つづきから</button>
 <button class="btn" onclick="UX.notebook()">手帳（前提条件）</button>
 <button class="btn" onclick="UX.recall()">シーン回想</button>
 <button class="btn" onclick="NAGI.openGallery()">CGギャラリー</button>
 <button class="btn" onclick="NAGI.openSettings()">設定</button>
+</div>
 </div>
 
 <div id="statpop" class="screen" style="display:none">
