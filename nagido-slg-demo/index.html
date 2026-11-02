@@ -51,6 +51,65 @@ body { font-family:"Hiragino Mincho ProN","Yu Mincho","游明朝",serif; color:#
 .ok { color:#9fe6a0;}.ng { color:#e69f9f;}.mid { color:#ffd98a;}
 #recallbar { position:absolute; top:0; left:0; right:0; z-index:10; display:none; justify-content:center; gap:12px; align-items:center; padding:8px; background:rgba(39,67,95,.94); font-size:13px;}
 </style>
+<style>
+/* ===== スマホ表示対応（幅640px以下）2026-11-02 =====
+   641px以上には一切影響しない。監査と根拠は production-slg-mobile-2026-11-02.md */
+@media (max-width:640px){
+
+/* 上部バー（ステータス）：小さい画面では2行以内に収め、文字も読みやすく */
+#status{ font-size:12px; line-height:1.55; padding:6px 8px; gap:2px 10px; }
+
+/* メニュー：折り返し可にして横幅に収め、タップしやすい高さにする（従来は1行固定で文字が縦書き状に潰れていた） */
+#menu{ top:54px; left:10px; right:10px; flex-wrap:wrap; justify-content:flex-end; gap:6px; }
+#menu button{ flex:0 1 auto; white-space:nowrap; padding:9px 10px; min-height:38px; }
+
+/* 汎用ボタンのタップ高さ */
+.btn{ min-height:38px; padding:8px 12px; }
+.bigbtn{ min-height:48px; }
+
+/* パネル画面共通：縦にはみ出す場合は内部スクロールし、上下の端が切れないようにする */
+.screen{ padding:16px 14px 20px; overflow-y:auto; max-height:100vh; max-height:100dvh; }
+#statpop{ justify-content:flex-start; }
+#statbody{ width:100%; }
+
+/* 図鑑・鑑賞／カルテ：開閉は .on クラスで制御する（従来は対応CSSが無く、閉じても画面が残っていた） */
+#ftscreen,#ktscreen{ justify-content:flex-start; }
+#ftscreen:not(.on),#ktscreen:not(.on){ display:none; }
+.nbwrap{ width:100%; max-width:720px; margin:0 auto; text-align:left; }
+.nbhead{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:8px; }
+.nbttl{ font-size:17px; color:#ffd98a; }
+#ftbody,#ktbody{ width:100%; }
+
+/* 選択肢：横幅いっぱい・高さ44px以上を維持し、多すぎる場合は内部スクロール */
+#choices{ bottom:37%; padding:0 16px; max-height:48vh; max-height:48dvh; overflow-y:auto; }
+.choice{ min-height:48px; }
+
+/* メッセージウィンドウ：本文フォントは14px以上を維持 */
+#textbox{ padding:14px 14px 20px; min-height:30%; }
+#text{ font-size:16px; line-height:1.85; }
+
+/* リスト行のタップ高さ */
+.srow{ min-height:44px; padding:12px; }
+.listwrap{ max-width:100%; }
+
+/* 回想バー：題名が長くてもボタンが押し出されないように */
+#recallbar{ flex-wrap:wrap; row-gap:4px; }
+#recallname{ flex:1 1 50%; text-align:left; }
+#recallbar .btn{ flex:0 0 auto; min-height:40px; }
+
+/* ログ：余白を詰め、閉じるボタンの高さを確保 */
+#log{ padding:56px 14px 24px; font-size:14px; }
+#logclose{ min-height:40px; }
+
+/* 設定：スライダが画面幅を超えないように */
+#settings input[type=range]{ width:min(200px,55vw); }
+
+/* 画像の横はみ出し防止 */
+#galimg{ max-width:100%; }
+.galtile img{ max-width:100%; }
+
+}
+</style>
 </head>
 <body>
 <div id="stage">
