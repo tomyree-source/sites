@@ -39,6 +39,10 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 #title button{width:100%;max-width:320px;margin-top:12px;padding:15px;border:none;border-radius:99px;font-size:16.5px;font-weight:800;cursor:pointer;min-height:54px}
 #btnStart{background:linear-gradient(90deg,#ffd76e,#ffb3d9);color:#4a2c00}
 #btnLoadT{background:rgba(255,255,255,.92);color:#333}
+#btnOpT{background:rgba(255,255,255,.92);color:#333}
+#videoModal{position:absolute;inset:0;z-index:35;display:none;background:#000}
+#gameVideo{width:100%;height:100%;object-fit:contain;background:#000}
+#btnVideoSkip{position:absolute;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));background:rgba(20,24,48,.88);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:99px;padding:11px 20px;font-size:14.5px;font-weight:700;cursor:pointer;min-height:46px}
 #title.note{margin-top:14px;font-size:11.5px;color:#dfe8ff;text-align:center;line-height:1.6;text-shadow:0 1px 4px #000}
 .modal{position:absolute;inset:0;z-index:30;display:none;background:rgba(5,7,18,.9);padding:calc(18px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));overflow-y:auto}
 .modal h2{font-size:18px;margin-bottom:12px;color:#ffd76e}
@@ -88,6 +92,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="btnStart">はじめから</button>
 <button id="btnLoadT">つづきから（ロード）</button>
 <button id="btnCollectionT">コレクション図鑑</button>
+<button id="btnOpT">オープニングを見る</button>
 <div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、短編ビジュアルノベルです。</div>
 </div>
 <div class="modal" id="saveModal"><button class="close" data-close="saveModal">閉じる</button><h2 id="saveTitle">セーブ</h2><div id="slots"></div></div>
@@ -95,6 +100,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <div id="freeAction" class="free"><div id="freeContent"></div></div>
 <div class="modal" id="collectionModal"><button class="close" data-close="collectionModal">閉じる</button><h2>コレクション図鑑</h2><div class="coltabs"><button data-coltab="goods">グッズ</button><button data-coltab="endings">エンディング</button><button data-coltab="gallery">場面回想</button></div><div id="collectionBody"></div></div>
 <div class="modal" id="soundModal"><button class="close" data-close="soundModal">閉じる</button><h2>音の設定</h2><div id="soundBody"></div></div>
+<div id="videoModal"><video id="gameVideo" playsinline preload="auto"></video><button id="btnVideoSkip">スキップ ▶▶</button></div>
 <div id="toast"></div>
 </div>
 <script>
@@ -147,7 +153,7 @@ S.log.push([line[0], line[1]]);
 if(S.log.length>4000) S.log.shift();
 }
 function advance(){
-if(!S || S.free) return;
+if(!S || S.free || videoBusy) return;
 pushLog();
 const sc = SCENES[S.scene];
 if(S.line < sc.lines.length-1){ S.line++; showScene(); scheduleAuto(); return;}
@@ -158,6 +164,13 @@ if(nxt === "BRANCH"){ nxt = endingFor(S.shoku);}
 else if(nxt === "BRANCH2"){ nxt = endingFor2(S.shoku);}
 else if(nxt && (nxt.indexOf("BRANCH")===0 || nxt==="FINAL")){ nxt = branchFor(nxt);}
 if(!nxt || sc.end){ stopAuto(); toTitle(true); return;}
+if(nxt === "fin" && ED_VIDEOS[S.scene]){
+stopAuto();
+const edName = ED_VIDEOS[S.scene];
+S.scene = nxt; S.line = 0;
+playGameVideo(edName, ()=>{ showScene(); scheduleAuto(); });
+return;
+}
 S.scene = nxt; S.line = 0; showScene(); scheduleAuto();
 }
 function showChoices(sc){
@@ -177,7 +190,14 @@ box.appendChild(b);
 });
 box.style.display = "flex";
 }
-function startGame(){ audioUserStart(); hideFree(); S = newState(); document.getElementById("title").style.display="none"; showScene();}
+function startGame(){
+audioUserStart();
+const wantOp = audioSet.opPlay || !opSeen();
+markOpSeen();
+if(wantOp){ playGameVideo("op.mp4", beginNewGame); return; }
+beginNewGame();
+}
+function beginNewGame(){ hideFree(); S = newState(); document.getElementById("title").style.display="none"; showScene();}
 function toTitle(finished){
 stopAuto(); hideFree();
 audioToTitle();
@@ -549,9 +569,9 @@ document.getElementById("title").style.backgroundImage = "url('" + TITLE_IMG + "
 /* ===== 音の拡張：BGM・効果音・決め台詞ボイス・全台詞読み上げ ===== */
 const AUDIO_KEY = "seraphina_audio_v1";
 function loadAudioSettings(){
-const d = {bgm:true, bgmVol:2, voice:true, voiceVol:2, tts:false};
+const d = {bgm:true, bgmVol:2, voice:true, voiceVol:2, tts:false, video:true, videoVol:2, opPlay:false};
 try{ const raw = localStorage.getItem(AUDIO_KEY); if(!raw) return d; const p = JSON.parse(raw); if(!p || typeof p!=="object") return d;
-return {bgm: p.bgm!==false, bgmVol:[1,2,3].indexOf(p.bgmVol)>=0? p.bgmVol:2, voice: p.voice!==false, voiceVol:[1,2,3].indexOf(p.voiceVol)>=0? p.voiceVol:2, tts: p.tts===true};
+return {bgm: p.bgm!==false, bgmVol:[1,2,3].indexOf(p.bgmVol)>=0? p.bgmVol:2, voice: p.voice!==false, voiceVol:[1,2,3].indexOf(p.voiceVol)>=0? p.voiceVol:2, tts: p.tts===true, video: p.video!==false, videoVol:[1,2,3].indexOf(p.videoVol)>=0? p.videoVol:2, opPlay: p.opPlay===true};
 }catch(e){ return d; }
 }
 let audioSet = loadAudioSettings();
@@ -827,6 +847,45 @@ if(VOICE_CLIPS[key]){ playVoice(VOICE_CLIPS[key]); }
 else { stopVoice(); speakLine(line[0]||"", line[1]||""); }
 }catch(e){}
 }
+/* ===== 動画の拡張：OP・ED動画 ===== */
+const VIDEO_SEEN_KEY = "seraphina_video_seen_v1";
+const ED_VIDEOS = {end_special:"ed_special.mp4", end_stay:"ed_stay.mp4", end_travel:"ed_travel.mp4", end_return:"ed_return.mp4"};
+function videoSrc(name){ return "assets/video/" + name; }
+let videoBusy = false;
+let videoCloseFn = null;
+function opSeen(){ try{ return !!localStorage.getItem(VIDEO_SEEN_KEY); }catch(e){ return true; } }
+function markOpSeen(){ try{ localStorage.setItem(VIDEO_SEEN_KEY, "1"); }catch(e){} }
+function playGameVideo(name, done){
+const finish = ()=>{ if(typeof done === "function") done(); };
+if(videoBusy){ finish(); return; }
+const src = videoSrc(name);
+if(!src || typeof HTMLVideoElement === "undefined"){ finish(); return; }
+const modal = document.getElementById("videoModal");
+const v = document.getElementById("gameVideo");
+if(!modal || !v || typeof v.play !== "function"){ finish(); return; }
+videoBusy = true;
+bgmStop(); stopVoice(); stopSpeak();
+let closed = false;
+const close = ()=>{
+if(closed) return; closed = true; videoCloseFn = null;
+try{ v.pause(); }catch(e){}
+v.removeEventListener("ended", close);
+v.removeEventListener("error", close);
+modal.style.display = "none";
+videoBusy = false;
+finish();
+};
+videoCloseFn = close;
+v.addEventListener("ended", close);
+v.addEventListener("error", close);
+v.muted = !audioSet.video;
+v.volume = [0.45, 0.75, 1][audioSet.videoVol-1] || 0.75;
+modal.style.display = "block";
+try{ v.src = src; const pr = v.play(); if(pr && pr.catch) pr.catch(()=>close()); }catch(e){ close(); }
+setTimeout(()=>{ if(!closed && v.readyState === 0 && v.networkState === 3) close(); }, 2500);
+}
+document.getElementById("btnVideoSkip").addEventListener("click", e=>{ e.stopPropagation(); if(videoCloseFn) videoCloseFn(); });
+document.getElementById("btnOpT").addEventListener("click", e=>{ e.stopPropagation(); audioUserStart(); playGameVideo("op.mp4", ()=>audioToTitle()); });
 function renderSoundSettings(){
 const body = document.getElementById("soundBody"); if(!body) return;
 const onoff = v => v? "オン": "オフ";
@@ -837,6 +896,10 @@ html += '<button class="slot" id="sbBgmVol">BGM音量：'+vol(audioSet.bgmVol)+'
 html += '<button class="slot" id="sbVoice">決め台詞ボイス：'+onoff(audioSet.voice)+'</button>';
 html += '<button class="slot" id="sbVoiceVol">ボイス音量：'+vol(audioSet.voiceVol)+'</button>';
 html += '<button class="slot" id="sbTts">全台詞読み上げ：'+onoff(audioSet.tts)+'</button>';
+html += '<button class="slot" id="sbVideo">動画の音声：'+onoff(audioSet.video)+'</button>';
+html += '<button class="slot" id="sbVideoVol">動画音量：'+vol(audioSet.videoVol)+'</button>';
+html += '<button class="slot" id="sbOpPlay">はじめからでOP再生：'+(audioSet.opPlay? "毎回": "初回のみ")+'</button>';
+html += '<p class="colnote">OP・ED動画は、公開ページ／フォルダ版でのみ再生されます。単一ファイル版では動画は自動でスキップされ、物語はそのまま進みます。</p>';
 html += '<p class="colnote">'+(ttsAvailable()? "読み上げは端末の音声合成（日本語）を使います。決め台詞ボイスのある行では、ボイスが優先されます。": "この端末・ブラウザでは音声合成が使えないため、読み上げは利用できません。")+'</p>';
 body.innerHTML = html;
 const bind = (id, fn)=>{ const el = document.getElementById(id); if(el) el.addEventListener("click", fn); };
@@ -845,6 +908,9 @@ bind("sbBgmVol", ()=>{ audioSet.bgmVol = audioSet.bgmVol%3 + 1; saveAudioSetting
 bind("sbVoice", ()=>{ audioSet.voice = !audioSet.voice; saveAudioSettings(); if(!audioSet.voice) stopVoice(); renderSoundSettings(); });
 bind("sbVoiceVol", ()=>{ audioSet.voiceVol = audioSet.voiceVol%3 + 1; saveAudioSettings(); if(voiceEl) voiceEl.volume = [0.45,0.75,1][audioSet.voiceVol-1] || 0.75; renderSoundSettings(); });
 bind("sbTts", ()=>{ audioSet.tts = !audioSet.tts; saveAudioSettings(); if(!audioSet.tts) stopSpeak(); renderSoundSettings(); });
+bind("sbVideo", ()=>{ audioSet.video = !audioSet.video; saveAudioSettings(); renderSoundSettings(); });
+bind("sbVideoVol", ()=>{ audioSet.videoVol = audioSet.videoVol%3 + 1; saveAudioSettings(); renderSoundSettings(); });
+bind("sbOpPlay", ()=>{ audioSet.opPlay = !audioSet.opPlay; saveAudioSettings(); renderSoundSettings(); });
 }
 function openSound(){
 renderSoundSettings();
