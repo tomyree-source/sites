@@ -496,6 +496,44 @@
         appearance:none;border:0;cursor:pointer;width:100%;padding:13px;font-size:15px;font-weight:800;
         background:var(--sky-pale);color:var(--sky-deep);font-family:inherit;
       }
+
+      /* ---------- paged layout ---------- */
+      .page[hidden]{display:none !important;}
+      .page{animation:page-in .22s ease-out;}
+      @keyframes page-in{from{opacity:0;}to{opacity:1;}}
+      .page>section:first-child{margin-top:30px;}
+      /* header page navigation */
+      .page-nav{border-top:1px solid var(--line);}
+      .page-nav-inner{
+        max-width:1060px;margin:0 auto;padding:7px 16px 10px;
+        display:flex;flex-wrap:wrap;gap:4px;
+      }
+      .page-nav a{
+        padding:8px 15px;border-radius:999px;text-decoration:none;
+        font-size:14px;font-weight:700;color:var(--ink-soft);line-height:1.3;white-space:nowrap;
+      }
+      .page-nav a:hover{background:var(--sky-pale);color:var(--sky-deep);}
+      .page-nav a[aria-current="page"]{background:var(--sky);color:#fff;}
+      .page-nav a:focus-visible{outline:3px solid var(--gold-bright);outline-offset:1px;}
+      @media (max-width:640px){
+        .page-nav-inner{padding:6px 12px 9px;gap:2px;}
+        .page-nav a{padding:7px 11px;font-size:13.5px;}
+      }
+      /* home: content menu cards */
+      .home-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;}
+      .home-card{
+        display:block;text-decoration:none;color:var(--ink);
+        background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);
+        padding:18px;box-shadow:var(--shadow);
+      }
+      .home-card h3{
+        margin:0 0 6px;font-size:16.5px;line-height:1.45;
+        font-family:"Zen Maru Gothic",sans-serif;font-weight:900;color:var(--sky-deep);
+      }
+      .home-card p{margin:0 0 10px;font-size:13.5px;color:var(--ink-soft);line-height:1.65;}
+      .home-card .go{font-size:13px;font-weight:800;color:var(--gold);}
+      @media (prefers-reduced-motion: reduce){ .page{animation:none;} }
+
       /* ---------- slim header ---------- */
       header.site{
         position:sticky;top:0;z-index:30;
@@ -595,10 +633,22 @@
   <body>
     <header class="site">
       <div class="site-inner">
-        <a class="site-brand" href="#" aria-label="セラフィナ公式サイト トップへ"><span class="logo">SERAPHINA</span> OFFICIAL SITE<span class="site-name-jp">セラフィナ公式サイト</span></a>
+        <a class="site-brand" href="#home" data-nav="home" aria-label="セラフィナ公式サイト トップへ"><span class="logo">SERAPHINA</span> OFFICIAL SITE<span class="site-name-jp">セラフィナ公式サイト</span></a>
       </div>
+      <nav class="page-nav" aria-label="ページメニュー">
+        <div class="page-nav-inner">
+          <a href="#home" data-nav="home">トップ</a>
+          <a href="#game" data-nav="game">ゲーム</a>
+          <a href="#gacha" data-nav="gacha">ガチャ</a>
+          <a href="#collection" data-nav="collection">図鑑</a>
+          <a href="#packs" data-nav="packs">パック紹介</a>
+          <a href="#new" data-nav="new">新着</a>
+          <a href="#links" data-nav="links">関連リンク</a>
+        </div>
+      </nav>
     </header>
     <main>
+      <div class="page" data-page="home" id="page-home">
       <!-- ============ 表紙ヒーロー ============ -->
       <header class="cover">
         <div class="cover-main">
@@ -655,6 +705,22 @@
         </div>
       </div>
 
+      <!-- ============ ホーム：コンテンツ案内 ============ -->
+      <section class="home-menu" aria-label="コンテンツ案内">
+        <h2>コンテンツ</h2>
+        <p class="section-lead">ゲーム、ガチャ、図鑑、イラストパックなど、セラフィナのコンテンツへの入り口です。</p>
+        <div class="home-grid">
+          <a class="home-card" href="#game"><h3>ブラウザゲーム</h3><p>全章無料のアドベンチャーゲーム『オタロードに降臨しちゃいました』。</p><span class="go">開く →</span></a>
+          <a class="home-card" href="#gacha"><h3>セラフィナ ガチャ</h3><p>1日3回まで無料で回せる、イラストカードのガチャです。</p><span class="go">開く →</span></a>
+          <a class="home-card" href="#collection"><h3>コレクション図鑑</h3><p>ガチャで集めた全156種のカードの一覧と達成率です。</p><span class="go">開く →</span></a>
+          <a class="home-card" href="#packs"><h3>イラストパック紹介</h3><p>BOOTHで販売中の高解像度イラストパック第1弾〜第10弾の紹介です。</p><span class="go">開く →</span></a>
+          <a class="home-card" href="#new"><h3>新着コーナー</h3><p>新しいパックやゲーム、グッズのお知らせをまとめています。</p><span class="go">開く →</span></a>
+          <a class="home-card" href="#links"><h3>関連リンク</h3><p>BOOTH、ゲーム、公式SNS、SUZURI、LINE公式へのリンク集です。</p><span class="go">開く →</span></a>
+        </div>
+      </section>
+
+      </div><!-- /page-home -->
+      <div class="page" data-page="game" id="page-game" hidden>
       <!-- ============ ゲーム ============ -->
       <section id="game">
         <h2>ブラウザゲーム</h2>
@@ -672,6 +738,8 @@
         </div>
       </section>
 
+      </div><!-- /page-game -->
+      <div class="page" data-page="gacha" id="page-gacha" hidden>
       <!-- ============ ガチャ ============ -->
       <section id="gacha">
         <h2>セラフィナ ガチャ</h2>
@@ -735,6 +803,8 @@
         </div>
       </section>
 
+      </div><!-- /page-gacha -->
+      <div class="page" data-page="collection" id="page-collection" hidden>
       <!-- ============ 図鑑 ============ -->
       <section id="collection">
         <h2>コレクション図鑑</h2>
@@ -749,6 +819,8 @@
         <div class="grid" id="grid"></div>
       </section>
 
+      </div><!-- /page-collection -->
+      <div class="page" data-page="packs" id="page-packs" hidden>
       <!-- ============ パック紹介 ============ -->
       <section id="packs">
         <h2>イラストパック紹介</h2>
@@ -875,6 +947,8 @@
         </div>
       </section>
 
+      </div><!-- /page-packs -->
+      <div class="page" data-page="new" id="page-new" hidden>
       <!-- ============ 新着コーナー ============ -->
       <section id="new">
         <h2>新着コーナー</h2>
@@ -995,6 +1069,8 @@
         </div>
       </section>
 
+      </div><!-- /page-new -->
+      <div class="page" data-page="links" id="page-links" hidden>
       <!-- ============ 関連リンク ============ -->
       <section id="links">
         <h2>関連リンク</h2>
@@ -1031,6 +1107,7 @@
         </div>
       </section>
 
+      </div><!-- /page-links -->
       <footer>
         <p>セラフィナ公式サイト ― 見習い天使セラフィナのゲーム・ガチャ・イラストパック・グッズの公式案内ページです。サイト内のガチャは無料で、実課金はありません。ガチャの結果とコレクションは、お使いの端末内（ブラウザの保存領域）にのみ記録されます。カード画像はWeb鑑賞用のサイズで掲載しています。<br />※本作品のイラストはAIで生成しています。</p>
       </footer>
@@ -1064,6 +1141,7 @@
         </button>
       </div>
       <ul>
+        <li><a href="#home">トップ</a></li>
         <li><a href="#game">ブラウザゲーム</a></li>
         <li><a href="#gacha">ガチャを回す</a></li>
         <li><a href="#collection">カード図鑑を見る →</a></li>
@@ -1351,6 +1429,44 @@
           links[i].addEventListener("click", function () { closeFab(false); });
         }
         window.addEventListener("hashchange", function () { closeFab(false); });
+      })();
+    </script>
+    <script>
+      /* ---------- ページ切り替え（ページ分け表示） ---------- */
+      (function () {
+        var PAGES = ["home", "game", "gacha", "collection", "packs", "new", "links"];
+        var TITLES = {
+          home: "セラフィナ公式サイト｜見習い天使セラフィナ",
+          game: "ブラウザゲーム｜セラフィナ公式サイト",
+          gacha: "セラフィナ ガチャ｜セラフィナ公式サイト",
+          collection: "コレクション図鑑｜セラフィナ公式サイト",
+          packs: "イラストパック紹介｜セラフィナ公式サイト",
+          new: "新着コーナー｜セラフィナ公式サイト",
+          links: "関連リンク｜セラフィナ公式サイト"
+        };
+        function fromHash() {
+          var h = (location.hash || "").replace(/^#\/?/, "");
+          return PAGES.indexOf(h) >= 0 ? h : "home";
+        }
+        function show(name, scroll) {
+          var pages = document.querySelectorAll(".page");
+          for (var i = 0; i < pages.length; i++) {
+            pages[i].hidden = pages[i].getAttribute("data-page") !== name;
+          }
+          var navs = document.querySelectorAll("[data-nav]");
+          for (var j = 0; j < navs.length; j++) {
+            if (navs[j].getAttribute("data-nav") === name) navs[j].setAttribute("aria-current", "page");
+            else navs[j].removeAttribute("aria-current");
+          }
+          if (TITLES[name]) document.title = TITLES[name];
+          if (scroll) window.scrollTo(0, 0);
+        }
+        window.addEventListener("hashchange", function () { show(fromHash(), true); });
+        var navLinks = document.querySelectorAll("[data-nav]");
+        for (var k = 0; k < navLinks.length; k++) {
+          navLinks[k].addEventListener("click", function () { show(this.getAttribute("data-nav"), true); });
+        }
+        show(fromHash(), false);
       })();
     </script>
   </body>
