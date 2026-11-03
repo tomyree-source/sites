@@ -465,11 +465,84 @@
       .reg-notes{margin:0;padding-left:1.3em;color:var(--ink-soft);font-size:.93rem}
       .reg-notes li{margin-bottom:8px}
       .register-btn{
-        display:inline-block;text-align:center;text-decoration:none;font-weight:700;font-size:1rem;
-        background:var(--gold);color:#fff;padding:14px 32px;border-radius:999px;
+        display:inline-block;text-align:center;text-decoration:none;font-weight:800;font-size:1.08rem;
+        background:var(--gold);color:#fff;padding:17px 42px;border-radius:999px;
+        box-shadow:0 8px 22px rgba(169,122,36,.35);letter-spacing:.02em;
       }
       .register-btn:hover{background:var(--gold-bright)}
       .register-btn:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+      /* ---------- nudge: primary CTA (1 per page) ---------- */
+      .primary-cta-wrap{margin:22px 0 4px}
+      .primary-cta{
+        display:inline-block;text-align:center;text-decoration:none;font-weight:800;font-size:1.08rem;
+        background:var(--gold);color:#fff;padding:17px 38px;border-radius:999px;line-height:1.5;
+        box-shadow:0 8px 22px rgba(169,122,36,.35);letter-spacing:.02em;
+      }
+      .primary-cta:hover{background:var(--gold-bright);color:#fff}
+      .primary-cta:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+      .page-cta-bar{
+        display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;
+        margin-top:34px;background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius);
+        padding:18px 22px;
+      }
+      .page-cta-bar p{margin:0;color:var(--ink-soft);font-size:.93rem;flex:1;min-width:min(24em,100%)}
+      .page-cta-bar p strong{color:var(--ink)}
+      .page-cta-bar .primary-cta-wrap{margin:0}
+      .content-counts{
+        font-size:.85rem;color:var(--ink-soft);margin:14px 0 0;letter-spacing:.02em;
+      }
+      .content-counts strong{color:var(--teal);font-weight:700}
+      /* ---------- nudge: steps band ---------- */
+      .steps-band{
+        background:var(--surface);border:1.5px solid var(--gold);border-radius:var(--radius);
+        padding:24px 24px 22px;box-shadow:0 3px 12px rgba(62,42,16,.06);
+      }
+      .steps-band h2{font-size:1.3rem;font-weight:800;margin-bottom:6px}
+      .steps-band .steps-lead{color:var(--ink-soft);font-size:.93rem;margin:0 0 18px}
+      .steps-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:stretch}
+      @media (max-width:760px){.steps-flow{grid-template-columns:1fr}.steps-arrow{transform:rotate(90deg);justify-self:center}}
+      .step-link{
+        display:block;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);
+        border-radius:12px;padding:16px 18px;
+      }
+      .step-link:hover{border-color:var(--teal)}
+      .step-link:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .step-link .step-no{
+        display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;
+        background:var(--teal);color:#fff;font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:.95rem;margin-bottom:8px;
+      }
+      .step-link strong{display:block;font-size:1.02rem;line-height:1.5}
+      .step-link span.step-desc{display:block;color:var(--ink-soft);font-size:.87rem;margin-top:4px;line-height:1.65}
+      .step-link .step-go{display:block;color:var(--teal);font-weight:700;font-size:.85rem;margin-top:8px}
+      .steps-arrow{align-self:center;color:var(--gold);font-weight:800;font-size:1.2rem}
+      /* ---------- nudge: pick-first (default recommendation) ---------- */
+      .pick-first{
+        background:var(--accent-soft);border:2px solid var(--gold);border-radius:var(--radius);
+        padding:22px 24px;margin-bottom:22px;
+      }
+      .pick-first .pick-label{
+        display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.1em;color:#fff;background:var(--gold);
+        border-radius:999px;padding:3px 14px;margin-bottom:12px;
+      }
+      .pick-first h3{font-size:1.18rem;line-height:1.55;margin-bottom:8px}
+      .pick-first p{margin:0;color:var(--ink-soft);font-size:.95rem;max-width:46em}
+      .pick-first .pick-actions{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+      .pick-first .pr{font-size:.7rem;font-weight:700;color:var(--burgundy)}
+      /* ---------- nudge: next-step box ---------- */
+      .next-step{
+        margin-top:24px;background:var(--accent-soft);border:1px solid var(--gold);border-radius:var(--radius);
+        padding:20px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;
+      }
+      .next-step .next-label{
+        font-size:.75rem;font-weight:800;letter-spacing:.12em;color:var(--gold);display:block;margin-bottom:4px;
+      }
+      .next-step p{margin:0;color:var(--ink-soft);font-size:.93rem;flex:1;min-width:min(22em,100%)}
+      .next-step-btn{
+        display:inline-block;text-align:center;text-decoration:none;font-weight:700;font-size:.95rem;
+        background:var(--teal);color:#fff;padding:12px 24px;border-radius:999px;line-height:1.5;white-space:normal;
+      }
+      .next-step-btn:hover{background:var(--teal);filter:brightness(1.12);color:#fff}
+      .next-step-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
       @media (prefers-reduced-motion: reduce){
         html{scroll-behavior:auto}
         .fab-overlay,.fab-panel{transition:none}
@@ -511,6 +584,10 @@
             <a class="ghost" href="#items">アイテム紹介へ</a>
             <a class="ghost" href="#characters">公式キャラクターに会う</a>
           </div>
+          <div class="primary-cta-wrap">
+            <a class="primary-cta" href="#costume">衣装と小物を見てみる</a>
+          </div>
+          <p class="content-counts"><strong>公開中：</strong>基本の動き8種／基本リズム6種／読み物3本／用語クイズ5問</p>
           <div class="speech" style="max-width:46em">
             <strong>ライラ：</strong>
             はじめまして、案内役のライラです。相棒のフェネと一緒に、基礎の動きや衣装の選び方を分かりやすく案内します。
@@ -573,6 +650,14 @@
           </div>
         </div>
       </section>
+
+      <!-- PAGE CTA: learn -->
+      <div class="wrap" data-page="learn">
+        <div class="page-cta-bar">
+          <p><strong>学んだ動きに合う小物を探す：</strong>ヒップスカーフやベールなど、動きが見えやすくなる小物を衣装と小物のページで紹介しています。</p>
+          <div class="primary-cta-wrap"><a class="primary-cta" href="#costume">動きに合う小物を探す</a></div>
+        </div>
+      </div>
 
       <!-- STYLES -->
       <section class="block" id="styles" data-page="learn">
@@ -725,6 +810,14 @@
           </div>
         </div>
       </div>
+
+<!-- PAGE CTA: costume -->
+<div class="wrap" data-page="costume">
+<div class="page-cta-bar">
+<p><strong>価格の確認はアイテム紹介で：</strong>気になる小物や衣装が見つかったら、アイテム紹介で販売ページへのリンクから価格をご確認ください。</p>
+<div class="primary-cta-wrap"><a class="primary-cta" href="#items">アイテム紹介で価格を確かめる</a></div>
+</div>
+</div>
 
 <!-- COSTUME -->
 <section class="block" id="costume" data-page="costume">
@@ -1005,6 +1098,10 @@
 <a href="#props">小物・プロップス図鑑</a>／
 <a href="#faq">よくある質問</a>
 </p>
+<div class="next-step">
+<p><span class="next-label">次の一歩</span>測り方が分かったら、アイテム紹介で自分のサイズに合うものを探してみましょう。</p>
+<a class="next-step-btn" href="#items">次は、自分のサイズで探してみる</a>
+</div>
 </div>
 </section>
 
@@ -1121,6 +1218,10 @@
 <a href="#costume">衣装ガイド：パーツと選び方</a>／
 <a href="#faq">よくある質問</a>
 </p>
+<div class="next-step">
+<p><span class="next-label">次の一歩</span>気になるスタイルが見つかったら、そのスタイルを扱う教室を地域から探してみましょう。</p>
+<a class="next-step-btn" href="#schools">次は、気になるスタイルの教室を探してみる</a>
+</div>
 </div>
 </section>
 
@@ -1303,6 +1404,10 @@
 <a href="#hipscarf">最初の一枚：ヒップスカーフの選び方</a>／
 <a href="#faq">よくある質問</a>
 </p>
+<div class="next-step">
+<p><span class="next-label">次の一歩</span>動きの種類が分かったら、腰の動きが見えやすくなるヒップスカーフの選び方を見てみましょう。</p>
+<a class="next-step-btn" href="#hipscarf">次は、動きが見える一枚を選ぶ</a>
+</div>
 </div>
 </section>
 
@@ -1364,6 +1469,15 @@
 リンクはAmazon.co.jpへのアフィリエイトリンクです。価格・在庫・仕様はリンク先の販売ページでご確認ください。
 商品画像は各販売ページをご覧ください（当ページの写真・イラストはイメージです）。
 </p>
+</div>
+<div class="pick-first">
+<span class="pick-label">迷ったらこれ</span>
+<h3>最初の一枚は、コイン付きヒップスカーフ（シフォン）</h3>
+<p>迷ったらこれ ― 最初の一枚は、コイン付きヒップスカーフ（シフォン）。軽くて扱いやすく、入門の定番です。腰の動きが音で分かるので、自宅練習でもレッスンでも使えます。</p>
+<div class="pick-actions">
+<a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%83%92%E3%83%83%E3%83%97%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%95+%E3%82%B3%E3%82%A4%E3%83%B3+%E3%82%B7%E3%83%95%E3%82%A9%E3%83%B3&tag=cat22202-22" target="_blank" rel="sponsored noopener">コイン付きヒップスカーフ（シフォン）をAmazonで探す</a>
+<span class="pr">PR｜Amazonアソシエイトリンク</span>
+</div>
 </div>
 <div class="filters" role="group" aria-label="カテゴリで絞り込む">
 <button type="button" class="active" data-filter="all">すべて</button>
@@ -1780,12 +1894,34 @@ Instagramと同じ <span class="handle">@belly.techo</span> で開設しまし�
 </div>
 </section>
 
-<!-- PORTAL BANNER (トップ下部の控えめな案内) -->
+<!-- STEPS BAND (はじめ方3ステップ／旧ポータルバナーを統合) -->
 <section class="block" data-page="top" style="padding-top:40px">
 <div class="wrap">
-<div class="portal-banner">
-<p><strong>教室をお探しの方へ：</strong>全国のベリーダンス教室・スタジオへのリンク集「教室を探す」もご用意しています。各教室の公式サイトへ直接ご案内します。</p>
-<a href="#schools">教室リンク集を見る</a>
+<div class="steps-band">
+<h2>はじめ方</h2>
+<p class="steps-lead">はじめ方 ― ①まず読む（基礎の動き・衣装の読み物は無料です）→ ②最初の一枚を選ぶ（ヒップスカーフ）→ ③近くの教室を探す（地域ページ）</p>
+<div class="steps-flow">
+<a class="step-link" href="#reading-moves">
+<span class="step-no">1</span>
+<strong>まず読む</strong>
+<span class="step-desc">基礎の動き・衣装の読み物は無料です。まずは読み物「基礎の動き入門」から。</span>
+<span class="step-go">読み物を読む →</span>
+</a>
+<span class="steps-arrow" aria-hidden="true">→</span>
+<a class="step-link" href="#hipscarf">
+<span class="step-no">2</span>
+<strong>最初の一枚を選ぶ</strong>
+<span class="step-desc">ヒップスカーフの選び方を見て、腰の動きが音で分かる最初の一枚を選びます。</span>
+<span class="step-go">ヒップスカーフの選び方へ →</span>
+</a>
+<span class="steps-arrow" aria-hidden="true">→</span>
+<a class="step-link" href="#schools">
+<span class="step-no">3</span>
+<strong>近くの教室を探す</strong>
+<span class="step-desc">地域ページから都道府県を選んで、近くの教室へのリンク集を探します。</span>
+<span class="step-go">地域ページで探す →</span>
+</a>
+</div>
 </div>
 </div>
 </section>
