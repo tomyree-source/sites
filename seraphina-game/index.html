@@ -4,6 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
 <title>見習い天使セラフィナ -オタロードに降臨しちゃいました</title>
+<meta name="description" content="500年ぶりに大阪・日本橋へ降臨した見習い天使セラフィナの、癒し系コメディビジュアルノベル。全312シーン・エンディング4種・コレクション図鑑つき。ブラウザで無料で遊べます。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="見習い天使セラフィナ">
+<meta property="og:title" content="見習い天使セラフィナ -オタロードに降臨しちゃいました">
+<meta property="og:description" content="500年ぶりに大阪・日本橋へ降臨した見習い天使の、癒し系コメディビジュアルノベル。全312シーン・エンディング4種・図鑑つき。無料で遊べます。">
+<meta property="og:url" content="https://tomyree-source.github.io/sites/seraphina-game/">
+<meta property="og:image" content="https://tomyree-source.github.io/sites/seraphina-game/ogp-16x9.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="見習い天使セラフィナ -オタロードに降臨しちゃいました">
+<meta name="twitter:description" content="500年ぶりに大阪・日本橋へ降臨した見習い天使の、癒し系コメディビジュアルノベル。全312シーン・エンディング4種・図鑑つき。無料で遊べます。">
+<meta name="twitter:image" content="https://tomyree-source.github.io/sites/seraphina-game/ogp-16x9.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
@@ -51,6 +62,8 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 #btnLoadT{background:rgba(255,255,255,.92);color:#333}
 #btnOpT{background:rgba(255,255,255,.92);color:#333}
 #btnDataT{background:rgba(255,255,255,.92);color:#333}
+#btnShareT{background:#000;color:#fff;border:1px solid rgba(255,255,255,.45)}
+.sharebtn{margin-top:8px;background:#000;color:#fff;border:1px solid rgba(255,255,255,.35)}
 .databox{width:100%;min-height:96px;box-sizing:border-box;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.55;margin:2px 0 10px}
 .datafile{display:block;width:100%;box-sizing:border-box;color:#dfe8ff;font-size:13px;margin:2px 0 10px}
 #videoModal{position:absolute;inset:0;z-index:35;display:none;background:#000}
@@ -111,7 +124,8 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="btnCollectionT">コレクション図鑑</button>
 <button id="btnOpT">オープニングを見る</button>
 <button id="btnDataT">データ引き継ぎ</button>
-<div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、短編ビジュアルノベルです。</div>
+<button id="btnShareT">Xで紹介する</button>
+<div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、癒し系コメディビジュアルノベルです。<br>序章＋全8章＋最終章／エンディング4種／コレクション図鑑つき。</div>
 </div>
 <div class="modal" id="saveModal"><button class="close" data-close="saveModal">閉じる</button><h2 id="saveTitle">セーブ</h2><div id="slots"></div></div>
 <div class="modal" id="logModal"><button class="close" data-close="logModal">閉じる</button><h2>バックログ</h2><div id="loglist"></div></div>
@@ -372,7 +386,7 @@ return null;
 function recordSceneProgress(sid){
 const ch = chapterForScene(sid);
 if(ch &&!seraphinaCollection.chapters[ch]){ seraphinaCollection.chapters[ch]=true; saveCollectionData();}
-if(sid && sid.indexOf("end_")===0 && ENDING_DEFS[sid] &&!seraphinaCollection.endings[sid]){ seraphinaCollection.endings[sid]=true; saveCollectionData();}
+if(sid && sid.indexOf("end_")===0 && ENDING_DEFS[sid] &&!seraphinaCollection.endings[sid]){ seraphinaCollection.endings[sid]=true; saveCollectionData(); toast("エンディング「"+ENDING_DEFS[sid].name+"」に到達！ 図鑑からXで共有できます"); }
 }
 function grantItem(id){
 if(!ITEMS[id]) return false;
@@ -427,7 +441,8 @@ function renderCollection(tab){
 const body = document.getElementById("collectionBody"); if(!body) return;
 document.querySelectorAll("[data-coltab]").forEach(b=>b.classList.toggle("on", b.dataset.coltab===tab));
 if(tab==="endings"){
-body.innerHTML = '<p class="colnote">到達したエンディングは周回しても残ります。</p><div class="itemgrid">' + Object.keys(ENDING_DEFS).map(id=>{ const d=ENDING_DEFS[id], got=!!seraphinaCollection.endings[id]; return '<div class="itemcard '+(got?'':'locked')+'"><div class="itemname">'+(got?d.name:'？？？')+'</div><p>'+(got?d.desc:'ヒント：'+d.hint)+'</p></div>';}).join("") + '</div>';
+body.innerHTML = '<p class="colnote">到達したエンディングは周回しても残ります。</p><div class="itemgrid">' + Object.keys(ENDING_DEFS).map(id=>{ const d=ENDING_DEFS[id], got=!!seraphinaCollection.endings[id]; return '<div class="itemcard '+(got?'':'locked')+'"><div class="itemname">'+(got?d.name:'？？？')+'</div><p>'+(got?d.desc:'ヒント：'+d.hint)+'</p>'+(got?'<button class="slot sharebtn" data-share-ending="'+id+'">Xで共有</button>':'')+'</div>';}).join("") + '</div>';
+body.querySelectorAll("[data-share-ending]").forEach(b=>b.addEventListener("click", ()=>{ const d=ENDING_DEFS[b.dataset.shareEnding]; shareOnX("『見習い天使セラフィナ -オタロードに降臨しちゃいました』でエンディング"+d.name+"に到達しました！"); }));
 return;
 }
 if(tab==="gallery"){
@@ -661,7 +676,13 @@ else localStorage.removeItem(k);
 });
 return Object.keys(accepted).length;
 }
-window.SeraphinaGames = {judgeCrane:judgeCrane, drawGacha:drawGacha, resolveCrane:resolveCrane, drawGachaOnce:drawGachaOnce, buyItem:buyItem, enterFreeDest:enterFreeDest, applyFreeOption:applyFreeOption, nextFree:nextFree, finishInterlude:finishInterlude, normalizeState:normalizeState, ITEMS:ITEMS, GACHA_POOL:GACHA_POOL, CRANE_POOL:CRANE_POOL, exportSaveData:exportSaveData, importSaveData:importSaveData, transferKeys:transferKeys};
+const GAME_URL = "https://tomyree-source.github.io/sites/seraphina-game/";
+const GAME_HASHTAGS = "見習い天使セラフィナ,ビジュアルノベル,フリーゲーム";
+function shareOnX(text){
+const url = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(GAME_URL) + "&hashtags=" + encodeURIComponent(GAME_HASHTAGS);
+window.open(url, "_blank", "noopener,width=600,height=540");
+}
+window.SeraphinaGames = {judgeCrane:judgeCrane, drawGacha:drawGacha, resolveCrane:resolveCrane, drawGachaOnce:drawGachaOnce, buyItem:buyItem, enterFreeDest:enterFreeDest, applyFreeOption:applyFreeOption, nextFree:nextFree, finishInterlude:finishInterlude, normalizeState:normalizeState, ITEMS:ITEMS, GACHA_POOL:GACHA_POOL, CRANE_POOL:CRANE_POOL, exportSaveData:exportSaveData, importSaveData:importSaveData, transferKeys:transferKeys, shareOnX:shareOnX, GAME_URL:GAME_URL};
 
 document.getElementById("btnCollectionT").addEventListener("click", e=>{ e.stopPropagation(); openCollection("goods");});
 document.getElementById("mCollection").addEventListener("click", e=>{ e.stopPropagation(); openCollection("goods");});
@@ -685,6 +706,7 @@ function openDataTransfer(){
 dataMsg("");
 document.getElementById("dataModal").style.display = "block";
 }
+document.getElementById("btnShareT").addEventListener("click", e=>{ e.stopPropagation(); shareOnX("『見習い天使セラフィナ -オタロードに降臨しちゃいました』500年ぶりに大阪・日本橋へ降臨した見習い天使の、癒し系コメディビジュアルノベル。全312シーン・エンディング4種、無料で遊べます。"); });
 document.getElementById("btnDataT").addEventListener("click", e=>{ e.stopPropagation(); openDataTransfer(); });
 document.getElementById("mData").addEventListener("click", e=>{ e.stopPropagation(); openDataTransfer(); });
 document.getElementById("btnExportCode").addEventListener("click", ()=>{
