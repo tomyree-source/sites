@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="月あかり相談室は、成人男女向けの匿名相談室です。診断・治療は行わず、お話をうかがいながら一般的な情報をお伝えします。専門的な対応が必要な内容は、聞いた上で適切な専門先をご紹介します。" />
+<link rel="icon" href="data:," />
+<title>読み物｜月あかり相談室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f4f2ec;
+    --bg-soft:#eceadf;
+    --surface:#fbfaf6;
+    --surface-2:#f1efe6;
+    --ink:#2c2f3a;
+    --ink-soft:#565b6b;
+    --line:#d8d4c6;
+    --night:#232a3d;
+    --night-2:#2e3752;
+    --moon:#c9a24b;
+    --moon-soft:#efe3c2;
+    --accent:#7a6a9e;
+    --accent-soft:#e7e1f2;
+    --ok:#4c7a5d;
+    --radius:14px;
+    --shadow:0 10px 30px rgba(35,42,61,.10);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#171b28;
+      --bg-soft:#1d2233;
+      --surface:#212638;
+      --surface-2:#272e45;
+      --ink:#ece9df;
+      --ink-soft:#b9bdc9;
+      --line:#3a415a;
+      --night:#12151f;
+      --night-2:#1a1f31;
+      --moon:#d9b45c;
+      --moon-soft:#3a3350;
+      --accent:#b3a3d9;
+      --accent-soft:#2d2a44;
+      --ok:#8fc3a3;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Zen Kaku Gothic New",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;
+    line-height:1.85;font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:"Shippori Mincho B1","Hiragino Mincho ProN",serif;font-weight:600;line-height:1.5}
+  a{color:var(--accent)}
+  img,svg{max-width:100%}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Age gate：月明かりの扉 ---------- */
+  .gate{
+    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+    padding:28px 20px;overflow-y:auto;overflow-x:hidden;color:#f4efe3;
+    background:radial-gradient(90% 70% at 82% -10%, #39436b 0%, rgba(57,67,107,0) 55%),
+               linear-gradient(168deg, #262f4f 0%, #20263f 48%, #171c2e 100%);
+  }
+  .gate[hidden]{display:none}
+  .gate-moon-big{position:absolute;right:4%;top:-30px;width:min(300px,58vw);height:auto;z-index:0;pointer-events:none}
+  .gate-inner{position:relative;z-index:1;max-width:540px;width:100%;margin:auto;text-align:center;padding:24px 0}
+  .gate-eyebrow{letter-spacing:.3em;font-size:.86rem;font-weight:700;color:#d8a95c;margin:0 0 14px;font-family:"Shippori Mincho B1",serif}
+  .gate-inner h1{font-size:clamp(1.5rem,5.4vw,2rem);margin:0 0 .55em;letter-spacing:.04em;color:#f7f3e6;line-height:1.55}
+  .gate-sub{font-size:1rem;color:#ddd8c6;margin:0 auto 1.15em;max-width:30em}
+  .gate-detail{
+    font-size:.86rem;color:#b9bccd;text-align:left;line-height:1.9;
+    border-top:1px solid rgba(244,239,227,.22);border-bottom:1px solid rgba(244,239,227,.22);
+    padding:14px 4px;margin:0 0 22px;
+  }
+  .gate-detail strong{color:#f4efe3}
+  .gate-q{font-size:.95rem;color:#efe9d8;margin:0 0 12px;font-weight:700;letter-spacing:.04em}
+  .gate-btns{display:grid;gap:12px}
+  .gate-btns .btn-gate-yes{background:#d8a95c;color:#2a2110;min-height:58px;font-size:1.05rem;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+  .gate-btns .btn-gate-yes:hover{background:#e3ba6d}
+  .gate-btns .btn-gate-no{background:transparent;border-color:rgba(244,239,227,.55);color:#f4efe3;min-height:54px}
+  .gate-btns .btn-gate-no:hover{background:rgba(244,239,227,.08)}
+  .gate-brand{margin:28px 0 0;letter-spacing:.3em;font-size:.72rem;color:rgba(244,239,227,.6)}
+  @media (max-width:600px){.gate-moon-big{right:-44px;top:-48px}}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    border-radius:999px;padding:13px 26px;font-size:1rem;font-weight:700;cursor:pointer;
+    border:1px solid transparent;text-decoration:none;font-family:inherit;line-height:1.4;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:active{transform:scale(.98)}
+  .btn-moon{background:var(--moon);color:#26220f}
+  .btn-moon:hover{background:#d8b45e}
+  .btn-line{background:#06c755;color:#fff;box-shadow:0 8px 20px rgba(6,199,85,.28)}
+  .btn-line:hover{background:#05b34c}
+  .btn-line-hero{min-height:54px;padding:13px 28px}
+  .step-line-btn{margin-top:12px;min-height:46px;padding:10px 22px;font-size:.95rem}
+  .hero-status .btn-line-status{
+    background:#06c755;color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;
+    padding:9px 18px;border-radius:999px;white-space:nowrap;flex:none;
+  }
+  .hero-status .btn-line-status:hover{background:#05b34c}
+  .hero-status .worksheet-link{
+    flex:none;background:none;border:none;padding:0;border-radius:0;box-shadow:none;
+    color:#e9cf87;font-weight:700;font-size:.88rem;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;
+  }
+  .hero-status .worksheet-link:hover{background:none;text-decoration-thickness:2px}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{background:var(--surface-2)}
+  .btn[disabled]{opacity:.75;cursor:not-allowed}
+  .gate-exit{font-size:.93rem;color:#ddd8c6;text-align:left;line-height:1.9}
+  .gate-exit strong{color:#f7f3e6}
+  .gate-exit[hidden]{display:none}
+  body.locked{overflow:hidden}
+  #siteRoot[hidden]{display:none}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  }
+  .site-inner{display:flex;align-items:center;gap:14px;padding:7px 0;flex-wrap:nowrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
+  .brand svg{width:30px;height:30px;flex:none}
+  .brand-name{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:1.12rem;letter-spacing:.05em;white-space:nowrap}
+  .brand-sub{font-size:.68rem;color:var(--ink-soft);letter-spacing:.08em;display:block;line-height:1.3;white-space:nowrap}
+  .lang-btn{
+    margin-left:auto;flex:none;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;
+    padding:7px 14px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;
+  }
+  @media (max-width:640px){
+    .brand-sub{display:none}
+    .lang-btn{padding:6px 11px;font-size:.78rem}
+  }
+
+  /* ---------- フローティングメニュー ---------- */
+  .fab-overlay{
+    position:fixed;inset:0;z-index:80;background:rgba(23,27,43,.42);
+    opacity:0;transition:opacity .18s ease;
+  }
+  .fab-overlay.open{opacity:1}
+  .fab-btn{
+    position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:95;
+    display:inline-flex;align-items:center;gap:8px;
+    min-height:48px;padding:10px 18px 10px 15px;border-radius:999px;
+    background:var(--moon);color:#26220f;border:1px solid rgba(38,34,15,.18);
+    font-size:.95rem;font-weight:700;letter-spacing:.06em;line-height:1;
+    font-family:inherit;cursor:pointer;
+    box-shadow:0 8px 22px rgba(35,42,61,.32);
+  }
+  .fab-btn:hover{filter:brightness(1.06)}
+  .fab-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .fab-btn svg{width:20px;height:20px;flex:none}
+  /* スマホでは丸型（アイコンのみ）に縮小し、本文の重要要素に被らないようにする */
+  @media (max-width:640px){
+    .fab-btn{
+      width:52px;height:52px;min-height:52px;padding:0;
+      justify-content:center;border-radius:50%;
+    }
+    .fab-btn .fab-btn-label{display:none}
+    .fab-btn svg{width:22px;height:22px}
+  }
+  .fab-panel{
+    position:fixed;right:16px;bottom:calc(78px + env(safe-area-inset-bottom));z-index:90;
+    width:min(344px,calc(100vw - 32px));
+    max-height:min(68vh,560px);overflow-y:auto;overscroll-behavior:contain;
+    background:var(--surface);border:1px solid var(--line);border-radius:16px;
+    box-shadow:var(--shadow);
+    opacity:0;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease;
+  }
+  .fab-panel.open{opacity:1;transform:translateY(0)}
+  .fab-panel-head{
+    display:flex;align-items:center;gap:10px;
+    padding:12px 10px 10px 18px;border-bottom:1px solid var(--line);
+    position:sticky;top:0;background:var(--surface);z-index:1;
+  }
+  .fab-panel-title{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:1rem;letter-spacing:.08em}
+  .fab-close{
+    margin-left:auto;width:38px;height:38px;flex:none;
+    display:inline-flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);border-radius:50%;
+    background:var(--surface-2);color:var(--ink);padding:0;cursor:pointer;font-family:inherit;
+  }
+  .fab-close:hover{background:var(--bg-soft)}
+  .fab-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .fab-close svg{width:17px;height:17px}
+  nav.main ul{list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+  nav.main a{
+    display:block;padding:10px 12px;border-radius:8px;
+    color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:500;line-height:1.45;
+  }
+  nav.main a:hover{background:var(--surface-2)}
+  nav.main a:focus-visible{outline:2px solid var(--accent);outline-offset:-1px}
+  @media (prefers-reduced-motion: reduce){
+    .fab-overlay,.fab-panel{transition:none}
+  }
+  section.block{scroll-margin-top:60px}
+  body footer.site{padding-bottom:100px}
+
+  /* ---------- Hero：窓辺の相談室（分割型） ---------- */
+  .hero{
+    --hero-bg:#f4efe3;--hero-panel:#fdfbf5;--hero-ink:#2a2e3f;--hero-soft:#5c5a66;
+    --hero-accent:#8a6f8e;--hero-cta-bg:#20263f;--hero-cta-ink:#f4efe3;
+    background:var(--hero-bg);color:var(--hero-ink);position:relative;overflow:hidden;
+  }
+  @media (prefers-color-scheme: dark){
+    .hero{--hero-bg:#20263f;--hero-panel:#272e45;--hero-ink:#f4efe3;--hero-soft:#c9c5d6;--hero-accent:#cdb9d9;--hero-cta-bg:#d8a95c;--hero-cta-ink:#2a2110}
+  }
+  .hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 340px;align-items:stretch}
+  .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:58px 48px 54px 24px}
+  .hero-eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;color:var(--hero-accent);margin:0 0 16px;display:flex;align-items:center;gap:10px}
+  .hero-eyebrow::before{content:"";width:26px;height:1px;background:#d8a95c;flex:none}
+  .hero h1{font-size:clamp(1.75rem,3.6vw,2.55rem);margin:0 0 .45em;letter-spacing:.04em;line-height:1.5}
+  .hero-sub{font-size:1rem;color:var(--hero-soft);margin:0 0 1.6em;max-width:32em;line-height:1.9}
+  .hero-cta{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .btn-hero-main{background:var(--hero-cta-bg);color:var(--hero-cta-ink);min-height:54px;padding:13px 30px;box-shadow:0 10px 24px rgba(32,38,63,.22)}
+  .btn-hero-main:hover{opacity:.92}
+  .hero-sub-link{color:var(--hero-accent);font-weight:700;font-size:.95rem;text-decoration:underline;text-underline-offset:4px}
+  .hero-visual{margin:0;position:relative;min-height:0;aspect-ratio:1/2}
+  .hero-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
+  .hero-visual figcaption{
+    position:absolute;left:14px;bottom:14px;z-index:2;background:rgba(23,27,43,.72);color:#f4efe3;
+    font-size:.76rem;letter-spacing:.06em;padding:5px 12px;border-radius:999px;
+  }
+  .hero-status{background:#20263f;color:#e9e4d2}
+  .hero-status-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:13px 24px;flex-wrap:wrap}
+  .status-dot{flex:none;width:9px;height:9px;border-radius:50%;background:#d8a95c;box-shadow:0 0 0 4px rgba(216,169,92,.22)}
+  .hero-status p{margin:0;font-size:.88rem;flex:1;min-width:240px}
+  .hero-status a{color:#e9cf87;font-weight:700;font-size:.88rem;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+  @media (max-width:820px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-visual{min-height:0;height:auto;width:min(76vw,340px);margin:18px auto 0;order:-1}
+    .hero-visual img{object-position:center}
+    .hero-visual figcaption{bottom:auto;top:10px;left:10px}
+    .hero-copy{background:var(--hero-panel);margin:14px 16px 22px;border-radius:16px;padding:26px 22px 28px;box-shadow:0 14px 34px rgba(32,38,63,.16);position:relative;z-index:2}
+    .hero-eyebrow{font-size:.68rem;letter-spacing:.1em}
+    .hero h1{font-size:1.58rem}
+    .hero-sub{font-size:.93rem;margin-bottom:1.3em}
+    .hero-status-in{padding:11px 20px}
+    .hero-status p{min-width:0}
+  }
+  .akari-row{display:flex;gap:14px;align-items:flex-start;margin-top:36px;max-width:640px}
+  .avatar{
+    flex:none;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:1.05rem;
+  }
+  .avatar-akari{background:var(--moon-soft);color:#6d5410;border:2px solid var(--moon)}
+  @media (prefers-color-scheme: dark){.avatar-akari{color:#e9cf87}}
+  .avatar-shizuku{background:var(--accent-soft);color:var(--accent);border:2px solid var(--accent);width:44px;height:44px;font-size:.9rem}
+  .speech{
+    background:var(--surface);color:var(--ink);border-radius:14px;border-top-left-radius:4px;
+    padding:14px 18px;box-shadow:var(--shadow);font-size:.94rem;flex:1;
+  }
+  .speech .who{font-weight:700;font-size:.8rem;color:var(--accent);display:block;margin-bottom:2px}
+  .speech p{margin:.2em 0}
+  .speech-row{display:flex;gap:12px;align-items:flex-start}
+  .speech-row + .speech-row{margin-top:14px}
+  .speech-row.reverse{flex-direction:row-reverse}
+  .speech-row.reverse .speech{border-radius:14px;border-top-right-radius:4px}
+
+  /* ---------- Sections ---------- */
+  section.block{padding:64px 0}
+  section.block.alt{background:var(--bg-soft)}
+  .sec-head{margin-bottom:28px;max-width:720px}
+  .sec-head h2{font-size:clamp(1.45rem,3.4vw,1.9rem);margin:0 0 .3em}
+  .sec-head p{color:var(--ink-soft);margin:0}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;box-shadow:var(--shadow);
+  }
+  .grid{display:grid;gap:18px}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:900px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+  .card h3{margin:.1em 0 .45em;font-size:1.12rem}
+  .card p{margin:.4em 0;color:var(--ink-soft);font-size:.95rem}
+  .card p strong{color:var(--ink)}
+  .icon-badge{
+    width:46px;height:46px;border-radius:12px;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;margin-bottom:12px;
+  }
+  .icon-badge svg{width:24px;height:24px;stroke:var(--accent)}
+  .tag{
+    display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.05em;
+    background:var(--moon-soft);color:#6d5410;border-radius:999px;padding:3px 10px;margin-bottom:8px;
+  }
+  @media (prefers-color-scheme: dark){.tag{color:#e9cf87}}
+  .tag-cat{background:var(--accent-soft);color:var(--accent)}
+
+  /* steps */
+  .steps{counter-reset:step;display:grid;gap:14px}
+  .step{
+    display:flex;gap:16px;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);
+  }
+  .step-num{
+    flex:none;width:38px;height:38px;border-radius:50%;background:var(--night-2);color:#efe9d2;
+    display:flex;align-items:center;justify-content:center;font-family:"Shippori Mincho B1",serif;font-weight:700;
+  }
+  .step h3{margin:.15em 0 .3em;font-size:1.05rem}
+  .step p{margin:0;color:var(--ink-soft);font-size:.94rem}
+  .rule-list{margin:.4em 0;padding-left:1.2em;color:var(--ink-soft);font-size:.95rem}
+  .rule-list li{margin:.3em 0}
+  .notice{
+    border:1px solid var(--moon);background:color-mix(in srgb, var(--moon-soft) 45%, var(--surface));
+    border-radius:var(--radius);padding:18px 22px;font-size:.94rem;
+  }
+  /* paid summary（案A：相談の流れ直後の有料相談要約カード） */
+  section.block.paid-summary{padding:8px 0 64px}
+  .paid-summary-card{
+    background:color-mix(in srgb, var(--moon-soft) 38%, var(--surface));
+    border:1px solid var(--moon);border-radius:var(--radius);
+    padding:28px;box-shadow:var(--shadow);
+  }
+  .paid-summary-card h2{font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0 .4em}
+  .paid-summary-card p{margin:.3em 0;color:var(--ink-soft);font-size:.97rem;max-width:46em}
+  .paid-summary-card p strong{color:var(--ink)}
+  .paid-summary-actions{display:flex;gap:12px 22px;flex-wrap:wrap;align-items:center;margin-top:18px}
+  .paid-summary-actions .detail-link{font-weight:700;text-decoration:underline;text-underline-offset:4px}
+  .notice strong{color:var(--ink)}
+  .urgent{
+    border:1px solid #b3563f;background:color-mix(in srgb, #b3563f 8%, var(--surface));
+    border-radius:var(--radius);padding:20px 24px;
+  }
+  .urgent h3{color:#a34a35;margin-top:0}
+  @media (prefers-color-scheme: dark){.urgent h3{color:#e0957f}}
+  .urgent ul{margin:.4em 0;padding-left:1.2em;font-size:.95rem;color:var(--ink-soft)}
+  .urgent a{font-weight:700}
+
+  /* articles */
+  article.reading{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  article.reading h3{margin:.1em 0 .4em;font-size:1.13rem}
+  article.reading .meta{font-size:.78rem;color:var(--ink-soft);margin-bottom:6px}
+  article.reading .lead{color:var(--ink-soft);font-size:.94rem;margin:.2em 0 .8em}
+  article.reading details{margin-top:auto}
+  article.reading summary{
+    cursor:pointer;font-weight:700;color:var(--accent);font-size:.92rem;list-style:none;
+    padding:8px 0 2px;
+  }
+  article.reading summary::-webkit-details-marker{display:none}
+  article.reading summary::after{content:" +";font-weight:400}
+  article.reading details[open ] summary::after{content:" −"}
+  article.reading .body p{font-size:.93rem;color:var(--ink-soft)}
+  article.reading .body p strong{color:var(--ink)}
+  .en-note{
+    display:none;font-size:.85rem;background:var(--surface-2);border-radius:8px;padding:10px 14px;color:var(--ink-soft);
+  }
+  html[lang="en"] .en-note{display:block}
+  html[lang="en"] .ja-only-note{display:none}
+
+  /* new picks（新着の本・おすすめの品々） */
+  section.block.picks{background:color-mix(in srgb, var(--moon-soft) 32%, var(--bg))}
+  .pick-card{display:flex;flex-direction:column}
+  .pick-visual{
+    height:148px;border-radius:10px;margin-bottom:16px;flex:none;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    padding:16px;text-align:center;
+  }
+  .pick-visual .pv-kind{font-size:.68rem;font-weight:700;letter-spacing:.22em;opacity:.75}
+  .pick-visual .pv-title{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:1.02rem;line-height:1.55}
+  .pick-visual svg{width:40px;height:40px}
+  .pv-night{background:var(--night-2);color:#efe3c2}
+  .pv-accent{background:var(--accent-soft);color:var(--accent)}
+  @media (prefers-color-scheme: dark){.pv-accent{color:#d9cdf2}}
+  .pv-moon{background:var(--moon-soft);color:#6d5410}
+  @media (prefers-color-scheme: dark){.pv-moon{color:#e9cf87}}
+  .pv-line{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line)}
+  .pick-card h3{font-size:1.05rem}
+  .pick-meta{font-size:.8rem;color:var(--ink-soft);margin:0 0 .4em}
+  .pick-card .pick-desc{flex:1}
+  .pick-foot{margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .pick-price{font-size:.8rem;color:var(--ink-soft)}
+  .btn-pick{
+    display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:9px 18px;
+    font-size:.88rem;font-weight:700;text-decoration:none;line-height:1.4;
+    background:var(--night-2);color:#efe9d2;border:1px solid transparent;
+  }
+  .btn-pick:hover{opacity:.9}
+  @media (prefers-color-scheme: dark){.btn-pick{background:var(--moon);color:#26220f}}
+  .pr-note{
+    font-size:.83rem;color:var(--ink-soft);border:1px dashed var(--moon);border-radius:10px;
+    padding:10px 14px;margin:0 0 22px;background:var(--surface);
+  }
+  .pr-note strong{color:var(--ink)}
+  .pick-note{font-size:.82rem;color:var(--ink-soft);margin:16px 0 0}
+
+  /* worksheet */
+  .sheet label{display:block;font-weight:700;font-size:.92rem;margin:18px 0 6px}
+  .sheet label:first-of-type{margin-top:4px}
+  .sheet .hint{font-weight:400;font-size:.82rem;color:var(--ink-soft);display:block}
+  .sheet textarea,.sheet select{
+    width:100%;border:1px solid var(--line);border-radius:10px;background:var(--bg);
+    color:var(--ink);padding:12px 14px;font:inherit;font-size:.95rem;line-height:1.7;
+  }
+  .sheet textarea:focus,.sheet select:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .sheet-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .copy-msg{font-size:.88rem;color:var(--ok);font-weight:700;align-self:center}
+  .privacy-mini{font-size:.85rem;color:var(--ink-soft);margin-top:14px}
+
+  /* operator */
+  .qual-list{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none;margin:12px 0}
+  .qual-list li{border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:5px 13px;font-size:.85rem;font-weight:500}
+  .big-num{font-family:"Shippori Mincho B1",serif;font-size:2rem;color:var(--moon);line-height:1}
+
+  /* official SNS */
+  .sns-card{
+    margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 26px;box-shadow:var(--shadow);
+    display:flex;gap:16px 24px;align-items:center;flex-wrap:wrap;
+  }
+  .sns-card-text{flex:1;min-width:min(280px,100%)}
+  .sns-card h3{margin:.1em 0 .35em;font-size:1.08rem}
+  .sns-card p{margin:0;color:var(--ink-soft);font-size:.93rem}
+  .sns-links{display:flex;gap:10px;flex-wrap:wrap}
+  .sns-btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    border:1px solid var(--line);background:var(--surface-2);color:var(--ink);
+    border-radius:12px;padding:9px 16px 9px 13px;font-weight:700;font-size:.93rem;line-height:1.3;
+  }
+  .sns-btn:hover{background:var(--accent-soft)}
+  .sns-btn svg{width:21px;height:21px;flex:none}
+  .sns-btn .sns-name{display:block}
+  .sns-btn .sns-handle{display:block;font-size:.73rem;font-weight:500;color:var(--ink-soft)}
+  .f-sns{margin-top:12px;border-top:1px solid rgba(207,204,192,.25);padding-top:14px}
+  .f-sns-links{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 4px}
+  footer.site .f-sns-btn{
+    display:inline-flex;align-items:center;gap:8px;color:#f0eddf;
+    border:1px solid rgba(240,237,223,.4);border-radius:999px;padding:7px 15px;
+    text-decoration:none;font-size:.85rem;font-weight:700;line-height:1.35;
+  }
+  footer.site .f-sns-btn:hover{background:rgba(240,237,223,.1)}
+  .f-sns-btn svg{width:17px;height:17px;flex:none}
+
+  footer.site{
+    background:var(--night);color:#cfccc0;padding:48px 0 36px;margin-top:0;
+  }
+  @media (prefers-color-scheme: dark){footer.site{background:#0e1119}}
+  footer.site .wrap{display:grid;gap:10px}
+  footer.site .f-brand{font-family:"Shippori Mincho B1",serif;font-size:1.15rem;color:#f0eddf;letter-spacing:.05em}
+  footer.site p{margin:.2em 0;font-size:.86rem}
+  footer.site a{color:#d9c98a}
+  .small{font-size:.82rem;color:var(--ink-soft)}
+  .divider{border:none;border-top:1px solid var(--line);margin:8px 0}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .btn{transition:none}
+  }
+</style>
+</head>
+<body class="locked">
+
+<!-- ================= 年齢確認ゲート：月明かりの扉 ================= -->
+<div class="gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <svg class="gate-moon-big" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="88" fill="#d8a95c" opacity=".08"/><path d="M118 22a78 78 0 1 0 56 106A84 84 0 0 1 118 22z" fill="#e9cf87"/></svg>
+  <div class="gate-inner">
+    <p class="gate-eyebrow">月あかり相談室</p>
+    <h1 id="gateTitle">ここは、成人のための相談室です。</h1>
+    <p class="gate-sub">性の悩みを、匿名で相談できる場所です。<br />診断・治療は行いません。</p>
+    <p class="gate-detail">このサイトには、性の健康やパートナーシップに関する大人の悩みを扱う文章が含まれます。露骨な表現や画像は掲載していませんが、対象は<strong>18歳以上の方</strong>です。18歳未満の方はご利用いただけません。ご入室の前に、年齢の確認をお願いしています。</p>
+    <div id="gateMain">
+      <p class="gate-q">あなたは18歳以上ですか？</p>
+      <div class="gate-btns">
+        <button class="btn btn-gate-yes" id="gateYes" type="button">18歳以上です — 入室する</button>
+        <button class="btn btn-gate-no" id="gateNo" type="button">18歳未満です</button>
+      </div>
+    </div>
+    <div class="gate-exit" id="gateExit" hidden>
+      <p><strong>ご確認ありがとうございます。</strong></p>
+      <p>このサイトは18歳以上の方を対象としているため、18歳未満の方はご利用いただけません。からだや心のことで心配なことがある場合は、学校の保健室や養護の先生、地域の保健所、かかりつけの医療機関など、身近な大人や専門の窓口に相談してみてください。</p>
+      <p>18歳になられたら、またお越しください。</p>
+    </div>
+    <p class="gate-brand">TSUKIAKARI COUNSELING ROOM</p>
+  </div>
+</div>
+
+<div id="siteRoot" hidden>
+
+<!-- ================= ヘッダー ================= -->
+<header class="site">
+  <div class="wrap site-inner">
+    <a class="brand" href="index.html#top" aria-label="月あかり相談室 トップへ">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#c9a24b" stroke-width="2.5"/><path d="M40 13a21 21 0 1 0 11 28A23 23 0 0 1 40 13z" fill="#c9a24b"/></svg>
+      <span>
+        <span class="brand-name" data-en="Tsukiakari Counseling Room">月あかり相談室</span>
+        <span class="brand-sub" data-en="Anonymous counseling for adults">成人男女向け・匿名相談室</span>
+      </span>
+    </a>
+    <button class="lang-btn" id="langToggle" type="button" aria-label="Switch language / 言語切替">EN / 日本語</button>
+  </div>
+</header>
+
+<div class="wrap"><p><a href="index.html" data-en="← Back to the top page">← トップへ戻る</a></p></div>
+
+<!-- ================= カテゴリ ================= -->
+<section class="block" id="categories">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-en="Four categories of concern">悩みのカテゴリ</h2>
+      <p data-en="Concerns are organized into four categories. Start from the one closest to how you feel.">入口は4つに分けています。「自分の悩みはどれだろう」と迷ったら、いちばん近いところからどうぞ。</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card">
+        <span class="tag tag-cat" data-en="For men">男性の悩み</span>
+        <h3 data-en="Men's concerns">男性の悩み</h3>
+        <p>年齢とともに変わるからだのこと、自信のゆらぎ、パートナーとの関係で抱えるプレッシャーなど。誰にも聞けずに抱え込みやすいテーマを扱います。</p>
+        <p><a href="#articles" data-en="Go to articles →">読み物へ →</a></p>
+      </div>
+      <div class="card">
+        <span class="tag tag-cat" data-en="For women">女性の悩み</span>
+        <h3 data-en="Women's concerns">女性の悩み</h3>
+        <p>からだの変化や不調、気持ちの波、パートナーシップの中での違和感など。「自分だけなのでは」と感じやすい悩みを、言葉にするところから。</p>
+        <p><a href="#articles" data-en="Go to articles →">読み物へ →</a></p>
+      </div>
+      <div class="card">
+        <span class="tag tag-cat" data-en="Couples">カップル</span>
+        <h3 data-en="Couples & partnerships">カップル・パートナーシップ</h3>
+        <p>気持ちのすれ違い、伝え方の難しさ、温度差。二人の問題は、どちらか一方のせいではないことがほとんどです。一緒に読む記事も用意しています。</p>
+        <p><a href="#together" data-en="Read together →">一緒に読むページへ →</a></p>
+      </div>
+      <div class="card">
+        <span class="tag tag-cat" data-en="Basics">基礎知識</span>
+        <h3 data-en="Basic knowledge">知っておきたい基礎知識</h3>
+        <p>からだと心のしくみ、同意（合意）のこと、セルフケアの考え方など、悩みの有無にかかわらず知っておくと楽になる基礎をまとめます。</p>
+        <p><a href="#articles" data-en="Go to articles →">読み物へ →</a></p>
+      </div>
+    </div>
+    <div class="akari-row" style="margin-top:26px">
+      <div class="speech">
+        <div class="speech-row reverse">
+          <div class="avatar avatar-shizuku" aria-hidden="true">し</div>
+          <div>
+            <span class="who">しずく</span>
+            <p>カテゴリは目安だよ。ぴったり当てはまらなくても、いちばん近いところから読んでみてね。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 読み物 ================= -->
+<section class="block alt" id="articles">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-en="Articles">読み物</h2>
+      <p data-en="New articles are added daily — one a day across the four categories. These four pieces are the starting points for each category.">4カテゴリの読み物を、毎日1本ずつ追加していく運用にしています。まずは各カテゴリの入口になる4本からどうぞ。いずれも、効能や効果を断定する表現は使っていません。</p>
+      <p class="en-note">Note for English readers: the interface and guidance pages are available in English (use the EN button above). Full article texts are currently in Japanese only; English versions are being added gradually. Each article below carries a short English summary.</p>
+    </div>
+    <div class="grid grid-2">
+
+      <article class="reading">
+        <div class="meta"><span class="tag tag-cat">男性の悩み</span> 入門編</div>
+        <h3>ひとりで抱え込まないために — 男性の性の悩みとの向き合い方</h3>
+        <p class="lead">男性の性の悩みは、相談先の少なさから一人で抱え込みやすいと言われます。まず知ってほしいのは、「悩んでいるのは自分だけではない」ということ、そして悩みの種類によって相談先が違うということです。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> Men's sexual concerns are often carried alone. This article sorts concerns into three kinds — body, mind, and relationship — and explains which kind of professional fits each, including when a visit to a urologist is a sensible first step.</p>
+        <p><a href="articles/f536be9364.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading">
+        <div class="meta"><span class="tag tag-cat">女性の悩み</span> 入門編</div>
+        <h3>からだの変化と気持ちの波 — 女性の性の悩みを言葉にするために</h3>
+        <p class="lead">女性のからだと気持ちは、月ごとのリズムやライフステージの中で絶えず変化しています。その変化の中で生じる違和感や悩みは、言葉にしづらい分だけ、孤独になりやすいものです。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> Women's bodies and feelings change with monthly rhythms and life stages. This article encourages putting discomfort into words, keeping a simple personal record of changes, and knowing which concerns belong with a gynecologist rather than being endured in silence.</p>
+        <p><a href="articles/406fabe9a1.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading">
+        <div class="meta"><span class="tag tag-cat">カップル・パートナーシップ</span> 入門編</div>
+        <h3>パートナーに気持ちを伝える、最初の一歩</h3>
+        <p class="lead">性の悩みの多くは、二人の間の「伝え方」の問題として現れます。相手を責める形ではなく、自分の気持ちを主語にして伝える——その小さな工夫が、話し合いの空気を大きく変えます。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> Many couple concerns are really about how things are said. This article introduces "I-messages" (speaking from your own feelings instead of blaming), choosing a calm moment to talk, and treating a mismatch as a shared puzzle rather than someone's fault.</p>
+        <p><a href="articles/f0c4ed702f.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading">
+        <div class="meta"><span class="tag tag-cat">知っておきたい基礎知識</span> 入門編</div>
+        <h3>知っておきたい基礎知識 — からだと心のしくみ、そして「同意」のこと</h3>
+        <p class="lead">性の悩みの背景には、意外と「知らなかった」ことが隠れています。からだと心がつながっていること、ストレスや睡眠が大きく影響すること、そして何より「同意」がすべての土台であること。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> The foundations: body and mind are connected (stress, sleep, and fatigue matter), reliable information beats rumor, and consent — freely given, specific, and revocable at any time — is the basis of every intimate relationship.</p>
+        <p><a href="articles/3bcd2b1893.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading" data-description="気持ちを言葉にしづらいと感じるときに、相談前にできる気持ちの整理の方法を紹介します。うまく話そうとしなくて大丈夫な理由、単語やメモからの始め方、悩み整理シートの使い方、LINE公式アカウント（@942xdxma）への相談の送り方までを、傾聴と情報提供の立場からまとめました。">
+        <div class="meta"><span class="tag tag-cat">知っておきたい基礎知識</span> 相談の準備</div>
+        <h3>気持ちを言葉にしづらいときに｜相談前にできる気持ちの整理</h3>
+        <p class="lead">「何に困っているのか、自分でもうまく言えない」——相談をためらう理由で、とても多いのがこの状態です。言葉にならないのは、気持ちが定まっていないからではなく、まだ整理の途中だからということが少なくありません。この記事では、きれいに話そうとしなくて大丈夫な理由と、相談の前に少しだけ気持ちをほぐしておく方法を紹介します。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> If you struggle to put your feelings into words before consulting, you do not need a polished story. This article suggests starting from single words or short notes, noting when things happen, and using the worksheet on this page to sort out what you most want to ask — then sending it as it is via LINE.</p>
+        <p><a href="articles/5c13b7410f.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading" data-description="疲れやストレスで気分が乗らない日があるのは珍しくないこととして受け止め、パートナーへ短く正直に伝える工夫、罪悪感を抱え込まない考え方、睡眠・入浴・軽い運動など無理のないセルフケア、不調が続く場合の専門先への相談について、一般的な情報提供の範囲でまとめました。">
+        <div class="meta"><span class="tag tag-cat">男性の悩み</span> 日常の工夫</div>
+        <h3>疲れている日は、無理をしない伝え方</h3>
+        <p class="lead">仕事や生活の疲れ、ストレスが重なると、気持ちが乗らない日や、からだが重く感じる日があります。そんな日があるのは、珍しいことではありません。無理をして合わせようとする前に、「今日は調子がよくない」と受け止めて、相手にも短く正直に伝えてみることが、二人の関係を守る助けになることがあります。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> On days when fatigue or stress leaves you not feeling up to intimacy, it helps to treat it simply as an off day rather than a failure. This article suggests telling your partner briefly and honestly, letting go of guilt about saying no, resting in small ways such as sleep, a bath, or light movement, and considering a medical professional if poor condition continues.</p>
+        <p><a href="articles/b436b52b00.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading" data-description="人と比べたり「普通はこう」と自分を責めたりしがちな気持ちについて、自分の感じ方を大切にすること、ひとりの時間を取る・言葉にして書き出す・身近な人への伝え方といった無理のないペースで過ごす小さな工夫を、気持ちの整理とセルフケアの範囲でまとめました。つらさが続く場合の専門先への相談についても触れています。">
+        <div class="meta"><span class="tag tag-cat">女性の悩み</span> 気持ちの整理</div>
+        <h3>比べなくていい、自分のペースを取り戻すために</h3>
+        <p class="lead">周りの人の様子や「普通はこう」という言葉と自分を比べて、「自分は遅れているのでは」「自分だけうまくいっていないのでは」と、つい自分を責めてしまう——そんな気持ちを抱える方は、決して少なくありません。比べる気持ちそのものは自然なものです。大切なのは、比べた結果で自分の価値を決めてしまわないこと。この記事では、自分の感じ方を大切にしながら、無理のないペースを取り戻すための小さな工夫を紹介します。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> Comparing yourself with others — or with an idea of what is "normal" — can quietly turn into self-blame. This article suggests honoring your own feelings just as they are, and offers small, unhurried practices for regaining your own pace: taking time alone, writing your feelings down, and sharing how you feel with a partner or someone close in gentle words. It also notes when to consider professional support if the distress continues.</p>
+        <p><a href="articles/1bbba7580a.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading" data-description="パートナーに気持ちを察してほしいのに伝わらず、もどかしくなる気持ちについて、「言わなくても分かるはず」という期待を少しずつ手放し、伝え合う習慣に変えていくための考え方をまとめました。自分の気持ちをひとこと整理すること、「わたしは」で始める責めない伝え方、否定せずまず受け止める聞き方、1日ひとことから始める小さな習慣を、一般的な情報提供とコミュニケーションの工夫の範囲で紹介します。">
+        <div class="meta"><span class="tag tag-cat">カップル・パートナーシップ</span> 伝え合う習慣</div>
+        <h3>『言わなくても分かる』を手放す、伝え合うための小さな習慣</h3>
+        <p class="lead">「言わなくても、そろそろ分かってほしい」——パートナーに気持ちを察してほしいのに伝わらず、気づいてもらえないたびに、もどかしさや寂しさが重なっていく。そんな場面を経験した方は、少なくありません。察してもらうことを期待し続けるのではなく、少しずつ「伝え合う」習慣に変えていく。この記事では、そのための考え方と、無理のない小さな工夫を紹介します。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> Hoping a partner will just know how you feel — without words — often leads to frustration when they do not notice. This article looks at why we expect to be understood silently, how that expectation can create misunderstandings, and small habits for communicating instead: sorting your own feelings into one short phrase, using "I" messages instead of blame, listening without denying first, and starting with one small exchange a day.</p>
+        <p><a href="articles/124e51a607.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading" data-description="職場の人間関係で心が疲れたと感じるときに、気持ちを整理するための3つの視点（疲れの正体を分けて見る、事実と受け止め方を分ける、自分で動ける範囲を見分ける）を紹介します。無理のない距離の取り方や伝え方の工夫、つらさが続く場合の専門機関への相談についても、傾聴と情報提供の立場からまとめました。">
+        <div class="meta"><span class="tag tag-cat">知っておきたい基礎知識</span> 気持ちの整理</div>
+        <h3>職場の人間関係で心が疲れたときに｜気持ちを整理する3つの視点</h3>
+        <p class="lead">仕事そのものは続けられそうなのに、職場の人間関係のことを考えると気持ちが重くなる——帰宅後も相手の言い方が頭から離れなかったり、翌朝の出勤が憂うつになったりする。そんな疲れを抱えている方は、決して少なくありません。この記事では、誰が悪いかを決めるのではなく、まず自分の気持ちを整理するための3つの視点と、日常の中でできる小さな工夫を紹介します。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> When relationships at work leave you feeling drained, it helps to sort out what exactly is tiring you before deciding what to do. This article offers three viewpoints: separating the specific person, situation, and words involved; distinguishing facts from your own interpretations; and identifying what is — and is not — within your control. It also touches on small ways to keep a comfortable distance, how to phrase things at work, and when to consider professional support such as an occupational health service or a medical institution.</p>
+        <p><a href="articles/28ef959b47.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading" data-description="親密な関係の土台になる「同意」と「境界線」について、同意はその場その場で確認し合い、いつでも途中で変えられること、境界線は相手を拒む壁ではなくお互いが安心して過ごすための目安であること、「嫌だ」「少し待って」「今日はやめておきたい」を言いやすくする伝え方の工夫、急かさず・責めずに相手の言葉を聞き取る姿勢を、一般的な情報提供の範囲でまとめました。不安やつらさが続く場合の専門先への相談についても触れています。">
+        <div class="meta"><span class="tag tag-cat">知っておきたい基礎知識</span> 基礎知識</div>
+        <h3>『大丈夫』と言える関係のために：同意と境界線の基礎知識</h3>
+        <p class="lead">親しい関係であるほど、「言わなくても分かってほしい」「断ったら嫌われてしまうのでは」と感じて、自分の気持ちを後回しにしてしまうことがあります。そんなときに土台になるのが、「同意」と「境界線」という考え方です。同意は、その場その場で確認し合えるもの。境界線は、相手を拒むための壁ではなく、お互いが安心して過ごすための目安です。この記事では、二つの言葉の意味を、日常のコミュニケーションの中でどう生かせるかという視点で整理します。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> Consent and boundaries are the foundation of a relationship where both people can honestly say "I'm okay." Consent is confirmed moment by moment — a single "yes" does not last forever, and it can be withdrawn at any time. A boundary is not a wall for shutting someone out, but a shared guide that helps both people feel safe. This article offers small ways to say "no," "please wait a little," or "not today" more easily (keep it short, avoid blaming, and offer an alternative), and ways to listen well: do not rush, do not reproach silence, and do not decide what someone feels from their expression alone. If unease or distress about your feelings or body continues, please consider consulting a medical institution or another professional service.</p>
+        <p><a href="articles/193458e2f1.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading" data-description="誰にも話せずに悩みを抱え込んでいるときに、悩みそのものと「話すことへの不安」を分けて整理する視点、否定せずに聞いてくれそうな相手の選び方、身近な人に限らない匿名の窓口も含めた相談への小さな一歩を、傾聴と情報提供の立場からまとめました。つらさが続く場合の専門機関への相談についても触れています。">
+        <div class="meta"><span class="tag tag-cat">知っておきたい基礎知識</span> 気持ちの整理</div>
+        <h3>誰にも言えない悩みを抱えたときに｜気持ちを整理する視点</h3>
+        <p class="lead">「こんなこと、誰にも言えない」——そう感じて、悩みを自分の中だけで抱え続けている方は少なくありません。言えない理由は弱さではなく、相手との関係を大切にしたい気持ちや、否定されることへの不安が重なっている場合が多いものです。この記事では、抱え込んでいるときの気持ちの整理の仕方と、話す相手の選び方、相談へつなげる小さな一歩を整理します。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> Some worries feel impossible to tell anyone — not because you are weak, but because you care about the relationship, fear being judged, or do not want to burden someone close. This article separates the worry itself from the anxiety about telling, suggests points for choosing someone who is likely to listen without denying your feelings, and describes small first steps toward support, including anonymous options. If distress continues, please consider a medical institution or a public support service.</p>
+        <p><a href="articles/01d499a230.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading" data-description="家族との距離に悩むときに、期待や連絡の頻度に振り回されず、自分の気持ちを守る考え方を紹介します。距離を置くことが相手を拒むことではない理由、短く正直に伝える工夫、無理のない付き合い方の調整、つらさが続く場合の専門先への相談について、一般的な情報提供の範囲でまとめました。">
+        <div class="meta"><span class="tag tag-cat">男性の悩み</span> 家族との距離</div>
+        <h3>家族との距離に悩むときに、自分の気持ちを守る考え方</h3>
+        <p class="lead">家族との付き合い方で、「連絡の頻度が合わない」「期待に応えられていない気がする」「会うたびに疲れてしまう」と感じることは、珍しいことではありません。家族だからこそ、断りにくく、我慢を重ねてしまうこともあります。この記事では、家族との距離に悩むときに、自分の気持ちを守りながら、無理のない付き合い方を考えるための視点を整理します。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> When family relationships feel heavy — because of differing expectations, frequent contact, or feeling unable to meet what is asked of you — it can help to think of distance not as rejection, but as a way to protect your own well-being. This article suggests noticing what feels too much, communicating briefly and honestly, adjusting how often and how you stay in touch within a range you can manage, and considering a medical institution or another professional service if distress continues.</p>
+        <p><a href="articles/5fa7fdd0f2.html">続きを読む →</a></p>
+      </article>
+
+      <article class="reading" data-description="気持ちが切り替わらず、同じ考えが頭の中で続いてしまうときに、日常の中で試せる小さな整え方を紹介します。場所や姿勢を少し変えること、五感を一つ使って今に戻ること、時間を区切ってメモに置くこと、次の小さな行動を一つ決めることを、傾聴と情報提供の立場からまとめました。気持ちの整理の道具として悩み整理シートへの案内、相談の流れと悩みのカテゴリへの内部リンクを含み、つらさが続く場合の専門機関への相談についても触れています。">
+        <div class="meta"><span class="tag tag-cat">知っておきたい基礎知識</span> 日常の整え方</div>
+        <h3>気持ちの切り替え方｜日常の小さな整え方</h3>
+        <p class="lead">考えごとが頭の中でぐるぐる続いて、気持ちがなかなか切り替わらない——仕事の帰り道も、家に帰ってからも、同じ場面を繰り返し思い出してしまう。そんな日は、誰にでもあります。切り替えは、気持ちを無理に消すことや、忘れようと頑張ることではありません。今の状態に小さな区切りをつけて、次の時間へ移るための工夫です。この記事では、日常の中で無理なく試せる小さな整え方を紹介します。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> When the same thoughts keep circling and your mood will not shift, small everyday resets can help you draw a gentle line under one part of the day and move to the next. This article suggests changing your place or posture briefly, using one sense to return to the present, time-boxing rumination by writing it down, and choosing one small next action. It links to the worksheet, the consultation flow, and the categories on this page, and notes when to consider a medical institution or another professional service if distress continues.</p>
+        <p><a href="articles/edb634b4c7.html">続きを読む →</a></p>
+      </article>
+    </div>
+
+    <div class="speech" style="margin-top:22px">
+      <div class="speech-row">
+        <div class="avatar avatar-akari" aria-hidden="true">あ</div>
+        <div>
+          <span class="who">あかり</span>
+          <p>読み物は毎日1本ずつ増えていきます。公開Q&amp;Aは、相談者の方の許可をいただいたものだけを、個人が分からない形にして掲載します。マンガ形式で読めるQ&amp;Aも、今後少しずつ用意していく予定です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= パートナーと一緒に読む ================= -->
+<section class="block alt" id="together">
+<div class="wrap">
+<div class="sec-head">
+<h2 data-en="To read with your partner">パートナーと一緒に読む</h2>
+<p data-en="Articles written to be read by two people together — about how to talk, and how to soften the mismatches. Send one to your partner with a simple 'read this with me?'">カップルの悩み向けに、二人で一緒に読む前提で書いた記事のコーナーです。「一緒に読んでほしい」と相手に送りやすい形にしています。</p>
+</div>
+<div class="grid grid-2">
+<article class="reading">
+<div class="meta"><span class="tag">一緒に読む</span> 対話の基本</div>
+<h3>「責める」ではなく「伝える」— 二人のためのアイメッセージ入門</h3>
+<p class="lead">読み物の「パートナーに気持ちを伝える、最初の一歩」と同じテーマを、二人で読む用に短くまとめたものです。お互いの言い分を「私は〜と感じている」に置き換えて読み直すだけでも、見え方が変わります。</p>
+        <p><a href="articles/d2b023fe20.html">続きを読む →</a></p>
+      </article>
+<article class="reading">
+<div class="meta"><span class="tag">一緒に読む</span> すれ違い</div>
+<h3>すれ違いが続くときの、ほぐし方</h3>
+<p class="lead">小さなすれ違いが積み重なると、「話すこと自体が怖い」という状態になりがちです。大きな話し合いの前に、小さな「共有」を取り戻すところから始める考え方を紹介します。</p>
+        <p><a href="articles/e8771177f1.html">続きを読む →</a></p>
+      </article>
+</div>
+</div>
+</section>
+
+<div class="wrap"><p><a href="index.html" data-en="← Back to the top page">← トップへ戻る</a></p></div>
+
+<!-- ================= フッター ================= -->
+<footer class="site">
+<div class="wrap">
+<p class="f-brand" data-en="Tsukiakari Counseling Room">月あかり相談室</p>
+<p data-en="An anonymous counseling room for adults, run by a therapist with 30 years of practice (acupuncturist; not a physician). We listen and share general information — we do not diagnose or treat.">成人男女向けの匿名相談室。運営：施術歴30年のセラピスト（鍼灸師／医師ではありません）。診断・治療は行わず、傾聴と一般的な情報提供を行います。</p>
+<p><span data-en="Consultation desk (LINE Official Account): ">相談窓口（LINE公式アカウント）：</span><a href="https://lin.ee/XgPDIO9" target="_blank" rel="noopener">@942xdxma ― LINEで相談する</a></p>
+<div class="f-sns">
+<p style="margin:0"><strong style="color:#f0eddf" data-en="Official social media">公式SNS</strong></p>
+<div class="f-sns-links">
+<a class="f-sns-btn" href="https://www.instagram.com/tsukiakari.soudanshitsu/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".7" fill="currentColor" stroke="none"/></svg>Instagram @tsukiakari.soudanshitsu</a>
+<a class="f-sns-btn" href="https://www.threads.com/@tsukiakari.soudanshitsu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor">@</text></svg>Threads @tsukiakari.soudanshitsu</a>
+</div>
+<p data-en="On social media we share announcements and introduce new articles. For consultations, please use our LINE Official Account.">SNSでは相談室のご案内と読み物の紹介をしています。具体的なご相談はLINE公式アカウントへお願いします。</p>
+</div>
+<p data-en="If you are in urgent distress, please contact the public hotlines listed in 'How consultation works'.">緊急のつらさがある場合は、「相談の流れ」に記載の公的相談窓口へご連絡ください。</p>
+<p style="font-size:.78rem">Amazonのアソシエイトとして、月あかり相談室は適格販売により収入を得ています。（「新着の本と、おすすめの品々」コーナーのリンクが対象です）</p>
+<p style="color:#8f8b7d;font-size:.78rem">© 2026 月あかり相談室</p>
+</div>
+</footer>
+
+<!-- ================= フローティングメニュー ================= -->
+<div class="fab-overlay" id="fab-overlay" hidden></div>
+<nav class="main fab-panel" id="fab-panel" aria-label="メインメニュー" hidden>
+  <div class="fab-panel-head">
+    <span class="fab-panel-title" data-en="Menu">メニュー</span>
+    <button type="button" class="fab-close" id="fab-close" aria-label="メニューを閉じる">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+  </div>
+  <ul>
+    <li><a href="index.html#about" data-en="About">相談室について</a></li>
+    <li><a href="guide.html#flow" data-en="How it works">相談の流れ</a></li>
+    <li><a href="#categories" data-en="Categories">悩みのカテゴリ</a></li>
+    <li><a href="#articles" data-en="Articles">読み物</a></li>
+    <li><a href="about.html#picks" data-en="Books &amp; items">新着の本と品々</a></li>
+    <li><a href="guide.html#sheet" data-en="Worksheet">悩み整理シート</a></li>
+    <li><a href="#together" data-en="Read together">一緒に読む</a></li>
+    <li><a href="about.html#operator" data-en="Counselor">運営者について</a></li>
+  </ul>
+</nav>
+<button type="button" class="fab-btn" id="fab-btn" aria-label="メニュー" aria-expanded="false" aria-controls="fab-panel" aria-haspopup="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  <span class="fab-btn-label" data-en="Menu">メニュー</span>
+</button>
+
+</div><!-- /siteRoot -->
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- 年齢確認ゲート ---------- */
+var gate = document.getElementById('ageGate');
+var root = document.getElementById('siteRoot');
+var gateMain = document.getElementById('gateMain');
+var gateExit = document.getElementById('gateExit');
+document.getElementById('gateYes').addEventListener('click', function(){
+gate.hidden = true;
+root.hidden = false;
+document.body.classList.remove('locked');
+window.scrollTo(0,0);
+});
+document.getElementById('gateNo').addEventListener('click', function(){
+gateMain.hidden = true;
+gateExit.hidden = false;
+});
+
+/* ---------- 言語切替（UIと案内まわり） ---------- */
+var langBtn = document.getElementById('langToggle');
+var i18nEls = Array.prototype.slice.call(document.querySelectorAll('[data-en]'));
+i18nEls.forEach(function(el){ el.setAttribute('data-ja-text', el.textContent);});
+var en = false;
+langBtn.addEventListener('click', function(){
+en =!en;
+document.documentElement.lang = en? 'en': 'ja';
+i18nEls.forEach(function(el){
+el.textContent = en? el.getAttribute('data-en'): el.getAttribute('data-ja-text');
+});
+langBtn.textContent = en? 'JP / 日本語': 'EN / 日本語';
+});
+
+/* ---------- 悩み整理シート ---------- */
+var fields = ['f-when','f-scene','f-trouble','f-tried','f-ask','f-feel'];
+var labels = {
+'f-when':'■ いつごろから',
+'f-scene':'■ どんな場面で',
+'f-trouble':'■ いちばん困っていること',
+'f-tried':'■ これまで試したこと',
+'f-ask':'■ 相談で聞きたいこと',
+'f-feel':'■ 今の気持ち'
+};
+var copyBtn = document.getElementById('copySheet');
+var clearBtn = document.getElementById('clearSheet');
+var copyMsg = document.getElementById('copyMsg');
+var clearArmed = false;
+
+if(copyBtn) copyBtn.addEventListener('click', function(){
+var parts = [];
+fields.forEach(function(id){
+var v = document.getElementById(id).value.trim();
+if(v){ parts.push(labels[id] + '\n' + v);}
+});
+if(!parts.length){
+copyMsg.textContent = en? 'Nothing to copy yet — write something first.': 'まだ入力がありません。何か書いてからコピーしてください。';
+return;
+}
+var text = (en? '[From the Tsukiakari worksheet]\n': '\n') + parts.join('\n\n');
+function done(){
+copyMsg.textContent = en? 'Copied. Paste it into your LINE message when you consult.': 'コピーしました。相談の際にLINEのメッセージへ貼り付けてください。';
+}
+function fallback(){
+var ta = document.createElement('textarea');
+ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+document.body.appendChild(ta); ta.select();
+try { document.execCommand('copy'); done();}
+catch(e){ copyMsg.textContent = en? 'Copy failed. Please select the text manually.': 'コピーできませんでした。お手数ですが手動でお試しください。';}
+document.body.removeChild(ta);
+}
+if(navigator.clipboard && navigator.clipboard.writeText){
+navigator.clipboard.writeText(text).then(done, fallback);
+} else { fallback();}
+});
+
+if(clearBtn) clearBtn.addEventListener('click', function(){
+if(!clearArmed){
+clearArmed = true;
+clearBtn.textContent = en? 'Tap again to clear all': 'もう一度押すと全部消えます';
+setTimeout(function(){
+clearArmed = false;
+clearBtn.textContent = en? 'Clear everything': 'すべて消す';
+}, 4000);
+return;
+}
+fields.forEach(function(id){ document.getElementById(id).value = '';});
+clearArmed = false;
+clearBtn.textContent = en? 'Clear everything': 'すべて消す';
+copyMsg.textContent = en? 'Cleared.': '入力を消しました。';
+});
+
+/* ---------- フローティングメニュー ---------- */
+var fabBtn = document.getElementById('fab-btn');
+var fabPanel = document.getElementById('fab-panel');
+var fabOverlay = document.getElementById('fab-overlay');
+var fabClose = document.getElementById('fab-close');
+var fabOpen = false, fabTimer = null;
+function openFab(){
+if(fabOpen) return;
+fabOpen = true;
+if(fabTimer){ clearTimeout(fabTimer); fabTimer = null;}
+fabPanel.hidden = false;
+fabOverlay.hidden = false;
+void fabPanel.offsetWidth;
+fabPanel.classList.add('open');
+fabOverlay.classList.add('open');
+fabBtn.setAttribute('aria-expanded','true');
+document.body.style.overflow = 'hidden';
+if(fabClose) fabClose.focus();
+}
+function closeFab(restoreFocus){
+if(!fabOpen) return;
+fabOpen = false;
+fabPanel.classList.remove('open');
+fabOverlay.classList.remove('open');
+fabBtn.setAttribute('aria-expanded','false');
+document.body.style.overflow = '';
+fabTimer = setTimeout(function(){
+if(!fabOpen){ fabPanel.hidden = true; fabOverlay.hidden = true;}
+fabTimer = null;
+}, 200);
+if(restoreFocus) fabBtn.focus();
+}
+if(fabBtn && fabPanel && fabOverlay){
+fabBtn.addEventListener('click', function(){ fabOpen? closeFab(false): openFab();});
+if(fabClose) fabClose.addEventListener('click', function(){ closeFab(true);});
+fabOverlay.addEventListener('click', function(){ closeFab(true);});
+document.addEventListener('keydown', function(e){
+if(fabOpen && (e.key === 'Escape' || e.key === 'Esc')) closeFab(true);
+});
+Array.prototype.forEach.call(fabPanel.querySelectorAll('a'), function(a){
+a.addEventListener('click', function(){ closeFab(false);});
+});
+}
+})();
+</script>
+</body>
+</html>
