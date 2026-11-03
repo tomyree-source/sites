@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>セラフィナ ガチャ（無料・全352種）｜セラフィナ公式サイト</title>
-<meta name="description" content="見習い天使セラフィナの無料ガチャ。イラストパック第1弾〜第11弾とサービスシーン編のカード全352種が対象。1日3回まで、引いたカードはコレクション図鑑に登録されます。">
+<title>セラフィナ ガチャ（無料・全382種）｜セラフィナ公式サイト</title>
+<meta name="description" content="見習い天使セラフィナの無料ガチャ。イラストパック第1弾〜第12弾とサービスシーン編のカード全382種が対象。1日3回まで、引いたカードはコレクション図鑑に登録されます。">
 <link rel="canonical" href="https://tomyree-source.github.io/sites/seraphina-official/gacha/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="セラフィナ公式サイト">
-<meta property="og:title" content="セラフィナ ガチャ（無料・全352種）｜セラフィナ公式サイト">
-<meta property="og:description" content="見習い天使セラフィナの無料ガチャ。イラストパック第1弾〜第11弾とサービスシーン編のカード全352種が対象。1日3回まで、引いたカードはコレクション図鑑に登録されます。">
+<meta property="og:title" content="セラフィナ ガチャ（無料・全382種）｜セラフィナ公式サイト">
+<meta property="og:description" content="見習い天使セラフィナの無料ガチャ。イラストパック第1弾〜第12弾とサービスシーン編のカード全382種が対象。1日3回まで、引いたカードはコレクション図鑑に登録されます。">
 <meta property="og:url" content="https://tomyree-source.github.io/sites/seraphina-official/gacha/">
 <meta property="og:image" content="https://tomyree-source.github.io/sites/seraphina-official/assets/cards/p1-08-gacha-night.webp">
 <meta name="twitter:card" content="summary_large_image">
@@ -25,7 +25,7 @@
 <main class="wrap">
 <p class="breadcrumb"><a href="../">トップ</a> ＞ ガチャ</p>
   <h1>セラフィナ ガチャ</h1>
-  <p class="lead">イラストパック第1弾〜第11弾とサービスシーン編のイラストカード、全352種から引ける無料ガチャです。1日3回まで、課金なしで回せます。引いたカードは<a href="../zukan/">コレクション図鑑</a>に登録され、所持状況がブラウザに保存されます。</p>
+  <p class="lead">イラストパック第1弾〜第12弾とサービスシーン編のイラストカード、全382種から引ける無料ガチャです。1日3回まで、課金なしで回せます。引いたカードは<a href="../zukan/">コレクション図鑑</a>に登録され、所持状況がブラウザに保存されます。</p>
   <div class="stage">
     <p style="margin:0">今日の残り回数</p>
     <p class="dots" id="remainDots">●●●</p>
@@ -37,7 +37,7 @@
     </div>
     <div id="result"></div>
   </div>
-  <div class="progress"><p style="margin:0 0 6px"><b id="gprog">所持 0 / 352 種（0%）</b></p><div class="bar"><div class="fill" id="gfill"></div></div></div>
+  <div class="progress"><p style="margin:0 0 6px"><b id="gprog">所持 0 / 382 種（0%）</b></p><div class="bar"><div class="fill" id="gfill"></div></div></div>
   <section><h2>ガチャの仕組み</h2>
     <p>カードにはノーマル／レア／激レアの3段階があり、激レアほど出にくくなっています。同じカードが重なって出ることもあります。コレクションの記録と残り回数は、お使いの端末のブラウザ内（localStorage）にのみ保存され、サーバーには送信されません。ブラウザのデータを消去すると記録も消えますのでご注意ください。</p>
     <p>カード画像はWeb鑑賞用サイズです。原画の高解像度イラストは、<a href="../packs/">イラストパック紹介</a>からBOOTHのパックでご覧いただけます。引いたカードのパックが気になったら、結果画面のリンクから該当パックの図鑑と紹介ページへ進めます。</p>
@@ -56,7 +56,7 @@
 <script>
 (function(){
 var LS="seraphina-gacha-v1", LIMIT=3;
-var BOOTH_URL={"p1":"https://angel222.booth.pm/items/9052317","p2":"https://angel222.booth.pm/items/9076095","p3":"https://angel222.booth.pm/items/9076137","p4":"https://angel222.booth.pm/items/9076180","p5":"https://angel222.booth.pm/items/9076232","p6":"https://angel222.booth.pm/items/9076265","p7":"https://angel222.booth.pm/items/9076315","p8":"https://angel222.booth.pm/items/9076361","p9":"https://angel222.booth.pm/items/9083665","p10":"https://angel222.booth.pm/items/9086336","p11":"https://angel222.booth.pm/items/9088184"};
+var BOOTH_URL={"p1":"https://angel222.booth.pm/items/9052317","p2":"https://angel222.booth.pm/items/9076095","p3":"https://angel222.booth.pm/items/9076137","p4":"https://angel222.booth.pm/items/9076180","p5":"https://angel222.booth.pm/items/9076232","p6":"https://angel222.booth.pm/items/9076265","p7":"https://angel222.booth.pm/items/9076315","p8":"https://angel222.booth.pm/items/9076361","p9":"https://angel222.booth.pm/items/9083665","p10":"https://angel222.booth.pm/items/9086336","p11":"https://angel222.booth.pm/items/9088184","p12":"https://angel222.booth.pm/items/9091441"};
 function today(){var d=new Date();function p(n){return (n<10?"0":"")+n;}return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());}
 var s=null; try{s=JSON.parse(localStorage.getItem(LS)||"null");}catch(e){}
 if(!s||typeof s!=="object") s={date:today(),used:0,collection:{}};
