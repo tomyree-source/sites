@@ -34,6 +34,7 @@ header.site .wrap{padding-bottom:0;display:flex;gap:10px;align-items:baseline}
 .crumbs a{color:var(--gold-soft)}
 h1{font-family:"Shippori Mincho",serif;font-size:29px;line-height:1.5;margin:8px 0 10px;color:var(--cream)}
 h2{font-family:"Shippori Mincho",serif;font-size:21px;margin:34px 0 10px;color:var(--gold-soft);border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{font-family:"Shippori Mincho",serif;font-size:17px;margin:22px 0 6px;color:var(--cream)}
 .meta{color:var(--soft);font-size:13.5px;margin-bottom:18px}
 .cat{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 12px;font-size:12.5px;color:var(--gold-soft);margin-left:10px;vertical-align:middle}
 p{margin:0 0 14px}
@@ -43,6 +44,8 @@ ul{margin:0 0 14px;padding-left:1.3em}
 .rel a{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13.5px;color:var(--gold-soft);text-decoration:none}
 .rel a:hover{border-color:var(--gold)}
 .cta{display:inline-block;background:var(--gold);color:#221a08;font-weight:700;border-radius:999px;padding:12px 26px;text-decoration:none;margin-top:10px}
+.cta-line{display:inline-block;background:#06c755;color:#fff;font-weight:700;border-radius:999px;padding:13px 30px;text-decoration:none;margin-top:10px;font-size:16px}
+.cta-line:hover{background:#05b34c}
 footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:var(--soft);font-size:13.5px}
 footer a{color:var(--gold-soft)}
 .keys span{display:inline-block;font-size:12.5px;color:var(--soft);border:1px solid rgba(233,228,216,.2);border-radius:999px;padding:1px 10px;margin:0 6px 6px 0}
@@ -50,6 +53,27 @@ footer a{color:var(--gold-soft)}
 .list li{border-bottom:1px solid rgba(233,228,216,.12);padding:10px 0}
 .list a{color:var(--cream);text-decoration:none;font-weight:500}
 .list small{color:var(--soft);display:block}
+.fig{background:linear-gradient(180deg,#0d1a3a,#0b1730);border:1px solid var(--line);border-radius:12px;padding:20px 18px 16px;margin:22px 0;text-align:center}
+.fig .fig-title{font-family:"Shippori Mincho",serif;font-size:15.5px;color:#f6c9da;letter-spacing:.04em;margin:0 0 10px}
+.fig svg{width:min(360px,100%);height:auto;border-radius:8px}
+.fig figcaption{font-size:13.5px;color:var(--gold-soft);margin-top:12px;font-weight:700;letter-spacing:.03em}
+.fig figcaption span{display:block;font-weight:400;color:var(--soft);font-size:13px;margin-top:4px}
+.factors{list-style:none;padding:0;margin:0 0 14px}
+.factors li{border-bottom:1px solid rgba(233,228,216,.12);padding:10px 0}
+.factors li strong{color:var(--gold-soft)}
+.tsubo{border-top:1px solid rgba(233,228,216,.12);padding:12px 0 8px}
+.tsubo .t-name{font-family:"Shippori Mincho",serif;font-size:16.5px;font-weight:700;color:var(--cream)}
+.tsubo .t-mer{border:1px solid var(--line);border-radius:999px;padding:2px 11px;font-size:12px;color:var(--gold-soft);text-decoration:none;margin-left:8px;vertical-align:middle}
+.tsubo .t-mer:hover{border-color:var(--gold)}
+.care-list{list-style:none;padding:0;margin:0 0 14px}
+.care-list li{border-bottom:1px solid rgba(233,228,216,.12);padding:12px 0}
+.care-list li strong{color:var(--gold-soft);display:block;margin-bottom:2px}
+.faq{margin:0 0 14px}
+.faq details{background:#0e1d3d;border:1px solid var(--line);border-radius:10px;padding:2px 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:700;font-size:15px;padding:12px 0;font-family:"Shippori Mincho",serif;color:var(--cream)}
+.faq details p{font-size:14px;color:var(--soft);padding:0 0 14px;margin:0}
+.caution{border:1px solid rgba(224,138,122,.4);background:rgba(224,138,122,.07);border-radius:10px;padding:14px 18px;font-size:14px;margin:20px 0}
+.caution strong{color:#eda08e}
 @media(max-width:640px){h1{font-size:24px}}
 </style>
 </head>
@@ -58,10 +82,55 @@ footer a{color:var(--gold-soft)}
 <div class="wrap">
 <nav class="crumbs" aria-label="パンくず"><a href="https://tomyree-source.github.io/sites/stella-polaris/">トップ</a> › <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/concerns.html">症状・お悩み別ケアガイド</a> › 梅田で肩こりケア｜デスクワークの肩の張りに深圧オイルマッサージ</nav>
 <main>
-<h1>梅田で肩こりケア｜デスクワークの肩の張りに深圧オイルマッサージ<span class="cat">疲労・張り</span></h1><p class="meta">ステラポラリス（大阪・梅田／女性専用）｜肩こり｜オイルマッサージ 90分 10,000円・月〜土 17:00〜22:00</p><p>一日中パソコンやスマートフォンに向かっていると、肩まわりは同じ姿勢のまま固まりやすくなります。「夕方になると肩が重い」「肩を回すとゴリゴリする」という方は、梅田でも特に多くご相談いただくお悩みです。</p><h2>こんなサインはありませんか？ — 肩こりのチェックリスト</h2><ul><li>夕方になると肩が重く感じる</li><li>肩を回すとゴリゴリと音がする</li><li>デスクワークやスマホ時間が長い</li><li>マッサージを受けてもすぐ戻る気がする</li></ul><h2>東洋医学から見た考え方</h2><p>東洋医学では、肩まわりは気や血の巡りの要所のひとつとされます。同じ姿勢が続くと巡りが滞り、張りや重さとして感じやすくなると考えられています。寒さや目の使い過ぎも、首から肩の緊張とつながりやすい要素です。</p><h2>おすすめ施術</h2><div class="box"><p><strong>オイルマッサージ</strong></p><p>首から肩、肩甲骨まわりをオイルで丁寧にほぐし、深い圧で奥の張りにアプローチします。腕や手の疲れも合わせてケアすると、肩の軽さが変わってきます。</p></div><h2>自宅でできるセルフケア</h2><p>胸を開くストレッチを1日数回。両手を後ろで組み、肩甲骨を寄せながら胸を張って10秒キープ。デスクワークの合間に取り入れるだけでも、肩の負担のかかり方が変わります。</p><h2>関連するお悩みページ</h2><div class="rel"><a href="kubikori.html">梅田で首こりケア →</a><a href="senaka.html">梅田で背中の張りケア →</a><a href="me.html">梅田で目の疲れ感ケア →</a></div><h2>関連する経絡ページ</h2><div class="rel"><a href="../m/daicho.html">大腸経（手陽明大腸経）→</a><a href="../m/shocho.html">小腸経（手太陽小腸経）→</a><a href="../m/sansho.html">三焦経（手少陽三焦経）→</a><a href="../m/yoikei.html">陽維脈（陽維脈（奇経八脈））→</a></div><p><a class="cta" href="https://tomyree-source.github.io/sites/stella-polaris/#/s/katakori">このページをメインサイトで開く</a></p>
+<h1>梅田で肩こりケア｜デスクワークの肩の張りに深圧オイルマッサージ<span class="cat">疲労・張り</span></h1><p class="meta">ステラポラリス（大阪・梅田／女性専用）｜肩こり｜オイルマッサージ 90分 10,000円・月〜土 17:00〜22:00</p><p>一日中パソコンやスマートフォンに向かっていると、肩まわりは同じ姿勢のまま固まりやすくなります。「夕方になると肩が重い」「肩を回すとゴリゴリする」という方は、梅田でも特に多くご相談いただくお悩みです。このページでは、肩こりがどんな状態か、つながりやすい要因、東洋医学から見た考え方と、ご自宅でできるセルフケアを一般的な健康情報としてまとめました。</p>
+<h2>肩こりとはどんな状態か</h2>
+<p>肩こりは病名ではなく、首から肩、背中にかけての張り・重さ・だるさをまとめて表す言葉です。頭の重さは体重のおよそ1割ほどとされ、その重さを細い首と肩まわりの筋肉が一日中支えています。顔が前に出る姿勢になるほど負担は大きくなり、緊張が続くと血の巡りも滞りやすくなるため、重さや張りを感じやすくなると一般に説明されています。</p>
+<p>朝は軽くても夕方に重くなる方が多いのは、負担が少しずつ積み重なるためです。「その日の疲れを、その日のうちにいったんリセットする」ことが、肩こりと付き合ううえでの基本の考え方です。</p>
+<h2>こんなサインはありませんか？ — 肩こりのチェックリスト</h2><ul><li>夕方になると肩が重く感じる</li><li>肩を回すとゴリゴリと音がする</li><li>デスクワークやスマホ時間が長い</li><li>マッサージを受けてもすぐ戻る気がする</li><li>首を後ろに倒したり、横に倒したりしにくい</li><li>肩に触れると、板のように硬く感じる</li><li>目の疲れや頭の重さを感じる日が多い</li><li>冷房の効いた場所にいると、肩が余計に張る気がする</li></ul><p>当てはまる項目が多いほど、負担がたまりやすい生活が続いている可能性があります。次の「要因」と見比べて、どこに負担が集まっているか確かめてみてください。</p>
+<h2>肩こりにつながりやすい要因</h2>
+<ul class="factors">
+<li><strong>姿勢と、長時間の同じ体勢</strong>：背中が丸まり顔が前に出た姿勢では、頭を支える首から肩の筋肉が働き続け、緊張が抜けにくくなります。</li>
+<li><strong>デスクワークと画面作業</strong>：画面に集中すると肩に力が入ったまま固まりがちです。キーボードやマウスが遠いと、腕の重さも肩にかかり続けます。</li>
+<li><strong>スマートフォンの使用</strong>：うつむく姿勢は、頭が前にずれる分だけ首・肩への負担が増えます。短時間でも回数が積み重なると負担になります。</li>
+<li><strong>冷え</strong>：体が冷えると血の巡りが滞りやすく、筋肉もこわばりやすくなります。首元が冷気に当たる場面も一因とされます。</li>
+<li><strong>目の疲れ</strong>：目を使い続けると、首の後ろから肩にかけての緊張とつながりやすいとされます。夕方の肩の重さと重なる方は少なくありません。</li>
+<li><strong>ストレスと睡眠</strong>：緊張が続くと無意識に肩が上がりやすくなります。眠りが浅い日は回復が追いつかず、翌朝から張ることもあります。</li>
+</ul>
+<figure class="fig"><p class="fig-title">図1｜肩まわりの主な筋肉（背面）</p><svg viewBox="0 0 360 300" role="img" aria-label="肩まわりの筋肉図。僧帽筋と肩甲挙筋の位置を示す背面図"><rect x="0" y="0" width="360" height="300" rx="10" fill="#0b1730"/><ellipse cx="180" cy="155" rx="168" ry="142" fill="rgba(74,102,178,.16)"/><ellipse cx="180" cy="62" rx="27" ry="31" fill="#eabd63"/><path d="M156 78 C148 108 146 136 150 162 L210 162 C214 136 212 108 204 78 C190 92 170 92 156 78 Z" fill="#eabd63"/><path d="M180 92 L96 128 C88 158 86 196 92 232 L116 236 C112 198 114 164 122 140 L180 236 L238 140 C246 164 248 198 244 236 L268 232 C274 196 272 158 264 128 Z" fill="#f6f8fc"/><path d="M180 96 L118 128 L146 150 L180 208 L214 150 L242 128 Z" fill="rgba(232,140,160,.45)"/><path d="M164 100 C158 114 156 128 158 142 L168 146 C166 130 168 114 172 104 Z" fill="#7fc7b2" opacity=".9"/><path d="M196 100 C202 114 204 128 202 142 L192 146 C194 130 192 114 188 104 Z" fill="#7fc7b2" opacity=".9"/><path d="M146 156 C140 176 141 196 148 212 M214 156 C220 176 219 196 212 212" stroke="rgba(216,220,242,.55)" stroke-width="1.6" fill="none" stroke-dasharray="4 4"/><g stroke="#eda3c6" stroke-width="1.8" fill="none"><path d="M64 108 L152 118"/><path d="M296 150 L222 152"/></g><g font-family="'Zen Kaku Gothic New',sans-serif" font-size="13.5" fill="#ece7da"><text x="18" y="102">肩甲挙筋</text><text x="288" y="144">僧帽筋</text><text x="252" y="238" font-size="12" fill="#b9c0d4">肩甲骨</text></g><path d="M238 226 L216 200" stroke="#eda3c6" stroke-width="1.8"/></svg><figcaption>図1　肩まわりで張りを感じやすい主な筋肉<span>僧帽筋は首から肩先、背中の中央まで広がる大きな筋肉です。肩甲挙筋は首の横から肩甲骨の内側上部につながり、肩をすくめる動きで働きます。</span></figcaption></figure>
+<h2>東洋医学から見た考え方</h2><p>東洋医学では、肩まわりは気や血の巡りの要所のひとつとされます。同じ姿勢が続くと巡りが滞り、張りや重さとして感じやすくなると考えられています。寒さや目の使い過ぎも、首から肩の緊張とつながりやすい要素です。</p><p>肩まわりには、いくつかの経絡（気や血の通り道とされるライン）が通っています。体の側面を巡る<a href="../m/tankei.html">胆経</a>、肩甲骨の上を通る<a href="../m/shocho.html">小腸経</a>、腕の外側から肩へ向かう<a href="../m/sansho.html">三焦経</a>、背中を縦に走る<a href="../m/bokko.html">膀胱経</a>などです。張りが出ている場所だけでなく、つながりのあるライン全体を見ながら整えていくのが、東洋医学の見立てに基づく施術の考え方です。</p>
+<h3>肩まわりの代表的なツボ</h3>
+<p>ツボ（経穴）は、経絡の上にある要所とされる点です。ご自宅では、指の腹で「気持ちよい」と感じる強さを目安に、5秒ほど押してゆっくり離す、を数回繰り返すのが基本です。痛みが増す場合は中止してください。</p>
+<div class="tsubo"><span class="t-name">肩井（けんせい）</span><a class="t-mer" href="../m/tankei.html">胆経</a><p><strong>位置：</strong>首の付け根と肩先を結んだ真ん中あたり、肩のいちばん高いところ。<strong>押し方：</strong>反対側の手の中指・薬指を当て、包むようにゆっくり押します。肩こりでよく挙げられる代表的なツボです。</p></div>
+<div class="tsubo"><span class="t-name">天宗（てんそう）</span><a class="t-mer" href="../m/shocho.html">小腸経</a><p><strong>位置：</strong>肩甲骨の中央にある、押すと響くようなくぼみ。<strong>押し方：</strong>反対側の手の親指で、小さく円を描くようにほぐします。自分では届きにくいため、施術で触れることの多いツボです。</p></div>
+<div class="tsubo"><span class="t-name">肩髃（けんぐう）</span><a class="t-mer" href="../m/daicho.html">大腸経</a><p><strong>位置：</strong>肩先の外側。腕を横に上げると肩関節の前にできるくぼみ。<strong>押し方：</strong>反対側の手の親指で、くぼみに沿ってやさしく押します。</p></div>
+<figure class="fig"><p class="fig-title">図2｜肩まわりのツボの位置（背面）</p><svg viewBox="0 0 360 300" role="img" aria-label="ツボの位置図。肩井、天宗、肩髃の位置を示す背面図"><rect x="0" y="0" width="360" height="300" rx="10" fill="#0b1730"/><ellipse cx="180" cy="155" rx="168" ry="142" fill="rgba(74,102,178,.16)"/><ellipse cx="180" cy="62" rx="27" ry="31" fill="#eabd63"/><path d="M156 78 C148 108 146 136 150 162 L210 162 C214 136 212 108 204 78 C190 92 170 92 156 78 Z" fill="#eabd63"/><path d="M180 92 L96 128 C88 158 86 196 92 232 L116 236 C112 198 114 164 122 140 L180 236 L238 140 C246 164 248 198 244 236 L268 232 C274 196 272 158 264 128 Z" fill="#f6f8fc"/><path d="M96 128 L122 140 L116 158 L94 146 Z M264 128 L238 140 L244 158 L266 146 Z" fill="#fbeed9"/><path d="M146 156 C140 176 141 196 148 212 M214 156 C220 176 219 196 212 212" stroke="rgba(216,220,242,.55)" stroke-width="1.6" fill="none" stroke-dasharray="4 4"/><g><circle cx="140" cy="112" r="7" fill="#ffeef6" stroke="#dd7ba9" stroke-width="2.2"/><circle cx="220" cy="112" r="7" fill="#ffeef6" stroke="#dd7ba9" stroke-width="2.2"/><circle cx="160" cy="182" r="7" fill="#ffeef6" stroke="#dd7ba9" stroke-width="2.2"/><circle cx="200" cy="182" r="7" fill="#ffeef6" stroke="#dd7ba9" stroke-width="2.2"/><circle cx="102" cy="140" r="7" fill="#ffeef6" stroke="#dd7ba9" stroke-width="2.2"/><circle cx="258" cy="140" r="7" fill="#ffeef6" stroke="#dd7ba9" stroke-width="2.2"/></g><g stroke="#eda3c6" stroke-width="1.8" fill="none"><path d="M58 100 L130 110"/><path d="M66 196 L150 186"/><path d="M300 128 L268 138"/></g><g font-family="'Zen Kaku Gothic New',sans-serif" font-size="13.5" fill="#ece7da"><text x="30" y="94">肩井</text><text x="30" y="204">天宗</text><text x="292" y="122">肩髃</text></g></svg><figcaption>図2　肩まわりの代表的なツボの位置<span>肩井は肩の頂点、天宗は肩甲骨の中央、肩髃は肩先のくぼみにあります。位置は目安です。押して響く場所を目安に探してみてください。</span></figcaption></figure>
+<h2>おすすめ施術</h2><div class="box"><p><strong>オイルマッサージ</strong></p><p>首から肩、肩甲骨まわりをオイルで丁寧にほぐし、深い圧で奥の張りにアプローチします。腕や手の疲れも合わせてケアすると、肩の軽さが変わってきます。</p><p>進め方は、まず表面を温めながら広くほぐし、筋肉がゆるんできたところで張りの強い部分へ深い圧を重ねていく流れです。圧は「痛いけれど気持ちいい」の手前を目安に、その都度お声がけしながら調整します。強い圧が苦手な方も遠慮なくお伝えください。</p><p>肩の張りが姿勢の崩れと重なっている場合は、<strong>美容整体との組み合わせ</strong>もご提案しています。胸まわりが開きやすくなると、肩の位置も変わってきます。当日は気になる場所をうかがってから施術を組み立てます。</p></div>
+<h2>自宅でできるセルフケア</h2><p>セルフケアは「長く・強く」より「短く・こまめに」が基本です。痛みやしびれが出る場合は無理をせず中止し、続く場合は医療機関にご相談ください。</p>
+<ul class="care-list">
+<li><strong>1．胸を開くストレッチ</strong>両手を後ろで組み、肩甲骨を寄せながら胸を張って10秒キープ、を3回ほど。巻き肩気味の姿勢をリセットする動きで、デスクワークの合間にも取り入れやすい方法です。</li>
+<li><strong>2．肩甲骨回し</strong>両手の指先を肩に置き、肘で大きな円を描くように前回し・後ろ回しを各5回ずつ。肩甲骨が背中の上を滑るイメージで、呼吸を止めずにゆっくり行います。</li>
+<li><strong>3．首のストレッチ</strong>背筋を伸ばして座り、右手を頭の左側に軽く添え、息を吐きながら頭を右へゆっくり倒して15秒キープ。引っ張るのではなく手の重さを添えるだけにし、反対側も同様に行います。</li>
+<li><strong>4．温める</strong>温めた蒸しタオルを首の付け根から肩にかけて3〜5分のせます。入浴はシャワーで済ませず湯船につかる日を作ることも、巡りの切り替えになります。</li>
+</ul>
+<figure class="fig"><p class="fig-title">図3｜セルフケア「肩甲骨回し」の手順</p><svg viewBox="0 0 260 320" role="img" aria-label="肩甲骨回しの手順図。指先を肩に置き、肘で大きな円を描く人物イラスト"><rect x="0" y="0" width="260" height="320" rx="10" fill="#0b1730"/><ellipse cx="130" cy="165" rx="118" ry="150" fill="rgba(74,102,178,.16)"/><path d="M116 168 C114 206 113 244 113 288 L123 288 C124 244 124 206 125 170 Z" fill="#e2eef8"/><path d="M135 170 C136 206 136 244 137 288 L147 288 C147 244 146 206 144 168 Z" fill="#e2eef8"/><ellipse cx="118" cy="292" rx="6.5" ry="3.2" fill="#fbeed9"/><ellipse cx="142" cy="292" rx="6.5" ry="3.2" fill="#fbeed9"/><path d="M114 92 C100 84 84 88 74 102 L84 112 C92 100 102 96 112 102 Z" fill="#f6f8fc"/><path d="M76 100 C68 92 62 82 62 70 L72 66 C73 76 77 85 84 93 Z" fill="#fbeed9"/><path d="M146 92 C160 84 176 88 186 102 L176 112 C168 100 158 96 148 102 Z" fill="#f6f8fc"/><path d="M184 100 C192 92 198 82 198 70 L188 66 C187 76 183 85 176 93 Z" fill="#fbeed9"/><path d="M112 88 C108 116 108 142 110 170 L150 170 C152 142 152 116 148 88 C138 81 122 81 112 88 Z" fill="#f6f8fc"/><path d="M110.5 166 L149.5 166" stroke="#a8d4ea" stroke-width="2.2" stroke-linecap="round"/><path d="M52 118 C36 100 36 72 52 54" stroke="#eda3c6" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M52 54 L46 64 M52 54 L61 60" stroke="#eda3c6" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M208 54 C224 72 224 100 208 118" stroke="#eda3c6" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M208 118 L202 108 M208 118 L199 112" stroke="#eda3c6" stroke-width="2.6" fill="none" stroke-linecap="round"/><ellipse cx="130" cy="52" rx="15.5" ry="19" fill="rgba(255,243,228,.95)" stroke="#d8dcf2" stroke-width="2"/><path d="M114.5 50 C112 28 148 28 145.5 50 C138 38 122 38 114.5 50 Z" fill="#eabd63"/><path d="M114.5 46 C111 62 112 78 115 92 L121 92 C118 76 117 60 119 48 Z M145.5 46 C149 62 148 78 145 92 L139 92 C142 76 143 60 141 48 Z" fill="#eabd63"/><g fill="none" stroke="#3d3358" stroke-width="1.6" stroke-linecap="round"><path d="M121 50 Q124.5 47.5 128 50 M132 50 Q135.5 47.5 139 50"/></g><circle cx="124.5" cy="52" r="1.7" fill="#57b6e8"/><circle cx="135.5" cy="52" r="1.7" fill="#57b6e8"/><path d="M125 64 Q130 67 135 64" stroke="#d4789b" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg><figcaption>図3　肩甲骨回しの動きのイメージ<span>指先を肩に置き、肘で大きな円を描きます。前回し・後ろ回し各5回が目安です。角度や範囲は目安として、無理のない範囲で行ってください。</span></figcaption></figure>
+<h2>場面別の注意</h2>
+<h3>デスクワーク中</h3><p>1時間に一度は立ち上がり、肩を大きく回すだけでも緊張の積み重なり方が変わります。画面は目線がやや下向きになる高さに、キーボードは肘が自然に曲がる位置に置くのが目安です。</p>
+<h3>スマートフォンを使うとき</h3><p>うつむく角度が深くなるほど、首と肩への負担は増えます。スマホを目線の高さに近づける、長時間の操作は区切って休憩を挟む、といった工夫をしてみてください。</p>
+<h3>季節の変わり目</h3><p>気温差の大きい時期や冷房の強い季節は、首元から冷えやすく、肩の張りを感じやすい時期です。首元を覆える羽織ものやストールを手元に置いてみてください。</p>
+<h2>受診の目安</h2>
+<div class="caution"><p><strong>次のような場合は、サロンでのケアの前に医療機関への受診をおすすめします。</strong></p><ul><li>強い痛みが続く、または日に日に強くなる</li><li>腕や手にしびれがある、力が入りにくい</li><li>発熱を伴っている</li><li>転倒や事故のあとから痛みが出た</li><li>安静にしていても楽にならない</li></ul><p>当店は医療機関ではなく、診断は行いません。迷うときは、まずかかりつけの医療機関にご相談ください。</p></div>
+<h2>よくある質問</h2>
+<div class="faq">
+<details><summary>Q．初めてでも大丈夫ですか？</summary><p>はい。施術の前に、気になる場所や圧の好みをうかがってから内容を組み立てます。強い圧が不安な方は、その旨をお伝えいただければ調整します。</p></details>
+<details><summary>Q．施術中に圧が強い・弱いと感じたら？</summary><p>その場で遠慮なくお声がけください。圧は途中でいつでも調整できます。</p></details>
+<details><summary>Q．どのくらいのペースで通うのがよいですか？</summary><p>決まった正解はありません。張りがたまりきる前に整える方も、月1回のリセットとして使われる方もいます。ご自身の生活リズムに合わせてご利用ください。</p></details>
+<details><summary>Q．肩以外の場所も相談できますか？</summary><p>はい。首・背中・目など、肩とつながりの深いお悩みは下の関連ページでも紹介しています。当日に気になる場所をお聞かせいただければ、90分の枠の中で配分を調整します。</p></details>
+</div>
+<h2>関連するお悩みページ</h2><div class="rel"><a href="kubikori.html">梅田で首こりケア →</a><a href="senaka.html">梅田で背中の張りケア →</a><a href="me.html">梅田で目の疲れ感ケア →</a></div><h2>関連する経絡ページ</h2><div class="rel"><a href="../m/daicho.html">大腸経（手陽明大腸経）→</a><a href="../m/shocho.html">小腸経（手太陽小腸経）→</a><a href="../m/sansho.html">三焦経（手少陽三焦経）→</a><a href="../m/yoikei.html">陽維脈（陽維脈（奇経八脈））→</a></div>
+<h2>ご予約</h2><div class="box"><p><strong>ステラポラリス（大阪・梅田／女性専用）</strong>｜オイルマッサージ 90分 10,000円｜月〜土 17:00〜22:00・完全予約制</p><p>ご予約はLINE公式アカウントで受け付けています。希望の日時と、気になる場所（肩こりなど）を送ってください。</p><p><a class="cta-line" href="https://line.me/R/ti/p/@872vxnga">LINEで予約する</a></p></div><p><a class="cta" href="https://tomyree-source.github.io/sites/stella-polaris/#/s/katakori">このページをメインサイトで開く</a></p>
 </main>
 <footer>
-<p>ステラポラリス（大阪・梅田／女性専用）｜オイルマッサージ・美容整体 90分 10,000円｜月〜土 17:00〜22:00（日曜休み）・完全予約制｜大阪・梅田エリアのレンタルサロン（詳しい住所はご予約確定後にご案内）｜現在は近日開院予定のため、ご予約の受付はまだ開始していません。当店では鍼灸施術は行いません。</p>
+<p>ステラポラリス（大阪・梅田／女性専用）｜オイルマッサージ・美容整体 90分 10,000円｜月〜土 17:00〜22:00（日曜休み）・完全予約制｜大阪市北区堂山町12-5 ロイヤルハイツ梅田Ⅱ 303号室（レンタルサロンACE内）｜2026年11月4日に開院しました。ご予約はLINEで受付中です。当店では鍼灸施術は行いません。</p>
 <p><a href="https://tomyree-source.github.io/sites/stella-polaris/">トップページへ戻る</a>　｜　<a href="../sitemap.html">サイトマップ（全ページ一覧）</a></p>
 </footer>
 </div>
