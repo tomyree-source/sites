@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>凪堂 ―セラピスト修行記― 公式サイト｜222キャラクター工房</title>
+<meta name="description" content="本格派セラピスト育成SLG『凪堂 ―セラピスト修行記―』公式サイト。専門知識5パラメータ、本文約46万字、ヒロイン27人。無料体験版公開中。成人向け（R-18）作品です。">
+<link rel="icon" href="assets/icon.png">
+<style>
+:root{--bg:#10151f;--panel:#1a2233;--panel2:#232e47;--ink:#eef1f7;--sub:#aeb9cf;--accent:#d8a24a;--accent2:#7fb3a3;--line:#33415f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;line-height:1.75}
+a{color:var(--accent)}img{max-width:100%}
+header.site{position:sticky;top:0;z-index:10;background:rgba(16,21,31,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.hwrap{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:.06em;color:var(--ink);text-decoration:none}
+.logo small{display:block;font-size:.68rem;color:var(--sub);letter-spacing:.14em}
+nav.main{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+nav.main button{background:transparent;border:1px solid transparent;color:var(--sub);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:.92rem;min-height:40px}
+nav.main button.on{color:var(--ink);border-color:var(--line);background:var(--panel)}
+main{max-width:1080px;margin:0 auto;padding:0 16px 56px}
+.page{display:none}.page.on{display:block}
+.hero{position:relative;margin:18px 0 8px;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.hero img{width:100%;height:420px;object-fit:cover;object-position:center 32%;display:block}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:56px 22px 18px;background:linear-gradient(transparent,rgba(8,11,18,.92))}
+.hero h1{margin:0;font-size:2rem;letter-spacing:.05em}
+.hero p{margin:4px 0 0;color:var(--sub)}
+.badge-r18{display:inline-block;background:#8e2432;color:#fff;font-weight:700;border-radius:6px;padding:2px 10px;font-size:.85rem;margin-bottom:8px}
+.notice{background:#3a1420;border:1px solid #8e2432;border-radius:10px;padding:10px 14px;font-size:.92rem;margin:14px 0}
+section.blk{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin:16px 0}
+h2{font-size:1.35rem;border-left:5px solid var(--accent);padding-left:10px;margin:6px 0 14px}
+h3{margin:8px 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--panel2);border-radius:10px;padding:12px;text-align:center}
+.stat b{display:block;font-size:1.35rem;color:var(--accent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid2 img{border-radius:12px;width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.chars{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.char{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;gap:0}
+.char img{width:118px;min-height:100%;object-fit:cover;object-position:top center;flex:none}
+.char-body{padding:10px 12px;font-size:.86rem}.char-body h3{font-size:1rem;margin:0}
+.char-body .age{color:var(--accent);font-size:.78rem;margin-left:6px}
+.char-body .job{color:var(--accent2);margin:2px 0 6px;font-weight:700}
+.char-body p{margin:4px 0}.char-body ul{margin:6px 0 0;padding-left:16px;color:var(--sub)}
+.btn{display:inline-block;background:var(--accent);color:#191104;font-weight:800;text-decoration:none;border-radius:10px;padding:12px 22px;margin:6px 8px 6px 0}
+.btn.sub{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
+table.spec{width:100%;border-collapse:collapse}table.spec th,table.spec td{border:1px solid var(--line);padding:8px 10px;text-align:left}table.spec th{background:var(--panel2);width:30%}
+footer{border-top:1px solid var(--line);color:var(--sub);text-align:center;padding:22px 16px;font-size:.85rem}
+.sns a{display:inline-block;margin:4px 8px 4px 0;padding:10px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--ink);text-decoration:none}
+@media (max-width:640px){
+ .hero img{height:300px}.hero h1{font-size:1.45rem}
+ .grid2{grid-template-columns:1fr}
+ .chars{grid-template-columns:1fr}
+ .char img{width:104px}
+ nav.main{margin-left:0}nav.main button{padding:8px 9px;font-size:.86rem}
+ .hwrap{gap:8px}main{padding:0 10px 44px}section.blk{padding:14px}
+}
+</style></head>
+<body>
+<header class="site"><div class="hwrap">
+<a class="logo" href="#" data-go="home">凪堂<small>―セラピスト修行記― 公式サイト</small></a>
+<nav class="main">
+<button data-go="home" class="on">トップ</button><button data-go="story">作品紹介</button><button data-go="chars">キャラクター</button><button data-go="trial">体験版・購入</button><button data-go="bonus">特典PDF</button><button data-go="links">関連リンク</button>
+</nav></div></header>
+<main>
+
+<div class="page on" id="page-home">
+<div class="hero"><img src="assets/keyvisual.webp" alt="鍼灸学校の卒業式（キービジュアル）">
+<div class="cap"><span class="badge-r18">R-18 成人向け</span>
+<h1>凪堂 ―セラピスト修行記―</h1>
+<p>ツボと専門知識で信頼を勝ち取る、本格派セラピスト育成SLG</p></div></div>
+<div class="notice">※本作は成人向け（R-18）作品です。恋愛表現（密着・キスなど）を含みます。18歳未満の方の購入・プレイはお控えください。本ページ自体は全年齢の方が閲覧できる内容で構成しています。</div>
+<section class="blk"><h2>作品の売り</h2>
+<p>夜専門の整体・オイルサロン「凪堂」。19歳の見習いセラピストとして国家試験を目指す修行期から、卒業後の進路選択、セラピストとして働く日々までを描く、育成シミュレーション＋恋愛アドベンチャーです。専門知識5パラメータ（解剖学／経絡・ツボ／アロマ・精油学／施術理論／臨床・症例）と体術を磨き、実在のツボ36種を見立ての手がかりに、一人ひとりの「疲れ」と向き合います。</p>
+<div class="stats">
+<div class="stat"><b>約46万字</b>本文総文字数（765シーン）</div>
+<div class="stat"><b>約7.5時間</b>1周のプレイ時間（実測）</div>
+<div class="stat"><b>約19時間</b>全回収のプレイ時間（実測）</div>
+<div class="stat"><b>27人</b>ヒロイン総数</div>
+<div class="stat"><b>28種＋隠し</b>エンディング</div>
+<div class="stat"><b>27曲</b>BGM（鑑賞モードつき）</div>
+</div></section>
+<section class="blk"><h2>まずは無料体験版から</h2>
+<p>序章＋第1幕（国家試験・進路選択まで）を無料で遊べる体験版を公開中です。ブラウザでそのまま遊べます。</p>
+<a class="btn" href="https://tomyree-source.github.io/sites/nagido-slg-demo/" target="_blank" rel="noopener">無料体験版を遊ぶ</a>
+<a class="btn sub" href="#" data-go="trial">製品版のご案内</a></section>
+<div class="grid2"><section class="blk"><h2>舞台は夜のサロン「凪堂」</h2><img src="assets/salon.webp" alt="サロン凪堂の施術室"><p>静かな夜の施術室で、店に集う女性たち一人ひとりの疲れと向き合う日々が始まります。</p></section>
+<section class="blk"><h2>自由行動で広がる出会い</h2><img src="assets/town.webp" alt="商店街の街マップ"><p>幕間の自由行動パートはマップ移動＋時間帯＋スケジュール制。出会いとイベントは、あなたの選択で変わります。</p></section></div>
+</div>
+
+<div class="page" id="page-story">
+<section class="blk"><h2>あらすじ</h2>
+<p>鍼灸学校に通いながら、夜のサロン「凪堂」で見習いとして働く主人公（名前は変更可能）。施術の腕と専門知識を磨き、店に集う女性たち一人ひとりの「疲れ」と向き合うことで、信頼と物語が育っていきます。卒業時の進路選択は合計3回。結末は全28種（＋隠しエンディング）、そして秘薬に頼り評判を失えば「評判失墜エンド」も待っています。</p>
+<img src="assets/kaoru.webp" alt="アロマのアトリエで精油を手に取る薫"></section>
+<section class="blk"><h2>システム</h2>
+<ul>
+<li><b>育成パート</b>：専門知識5パラメータ（解剖学／経絡・ツボ／アロマ・精油学／施術理論／臨床・症例）＋体術を育成。試験と実技で腕を証明します</li>
+<li><b>施術パート</b>：「見立て→ツボ→アロマ→施術→会話」の5段選択で進行。実在のツボ36種が正解の手がかりになります</li>
+<li><b>カルテ</b>：キャラクター毎のカルテ（基本情報／見立て／施術履歴／経過・改善度／主人公の所見メモ）</li>
+<li><b>図鑑・鑑賞</b>：症例ノート＆ツボ図鑑、サントラ試聴、設定資料の鑑賞モード</li>
+<li><b>アロマ調合</b>：ベース×アクセントの2段調合で、相手に合わせた香りを作ります</li>
+<li><b>資格コレクション</b>：協会認定4種（試験つき）。<b>季節イベント</b>と<b>誕生日イベント（27人全員分）</b>、<b>称号・実績14種</b></li>
+<li><b>戦闘・護衛イベント3種</b>：暴漢／ライバルとの対決／ストーカー退治。怪我3段階と、選んではいけない選択を重ねた先の結末も</li>
+<li><b>秘薬</b>：月下香（分量限定）と心映香（一点物）。「無い気持ちは作り出さない。在る気持ちしか増幅しない」――正道の腕があれば不要な近道です</li>
+<li>周回引き継ぎ、シーン回想、複数セーブ＋クイックセーブ対応。会話相手の立ち絵表示つき</li>
+</ul></section>
+<section class="blk"><h2>動作環境</h2>
+<table class="spec">
+<tr><th>ブラウザ版</th><td>HTML5対応のモダンブラウザ（Chrome／Edge／Firefox／Safari）。index.html を開くだけでプレイ可能。スマートフォン・タブレットでもプレイできます</td></tr>
+<tr><th>Windows EXE版</th><td>Windows 10／11（64bit）。展開して nagido.exe を実行（インストール不要）</td></tr>
+<tr><th>セーブについて</th><td>セーブデータはブラウザ版ではブラウザの保存領域に、EXE版ではアプリ内の保存領域に記録されます</td></tr>
+<tr><th>年齢制限</th><td>R-18（成人向け）。18歳未満の方の購入・プレイはお控えください</td></tr>
+</table></section>
+</div>
+
+<div class="page" id="page-chars">
+<section class="blk"><h2>主人公</h2>
+<p><b>ケント（名前変更可能）</b>：19歳の春から物語が始まる見習いセラピスト。鍼灸学校に通いながら凪堂で修行し、専門知識と施術の腕を磨いていく。顔は大きく出さず、手と技術で魅せる主人公です。</p></section>
+<section class="blk"><h2>ヒロイン（全27人）</h2>
+<p>常連客・同僚・先輩・ライバル店のオーナーまで、職業も年齢もさまざまな女性たちが、それぞれの悩みと物語を持って店を訪れます。</p>
+<div class="chars">
+<article class="char char-featured">
+<img src="assets/chars/mio.webp" alt="雨宮 澪の立ち絵" loading="lazy">
+<div class="char-body"><h3>雨宮 澪<span class="age">32歳</span></h3>
+<p class="job">広告代理店の管理職</p><p>完璧主義で甘え下手な出世頭。初回の施術で体の状態をすべて見立てられ、「隠せない」と観念したところから物語が始まる。</p>
+<ul><li>主な悩み：肩こり・眼精疲労・不眠</li><li>好みの香り：ラベンダー</li><li>誕生日：2月10日</li></ul></div></article>
+<article class="char char-featured">
+<img src="assets/chars/saori.webp" alt="白鳥 沙織の立ち絵" loading="lazy">
+<div class="char-body"><h3>白鳥 沙織<span class="age">29歳</span></h3>
+<p class="job">外科医</p><p>プライドの高い女医。医学知識では誰にも負けないが、自分の体の声には素直になれない。</p>
+<ul><li>主な悩み：腰痛と手の疲れ</li><li>好みの香り：ユズ</li><li>誕生日：7月19日</li></ul></div></article>
+<article class="char char-featured">
+<img src="assets/chars/hana.webp" alt="花村 栞の立ち絵" loading="lazy">
+<div class="char-body"><h3>花村 栞<span class="age">36歳</span></h3>
+<p class="job">花屋 経営者</p><p>大人の余裕で主人公をからかえる、作中随一の余裕派。再び恋をすることには少し臆病。</p>
+<ul><li>主な悩み：腰と冷え</li><li>好みの香り：イランイラン</li><li>誕生日：5月14日</li></ul></div></article>
+<article class="char char-featured">
+<img src="assets/chars/azusa.webp" alt="九重 梓の立ち絵" loading="lazy">
+<div class="char-body"><h3>九重 梓<span class="age">42歳</span></h3>
+<p class="job">化粧品会社の社長</p><p>誰の前でも弱みを見せない女社長。施術室でだけ鎧を脱げる落差が最大の見せ場。攻略は最難関。</p>
+<ul><li>主な悩み：全身の疲労と頭痛</li><li>好みの香り：サンダルウッド</li><li>誕生日：11月11日</li></ul></div></article>
+<article class="char char-featured">
+<img src="assets/chars/akari.webp" alt="桐生 あかりの立ち絵" loading="lazy">
+<div class="char-body"><h3>桐生 あかり<span class="age">30歳</span></h3>
+<p class="job">先輩セラピスト</p><p>凪堂の先輩。教える側の疲れは見えにくい。彼女の背中をほぐせるかどうかが、技術の物差しになる。</p>
+<ul><li>主な悩み：肩甲骨内側の奥と首の付け根</li><li>好みの香り：ゼラニウム</li><li>誕生日：4月18日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/koharu.webp" alt="西村 こはるの立ち絵" loading="lazy">
+<div class="char-body"><h3>西村 こはる<span class="age">28歳</span></h3>
+<p class="job">同期のセラピスト</p><p>笑ってごまかす癖のある同期。その笑顔の奥にある体の訴えを見抜けるかが問われる。</p>
+<ul><li>主な悩み：肩甲骨の内側、冷えて固まる腰</li><li>好みの香り：カモミール</li><li>誕生日：6月25日</li></ul></div></article>
+<article class="char char-featured">
+<img src="assets/chars/kaoru.webp" alt="藤原 薫の立ち絵" loading="lazy">
+<div class="char-body"><h3>藤原 薫<span class="age">38歳</span></h3>
+<p class="job">セミナー講師・アロマの師</p><p>アロマと技術の師匠。彼女の身体は、弟子の成長を測る物差しでもある。秘薬「月下香」を託す人物。</p>
+<ul><li>主な悩み：首と肩の静かな疲れ</li><li>好みの香り：シダーウッド</li><li>誕生日：11月30日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/shiori.webp" alt="葉山 しおりの立ち絵" loading="lazy">
+<div class="char-body"><h3>葉山 しおり<span class="age">24歳</span></h3>
+<p class="job">鍼灸学校の同級生</p><p>勉強と実技の両立で肩は岩のよう。国家試験への不安を、手応えに変えていく同級生。</p>
+<ul><li>主な悩み：岩のような肩</li><li>好みの香り：ヒノキ</li><li>誕生日：9月9日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/yuki.webp" alt="三島 由紀の立ち絵" loading="lazy">
+<div class="char-body"><h3>三島 由紀<span class="age">24歳</span></h3>
+<p class="job">凪堂の受付</p><p>店の顔。電話と予約表の姿勢で固まった肩がほぐれると、店全体の空気まで軽くなる。</p>
+<ul><li>主な悩み：固まった肩</li><li>好みの香り：スイートオレンジ</li><li>誕生日：1月15日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/ritsu.webp" alt="風間 律の立ち絵" loading="lazy">
+<div class="char-body"><h3>風間 律<span class="age">35歳</span></h3>
+<p class="job">バー「月影」のマスター</p><p>夜の仕事の身体は、夜の施術と相性がいい。凪堂の夜の常連。</p>
+<ul><li>主な悩み：前腕、立ち仕事の肩と腰</li><li>好みの香り：シダーウッド</li><li>誕生日：12月5日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/rio.webp" alt="早瀬 莉央の立ち絵" loading="lazy">
+<div class="char-body"><h3>早瀬 莉央<span class="age">19歳</span></h3>
+<p class="job">美容部員（成人社会人）</p><p>背伸びする新社会人。強がりの奥で、初めての施術に緊張している。</p>
+<ul><li>主な悩み：脚のむくみと肩の緊張</li><li>好みの香り：オレンジスイート</li><li>誕生日：7月7日</li></ul></div></article>
+<article class="char char-featured">
+<img src="assets/chars/reika.webp" alt="黒崎 麗華の立ち絵" loading="lazy">
+<div class="char-body"><h3>黒崎 麗華<span class="age">40歳</span></h3>
+<p class="job">ライバル店「ルーチェ」オーナー</p><p>敵店の主人の身体を預かる重さ。敵同士の緊張が、技術への敬意に変わっていく。</p>
+<ul><li>主な悩み：経営と施術で積もった全身の疲労</li><li>好みの香り：ローズ</li><li>誕生日：10月31日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/saki.webp" alt="八神 沙紀の立ち絵" loading="lazy">
+<div class="char-body"><h3>八神 沙紀<span class="age">29歳</span></h3>
+<p class="job">トレーナー・元総合格闘家</p><p>現役時代の蓄積が全身に残る。古傷は「治す」より「付き合う」施術が問われる。</p>
+<ul><li>主な悩み：全身の張り、右膝と右股関節の古傷</li><li>好みの香り：ペパーミント</li><li>誕生日：4月2日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/eri.webp" alt="滝川 絵里の立ち絵" loading="lazy">
+<div class="char-body"><h3>滝川 絵里<span class="age">28歳</span></h3>
+<p class="job">銀行員</p><p>窓口の緊張と数字に向き合う目の疲れ。頭の重さは、真面目さの裏返し。ストーカー事件で護衛イベントの相手にもなる。</p>
+<ul><li>主な悩み：頭の重さ・側頭部</li><li>好みの香り：ローズマリー</li><li>誕生日：3月3日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/tamaki.webp" alt="瀬戸 環の立ち絵" loading="lazy">
+<div class="char-body"><h3>瀬戸 環<span class="age">34歳</span></h3>
+<p class="job">ベテランセラピスト</p><p>同業の先輩。技術を認め合う関係が、凪堂の財産になっていく。</p>
+<ul><li>主な悩み：前腕と肩</li><li>好みの香り：ヒノキ</li><li>誕生日：2月22日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/mayu.webp" alt="三島 真由の立ち絵" loading="lazy">
+<div class="char-body"><h3>三島 真由<span class="age">35歳</span></h3>
+<p class="job">美容誌ライター（由紀の姉）</p><p>締切に追われる書き手。覆面レビュー「M」の顔も持つ。彼女の記事が凪堂の名を外へ運ぶ。</p>
+<ul><li>主な悩み：首・目・肩と右の手首</li><li>好みの香り：ベルガモット</li><li>誕生日：8月21日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/elena.webp" alt="エレナ・ロッシの立ち絵" loading="lazy">
+<div class="char-body"><h3>エレナ・ロッシ<span class="age">32歳</span></h3>
+<p class="job">イタリア語講師</p><p>異国で働く身体の疲れは、言葉にしにくい。故郷を思わせる香りが鍵になる。</p>
+<ul><li>主な悩み：デスクワークの肩こりと首</li><li>好みの香り：ベルガモット</li><li>誕生日：8月30日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/anna.webp" alt="アンナ・ペトロワの立ち絵" loading="lazy">
+<div class="char-body"><h3>アンナ・ペトロワ<span class="age">29歳</span></h3>
+<p class="job">バレエ講師</p><p>踊る身体は楽器と同じ。微調整の精度が問われる難しい常連。</p>
+<ul><li>主な悩み：股関節と足首</li><li>好みの香り：ローズマリー</li><li>誕生日：1月28日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/sofia.webp" alt="ソフィア・デュランの立ち絵" loading="lazy">
+<div class="char-body"><h3>ソフィア・デュラン<span class="age">27歳</span></h3>
+<p class="job">パティシエ</p><p>甘い香りの厨房で、身体だけが悲鳴を上げている。お礼の焼き菓子は休憩室の名物。</p>
+<ul><li>主な悩み：立ち仕事とオーブンの熱で全身の張り</li><li>好みの香り：オレンジスイート</li><li>誕生日：9月27日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/emma.webp" alt="エマ・ウィルソンの立ち絵" loading="lazy">
+<div class="char-body"><h3>エマ・ウィルソン<span class="age">26歳</span></h3>
+<p class="job">ALT（外国語指導助手）</p><p>明るさの裏に異国暮らしの疲れ。凪堂が彼女の「帰る場所」の一つになる。</p>
+<ul><li>主な悩み：運動後の筋肉疲労と異国暮らしの疲れ</li><li>好みの香り：ペパーミント</li><li>誕生日：6月6日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/saeko.webp" alt="葛城 冴子の立ち絵" loading="lazy">
+<div class="char-body"><h3>葛城 冴子<span class="age">38歳</span></h3>
+<p class="job">元モデル</p><p>年齢と共に変わる身体との付き合い方を、一緒に作っていく施術。ゆかりの母。</p>
+<ul><li>主な悩み：火照り・眠りの浅さ・肩こり</li><li>好みの香り：ローズ</li><li>誕生日：10月2日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/yukari.webp" alt="葛城 ゆかりの立ち絵" loading="lazy">
+<div class="char-body"><h3>葛城 ゆかり<span class="age">19歳</span></h3>
+<p class="job">OL1年目（成人社会人・冴子の娘）</p><p>社会人の身体の土台作りは一年目が勝負。母娘そろって凪堂の常連に。</p>
+<ul><li>主な悩み：デスクワークの腰痛</li><li>好みの香り：スイートオレンジ</li><li>誕生日：5月25日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/haruka.webp" alt="藤堂 遥の立ち絵" loading="lazy">
+<div class="char-body"><h3>藤堂 遥<span class="age">27歳</span></h3>
+<p class="job">看護師</p><p>夜勤のリズムは身体の時計を狂わせる。医療の現場同士、静かな信頼が生まれる。</p>
+<ul><li>主な悩み：夜勤の腰痛・脚のむくみ</li><li>好みの香り：ペパーミント</li><li>誕生日：3月19日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/mitsuki.webp" alt="高坂 美月の立ち絵" loading="lazy">
+<div class="char-body"><h3>高坂 美月<span class="age">31歳</span></h3>
+<p class="job">女教師</p><p>人前に立つ緊張は、手と肩に出る。教室の外の顔を見る施術。</p>
+<ul><li>主な悩み：肩と手の張り</li><li>好みの香り：ローズマリー</li><li>誕生日：9月15日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/rena.webp" alt="白瀬 玲奈の立ち絵" loading="lazy">
+<div class="char-body"><h3>白瀬 玲奈<span class="age">28歳</span></h3>
+<p class="job">国際線CA</p><p>時差は身体の時計の大敵。次のフライトの前に、必ず寄る店になる。</p>
+<ul><li>主な悩み：時差ぼけ・脚のむくみ</li><li>好みの香り：グレープフルーツ</li><li>誕生日：12月24日</li></ul></div></article>
+<article class="char char-featured">
+<img src="assets/chars/aoi.webp" alt="神宮寺 葵の立ち絵" loading="lazy">
+<div class="char-body"><h3>神宮寺 葵<span class="age">23歳</span></h3>
+<p class="job">巫女</p><p>神職の凛とした日常の裏にある、静かな疲れ。足の冷えが入口になる。</p>
+<ul><li>主な悩み：祭事の立ち仕事と足の冷え</li><li>好みの香り：ヒノキ</li><li>誕生日：1月7日</li></ul></div></article>
+<article class="char">
+<img src="assets/chars/mao.webp" alt="桜井 真央の立ち絵" loading="lazy">
+<div class="char-body"><h3>桜井 真央<span class="age">25歳</span></h3>
+<p class="job">キックボクサー</p><p>減量期の身体は繊細。攻めず、整える判断が問われる。試合は彼女自身の実力で勝ち取る。</p>
+<ul><li>主な悩み：減量の疲労と古傷の右足首</li><li>好みの香り：ペパーミントとユーカリ</li><li>誕生日：8月8日</li></ul></div></article>
+</div></section>
+</div>
+
+<div class="page" id="page-trial">
+<section class="blk"><h2>無料体験版</h2>
+<p>序章＋第1幕（61シーン）を無料で遊べます。購入前に、まずはこちらでお試しください。ブラウザでそのまま遊べます（スマートフォン対応）。</p>
+<a class="btn" href="https://tomyree-source.github.io/sites/nagido-slg-demo/" target="_blank" rel="noopener">無料体験版を遊ぶ</a></section>
+<section class="blk"><h2>製品版のご案内</h2>
+<table class="spec">
+<tr><th>価格</th><td>1,200円（予定）</td></tr>
+<tr><th>販売</th><td>BOOTHにて発売準備中です。販売開始まで、しばらくお待ちください</td></tr>
+<tr><th>内容</th><td>ブラウザ版＋Windows EXE版の2形式。購入特典PDF「セルフケア・ツボ押しガイド」同梱</td></tr>
+<tr><th>年齢制限</th><td>R-18（成人向け）</td></tr>
+</table>
+<a class="btn sub" href="https://angel222.booth.pm/" target="_blank" rel="noopener">制作ショップ「angel222」（BOOTH）を見る</a>
+<p style="color:var(--sub);font-size:.88rem">※リンク先は制作サークルのBOOTHショップトップです。本作は発売準備中のため、まだ購入できません。</p></section>
+</div>
+
+<div class="page" id="page-bonus">
+<section class="blk"><h2>購入特典：セルフケア・ツボ押しガイド</h2>
+<div class="grid2"><div><img src="assets/bonus-cover.webp" alt="特典PDF「セルフケア・ツボ押しガイド」表紙"></div>
+<div><p>製品版に同梱される実用ガイド（PDF・全29ページ・図版79点）。ゲームに登場するツボ36種の位置と押し方を、解剖図とキャラクターの実演イラストで解説した、日々のセルフケアの参考になる一冊です。</p>
+<ul><li>第1章：基礎知識と安全な押し方</li><li>部位別7章：ツボ36種を図解で紹介</li><li>第8章：目的別コース5本</li><li>第9章：香りとストレッチ</li></ul>
+<p style="color:var(--sub);font-size:.88rem">※本ガイドは一般的なセルフケアの情報提供を目的としたもので、医療行為や治療効果を保証するものではありません。体調に不安のある方は、医師等の専門家にご相談ください。</p></div></div></section>
+</div>
+
+<div class="page" id="page-links">
+<section class="blk"><h2>関連リンク</h2>
+<div class="sns">
+<a href="https://tomyree-source.github.io/sites/nagido-slg-demo/" target="_blank" rel="noopener">無料体験版</a>
+<a href="https://angel222.booth.pm/" target="_blank" rel="noopener">BOOTHショップ「angel222」</a>
+</div>
+<h3>公式SNS（開設準備中）</h3>
+<div class="sns">
+<a href="#" data-sns="x" aria-disabled="true">X（準備中）</a>
+<a href="#" data-sns="instagram" aria-disabled="true">Instagram（準備中）</a>
+<a href="#" data-sns="threads" aria-disabled="true">Threads（準備中）</a>
+</div>
+<p style="color:var(--sub);font-size:.88rem">公式SNSは開設準備中です。開設後、このページからリンクします。</p>
+<h3>制作</h3>
+<p>222キャラクター工房</p>
+<p style="color:var(--sub);font-size:.88rem">本作のキャラクター・団体・店舗はすべて架空のものです。実在の人物・団体とは関係ありません。</p></section>
+</div>
+
+</main>
+<footer>『凪堂 ―セラピスト修行記―』公式サイト｜制作：222キャラクター工房｜本作は成人向け（R-18）作品です</footer>
+<script>
+function go(id){document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('on',p.id==='page-'+id)});
+document.querySelectorAll('nav.main button').forEach(function(b){b.classList.toggle('on',b.dataset.go===id)});
+window.scrollTo(0,0);location.hash=id;}
+document.querySelectorAll('[data-go]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();go(el.dataset.go);});});
+var h=(location.hash||'').replace('#','');if(h&&document.getElementById('page-'+h))go(h);
+</script>
+</body></html>
