@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>セラフィナ ガチャ（無料・全352種）｜セラフィナ公式サイト</title>
+<meta name="description" content="見習い天使セラフィナの無料ガチャ。イラストパック第1弾〜第11弾とサービスシーン編のカード全352種が対象。1日3回まで、引いたカードはコレクション図鑑に登録されます。">
+<link rel="canonical" href="https://tomyree-source.github.io/sites/seraphina-official/gacha/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="セラフィナ公式サイト">
+<meta property="og:title" content="セラフィナ ガチャ（無料・全352種）｜セラフィナ公式サイト">
+<meta property="og:description" content="見習い天使セラフィナの無料ガチャ。イラストパック第1弾〜第11弾とサービスシーン編のカード全352種が対象。1日3回まで、引いたカードはコレクション図鑑に登録されます。">
+<meta property="og:url" content="https://tomyree-source.github.io/sites/seraphina-official/gacha/">
+<meta property="og:image" content="https://tomyree-source.github.io/sites/seraphina-official/assets/cards/p1-08-gacha-night.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap header-in">
+    <a class="logo" href="../">セラフィナ公式サイト<small>見習い天使セラフィナ｜222キャラ工房</small></a>
+    <nav class="main"><a href="../">トップ</a><a href="../packs/">イラストパック</a><a href="../characters/">キャラクター</a><a href="../zukan/">図鑑</a><a href="../gacha/">ガチャ</a><a href="../game/">ゲーム</a><a href="../events/">イベント</a><a href="../news/">新着</a><a href="../links/">関連リンク</a></nav>
+  </div>
+</header>
+<main class="wrap">
+<p class="breadcrumb"><a href="../">トップ</a> ＞ ガチャ</p>
+  <h1>セラフィナ ガチャ</h1>
+  <p class="lead">イラストパック第1弾〜第11弾とサービスシーン編のイラストカード、全352種から引ける無料ガチャです。1日3回まで、課金なしで回せます。引いたカードは<a href="../zukan/">コレクション図鑑</a>に登録され、所持状況がブラウザに保存されます。</p>
+  <div class="stage">
+    <p style="margin:0">今日の残り回数</p>
+    <p class="dots" id="remainDots">●●●</p>
+    <p><button class="btn big-btn" id="drawBtn" type="button">ガチャを回す</button></p>
+    <p id="drawMsg" style="color:var(--sub);font-size:14px"></p>
+    <div id="afterMsg" style="display:none">
+      <p style="color:var(--sub);font-size:14px;margin:0 0 6px">集めたカードの原画は、BOOTHのイラストパックで大きなサイズでご覧いただけます。</p>
+      <p style="margin:0"><a class="btn" href="../packs/">イラストパック紹介へ</a></p>
+    </div>
+    <div id="result"></div>
+  </div>
+  <div class="progress"><p style="margin:0 0 6px"><b id="gprog">所持 0 / 352 種（0%）</b></p><div class="bar"><div class="fill" id="gfill"></div></div></div>
+  <section><h2>ガチャの仕組み</h2>
+    <p>カードにはノーマル／レア／激レアの3段階があり、激レアほど出にくくなっています。同じカードが重なって出ることもあります。コレクションの記録と残り回数は、お使いの端末のブラウザ内（localStorage）にのみ保存され、サーバーには送信されません。ブラウザのデータを消去すると記録も消えますのでご注意ください。</p>
+    <p>カード画像はWeb鑑賞用サイズです。原画の高解像度イラストは、<a href="../packs/">イラストパック紹介</a>からBOOTHのパックでご覧いただけます。引いたカードのパックが気になったら、結果画面のリンクから該当パックの図鑑と紹介ページへ進めます。</p>
+    <p>図鑑では、パックごとにカードの名前と場面解説を一覧で読めます。所持しているカードには「所持 ×N」と表示され、未所持のカードはシルエットで表示されます。コンプリートを目指して、1日3回のガチャを日課にしてみてください。</p>
+  </section>
+  <div class="funnel">
+    <h2 style="border:none;padding:0;margin:0 0 10px">作品はこちらから</h2>
+    <div class="btns">
+      <a class="btn booth big" href="https://angel222.booth.pm/">BOOTH「angel222」（イラストパック）</a>
+      <a class="btn sub" href="https://suzuri.jp/222chara">SUZURI「222キャラ工房」（グッズ）</a>
+      <a class="btn sub" href="https://tomyree-source.github.io/sites/seraphina-game/">ゲームを遊ぶ（全編無料）</a>
+      <a class="btn sub" href="../links/">関連リンク（SNS・LINE）</a>
+    </div>
+  </div>
+<script src="../assets/cards-data.js"></script>
+<script>
+(function(){
+var LS="seraphina-gacha-v1", LIMIT=3;
+var BOOTH_URL={"p1":"https://angel222.booth.pm/items/9052317","p2":"https://angel222.booth.pm/items/9076095","p3":"https://angel222.booth.pm/items/9076137","p4":"https://angel222.booth.pm/items/9076180","p5":"https://angel222.booth.pm/items/9076232","p6":"https://angel222.booth.pm/items/9076265","p7":"https://angel222.booth.pm/items/9076315","p8":"https://angel222.booth.pm/items/9076361","p9":"https://angel222.booth.pm/items/9083665","p10":"https://angel222.booth.pm/items/9086336","p11":"https://angel222.booth.pm/items/9088184"};
+function today(){var d=new Date();function p(n){return (n<10?"0":"")+n;}return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());}
+var s=null; try{s=JSON.parse(localStorage.getItem(LS)||"null");}catch(e){}
+if(!s||typeof s!=="object") s={date:today(),used:0,collection:{}};
+if(!s.collection) s.collection={};
+if(s.date!==today()){s.date=today();s.used=0;}
+function save(){try{localStorage.setItem(LS,JSON.stringify(s));}catch(e){}}
+var dots=document.getElementById("remainDots"), btn=document.getElementById("drawBtn"),
+    msg=document.getElementById("drawMsg"), res=document.getElementById("result");
+function render(){var left=Math.max(0,LIMIT-s.used);var t="";
+for(var i=0;i<LIMIT;i++) t+='<span class="'+(i<left?"":"off")+'">●</span>';
+dots.innerHTML=t; btn.disabled=left<=0;
+msg.textContent=left<=0?"今日の分は終わりです。日付が変わると、また3回回せます。":"";
+document.getElementById("afterMsg").style.display=left<=0?"":"none";
+var n=0; for(var i=0;i<CARDS.length;i++) if(s.collection[CARDS[i].id]) n++;
+var p=Math.round(n/CARDS.length*100);
+document.getElementById("gprog").textContent="所持 "+n+" / "+CARDS.length+" 種（"+p+"%）";
+document.getElementById("gfill").style.width=p+"%";}
+btn.addEventListener("click",function(){
+if(s.used>=LIMIT) return;
+var pool=[]; CARDS.forEach(function(c){var w=c.rarity===2?1:(c.rarity===1?4:12); for(var i=0;i<w;i++) pool.push(c);});
+var c=pool[Math.floor(Math.random()*pool.length)];
+s.used++; s.collection[c.id]=(s.collection[c.id]||0)+1; save();
+var slug=PACK_SLUG[c.pack];
+res.innerHTML='<img src="../'+c.img+'" alt="">'
+ +'<p style="margin:6px 0 0;color:var(--gold);font-weight:700">'+RARITY_LABEL[c.rarity]+'</p>'
+ +'<h3 style="margin:2px 0">'+c.name+'</h3>'
+ +'<p style="margin:0 0 4px;color:var(--sub);font-size:14px">'+c.packLabel+'</p>'
+ +'<p style="margin:0 auto 10px;max-width:520px;font-size:14px">'+c.desc+'</p>'
+ + (BOOTH_URL[c.pack]
+   ? '<p><a class="btn booth" href="'+BOOTH_URL[c.pack]+'">この弾をBOOTHで見る（500円）</a></p>'
+     +'<p><a class="btn sub" href="../zukan/'+slug+'/">この弾の図鑑を見る</a> '
+     +'<a class="btn sub" href="../packs/'+slug+'/">パック紹介ページへ</a></p>'
+   : '<p><a class="btn" href="../zukan/'+slug+'/">この弾の図鑑を見る</a> '
+     +'<a class="btn sub" href="../packs/'+slug+'/">パック紹介ページへ</a></p>');
+render();});
+render();
+})();
+</script>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <nav><a href="../">トップ</a><a href="../packs/">イラストパック</a><a href="../characters/">キャラクター</a><a href="../zukan/">図鑑</a><a href="../gacha/">ガチャ</a><a href="../game/">ゲーム</a><a href="../events/">イベント</a><a href="../news/">新着</a><a href="../links/">関連リンク</a></nav>
+    <p class="fine">セラフィナ公式サイト｜運営：222キャラ工房。登場するキャラクターは架空の存在です。イラストにはAI生成を含みます。</p>
+  </div>
+</footer>
+</body>
+</html>
