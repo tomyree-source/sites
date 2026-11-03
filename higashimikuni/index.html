@@ -12,8 +12,8 @@
 <link rel="alternate" hreflang="en" href="https://tomyree-source.github.io/sites/higashimikuni/assets/english.html" />
 <link rel="alternate" hreflang="x-default" href="https://tomyree-source.github.io/sites/higashimikuni/" />
 <script>
-/* 旧ハッシュURL（#/article/…・#/recruit・#/first）の救済：外部から直接開かれた場合は対応する分割ページ（静的HTML）へ転送する。サイト内からの遷移では転送しない。 */
-(function(){var h=location.hash||"";var ref=document.referrer||"";if(ref.indexOf("/sites/higashimikuni/")>-1||ref.indexOf("/space-6")>-1)return;var B="hirou-koshi,katakori-deskwork,netsuki-yoru,me-no-tsukare,kubi-atama,ashi-mukumi,onaka-benpi,hie-kan,shisei-nekoze,jiritsu-shinkei,senaka-hari".split(",");var m;if((m=h.match(/^#\/article\/([a-z0-9-]+)$/))&&B.indexOf(m[1])>-1)location.replace("assets/b/"+m[1]+".html");else if(h==="#/recruit")location.replace("assets/recruit.html");else if(h==="#/first")location.replace("assets/first.html");})();
+/* 旧ハッシュURL（#/article/…・#/first）の救済：外部から直接開かれた場合は対応する分割ページ（静的HTML）へ転送する。サイト内からの遷移では転送しない。 */
+(function(){var h=location.hash||"";var ref=document.referrer||"";if(ref.indexOf("/sites/higashimikuni/")>-1||ref.indexOf("/space-6")>-1)return;var B="hirou-koshi,katakori-deskwork,netsuki-yoru,me-no-tsukare,kubi-atama,ashi-mukumi,onaka-benpi,hie-kan,shisei-nekoze,jiritsu-shinkei,senaka-hari".split(",");var m;if((m=h.match(/^#\/article\/([a-z0-9-]+)$/))&&B.indexOf(m[1])>-1)location.replace("assets/b/"+m[1]+".html");else if(h==="#/first")location.replace("assets/first.html");})();
 </script>
 <meta name="robots" content="index,follow" />
 <meta property="og:title" content="北辰堂｜東三国・新大阪の男性専用整体院｜肩こり・腰の重さ・姿勢の見直し" />
@@ -170,12 +170,12 @@ nav.fab-panel ul a:focus-visible{outline:3px solid var(--gold);outline-offset:-1
 .hero2-note{max-width:1200px;margin:0 auto;padding:10px 20px 14px;font-size:12.5px;color:var(--muted);background:var(--hero-face)}
 @media (max-width:760px){
 .hero2-grid{grid-template-columns:1fr;min-height:0}
-.hero2-visual{order:-1;height:21svh;min-height:168px}
-.hero2-copy{padding:18px 20px 26px;margin-top:0;position:relative;background:var(--hero-face);border-radius:0}
+.hero2-visual{order:-1;height:18svh;min-height:150px}
+.hero2-copy{padding:12px 20px 26px;margin-top:0;position:relative;background:var(--hero-face);border-radius:0}
 .hero2-title{font-size:26px;margin:10px 0 10px}
 .hero2-catch{font-size:19px;margin:0 0 12px}
 .hero2-lead{font-size:15px;line-height:1.8}
-.hero2-actions{margin-top:20px}
+.hero2-actions{margin-top:14px}
 .hero2-cta{width:100%;justify-content:center}
 .hero2-sign{margin-top:22px;padding-top:14px}
 .hero2-facts-in{grid-template-columns:1fr 1fr;padding:6px 20px 10px}
@@ -280,15 +280,12 @@ details.faq p{margin:0 0 14px;color:var(--ink2);font-size:14.5px}
 .access dt{font-weight:700;color:var(--ink2)}
 .access dd{margin:0}
 @media (max-width:520px){.access dl{grid-template-columns:1fr}.access dt{margin-top:8px}}
-/* recruit */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 @media (max-width:900px){.pillars{grid-template-columns:1fr}}
 .pillar{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px}
 .pillar .no{color:var(--gold);font-family:Georgia,serif;font-size:15px;letter-spacing:.06em}
 .pillar h3{margin:6px 0 8px;font-size:18px}
 .pillar p{margin:0;color:var(--ink2);font-size:14.5px}
-.recruit-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
-@media (max-width:760px){.recruit-cols{grid-template-columns:1fr}}
 /* system strip */
 .system{border:1px solid var(--line);border-radius:10px;padding:22px;background:var(--surface)}
 .system ol{margin:10px 0 0;padding-left:20px;color:var(--ink2);font-size:14.5px}
@@ -346,6 +343,12 @@ footer b{color:var(--ink)}
 .sym-grid b{display:block;font-size:16px;margin-bottom:4px;line-height:1.5}
 .sym-grid span{color:var(--ink2);font-size:13.5px;line-height:1.65;display:block}
 .sym-cat{font-size:17px;font-weight:700;color:var(--accent);margin:28px 0 12px;letter-spacing:.02em}
+.sym-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:6px 0 8px}
+@media (max-width:900px){.sym-cats{grid-template-columns:1fr 1fr}}
+.sym-cat-card{display:block;background:var(--surface);border:1px solid var(--line2);border-radius:8px;padding:16px 18px;text-decoration:none;color:var(--ink)}
+.sym-cat-card span{display:block;font-weight:700;font-size:16.5px;color:var(--accent)}
+.sym-cat-card small{color:var(--muted);font-size:13px}
+.sym-cat-card:hover{border-color:var(--accent);background:var(--gold-soft)}
 .sym-cat:first-of-type{margin-top:6px}
 .sym-grid li.linked{padding:0;border-color:var(--accent)}
 .sym-grid li.linked a{display:block;padding:16px 18px;color:inherit;text-decoration:none}
@@ -356,7 +359,7 @@ footer b{color:var(--ink)}
 .fixed-line{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:94;display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;border-radius:8px;background:var(--line-green);color:#fff;font-weight:700;font-size:15px;letter-spacing:.03em;text-decoration:none;box-shadow:0 6px 16px rgba(20,40,28,.25)}
 .fixed-line:hover{opacity:.92}
 .fixed-line:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-@media (max-width:760px){footer{padding-bottom:120px}.fixed-line{left:auto;right:16px;min-height:44px;padding:10px 16px;font-size:14px}}
+@media (max-width:760px){footer{padding-bottom:120px}.fixed-line{left:16px;right:auto;min-height:44px;padding:10px 16px;font-size:14px}}
 </style>
 </head>
 <body>
@@ -396,7 +399,7 @@ footer b{color:var(--ink)}
 </div>
 </div>
 <div class="hero2-visual">
-<img src="assets/hero.webp" alt="北辰堂の施術室。施術ベッドとタオル、間接照明のある落ち着いた室内" />
+<img src="assets/treatment-hero.webp" alt="施術ベッドにうつ伏せで横たわる男性のお客様の背中に、紺色の施術着のセラピスト（ケント）が施術しているイラスト" />
 </div>
 </div>
 <div class="hero2-facts" aria-label="基本情報">
@@ -413,32 +416,16 @@ footer b{color:var(--ink)}
 <div class="wrap">
 <div class="notice" role="note">
 <strong data-i18n="noticeLabel">ご案内</strong>
-<span data-i18n="noticeMain">北辰堂は<strong>男性専用</strong>です。性的なサービスは一切行っておりません。</span>
+<span data-i18n="noticeMain">北辰堂は、男性スタッフ1人で運営しているため、<strong>男性専用</strong>としています。</span>
 </div>
 </div>
-
-<!-- SELF-CARE LIBRARY -->
-<section class="block" id="library" style="padding-top:34px">
-<div class="wrap">
-<div class="library">
-<div class="library-text">
-<p class="kicker" style="margin-bottom:6px">SELF-CARE LIBRARY</p>
-<h2 class="sec serif" style="margin-bottom:8px" data-i18n="libTitle">セルフケア資料ライブラリ（無料）</h2>
-<p data-i18n="libText">肩こり・腰の重さ・目の疲れなど、<strong>症状別のセルフケア資料が無料で読める</strong>資料ライブラリをご用意しています。ご自宅でできるケアの見直しにお役立てください。あわせて、<strong>無料姿勢チェックの申込もそちらからできます</strong>。写真をお送りいただくと、姿勢の傾向と日常で試せるケアのヒントをお返しします。</p>
-</div>
-<div class="library-actions">
-<a class="btn btn-dark" href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" data-i18n="libBtn">資料ライブラリを見る →</a>
-</div>
-</div>
-</div>
-</section>
 
 <!-- ABOUT -->
 <section class="block" id="about">
 <div class="wrap">
 <p class="kicker">ABOUT</p>
 <h2 class="sec serif" data-i18n="aboutTitle">凝っている場所だけでなく、原因から整える整体</h2>
-<p class="sec-lead" data-i18n="aboutLead">北辰堂は、東三国の男性専用整体院です。施術者は平賀建人ひとり、完全予約制で1日数名のみの受付のため、他のお客様と顔を合わせることはありません。姿勢や体の使い方まで確認し、なぜそこが凝るのかという原因側から整える——「かかりつけ」のように体の変化を一緒に見ていく場所を目指しています。</p>
+<p class="sec-lead" data-i18n="aboutLead">北辰堂は、東三国の男性専用整体院です。男性スタッフ1人で運営しているため、男性専用としています。施術者は平賀建人、完全予約制で1日数名のみの受付のため、他のお客様と顔を合わせることはありません。姿勢や体の使い方まで確認し、なぜそこが凝るのかという原因側から整える——「かかりつけ」のように体の変化を一緒に見ていく場所を目指しています。</p>
 <div class="about-grid">
 <div>
 <div class="point">
@@ -455,7 +442,7 @@ footer b{color:var(--ink)}
 </div>
 </div>
 <figure>
-<img src="assets/relax.webp" alt="男性のお客様が肩と背中のリラクゼーションを受けている様子" loading="lazy" />
+<img src="assets/treatment-relax.webp" alt="施術ベッドにうつ伏せで横たわる男性のお客様の肩と背中に、濃紺の施術着のセラピスト（ケント）がリラクゼーション施術をしているイラスト" loading="lazy" />
 <figcaption data-i18n="aboutCaption">施術イメージ（リラクゼーション）</figcaption>
 </figure>
 </div>
@@ -482,131 +469,33 @@ footer b{color:var(--ink)}
 <p class="kicker">SYMPTOM GUIDE</p>
 <h2 class="sec serif" data-i18n="symTitle">お悩み別に探す｜東三国・新大阪の男性へ</h2>
 <p class="sec-lead" data-i18n="symLead">お悩みの名前から探せるよう、症状の一般名と疾患名の両方で入口を並べました。各お悩みページでは、考えられる要因と日常で試せるセルフケア、医療機関へ相談する目安を整理しています。疾患名でお探しの方も、まずは一般的な健康情報としてご覧ください。北辰堂は医療機関ではないため、診断や治療は行いません。</p>
-<h3 class="sym-cat" data-i18n="symCat1">頭・顔・顎</h3>
-<ul class="sym-grid">
-<li class="linked"><a data-i18n="sym1" href="assets/d/zutsuu.html"><b>緊張型頭痛</b><span>東三国・新大阪｜締め付け感の仕組みと姿勢・風池・天柱</span></a></li>
-<li data-i18n="sym2"><b>片頭痛</b><span>東三国・新大阪｜拍動性の痛みと首・肩の緊張の関係</span></li>
-<li data-i18n="sym3"><b>頭重感（頭の重さ）</b><span>東三国・新大阪｜眼精疲労・睡眠と連動する頭の重さ</span></li>
-<li data-i18n="sym4"><b>眼精疲労</b><span>東三国・新大阪｜画面作業と首の角度・後頭部の緊張</span></li>
-<li class="linked"><a data-i18n="sym5" href="assets/d/gakukansetsu.html"><b>顎関節症</b><span>東三国・新大阪｜食いしばりと咬筋・全身の緊張</span></a></li>
-<li data-i18n="sym6"><b>食いしばり・歯ぎしり</b><span>東三国・新大阪｜就寝時の緊張と枕・咬筋の張り</span></li>
-<li data-i18n="sym7"><b>めまい感（ふらつき感）</b><span>東三国・新大阪｜首の緊張と平衡感覚（受診の目安つき）</span></li>
-<li data-i18n="sym8"><b>耳鳴り・耳の詰まり感</b><span>東三国・新大阪｜顎関節・首との関連を一般情報で整理</span></li>
-<li data-i18n="sym9"><b>後頭部痛（首の付け根の痛み）</b><span>東三国・新大阪｜うつむき姿勢で負担が集中する付け根の痛み</span></li>
-<li data-i18n="sym10"><b>顔のむくみ感</b><span>東三国・新大阪｜塩分・睡眠・姿勢と顔の巡り</span></li>
-</ul>
-<h3 class="sym-cat" data-i18n="symCat2">首・肩</h3>
+<div class="sym-cats">
+<a class="sym-cat-card" href="assets/symptoms.html#cat1"><span data-i18n="symCat1">頭・顔・顎</span><small>10件のお悩みページ</small></a>
+<a class="sym-cat-card" href="assets/symptoms.html#cat2"><span data-i18n="symCat2">首・肩</span><small>14件のお悩みページ</small></a>
+<a class="sym-cat-card" href="assets/symptoms.html#cat3"><span data-i18n="symCat3">背中・姿勢</span><small>10件のお悩みページ</small></a>
+<a class="sym-cat-card" href="assets/symptoms.html#cat4"><span data-i18n="symCat4">腰・骨盤</span><small>14件のお悩みページ</small></a>
+<a class="sym-cat-card" href="assets/symptoms.html#cat5"><span data-i18n="symCat5">腕・肘・手</span><small>12件のお悩みページ</small></a>
+<a class="sym-cat-card" href="assets/symptoms.html#cat6"><span data-i18n="symCat6">股関節・膝・足</span><small>16件のお悩みページ</small></a>
+<a class="sym-cat-card" href="assets/symptoms.html#cat7"><span data-i18n="symCat7">自律神経・全身の不調感</span><small>14件のお悩みページ</small></a>
+<a class="sym-cat-card" href="assets/symptoms.html#cat8"><span data-i18n="symCat8">スポーツ・仕事・場面別</span><small>10件のお悩みページ</small></a>
+</div>
+<h3 class="sym-cat" data-i18n="symMajor">主要なお悩み</h3>
 <ul class="sym-grid">
 <li class="linked"><a data-i18n="sym11" href="assets/d/katakori.html"><b>肩こり</b><span>東三国・新大阪｜僧帽筋・肩甲挙筋／肩井・天宗｜男性のデスクワーク型</span></a></li>
 <li class="linked"><a data-i18n="sym12" href="assets/d/kubikori.html"><b>首こり・頸部痛</b><span>東三国・新大阪｜頸椎の構造と頭板状筋・斜角筋から解説</span></a></li>
 <li class="linked"><a data-i18n="sym13" href="assets/d/gojukkata.html"><b>五十肩・四十肩（肩関節周囲炎）</b><span>東三国・新大阪｜炎症期・拘縮期・回復期、時期別の考え方</span></a></li>
-<li data-i18n="sym14"><b>寝違え</b><span>東三国・新大阪｜急性の首の緊張と急性期の扱い</span></li>
 <li class="linked"><a data-i18n="sym15" href="assets/d/straight-neck.html"><b>ストレートネック（スマホ首）</b><span>東三国・新大阪｜頭部前方位の負担と頸椎カーブの喪失</span></a></li>
-<li class="linked"><a data-i18n="sym16" href="assets/d/keitsuisho.html"><b>頸椎症</b><span>東三国・新大阪｜神経根の症状と脊髄の症状の区別（受診の目安つき）</span></a></li>
-<li data-i18n="sym17"><b>頸椎椎間板ヘルニア</b><span>東三国・新大阪｜しびれの出方とデルマトームの考え方</span></li>
-<li data-i18n="sym18"><b>むち打ち後の不調（頸椎捻挫）</b><span>東三国・新大阪｜事故後の経過と医療機関との役割分担</span></li>
-<li data-i18n="sym19"><b>胸郭出口症候群</b><span>東三国・新大阪｜斜角筋・小胸筋と腕のしびれ・だるさ</span></li>
-<li data-i18n="sym20"><b>頸肩腕症候群</b><span>東三国・新大阪｜職業性の過用と仕事環境の見直し</span></li>
-<li data-i18n="sym21"><b>肩腱板の炎症（腱板炎・石灰沈着性腱板炎）</b><span>東三国・新大阪｜夜間痛の特徴と時期の判断</span></li>
-<li data-i18n="sym22"><b>上腕二頭筋長頭腱炎</b><span>東三国・新大阪｜肩前部の痛みとトレーニング場面の注意</span></li>
-<li data-i18n="sym23"><b>肩甲骨まわりの痛み</b><span>東三国・新大阪｜菱形筋と肩甲骨の内側縁に集まる負担</span></li>
-<li data-i18n="sym24"><b>巻き肩</b><span>東三国・新大阪｜胸の縮こまりと呼吸の浅さ</span></li>
-</ul>
-<h3 class="sym-cat" data-i18n="symCat3">背中・姿勢</h3>
-<ul class="sym-grid">
-<li data-i18n="sym25"><b>背中の痛み・張り</b><span>東三国・新大阪｜脊柱起立筋・多裂筋と左右差の見方</span></li>
 <li class="linked"><a data-i18n="sym26" href="assets/d/nekose.html"><b>猫背</b><span>東三国・新大阪｜胸椎後弯・頭部前方位｜デスク姿勢の連鎖</span></a></li>
-<li data-i18n="sym27"><b>反り腰</b><span>東三国・新大阪｜骨盤前傾の仕組みと立ち姿勢の負担</span></li>
-<li data-i18n="sym28"><b>姿勢の崩れ（姿勢不良全般）</b><span>東三国・新大阪｜頭・肩・骨盤の位置関係を総論で整理</span></li>
-<li data-i18n="sym29"><b>機能性側弯姿勢</b><span>東三国・新大阪｜筋バランスと左右の使い方のクセ</span></li>
-<li data-i18n="sym30"><b>骨盤の歪み感</b><span>東三国・新大阪｜仙腸関節と脚長差感覚の正体</span></li>
-<li data-i18n="sym31"><b>肩の高さの左右差</b><span>東三国・新大阪｜カバンの持ち方など生活要因</span></li>
-<li data-i18n="sym32"><b>平背（ストレートバック）</b><span>東三国・新大阪｜胸椎カーブの低下と呼吸・背中の硬さ</span></li>
-<li data-i18n="sym33"><b>円背（背中の丸み）</b><span>東三国・新大阪｜加齢と胸椎・股関節の連動</span></li>
-<li data-i18n="sym34"><b>デスクワークによる背中の疲労</b><span>東三国・新大阪｜座位姿勢の負荷と1時間単位のリセット法</span></li>
-</ul>
-<h3 class="sym-cat" data-i18n="symCat4">腰・骨盤</h3>
-<ul class="sym-grid">
 <li class="linked"><a data-i18n="sym35" href="assets/d/yotsu.html"><b>慢性腰痛</b><span>東三国・新大阪｜多裂筋・腰方形筋と非特異的腰痛の考え方</span></a></li>
 <li class="linked"><a data-i18n="sym36" href="assets/d/gikkuri.html"><b>ぎっくり腰（急性腰痛）</b><span>東三国・新大阪｜急性期の経過と安静の目安・避けたい動き</span></a></li>
-<li class="linked"><a data-i18n="sym37" href="assets/d/hernia.html"><b>腰椎椎間板ヘルニア</b><span>東三国・新大阪｜神経根症状の出方と受診の目安</span></a></li>
-<li data-i18n="sym38"><b>腰部脊柱管狭窄症</b><span>東三国・新大阪｜間欠性跛行と前かがみで楽になる理由</span></li>
-<li class="linked"><a data-i18n="sym39" href="assets/d/zakotsu.html"><b>坐骨神経痛</b><span>東三国・新大阪｜環跳・委中・承山｜しびれの範囲の見方</span></a></li>
-<li data-i18n="sym40"><b>腰椎すべり症</b><span>東三国・新大阪｜分離すべりと変性すべりの違い・反り腰動作の注意</span></li>
-<li data-i18n="sym41"><b>腰椎分離症</b><span>東三国・新大阪｜スポーツ歴との関係と若年期からの経過</span></li>
-<li data-i18n="sym42"><b>梨状筋症候群</b><span>東三国・新大阪｜座位で強まるお尻の深部の痛み</span></li>
-<li data-i18n="sym43"><b>仙腸関節の痛み</b><span>東三国・新大阪｜片側に寄る痛みと仙腸関節の微細な動き</span></li>
-<li class="linked"><a data-i18n="sym44" href="assets/d/koshi-omosa.html"><b>腰の重だるさ</b><span>東三国・新大阪｜腰全体の巡りと疲労・冷えとの関係</span></a></li>
-<li data-i18n="sym45"><b>臀部の痛み</b><span>東三国・新大阪｜中殿筋・小殿筋とトリガーポイントの考え方</span></li>
-<li data-i18n="sym46"><b>鼠径部の痛み（股関節前面）</b><span>東三国・新大阪｜腸腰筋と歩行開始時の痛み</span></li>
-<li data-i18n="sym47"><b>尾骨の痛み</b><span>東三国・新大阪｜座面圧とデスクワークの座り方</span></li>
-<li data-i18n="sym48"><b>深臀部症候群（お尻の奥の痛み）</b><span>東三国・新大阪｜深層外旋筋群と坐骨神経の位置関係</span></li>
-</ul>
-<h3 class="sym-cat" data-i18n="symCat5">腕・肘・手</h3>
-<ul class="sym-grid">
-<li class="linked"><a data-i18n="sym49" href="assets/d/kenshoen.html"><b>腱鞘炎（手首・指）</b><span>東三国・新大阪｜スマホ・PC操作の負担と腱の滑走</span></a></li>
-<li data-i18n="sym50"><b>ばね指</b><span>東三国・新大阪｜引っかかりの仕組み（A1プーリーと屈筋腱）</span></li>
-<li data-i18n="sym51"><b>ドケルバン病</b><span>東三国・新大阪｜親指側の手首の痛み</span></li>
-<li class="linked"><a data-i18n="sym52" href="assets/d/tennis-elbow.html"><b>テニス肘（上腕骨外側上顆炎）</b><span>東三国・新大阪｜握る動作の負担と短橈側手根伸筋</span></a></li>
-<li data-i18n="sym53"><b>ゴルフ肘（上腕骨内側上顆炎）</b><span>東三国・新大阪｜スイングと日常動作の負担</span></li>
-<li data-i18n="sym54"><b>手根管症候群</b><span>東三国・新大阪｜正中神経と夜間のしびれの特徴</span></li>
-<li data-i18n="sym55"><b>肘部管症候群</b><span>東三国・新大阪｜尺骨神経と小指側のしびれ・肘の角度</span></li>
-<li data-i18n="sym56"><b>手・指のしびれ</b><span>東三国・新大阪｜首由来と末梢由来の区別の考え方（受診の目安つき）</span></li>
-<li data-i18n="sym57"><b>手指のこわばり（朝のこわばり）</b><span>東三国・新大阪｜更年期・加齢との関係と朝の状態</span></li>
-<li data-i18n="sym58"><b>へバーデン結節・ブシャール結節</b><span>東三国・新大阪｜指関節の変形と生活動作の工夫</span></li>
-<li data-i18n="sym59"><b>腕のだるさ・疲労</b><span>東三国・新大阪｜キーボード・マウス作業と前腕の張り</span></li>
-<li data-i18n="sym60"><b>野球肘</b><span>東三国・新大阪｜投球動作と成長期・成人での違い</span></li>
-</ul>
-<h3 class="sym-cat" data-i18n="symCat6">股関節・膝・足</h3>
-<ul class="sym-grid">
 <li class="linked"><a data-i18n="sym61" href="assets/d/hiza.html"><b>変形性膝関節症</b><span>東三国・新大阪｜内側型の進行と大腿四頭筋・歩行の見方</span></a></li>
-<li data-i18n="sym62"><b>膝の慢性的な痛み</b><span>東三国・新大阪｜部位別の考え方（膝蓋大腿関節・腸脛靭帯など）</span></li>
-<li data-i18n="sym63"><b>半月板損傷後のケア</b><span>東三国・新大阪｜可動域と筋力の戻し方</span></li>
-<li data-i18n="sym64"><b>ランナー膝（腸脛靭帯炎）</b><span>東三国・新大阪｜膝外側の痛みと走行フォーム</span></li>
-<li data-i18n="sym65"><b>ジャンパー膝（膝蓋腱炎）</b><span>東三国・新大阪｜ジャンプ・階段の負担</span></li>
-<li data-i18n="sym66"><b>変形性股関節症</b><span>東三国・新大阪｜靴下動作など日常の制限と関節の状態</span></li>
-<li data-i18n="sym67"><b>股関節の痛み・詰まり感</b><span>東三国・新大阪｜鼡径部痛と臀部痛の区別</span></li>
-<li data-i18n="sym68"><b>グローインペイン症候群</b><span>東三国・新大阪｜内転筋群・腹筋群の協調とスポーツ場面</span></li>
 <li class="linked"><a data-i18n="sym69" href="assets/d/sokutei.html"><b>足底筋膜炎（足底腱膜炎）</b><span>東三国・新大阪｜朝の一歩目の痛みと足底腱膜の負担</span></a></li>
-<li data-i18n="sym70"><b>アキレス腱炎</b><span>東三国・新大阪｜ふくらはぎの硬さと腱への負担</span></li>
-<li data-i18n="sym71"><b>シンスプリント</b><span>東三国・新大阪｜脛の内側の痛みと走行量</span></li>
-<li data-i18n="sym72"><b>扁平足・外反母趾（足のアーチ）</b><span>東三国・新大阪｜足底の支持機構と靴選び</span></li>
-<li data-i18n="sym73"><b>脚のむくみ</b><span>東三国・新大阪｜ふくらはぎの筋ポンプと夕方の重さ</span></li>
-<li data-i18n="sym74"><b>足の冷え</b><span>東三国・新大阪｜末梢の巡りと自律神経・入浴と運動の工夫</span></li>
-<li data-i18n="sym75"><b>足首捻挫後の不安定感</b><span>東三国・新大阪｜再発予防と固有感覚の考え方</span></li>
-<li data-i18n="sym76"><b>肉離れ・こむら返り</b><span>東三国・新大阪｜急性期の対応と再発予防</span></li>
-</ul>
-<h3 class="sym-cat" data-i18n="symCat7">自律神経・全身の不調感</h3>
-<ul class="sym-grid">
 <li class="linked"><a data-i18n="sym77" href="assets/d/jiritsu.html"><b>自律神経の乱れ感</b><span>東三国・新大阪｜交感・副交感の切り替えと生活リズム</span></a></li>
-<li data-i18n="sym78"><b>慢性疲労・疲労感</b><span>東三国・新大阪｜睡眠・運動・栄養の三要素と回復の仕組み</span></li>
+<li class="linked"><a data-i18n="sym78" href="assets/d/mansei-hirou.html"><b>慢性疲労・疲労感</b><span>東三国・新大阪｜睡眠・運動・栄養の三要素と回復の仕組み</span></a></li>
 <li class="linked"><a data-i18n="sym79" href="assets/d/suimin.html"><b>睡眠の浅さ・不眠感</b><span>東三国・新大阪｜入眠と中途覚醒・寝る前の体の緊張</span></a></li>
-<li data-i18n="sym80"><b>体のだるさ（全身倦怠感）</b><span>東三国・新大阪｜季節・気圧との関係と不調の見立て方</span></li>
-<li data-i18n="sym81"><b>冷え性（全身の冷え）</b><span>東三国・新大阪｜末梢循環と筋肉量・男性の冷えの特徴</span></li>
-<li data-i18n="sym82"><b>全身のむくみ感</b><span>東三国・新大阪｜水分バランスと塩分・朝と夕方の違い</span></li>
-<li class="linked"><a data-i18n="sym83" href="assets/d/dansei-konenki.html"><b>男性更年期の不調感（LOH症候群）</b><span>東三国・新大阪｜テストステロンの一般情報と医療機関での検査の案内</span></a></li>
-<li data-i18n="sym84"><b>胃の不調感（胃もたれ等）</b><span>東三国・新大阪｜姿勢・自律神経との関係と食後の姿勢</span></li>
-<li data-i18n="sym85"><b>便秘・お腹の張り感</b><span>東三国・新大阪｜腸の動きと腹圧・呼吸と腹部の緊張</span></li>
-<li data-i18n="sym86"><b>動悸・息苦しさ感</b><span>東三国・新大阪｜胸郭の硬さと呼吸（受診の目安つき）</span></li>
-<li data-i18n="sym87"><b>のどの詰まり感</b><span>東三国・新大阪｜前頸部の緊張とストレス（梅核気の考え方）</span></li>
-<li data-i18n="sym88"><b>寝汗・手汗（発汗の異常感）</b><span>東三国・新大阪｜自律神経と体温調節・生活場面の工夫</span></li>
-<li data-i18n="sym89"><b>寒暖差疲労（季節の変わり目の不調）</b><span>東三国・新大阪｜体温調節の負担と衣服調整・入浴</span></li>
-<li data-i18n="sym90"><b>天気痛（気圧の変化による不調）</b><span>東三国・新大阪｜内耳と自律神経の考え方・頭痛との連動</span></li>
 </ul>
-<h3 class="sym-cat" data-i18n="symCat8">スポーツ・仕事・場面別</h3>
-<ul class="sym-grid">
-<li data-i18n="sym91"><b>ゴルフによる腰・肩の痛み</b><span>東三国・新大阪｜回旋動作の連鎖とスイング期別の負担</span></li>
-<li data-i18n="sym92"><b>野球肩</b><span>東三国・新大阪｜投球フェーズと腱板・関節唇</span></li>
-<li data-i18n="sym93"><b>ランニング後の脚の疲労・張り</b><span>東三国・新大阪｜着地衝撃と回復の考え方</span></li>
-<li data-i18n="sym94"><b>筋トレ後の筋肉痛・張り</b><span>東三国・新大阪｜遅発性筋肉痛の仕組みと部位別の張り</span></li>
-<li data-i18n="sym95"><b>立ち仕事の脚の疲れ</b><span>東三国・新大阪｜静脈還流と筋ポンプ・靴と休憩の取り方</span></li>
-<li data-i18n="sym96"><b>肉体労働による全身疲労</b><span>東三国・新大阪｜翌日に残さない工夫と部位別の休め方</span></li>
-<li data-i18n="sym97"><b>夜勤・交代勤務の体の乱れ</b><span>東三国・新大阪｜体内時計と光・食事・仮眠の整え方</span></li>
-<li data-i18n="sym98"><b>テレワークの運動不足と凝り</b><span>東三国・新大阪｜座位時間の総量と環境（椅子・画面）の見直し</span></li>
-<li data-i18n="sym99"><b>出張・長距離移動後の疲労</b><span>東三国・新大阪｜同一姿勢とむくみ・移動中と移動後のケア</span></li>
-<li data-i18n="sym100"><b>加齢による筋力低下・歩行の不安感</b><span>東三国・新大阪｜サルコペニアの一般情報と足腰の筋力維持</span></li>
-</ul>
-<p class="fineprint" style="margin-top:14px" data-i18n="symNote">※お悩みページは順次公開中です（現在20件を公開）。リンクのない項目は今後の公開予定で、下記のコラムとセルフケア資料ライブラリもあわせてご覧ください。強い痛みやしびれなど気になる症状があるときは、まず医療機関への相談をご検討ください。</p>
+<div style="margin-top:18px"><a class="btn btn-dark" href="assets/symptoms.html" data-i18n="symListBtn">お悩み別一覧（全100件）を見る</a></div>
+<p class="fineprint" style="margin-top:14px" data-i18n="symNote">※お悩みページは全100件を公開しています。カテゴリ別の一覧は、お悩み別一覧ページにまとめています。強い痛みやしびれなど気になる症状があるときは、まず医療機関への相談をご検討ください。</p>
 </div>
 </section>
 
@@ -620,39 +509,8 @@ footer b{color:var(--ink)}
 <strong data-i18n="noticeLabel">ご案内</strong>
 <span data-i18n="noticeSoon">ご予約は<a href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener">LINE公式アカウント（北辰堂）</a>で受け付けています。お気軽にご連絡ください。</span>
 </div>
-<div class="menu-grid">
-<article class="course">
-<img class="person" src="assets/relax.webp" alt="北辰堂で肩と背中のリラクゼーションを受ける男性のお客様" loading="lazy" />
-<div class="body">
-<span class="tag" data-i18n="course1Tag">ほぐして緩める</span>
-<h3 class="serif" data-i18n="course1Name">リラクゼーション</h3>
-<p data-i18n="course1Text">全身のもみほぐしを中心に、ご希望に応じてアロマオイルでの施術も組み合わせます。1日の疲れをリセットしたい日に。</p>
-<div class="price-row"><span data-i18n="min60">60分</span><b data-i18n="priceB60">初回 2,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 6,000円</span></b></div>
-<div class="price-row"><span data-i18n="min90">90分</span><b data-i18n="priceB90">初回 3,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 9,000円</span></b></div>
-</div>
-</article>
-<article class="course">
-<img class="person" src="assets/seitai.webp" alt="男性セラピストによる整体・姿勢調整の施術イメージ" loading="lazy" />
-<div class="body">
-<span class="tag" data-i18n="course2Tag">歪みから整える</span>
-<h3 class="serif" data-i18n="course2Name">整体</h3>
-<p data-i18n="course2Text">姿勢と可動域を確認し、骨盤・肩甲帯・脊柱まわりを中心に調整。着衣のまま受けられ、ストレッチ指導も含みます。</p>
-<div class="price-row"><span data-i18n="min60">60分</span><b data-i18n="priceB60">初回 2,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 6,000円</span></b></div>
-<div class="price-row"><span data-i18n="min90">90分</span><b data-i18n="priceB90">初回 3,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 9,000円</span></b></div>
-</div>
-</article>
-<article class="course">
-<img src="assets/hero.webp" alt="北辰堂の施術室の様子" loading="lazy" />
-<div class="body">
-<span class="tag" data-i18n="course3Tag">初めての方におすすめ</span>
-<h3 class="serif" data-i18n="course3Name">まるごとケア（整体＋リラクゼーション）</h3>
-<p data-i18n="course3Text">最初に整体で土台を整え、後半はリラクゼーションで深く緩めます。カウンセリングとセルフケア指導込みの看板コースです。</p>
-<div class="price-row"><span data-i18n="min60">60分</span><b data-i18n="priceB60">初回 2,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 6,000円</span></b></div>
-<div class="price-row"><span data-i18n="min90">90分</span><b data-i18n="priceB90">初回 3,000円<br><span style="font-size:13px;font-weight:600;color:var(--ink2)">2回目以降 9,000円</span></b></div>
-</div>
-</article>
-</div>
-<p class="price-note" data-i18n="priceNote">※初回はお試し価格です。2回目以降は通常料金となります。お支払いは<strong>現金のみ</strong>、当日払いです。クレジットカード・電子マネー・QRコード決済等はご利用いただけませんので、現金のご用意をお願いします。領収書の発行も可能です。</p>
+<p class="sec-lead" style="margin-top:4px" data-i18n="menuSummary">3コース（リラクゼーション／整体／まるごとケア）とも料金は共通です。60分 初回2,000円（2回目以降6,000円）・90分 初回3,000円（2回目以降9,000円）。お支払いは現金のみ、当日払いです。</p>
+<div style="margin:6px 0 20px"><a class="btn btn-dark" href="assets/menu.html" data-i18n="menuPageBtn">料金・メニューの詳細を見る</a></div>
 <div style="margin-top:20px">
 <a class="btn btn-line" href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener" data-i18n="lineCta">LINEで予約する</a>
 </div>
@@ -666,7 +524,7 @@ footer b{color:var(--ink)}
 <h2 class="sec serif" data-i18n="profileTitle">施術者について</h2>
 <div class="profile">
 <figure>
-<img src="assets/seitai.webp" alt="男性セラピストが整体施術を行っている様子" loading="lazy" />
+<img src="assets/treatment-seitai.webp" alt="セラピスト（ケント）が整体施術を行っているイラスト" loading="lazy" />
 </figure>
 <div>
 <h3 class="serif" style="font-size:21px;margin:0" data-i18n="therapistName">平賀建人</h3>
@@ -678,6 +536,7 @@ footer b{color:var(--ink)}
 <span class="qual" data-i18n="qual4">パーソナルトレーナー</span>
 </div>
 <p class="fineprint" data-i18n="profileNote">※北辰堂は医療機関ではありません。症状の診断や治療は行いません。強い痛みやしびれ、発熱などがある場合は、まず医療機関の受診をおすすめします。</p>
+<div style="margin-top:14px"><a class="btn btn-ghost" href="assets/about.html" data-i18n="aboutPageBtn">当院について・施術者の詳細を見る</a></div>
 </div>
 </div>
 </div>
@@ -690,7 +549,7 @@ footer b{color:var(--ink)}
 <h2 class="sec serif" data-i18n="flowTitle">ご予約から当日の流れ</h2>
 <p class="sec-lead" data-i18n="flowLead">ご予約はLINE公式アカウントのみで受け付けています。電話予約は行っておりません。</p>
 <div class="flow">
-<div class="step"><div class="n">1</div><h3 data-i18n="step1T">LINEで予約</h3><p data-i18n="step1P">下の「予約文を作る」で下書きを作成し、<a href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener">LINE公式アカウント（北辰堂）</a>へ送信してください。</p></div>
+<div class="step"><div class="n">1</div><h3 data-i18n="step1T">LINEで予約</h3><p data-i18n="step1P">「<a href="assets/first.html#booking-form">初めての方へ</a>」の予約リクエスト作成で下書きを作り、<a href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener">LINE公式アカウント（北辰堂）</a>へ送信してください。</p></div>
 <div class="step"><div class="n">2</div><h3 data-i18n="step2T">日時の確定・住所案内</h3><p data-i18n="step2P">空き状況を確認し、確定後に詳しい住所と当日の案内をお送りします。</p></div>
 <div class="step"><div class="n">3</div><h3 data-i18n="step3T">来店・カウンセリング</h3><p data-i18n="step3P">問診票にご記入いただき、姿勢と体の状態を確認します（初回は＋10分ほど）。</p></div>
 <div class="step"><div class="n">4</div><h3 data-i18n="step4T">施術</h3><p data-i18n="step4P">その日の状態に合わせて施術。強さは随時お声がけください。</p></div>
@@ -713,86 +572,8 @@ footer b{color:var(--ink)}
 <div class="wrap">
 <p class="kicker">RESERVATION</p>
 <h2 class="sec serif" data-i18n="bookTitle">LINE予約の下書きを作る</h2>
-<p class="sec-lead" data-i18n="bookLead">項目を選ぶと、そのままLINEに貼れる予約文ができます。コピーして、LINE公式アカウント（北辰堂）のトークに貼り付けて送信してください。</p>
-<div class="notice" role="note" style="margin-top:0;margin-bottom:24px">
-<strong data-i18n="noticeLabel">ご案内</strong>
-<span data-i18n="noticeBook">ご予約はLINE公式アカウント（北辰堂）で受け付けています。下記の下書きを作って、LINEのトークに貼り付けて送信してください。</span>
-</div>
-<div class="tool">
-<h3 data-i18n="toolTitle">予約リクエスト作成</h3>
-<p class="sub" data-i18n="toolSub">※このページから直接送信はされません。文面を確認して、ご自身でLINEからお送りください。</p>
-<div class="form-grid">
-<div>
-<label class="f" for="f-name" data-i18n="lblName">お名前（通称・イニシャル可）</label>
-<input type="text" id="f-name" placeholder="例：ヤマダ／T.Y" data-i18n-ph="phName" autocomplete="off" />
-</div>
-<div>
-<label class="f" for="f-course" data-i18n="lblCourse">ご希望コース</label>
-<select id="f-course">
-<option value="まるごとケア（整体＋リラクゼーション）90分" data-i18n="optC1">まるごとケア 90分（おすすめ）</option>
-<option value="まるごとケア（整体＋リラクゼーション）60分" data-i18n="optC2">まるごとケア 60分</option>
-<option value="リラクゼーション 60分" data-i18n="optC3">リラクゼーション 60分</option>
-<option value="リラクゼーション 90分" data-i18n="optC4">リラクゼーション 90分</option>
-<option value="整体 60分" data-i18n="optC5">整体 60分</option>
-<option value="整体 90分" data-i18n="optC6">整体 90分</option>
-<option value="相談して決めたい" data-i18n="optC7">相談して決めたい</option>
-</select>
-</div>
-<div>
-<label class="f" for="f-date1" data-i18n="lblDate1">第1希望日</label>
-<input type="date" id="f-date1" />
-</div>
-<div>
-<label class="f" for="f-time1" data-i18n="lblTime">希望の開始時間帯</label>
-<select id="f-time1">
-<option value="10:00頃（日曜）" data-i18n="optTsun10">10:00頃（日曜）</option>
-<option value="13:00頃（日曜）" data-i18n="optTsun13">13:00頃（日曜）</option>
-<option value="15:00頃（日曜）" data-i18n="optTsun15">15:00頃（日曜）</option>
-<option value="17:00頃" data-i18n="optT1">17:00頃</option>
-<option value="18:00頃" data-i18n="optT2">18:00頃</option>
-<option value="19:00頃" selected data-i18n="optT3">19:00頃</option>
-<option value="20:00頃" data-i18n="optT4">20:00頃</option>
-<option value="20:30頃（最終受付目安）" data-i18n="optT5">20:30頃（最終受付目安）</option>
-<option value="空いている時間で相談したい" data-i18n="optT6">空いている時間で相談したい</option>
-</select>
-</div>
-<div>
-<label class="f" for="f-date2" data-i18n="lblDate2">第2希望日（任意）</label>
-<input type="date" id="f-date2" />
-</div>
-<div>
-<label class="f" for="f-first" data-i18n="lblFirst">ご利用</label>
-<select id="f-first">
-<option value="初めて" data-i18n="optF1">初めて</option>
-<option value="2回目以降" data-i18n="optF2">2回目以降</option>
-</select>
-</div>
-</div>
-<div style="margin-top:16px">
-<label class="f" data-i18n="lblAreas">特につらい・気になる部位（任意、複数可）</label>
-<div class="tagrow" id="tagrow">
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="tag1">首・肩</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="tag2">背中</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="tag3">腰</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="tag4">脚・ふくらはぎ</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="tag5">頭・目</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="tag6">姿勢・猫背</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="tag7">全身の疲れ</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="tag8">眠りの浅さ</button>
-</div>
-</div>
-<div style="margin-top:16px">
-<label class="f" for="f-msg" data-i18n="lblMsg">生成される予約文（そのまま編集できます）</label>
-<textarea id="f-msg" aria-live="polite"></textarea>
-</div>
-<div class="tool-actions">
-<button type="button" class="btn btn-dark" id="btn-regen" data-i18n="btnRegen">文面を作り直す</button>
-<button type="button" class="btn btn-line" id="btn-copy" data-i18n="btnCopy">文面をコピーする</button>
-<a class="btn btn-line" href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener" data-i18n="btnLine">LINE公式アカウント（北辰堂）を開く</a>
-<span class="toast" id="toast" role="status"></span>
-</div>
-<p class="fineprint" style="margin-top:12px" data-i18n="toolFine">コピー後はLINE公式アカウント（北辰堂）を開き、トーク画面に貼り付けて送信してください。</p>
-</div>
+<p class="sec-lead" data-i18n="bookLeadSlim">予約リクエスト作成フォームは「初めての方へ」にまとめました。項目を選ぶと、そのままLINEに貼れる予約文ができます。</p>
+<div><a class="btn btn-dark" href="assets/first.html#booking-form" data-i18n="bookFormBtn">初めての方へ（予約フォーム）</a></div>
 </div>
 </section>
 
@@ -801,33 +582,13 @@ footer b{color:var(--ink)}
 <div class="wrap">
 <p class="kicker">BEFORE YOUR VISIT</p>
 <h2 class="sec serif" data-i18n="beforeTitle">来店前のお願いと確認事項</h2>
-<div class="cols">
-<div class="panel">
-<h3 data-i18n="bringTitle">当日の持ち物・服装</h3>
-<ul class="tick">
+<p class="sec-lead" data-i18n="beforeLeadTop">当日の持ち物・服装と、体調面で事前にお知らせいただきたいことの要点は、次の3点です。詳しくは「初めての方へ」にまとめています。</p>
+<ul class="tick" style="max-width:44em">
 <li data-i18n="bring1">持ち物は特にありません。施術用の着替えをご用意しています</li>
-<li data-i18n="bring2">整体は着衣のままでも受けられます。動きやすい服装だとスムーズです</li>
-<li data-i18n="bring3">貴金属・時計は施術前に外していただきます</li>
-<li data-i18n="bring4">施術前後の水分補給をおすすめします（お水をご用意しています）</li>
-<li data-i18n="bring5">到着はご予約時間の5分前を目安にお願いします（早すぎる到着は準備中の場合があります）</li>
-</ul>
-</div>
-<div class="panel">
-<h3 data-i18n="consultTitle">事前にご相談ください</h3>
-<ul class="tick warn">
 <li data-i18n="consult1">発熱がある、体調がすぐれない日は無理せず日程変更をご連絡ください</li>
-<li data-i18n="consult2">飲酒直後の施術はお断りしています</li>
-<li data-i18n="consult3">骨折・脱臼・急性の炎症、手術直後の方は事前にお知らせください</li>
-<li data-i18n="consult4">皮膚に炎症や傷がある部位は施術を避ける場合があります</li>
-<li data-i18n="consult5">妊娠中の方、高血圧などで通院・服薬中の方は、予約時に一言お知らせください</li>
-<li data-i18n="consult6">ペースメーカー等の体内機器がある方は整体の内容を調整します</li>
+<li data-i18n="cancelShort">変更・キャンセルは、分かった時点でLINEへご連絡ください</li>
 </ul>
-</div>
-</div>
-<div class="panel" style="margin-top:18px">
-<h3 data-i18n="cancelTitle">キャンセル・変更について</h3>
-<p style="margin:0;color:var(--ink2);font-size:14.5px" data-i18n="cancelText">北辰堂は1日数名のみの受付のため、変更・キャンセルは分かった時点でLINEへご連絡ください。当日キャンセルが続く場合は、次回以降のご予約をお断りする場合があります。施術者側の都合で変更をお願いする際は、代替日時を優先的にご案内します。</p>
-</div>
+<div style="margin-top:16px"><a class="btn btn-ghost" href="assets/first.html#before-visit" data-i18n="beforeDetailBtn">来店前の確認事項を詳しく見る</a></div>
 </div>
 </section>
 
@@ -838,13 +599,10 @@ footer b{color:var(--ink)}
 <h2 class="sec serif" data-i18n="faqTitle">よくある質問</h2>
 <div style="max-width:820px">
 <details class="faq"><summary data-i18n="faq1Q">完全予約制ですか？他のお客様と一緒になりますか？</summary><p data-i18n="faq1A">はい、完全予約制です。施術者は1名で、1枠に1名様のみ受け付けていますので、他のお客様と一緒になることはありません。ご予約の間隔も空けてご案内しますので、待合で他のお客様と顔を合わせることもありません。詳しい住所と建物の目印は、プライバシーへの配慮のため、ご予約確定後にLINEで写真付きでご案内します。</p></details>
-<details class="faq"><summary data-i18n="faq2Q">なぜ男性専用なのですか？</summary><p data-i18n="faq2A">北辰堂は男性専用の整体院として運営しています。女性のお客様の受け入れは行っておりません。</p></details>
-<details class="faq"><summary data-i18n="faq3Q">当日の予約はできますか？</summary><p data-i18n="faq3A">空きがあれば可能です。施術者は1名のため、すでにご予約が入っている時間帯はお受けできません。LINEで空き状況をご確認ください。</p></details>
-<details class="faq"><summary data-i18n="faq4Q">施術は痛いですか？強さの調整はできますか？</summary><p data-i18n="faq4A">整体はバキバキと鳴らす矯正ではなく、圧とストレッチでじっくり整える方法が中心です。強さは「弱め・普通・強め」など随時調整しますので、遠慮なくお声がけください。</p></details>
+<details class="faq"><summary data-i18n="faq2Q">なぜ男性専用なのですか？</summary><p data-i18n="faq2A">北辰堂は、男性スタッフ1人で運営しているため、男性専用としています。女性のお客様の受け入れは行っておりません。</p></details>
 <details class="faq"><summary data-i18n="faq5Q">鍼（はり）やお灸はしてもらえますか？</summary><p data-i18n="faq5A">北辰堂では行いません。施術はリラクゼーションと整体のみです。鍼灸が必要と判断される症状については、医療機関や鍼灸院の受診をご案内する場合があります。</p></details>
 <details class="faq"><summary data-i18n="faq6Q">支払い方法を教えてください。</summary><p data-i18n="faq6A">お支払いは<strong>現金のみ</strong>、当日払いです。クレジットカード・電子マネー・QRコード決済等はご利用いただけませんので、あらかじめ現金のご用意をお願いします。領収書の発行も可能です。</p></details>
-<details class="faq"><summary data-i18n="faq7Q">シャワーや駐車場はありますか？</summary><p data-i18n="faq7A">シャワーのご用意はありません。オイル施術の場合はホットタオルで拭き取りを行います。専用駐車場はないため、お車の方は近隣のコインパーキングをご利用ください。自転車はご予約時にご相談ください。</p></details>
-<details class="faq"><summary data-i18n="faq8Q">回数券や定期ケアはありますか？</summary><p data-i18n="faq8A">体の変化を見ながら通うペースをご提案します。料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円です。無理な勧誘は行いません。</p></details>
+<p style="margin-top:14px"><a class="btn btn-ghost" href="assets/faq.html" data-i18n="faqMoreBtn">よくある質問をもっと見る</a></p>
 </div>
 </div>
 </section>
@@ -854,179 +612,7 @@ footer b{color:var(--ink)}
 <div class="wrap">
 <p class="kicker">COLUMN</p>
 <h2 class="sec serif" data-i18n="colTitle">お役立ちコラム</h2>
-<p class="sec-lead" data-i18n="colLead">日々の体の悩みを整理し、セルフケアの見直しに役立てていただくための読み物です。原因や効果を断定する内容ではありませんので、気になる症状が続くときは医療機関への相談もあわせてご検討ください。</p>
-<a class="col-card" href="#/article/hirou-koshi">
-<span class="date" data-i18n="col1Date">2026年10月26日</span>
-<h3 class="serif" data-i18n="col1Title">東三国で働く男性の「疲労感と腰の重さ」｜考えられる要因とセルフケア、受診の目安</h3>
-<p data-i18n="col1Text">夕方になると腰が重い、休んでも疲れが抜けにくい——そんな感覚について、考えられる要因と、無理なく続けられるセルフケア、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-<a class="col-card" href="#/article/katakori-deskwork" style="margin-top:14px">
-<span class="date" data-i18n="col2Date">2026年10月29日</span>
-<h3 class="serif" data-i18n="col2Title">東三国でデスクワークの肩こりが気になる男性へ｜考えられる要因とセルフケア、受診の目安</h3>
-<p data-i18n="col2Text">パソコン作業が続くと肩まわりが重く感じる、首から背中にかけて張る感じがする——デスクワーク中心の男性に多いお悩みについて、考えられる要因と日常で試せるセルフケア、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-<a class="col-card" href="#/article/netsuki-yoru" style="margin-top:14px">
-<span class="date" data-i18n="col3Date">2026年10月30日</span>
-<h3 class="serif" data-i18n="col3Title">東三国で夜に気になる寝つきと疲労感｜男性の夜の過ごし方と受診の目安</h3>
-<p data-i18n="col3Text">疲れているはずなのに布団に入ってもなかなか寝つけない、眠っても疲れが残る感じがする——夜の眠りにまつわるお悩みについて、考えられる要因と夜の過ごし方の見直し、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-<a class="col-card" href="#/article/me-no-tsukare" style="margin-top:14px">
-<span class="date" data-i18n="col4Date">2026年10月31日</span>
-<h3 class="serif" data-i18n="col4Title">東三国でデスクワーク後に気になる目の疲れ感｜男性の画面時間の見直しとセルフケア、受診の目安</h3>
-<p data-i18n="col4Text">仕事終わりになると目が重く感じる、画面を見続けた日にかすみや乾きが気になる——デスクワーク後の目の疲れ感について、考えられる要因と画面時間の見直し、日常で試せるセルフケア、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-<a class="col-card" href="#/article/kubi-atama" style="margin-top:14px">
-<span class="date" data-i18n="col5Date">2026年10月31日</span>
-<h3 class="serif" data-i18n="col5Title">東三国で仕事帰りに気になる首こりと頭の重さ｜男性のデスクワーク後の要因とセルフケア、受診の目安</h3>
-<p data-i18n="col5Text">夕方になると首まわりが張って頭まで重く感じる、仕事帰りの電車や帰宅後も首のこわばりが気になる——デスクワーク後に気になる首こりと頭の重さについて、考えられる要因と日常で試せるセルフケア、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-<a class="col-card" href="#/article/ashi-mukumi" style="margin-top:14px">
-<span class="date" data-i18n="col6Date">2026年11月1日</span>
-<h3 class="serif" data-i18n="col6Title">東三国で夕方に気になる脚のむくみ感｜男性の考えられる要因とセルフケア、受診の目安</h3>
-<p data-i18n="col6Text">夕方になると靴下の跡が残る、脚が重だるくて靴がきつく感じる——夕方に気になる脚のむくみ感について、考えられる要因と日常で試せるセルフケア、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-<a class="col-card" href="#/article/onaka-benpi" style="margin-top:14px">
-<span class="date" data-i18n="col7Date">2026年11月1日</span>
-<h3 class="serif" data-i18n="col7Title">東三国で気になるお腹の張り感と便秘｜男性の考えられる要因とセルフケア、受診の目安</h3>
-<p data-i18n="col7Text">食後にお腹が張る感じがする、忙しい日が続くと数日出ない——お腹の張り感と便秘について、考えられる要因と日常で試せるセルフケア、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-<a class="col-card" href="#/article/hie-kan" style="margin-top:14px">
-<span class="date" data-i18n="col8Date">2026年11月2日</span>
-<h3 class="serif" data-i18n="col8Title">東三国で季節の変わり目に気になる冷え感｜男性の考えられる要因とセルフケア、受診の目安</h3>
-<p data-i18n="col8Text">朝晩の冷え込みが増える季節の変わり目に、手足の先が冷たく感じる、冷房の効いた室内で体が冷えた感じがする——季節の変わり目に気になる冷え感について、考えられる要因と日常で試せるセルフケア、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-<a class="col-card" href="#/article/shisei-nekoze" style="margin-top:14px">
-<span class="date" data-i18n="col9Date">2026年11月2日</span>
-<h3 class="serif" data-i18n="col9Title">東三国で気になる姿勢・猫背｜男性の座り方と立ち方の見直し</h3>
-<p data-i18n="col9Text">鏡や写真で背中が丸く見える、座っているうちに姿勢が崩れて首や肩が前に出る感じがする——姿勢と猫背について、考えられる要因と座り方・立ち方の見直し、日常で試せるセルフケア、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-<a class="col-card" href="#/article/jiritsu-shinkei" style="margin-top:14px">
-<span class="date" data-i18n="col10Date">2026年11月3日</span>
-<h3 class="serif" data-i18n="col10Title">東三国で気になる自律神経の乱れ感｜男性の日常の整え方と受診の目安</h3>
-<p data-i18n="col10Text">朝起きてもすっきりしない日が続く、夕方になると急に疲れが出て気持ちが落ち着かない感じがする——自律神経の乱れ感について、考えられる要因と日常の整え方、日常で試せるセルフケア、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-<a class="col-card" href="#/article/senaka-hari" style="margin-top:14px">
-<span class="date" data-i18n="col11Date">2026年11月3日</span>
-<h3 class="serif" data-i18n="col11Title">東三国でデスクワーク後に気になる背中の張り｜男性の考えられる要因とセルフケア、受診の目安</h3>
-<p data-i18n="col11Text">夕方になると肩甲骨の間が重く張る感じがする、椅子から立ち上がったときに背中がこわばっている——デスクワーク後に気になる背中の張りについて、考えられる要因と日常で試せるセルフケア、医療機関へ相談する目安を整理しました。</p>
-<span class="more" data-i18n="colMore">記事を読む →</span>
-</a>
-</div>
-</section>
-
-<!-- BOOKS & GOODS -->
-<section class="block" id="books-goods">
-<div class="wrap">
-<p class="kicker">NEW BOOKS &amp; GOODS</p>
-<h2 class="sec serif" data-i18n="shelfTitle">新着の本とおすすめ商品</h2>
-<p class="sec-lead" data-i18n="shelfLead">体の仕組みやセルフケアを学べる本と、ご自宅でのケアに使える道具を紹介するコーナーです。コラムやセルフケア資料ライブラリとあわせて、日々のケアの見直しにお役立てください。新しい本・商品が入るたびに、こちらへ追加していきます。</p>
-<p class="shelf-pr"><b>PR</b>　<span data-i18n="shelfPr">このコーナーのリンクは、Amazonアソシエイト・プログラムによるアフィリエイトリンク（検索結果へのリンク）を含みます。価格・在庫・仕様は変動しますので、リンク先の表示をご確認ください。</span></p>
-<div class="shelf-filters" role="group" aria-label="表示の切り替え">
-<button type="button" class="shelf-filter" data-filter="all" aria-pressed="true" data-i18n="shelfAll">すべて</button>
-<button type="button" class="shelf-filter" data-filter="book" aria-pressed="false" data-i18n="shelfBooksBtn">本だけ見る</button>
-<button type="button" class="shelf-filter" data-filter="goods" aria-pressed="false" data-i18n="shelfGoodsBtn">商品だけ見る</button>
-<span class="pick-date" style="align-self:center" data-i18n="shelfUpdated">2026年10月30日 更新</span>
-</div>
-<div class="shelf-grid" id="shelf-grid">
-<article class="pick" data-kind="book">
-<div class="pick-visual c-book1">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>
-<span class="pv-kind">BOOK</span>
-<span class="pv-title serif">世界一伸びる<br>ストレッチ</span>
-</div>
-<div class="pick-body">
-<div class="pick-meta"><span class="pick-badge" data-i18n="badgeNew">新着の本</span><span class="pick-date">2026年10月紹介</span></div>
-<h3 class="serif" data-i18n="b1Title">『世界一伸びるストレッチ』</h3>
-<p class="author" data-i18n="b1Author">中野ジェームズ修一 著</p>
-<p class="desc" data-i18n="b1Desc">部位ごとのストレッチを写真と図で紹介し、入門書として長く読まれている一冊。デスクワークの合間や帰宅後に取り入れる動きを探したいときに、まず開きやすい本です。</p>
-<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E4%B8%96%E7%95%8C%E4%B8%80%E4%BC%B8%E3%81%B3%E3%82%8B%E3%82%B9%E3%83%88%E3%83%AC%E3%83%83%E3%83%81+%E4%B8%AD%E9%87%8E%E3%82%B8%E3%82%A7%E3%83%BC%E3%83%A0%E3%82%BA%E4%BF%AE%E4%B8%80&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
-</div>
-</article>
-<article class="pick" data-kind="book">
-<div class="pick-visual c-book2">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>
-<span class="pv-kind">BOOK</span>
-<span class="pv-title serif">スタンフォード式<br>疲れない体</span>
-</div>
-<div class="pick-body">
-<div class="pick-meta"><span class="pick-badge" data-i18n="badgeNew">新着の本</span><span class="pick-date">2026年10月紹介</span></div>
-<h3 class="serif" data-i18n="b2Title">『スタンフォード式 疲れない体』</h3>
-<p class="author" data-i18n="b2Author">山田知生 著</p>
-<p class="desc" data-i18n="b2Desc">スタンフォード大学スポーツ医局での実践をもとに、疲労との向き合い方や回復の考え方をまとめた本。「疲労感と腰の重さ」のコラムとあわせて読みたい一冊です。</p>
-<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%89%E5%BC%8F+%E7%96%B2%E3%82%8C%E3%81%AA%E3%81%84%E4%BD%93+%E5%B1%B1%E7%94%B0%E7%9F%A5%E7%94%9F&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
-</div>
-</article>
-<article class="pick" data-kind="book">
-<div class="pick-visual c-book3">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>
-<span class="pv-kind">BOOK</span>
-<span class="pv-title serif">最高の体調</span>
-</div>
-<div class="pick-body">
-<div class="pick-meta"><span class="pick-badge" data-i18n="badgeNew">新着の本</span><span class="pick-date">2026年10月紹介</span></div>
-<h3 class="serif" data-i18n="b3Title">『最高の体調』</h3>
-<p class="author" data-i18n="b3Author">鈴木祐 著</p>
-<p class="desc" data-i18n="b3Desc">日々の疲れや不調感への向き合い方を、食事・環境・習慣の見直しの視点で整理した読み物。夜の過ごし方や眠りのコラムと関心が近い方へ。</p>
-<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E6%9C%80%E9%AB%98%E3%81%AE%E4%BD%93%E8%AA%BF+%E9%88%B4%E6%9C%A8%E7%A5%90&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
-</div>
-</article>
-<article class="pick" data-kind="goods">
-<div class="pick-visual c-goods1">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
-<span class="pv-kind">GOODS</span>
-<span class="pv-title serif">フォームローラー</span>
-<span class="pv-sub" data-i18n="g1Sub">背中・脚まわりのセルフケアに</span>
-</div>
-<div class="pick-body">
-<div class="pick-meta"><span class="pick-badge goods" data-i18n="badgeGoods">おすすめ商品</span><span class="pick-date">2026年10月紹介</span></div>
-<h3 class="serif" data-i18n="g1Title">フォームローラー</h3>
-<p class="author" data-i18n="g1Spec">筒状タイプ／長さ・硬さに種類あり</p>
-<p class="desc" data-i18n="g1Desc">背中や脚の下に置いて、体重を預けながらゆっくり動かす筒状のセルフケア道具。施術後のセルフケア指導でも話題に挙がる定番で、置き場所を取りにくい短いタイプもあります。</p>
-<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
-</div>
-</article>
-<article class="pick" data-kind="goods">
-<div class="pick-visual c-goods2">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="9" cy="9" r="1.4" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.4" fill="currentColor" stroke="none"/></svg>
-<span class="pv-kind">GOODS</span>
-<span class="pv-title serif">マッサージボール</span>
-<span class="pv-sub" data-i18n="g2Sub">肩甲骨まわり・足裏などピンポイントに</span>
-</div>
-<div class="pick-body">
-<div class="pick-meta"><span class="pick-badge goods" data-i18n="badgeGoods">おすすめ商品</span><span class="pick-date">2026年10月紹介</span></div>
-<h3 class="serif" data-i18n="g2Title">マッサージボール</h3>
-<p class="author" data-i18n="g2Spec">ボールタイプ／硬さ・大きさに種類あり</p>
-<p class="desc" data-i18n="g2Desc">壁と背中の間に挟んだり、椅子に座って使ったりと、狙った場所に圧をかけやすい小さなボール。フォームローラーでは届きにくい肩甲骨まわりやお尻、足裏のケアに使われます。</p>
-<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E3%83%9E%E3%83%83%E3%82%B5%E3%83%BC%E3%82%B8%E3%83%9C%E3%83%BC%E3%83%AB+%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
-</div>
-</article>
-<article class="pick" data-kind="goods">
-<div class="pick-visual c-goods3">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 15h18l-1.6 4.2a2 2 0 0 1-1.9 1.3H6.5a2 2 0 0 1-1.9-1.3L3 15z"/><path d="M7 11c0-1.5 1.5-1.5 1.5-3M12 11c0-1.5 1.5-1.5 1.5-3M17 11c0-1.5 1.5-1.5 1.5-3"/></svg>
-<span class="pv-kind">GOODS</span>
-<span class="pv-title serif">炭酸タイプの入浴剤</span>
-<span class="pv-sub" data-i18n="g3Sub">湯船に浸かる習慣づくりに</span>
-</div>
-<div class="pick-body">
-<div class="pick-meta"><span class="pick-badge goods" data-i18n="badgeGoods">おすすめ商品</span><span class="pick-date">2026年10月紹介</span></div>
-<h3 class="serif" data-i18n="g3Title">炭酸タイプの入浴剤</h3>
-<p class="author" data-i18n="g3Spec">タブレット／香りの種類が豊富</p>
-<p class="desc" data-i18n="g3Desc">シャワーで済ませがちな日の、湯船に浸かるきっかけに。香りやタイプがいろいろあるので、夜のリラックスタイム用に好みで選べます。用法・用量や対象は商品ごとの表示をご確認ください。</p>
-<div class="buy"><a href="https://www.amazon.co.jp/s?k=%E5%85%A5%E6%B5%B4%E5%89%A4+%E7%82%AD%E9%85%B8+%E3%82%BF%E3%83%96%E3%83%AC%E3%83%83%E3%83%88&amp;tag=cat22202-22" target="_blank" rel="noopener sponsored" data-i18n="buyLink">Amazonで探す →</a><span class="ext">Amazon.co.jp</span></div>
-</div>
-</article>
-</div>
-<p class="shelf-note" data-i18n="shelfNote">※本の内容や商品の使用感には個人差があります。痛みやしびれなど気になる症状があるときは、セルフケアの前に医療機関への相談をご検討ください。紹介する本・商品は順次入れ替え・追加します。</p>
+<div><a class="btn btn-dark" href="assets/blog.html" data-i18n="colAllBtn">コラム一覧を見る</a></div>
 </div>
 </section>
 
@@ -1040,15 +626,13 @@ footer b{color:var(--ink)}
 <dt data-i18n="accLocT">所在地</dt><dd data-i18n="accLoc">大阪市淀川区東三国二丁目（プライバシーへの配慮のため、詳しい住所はご予約確定後にLINEでご案内します）</dd>
 <dt data-i18n="accStT">最寄り駅</dt><dd data-i18n="accSt">大阪メトロ御堂筋線「東三国駅」より徒歩圏内。新大阪・江坂方面からもアクセスしやすい立地です</dd>
 <dt data-i18n="accHoursT">営業時間</dt><dd data-i18n="accHours">平日・土曜 17:00–22:00／日曜 10:00–22:00（完全予約制）</dd>
-<dt data-i18n="accDaysT">営業日</dt><dd data-i18n="accDays">平日・土曜・日曜（日曜のみ10:00開始）。空き状況はLINEでご確認ください</dd>
-<dt data-i18n="accBookT">ご予約</dt><dd data-i18n="accBook"><a href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener">LINE公式アカウント（北辰堂）</a>のみで受け付けています（電話予約は行っておりません）</dd>
-<dt data-i18n="accPayT">お支払い</dt><dd data-i18n="accPay">現金のみ（当日払い）</dd>
-<dt data-i18n="accForT">対象</dt><dd data-i18n="accFor">男性専用／性的なサービスは一切行っておりません</dd>
+<dt data-i18n="accForT">対象</dt><dd data-i18n="accFor">男性専用（男性スタッフ1人で運営しているため）</dd>
 </dl>
 </div>
 <div style="margin-top:18px">
 <a class="btn btn-line" href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener" data-i18n="lineCta">LINEで予約する</a>
 </div>
+<div style="margin-top:12px"><a class="btn btn-ghost" href="assets/access.html" data-i18n="accessPageBtn">アクセス・店舗案内の詳細を見る</a></div>
 <p class="fineprint" style="margin-top:12px" data-i18n="accNote">※近隣は住宅地です。来店・退店の際は、大きな声での会話など近隣へのご配慮をお願いします。</p>
 </div>
 </section>
@@ -1084,7 +668,7 @@ footer b{color:var(--ink)}
 <p class="body" data-i18n="fvP5">なお、当院では鍼灸施術は行わず、リラクゼーションと整体のみを提供します。当院は医療機関ではなく、症状の診断や治療は行いません。強い痛みやしびれ、発熱などがある場合は、まず医療機関の受診をおすすめします。</p>
 
 <h3 class="art serif" data-i18n="fvH3">対象は男性のみです</h3>
-<p class="body" data-i18n="fvP6">北辰堂は男性専用の整体院として運営しています。女性のお客様の受け入れは行っておりません。また、性的なサービスは一切行っておりません。</p>
+<p class="body" data-i18n="fvP6">北辰堂は、男性スタッフ1人で運営しているため、男性専用としています。女性のお客様の受け入れは行っておりません。</p>
 
 <h3 class="art serif" data-i18n="fvH4">料金とお支払い（現金のみ）</h3>
 <p class="body" data-i18n="fvP7">料金は全コース共通で、60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円です。初回はお試し価格、2回目以降は通常料金となります。</p>
@@ -1103,7 +687,7 @@ footer b{color:var(--ink)}
 <h3 class="art serif" data-i18n="fvH5">ご予約から当日の流れ</h3>
 <p class="body" data-i18n="fvP9">ご予約から当日の流れは、次の5ステップです。ご予約はLINE公式アカウントのみで受け付けます（電話予約は行っておりません）。施術者は1名・完全予約制のため、ご予約が確定した時間帯に他のお客様と重なることはありません。</p>
 <div class="flow" style="margin:8px 0 4px">
-<div class="step"><div class="n">1</div><h3 data-i18n="fvS1T">LINEで予約</h3><p data-i18n="fvS1P">トップページの<a href="#booking">予約リクエスト作成</a>で下書きを作り、LINE公式アカウントへ送信してください。</p></div>
+<div class="step"><div class="n">1</div><h3 data-i18n="fvS1T">LINEで予約</h3><p data-i18n="fvS1P">トップページの<a href="assets/first.html#booking-form">予約リクエスト作成</a>で下書きを作り、LINE公式アカウントへ送信してください。</p></div>
 <div class="step"><div class="n">2</div><h3 data-i18n="fvS2T">日時の確定・住所のご案内</h3><p data-i18n="fvS2P">空き状況を確認し、確定後に詳しい住所と建物の目印、当日の案内をLINEでお送りします。</p></div>
 <div class="step"><div class="n">3</div><h3 data-i18n="fvS3T">来店・カウンセリング</h3><p data-i18n="fvS3P">問診票にご記入いただき、姿勢と体の状態を確認します（初回は＋10分ほど）。到着はご予約時間の5分前が目安です。</p></div>
 <div class="step"><div class="n">4</div><h3 data-i18n="fvS4T">施術</h3><p data-i18n="fvS4P">その日の状態に合わせて施術します。強さは随時調整できますので、遠慮なくお声がけください。</p></div>
@@ -1127,122 +711,9 @@ footer b{color:var(--ink)}
 
 <div class="refbox">
 <h3 class="serif" data-i18n="fvRefT">あわせてご覧ください</h3>
-<p class="body" style="margin-bottom:0" data-i18n="fvRefP">コースと料金は<a href="#menu">メニュー・料金</a>、施術者の経歴は<a href="#profile">施術者について</a>、来店前の確認事項は<a href="#before">来店前のお願いと確認事項</a>、そのほかの疑問は<a href="#faq">よくある質問</a>と<a href="#access">アクセス</a>にまとめています。</p>
+<p class="body" style="margin-bottom:0" data-i18n="fvRefP">コースと料金は<a href="#menu">メニュー・料金</a>、施術者の経歴は<a href="#profile">施術者について</a>、来店前の確認事項は<a href="assets/first.html#before-visit">来店前のお願いと確認事項</a>、そのほかの疑問は<a href="#faq">よくある質問</a>と<a href="#access">アクセス</a>にまとめています。</p>
 </div>
 </article>
-</div>
-</section>
-<div class="wrap" style="margin-top:2px"><a href="#top" style="font-weight:700" data-i18n="backTop">← トップページに戻る</a></div>
-</div>
-
-<div id="view-recruit" hidden>
-<div class="wrap" style="padding-top:22px"><a href="#top" style="font-weight:700" data-i18n="backTop">← トップページに戻る</a></div>
-<!-- RECRUIT -->
-<section class="block" id="recruit">
-<div class="wrap">
-<p class="kicker">RECRUIT</p>
-<h2 class="sec serif" data-i18n="recTitle">セラピスト募集（業務委託）</h2>
-<p class="sec-lead" data-i18n="recLead">北辰堂は、男性のお客様を対象にした、男性向けのリラクゼーションと整体の店です。この店で施術を担当していただけるセラピストを、<strong>業務委託</strong>で募集しています。雇用ではありません。未経験の方も、すでに技術をお持ちの方も、それぞれの形でスタートできます。</p>
-<div class="pillars">
-<div class="pillar">
-<span class="no">01</span>
-<h3 class="serif" data-i18n="pil1T">雇用ではなく、業務委託</h3>
-<p data-i18n="pil1P">雇用契約ではなく、業務委託契約でのお仕事です。報酬は<strong>施術料の60%</strong>。働く時間は、本人の希望に合わせて設定できます。副業や空いた時間の活用を考えている方も、まずはご相談ください。</p>
-</div>
-<div class="pillar">
-<span class="no">02</span>
-<h3 class="serif" data-i18n="pil2T">未経験者は研修無料</h3>
-<p data-i18n="pil2P">施術の経験がない方には、研修を無料で受けていただけます。基礎から確認しながら進めるので、未経験であることを理由に諦める必要はありません。</p>
-</div>
-<div class="pillar">
-<span class="no">03</span>
-<h3 class="serif" data-i18n="pil3T">経験者は技術をそのままメニュー化</h3>
-<p data-i18n="pil3P">すでにお持ちの技術は、そのまま北辰堂のメニューとして出せます。新しい手技を一から覚え直す必要はなく、あなたの得意な施術でお客様をお迎えください。</p>
-</div>
-</div>
-<div class="recruit-cols">
-<div class="panel">
-<h3 data-i18n="trainT">未経験者向け研修内容の例</h3>
-<ul class="tick">
-<li data-i18n="train1">接客マナー（お迎えからお見送りまでの基本の流れ）</li>
-<li data-i18n="train2">整体・リラクゼーションの基礎</li>
-<li data-i18n="train3">解剖学の基礎（体の構造と、触れてよい場所・避ける場所）</li>
-<li data-i18n="train4">衛生管理（タオル・リネン類の扱い、消毒の基本）</li>
-</ul>
-<p class="fineprint" style="margin-top:10px" data-i18n="trainNote">※上記は研修内容の例です。実際の進め方や進み具合は、面談で一人ひとりの状況に合わせてご案内します。</p>
-</div>
-<div class="panel">
-<h3 data-i18n="skillT">技術メニュー化の例（経験者）</h3>
-<ul class="tick">
-<li data-i18n="skill1">整体</li>
-<li data-i18n="skill2">リフレクソロジー</li>
-<li data-i18n="skill3">ヘッドケア</li>
-<li data-i18n="skill4">そのほか、お持ちの技術をご相談ください</li>
-</ul>
-<p class="fineprint" style="margin-top:10px" data-i18n="skillNote">※北辰堂の方針（男性専用・性的なサービスは行わない）に沿う内容でご提案します。メニュー名や施術の組み立ては、面談で一緒に決めていきます。</p>
-</div>
-</div>
-<div style="margin-top:34px">
-<h3 class="serif" style="font-size:18px;margin:0 0 12px" data-i18n="applyFlowT">応募の流れ</h3>
-<div class="flow">
-<div class="step"><div class="n">1</div><h3 data-i18n="rs1T">応募</h3><p data-i18n="rs1P">下のフォームで応募文を作り、LINEでお送りください。</p></div>
-<div class="step"><div class="n">2</div><h3 data-i18n="rs2T">面談</h3><p data-i18n="rs2P">ご希望や経験をお聞きし、条件の詳細をご案内します。</p></div>
-<div class="step"><div class="n">3</div><h3 data-i18n="rs3T">研修／技術確認</h3><p data-i18n="rs3P">未経験の方は研修、経験者の方はお持ちの技術の確認を行います。</p></div>
-<div class="step"><div class="n">4</div><h3 data-i18n="rs4T">業務委託契約</h3><p data-i18n="rs4P">条件にご納得いただけたら、業務委託契約を結びます。</p></div>
-<div class="step"><div class="n">5</div><h3 data-i18n="rs5T">デビュー</h3><p data-i18n="rs5P">北辰堂のセラピストとして施術を担当していただきます。</p></div>
-</div>
-</div>
-<div style="margin-top:22px;text-align:center">
-<a class="btn btn-dark" style="min-height:54px;padding:14px 32px;font-size:16px;justify-content:center" href="https://forms.gle/1iB5xmZeg6EnCPfw8" target="_blank" rel="noopener" data-i18n="rFormBtn">応募フォームはこちら</a>
-</div>
-<div class="tool" style="margin-top:22px">
-<h3 data-i18n="rToolT">応募文面を作成する</h3>
-<p class="sub" data-i18n="rToolSub">項目を入力すると、応募文面が作成されます。<strong>この内容はまだ送信されていません。</strong>応募の際は、作成された文面をコピーして、LINE公式アカウントのトークに貼り付けてお送りください。このページから送信されることはありません。</p>
-<div class="form-grid">
-<div>
-<label class="f" for="r-name" data-i18n="rLblName">氏名</label>
-<input type="text" id="r-name" placeholder="例：ヤマダ タロウ" data-i18n-ph="rPhName" autocomplete="off" />
-</div>
-<div>
-<label class="f" for="r-contact" data-i18n="rLblContact">連絡先（LINE ID・電話番号・メールアドレスなど）</label>
-<input type="text" id="r-contact" placeholder="返信を受け取れる連絡先" data-i18n-ph="rPhContact" autocomplete="off" />
-</div>
-<div>
-<label class="f" for="r-exp" data-i18n="rLblExp">施術の経験</label>
-<select id="r-exp">
-<option value="未経験" data-i18n="rOptE1">未経験（研修を受けたい）</option>
-<option value="経験あり" data-i18n="rOptE2">経験あり</option>
-<option value="ブランクあり" data-i18n="rOptE3">以前の経験はあるがブランクあり</option>
-</select>
-</div>
-<div>
-<label class="f" for="r-hope" data-i18n="rLblHope">ご希望（任意）</label>
-<input type="text" id="r-hope" placeholder="例：平日の夜のみ／週2日ほど など" data-i18n-ph="rPhHope" autocomplete="off" />
-</div>
-</div>
-<div style="margin-top:16px">
-<label class="f" data-i18n="rLblSkills">持っている技術（経験者の方、複数可）</label>
-<div class="tagrow" id="r-tagrow">
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="rTag1">整体</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="rTag2">もみほぐし</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="rTag3">リフレクソロジー</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="rTag4">ヘッドケア</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="rTag5">アロマトリートメント</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="rTag6">ストレッチ</button>
-<button type="button" class="tagbtn" aria-pressed="false" data-i18n="rTag7">その他</button>
-</div>
-</div>
-<div style="margin-top:16px">
-<label class="f" for="r-msg" data-i18n="rLblMsg">作成される応募文面（そのまま編集できます）</label>
-<textarea id="r-msg" aria-live="polite"></textarea>
-</div>
-<div class="tool-actions">
-<button type="button" class="btn btn-dark" id="r-regen" data-i18n="btnRegen">文面を作り直す</button>
-<button type="button" class="btn btn-line" id="r-copy" data-i18n="rBtnCopy">応募文をコピーする</button>
-<span class="toast" id="r-toast" role="status"></span>
-</div>
-<p class="fineprint" style="margin-top:12px" data-i18n="rFine">報酬は施術料の60%（業務委託）です。それ以外の条件の詳細は面談の際にご案内しますので、気になる点は面談で遠慮なくご質問ください。</p>
-</div>
 </div>
 </section>
 <div class="wrap" style="margin-top:2px"><a href="#top" style="font-weight:700" data-i18n="backTop">← トップページに戻る</a></div>
@@ -1299,7 +770,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a1R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピストが、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。</p>
 <p class="body" data-i18n="a1R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって疲労や腰の重さがどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a1R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。そのほかの疑問は<a href="#faq">よくある質問</a>にもまとめています。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a1R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。そのほかの疑問は<a href="#faq">よくある質問</a>にもまとめています。</p>
 </div>
 </article>
 </div>
@@ -1361,7 +832,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a2R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピスト 平賀建人が、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。ご予約はLINE公式アカウント（北辰堂）で受け付けています。</p>
 <p class="body" data-i18n="a2R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって肩の状態がどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a2R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/hirou-koshi">疲労感と腰の重さについてのコラム</a>や<a href="#faq">よくある質問</a>もご参考ください。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a2R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/hirou-koshi">疲労感と腰の重さについてのコラム</a>や<a href="#faq">よくある質問</a>もご参考ください。</p>
 </div>
 </article>
 </div>
@@ -1423,7 +894,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a3R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピスト 平賀建人が、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りの夜の時間に立ち寄りやすい形で開けています。ご予約はLINE公式アカウント（北辰堂）で受け付けています。</p>
 <p class="body" data-i18n="a3R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって眠りの状態がどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a3R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、気になるお悩みの例は<a href="#about">北辰堂について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/hirou-koshi">疲労感と腰の重さについてのコラム</a>や<a href="#/article/katakori-deskwork">デスクワークの肩こりについてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a3R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、気になるお悩みの例は<a href="#about">北辰堂について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/hirou-koshi">疲労感と腰の重さについてのコラム</a>や<a href="#/article/katakori-deskwork">デスクワークの肩こりについてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
 </div>
 </article>
 </div>
@@ -1485,7 +956,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a4R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピスト 平賀建人が、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。ご予約はLINE公式アカウント（北辰堂）で受け付けています。</p>
 <p class="body" data-i18n="a4R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって目の状態がどうなるかをお約束することはできませんが、首や肩、頭まわりの状態も含め、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。気になるお悩みの例は<a href="#about">北辰堂について</a>にもまとめています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a4R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/katakori-deskwork">デスクワークの肩こりについてのコラム</a>や<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>、<a href="#/article/hirou-koshi">疲労感と腰の重さについてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a4R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/katakori-deskwork">デスクワークの肩こりについてのコラム</a>や<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>、<a href="#/article/hirou-koshi">疲労感と腰の重さについてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
 </div>
 </article>
 </div>
@@ -1548,7 +1019,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a5R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピスト 平賀建人が、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。ご予約はLINE公式アカウント（北辰堂）で受け付けています。</p>
 <p class="body" data-i18n="a5R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって首や頭の状態がどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。気になるお悩みの例は<a href="#about">北辰堂について</a>にもまとめています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a5R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/katakori-deskwork">デスクワークの肩こりについてのコラム</a>や<a href="#/article/me-no-tsukare">目の疲れ感についてのコラム</a>、<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a5R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/katakori-deskwork">デスクワークの肩こりについてのコラム</a>や<a href="#/article/me-no-tsukare">目の疲れ感についてのコラム</a>、<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
 </div>
 </article>
 </div>
@@ -1611,7 +1082,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a6R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピスト 平賀建人が、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。ご予約はLINE公式アカウント（北辰堂）で受け付けています。</p>
 <p class="body" data-i18n="a6R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって脚の状態がどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。気になるお悩みの例は<a href="#about">北辰堂について</a>にもまとめています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a6R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/hirou-koshi">疲労感と腰の重さについてのコラム</a>や<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a6R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/hirou-koshi">疲労感と腰の重さについてのコラム</a>や<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
 </div>
 </article>
 </div>
@@ -1674,7 +1145,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a7R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピスト 平賀建人が、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。ご予約はLINE公式アカウント（北辰堂）で受け付けています。</p>
 <p class="body" data-i18n="a7R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといってお腹の状態がどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。気になるお悩みの例は<a href="#about">北辰堂について</a>にもまとめています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a7R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>や<a href="#/article/ashi-mukumi">脚のむくみ感についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a7R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>や<a href="#/article/ashi-mukumi">脚のむくみ感についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
 </div>
 </article>
 </div>
@@ -1737,7 +1208,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a8R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピスト 平賀建人が、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。ご予約はLINE公式アカウント（北辰堂）で受け付けています。</p>
 <p class="body" data-i18n="a8R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって冷えの状態がどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。気になるお悩みの例は<a href="#about">北辰堂について</a>にもまとめています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a8R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/ashi-mukumi">脚のむくみ感についてのコラム</a>や<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a8R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/ashi-mukumi">脚のむくみ感についてのコラム</a>や<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
 </div>
 </article>
 </div>
@@ -1799,7 +1270,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a9R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピスト 平賀建人が、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。ご予約はLINE公式アカウント（北辰堂）で受け付けています。</p>
 <p class="body" data-i18n="a9R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって姿勢の様子がどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。気になるお悩みの例は<a href="#about">北辰堂について</a>にもまとめています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a9R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/katakori-deskwork">デスクワークの肩こりについてのコラム</a>や<a href="#/article/kubi-atama">首こりと頭の重さについてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a9R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/katakori-deskwork">デスクワークの肩こりについてのコラム</a>や<a href="#/article/kubi-atama">首こりと頭の重さについてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
 </div>
 </article>
 </div>
@@ -1861,7 +1332,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a10R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピスト 平賀建人が、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。ご予約はLINE公式アカウント（北辰堂）で受け付けています。</p>
 <p class="body" data-i18n="a10R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって体のリズムの状態がどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、ゆっくり体を預けられる時間をご用意しています。気になるお悩みの例は<a href="#about">北辰堂について</a>にもまとめています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a10R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>や<a href="#/article/hie-kan">冷え感についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a10R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/netsuki-yoru">寝つきと疲労感についてのコラム</a>や<a href="#/article/hie-kan">冷え感についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
 </div>
 </article>
 </div>
@@ -1923,7 +1394,7 @@ footer b{color:var(--ink)}
 <h3 class="serif" data-i18n="refTitle">北辰堂のご案内</h3>
 <p class="body" data-i18n="a11R1">北辰堂は、大阪市淀川区東三国二丁目にある男性専用整体院です。施術歴30年の男性セラピスト 平賀建人が、リラクゼーションと整体を行っています。営業は平日・土曜17:00–22:00、日曜10:00–22:00・完全予約制で、お仕事帰りにも立ち寄りやすい時間帯に開けています。ご予約はLINE公式アカウント（北辰堂）で受け付けています。</p>
 <p class="body" data-i18n="a11R2">料金は60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円で、お支払いは現金のみです。施術を受けたからといって背中の状態がどうなるかをお約束することはできませんが、その日の体の状態を確認しながら、背中や肩甲骨まわりを含めて、ゆっくり体を預けられる時間をご用意しています。気になるお悩みの例は<a href="#about">北辰堂について</a>にもまとめています。</p>
-<p class="body" style="margin-bottom:0" data-i18n="a11R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="#booking">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/katakori-deskwork">デスクワークの肩こりについてのコラム</a>や<a href="#/article/shisei-nekoze">姿勢・猫背についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
+<p class="body" style="margin-bottom:0" data-i18n="a11R3">コースの内容は<a href="#menu">メニュー・料金</a>、施術者は<a href="#profile">施術者について</a>、ご予約の流れは<a href="#flow">当日の流れ</a>と<a href="assets/first.html#booking-form">LINE予約の下書きづくり</a>、場所については<a href="#access">アクセス</a>をご覧ください。あわせて<a href="#/article/katakori-deskwork">デスクワークの肩こりについてのコラム</a>や<a href="#/article/shisei-nekoze">姿勢・猫背についてのコラム</a>、<a href="#faq">よくある質問</a>もご参考ください。</p>
 </div>
 </article>
 </div>
@@ -1944,18 +1415,13 @@ footer b{color:var(--ink)}
 <span data-i18n="footHours">平日・土曜 17:00–22:00／日曜 10:00–22:00・完全予約制</span><br>
 <span data-i18n="footBook">ご予約はLINE公式アカウント（北辰堂）で受付中</span><br>
 <a href="#/first" style="font-weight:700" data-i18n="navFirst">初めての方へ</a><br>
-<a class="btn btn-dark" style="margin-top:10px;padding:10px 18px;font-size:14px" href="#/recruit" data-i18n="footRecruit">セラピスト募集（業務委託）のご案内</a>
+
 </div>
 <div style="max-width:320px">
 <b data-i18n="footPriceT">料金</b><br>
 <span data-i18n="footPrice60">60分 初回2,000円／2回目以降6,000円</span><br>
 <span data-i18n="footPrice90">90分 初回3,000円／2回目以降9,000円</span><br>
 <span data-i18n="footCash">お支払いは現金のみ</span>
-</div>
-<div style="max-width:320px">
-<b data-i18n="footLibT">セルフケア資料ライブラリ</b><br>
-<span data-i18n="footLib">症状別のセルフケア資料を無料で公開しています。無料姿勢チェックの申込もこちらからできます。</span><br>
-<a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="font-weight:700" data-i18n="libBtn">セルフケア資料ライブラリを見る →</a>
 </div>
 </div>
 <p class="fineprint" style="margin-top:22px" data-i18n="footFine">ご予約・お問い合わせは<a href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener">LINE公式アカウント（北辰堂）</a>で受け付けています。北辰堂は医療機関ではなく、診断・治療を行うものではありません。</p>
@@ -1977,15 +1443,15 @@ footer b{color:var(--ink)}
 <a class="fab-cta" href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener" data-i18n="lineCta">LINEで予約する</a>
 </div>
 <ul>
+<li><a href="index.html" data-i18n="navHome">トップページ</a></li>
 <li><a href="#about" data-i18n="navAbout">当院について</a></li>
 <li><a href="#symptoms" data-i18n="navSym">お悩み別</a></li>
 <li><a href="#/first" data-i18n="navFirst">初めての方へ</a></li>
 <li><a href="#menu" data-i18n="navMenu">メニュー</a></li>
 <li><a href="#flow" data-i18n="navFlow">当日の流れ</a></li>
-<li><a href="#booking" data-i18n="navBooking">ご予約</a></li>
+<li><a href="assets/first.html#booking-form" data-i18n="navBooking">ご予約</a></li>
 <li><a href="#faq" data-i18n="navFaq">よくある質問</a></li>
-<li><a href="#/recruit" data-i18n="navRecruit">セラピスト募集</a></li>
-<li><a href="#books-goods" data-i18n="navShelf">本と商品</a></li>
+
 <li><a href="#access" data-i18n="navAccess">アクセス</a></li>
 </ul>
 </nav>
@@ -1994,160 +1460,10 @@ footer b{color:var(--ink)}
 <span class="fab-btn-label">メニュー</span>
 </button>
 
-<script>
-(function(){
-var nameEl=document.getElementById('f-name');
-var courseEl=document.getElementById('f-course');
-var date1El=document.getElementById('f-date1');
-var time1El=document.getElementById('f-time1');
-var date2El=document.getElementById('f-date2');
-var firstEl=document.getElementById('f-first');
-var msgEl=document.getElementById('f-msg');
-var toast=document.getElementById('toast');
-var tags=[];
-function isEn(){ return document.documentElement.lang==='en'; }
-var COURSE_EN={'まるごとケア（整体＋リラクゼーション）90分':'Full Care (Seitai + Relaxation) 90 min','まるごとケア（整体＋リラクゼーション）60分':'Full Care (Seitai + Relaxation) 60 min','リラクゼーション 60分':'Relaxation 60 min','リラクゼーション 90分':'Relaxation 90 min','整体 60分':'Seitai Bodywork 60 min','整体 90分':'Seitai Bodywork 90 min','相談して決めたい':'Not sure yet — would like advice'};
-var TIME_EN={'10:00頃（日曜）':'around 10:00 (Sun)','13:00頃（日曜）':'around 13:00 (Sun)','15:00頃（日曜）':'around 15:00 (Sun)','17:00頃':'around 17:00','18:00頃':'around 18:00','19:00頃':'around 19:00','20:00頃':'around 20:00','20:30頃（最終受付目安）':'around 20:30 (approx. last appointment)','空いている時間で相談したい':'any available time — please suggest'};
-var FIRST_EN={'初めて':'First visit','2回目以降':'Returning guest'};
-function fmtDate(v){
-if(!v) return '';
-var p=v.split('-'); if(p.length!==3) return v;
-var d=new Date(Number(p[0]),Number(p[1])-1,Number(p[2]));
-if(isEn()){
-var w=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
-var mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
-return w+', '+mo+' '+Number(p[2]);
-}
-var w=['日','月','火','水','木','金','土'][d.getDay()];
-return Number(p[1])+'月'+Number(p[2])+'日（'+w+'）';
-}
-function currentTags(){
-var out=[];
-document.querySelectorAll('#tagrow .tagbtn[aria-pressed="true"]').forEach(function(b){ out.push(b.textContent.trim()); });
-return out;
-}
-function build(){
-var lines=[];
-if(isEn()){
-var tg=currentTags();
-lines.push("Hokushindo — Booking Request");
-lines.push('Name: '+(nameEl.value.trim()||'(not entered)'));
-lines.push('Visit: '+(FIRST_EN[firstEl.value]||firstEl.value));
-lines.push('Course: '+(COURSE_EN[courseEl.value]||courseEl.value));
-var d1e=fmtDate(date1El.value);
-var t1e=TIME_EN[time1El.value]||time1El.value;
-lines.push('1st choice: '+(d1e? d1e+', '+t1e : 'Date flexible (time: '+t1e+')'));
-var d2e=fmtDate(date2El.value);
-if(d2e) lines.push('2nd choice: '+d2e);
-if(tg.length) lines.push('Areas of concern: '+tg.join(', '));
-lines.push('Thank you.');
-msgEl.value=lines.join('\n');
-return;
-}
-lines.push('北辰堂');
-lines.push('お名前：'+(nameEl.value.trim()||'（未入力）'));
-lines.push('ご利用：'+firstEl.value);
-lines.push('希望コース：'+courseEl.value);
-var d1=fmtDate(date1El.value);
-lines.push('第1希望：'+(d1? d1+' '+time1El.value: '日程は相談したい（時間帯：'+time1El.value+'）'));
-var d2=fmtDate(date2El.value);
-if(d2) lines.push('第2希望：'+d2);
-var tg2=currentTags();
-if(tg2.length) lines.push('気になる部位：'+tg2.join('、'));
-lines.push('よろしくお願いします。');
-msgEl.value=lines.join('\n');
-}
-window.addEventListener('langchange',build);
-document.getElementById('tagrow').addEventListener('click',function(e){
-var b=e.target.closest('.tagbtn'); if(!b) return;
-var on=b.getAttribute('aria-pressed')==='true';
-b.setAttribute('aria-pressed', on?'false':'true');
-var t=b.textContent.trim();
-if(on){ tags=tags.filter(function(x){return x!==t;});} else { tags.push(t);}
-build();
-});
-[nameEl,courseEl,date1El,time1El,date2El,firstEl].forEach(function(el){
-el.addEventListener('input',build); el.addEventListener('change',build);
-});
-document.getElementById('btn-regen').addEventListener('click',function(){ build(); toast.textContent=isEn()?'Message refreshed.':'文面を作り直しました。';});
-document.getElementById('btn-copy').addEventListener('click',function(){
-build();
-var done=function(){ toast.textContent=isEn()?'Copied. Paste it into LINE and send.':'コピーしました。LINEに貼り付けて送信してください。';};
-if(navigator.clipboard && navigator.clipboard.writeText){
-navigator.clipboard.writeText(msgEl.value).then(done,function(){ msgEl.select(); document.execCommand('copy'); done();});
-} else { msgEl.select(); document.execCommand('copy'); done();}
-});
-build();
-})();
-</script>
-<script>
-(function(){
-var nameEl=document.getElementById('r-name');
-var contactEl=document.getElementById('r-contact');
-var expEl=document.getElementById('r-exp');
-var hopeEl=document.getElementById('r-hope');
-var msgEl=document.getElementById('r-msg');
-var toast=document.getElementById('r-toast');
-if(!nameEl||!msgEl) return;
-var skills=[];
-function isEn(){ return document.documentElement.lang==='en'; }
-var EXP_EN={'未経験':'No experience (would like training)','経験あり':'Experienced','ブランクあり':'Experienced, returning after a break'};
-function currentSkills(){
-var out=[];
-document.querySelectorAll('#r-tagrow .tagbtn[aria-pressed="true"]').forEach(function(b){ out.push(b.textContent.trim()); });
-return out;
-}
-function build(){
-var lines=[];
-if(isEn()){
-var sk=currentSkills();
-lines.push("[Therapist Application] Hokushindo");
-lines.push('Name: '+(nameEl.value.trim()||'(not entered)'));
-lines.push('Contact: '+(contactEl.value.trim()||'(not entered)'));
-lines.push('Experience: '+(EXP_EN[expEl.value]||expEl.value));
-if(sk.length) lines.push('Skills: '+sk.join(', '));
-if(hopeEl.value.trim()) lines.push('Preferences: '+hopeEl.value.trim());
-lines.push('I would like to apply for the contract therapist position. Thank you.');
-msgEl.value=lines.join('\n');
-return;
-}
-lines.push('【セラピスト求人への応募】北辰堂');
-lines.push('氏名：'+(nameEl.value.trim()||'（未入力）'));
-lines.push('連絡先：'+(contactEl.value.trim()||'（未入力）'));
-lines.push('施術の経験：'+expEl.value);
-var sk2=currentSkills();
-if(sk2.length) lines.push('持っている技術：'+sk2.join('、'));
-if(hopeEl.value.trim()) lines.push('希望：'+hopeEl.value.trim());
-lines.push('業務委託でのセラピスト募集に応募します。よろしくお願いします。');
-msgEl.value=lines.join('\n');
-}
-window.addEventListener('langchange',build);
-document.getElementById('r-tagrow').addEventListener('click',function(e){
-var b=e.target.closest('.tagbtn'); if(!b) return;
-var on=b.getAttribute('aria-pressed')==='true';
-b.setAttribute('aria-pressed', on?'false':'true');
-var t=b.textContent.trim();
-if(on){ skills=skills.filter(function(x){return x!==t;});} else { skills.push(t);}
-build();
-});
-[nameEl,contactEl,expEl,hopeEl].forEach(function(el){
-el.addEventListener('input',build); el.addEventListener('change',build);
-});
-document.getElementById('r-regen').addEventListener('click',function(){ build(); toast.textContent=isEn()?'Message refreshed.':'文面を作り直しました。';});
-document.getElementById('r-copy').addEventListener('click',function(){
-build();
-var done=function(){ toast.textContent=isEn()?'Copied. It has not been sent yet — please paste it into LINE to apply.':'文面をコピーしました。まだ送信されていません。LINEに貼り付けてお送りください。';};
-if(navigator.clipboard && navigator.clipboard.writeText){
-navigator.clipboard.writeText(msgEl.value).then(done,function(){ msgEl.select(); document.execCommand('copy'); done();});
-} else { msgEl.select(); document.execCommand('copy'); done();}
-});
-build();
-})();
-</script>
+
 <script>
 (function(){
 var main=document.getElementById('view-main');
-var rec=document.getElementById('view-recruit');
 var art=document.getElementById('view-article');
 var art2=document.getElementById('view-article-katakori');
 var art3=document.getElementById('view-article-netsuki');
@@ -2160,7 +1476,7 @@ var art9=document.getElementById('view-article-shisei');
 var art10=document.getElementById('view-article-jiritsu');
 var art11=document.getElementById('view-article-senaka');
 var first=document.getElementById('view-first');
-if(!main||!rec) return;
+if(!main) return;
 var homeTitle=document.title;
 var descEl=document.querySelector('meta[name="description"]');
 var homeDesc=descEl?descEl.getAttribute('content'):'';
@@ -2215,7 +1531,6 @@ var FIRST_DESC_EN='New to Hokushindo, our men-only seitai clinic in Higashimikun
 function isEn(){ return document.documentElement.lang==='en'; }
 function route(){
 var h=location.hash;
-var isRec=h==='#/recruit';
 var isFirst=!!first && h==='#/first';
 var isArt11=!!art11 && h==='#/article/senaka-hari';
 var isArt10=!!art10 && h==='#/article/jiritsu-shinkei';
@@ -2229,7 +1544,6 @@ var isArt3=!!art3 && h==='#/article/netsuki-yoru';
 var isArt2=!!art2 && h==='#/article/katakori-deskwork';
 var isArt=!!art && h==='#/article/hirou-koshi';
 var isAnyArt=isArt||isArt2||isArt3||isArt4||isArt5||isArt6||isArt7||isArt8||isArt9||isArt10||isArt11;
-rec.hidden=!isRec;
 if(first) first.hidden=!isFirst;
 if(art) art.hidden=!isArt;
 if(art2) art2.hidden=!isArt2;
@@ -2242,7 +1556,7 @@ if(art8) art8.hidden=!isArt8;
 if(art9) art9.hidden=!isArt9;
 if(art10) art10.hidden=!isArt10;
 if(art11) art11.hidden=!isArt11;
-main.hidden=isRec||isAnyArt||isFirst;
+main.hidden=isAnyArt||isFirst;
 if(isArt11){
 document.title=isEn()?ART11_TITLE_EN:ART11_TITLE;
 if(descEl) descEl.setAttribute('content',isEn()?ART11_DESC_EN:ART11_DESC);
@@ -2294,8 +1608,7 @@ window.scrollTo(0,0);
 }else{
 document.title=(window.__homeTitleForLang?window.__homeTitleForLang():homeTitle);
 if(descEl) descEl.setAttribute('content',(window.__homeDescForLang?window.__homeDescForLang():homeDesc));
-if(isRec){ window.scrollTo(0,0); }
-else if(h && h.charAt(1)!=='/'){
+if(h && h.charAt(1)!=='/'){
 var t=document.getElementById(h.slice(1));
 if(t) t.scrollIntoView();
 }
@@ -2311,9 +1624,9 @@ route();
 var EN={
 brand:"Hokushindo",
 brandSub:"HOKUSHINDO · HIGASHI-MIKUNI · MEN-ONLY SEITAI",
-navAbout:"About the Clinic",navSym:"By Concern",navFirst:"For First-Time Guests",navMenu:"Menu",navFlow:"Your Visit",navBooking:"Booking",navFaq:"FAQ",navRecruit:"Therapists Wanted",navShelf:"Books & Goods",navAccess:"Access",
+navHome:"Top Page",navAbout:"About the Clinic",navSym:"By Concern",navFirst:"For First-Time Guests",navMenu:"Menu",navFlow:"Your Visit",navBooking:"Booking",navFaq:"FAQ",navShelf:"Books & Goods",navAccess:"Access",
 shelfTitle:"New Books & Recommended Goods",
-shelfLead:"A corner introducing books for learning about the body and self-care, and tools you can use for care at home. Use it together with our columns and the Self-Care Library to rethink your everyday care. New books and goods are added here as they arrive.",
+shelfLead:"A corner introducing books for learning about the body and self-care, and tools you can use for care at home. Use it together with our columns to rethink your everyday care. New books and goods are added here as they arrive.",
 shelfPr:"The links in this corner include Amazon Associates affiliate links (to search results). Prices, stock, and specifications change, so please check the details on the linked page.",
 shelfAll:"All",shelfBooksBtn:"Books only",shelfGoodsBtn:"Goods only",shelfUpdated:"Updated October 30, 2026",
 badgeNew:"New book",badgeGoods:"Recommended",buyLink:"Search on Amazon →",
@@ -2342,14 +1655,19 @@ badgeMen:"Men only",badgeAppt:"By appointment only",badgeHours:"Mon–Sat 17:00�
 heroCta:"See menu &amp; prices",heroLine:"Book via LINE",
 heroNote:"*To protect your privacy, the exact address is shared via LINE once your booking is confirmed.",
 noticeLabel:"Please note",
-noticeMain:"Hokushindo is <strong>for men only</strong>. No sexual services of any kind are offered.",
-libTitle:"Self-Care Library (Free)",
-libText:"We offer a free library of <strong>self-care guides organized by symptom</strong> — stiff shoulders, a heavy lower back, tired eyes, and more — to help you rethink care you can do at home. You can also <strong>apply for a free posture check</strong> there: send us a photo and we will reply with your posture tendencies and everyday care tips to try.",
-libBtn:"Open the library →",
+noticeMain:"Hokushindo is <strong>men-only</strong>, as it is run by a single male staff member.",
 lineCta:"Book via LINE",
 symTitle:"By Concern — for Men in Higashimikuni &amp; Shin-Osaka",
 symLead:"So you can search by the name of what troubles you, this index lists both everyday symptom names and condition names. Each page sets out possible factors, self-care you can try in daily life, and signs that suggest seeing a medical professional. If you arrived by a condition name, please read it as general health information: Hokushindo is not a medical facility and does not diagnose or treat conditions.",
-symNote:"*Pages for each concern are being published in sequence (20 are now available). Topics without a link are planned for future release; please also see the columns below and the Self-Care Library. If you have concerning symptoms such as severe pain or numbness, please consider consulting a medical professional first.",
+symNote:"*All 100 concern pages are now published. The full list is on the concerns index page, organized by category. If you have concerning symptoms such as severe pain or numbness, please consider consulting a medical professional first.",
+symListBtn:"See all 100 concerns",
+symMajor:"Major concerns",
+menuPageBtn:"See prices & menu in detail",
+aboutPageBtn:"About the salon & therapist",
+accessPageBtn:"Access & salon details",
+faqMoreBtn:"See more FAQs",
+colAllBtn:"See all columns",
+menuSummary:"All three courses (Relaxation / Seitai Bodywork / Full Care) share the same prices: 60 min \u2014 first visit \u00a52,000 (\u00a56,000 from the second visit); 90 min \u2014 first visit \u00a53,000 (\u00a59,000 from the second visit). Payment is cash only, on the day.",
 symCat1:"Head, Face &amp; Jaw",
 symCat2:"Neck &amp; Shoulders",
 symCat3:"Back &amp; Posture",
@@ -2459,7 +1777,7 @@ sym98:"<b>Telework Inactivity and Stiffness</b><span>Higashimikuni / Shin-Osaka 
 sym99:"<b>Fatigue After Business Trips and Long Travel</b><span>Higashimikuni / Shin-Osaka — Fixed posture, swelling, and care during and after travel</span>",
 sym100:"<b>Age-Related Muscle Loss and Gait Anxiety</b><span>Higashimikuni / Shin-Osaka — General information on sarcopenia and keeping leg strength</span>",
 aboutTitle:"Seitai that works on the cause, not only the stiff spot",
-aboutLead:"Hokushindo is a men-only seitai clinic in Higashimikuni. With a single therapist, Kento Hiraga, and only a few fully reserved appointments a day, you will never run into other guests. We check your posture and how you use your body, working from the side of why an area becomes stiff — a regular place that follows how your body changes, visit by visit.",
+aboutLead:"Hokushindo is a men-only seitai clinic in Higashimikuni — men-only because it is run by a single male staff member. With one therapist, Kento Hiraga, and only a few fully reserved appointments a day, you will never run into other guests. We check your posture and how you use your body, working from the side of why an area becomes stiff — a regular place that follows how your body changes, visit by visit.",
 pt1Title:"A seitai perspective, not just rubbing",
 pt1Text:"We do more than loosen the tired spots: we check your posture, pelvic tilt, and how your muscles work together. By addressing why an area becomes stiff in the first place, we support a body that does not slip back so easily.",
 pt2Title:"Eastern medicine, applied to everyday condition",
@@ -2489,7 +1807,7 @@ qual1:"Licensed Acupuncturist (national license)",qual2:"Registered Pharmaceutic
 profileNote:"*Hokushindo is not a medical facility and does not diagnose or treat conditions. If you have severe pain, numbness, or a fever, please see a medical professional first.",
 flowTitle:"From Booking to Your Visit",
 flowLead:"Bookings are accepted only through our official LINE account. We do not take bookings by phone.",
-step1T:"Book via LINE",step1P:"Create a draft with the booking-message builder below and send it to our <a href='https://lin.ee/yyacKkZ' target='_blank' rel='noopener'>official LINE account (Hokushindo)</a>.",
+step1T:"Book via LINE",step1P:"Create a draft with the booking request builder on the <a href='assets/first.html#booking-form'>first-visit page</a> and send it to our <a href='https://lin.ee/yyacKkZ' target='_blank' rel='noopener'>official LINE account (Hokushindo)</a>.",
 step2T:"Confirmation &amp; address",step2P:"We check availability and, once confirmed, send you the exact address and guidance for the day.",
 step3T:"Arrival &amp; counseling",step3P:"You fill in a short intake form while we check your posture and condition (about 10 extra minutes on your first visit).",
 step4T:"Treatment",step4P:"Tailored to how your body is that day. Tell us any time if you would like the pressure adjusted.",
@@ -2517,6 +1835,7 @@ tag1:"Neck &amp; shoulders",tag2:"Back",tag3:"Lower back",tag4:"Legs &amp; calve
 lblMsg:"Your booking message (you can edit it)",
 btnRegen:"Regenerate message",btnCopy:"Copy message",btnLine:"Open the official LINE account (Hokushindo)",
 toolFine:"After copying, open our official LINE account (Hokushindo) and paste the message into the chat to send it.",
+bookLeadSlim:"The booking request builder now lives on the first-visit page. Choose your options there and a ready-to-paste booking message for LINE is generated.",bookFormBtn:"Go to the booking form (first-visit page)",beforeLeadTop:"What to bring and wear, and the health notes we ask you to share in advance — the three key points are below. The full details are on the first-visit page.",cancelShort:"Let us know on LINE as soon as you know you need to change or cancel.",beforeDetailBtn:"See the full pre-visit notes",
 beforeTitle:"Before Your Visit",
 bringTitle:"What to bring &amp; wear",
 bring1:"Nothing in particular. We provide a change of clothes for your treatment.",
@@ -2537,7 +1856,7 @@ faqTitle:"Frequently Asked Questions",
 faq1Q:"Is it fully appointment-only? Will I be there with other guests?",
 faq1A:"Yes — Hokushindo is fully appointment-only. There is one therapist and one guest per time slot, so you will never share your session with another guest. Appointments are spaced so guests do not cross paths in the waiting area either. To protect privacy, the exact address and landmarks are sent via LINE with photos once your booking is confirmed.",
 faq2Q:"Why is it men only?",
-faq2A:"Hokushindo operates as a men-only clinic. We do not accept female guests.",
+faq2A:"Hokushindo is men-only, as it is run by a single male staff member. We do not accept female guests.",
 faq3Q:"Can I book for the same day?",
 faq3A:"Yes, if there is availability. With only one therapist, slots that are already booked cannot be offered. Please check availability on LINE.",
 faq4Q:"Does it hurt? Can the pressure be adjusted?",
@@ -2593,14 +1912,13 @@ accHoursT:"Hours",accHours:"Mon–Sat 17:00–22:00 / Sun 10:00–22:00 (by appo
 accDaysT:"Open days",accDays:"Weekdays, Saturdays & Sundays (Sundays from 10:00). Please check availability on LINE.",
 accBookT:"Bookings",accBook:"Via our <a href='https://lin.ee/yyacKkZ' target='_blank' rel='noopener'>official LINE account (Hokushindo)</a> only (no phone bookings)",
 accPayT:"Payment",accPay:"Cash only (pay on the day)",
-accForT:"For",accFor:"Men only / No sexual services of any kind",
+accForT:"For",accFor:"Men only (run by a single male staff member)",
 accNote:"*This is a residential neighborhood. Please keep voices down when arriving and leaving, out of consideration for our neighbors.",
 footAddr:"Higashimikuni 2-chome, Yodogawa-ku, Osaka / Men-only seitai clinic (seitai &amp; relaxation)",
 footTherapist:"Therapist: Kento Hiraga (30 years of experience, licensed acupuncturist)",
 footInfoT:"Information",footHours:"Mon–Sat 17:00–22:00 / Sun 10:00–22:00 / By appointment only",footBook:"Bookings are accepted via our official LINE account (Hokushindo)",
-footRecruit:"Therapist openings (contract work)",
 footPriceT:"Prices",footPrice60:"60 min — first visit ¥2,000 / from 2nd visit ¥6,000",footPrice90:"90 min — first visit ¥3,000 / from 2nd visit ¥9,000",footCash:"Cash only",
-footLibT:"Self-Care Library",footLib:"Self-care guides by symptom, free to read. You can also apply for a free posture check there.",
+
 footFine:"Bookings and inquiries are accepted through our <a href='https://lin.ee/yyacKkZ' target='_blank' rel='noopener'>official LINE account (Hokushindo)</a>. Hokushindo is not a medical facility and does not provide diagnosis or medical treatment.",
 backTop:"← Back to top page",
 recTitle:"Therapists Wanted (Contract Work)",
@@ -2616,7 +1934,7 @@ train4:"Hygiene (handling towels and linens, disinfection basics)",
 trainNote:"*These are examples. The actual pace and content are tailored to each person at the interview.",
 skillT:"Examples of skills that can become menu items (experienced)",
 skill1:"Seitai bodywork",skill2:"Reflexology",skill3:"Head care",skill4:"Other skills — please ask",
-skillNote:"*Proposals should fit the clinic's policy (men only; no sexual services). Menu names and treatment design are decided together at the interview.",
+skillNote:"*Proposals should fit the clinic's policy (men only). Menu names and treatment design are decided together at the interview.",
 applyFlowT:"How to apply",
 rs1T:"Apply",rs1P:"Build your application message with the form below and send it via LINE.",
 rs2T:"Interview",rs2P:"We hear about your wishes and experience, and explain the terms in detail.",
@@ -2643,13 +1961,13 @@ fvH2:"One therapist: Kento Hiraga",
 fvP4:"Your therapist is Kento Hiraga, a male therapist with 30 years of experience. There is no rotation of staff — the same therapist checks how your body is that day and treats you, every visit.",
 fvP5:"Please note that no acupuncture is performed at this clinic; we offer relaxation and seitai bodywork only. This clinic is not a medical facility and does not diagnose or treat conditions. If you have severe pain, numbness, or a fever, please see a medical professional first.",
 fvH3:"Men only",
-fvP6:"Hokushindo operates as a men-only clinic. We do not accept female guests. No sexual services of any kind are offered.",
+fvP6:"Hokushindo is men-only, as it is run by a single male staff member. We do not accept female guests.",
 fvH4:"Prices &amp; payment (cash only)",
 fvP7:"Prices are the same for every course: 60 min — ¥2,000 first visit / ¥6,000 from the second visit; 90 min — ¥3,000 first visit / ¥9,000 from the second visit. The first visit is a trial price; regular prices apply from the second visit.",
 fvP8:"Payment is <strong>cash only</strong>, on the day. Credit cards, e-money, and QR payments are not accepted, so please bring cash. Receipts are available.",
 fvH5:"From booking to your visit",
 fvP9:"The flow from booking to your visit is these five steps. Bookings are accepted only through our official LINE account (no phone bookings). With a single therapist and fully appointment-only operation, your confirmed time never overlaps with another guest.",
-fvS1T:"Book via LINE",fvS1P:"Create a draft with the <a href='#booking'>booking request builder</a> on the top page and send it to our official LINE account.",
+fvS1T:"Book via LINE",fvS1P:"Create a draft with the <a href='assets/first.html#booking-form'>booking request builder</a> on the top page and send it to our official LINE account.",
 fvS2T:"Confirmation &amp; address",fvS2P:"We check availability and, once confirmed, send you the exact address, landmarks, and guidance for the day via LINE.",
 fvS3T:"Arrival &amp; counseling",fvS3P:"You fill in a short intake form while we check your posture and condition (about 10 extra minutes on your first visit). Please arrive about 5 minutes before your appointment.",
 fvS4T:"Treatment",fvS4P:"Tailored to how your body is that day. Pressure can be adjusted at any time, so please speak up freely.",
@@ -2661,7 +1979,7 @@ fvH7:"Health notes, changes &amp; cancellations",
 fvP10:"If you have a fever or feel unwell, don't push yourself — contact us on LINE to reschedule. We cannot treat guests immediately after drinking alcohol. If you have fractures, dislocations, acute inflammation, or recent surgery, or are under medical care or medication (e.g., for high blood pressure), please mention it when booking.",
 fvP11:"Please message us on LINE as soon as you know you need to change or cancel. As Hokushindo accepts only a few guests a day, we appreciate your cooperation.",
 fvRefT:"See also",
-fvRefP:"See <a href='#menu'>Menu &amp; Prices</a> for the courses and prices, <a href='#profile'>About the Therapist</a> for his background, <a href='#before'>Before Your Visit</a> for pre-visit notes, and the <a href='#faq'>FAQ</a> and <a href='#access'>Access</a> for other questions.",
+fvRefP:"See <a href='#menu'>Menu &amp; Prices</a> for the courses and prices, <a href='#profile'>About the Therapist</a> for his background, <a href='assets/first.html#before-visit'>Before Your Visit</a> for pre-visit notes, and the <a href='#faq'>FAQ</a> and <a href='#access'>Access</a> for other questions.",
 refTitle:"About Hokushindo",
 a1Title:"Fatigue and a Heavy Lower Back — for Men Working in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>Possible factors, self-care, and when to see a doctor</span>",
 a1Meta:"October 26, 2026 | Hokushindo (Higashimikuni)",
@@ -2695,7 +2013,7 @@ a1W5:"Pain that started after a fall or accident",
 a1W6:"Heaviness or pain that continues for weeks and is gradually getting stronger",
 a1R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. A male therapist with 30 years of experience provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by after work or on Sundays.",
 a1R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for your fatigue or back, but we prepare a time where you can check in with your body's condition that day and rest it with us, unhurried.",
-a1R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. Other questions are collected in the <a href='#faq'>FAQ</a>.",
+a1R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. Other questions are collected in the <a href='#faq'>FAQ</a>.",
 a2Title:"Stiff Shoulders from Desk Work — for Men in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>Possible factors, self-care, and when to see a doctor</span>",
 a2Meta:"October 29, 2026 | Hokushindo (Higashimikuni)",
 a2Intro:"'It doesn't bother me in the morning, but by evening my shoulders feel heavy.' 'The longer I spend at the computer, the more tension I feel from my neck into my back.' We hear comments like these from men working desk jobs around Higashimikuni, Shin-Osaka, and Yodogawa-ku. How stiff shoulders feel, and what lies behind them, differs from person to person and cannot be explained by a single cause. This article does not pin down a cause; it organizes generally possible factors, self-care you can try in daily life, and signs that suggest consulting a medical professional.",
@@ -2731,7 +2049,7 @@ a2W6:"Symptoms that continue for weeks and are gradually getting stronger",
 a2P6:"Even if none of the above apply, if concerning symptoms continue, it is important to consult a medical professional or specialist early.",
 a2R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. Kento Hiraga, a male therapist with 30 years of experience, provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by after work or on Sundays. Bookings are accepted through our official LINE account (Hokushindo).",
 a2R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for your shoulders, but we prepare a time where you can check in with your body's condition that day and rest it with us, unhurried.",
-a2R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The column on <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a> and the <a href='#faq'>FAQ</a> may also be helpful.",
+a2R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The column on <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a> and the <a href='#faq'>FAQ</a> may also be helpful.",
 a3Title:"Trouble Falling Asleep and Lingering Fatigue at Night — in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>How men can spend their evenings, and signs for seeing a doctor</span>",
 a3Meta:"October 30, 2026 | Hokushindo (Higashimikuni)",
 a3Intro:"'I should be tired after a full day of work, yet once I get into bed I just cannot fall asleep.' 'I did sleep, but in the morning the tiredness is still there.' We hear comments like these about nighttime sleep from men working around Higashimikuni, Shin-Osaka, and Yodogawa-ku. How trouble falling asleep feels, and what lies behind it, differs from person to person and cannot be explained by a single cause. This article does not pin down a cause; it organizes generally possible factors behind trouble falling asleep and lingering fatigue, ways to rethink your evenings and self-care to try, and signs that suggest consulting a medical professional.",
@@ -2767,7 +2085,7 @@ a3W6:"A long-continuing reliance on over-the-counter products related to sleep",
 a3P6:"Even if none of the above apply, if a concerning state continues, it is important to consult a medical professional or specialist early. Sleep concerns can sometimes have a physical illness behind them, so not continuing to watch and wait on self-judgment alone is another useful guide.",
 a3R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. Kento Hiraga, a male therapist with 30 years of experience, provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by on your way home or on Sundays. Bookings are accepted through our official LINE account (Hokushindo).",
 a3R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for your sleep, but we prepare a time where you can check in with your body's condition that day and rest it with us, unhurried.",
-a3R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#about'>About Hokushindo</a> for examples of common concerns, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a> and <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
+a3R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#about'>About Hokushindo</a> for examples of common concerns, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a> and <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
 a4Title:"Tired Eyes After Desk Work — in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>Rethinking screen time, self-care, and when to see a doctor, for men</span>",
 a4Meta:"October 31, 2026 | Hokushindo (Higashimikuni)",
 a4Intro:"'My eyes feel fine in the morning, but by the end of work they feel heavy.' 'On days I keep looking at a computer or smartphone screen, my vision feels blurred or my eyes feel dry.' We hear comments like these from men working desk jobs around Higashimikuni, Shin-Osaka, and Yodogawa-ku. How tired eyes feel, and what lies behind them, differs from person to person and cannot be explained by a single cause. This article does not pin down a cause; it organizes generally possible factors, ways to rethink screen time and posture, self-care to try in daily life, and signs that suggest consulting a medical professional.",
@@ -2803,7 +2121,7 @@ a4W6:"A long time since your glasses or contact lenses were made, and a concern 
 a4P6:"Even if none of the above apply, if a concerning state continues, it is important to consult a medical professional or specialist early. Changes in how you see can sometimes have an eye condition behind them, so not continuing to watch and wait on self-judgment alone is another useful guide.",
 a4R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. Kento Hiraga, a male therapist with 30 years of experience, provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by on your way home. Bookings are accepted through our official LINE account (Hokushindo).",
 a4R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for your eyes, but we prepare a time where you can check in with your body's condition that day — including the neck, shoulders, and head area — and rest it with us, unhurried. Examples of common concerns are also collected under <a href='#about'>About Hokushindo</a>.",
-a4R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a>, <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a>, and <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
+a4R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a>, <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a>, and <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
 a5Title:"A Stiff Neck and Heavy Head After Work — in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>Factors after desk work, self-care, and when to see a doctor, for men</span>",
 a5Meta:"October 31, 2026 | Hokushindo (Higashimikuni)",
 a5Intro:"'It doesn't bother me in the morning, but by evening my neck feels tense and my head feels heavy too.' 'By the time I head home from work, even turning my neck feels like an effort.' We hear comments like these about the time after work and desk work from men working around Higashimikuni, Shin-Osaka, and Yodogawa-ku. How a stiff neck and a heavy head feel, and what lies behind them, differs from person to person and cannot be explained by a single cause. This article does not pin down a cause; it organizes generally possible factors, self-care you can try in daily life, and signs that suggest consulting a medical professional. It takes a different angle from our column on <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a>, which centers on the shoulders — here the focus is on the neck itself and on heaviness in the head.",
@@ -2840,7 +2158,7 @@ a5W6:"Tension in the neck or heaviness in the head that continues for weeks and 
 a5P6:"Even if none of the above apply, if concerning symptoms continue, it is important to consult a medical professional or specialist early. Heaviness or pain in the head can sometimes have a physical condition behind it, so not continuing to watch and wait on self-judgment alone is another useful guide.",
 a5R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. Kento Hiraga, a male therapist with 30 years of experience, provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by on your way home. Bookings are accepted through our official LINE account (Hokushindo).",
 a5R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for your neck or head, but we prepare a time where you can check in with your body's condition that day and rest it with us, unhurried. Examples of common concerns are also collected under <a href='#about'>About Hokushindo</a>.",
-a5R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a>, <a href='#/article/me-no-tsukare'>tired eyes</a>, and <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
+a5R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a>, <a href='#/article/me-no-tsukare'>tired eyes</a>, and <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
 a6Title:"Evening Leg Swelling — in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>Possible factors, self-care, and when to see a doctor, for men</span>",
 a6Meta:"November 1, 2026 | Hokushindo (Higashimikuni)",
 a6Intro:"'It doesn't bother me in the morning, but by evening the marks from my socks stay clearly on my legs.' 'By the time I finish work, my legs feel heavy and dull, and my shoes feel tight.' We hear comments like these about legs in the evening from men working around Higashimikuni, Shin-Osaka, and Yodogawa-ku. How leg swelling feels, and what lies behind it, differs from person to person and cannot be explained by a single cause. This article does not pin down a cause; it organizes generally possible factors, self-care you can try in daily life, and signs that suggest consulting a medical professional. If whole-body fatigue is also on your mind, please also see our column on <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a>.",
@@ -2877,7 +2195,7 @@ a6W6:"Changes in how you urinate, or a feeling that your weight has increased gr
 a6P6:"Even if none of the above apply, if concerning symptoms continue, it is important to consult a medical professional or specialist early. Leg swelling can sometimes have a condition of the blood vessels or internal organs behind it, so not continuing to watch and wait on self-judgment alone is another useful guide.",
 a6R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. Kento Hiraga, a male therapist with 30 years of experience, provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by on your way home. Bookings are accepted through our official LINE account (Hokushindo).",
 a6R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for your legs, but we prepare a time where you can check in with your body's condition that day and rest it with us, unhurried. Examples of common concerns are also collected under <a href='#about'>About Hokushindo</a>.",
-a6R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a> and <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
+a6R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a> and <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
 a7Title:"Abdominal Bloating and Constipation — in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>Possible factors, self-care, and when to see a doctor, for men</span>",
 a7Meta:"November 1, 2026 | Hokushindo (Higashimikuni)",
 a7Intro:"'My belly always feels tight after meals.' 'When busy days continue, going several days without a bowel movement has become normal.' We hear comments like these about the stomach area from men working around Higashimikuni, Shin-Osaka, and Yodogawa-ku. How abdominal bloating and constipation feel, and what lies behind them, differs from person to person and cannot be explained by a single cause. This article does not pin down a cause; it organizes generally possible factors, self-care you can try in daily life, and signs that suggest consulting a medical professional. If heaviness around the lower back is also on your mind, please also see our column on <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a>.",
@@ -2914,7 +2232,7 @@ a7W6:"Your bowel pattern changed suddenly and that state has continued for weeks
 a7P6:"Even if none of the above apply, if concerning symptoms continue, it is important to consult a medical professional or specialist early. Abdominal tightness and changes in bowel habits can sometimes have a condition of the digestive organs behind them, so not continuing to watch and wait on self-judgment alone is another useful guide.",
 a7R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. Kento Hiraga, a male therapist with 30 years of experience, provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by on your way home. Bookings are accepted through our official LINE account (Hokushindo).",
 a7R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for your stomach, but we prepare a time where you can check in with your body's condition that day and rest it with us, unhurried. Examples of common concerns are also collected under <a href='#about'>About Hokushindo</a>.",
-a7R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a> and <a href='#/article/ashi-mukumi'>evening leg swelling</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
+a7R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a> and <a href='#/article/ashi-mukumi'>evening leg swelling</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
 a8Title:"Feeling Chilly as the Seasons Change — in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>Possible factors, self-care, and when to see a doctor, for men</span>",
 a8Meta:"November 2, 2026 | Hokushindo (Higashimikuni)",
 a8Intro:"'As mornings and evenings get colder, the tips of my hands and feet start to feel cold.' 'I spend the day in an air-conditioned room, and by the time I head home my whole body feels chilled.' We hear comments like these about the change of seasons from men working around Higashimikuni, Shin-Osaka, and Yodogawa-ku. How chilliness feels, and what lies behind it, differs from person to person and cannot be explained by a single cause. This article does not pin down a cause; it organizes generally possible factors, self-care you can try in daily life, and signs that suggest consulting a medical professional. If heavy, dull legs are also on your mind, please also see our column on <a href='#/article/ashi-mukumi'>evening leg swelling</a>.",
@@ -2951,7 +2269,7 @@ a8W6:"A large change in weight, or a growing number of concerning symptoms besid
 a8P6:"Even if none of the above apply, if concerning symptoms continue, it is important to consult a medical professional or specialist early. A feeling of chilliness can sometimes have a condition of the blood vessels or endocrine system behind it, so not continuing to watch and wait on self-judgment alone is another useful guide.",
 a8R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. Kento Hiraga, a male therapist with 30 years of experience, provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by on your way home. Bookings are accepted through our official LINE account (Hokushindo).",
 a8R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for your chilliness, but we prepare a time where you can check in with your body's condition that day and rest it with us, unhurried. Examples of common concerns are also collected under <a href='#about'>About Hokushindo</a>.",
-a8R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/ashi-mukumi'>evening leg swelling</a> and <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
+a8R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/ashi-mukumi'>evening leg swelling</a> and <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
 a9Title:"Posture and a Rounded Back — in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>Rethinking how you sit and stand, for men</span>",
 a9Meta:"November 2, 2026 | Hokushindo (Higashimikuni)",
 a9Intro:"'When I stand sideways in front of the mirror, my back looks rounded.' 'I saw my reflection in a train window and my neck and shoulders looked pushed forward.' 'Before I know it, my posture has slipped while sitting.' We hear comments like these about posture and a rounded back from men working around Higashimikuni, Shin-Osaka, and Yodogawa-ku. How posture looks, and how much it concerns you, differs from person to person and cannot be explained by a single cause. This article does not pin down a cause; it organizes general ideas about posture, generally possible factors, self-care to try in daily life including rethinking how you sit and stand, and signs that suggest consulting a medical professional. If heaviness around the shoulders is also on your mind, please also see our column on <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a>.",
@@ -2987,7 +2305,7 @@ a9W6:"A feeling that your height has shrunk, or back pain that is gradually gett
 a9P6:"Even if none of the above apply, if a concerning state continues, it is important to consult a medical professional or specialist early. A change in posture can sometimes have a condition of the bones or joints behind it, so not continuing to watch and wait on self-judgment alone is another useful guide.",
 a9R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. Kento Hiraga, a male therapist with 30 years of experience, provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by on your way home. Bookings are accepted through our official LINE account (Hokushindo).",
 a9R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for your posture, but we prepare a time where you can check in with your body's condition that day and rest it with us, unhurried. Examples of common concerns are also collected under <a href='#about'>About Hokushindo</a>.",
-a9R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a> and <a href='#/article/kubi-atama'>a stiff neck and heavy head</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
+a9R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a> and <a href='#/article/kubi-atama'>a stiff neck and heavy head</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
 a10Title:"A Sense of Autonomic Imbalance — in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>Everyday ways to steady your rhythm, and when to see a doctor, for men</span>",
 a10Meta:"November 3, 2026 | Hokushindo (Higashimikuni)",
 a10Intro:"'I keep having days when I wake up and still do not feel refreshed.' 'By evening I suddenly feel drained, and my mind feels unsettled.' 'When the seasons change, my body's rhythm feels off.' We hear comments like these from men working around Higashimikuni, Shin-Osaka, and Yodogawa-ku. This feeling, often described with the words 'autonomic imbalance,' differs in how it feels and what lies behind it from person to person, and cannot be explained by a single cause. This article does not pin down a cause; it organizes general ideas about the autonomic nervous system, generally possible factors, everyday adjustments you can try, and signs that suggest consulting a medical professional. If sleep quality is also on your mind, please also see our column on <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a>.",
@@ -3023,7 +2341,7 @@ a10W6:"Acute symptoms are also present, such as fever or strong pain",
 a10P6:"Even if none of the above apply, if concerning symptoms continue, it is important to consult a medical professional or specialist early. A disrupted body rhythm can sometimes have a condition such as thyroid disease or anemia behind it, so not continuing to watch and wait on self-judgment alone is another useful guide.",
 a10R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. Kento Hiraga, a male therapist with 30 years of experience, provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by on your way home. Bookings are accepted through our official LINE account (Hokushindo).",
 a10R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for the state of your body's rhythm, but we prepare a time where you can check in with your body's condition that day and rest it with us, unhurried. Examples of common concerns are also collected under <a href='#about'>About Hokushindo</a>.",
-a10R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a> and <a href='#/article/hie-kan'>feeling chilly as the seasons change</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
+a10R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/netsuki-yoru'>trouble falling asleep and lingering fatigue</a> and <a href='#/article/hie-kan'>feeling chilly as the seasons change</a>, and the <a href='#faq'>FAQ</a>, may also be helpful.",
 a11Title:"Back Stiffness After Desk Work — in Higashimikuni<br><span style='font-size:.62em;font-weight:500'>Possible factors, self-care, and when to see a doctor, for men</span>",
 a11Meta:"November 3, 2026 | Hokushindo (Higashimikuni)",
 a11Intro:"'It does not bother me in the morning, but by evening the area between my shoulder blades feels heavy and tense.' 'When I stand up from my chair, my whole back feels stiff and hard to stretch out.' We hear comments like these from men working around Higashimikuni, Shin-Osaka, and Yodogawa-ku, about how they feel after desk work. How back stiffness feels and what lies behind it differ from person to person, and it cannot be explained by a single cause. This article does not pin down a cause; it organizes general ideas about back stiffness, generally possible factors, self-care you can try in daily life, and signs that suggest consulting a medical professional. Setting aside our columns centered on the shoulders, <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a>, and on the lower back, <a href='#/article/hirou-koshi'>fatigue and a heavy lower back</a>, this one focuses on the back itself — especially stiffness from around the shoulder blades to the middle of the back.",
@@ -3059,7 +2377,7 @@ a11W6:"Days continue when pain bothers you even lying down at night and makes sl
 a11P6:"Even if none of the above apply, if concerning symptoms continue, it is important to consult a medical professional or specialist early. Behind symptoms of the back there can sometimes be a condition of the bones or joints, or of the internal organs, so not continuing to watch and wait on self-judgment alone is another useful guide.",
 a11R1:"Hokushindo is a men-only seitai clinic in Higashimikuni 2-chome, Yodogawa-ku, Osaka. Kento Hiraga, a male therapist with 30 years of experience, provides relaxation and seitai bodywork. Open Mon–Sat 17:00–22:00 and Sun 10:00–22:00, fully by appointment, at hours that are easy to stop by on your way home. Bookings are accepted through our official LINE account (Hokushindo).",
 a11R2:"Prices are 60 min: ¥2,000 first visit / ¥6,000 from the second visit; 90 min: ¥3,000 first visit / ¥9,000 from the second visit; cash only. We cannot promise what a session will do for the state of your back, but we prepare a time where you can check in with your body's condition that day — including your back and the area around the shoulder blades — and rest it with us, unhurried. Examples of common concerns are also collected under <a href='#about'>About Hokushindo</a>.",
-a11R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='#booking'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a> and <a href='#/article/shisei-nekoze'>posture and a rounded back</a>, and the <a href='#faq'>FAQ</a>, may also be helpful."
+a11R3:"See <a href='#menu'>Menu &amp; Prices</a> for the courses, <a href='#profile'>About the Therapist</a> for who treats you, <a href='#flow'>Your Visit</a> and the <a href='assets/first.html#booking-form'>LINE booking draft builder</a> for how booking works, and <a href='#access'>Access</a> for the location. The columns on <a href='#/article/katakori-deskwork'>stiff shoulders from desk work</a> and <a href='#/article/shisei-nekoze'>posture and a rounded back</a>, and the <a href='#faq'>FAQ</a>, may also be helpful."
 };
 var EN_PH={
 phName:"e.g. YAMADA / T.Y",
@@ -3147,23 +2465,6 @@ fabPanel.querySelectorAll('a').forEach(function(a){
 a.addEventListener('click',function(){ closeFab(false); });
 });
 window.addEventListener('hashchange',function(){ closeFab(false); });
-})();
-</script>
-<script>
-(function(){
-var grid=document.getElementById('shelf-grid');
-if(!grid) return;
-var btns=document.querySelectorAll('.shelf-filter');
-var cards=grid.querySelectorAll('.pick');
-btns.forEach(function(btn){
-btn.addEventListener('click',function(){
-var f=btn.getAttribute('data-filter');
-btns.forEach(function(b){ b.setAttribute('aria-pressed', b===btn?'true':'false'); });
-cards.forEach(function(card){
-card.hidden = !(f==='all' || card.getAttribute('data-kind')===f);
-});
-});
-});
 })();
 </script>
 </body>
