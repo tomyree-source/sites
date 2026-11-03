@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>早くいってしまう・遅すぎる悩みを、一人で抱え込まないために｜月あかり相談室</title>
+<meta name="description" content="射精が早い・遅いと感じるときの悩みについて、「普通」の幅が人それぞれであること、焦りや緊張が影響すること、パートナーとの感じ方の共有、変化が続く場合の泌尿器科など医療機関への相談の目安を、具体的な方法の解説ではなく、気持ちの整理と一般的な情報提供の範囲でまとめました。">
+<style>
+  :root{
+    --bg:#f4f2ec;
+    --bg-soft:#eceadf;
+    --surface:#fbfaf6;
+    --surface-2:#f1efe6;
+    --ink:#2c2f3a;
+    --ink-soft:#565b6b;
+    --line:#d8d4c6;
+    --night:#232a3d;
+    --night-2:#2e3752;
+    --moon:#c9a24b;
+    --moon-soft:#efe3c2;
+    --accent:#7a6a9e;
+    --accent-soft:#e7e1f2;
+    --ok:#4c7a5d;
+    --radius:14px;
+    --shadow:0 10px 30px rgba(35,42,61,.10);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#171b28;
+      --bg-soft:#1d2233;
+      --surface:#212638;
+      --surface-2:#272e45;
+      --ink:#ece9df;
+      --ink-soft:#b9bdc9;
+      --line:#3a415a;
+      --night:#12151f;
+      --night-2:#1a1f31;
+      --moon:#d9b45c;
+      --moon-soft:#3a3350;
+      --accent:#b3a3d9;
+      --accent-soft:#2d2a44;
+      --ok:#8fc3a3;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Zen Kaku Gothic New",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;
+    line-height:1.85;font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:"Shippori Mincho B1","Hiragino Mincho ProN",serif;font-weight:600;line-height:1.5}
+  a{color:var(--accent)}
+  img,svg{max-width:100%}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Age gate：月明かりの扉 ---------- */
+  .gate{
+    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+    padding:28px 20px;overflow-y:auto;overflow-x:hidden;color:#f4efe3;
+    background:radial-gradient(90% 70% at 82% -10%, #39436b 0%, rgba(57,67,107,0) 55%),
+               linear-gradient(168deg, #262f4f 0%, #20263f 48%, #171c2e 100%);
+  }
+  .gate[hidden]{display:none}
+  .gate-moon-big{position:absolute;right:4%;top:-30px;width:min(300px,58vw);height:auto;z-index:0;pointer-events:none}
+  .gate-inner{position:relative;z-index:1;max-width:540px;width:100%;margin:auto;text-align:center;padding:24px 0}
+  .gate-eyebrow{letter-spacing:.3em;font-size:.86rem;font-weight:700;color:#d8a95c;margin:0 0 14px;font-family:"Shippori Mincho B1",serif}
+  .gate-inner h1{font-size:clamp(1.5rem,5.4vw,2rem);margin:0 0 .55em;letter-spacing:.04em;color:#f7f3e6;line-height:1.55}
+  .gate-sub{font-size:1rem;color:#ddd8c6;margin:0 auto 1.15em;max-width:30em}
+  .gate-detail{
+    font-size:.86rem;color:#b9bccd;text-align:left;line-height:1.9;
+    border-top:1px solid rgba(244,239,227,.22);border-bottom:1px solid rgba(244,239,227,.22);
+    padding:14px 4px;margin:0 0 22px;
+  }
+  .gate-detail strong{color:#f4efe3}
+  .gate-q{font-size:.95rem;color:#efe9d8;margin:0 0 12px;font-weight:700;letter-spacing:.04em}
+  .gate-btns{display:grid;gap:12px}
+  .gate-btns .btn-gate-yes{background:#d8a95c;color:#2a2110;min-height:58px;font-size:1.05rem;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+  .gate-btns .btn-gate-yes:hover{background:#e3ba6d}
+  .gate-btns .btn-gate-no{background:transparent;border-color:rgba(244,239,227,.55);color:#f4efe3;min-height:54px}
+  .gate-btns .btn-gate-no:hover{background:rgba(244,239,227,.08)}
+  .gate-brand{margin:28px 0 0;letter-spacing:.3em;font-size:.72rem;color:rgba(244,239,227,.6)}
+  @media (max-width:600px){.gate-moon-big{right:-44px;top:-48px}}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    border-radius:999px;padding:13px 26px;font-size:1rem;font-weight:700;cursor:pointer;
+    border:1px solid transparent;text-decoration:none;font-family:inherit;line-height:1.4;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:active{transform:scale(.98)}
+  .btn-moon{background:var(--moon);color:#26220f}
+  .btn-moon:hover{background:#d8b45e}
+  .btn-line{background:#06c755;color:#fff;box-shadow:0 8px 20px rgba(6,199,85,.28)}
+  .btn-line:hover{background:#05b34c}
+  .btn-line-hero{min-height:54px;padding:13px 28px}
+  .step-line-btn{margin-top:12px;min-height:46px;padding:10px 22px;font-size:.95rem}
+  .hero-status .btn-line-status{
+    background:#06c755;color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;
+    padding:9px 18px;border-radius:999px;white-space:nowrap;flex:none;
+  }
+  .hero-status .btn-line-status:hover{background:#05b34c}
+  .hero-status .worksheet-link{
+    flex:none;background:none;border:none;padding:0;border-radius:0;box-shadow:none;
+    color:#e9cf87;font-weight:700;font-size:.88rem;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;
+  }
+  .hero-status .worksheet-link:hover{background:none;text-decoration-thickness:2px}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{background:var(--surface-2)}
+  .btn[disabled]{opacity:.75;cursor:not-allowed}
+  .gate-exit{font-size:.93rem;color:#ddd8c6;text-align:left;line-height:1.9}
+  .gate-exit strong{color:#f7f3e6}
+  .gate-exit[hidden]{display:none}
+  body.locked{overflow:hidden}
+  #siteRoot[hidden]{display:none}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  }
+  .site-inner{display:flex;align-items:center;gap:14px;padding:7px 0;flex-wrap:nowrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
+  .brand svg{width:30px;height:30px;flex:none}
+  .brand-name{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:1.12rem;letter-spacing:.05em;white-space:nowrap}
+  .brand-sub{font-size:.68rem;color:var(--ink-soft);letter-spacing:.08em;display:block;line-height:1.3;white-space:nowrap}
+  .lang-btn{
+    margin-left:auto;flex:none;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;
+    padding:7px 14px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;
+  }
+  @media (max-width:640px){
+    .brand-sub{display:none}
+    .lang-btn{padding:6px 11px;font-size:.78rem}
+  }
+
+  /* ---------- フローティングメニュー ---------- */
+  .fab-overlay{
+    position:fixed;inset:0;z-index:80;background:rgba(23,27,43,.42);
+    opacity:0;transition:opacity .18s ease;
+  }
+  .fab-overlay.open{opacity:1}
+  .fab-btn{
+    position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:95;
+    display:inline-flex;align-items:center;gap:8px;
+    min-height:48px;padding:10px 18px 10px 15px;border-radius:999px;
+    background:var(--moon);color:#26220f;border:1px solid rgba(38,34,15,.18);
+    font-size:.95rem;font-weight:700;letter-spacing:.06em;line-height:1;
+    font-family:inherit;cursor:pointer;
+    box-shadow:0 8px 22px rgba(35,42,61,.32);
+  }
+  .fab-btn:hover{filter:brightness(1.06)}
+  .fab-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .fab-btn svg{width:20px;height:20px;flex:none}
+  /* スマホでは丸型（アイコンのみ）に縮小し、本文の重要要素に被らないようにする */
+  @media (max-width:640px){
+    .fab-btn{
+      width:52px;height:52px;min-height:52px;padding:0;
+      justify-content:center;border-radius:50%;
+    }
+    .fab-btn .fab-btn-label{display:none}
+    .fab-btn svg{width:22px;height:22px}
+  }
+  .fab-panel{
+    position:fixed;right:16px;bottom:calc(78px + env(safe-area-inset-bottom));z-index:90;
+    width:min(344px,calc(100vw - 32px));
+    max-height:min(68vh,560px);overflow-y:auto;overscroll-behavior:contain;
+    background:var(--surface);border:1px solid var(--line);border-radius:16px;
+    box-shadow:var(--shadow);
+    opacity:0;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease;
+  }
+  .fab-panel.open{opacity:1;transform:translateY(0)}
+  .fab-panel-head{
+    display:flex;align-items:center;gap:10px;
+    padding:12px 10px 10px 18px;border-bottom:1px solid var(--line);
+    position:sticky;top:0;background:var(--surface);z-index:1;
+  }
+  .fab-panel-title{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:1rem;letter-spacing:.08em}
+  .fab-close{
+    margin-left:auto;width:38px;height:38px;flex:none;
+    display:inline-flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);border-radius:50%;
+    background:var(--surface-2);color:var(--ink);padding:0;cursor:pointer;font-family:inherit;
+  }
+  .fab-close:hover{background:var(--bg-soft)}
+  .fab-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .fab-close svg{width:17px;height:17px}
+  nav.main ul{list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+  nav.main a{
+    display:block;padding:10px 12px;border-radius:8px;
+    color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:500;line-height:1.45;
+  }
+  nav.main a:hover{background:var(--surface-2)}
+  nav.main a:focus-visible{outline:2px solid var(--accent);outline-offset:-1px}
+  @media (prefers-reduced-motion: reduce){
+    .fab-overlay,.fab-panel{transition:none}
+  }
+  section.block{scroll-margin-top:60px}
+  body footer.site{padding-bottom:100px}
+
+  /* ---------- Hero：窓辺の相談室（分割型） ---------- */
+  .hero{
+    --hero-bg:#f4efe3;--hero-panel:#fdfbf5;--hero-ink:#2a2e3f;--hero-soft:#5c5a66;
+    --hero-accent:#8a6f8e;--hero-cta-bg:#20263f;--hero-cta-ink:#f4efe3;
+    background:var(--hero-bg);color:var(--hero-ink);position:relative;overflow:hidden;
+  }
+  @media (prefers-color-scheme: dark){
+    .hero{--hero-bg:#20263f;--hero-panel:#272e45;--hero-ink:#f4efe3;--hero-soft:#c9c5d6;--hero-accent:#cdb9d9;--hero-cta-bg:#d8a95c;--hero-cta-ink:#2a2110}
+  }
+  .hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 340px;align-items:stretch}
+  .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:58px 48px 54px 24px}
+  .hero-eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;color:var(--hero-accent);margin:0 0 16px;display:flex;align-items:center;gap:10px}
+  .hero-eyebrow::before{content:"";width:26px;height:1px;background:#d8a95c;flex:none}
+  .hero h1{font-size:clamp(1.75rem,3.6vw,2.55rem);margin:0 0 .45em;letter-spacing:.04em;line-height:1.5}
+  .hero-sub{font-size:1rem;color:var(--hero-soft);margin:0 0 1.6em;max-width:32em;line-height:1.9}
+  .hero-cta{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .btn-hero-main{background:var(--hero-cta-bg);color:var(--hero-cta-ink);min-height:54px;padding:13px 30px;box-shadow:0 10px 24px rgba(32,38,63,.22)}
+  .btn-hero-main:hover{opacity:.92}
+  .hero-sub-link{color:var(--hero-accent);font-weight:700;font-size:.95rem;text-decoration:underline;text-underline-offset:4px}
+  .hero-visual{margin:0;position:relative;min-height:0;aspect-ratio:1/2}
+  .hero-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
+  .hero-visual figcaption{
+    position:absolute;left:14px;bottom:14px;z-index:2;background:rgba(23,27,43,.72);color:#f4efe3;
+    font-size:.76rem;letter-spacing:.06em;padding:5px 12px;border-radius:999px;
+  }
+  .hero-status{background:#20263f;color:#e9e4d2}
+  .hero-status-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:13px 24px;flex-wrap:wrap}
+  .status-dot{flex:none;width:9px;height:9px;border-radius:50%;background:#d8a95c;box-shadow:0 0 0 4px rgba(216,169,92,.22)}
+  .hero-status p{margin:0;font-size:.88rem;flex:1;min-width:240px}
+  .hero-status a{color:#e9cf87;font-weight:700;font-size:.88rem;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+  @media (max-width:820px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-visual{min-height:0;height:auto;width:min(76vw,340px);margin:18px auto 0;order:-1}
+    .hero-visual img{object-position:center}
+    .hero-visual figcaption{bottom:auto;top:10px;left:10px}
+    .hero-copy{background:var(--hero-panel);margin:14px 16px 22px;border-radius:16px;padding:26px 22px 28px;box-shadow:0 14px 34px rgba(32,38,63,.16);position:relative;z-index:2}
+    .hero-eyebrow{font-size:.68rem;letter-spacing:.1em}
+    .hero h1{font-size:1.58rem}
+    .hero-sub{font-size:.93rem;margin-bottom:1.3em}
+    .hero-status-in{padding:11px 20px}
+    .hero-status p{min-width:0}
+  }
+  .akari-row{display:flex;gap:14px;align-items:flex-start;margin-top:36px;max-width:640px}
+  .avatar{
+    flex:none;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:1.05rem;
+  }
+  .avatar-akari{background:var(--moon-soft);color:#6d5410;border:2px solid var(--moon)}
+  @media (prefers-color-scheme: dark){.avatar-akari{color:#e9cf87}}
+  .avatar-shizuku{background:var(--accent-soft);color:var(--accent);border:2px solid var(--accent);width:44px;height:44px;font-size:.9rem}
+  .speech{
+    background:var(--surface);color:var(--ink);border-radius:14px;border-top-left-radius:4px;
+    padding:14px 18px;box-shadow:var(--shadow);font-size:.94rem;flex:1;
+  }
+  .speech .who{font-weight:700;font-size:.8rem;color:var(--accent);display:block;margin-bottom:2px}
+  .speech p{margin:.2em 0}
+  .speech-row{display:flex;gap:12px;align-items:flex-start}
+  .speech-row + .speech-row{margin-top:14px}
+  .speech-row.reverse{flex-direction:row-reverse}
+  .speech-row.reverse .speech{border-radius:14px;border-top-right-radius:4px}
+
+  /* ---------- Sections ---------- */
+  section.block{padding:64px 0}
+  section.block.alt{background:var(--bg-soft)}
+  .sec-head{margin-bottom:28px;max-width:720px}
+  .sec-head h2{font-size:clamp(1.45rem,3.4vw,1.9rem);margin:0 0 .3em}
+  .sec-head p{color:var(--ink-soft);margin:0}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;box-shadow:var(--shadow);
+  }
+  .grid{display:grid;gap:18px}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:900px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+  .card h3{margin:.1em 0 .45em;font-size:1.12rem}
+  .card p{margin:.4em 0;color:var(--ink-soft);font-size:.95rem}
+  .card p strong{color:var(--ink)}
+  .icon-badge{
+    width:46px;height:46px;border-radius:12px;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;margin-bottom:12px;
+  }
+  .icon-badge svg{width:24px;height:24px;stroke:var(--accent)}
+  .tag{
+    display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.05em;
+    background:var(--moon-soft);color:#6d5410;border-radius:999px;padding:3px 10px;margin-bottom:8px;
+  }
+  @media (prefers-color-scheme: dark){.tag{color:#e9cf87}}
+  .tag-cat{background:var(--accent-soft);color:var(--accent)}
+
+  /* steps */
+  .steps{counter-reset:step;display:grid;gap:14px}
+  .step{
+    display:flex;gap:16px;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);
+  }
+  .step-num{
+    flex:none;width:38px;height:38px;border-radius:50%;background:var(--night-2);color:#efe9d2;
+    display:flex;align-items:center;justify-content:center;font-family:"Shippori Mincho B1",serif;font-weight:700;
+  }
+  .step h3{margin:.15em 0 .3em;font-size:1.05rem}
+  .step p{margin:0;color:var(--ink-soft);font-size:.94rem}
+  .rule-list{margin:.4em 0;padding-left:1.2em;color:var(--ink-soft);font-size:.95rem}
+  .rule-list li{margin:.3em 0}
+  .notice{
+    border:1px solid var(--moon);background:color-mix(in srgb, var(--moon-soft) 45%, var(--surface));
+    border-radius:var(--radius);padding:18px 22px;font-size:.94rem;
+  }
+  /* paid summary（案A：相談の流れ直後の有料相談要約カード） */
+  section.block.paid-summary{padding:8px 0 64px}
+  .paid-summary-card{
+    background:color-mix(in srgb, var(--moon-soft) 38%, var(--surface));
+    border:1px solid var(--moon);border-radius:var(--radius);
+    padding:28px;box-shadow:var(--shadow);
+  }
+  .paid-summary-card h2{font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0 .4em}
+  .paid-summary-card p{margin:.3em 0;color:var(--ink-soft);font-size:.97rem;max-width:46em}
+  .paid-summary-card p strong{color:var(--ink)}
+  .paid-summary-actions{display:flex;gap:12px 22px;flex-wrap:wrap;align-items:center;margin-top:18px}
+  .paid-summary-actions .detail-link{font-weight:700;text-decoration:underline;text-underline-offset:4px}
+  .notice strong{color:var(--ink)}
+  .urgent{
+    border:1px solid #b3563f;background:color-mix(in srgb, #b3563f 8%, var(--surface));
+    border-radius:var(--radius);padding:20px 24px;
+  }
+  .urgent h3{color:#a34a35;margin-top:0}
+  @media (prefers-color-scheme: dark){.urgent h3{color:#e0957f}}
+  .urgent ul{margin:.4em 0;padding-left:1.2em;font-size:.95rem;color:var(--ink-soft)}
+  .urgent a{font-weight:700}
+
+  /* articles */
+  article.reading{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  article.reading h3{margin:.1em 0 .4em;font-size:1.13rem}
+  article.reading .meta{font-size:.78rem;color:var(--ink-soft);margin-bottom:6px}
+  article.reading .lead{color:var(--ink-soft);font-size:.94rem;margin:.2em 0 .8em}
+  article.reading details{margin-top:auto}
+  article.reading summary{
+    cursor:pointer;font-weight:700;color:var(--accent);font-size:.92rem;list-style:none;
+    padding:8px 0 2px;
+  }
+  article.reading summary::-webkit-details-marker{display:none}
+  article.reading summary::after{content:" +";font-weight:400}
+  article.reading details[open ] summary::after{content:" −"}
+  article.reading .body p{font-size:.93rem;color:var(--ink-soft)}
+  article.reading .body p strong{color:var(--ink)}
+  .en-note{
+    display:none;font-size:.85rem;background:var(--surface-2);border-radius:8px;padding:10px 14px;color:var(--ink-soft);
+  }
+  html[lang="en"] .en-note{display:block}
+  html[lang="en"] .ja-only-note{display:none}
+
+  /* new picks（新着の本・おすすめの品々） */
+  section.block.picks{background:color-mix(in srgb, var(--moon-soft) 32%, var(--bg))}
+  .pick-card{display:flex;flex-direction:column}
+  .pick-visual{
+    height:148px;border-radius:10px;margin-bottom:16px;flex:none;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    padding:16px;text-align:center;
+  }
+  .pick-visual .pv-kind{font-size:.68rem;font-weight:700;letter-spacing:.22em;opacity:.75}
+  .pick-visual .pv-title{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:1.02rem;line-height:1.55}
+  .pick-visual svg{width:40px;height:40px}
+  .pv-night{background:var(--night-2);color:#efe3c2}
+  .pv-accent{background:var(--accent-soft);color:var(--accent)}
+  @media (prefers-color-scheme: dark){.pv-accent{color:#d9cdf2}}
+  .pv-moon{background:var(--moon-soft);color:#6d5410}
+  @media (prefers-color-scheme: dark){.pv-moon{color:#e9cf87}}
+  .pv-line{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line)}
+  .pick-card h3{font-size:1.05rem}
+  .pick-meta{font-size:.8rem;color:var(--ink-soft);margin:0 0 .4em}
+  .pick-card .pick-desc{flex:1}
+  .pick-foot{margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .pick-price{font-size:.8rem;color:var(--ink-soft)}
+  .btn-pick{
+    display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:9px 18px;
+    font-size:.88rem;font-weight:700;text-decoration:none;line-height:1.4;
+    background:var(--night-2);color:#efe9d2;border:1px solid transparent;
+  }
+  .btn-pick:hover{opacity:.9}
+  @media (prefers-color-scheme: dark){.btn-pick{background:var(--moon);color:#26220f}}
+  .pr-note{
+    font-size:.83rem;color:var(--ink-soft);border:1px dashed var(--moon);border-radius:10px;
+    padding:10px 14px;margin:0 0 22px;background:var(--surface);
+  }
+  .pr-note strong{color:var(--ink)}
+  .pick-note{font-size:.82rem;color:var(--ink-soft);margin:16px 0 0}
+
+  /* worksheet */
+  .sheet label{display:block;font-weight:700;font-size:.92rem;margin:18px 0 6px}
+  .sheet label:first-of-type{margin-top:4px}
+  .sheet .hint{font-weight:400;font-size:.82rem;color:var(--ink-soft);display:block}
+  .sheet textarea,.sheet select{
+    width:100%;border:1px solid var(--line);border-radius:10px;background:var(--bg);
+    color:var(--ink);padding:12px 14px;font:inherit;font-size:.95rem;line-height:1.7;
+  }
+  .sheet textarea:focus,.sheet select:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .sheet-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .copy-msg{font-size:.88rem;color:var(--ok);font-weight:700;align-self:center}
+  .privacy-mini{font-size:.85rem;color:var(--ink-soft);margin-top:14px}
+
+  /* operator */
+  .qual-list{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none;margin:12px 0}
+  .qual-list li{border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:5px 13px;font-size:.85rem;font-weight:500}
+  .big-num{font-family:"Shippori Mincho B1",serif;font-size:2rem;color:var(--moon);line-height:1}
+
+  /* official SNS */
+  .sns-card{
+    margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 26px;box-shadow:var(--shadow);
+    display:flex;gap:16px 24px;align-items:center;flex-wrap:wrap;
+  }
+  .sns-card-text{flex:1;min-width:min(280px,100%)}
+  .sns-card h3{margin:.1em 0 .35em;font-size:1.08rem}
+  .sns-card p{margin:0;color:var(--ink-soft);font-size:.93rem}
+  .sns-links{display:flex;gap:10px;flex-wrap:wrap}
+  .sns-btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    border:1px solid var(--line);background:var(--surface-2);color:var(--ink);
+    border-radius:12px;padding:9px 16px 9px 13px;font-weight:700;font-size:.93rem;line-height:1.3;
+  }
+  .sns-btn:hover{background:var(--accent-soft)}
+  .sns-btn svg{width:21px;height:21px;flex:none}
+  .sns-btn .sns-name{display:block}
+  .sns-btn .sns-handle{display:block;font-size:.73rem;font-weight:500;color:var(--ink-soft)}
+  .f-sns{margin-top:12px;border-top:1px solid rgba(207,204,192,.25);padding-top:14px}
+  .f-sns-links{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 4px}
+  footer.site .f-sns-btn{
+    display:inline-flex;align-items:center;gap:8px;color:#f0eddf;
+    border:1px solid rgba(240,237,223,.4);border-radius:999px;padding:7px 15px;
+    text-decoration:none;font-size:.85rem;font-weight:700;line-height:1.35;
+  }
+  footer.site .f-sns-btn:hover{background:rgba(240,237,223,.1)}
+  .f-sns-btn svg{width:17px;height:17px;flex:none}
+
+  footer.site{
+    background:var(--night);color:#cfccc0;padding:48px 0 36px;margin-top:0;
+  }
+  @media (prefers-color-scheme: dark){footer.site{background:#0e1119}}
+  footer.site .wrap{display:grid;gap:10px}
+  footer.site .f-brand{font-family:"Shippori Mincho B1",serif;font-size:1.15rem;color:#f0eddf;letter-spacing:.05em}
+  footer.site p{margin:.2em 0;font-size:.86rem}
+  footer.site a{color:#d9c98a}
+  .small{font-size:.82rem;color:var(--ink-soft)}
+  .divider{border:none;border-top:1px solid var(--line);margin:8px 0}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .btn{transition:none}
+  }
+
+.article-page{max-width:760px;margin:0 auto;padding:24px 16px 48px}
+.page-head{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(120,120,160,.25)}
+.page-head a{text-decoration:none}
+.crumb{font-size:.85em;opacity:.75;margin:16px 0 8px}
+.cta-box{margin-top:36px;padding:20px;border:1px solid rgba(120,120,160,.35);border-radius:12px}
+.cta-box a.btn{display:inline-block;margin-top:8px}
+.back-link{margin-top:24px}
+</style>
+</head>
+<body>
+<header class="page-head">
+  <a href="../index.html"><strong>月あかり相談室</strong></a>
+  <a href="../reading.html">読み物一覧</a>
+</header>
+<main class="article-page">
+  <p class="crumb">読み物 ＞ 早くいってしまう・遅すぎる悩みを、一人で抱え込まないために</p>
+  <p class="en-note">この記事は、成人男女向けの匿名相談室「月あかり相談室」の読み物です。診断・治療を行うものではなく、気持ちの整理と一般的な情報提供を目的としています。</p>
+<article class="reading" data-description="射精が早い・遅いと感じるときの悩みについて、「普通」の幅が人それぞれであること、焦りや緊張が影響すること、パートナーとの感じ方の共有、変化が続く場合の泌尿器科など医療機関への相談の目安を、具体的な方法の解説ではなく、気持ちの整理と一般的な情報提供の範囲でまとめました。">
+        <div class="meta"><span class="tag tag-cat">男性の悩み</span> 気持ちの整理</div>
+        <h3>早くいってしまう・遅すぎる悩みを、一人で抱え込まないために</h3>
+        <p class="lead">「早すぎるのでは」「逆に、なかなかいけなくて疲れてしまう」——射精のタイミングの悩みは、相手への申し訳なさと結びつきやすく、一人で抱え込みがちなテーマです。ただ、時間の「普通」は人によって幅があり、感じ方もパートナー同士で共有してみないと分からないことが多くあります。この記事では、焦らずに考えるための視点を整理します。</p>
+        <p class="en-note"><strong>Summary (EN):</strong> Worries about finishing too quickly — or taking too long — are common and often carried alone, mixed with a feeling of letting a partner down. This article notes that there is a wide range of "normal," that tension and pressure can influence timing, and that a partner's actual feelings may differ from what you imagine. It suggests sharing perceptions gently and considering a urologist if the pattern persists and troubles you.</p>
+        
+          
+          <div class="body">
+            <p><strong>1. 「普通」の幅は、思っているより広いものです。</strong>射精までの時間には個人差が大きく、「何分が正常」という一つの基準があるわけではありません。メディアや噂話の中で語られるイメージと、実際の多様さとの間には、ずれがあることが少なくありません。自分の状態を、曖昧な「普通」と比べ続けることは、不安を育てやすい考え方です。まずは、比べる相手を「理想のイメージ」ではなく、「今の自分とパートナーが心地よいかどうか」に置き換えてみてください。</p>
+            <p><strong>2. 緊張と焦りが、さらに難しくすることがあります。</strong>「今日こそは長く」「また早かったらどうしよう」という気持ちが強いと、その緊張自体がからだの反応に影響し、思うようにいかないことがあります。これは意志の弱さではなく、気持ちとからだの反応がつながっているために起こることです。また、疲労や睡眠不足、飲酒といった体調面の影響を受けることもあります。一度の結果で評価を決めず、「今日は緊張していたかもしれない」と、状態の問題として捉え直す視点を持ってみてください。</p>
+            <p><strong>3. パートナーの感じ方は、聞いてみないと分かりません。</strong>「相手を満足させられていないはず」と思い込んでいても、実際にパートナーがどう感じているかは、別のことである場合があります。謝り続ける形ではなく、「自分はこういうことが気になっている」と、自分の気持ちとして短く共有し、相手の感じ方も聞いてみる——そのやり取り自体が、二人の安心につながることがあります。時間をどう感じるかは、二人で確かめる課題であって、一人が背負う評価ではありません。</p>
+            <p><strong>4. 変化が続くときは、医療機関という選択肢もあります。</strong>以前と比べて明らかな変化が続く、痛みなど別の症状を伴う、悩みが強くて避けることが増えている——こうした場合は、泌尿器科など医療機関への相談を検討してください。射精に関する悩みは、医療の現場でも珍しい相談ではなく、からだ側の要因がないかを確認する意味もあります。この相談室では診断や治療は行いませんが、受診への迷いや、パートナーへの伝え方についての気持ちの整理はお聞きできます。</p>
+            <p><strong>5. 一人で抱え込まないために。</strong>タイミングの悩みは、恥ずかしさから誰にも言えず、検索だけで結論を探し続けてしまうことがあります。ただ、情報の中には根拠の薄いものや、不安を強める表現も混ざっています。「必ず改善する」といった断定する表現には注意し、確かな情報と、自分の気持ちを聞いてもらえる場所とを、両方持っておくことが大切です。カテゴリ選びで迷う場合は、<a href="../reading.html#categories">悩みのカテゴリ</a>も目安にしてください。</p>
+            <p><strong>6. 3つの視点から眺めてみる。</strong>同じ悩みも、眺める角度を変えると見え方が変わります。<strong>心理学の視点では</strong>、タイミングの悩みは「今度こそ」というプレッシャーや、相手の反応を読み取ろうとする緊張と深く関わると捉えられます。結果を意識するほど、からだは身構えてしまう——その循環を知ることが、まず助けになります。<strong>医学の視点では</strong>、射精は神経の反射やホルモンの働きと関係する反応とされ、感覚の過敏さや炎症など、からだ側の要因が関係することもあるため、急な変化や長く続く悩みは泌尿器科で相談する目安になると考えられています。<strong>東洋医学の視点では</strong>、精神活動を司るとされる「心（しん）」が緊張で乱れることや、腎が蓄える「精」を保つ働きの弱まりとして捉える伝統的な見方があります。どの視点も、効能を約束するものではなく、自分の状態を眺めるための角度の一つです。</p>
+            <p><strong>相談の送り方。</strong>この記事を読んで、タイミングの悩みやパートナーへの申し訳なさについて言葉にしてみたいと思われた方は、LINE公式アカウント（<strong>@942xdxma</strong>）を友だち追加して、そのままメッセージを送ってください（<a href="https://lin.ee/XgPDIO9" target="_blank" rel="noopener">https://lin.ee/XgPDIO9</a>）。匿名で送れ、返信は個別に、3日以内を目安に行います。なお、有料の個別相談は<strong>現在受付中</strong>です。お申し込みはLINE公式アカウント（<strong>@942xdxma</strong>）からお願いします。料金や進め方の詳しい内容は、<a href="../paid.html">「じっくり個別相談（有料）について」</a>をご覧ください。</p>
+            <p><strong>あかりから一言。</strong>時間の長さだけで、あなたの価値や二人の関係が決まるわけではありません。申し訳なさの奥にある「相手を大切に思う気持ち」も含めて、ここでは否定せずにうかがいます。まずは、抱え込んでいる言葉を置いていってください。</p>
+          </div>
+        
+      </article>
+  <div class="cta-box">
+    <p><strong>読み終えて、誰かに話したくなったら</strong></p>
+    <p>最初のご相談はLINE公式アカウント（@942xdxma）で受け付けています。じっくり言葉にしたい方へ：有料の個別相談（文章・1テーマ・往復5回まで）も受付中です。開始記念1,000円（先着10名）／通常3,000円。</p>
+    <a class="btn" href="https://lin.ee/XgPDIO9">LINE公式アカウントはこちら</a>
+    <p><a href="../paid.html">じっくり個別相談（有料）について →</a></p>
+  </div>
+  <p class="back-link"><a href="../reading.html">← 読み物一覧へ戻る</a></p>
+</main>
+</body>
+</html>
