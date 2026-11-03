@@ -101,7 +101,11 @@
     padding:9px 18px;border-radius:999px;white-space:nowrap;flex:none;
   }
   .hero-status .btn-line-status:hover{background:#05b34c}
-  .hero-status .worksheet-link{flex:none}
+  .hero-status .worksheet-link{
+    flex:none;background:none;border:none;padding:0;border-radius:0;box-shadow:none;
+    color:#e9cf87;font-weight:700;font-size:.88rem;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;
+  }
+  .hero-status .worksheet-link:hover{background:none;text-decoration-thickness:2px}
   .btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
   .btn-ghost:hover{background:var(--surface-2)}
   .btn[disabled]{opacity:.75;cursor:not-allowed}
@@ -305,6 +309,18 @@
     border:1px solid var(--moon);background:color-mix(in srgb, var(--moon-soft) 45%, var(--surface));
     border-radius:var(--radius);padding:18px 22px;font-size:.94rem;
   }
+  /* paid summary（案A：相談の流れ直後の有料相談要約カード） */
+  section.block.paid-summary{padding:8px 0 64px}
+  .paid-summary-card{
+    background:color-mix(in srgb, var(--moon-soft) 38%, var(--surface));
+    border:1px solid var(--moon);border-radius:var(--radius);
+    padding:28px;box-shadow:var(--shadow);
+  }
+  .paid-summary-card h2{font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0 .4em}
+  .paid-summary-card p{margin:.3em 0;color:var(--ink-soft);font-size:.97rem;max-width:46em}
+  .paid-summary-card p strong{color:var(--ink)}
+  .paid-summary-actions{display:flex;gap:12px 22px;flex-wrap:wrap;align-items:center;margin-top:18px}
+  .paid-summary-actions .detail-link{font-weight:700;text-decoration:underline;text-underline-offset:4px}
   .notice strong{color:var(--ink)}
   .urgent{
     border:1px solid #b3563f;background:color-mix(in srgb, #b3563f 8%, var(--surface));
@@ -471,7 +487,7 @@
       </article>
   <div class="cta-box">
     <p><strong>読み終えて、誰かに話したくなったら</strong></p>
-    <p>最初のご相談はLINE公式アカウント（@942xdxma）で受け付けています。じっくり言葉にしたい方には、有料の個別相談（文章・1テーマ）もあります。</p>
+    <p>最初のご相談はLINE公式アカウント（@942xdxma）で受け付けています。じっくり言葉にしたい方へ：有料の個別相談（文章・1テーマ・往復5回まで）も受付中です。開始記念1,000円（先着10名）／通常3,000円。</p>
     <a class="btn" href="https://lin.ee/XgPDIO9">LINE公式アカウントはこちら</a>
     <p><a href="../index.html#paid">じっくり個別相談（有料）について →</a></p>
   </div>
