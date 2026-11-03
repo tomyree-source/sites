@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -51,6 +51,38 @@ footer a{color:var(--gold-soft)}
 .list a{color:var(--cream);text-decoration:none;font-weight:500}
 .list small{color:var(--soft);display:block}
 @media(max-width:640px){h1{font-size:24px}}
+
+h3{font-family:"Shippori Mincho",serif;font-size:18px;margin:26px 0 8px;color:var(--cream)}
+.box h3{margin-top:0}
+figure{margin:0 0 20px}figure img{width:100%;border-radius:12px;display:block}
+figcaption{font-size:13.5px;color:var(--soft);margin-top:8px;line-height:1.7}figcaption b{color:var(--gold-soft);display:block;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0 0 18px}
+th,td{padding:10px 6px;border-bottom:1px solid rgba(233,228,216,.14);text-align:left;vertical-align:top}
+th{color:var(--gold-soft);white-space:nowrap;width:8.5em}td strong{color:var(--cream)}
+details{border:1px solid var(--line);border-radius:12px;padding:4px 18px;margin-bottom:10px;background:#0e1d3d}
+summary{cursor:pointer;font-weight:700;font-size:15.5px;padding:12px 0;font-family:"Shippori Mincho",serif;color:var(--cream)}
+details p{font-size:14.5px;color:var(--soft)}
+img.course{width:100%;border-radius:12px;margin:6px 0 14px;display:block}
+.kanji{color:var(--gold-soft);margin-right:10px}
+.profile-list{list-style:none;padding:0}
+.profile-list li{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:10px;background:#0e1d3d;font-size:14.5px;color:var(--soft)}
+.profile-list li b{color:var(--gold-soft)}
+.en-kicker{letter-spacing:.3em;font-size:12px;color:var(--gold);text-transform:uppercase}
+.d-sublt{color:var(--gold-soft);font-weight:700}
+.d-signs{background:#0e1d3d;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:20px 0}
+.d-signs h3{margin-top:0}
+.en-h{font-family:"Shippori Mincho",serif;font-size:19px;color:var(--cream);margin:28px 0 10px}
+.en-steps{padding-left:1.35em;color:var(--soft)}
+.d-cta{background:#0e1d3d;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:20px 0}
+form.memo{display:grid;gap:12px;margin-top:16px}
+form.memo label{font-size:13px;color:var(--gold-soft);font-weight:700}
+form.memo input,form.memo select,form.memo textarea{width:100%;border:1px solid var(--line);background:#0b1730;color:var(--txt);border-radius:10px;padding:11px 14px;font-size:14.5px;font-family:inherit}
+form.memo textarea{min-height:110px}
+.memo-out{display:none}.memo-out.show{display:block}
+.memo-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.copy-done{font-size:13px;color:var(--gold-soft)}
+button.cta{border:none;cursor:pointer;font-family:inherit;font-size:15px}
+ol.steps{padding-left:1.3em;color:var(--soft)}ol.steps li{margin-bottom:8px}ol.steps li b{color:var(--cream)}
 </style>
 </head>
 <body>
@@ -58,7 +90,101 @@ footer a{color:var(--gold-soft)}
 <div class="wrap">
 <nav class="crumbs" aria-label="パンくず"><a href="https://tomyree-source.github.io/sites/stella-polaris/">トップ</a> › <a href="https://tomyree-source.github.io/sites/stella-polaris/">Top</a> › English Guide</nav>
 <main>
-<h1>English Guide for International Guests</h1><p>Stella Polaris is a women-only oil massage and beauty seitai (posture care) salon in the Umeda area of Osaka. 90 minutes ¥10,000, Monday–Saturday 17:00–22:00, by appointment only. The full English guide is on the main site.</p><p><a class="cta" href="https://tomyree-source.github.io/sites/stella-polaris/#/english">Open the English guide on the main site</a></p>
+<h1>English Guide for International Guests</h1>
+
+        <p class="en-kicker">For International Guests</p>
+        <h2 class="d-lt">A Women-Only Oil Massage Salon in Umeda, Osaka</h2>
+        <p class="d-sublt">Deep-pressure oil massage and beauty seitai (posture care), shaped by 30 years of hands-on experience and the knowledge of Oriental medicine.</p>
+        <p class="d-intro">Welcome to Stella Polaris. We are a small, private salon for women in the Umeda area of Osaka, open in the evenings. Every treatment is given by one male therapist with 30 years of experience, who reads the body through the lens of Oriental medicine and tailors each session to how you feel that day. This page explains, in English, what we offer, what it costs, and what to expect — including the things guests from overseas most often ask.</p>
+
+        <div class="d-signs">
+          <h3>Please read first — our promises</h3>
+          <ul>
+            <li><strong>Women only, by appointment only.</strong> We cannot accept walk-in guests.</li>
+            <li><strong>Your therapist is male.</strong> He is the only therapist, and his licences and career are published openly on this site.</li>
+            <li><strong>This is a legitimate relaxation salon.</strong> We do not offer sexual services of any kind, under any circumstances.</li>
+            <li><strong>No acupuncture is performed here.</strong> Although your therapist holds Japan's national acupuncture licence, treatments are oil massage and beauty seitai only — no needles, no moxibustion.</li>
+            <li><strong>Treatments are for relaxation and body care.</strong> They are not medical treatment, and we do not diagnose or treat illness or injury.</li>
+          </ul>
+        </div>
+
+        <div class="d-cols">
+          <div class="d-col">
+            <h3>ABOUT THE SALON</h3>
+            <p>Stella Polaris works out of a quiet rental salon in the Umeda area, within walking distance of the Umeda stations. To protect guests' privacy, the exact address and how to enter are sent to you once your booking is confirmed. We are open Monday to Saturday, 17:00–22:00, and closed on Sundays.</p>
+          </div>
+          <div class="d-col">
+            <h3>YOUR THERAPIST</h3>
+            <p>One male therapist with 30 years of experience and a national licence in acupuncture and moxibustion, plus qualifications as an aromatherapist, a personal trainer, and a registered seller of over-the-counter medicines. At 183&nbsp;cm with large hands, his signature is a firm, deep pressure — always adjusted to your preference, gentler whenever you wish.</p>
+          </div>
+          <div class="d-col">
+            <h3>OUR APPROACH</h3>
+            <p>Oriental medicine reads the body's condition through the flow of <em>Qi</em> (energy), <em>Blood</em> (circulation and nourishment) and <em>Water</em> (fluid balance). When one of them stalls, it tends to show up as stiffness, heaviness, cold hands and feet, or a feeling of puffiness. Each session is built around that reading — never a fixed routine repeated for everyone.</p>
+          </div>
+        </div>
+
+        <h3 class="en-h">Treatments &amp; price</h3>
+        <p class="en-p"><strong>Oil Massage.</strong> Our main treatment: a full-body massage with oil, worked slowly and deeply. As a qualified aromatherapist, your therapist can suggest a scent to suit your mood and condition that day; unscented oil is also available if you prefer. Shoulders, back, waist and legs can be given extra time — just say so.</p>
+        <p class="en-p"><strong>Beauty Seitai.</strong> A posture-focused style of Japanese bodywork that looks at how you habitually hold and use your body — a rounded back, shoulders rolled inward, a body tightened by desk work. It is gentle and unforced, and includes simple posture-care advice you can use at home. The two treatments can also be combined within one session; feel free to ask when booking.</p>
+        <p class="en-p"><strong>Price: 90 minutes — ¥10,000</strong> (the same for either treatment). Please come and feel what 30 years of experience and an Oriental-medicine reading of the body can do in a single session.</p>
+
+        <h3 class="en-h">How your visit goes</h3>
+        <ol class="en-steps">
+          <li><b>Book.</b> Send your preferred treatment and dates (see the FAQ below). We check availability — both the therapist's schedule and the rental salon's — and reply to confirm.</li>
+          <li><b>Find us.</b> Once your booking is confirmed, we send the salon's exact address in the Umeda area and how to enter.</li>
+          <li><b>Talk &amp; change.</b> We ask about your condition, where you feel stiffness, and your preferred pressure. The therapist then leaves the room while you change into the clothes provided.</li>
+          <li><b>Treatment &amp; aftercare.</b> During the treatment, everything except the area being worked on is covered with a large towel. Afterwards, we share simple self-care suited to your body.</li>
+        </ol>
+
+        <h3 class="en-h">Salon information</h3>
+        <table class="info">
+          <tr><th>Name</th><td><strong>Stella Polaris</strong></td></tr>
+          <tr><th>Location</th><td>Rental salon ACE in the Umeda area, Osaka<br />The exact address and entry instructions are sent once your booking is confirmed.</td></tr>
+          <tr><th>Facilities</th><td><strong>Shower available</strong> — you can use the shower after your treatment.</td></tr>
+          <tr><th>Hours</th><td><strong>Monday–Saturday, 17:00–22:00</strong><br />Closed on Sundays</td></tr>
+          <tr><th>Guests</th><td>Women only — by appointment only</td></tr>
+          <tr><th>Treatments</th><td>Oil massage / Beauty seitai (no acupuncture)</td></tr>
+          <tr><th>Price</th><td>90 minutes — ¥10,000</td></tr>
+          <tr><th>Therapist</th><td>One male therapist, 30 years of experience</td></tr>
+        </table>
+
+        <div class="d-faq">
+          <h4>Questions from international guests</h4>
+          <details>
+            <summary>How do I make a booking?</summary>
+            <p>All visits are by appointment only. Please prepare your request with the reservation form on this site (in Japanese): choose a treatment, note one or two preferred dates and times, and the form will compose a short booking memo for you. Our booking contact point is currently being prepared and will be announced on this site; the button below takes you to the form. Because the salon room is rented for your session, booking as early as you can helps us secure it for you.</p>
+          </details>
+          <details>
+            <summary>I don't speak Japanese. Will we manage?</summary>
+            <p>Yes. Simple English is fine — your therapist can communicate in simple English, and we are happy to use a translation app together for anything more detailed. Before the treatment we always confirm your preferred pressure and any areas you would like us to focus on, or avoid. Pointing, gestures, or showing a note on your phone all work perfectly well.</p>
+          </details>
+          <details>
+            <summary>How do I pay?</summary>
+            <p>Payment details, including the methods we can accept, are confirmed together with your booking. If you are counting on a particular method — cash or card, for example — please mention it in your booking message, and we will let you know before your visit.</p>
+          </details>
+          <details>
+            <summary>What should I wear or bring?</summary>
+            <p>Come exactly as you are — most guests arrive straight from sightseeing, work, or dinner. A change of clothes is provided at the salon, and the therapist leaves the room while you change. During the treatment, everything except the area being treated stays covered with a large towel. A little oil may remain on the skin afterwards; if that worries you, bringing a spare set of underwear can be reassuring.</p>
+          </details>
+          <details>
+            <summary>Can I ask for stronger or gentler pressure — or ask you to avoid an area?</summary>
+            <p>Of course, at any time. Firm, deep pressure is our signature, but the strength is always adjusted to you, and you never need to endure pressure that feels too much. Areas you do not wish to be treated are confirmed before we start and are never touched.</p>
+          </details>
+          <details>
+            <summary>What if I need to cancel or change my appointment?</summary>
+            <p>Plans change — we understand. Please let us know as early as you possibly can: the treatment room is a rental salon reserved just for you, and a late change may mean the room cannot be offered to anyone else. We will always do our best to find a new time that suits you.</p>
+          </details>
+          <details>
+            <summary>Is this a medical treatment? Do you offer acupuncture?</summary>
+            <p>No to both. Our treatments are for relaxation and everyday body care; they do not diagnose or cure illness or injury. If you have strong, continuing pain, numbness, swelling or a fever, please see a doctor first. And although your therapist is a nationally licensed acupuncturist, no acupuncture or moxibustion is performed at this salon — the licence stands behind the knowledge used to read and care for your body.</p>
+          </details>
+        </div>
+
+        <div class="d-cta">
+          <p><strong>Ready to book, or just curious?</strong> The reservation form is in Japanese, but it is simple: treatment, preferred dates, and anything you would like us to know. We look forward to welcoming you.</p>
+          <a class="cta" href="https://tomyree-source.github.io/sites/stella-polaris/#contact">Go to the reservation form</a>
+        </div>
+      
 </main>
 <footer>
 <p>ステラポラリス（大阪・梅田／女性専用）｜オイルマッサージ・美容整体 90分 10,000円｜月〜土 17:00〜22:00（日曜休み）・完全予約制｜大阪・梅田エリアのレンタルサロン（詳しい住所はご予約確定後にご案内）｜現在は近日開院予定のため、ご予約の受付はまだ開始していません。当店では鍼灸施術は行いません。</p>
