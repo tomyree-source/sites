@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tomyree-source.github.io/sites/seraphina-official/sitemap.xml
