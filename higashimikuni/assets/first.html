@@ -112,6 +112,7 @@ ul.tick{list-style:none;margin:0;padding:0}
 ul.tick li{padding:7px 0 7px 26px;position:relative;font-size:14.5px;color:var(--ink2);border-bottom:1px dashed var(--line);margin:0}
 ul.tick li:last-child{border-bottom:none}
 ul.tick li::before{content:"\2713";position:absolute;left:2px;color:var(--accent);font-weight:800}
+ul.tick.warn li::before{content:"!";color:#b3543f}
 .list{list-style:none;padding:0}
 .list li{border-bottom:1px solid var(--line);padding:12px 0}
 .list a{color:var(--ink);text-decoration:none;font-weight:600;font-size:16.5px}
@@ -121,11 +122,23 @@ ul.tick li::before{content:"\2713";position:absolute;left:2px;color:var(--accent
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;padding:11px 20px;font-weight:700;text-decoration:none;border:1px solid transparent;font-size:15px;line-height:1.2}
 .btn-dark{background:var(--accent);color:var(--accent-ink)}
 .cta{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:700;border-radius:8px;padding:12px 26px;text-decoration:none;margin-top:10px}
-.recruit-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:16px 0}
-@media (max-width:760px){.recruit-cols{grid-template-columns:1fr}}
 .fixed-line{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:90;display:inline-flex;align-items:center;background:var(--line-green);color:#fff;font-weight:700;font-size:15px;letter-spacing:.04em;text-decoration:none;padding:13px 22px;border-radius:10px;box-shadow:0 8px 22px rgba(28,33,30,.28)}
 .fixed-line:hover{opacity:.93}
 body{padding-bottom:72px}
+.tool{background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:26px;box-shadow:var(--shadow);margin:18px 0}
+.tool h3{margin:0 0 4px;font-size:19px;color:var(--ink)}
+.tool .sub{color:var(--ink2);font-size:14px;margin:0 0 18px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:640px){.form-grid{grid-template-columns:1fr}}
+label.f{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:var(--ink)}
+input[type=text],input[type=date],select,textarea{width:100%;border:1px solid var(--line2);border-radius:10px;padding:11px 12px;font-size:15px;background:var(--bg);color:var(--ink);font-family:inherit}
+textarea{min-height:150px;resize:vertical;line-height:1.6}
+.tagrow{display:flex;flex-wrap:wrap;gap:8px}
+.tagbtn{border:1px solid var(--line2);background:var(--bg);color:var(--ink2);border-radius:6px;padding:6px 14px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit}
+.tagbtn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.tool-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;align-items:center}
+.toast{font-size:13.5px;color:var(--teal);font-weight:700;min-height:1.2em}
+.btn-line{background:var(--line-green);color:#fff}
 </style>
 </head>
 <body>
@@ -156,7 +169,7 @@ body{padding-bottom:72px}
 <p>なお、当院では鍼灸施術は行わず、リラクゼーションと整体のみを提供します。当院は医療機関ではなく、症状の診断や治療は行いません。強い痛みやしびれ、発熱などがある場合は、まず医療機関の受診をおすすめします。</p>
 
 <h2>対象は男性のみです</h2>
-<p>北辰堂は男性専用の整体院として運営しています。女性のお客様の受け入れは行っておりません。また、性的なサービスは一切行っておりません。</p>
+<p>北辰堂は、男性スタッフ1人で運営しているため、男性専用としています。女性のお客様の受け入れは行っておりません。</p>
 
 <h2>料金とお支払い（現金のみ）</h2>
 <p>料金は全コース共通で、60分 初回2,000円／2回目以降6,000円、90分 初回3,000円／2回目以降9,000円です。初回はお試し価格、2回目以降は通常料金となります。</p>
@@ -175,14 +188,98 @@ body{padding-bottom:72px}
 <h2>ご予約から当日の流れ</h2>
 <p>ご予約から当日の流れは、次の5ステップです。ご予約はLINE公式アカウントのみで受け付けます（電話予約は行っておりません）。施術者は1名・完全予約制のため、ご予約が確定した時間帯に他のお客様と重なることはありません。</p>
 <div class="flow" style="margin:8px 0 4px">
-<div class="step"><div class="n">1</div><h3>LINEで予約</h3><p>トップページの<a href="https://tomyree-source.github.io/sites/higashimikuni/#booking">予約リクエスト作成</a>で下書きを作り、LINE公式アカウントへ送信してください。</p></div>
+<div class="step"><div class="n">1</div><h3>LINEで予約</h3><p>このページの<a href="#booking-form">予約リクエスト作成</a>で下書きを作り、LINE公式アカウントへ送信してください。</p></div>
 <div class="step"><div class="n">2</div><h3>日時の確定・住所のご案内</h3><p>空き状況を確認し、確定後に詳しい住所と建物の目印、当日の案内をLINEでお送りします。</p></div>
 <div class="step"><div class="n">3</div><h3>来店・カウンセリング</h3><p>問診票にご記入いただき、姿勢と体の状態を確認します（初回は＋10分ほど）。到着はご予約時間の5分前が目安です。</p></div>
 <div class="step"><div class="n">4</div><h3>施術</h3><p>その日の状態に合わせて施術します。強さは随時調整できますので、遠慮なくお声がけください。</p></div>
 <div class="step"><div class="n">5</div><h3>お支払い・アフターケア</h3><p>お支払いは現金のみです。体の変化の説明と、ご自宅でできるセルフケアをお渡しします。</p></div>
 </div>
 
-<h2>当日の持ち物と服装</h2>
+<h2 id="booking-form">LINE予約の下書きを作る</h2>
+<p>項目を選ぶと、そのままLINEに貼れる予約文ができます。コピーして、LINE公式アカウント（北辰堂）のトークに貼り付けて送信してください。</p>
+<div class="notice" role="note">
+<strong>ご案内</strong>
+<span>ご予約はLINE公式アカウント（北辰堂）で受け付けています。下記の下書きを作って、LINEのトークに貼り付けて送信してください。</span>
+</div>
+<div class="tool">
+<h3>予約リクエスト作成</h3>
+<p class="sub">※このページから直接送信はされません。文面を確認して、ご自身でLINEからお送りください。</p>
+<div class="form-grid">
+<div>
+<label class="f" for="f-name">お名前（通称・イニシャル可）</label>
+<input type="text" id="f-name" placeholder="例：ヤマダ／T.Y" autocomplete="off" />
+</div>
+<div>
+<label class="f" for="f-course">ご希望コース</label>
+<select id="f-course">
+<option value="まるごとケア（整体＋リラクゼーション）90分">まるごとケア 90分（おすすめ）</option>
+<option value="まるごとケア（整体＋リラクゼーション）60分">まるごとケア 60分</option>
+<option value="リラクゼーション 60分">リラクゼーション 60分</option>
+<option value="リラクゼーション 90分">リラクゼーション 90分</option>
+<option value="整体 60分">整体 60分</option>
+<option value="整体 90分">整体 90分</option>
+<option value="相談して決めたい">相談して決めたい</option>
+</select>
+</div>
+<div>
+<label class="f" for="f-date1">第1希望日</label>
+<input type="date" id="f-date1" />
+</div>
+<div>
+<label class="f" for="f-time1">希望の開始時間帯</label>
+<select id="f-time1">
+<option value="10:00頃（日曜）">10:00頃（日曜）</option>
+<option value="13:00頃（日曜）">13:00頃（日曜）</option>
+<option value="15:00頃（日曜）">15:00頃（日曜）</option>
+<option value="17:00頃">17:00頃</option>
+<option value="18:00頃">18:00頃</option>
+<option value="19:00頃" selected>19:00頃</option>
+<option value="20:00頃">20:00頃</option>
+<option value="20:30頃（最終受付目安）">20:30頃（最終受付目安）</option>
+<option value="空いている時間で相談したい">空いている時間で相談したい</option>
+</select>
+</div>
+<div>
+<label class="f" for="f-date2">第2希望日（任意）</label>
+<input type="date" id="f-date2" />
+</div>
+<div>
+<label class="f" for="f-first">ご利用</label>
+<select id="f-first">
+<option value="初めて">初めて</option>
+<option value="2回目以降">2回目以降</option>
+</select>
+</div>
+</div>
+<div style="margin-top:16px">
+<label class="f">特につらい・気になる部位（任意、複数可）</label>
+<div class="tagrow" id="tagrow">
+<button type="button" class="tagbtn" aria-pressed="false">首・肩</button>
+<button type="button" class="tagbtn" aria-pressed="false">背中</button>
+<button type="button" class="tagbtn" aria-pressed="false">腰</button>
+<button type="button" class="tagbtn" aria-pressed="false">脚・ふくらはぎ</button>
+<button type="button" class="tagbtn" aria-pressed="false">頭・目</button>
+<button type="button" class="tagbtn" aria-pressed="false">姿勢・猫背</button>
+<button type="button" class="tagbtn" aria-pressed="false">全身の疲れ</button>
+<button type="button" class="tagbtn" aria-pressed="false">眠りの浅さ</button>
+</div>
+</div>
+<div style="margin-top:16px">
+<label class="f" for="f-msg">生成される予約文（そのまま編集できます）</label>
+<textarea id="f-msg" aria-live="polite"></textarea>
+</div>
+<div class="tool-actions">
+<button type="button" class="btn btn-dark" id="btn-regen">文面を作り直す</button>
+<button type="button" class="btn btn-line" id="btn-copy">文面をコピーする</button>
+<a class="btn btn-line" href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener">LINE公式アカウント（北辰堂）を開く</a>
+<span class="toast" id="toast" role="status"></span>
+</div>
+<p class="fineprint" style="margin-top:12px">コピー後はLINE公式アカウント（北辰堂）を開き、トーク画面に貼り付けて送信してください。</p>
+</div>
+
+<h2 id="before-visit">来店前のお願いと確認事項</h2>
+<p>当日の持ち物・服装と、体調面で事前にお知らせいただきたいことをまとめています。</p>
+<h3>当日の持ち物・服装</h3>
 <ul>
 <li>持ち物は特にありません。施術用の着替えをご用意しています</li>
 <li>整体は着衣のままでも受けられます。動きやすい服装だとスムーズです</li>
@@ -193,24 +290,94 @@ body{padding-bottom:72px}
 <li>専用駐車場はありません。お車の方は近隣のコインパーキングをご利用ください（自転車はご予約時にご相談ください）</li>
 </ul>
 
-<h2>体調面でのお願いと、変更・キャンセル</h2>
-<p>発熱がある、体調がすぐれない日は無理せず、日程変更をLINEでご連絡ください。飲酒直後の施術はお断りしています。骨折・脱臼・急性の炎症、手術直後の方、高血圧などで通院・服薬中の方は、ご予約時に一言お知らせください。</p>
-<p>変更・キャンセルは、分かった時点でLINEへご連絡ください。施術者1名・1日数名のみの受付のため、ご協力をお願いします。</p>
+<h3>事前にご相談ください</h3>
+<ul class="tick warn">
+<li>発熱がある、体調がすぐれない日は無理せず日程変更をご連絡ください</li>
+<li>飲酒直後の施術はお断りしています</li>
+<li>骨折・脱臼・急性の炎症、手術直後の方は事前にお知らせください</li>
+<li>皮膚に炎症や傷がある部位は施術を避ける場合があります</li>
+<li>妊娠中の方、高血圧などで通院・服薬中の方は、予約時に一言お知らせください</li>
+<li>ペースメーカー等の体内機器がある方は整体の内容を調整します</li>
+</ul>
+<h3>キャンセル・変更について</h3>
+<p>北辰堂は1日数名のみの受付のため、変更・キャンセルは分かった時点でLINEへご連絡ください。当日キャンセルが続く場合は、次回以降のご予約をお断りする場合があります。施術者側の都合で変更をお願いする際は、代替日時を優先的にご案内します。</p>
 
 <div class="box">
 <h2>あわせてご覧ください</h2>
-<p style="margin-bottom:0">コースと料金は<a href="https://tomyree-source.github.io/sites/higashimikuni/#menu">メニュー・料金</a>、施術者の経歴は<a href="https://tomyree-source.github.io/sites/higashimikuni/#profile">施術者について</a>、来店前の確認事項は<a href="https://tomyree-source.github.io/sites/higashimikuni/#before">来店前のお願いと確認事項</a>、そのほかの疑問は<a href="faq.html">よくある質問</a>と<a href="https://tomyree-source.github.io/sites/higashimikuni/#access">アクセス</a>にまとめています。</p>
+<p style="margin-bottom:0">コースと料金は<a href="https://tomyree-source.github.io/sites/higashimikuni/assets/menu.html">メニュー・料金</a>、施術者の経歴は<a href="https://tomyree-source.github.io/sites/higashimikuni/assets/about.html">施術者について</a>、来店前の確認事項はこのページの<a href="#before-visit">来店前のお願いと確認事項</a>、そのほかの疑問は<a href="faq.html">よくある質問</a>と<a href="https://tomyree-source.github.io/sites/higashimikuni/assets/access.html">アクセス</a>にまとめています。</p>
 </div>
 <p><a class="cta" href="https://tomyree-source.github.io/sites/higashimikuni/#/first">初めての方へをメインサイトで開く</a></p>
 <div class="cta-box"><h2>ご予約・ご相談はLINEから</h2>
 <p>東三国・新大阪・淀川区周辺で、体のケアの相談先をお探しの方は、LINE公式アカウント（北辰堂）からお気軽にご連絡ください。現在の状態をお聞きしたうえで、施術の進め方をご案内します。</p>
 <a class="cta-line" href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener">LINEで予約する</a></div>
+<div style="text-align:center;margin:20px 0 4px"><a href="../index.html" style="display:inline-block;padding:10px 24px;border:1.5px solid var(--line2);border-radius:8px;background:var(--surface);color:var(--teal);text-decoration:none;font-size:14px;font-weight:600">トップページへ戻る</a></div>
 </main>
 <footer>
-<p>北辰堂（東三国／男性専用整体院）｜平日・土曜 17:00〜22:00／日曜 10:00〜22:00・完全予約制｜60分 初回2,000円／2回目以降6,000円・90分 初回3,000円／2回目以降9,000円｜お支払いは現金のみ｜大阪市淀川区東三国二丁目（詳しい住所はご予約確定後にLINEでご案内します）｜施術者：平賀建人（施術歴30年・鍼灸師）｜当院では鍼灸施術は行いません。当院は医療機関ではなく、診断・治療は行いません。</p><p>セルフケア資料ライブラリ：<a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener">症状別のセルフケア資料（無料）と無料姿勢チェック</a></p>
+<p>北辰堂（東三国／男性専用整体院）｜平日・土曜 17:00〜22:00／日曜 10:00〜22:00・完全予約制｜60分 初回2,000円／2回目以降6,000円・90分 初回3,000円／2回目以降9,000円｜お支払いは現金のみ｜大阪市淀川区東三国二丁目（詳しい住所はご予約確定後にLINEでご案内します）｜施術者：平賀建人（施術歴30年・鍼灸師）｜当院では鍼灸施術は行いません。当院は医療機関ではなく、診断・治療は行いません。</p>
 <p><a href="https://tomyree-source.github.io/sites/higashimikuni/">トップページへ戻る</a>　｜　<a href="sitemap.html">サイトマップ（全ページ一覧）</a></p>
 </footer>
 </div>
 <a class="fixed-line" href="https://lin.ee/yyacKkZ" target="_blank" rel="noopener">LINEで予約する</a>
+<script>
+(function(){
+var nameEl=document.getElementById('f-name');
+var courseEl=document.getElementById('f-course');
+var date1El=document.getElementById('f-date1');
+var time1El=document.getElementById('f-time1');
+var date2El=document.getElementById('f-date2');
+var firstEl=document.getElementById('f-first');
+var msgEl=document.getElementById('f-msg');
+var toast=document.getElementById('toast');
+if(!nameEl||!msgEl) return;
+var tags=[];
+function fmtDate(v){
+if(!v) return '';
+var p=v.split('-'); if(p.length!==3) return v;
+var d=new Date(Number(p[0]),Number(p[1])-1,Number(p[2]));
+var w=['日','月','火','水','木','金','土'][d.getDay()];
+return Number(p[1])+'月'+Number(p[2])+'日（'+w+'）';
+}
+function currentTags(){
+var out=[];
+document.querySelectorAll('#tagrow .tagbtn[aria-pressed="true"]').forEach(function(b){ out.push(b.textContent.trim()); });
+return out;
+}
+function build(){
+var lines=[];
+lines.push('北辰堂');
+lines.push('お名前：'+(nameEl.value.trim()||'（未入力）'));
+lines.push('ご利用：'+firstEl.value);
+lines.push('希望コース：'+courseEl.value);
+var d1=fmtDate(date1El.value);
+lines.push('第1希望：'+(d1? d1+' '+time1El.value: '日程は相談したい（時間帯：'+time1El.value+'）'));
+var d2=fmtDate(date2El.value);
+if(d2) lines.push('第2希望：'+d2);
+var tg=currentTags();
+if(tg.length) lines.push('気になる部位：'+tg.join('、'));
+lines.push('よろしくお願いします。');
+msgEl.value=lines.join('\n');
+}
+document.getElementById('tagrow').addEventListener('click',function(e){
+var b=e.target.closest('.tagbtn'); if(!b) return;
+var on=b.getAttribute('aria-pressed')==='true';
+b.setAttribute('aria-pressed', on?'false':'true');
+var t=b.textContent.trim();
+if(on){ tags=tags.filter(function(x){return x!==t;});} else { tags.push(t);}
+build();
+});
+[nameEl,courseEl,date1El,time1El,date2El,firstEl].forEach(function(el){
+el.addEventListener('input',build); el.addEventListener('change',build);
+});
+document.getElementById('btn-regen').addEventListener('click',function(){ build(); toast.textContent='文面を作り直しました。';});
+document.getElementById('btn-copy').addEventListener('click',function(){
+build();
+var done=function(){ toast.textContent='コピーしました。LINEに貼り付けて送信してください。';};
+if(navigator.clipboard && navigator.clipboard.writeText){
+navigator.clipboard.writeText(msgEl.value).then(done,function(){ msgEl.select(); document.execCommand('copy'); done();});
+} else { msgEl.select(); document.execCommand('copy'); done();}
+});
+build();
+})();
+</script>
 </body>
 </html>
