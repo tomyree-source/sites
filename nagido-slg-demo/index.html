@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="description" content="本格派セラピスト育成SLG『凪堂 ―セラピスト修行記―』の無料体験版。序章＋第1幕（国家試験・進路選択まで）をブラウザでそのまま遊べます。製品版はBOOTHにて販売予定（1,200円・R-18）。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="凪堂 ―セラピスト修行記― 無料体験版">
+<meta property="og:description" content="ツボと専門知識で信頼を勝ち取る、本格派セラピスト育成SLG。序章＋第1幕を無料で遊べる体験版です。製品版はBOOTHにて販売予定（R-18）。">
+<meta property="og:url" content="https://tomyree-source.github.io/sites/nagido-slg-demo/">
+<meta property="og:image" content="https://tomyree-source.github.io/sites/nagido-slg-demo/assets/media-generation-cg-graduation-0-66d16030-9e3b-47e5-8683-b45589187c79.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="凪堂 ―セラピスト修行記― 無料体験版">
+<meta name="twitter:description" content="ツボと専門知識で信頼を勝ち取る、本格派セラピスト育成SLG。序章＋第1幕を無料で遊べる体験版です。製品版はBOOTHにて販売予定（R-18）。">
+<meta name="twitter:image" content="https://tomyree-source.github.io/sites/nagido-slg-demo/assets/media-generation-cg-graduation-0-66d16030-9e3b-47e5-8683-b45589187c79.webp">
 <title>凪堂 ―セラピスト修行記―</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
@@ -15675,18 +15685,78 @@ mao: ['まだ施術はしていない。キックボクサー。減量期の身�
 
 
 <script>
+/* ===== ヒット化第1弾（2026-11-03）：公式サイト導線・Xシェア・レビュー依頼 =====
+   追加ブロック。シナリオデータには触れない。
+   - タイトル画面に「公式サイト」「Xでシェア」のリンクボタンを追加
+   - エンディング到達時の文面（あとがき相当）の末尾に、BOOTHレビュー・「スキ！」のお願いを1文だけ添える
+     （回想モードではエンディング文面が出ないため、文面の先頭一致を条件に付け足す） */
+(function(){
+  var OFFICIAL = 'https://tomyree-source.github.io/sites/nagido-official/';
+  function shareHref(){
+    var text = '\u300e凪堂 ―セラピスト修行記―\u300f本格派セラピスト育成SLG（R-18）｜ツボと専門知識で信頼を勝ち取る #凪堂 #セラピスト修行記';
+    return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(OFFICIAL);
+  }
+  try{
+    var t = document.querySelector('#title .tbtns');
+    if(t){
+      var a1 = document.createElement('a');
+      a1.className = 'btn'; a1.textContent = '公式サイト';
+      a1.href = OFFICIAL; a1.target = '_blank'; a1.rel = 'noopener'; a1.style.textDecoration = 'none';
+      t.appendChild(a1);
+      var a2 = document.createElement('a');
+      a2.className = 'btn'; a2.textContent = 'Xでシェア';
+      a2.href = shareHref(); a2.target = '_blank'; a2.rel = 'noopener'; a2.style.textDecoration = 'none';
+      t.appendChild(a2);
+    }
+  }catch(e){}
+  try{
+    var _eopHL = endOfProto;
+    endOfProto = function(){
+      _eopHL.apply(this, arguments);
+      try{
+        var tx = document.getElementById('text');
+        if(tx && tx.textContent.indexOf('エンディング到達') === 0 && tx.textContent.indexOf('レビュー') < 0){
+          tx.textContent += ' もし本作を楽しんでいただけたら、BOOTHのレビューや「スキ！」で応援いただけると、制作の大きな励みになります。';
+        }
+      }catch(e){}
+    };
+  }catch(e){}
+})();
+</script>
+
+
+<script>
 // ===== 無料体験版パッチ（公開用ビルド専用・製品版本体には含まれない） =====
 SCENES['demo_end'] = { next: null, lines: [
 {n:'', t:'体験版はここまでです。ごプレイ、ありがとうございました。'},
 {n:'', t:'国家試験に合格し、進路を選んだケント。物語はこの先、セラピストとして働く日々へと続いていく。'},
 {n:'', t:'製品版では第2幕から第4幕まで、27人の女性客・同僚・先輩との物語を最後まで遊べます。専門知識（解剖学・経絡／ツボ・アロマ・精油学・施術理論・臨床／症例）を育てる育成システムが、物語の行く末を左右します。'},
 {n:'', t:'製品版『凪堂 ―セラピスト修行記―』は、BOOTHにて販売予定です（価格1,200円）。購入特典として、実用ガイド「セルフケア・ツボ押しガイド」（PDF・全29ページ）が同梱されます。'},
+{n:'', t:'製品版のご案内と最新情報は公式サイトで、販売はBOOTHショップ「angel222」で行います。この先の画面に、公式サイトとBOOTHショップへのリンクボタンを用意しました。'},
 {n:'', t:'タイトル画面の「シーン回想」から、体験版で読んだ場面を読み返せます。'}
 ]};
 SCENES['ep7'].next = 'demo_end';
 window.endOfProto = function(){
 document.getElementById('name').textContent = '';
-document.getElementById('text').textContent = '体験版はここまでです。タイトル画面に戻って、回想や図鑑もお楽しみください。製品版『凪堂 ―セラピスト修行記―』はBOOTHにて販売予定です。';
+document.getElementById('text').textContent = '体験版はここまでです。タイトル画面に戻って、回想や図鑑もお楽しみください。製品版『凪堂 ―セラピスト修行記―』はBOOTHにて販売予定です。下のボタンから、公式サイトとBOOTHショップへ進めます。';
+try{
+  var box = document.getElementById('choices');
+  if(box){
+    box.innerHTML = '';
+    var mkLink = function(label, href){
+      var a = document.createElement('a');
+      a.className = 'choice'; a.textContent = label;
+      a.href = href; a.target = '_blank'; a.rel = 'noopener';
+      a.style.textDecoration = 'none'; a.style.display = 'block';
+      box.appendChild(a);
+    };
+    mkLink('公式サイトで製品版のご案内を見る', 'https://tomyree-source.github.io/sites/nagido-official/#trial');
+    mkLink('BOOTHショップ「angel222」を見る', 'https://angel222.booth.pm/');
+    var shareText = '『凪堂 ―セラピスト修行記―』本格派セラピスト育成SLG（R-18）｜無料体験版を公開中 #凪堂 #セラピスト修行記';
+    mkLink('Xでシェアする', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent('https://tomyree-source.github.io/sites/nagido-slg-demo/'));
+    box.style.display = 'flex';
+  }
+}catch(e){}
 };
 </script>
 </body>
