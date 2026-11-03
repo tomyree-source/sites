@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="ベリーダンスの学びと衣装の専門メディア。基礎知識、スタイル解説、基本の動きとリズム、ヒップスカーフやベールなど衣装・小物の選び方を、事実ベースで丁寧に解説します。読み物「ベリーダンス衣装のサイズの考え方」では、トップス・スカート・ヒップスカーフの測り方と、サイズ表との照合方法・選び方を解説します。" />
+    <meta name="description" content="ベリーダンスの学びと衣装の専門メディア＋教室ポータル。全国の教室・スタジオを地域・スタイル・レッスン形態で探せます（教室・スタジオの無料登録も受付中）。基礎知識、スタイル解説、基本の動きとリズム、ヒップスカーフやベールなど衣装・小物の選び方を、事実ベースで丁寧に解説します。読み物「ベリーダンス衣装のサイズの考え方」では、トップス・スカート・ヒップスカーフの測り方と、サイズ表との照合方法・選び方を解説します。読み物「ベリーダンスのスタイルの違い」では、エジプシャン・ターキッシュ・フュージョンの特徴の比較と、教室や学び方を選ぶときの目安を解説します。読み物「ベリーダンスの基礎の動き入門」では、ヒップドロップ、シミー、スネークアームなど初心者が最初に覚える基本の動きの種類と、姿勢やアイソレーションを意識した練習のポイントを解説します。" />
     <link rel="icon" href="data:," />
-    <title>ベリーダンス手帖｜学びと衣装の専門メディア</title>
+    <title>ベリーダンス手帖｜初心者の学びと衣装・教室ポータル</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -68,7 +68,7 @@
       .site-inner{display:flex;align-items:center;gap:18px;max-width:1080px;margin:0 auto;padding:8px 20px}
       .brand{font-family:"Shippori Mincho B1",serif;font-weight:800;font-size:1.25rem;color:var(--ink);text-decoration:none;white-space:nowrap}
       .brand small{display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.14em;color:var(--gold)}
-      #about,#styles,#moves,#rhythm,#costume,#hipscarf,#props,#reading-size,#new,#items,#calc,#quiz,#faq,#characters,#real-laila,#sns{scroll-margin-top:64px}
+      #about,#styles,#moves,#rhythm,#costume,#hipscarf,#props,#reading-size,#reading-styles,#reading-moves,#new,#items,#calc,#quiz,#faq,#characters,#real-laila,#sns,#schools,#register{scroll-margin-top:64px}
       /* ---------- floating menu（日本の旅検定 space-14 と同一仕様） ---------- */
       .fab-overlay{
         position:fixed;inset:0;z-index:80;
@@ -357,6 +357,119 @@
       .fresh .when{font-size:.8rem;color:var(--gold);font-weight:700;letter-spacing:.06em}
       .fresh ul{margin:10px 0 0;padding-left:1.2em;color:var(--ink-soft);font-size:.93rem}
       .fresh li{margin-bottom:6px}
+      /* ---------- page nav (single-file page switching) ---------- */
+      .site-inner{flex-wrap:wrap}
+      .page-nav{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+      .page-nav button{
+        font:inherit;font-size:.86rem;font-weight:700;cursor:pointer;line-height:1.4;
+        border:1.5px solid var(--line);background:transparent;color:var(--ink-soft);
+        border-radius:999px;padding:7px 16px;
+      }
+      .page-nav button:hover{border-color:var(--teal);color:var(--teal)}
+      .page-nav button.active{background:var(--teal);border-color:var(--teal);color:#fff}
+      .page-nav button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      @media (max-width:640px){.page-nav{margin-left:0}}
+      [data-page][hidden]{display:none !important}
+      /* ---------- portal banner (控えめな案内) ---------- */
+      .portal-banner{
+        display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;
+        background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+        padding:16px 20px;
+      }
+      .portal-banner p{margin:0;color:var(--ink-soft);font-size:.93rem;flex:1;min-width:min(26em,100%)}
+      .portal-banner p strong{color:var(--ink)}
+      .portal-banner a{
+        font-weight:700;font-size:.9rem;text-decoration:none;color:var(--teal);
+        border:1.5px solid var(--teal);border-radius:999px;padding:8px 18px;white-space:nowrap;
+      }
+      .portal-banner a:hover{background:var(--teal);color:#fff}
+      .portal-banner a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      /* ---------- school portal ---------- */
+      .pfilters{
+        background:transparent;border:1px dashed var(--line);border-radius:var(--radius);
+        padding:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;
+      }
+      .pfilters-note{font-size:.82rem;color:var(--ink-soft);margin:0 0 8px}
+      .pfilters label{display:block;font-size:.8rem;font-weight:700;color:var(--teal);margin-bottom:5px}
+      .pfilters select{
+        width:100%;font:inherit;font-size:.95rem;padding:10px;
+        border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);
+      }
+      .pfilters select:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+      .feat-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .feat-chip{
+        font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;line-height:1.5;
+        border:1.5px solid var(--teal);color:var(--teal);background:transparent;border-radius:999px;padding:6px 14px;
+      }
+      .feat-chip.on{background:var(--teal);color:#fff}
+      .feat-chip:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .school-count{font-size:.88rem;color:var(--ink-soft);margin:16px 0 0}
+      .school-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:14px}
+      .school-card{
+        position:relative;
+        background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+        padding:20px;display:flex;flex-direction:column;gap:8px;box-shadow:0 3px 12px rgba(62,42,16,.06);
+      }
+      .school-card.has-site{cursor:pointer}
+      .school-card.has-site:hover{border-color:var(--teal)}
+      .school-card .site-link{color:inherit;text-decoration:none}
+      .school-card .site-link::after{content:"";position:absolute;inset:0;border-radius:var(--radius)}
+      .school-card .site-link:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .school-card .go-site{font-size:.86rem;font-weight:700;color:var(--teal);margin-top:2px}
+      .school-card .sns-link{position:relative;z-index:2;font-size:.82rem}
+      /* ---------- region index + prefecture sub-view ---------- */
+      .region-index{margin-bottom:26px}
+      .region-block{margin-bottom:16px}
+      .region-block h3{font-size:.98rem;color:var(--teal);margin-bottom:8px;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;letter-spacing:.06em}
+      .region-prefs{display:flex;flex-wrap:wrap;gap:8px}
+      .region-pref{
+        font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;line-height:1.5;
+        border:1.5px solid var(--line);color:var(--ink);background:var(--surface);border-radius:999px;padding:6px 14px;
+      }
+      .region-pref .cnt{font-weight:500;font-size:.78rem;color:var(--ink-soft);margin-left:5px}
+      .region-pref:hover{border-color:var(--teal);color:var(--teal)}
+      .region-pref:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .region-pref.current{background:var(--teal);border-color:var(--teal);color:#fff;cursor:default}
+      .region-pref.current .cnt{color:#cfe8dd}
+      .back-btn{
+        font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;line-height:1.5;
+        background:transparent;border:none;color:var(--teal);padding:4px 0;margin-bottom:10px;
+      }
+      .back-btn:hover{text-decoration:underline}
+      .back-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .pref-head h3{font-size:clamp(1.3rem,3vw,1.7rem);font-weight:800}
+      .pref-head p{color:var(--ink-soft);margin:8px 0 0;font-size:.94rem}
+      .pref-switch{margin-top:30px;border-top:1px dashed var(--line);padding-top:18px}
+      .pref-switch h4{font-size:.9rem;color:var(--teal);margin:0 0 10px;font-family:"Zen Kaku Gothic New",sans-serif;letter-spacing:.06em}
+      .school-card h3{font-size:1.08rem;line-height:1.5}
+      .school-card .area{font-size:.86rem;font-weight:700;color:var(--gold);margin:0}
+      .school-card .desc{margin:0;color:var(--ink-soft);font-size:.92rem;flex:1}
+      .school-card .stags{display:flex;flex-wrap:wrap;gap:6px}
+      .stag{background:var(--bg-soft);color:var(--teal-deep);font-size:.74rem;font-weight:700;border-radius:6px;padding:2px 9px}
+      @media (prefers-color-scheme: dark){.stag{color:var(--teal-ink)}}
+      .school-card .links{border-top:1px dashed var(--line);padding-top:10px;font-size:.9rem}
+      .school-card .links a{font-weight:700;text-decoration:none;margin-right:14px}
+      .school-empty{
+        border:2px dashed var(--gold);border-radius:var(--radius);background:var(--accent-soft);
+        padding:26px 22px;text-align:center;margin-top:16px;color:var(--ink-soft);font-size:.95rem;
+      }
+      .school-empty b{color:var(--teal);font-size:1.05rem}
+      /* ---------- register steps ---------- */
+      .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+      @media (max-width:760px){.steps3{grid-template-columns:1fr}}
+      .step-card .n{
+        display:inline-flex;align-items:center;justify-content:center;
+        width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;
+        font-family:"Shippori Mincho B1",serif;font-weight:700;margin-bottom:10px;
+      }
+      .reg-notes{margin:0;padding-left:1.3em;color:var(--ink-soft);font-size:.93rem}
+      .reg-notes li{margin-bottom:8px}
+      .register-btn{
+        display:inline-block;text-align:center;text-decoration:none;font-weight:700;font-size:1rem;
+        background:var(--gold);color:#fff;padding:14px 32px;border-radius:999px;
+      }
+      .register-btn:hover{background:var(--gold-bright)}
+      .register-btn:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
       @media (prefers-reduced-motion: reduce){
         html{scroll-behavior:auto}
         .fab-overlay,.fab-panel{transition:none}
@@ -367,12 +480,18 @@
     <header class="site">
       <div class="site-inner">
         <a class="brand" href="#top">ベリーダンス手帖<small>BELLY DANCE NOTEBOOK</small></a>
+        <nav class="page-nav" aria-label="ページ切り替え">
+          <button type="button" data-goto="top" class="active" aria-current="page">トップ</button>
+          <button type="button" data-goto="learn">学びと動き</button>
+          <button type="button" data-goto="costume">衣装と小物</button>
+          <button type="button" data-goto="portal">教室を探す</button>
+        </nav>
       </div>
     </header>
 
     <main id="top">
       <!-- HERO -->
-      <div class="wrap hero">
+      <div class="wrap hero" data-page="top">
         <div class="hero-img">
           <img src="assets/hero.webp" alt="シルクベールを広げて踊るベリーダンサーの水彩イラスト" width="2736" height="912" />
         </div>
@@ -382,10 +501,12 @@
           <p>
             ベリーダンス（オリエンタルダンス）は、中東や北アフリカにルーツを持つ、腰と胸の動きを中心とした踊りです。
             このサイトは、特定の教室や個人に属さない中立の専門メディアとして、踊りの基礎知識とスタイル解説、
-            そしてヒップスカーフ・ベール・衣装セットといった「衣装と小物の選び方」を、事実ベースで整理してお届けします。
+            基本の動きとリズムの学び、そしてヒップスカーフ・ベール・衣装セットといった「衣装と小物の選び方」を、事実ベースで整理してお届けします。
           </p>
           <div class="hero-nav">
             <a href="#about">まずは基礎知識から</a>
+            <a class="ghost" href="#styles">スタイル解説を見る</a>
+            <a class="ghost" href="#moves">基本の動きを学ぶ</a>
             <a class="ghost" href="#costume">衣装ガイドを見る</a>
             <a class="ghost" href="#items">アイテム紹介へ</a>
             <a class="ghost" href="#characters">公式キャラクターに会う</a>
@@ -405,7 +526,7 @@
       </div>
 
       <!-- ABOUT -->
-      <section class="block" id="about">
+      <section class="block" id="about" data-page="top">
         <div class="wrap">
           <div class="sec-head">
             <div class="num">01 — ABOUT</div>
@@ -454,7 +575,7 @@
       </section>
 
       <!-- STYLES -->
-      <section class="block" id="styles">
+      <section class="block" id="styles" data-page="learn">
         <div class="wrap">
           <div class="sec-head">
             <div class="num">02 — STYLES</div>
@@ -515,7 +636,7 @@
       </section>
 
       <!-- MOVES -->
-      <section class="block" id="moves">
+      <section class="block" id="moves" data-page="learn">
         <div class="wrap">
           <div class="sec-head">
             <div class="num">03 — TECHNIQUE</div>
@@ -560,7 +681,7 @@
       </section>
 
       <!-- RHYTHM -->
-      <div class="band" id="rhythm">
+      <div class="band" id="rhythm" data-page="learn">
         <div class="wrap">
           <div class="sec-head">
             <div class="num">04 — RHYTHM</div>
@@ -606,7 +727,7 @@
       </div>
 
 <!-- COSTUME -->
-<section class="block" id="costume">
+<section class="block" id="costume" data-page="costume">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">05 — COSTUME GUIDE</div>
@@ -684,7 +805,7 @@
 </section>
 
 <!-- HIP SCARF + PROPS -->
-<section class="block" id="hipscarf">
+<section class="block" id="hipscarf" data-page="costume">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">06 — FIRST ITEM</div>
@@ -730,7 +851,7 @@
 </div>
 </section>
 
-<section class="block" id="props">
+<section class="block" id="props" data-page="costume">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">07 — PROPS</div>
@@ -770,7 +891,7 @@
 </section>
 
 <!-- READING: SIZE GUIDE -->
-<section class="block" id="reading-size">
+<section class="block" id="reading-size" data-page="costume">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">READING — SIZE GUIDE</div>
@@ -887,8 +1008,306 @@
 </div>
 </section>
 
+<!-- READING: STYLES -->
+<section class="block" id="reading-styles" data-page="learn">
+<div class="wrap">
+<div class="sec-head">
+<div class="num">READING — STYLE GUIDE</div>
+<h2>ベリーダンスのスタイルの違い｜エジプシャン・ターキッシュ・フュージョンの特徴と選び方の目安</h2>
+<p>
+ベリーダンスの代表的なスタイルであるエジプシャン、ターキッシュ、フュージョンについて、それぞれの成り立ちと特徴を比べた読み物です。
+動きの傾向、使用される音楽やリズム、衣装の傾向を並べて整理し、教室選びや学び方を考えるときの目安もあわせてまとめました。
+スタイル名の一覧は<a href="#styles">主なスタイル解説</a>で紹介しているため、この記事では「どう違うのか」「どう選ぶか」に絞って解説します。
+</p>
+</div>
+
+<div class="card" style="margin-bottom:22px">
+<h3>「スタイル」とは何を指すのか</h3>
+<p>
+ベリーダンスのスタイルは、発祥した国や地域、発展した時代背景によって分類されることが多い呼び方です。
+同じ「ベリーダンス」でも、使う音楽、動きの大きさ、衣装の形が異なるのは、この背景の違いによるものです。
+ただし、国境をはっきり引けるような厳密な分類ではなく、現代のダンサーは複数のスタイルの要素を取り入れることも珍しくありません。
+教室や講師によって扱うスタイルの名称や範囲が異なる場合があるため、実際に学ぶ際は、各教室がどのスタイルを中心に教えているかを確認することが前提になります。
+用語の基礎については<a href="#moves">基本の動き・用語集</a>もあわせてご覧ください。
+</p>
+</div>
+
+<h3 style="font-size:1.15rem;margin-bottom:12px">3つのスタイルの比較</h3>
+<div class="table-scroll" style="margin-bottom:14px">
+<table class="size">
+<tr><th>項目</th><th>エジプシャン</th><th>ターキッシュ</th><th>フュージョン</th></tr>
+<tr>
+<td>成り立ち</td>
+<td>エジプト・カイロを中心に発展したスタイル。舞台芸術としてのラックス・シャルキーを軸に、民謡舞踊の要素も含みます。</td>
+<td>トルコで発展したスタイル。オスマン帝国時代の宮廷文化や、ロマの踊りの影響も受けているとされます。</td>
+<td>ベリーダンスを土台に、他の舞踊ジャンルの要素を意図的に組み合わせた比較的新しいスタイル。発祥の中心はアメリカとされます。</td>
+</tr>
+<tr>
+<td>動きの傾向</td>
+<td>腰や胸の動きを身体の内側でコントロールする表現が多く、歌詞の意味を身体で表す情感的な表現が重視されます。大きな移動よりも、その場での細かな動きや間の取り方が見どころになります。</td>
+<td>軽快でダイナミックな動きが目立ち、フロアワーク（床を使った動き）や、ジル（フィンガーシンバル）を打ち鳴らしながらの踊りが取り入れられることがあります。</td>
+<td>組み合わせるジャンルによって傾向が大きく変わります。ヒップホップ由来のポップな動きや、フラメンコの腕の使い方、コンテンポラリーのフロア表現など、作品ごとに狙いが異なります。</td>
+</tr>
+<tr>
+<td>音楽・リズム</td>
+<td>エジプトの古典歌曲やポップスが中心で、バラディやサイーディなどの4/4拍子系リズムが多く使われます。リズムの基礎は<a href="#rhythm">基本リズム</a>の解説も参考になります。</td>
+<td>9/8拍子のカルシーラマなどトルコ特有の変拍子が登場するのが大きな特徴です。テンポの速い曲や、ドラムの刻みが強い曲も多く使われます。</td>
+<td>民族音楽に限らず、エレクトロニック、ロック、ワールドミュージックなど幅広い音楽が使われます。選曲自体が作品の個性の一部になります。</td>
+</tr>
+<tr>
+<td>衣装の傾向</td>
+<td>ブラとベルト、ロングスカートを組み合わせたベドラーが基本形です。装飾は華やかですが、動きを妨げない適度なフィット感が重視されます。</td>
+<td>装飾が大ぶりで、スカートに深いスリットが入るデザインも多く見られます。衣装全体の見栄えの派手さが特徴のひとつです。</td>
+<td>固定された型はなく、作品の世界観に合わせて自由に構成されます。他ジャンルの衣装要素や、日常のファッションに近い装いが選ばれることもあります。</td>
+</tr>
+</table>
+</div>
+<p style="color:var(--ink-soft);font-size:.9rem;margin-top:4px">
+※ 上表は一般的な傾向の整理です。同じスタイル名でも、ダンサーや教室、作品によって解釈や見せ方は異なります。衣装のパーツ構成そのものについては<a href="#costume">衣装ガイド：パーツと選び方</a>で解説しています。
+</p>
+
+<h3 style="font-size:1.15rem;margin:22px 0 12px">スタイル別の特徴</h3>
+<div class="grid3" style="margin-bottom:22px">
+<div class="card">
+<h3>エジプシャン</h3>
+<p>
+エジプトの音楽文化と結びつきが深いスタイルです。歌詞のある曲では、歌の内容に合わせて手の仕草や表情で表現する場面が多く、
+テクニックの派手さよりも、音楽との一体感や情感の表現が評価の軸になりやすいとされます。
+民謡舞踊のバラディ（庶民的で温かみのある踊り）や、杖を使うサイーディなど、フォークロアの要素を学ぶ機会も多いスタイルです。
+</p>
+</div>
+<div class="card">
+<h3>ターキッシュ</h3>
+<p>
+エネルギッシュで開放的な表現が持ち味とされるスタイルです。9/8拍子特有の跳ねるようなリズム感は、
+4/4拍子中心のスタイルとは異なる身体の使い方を求めます。フロアワークなど床面を使う動きが含まれる場合があるため、
+レッスンでは柔軟性や体幹を使う動きと組み合わせて練習されることもあります。
+</p>
+</div>
+<div class="card">
+<h3>フュージョン</h3>
+<p>
+「何と融合させるか」が作品ごとに異なるため、ひとくくりの特徴を示しにくいスタイルです。
+アメリカ発祥のグループ即興形式であるトライバル／FCBD®スタイルから派生したトライバル・フュージョンも、この文脈で語られることがあります。
+先行するジャンルの知識があると理解が深まる一方、基礎のベリーダンスの動きを土台として学ぶ教室も多くあります。
+</p>
+</div>
+</div>
+
+<div class="card" style="margin-bottom:22px">
+<h3>選び方の目安：教室と学び方</h3>
+<p>
+どのスタイルから始めるべきかという決まった正解はなく、選ぶ際の目安として次のような観点が挙げられます。
+第一に、音楽の好みです。エジプトの歌曲に惹かれるならエジプシャン、変拍子の躍動感に惹かれるならターキッシュ、
+好きなジャンルの音楽で踊る形に惹かれるならフュージョン、というように、長く聴き続ける音楽から考える方法があります。
+第二に、通える教室が扱っているスタイルです。国内の教室ではエジプシャンを中心に教える教室が比較的多く見られますが、
+地域によって選択肢は異なります。体験レッスンや見学の機会がある場合は、扱うスタイルとレッスン内容を事前に確認することが基本です。
+第三に、衣装やステージのイメージです。発表会で着てみたい衣装の系統が決まっている場合は、そのスタイルを扱う教室の方が、
+衣装選びの情報も得やすくなります。サイズの考え方は<a href="#reading-size">衣装のサイズの考え方</a>も参考にしてください。
+なお、基礎の動き（シミーやヒップドロップなど）はスタイルを問わず共通する要素が多いため、入門段階ではスタイルの違いを過度に意識せず、
+基礎を丁寧に教える教室かどうかを目安にする考え方もあります。
+</p>
+</div>
+
+<div class="speech" style="margin-top:22px;max-width:52em">
+<strong>フェネ：</strong>
+「スタイル名は“地図”みたいなもの。まずは気になる音楽から辿ってみると、自分の入口が見つけやすくなりますよ」
+</div>
+<p style="color:var(--ink-soft);font-size:.9rem;margin-top:16px">
+関連ページ：
+<a href="#styles">主なスタイル解説</a>／
+<a href="#moves">基本の動き・用語集</a>／
+<a href="#rhythm">基本リズム</a>／
+<a href="#costume">衣装ガイド：パーツと選び方</a>／
+<a href="#faq">よくある質問</a>
+</p>
+</div>
+</section>
+
+<!-- READING: BASIC MOVES -->
+<section class="block" id="reading-moves" data-page="learn">
+<div class="wrap">
+<div class="sec-head">
+<div class="num">READING — BASIC MOVES</div>
+<h2>ベリーダンスの基礎の動き入門｜ヒップドロップ・シミー・スネークアームの種類と練習のポイント</h2>
+<p>
+初心者がレッスンの初期に覚えることが多い基本の動きを、種類別に整理した読み物です。
+<a href="#moves">基本の動き・用語集</a>では名称と概要を短く紹介しているため、この記事ではそれぞれの動きの仕組み、
+動かす部位の考え方、練習するときに意識しやすいポイントに絞って解説します。名称や教え方の順序は教室やスタイルによって異なる場合があります。
+</p>
+</div>
+
+<div class="card" style="margin-bottom:22px">
+<h3>基礎の動きに共通する前提：姿勢とアイソレーション</h3>
+<p>
+多くの基本動作に共通するのが、身体の一部分だけを動かし、ほかの部分はできるだけ静止させる「アイソレーション（分離）」という考え方です。
+たとえば腰を動かす動きでは上半身を大きく揺らさず、胸の動きでは腰を固定する、といった具合です。
+練習の出発点として一般的に挙げられる姿勢は、足を腰幅程度に開いて立ち、膝を軽く緩め、骨盤を極端に前後へ傾けず、
+頭頂が上方向へ伸びるイメージで立つ形です。姿勢の細かな指示は教室ごとに異なるため、レッスンでは講師の指示が優先されます。
+スタイルごとの動きの傾向については<a href="#reading-styles">スタイルの違いの読み物</a>、用いる音楽については<a href="#rhythm">基本リズム</a>もあわせてご覧ください。
+</p>
+</div>
+
+<h3 style="font-size:1.15rem;margin-bottom:12px">初心者が最初に覚える主な動き</h3>
+<div class="grid2" style="margin-bottom:22px">
+<div class="card">
+<span class="tag">腰 — 上下</span>
+<h3>ヒップドロップ <span style="font-size:.78rem;color:var(--gold);letter-spacing:.08em">HIP DROP</span></h3>
+<p>
+片方の腰を下方向へ落とす動きです。片足に重心を置き、反対側の足はつま先で床に触れる程度に添え、その側の膝の屈伸を使って腰を上下させます。
+練習のポイントは、腰を落とす動作と戻す動作をゆっくり分解し、上半身が左右に倒れたり前後に揺れたりしていないかを鏡で確認することです。
+速いテンポで刻む前に、まずは一定のリズムで同じ大きさの動きを繰り返せるかを目安にすると、形を確認しやすくなります。
+応用として、腰を斜め後ろへ蹴り出すように見せるヒップキックなど、近い形の動きもあります。
+</p>
+</div>
+<div class="card">
+<span class="tag">腰 — 振動</span>
+<h3>シミー <span style="font-size:.78rem;color:var(--gold);letter-spacing:.08em">SHIMMY</span></h3>
+<p>
+腰まわり全体を細かく速く震わせる動きです。膝を左右交互に小さく動かして振動を作る方法や、腰まわりの筋肉の切り替えで震わせる方法など、
+作り方には複数の種類があり、教室によって最初に教える種類が異なります。
+練習のポイントは、最初から速さや大きな振幅を求めず、膝を緩めた状態で小さな振動を一定時間続けられるかを確認することです。
+全身に力が入ると振動が止まりやすいため、肩や腕の力を抜いた状態で腰だけが震えているかを見直すことも大切とされます。
+<a href="#hipscarf">ヒップスカーフ</a>のコインの音は、振動が途切れていないかを耳で確認する手がかりの一つになります。
+</p>
+</div>
+<div class="card">
+<span class="tag">腕 — 波</span>
+<h3>スネークアーム <span style="font-size:.78rem;color:var(--gold);letter-spacing:.08em">SNAKE ARMS</span></h3>
+<p>
+肩から肘、手首へと波を順に伝える腕の動きで、蛇のうねりを思わせる見た目が名前の由来です。左右の腕を交互に波打たせる形が基本とされます。
+練習のポイントは、腕全体を一度に動かそうとせず、「肩を上げる／肘を送る／手首を返す」という流れを片腕ずつゆっくりなぞることです。
+波のつながりが途中で途切れる場合は、動かす順序を小さく分解して確認する方法があります。
+この動きはポーズとポーズのつなぎにも使われるため、ほかの動きと組み合わせたときに腕だけが止まっていないかも確認点になります。
+</p>
+</div>
+<div class="card">
+<span class="tag">腰 — 円</span>
+<h3>ヒップサークル <span style="font-size:.78rem;color:var(--gold);letter-spacing:.08em">HIP CIRCLE</span></h3>
+<p>
+腰を前・横・後ろ・横へとつなげ、円を描くように回す動きです。腰幅より大きく回す大きな円と、身体の内側で小さく回す円では、見え方や使う感覚が異なります。
+練習のポイントは、四つの方向を点として先に確認し、点と点の間をなめらかにつなぐことです。円が楕円になったり一方向だけ小さくなったりしていないかを、
+前からだけでなく横からも鏡で確認すると偏りに気づきやすくなります。
+</p>
+</div>
+<div class="card">
+<span class="tag">腰 — 8の字</span>
+<h3>フィギュアエイト／マヤ <span style="font-size:.78rem;color:var(--gold);letter-spacing:.08em">FIGURE EIGHT / MAYA</span></h3>
+<p>
+腰で「8の字」を描く動きの総称です。左右の腰を前後に送る横向きの8の字や、左右の腰を上下させる縦の8の字（マヤ）など、方向によって種類が分かれます。
+練習のポイントは、8の字を一度に描こうとせず、右腰だけ・左腰だけの動きをそれぞれ分けて練習し、その後に往復をつなげることです。
+重心が左右へ大きく流れて上半身が揺れる場合は、足裏への体重のかかり方を確認しながら、動きの幅を小さくして練習する方法があります。
+</p>
+</div>
+<div class="card">
+<span class="tag">胸 — 分離</span>
+<h3>チェストサークル／チェストリフト <span style="font-size:.78rem;color:var(--gold);letter-spacing:.08em">CHEST CIRCLE / LIFT</span></h3>
+<p>
+胸（肋骨まわり）だけを独立させて前後・左右へ動かしたり、円を描いたりする動きです。下半身を固定した状態で胸を動かすため、アイソレーションを意識しやすい動きとされます。
+練習のポイントは、肩そのものをすくめたり回したりするのではなく、胸郭の位置が移動しているかを確認することです。
+腰が一緒に動いてしまう場合は、壁際に立つ、椅子に座るなど、下半身を安定させた姿勢で小さな動きから確認する方法もあります。
+</p>
+</div>
+<div class="card">
+<span class="tag">胴体 — 波</span>
+<h3>アンデュレーション（キャメル） <span style="font-size:.78rem;color:var(--gold);letter-spacing:.08em">UNDULATION / CAMEL</span></h3>
+<p>
+胸を前に出し、次にお腹、腰へと波を下方向へ伝える動きです。ラクダ（キャメル）のこぶのようなラインが見えることから、キャメルと呼ばれることもあります。
+練習のポイントは、胸を出す・お腹を送る・骨盤を戻すという段階をゆっくり分け、波がどこで止まっているかを確認することです。
+腰を反らせる力だけで形を作ろうとすると動きが途切れやすいため、膝を緩め、重心の前後の移動と一緒に練習する形が一般的に紹介されます。
+</p>
+</div>
+<div class="card">
+<span class="tag">移動 — 歩行</span>
+<h3>エジプシャンウォーク <span style="font-size:.78rem;color:var(--gold);letter-spacing:.08em">EGYPTIAN WALK</span></h3>
+<p>
+腰の動きを保ちながら前へ進む歩行のテクニックです。その場でできるようになったヒップの動きを、移動しながら維持する段階で練習されることが多い動きです。
+練習のポイントは、歩幅を小さくし、まずはゆっくりしたテンポで「進むこと」と「腰を動かすこと」を別々に確認してから組み合わせることです。
+ステージ上での移動の見せ方は扱うスタイルによっても異なるため、<a href="#styles">主なスタイル解説</a>も参考になります。
+</p>
+</div>
+</div>
+
+<div class="card" style="margin-bottom:22px">
+<h3>動きを分けると見えてくる「種類」の考え方</h3>
+<p>
+基礎の動きは、動かす部位（腰・胸・腕）と、動きの形（上下・円・8の字・波・振動）の組み合わせで整理できます。
+たとえば腰の「上下」がヒップドロップ、腰の「振動」がシミー、腕の「波」がスネークアームにあたります。
+この整理を知っておくと、レッスンで新しい動きに出会ったときに、既に練習したどの動きの仲間なのかを考えやすくなります。
+ただし、これは理解を助けるための一般的な整理であり、分類の仕方や名称は教室・講師・スタイルによって異なります。
+</p>
+</div>
+
+<h3 style="font-size:1.15rem;margin-bottom:12px">練習の進め方とポイント</h3>
+<div class="grid3" style="margin-bottom:22px">
+<div class="card">
+<h3>1. ゆっくり分解する</h3>
+<p>
+新しい動きは、最初は音楽なし、または遅いテンポで、動かす順序を一つずつ確認しながら練習する方法が一般的です。
+形が確認できてから少しずつテンポを上げることで、どの段階で動きが崩れているかに気づきやすくなります。
+リズムの数え方は<a href="#rhythm">基本リズム</a>の口唱歌（ドゥン／テッ）も参考になります。
+</p>
+</div>
+<div class="card">
+<h3>2. 鏡と音で確認する</h3>
+<p>
+鏡で上半身の揺れや左右の偏りを確認し、ヒップスカーフのコインの音で腰の動きのリズムを確認するなど、
+目と耳の両方を使う方法があります。レッスン着は腰の動きが見える丈のものが扱いやすいとされ、
+衣装やレッスン用品のサイズの考え方は<a href="#reading-size">衣装のサイズの考え方</a>でも解説しています。
+</p>
+</div>
+<div class="card">
+<h3>3. 短く組み合わせる</h3>
+<p>
+一つひとつの動きが単独でできるようになったら、ヒップドロップからヒップサークルへつなげるなど、
+2〜3種類を短く組み合わせる練習へ進みます。つなぎ目で姿勢が崩れていないかが確認点で、
+振付（コンビネーション）の練習はこの組み合わせの積み重ねとして位置づけられます。
+</p>
+</div>
+</div>
+
+<div class="grid2" style="margin-bottom:22px">
+<div class="card">
+<h3>つまずきやすい点と見直し方</h3>
+<p>
+よく挙げられるのは、膝を伸ばし切ったまま腰を動かそうとして動きが小さくなる、肩や首に力が入って上半身全体が揺れる、
+速いテンポに合わせようとして動きの幅が不揃いになる、といった点です。
+いずれも、テンポを落とす、動きの幅を小さくする、動かす部位以外が動いていないかを鏡で確認する、といった見直し方が紹介されます。
+左右差がある場合は、苦手な側だけを短く繰り返す方法もあります。
+</p>
+</div>
+<div class="card">
+<h3>無理のない範囲で続けるために</h3>
+<p>
+練習では、関節や筋肉に痛みを感じる場合はその動きを中止し、無理に続けないことが前提です。
+身体の状態に不安がある場合は、レッスンを受ける教室や医療機関へ相談してください。
+練習場所については、足裏が滑りにくく、腕を広げても周囲にぶつからない広さを確保すること、
+床の状態に合わせて裸足かハーフシューズかを使い分けることが、一般的な注意点として挙げられます。
+小物の扱いについては<a href="#props">小物・プロップス図鑑</a>もご覧ください。
+</p>
+</div>
+</div>
+
+<div class="speech" style="margin-top:22px;max-width:52em">
+<strong>ライラ：</strong>
+「基礎の動きは、種類ごとに“動かす場所”を分けて考えると整理しやすくなります。まずはゆっくり、一つずつ形を確認していきましょう」
+</div>
+<p style="color:var(--ink-soft);font-size:.9rem;margin-top:16px">
+関連ページ：
+<a href="#moves">基本の動き・用語集</a>／
+<a href="#styles">主なスタイル解説</a>／
+<a href="#reading-styles">読み物：スタイルの違い</a>／
+<a href="#rhythm">基本リズム</a>／
+<a href="#costume">衣装ガイド：パーツと選び方</a>／
+<a href="#reading-size">読み物：衣装のサイズの考え方</a>／
+<a href="#hipscarf">最初の一枚：ヒップスカーフの選び方</a>／
+<a href="#faq">よくある質問</a>
+</p>
+</div>
+</section>
+
 <!-- NEW ARRIVALS -->
-<section class="block" id="new">
+<section class="block" id="new" data-page="top">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">08 — NEW &amp; NOTABLE <span style="font-size:.8rem;color:var(--burgundy)">【PR】</span></div>
@@ -935,7 +1354,7 @@
 </section>
 
 <!-- ITEMS / AFFILIATE -->
-<section class="block" id="items">
+<section class="block" id="items" data-page="costume">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">09 — ITEMS <span style="font-size:.8rem;color:var(--burgundy)">【PR】</span></div>
@@ -1058,7 +1477,7 @@
 </section>
 
 <!-- CALC -->
-<section class="block" id="calc">
+<section class="block" id="calc" data-page="costume">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">10 — BUDGET</div>
@@ -1086,7 +1505,7 @@
 </section>
 
 <!-- QUIZ -->
-<section class="block" id="quiz">
+<section class="block" id="quiz" data-page="learn">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">11 — QUIZ</div>
@@ -1145,7 +1564,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="block" id="faq">
+<section class="block" id="faq" data-page="learn">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">12 — FAQ</div>
@@ -1173,13 +1592,13 @@
 </details>
 <details class="faq">
 <summary>このサイトは誰が運営していますか？</summary>
-<p>当サイトは、特定の教室・流派・個人に属さない中立の専門メディアとして、ベリーダンスの学びと衣装に関する公開情報を整理して発信しています。個別の教室の紹介やレッスンの提供は行っていません。</p>
+<p>当サイトは、特定の教室・流派・個人に属さない中立の専門メディアとして、ベリーダンスの学びと衣装に関する公開情報を整理して発信しています。レッスンの提供は行っていません。教室については、教室・スタジオからの申請を受け、運営が確認した教室の公式情報を「<a href="#schools">教室を探す</a>」に掲載しています。</p>
 </details>
 </div>
 </section>
 
 <!-- CHARACTERS -->
-<section class="block" id="characters">
+<section class="block" id="characters" data-page="top">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">13 — CHARACTERS</div>
@@ -1294,7 +1713,7 @@
 </section>
 
 <!-- SNS & EXPANSION -->
-<section class="block" id="sns">
+<section class="block" id="sns" data-page="top">
 <div class="wrap">
 <div class="sec-head">
 <div class="num">14 — SNS &amp; MORE</div>
@@ -1360,6 +1779,150 @@ Instagramと同じ <span class="handle">@belly.techo</span> で開設しまし�
 </div>
 </div>
 </section>
+
+<!-- PORTAL BANNER (トップ下部の控えめな案内) -->
+<section class="block" data-page="top" style="padding-top:40px">
+<div class="wrap">
+<div class="portal-banner">
+<p><strong>教室をお探しの方へ：</strong>全国のベリーダンス教室・スタジオへのリンク集「教室を探す」もご用意しています。各教室の公式サイトへ直接ご案内します。</p>
+<a href="#schools">教室リンク集を見る</a>
+</div>
+</div>
+</section>
+
+<!-- SCHOOL PORTAL -->
+<section class="block" id="schools" data-page="portal">
+<div class="wrap">
+<div class="sec-head">
+<div class="num">LINKS — SCHOOLS</div>
+<h2>教室を探す（リンク集）</h2>
+<p>
+全国のベリーダンス教室・スタジオへのリンク集です。都道府県を選ぶと、その地域の教室だけを表示する地域ページに切り替わります。気になる教室のカードを選ぶと、その教室の公式サイトへ直接移動します。
+掲載は、教室・スタジオからの申請を受けて、運営が実在と文面を確認したものに限ります。
+レッスンの内容・料金・申込みについては、リンク先の各教室の公式情報でご確認ください。
+</p>
+</div>
+<div id="schoolHome">
+<div class="region-index" id="regionIndex" aria-label="地域から探す"></div>
+<p class="pfilters-note">絞り込み（任意）：スタイル・形態などで一覧を絞れます。一覧のリンクがそのまま各教室への入口です。地域からは上の都道府県ボタンでも探せます。</p>
+<div class="pfilters" role="group" aria-label="教室の絞り込み">
+<div>
+<label for="f-pref">都道府県</label>
+<select id="f-pref"><option value="">すべての地域</option></select>
+</div>
+<div>
+<label for="f-style">スタイル</label>
+<select id="f-style">
+<option value="">すべてのスタイル</option>
+<option value="エジプシャン">エジプシャン</option>
+<option value="ターキッシュ">ターキッシュ</option>
+<option value="トライバル／FCBD®">トライバル／FCBD®</option>
+<option value="フュージョン">フュージョン</option>
+<option value="フォークロア">フォークロア（民族舞踊）</option>
+<option value="その他">その他</option>
+</select>
+</div>
+<div>
+<label for="f-form">レッスン形態</label>
+<select id="f-form">
+<option value="">すべての形態</option>
+<option value="定期クラス">定期クラス</option>
+<option value="単発・チケット制">単発・チケット制</option>
+<option value="体験レッスンあり">体験レッスンあり</option>
+<option value="オンラインレッスン">オンラインレッスン</option>
+<option value="ワークショップ">ワークショップ</option>
+</select>
+</div>
+<div>
+<label>特徴</label>
+<div class="feat-chips">
+<button type="button" class="feat-chip" data-feat="初心者歓迎" aria-pressed="false">初心者歓迎</button>
+<button type="button" class="feat-chip" data-feat="女性専用" aria-pressed="false">女性専用</button>
+<button type="button" class="feat-chip" data-feat="子供クラスあり" aria-pressed="false">子供クラスあり</button>
+</div>
+</div>
+</div>
+<p class="school-count" id="schoolCount">掲載教室：0件</p>
+<div class="school-grid" id="schoolGrid"></div>
+<div class="school-empty" id="schoolEmpty">
+<b>掲載教室は順次追加されます</b><br />
+現在、教室・スタジオの登録を受け付けています。掲載は無料です。<br />
+<a href="#register">教室・スタジオの登録（無料）についてはこちら</a>
+</div>
+<div class="school-empty" id="schoolNoMatch" hidden>
+<b>条件に合う教室はまだ掲載されていません</b><br />
+条件を変えてお試しください。
+</div>
+<div class="speech" style="max-width:46em;margin-top:22px">
+<strong>ライラ：</strong>
+教室選びで迷ったら、まずは<a href="#styles">スタイル解説</a>と<a href="#reading-styles">読み物「ベリーダンスのスタイルの違い」</a>で、習いたい踊りの雰囲気を確かめてみてください。体験レッスンのある教室から始めるのもおすすめです。
+</div>
+</div><!-- /schoolHome -->
+
+<div id="prefView" hidden>
+<button type="button" class="back-btn" id="prefBack">← 教室を探すトップへ戻る</button>
+<div class="pref-head">
+<h3 id="prefTitle">地域の教室</h3>
+<p id="prefLead"></p>
+</div>
+<p class="school-count" id="prefCount"></p>
+<div class="school-grid" id="prefGrid"></div>
+<div class="school-empty" id="prefEmpty">
+<b>この地域の掲載教室はまだありません</b><br />
+現在、この地域の教室・スタジオの登録を受け付けています。掲載は無料です。<br />
+<a href="#register">教室・スタジオの登録（無料）についてはこちら</a>
+</div>
+<div class="pref-switch">
+<h4>他の地域を見る</h4>
+<div class="region-prefs" id="prefSwitch"></div>
+<p style="margin:14px 0 0"><button type="button" class="back-btn" id="prefBack2">← 教室を探すトップへ戻る</button></p>
+</div>
+</div><!-- /prefView -->
+</div>
+</section>
+
+<!-- REGISTER -->
+<section class="block" id="register" data-page="portal">
+<div class="wrap">
+<div class="sec-head">
+<div class="num">REGISTER — FOR SCHOOLS</div>
+<h2>教室・スタジオの登録（無料）</h2>
+<p>
+ベリーダンス教室・スタジオを運営されている方へ。このポータルへの掲載は無料で、全国から受け付けています（オンラインのみの教室も対象です）。
+掲載までの流れは、次の3ステップです。
+</p>
+</div>
+<div class="steps3">
+<div class="card step-card">
+<span class="n">1</span>
+<h3>フォームから申請</h3>
+<p>教室名・地域・スタイル・対象・レッスン形態・公式サイトやSNSのリンク・ひとこと紹介などを、Googleフォームから入力します（5分ほど）。</p>
+</div>
+<div class="card step-card">
+<span class="n">2</span>
+<h3>運営で確認</h3>
+<p>申請内容をもとに、教室の実在確認と掲載文面の確認を行います。確認のため、運営連絡用のメールアドレス宛にご連絡する場合があります。</p>
+</div>
+<div class="card step-card">
+<span class="n">3</span>
+<h3>サイトに掲載</h3>
+<p>「教室を探す」に掲載します。掲載時には、公式SNS（Instagram／Threads）でも新規登録としてお知らせします。</p>
+</div>
+</div>
+<div class="card" style="margin-top:18px">
+<h3>申請前にご確認ください</h3>
+<ul class="reg-notes">
+<li>申請した時点で掲載が確定するものではありません。運営の確認後に掲載となります。</li>
+<li>運営連絡用のメールアドレスは公開されません。掲載ページに載るのは、教室名・地域・スタイル・紹介文・公式リンクなどの公開情報のみです。</li>
+<li>掲載は無料です。掲載後の内容変更・削除のご希望は、運営連絡用のメールアドレスからご連絡ください。</li>
+</ul>
+<p style="text-align:center;margin:22px 0 0">
+<a class="register-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScf-77RYw7Fk-CuotXNN6PRqi4HNtPi3xi6qDqlTj3h3Xsb2A/viewform" target="_blank" rel="noopener">無料登録を申請する（Googleフォーム）</a>
+</p>
+<p style="text-align:center;font-size:.82rem;color:var(--ink-soft);margin:10px 0 0">フォーム名：「ベリーダンス手帖 教室・スタジオ無料登録申請」</p>
+</div>
+</div>
+</section>
 </main>
 
 <footer class="site">
@@ -1372,6 +1935,9 @@ Instagramと同じ <span class="handle">@belly.techo</span> で開設しまし�
 <p>
 公式キャラクターは案内役のライラとペットのフェネ（いずれも架空のキャラクター）です。
 SNSは Instagram／Threads の <a href="https://www.instagram.com/belly.techo/" target="_blank" rel="noopener" style="color:var(--gold-bright)">@belly.techo</a> で発信しています（<a href="#sns" style="color:var(--gold-bright)">SNS・これからの展開</a>）。
+</p>
+<p>
+全国の教室・スタジオを探せる<a href="#schools" style="color:var(--gold-bright)">教室ポータル「教室を探す」</a>も開設しました。教室・スタジオの<a href="#register" style="color:var(--gold-bright)">無料登録</a>も受け付けています。
 </p>
 <p>
 当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定された
@@ -1395,6 +1961,8 @@ SNSは Instagram／Threads の <a href="https://www.instagram.com/belly.techo/" 
   </div>
   <ul>
     <li><a href="#top">トップ</a></li>
+    <li><a href="#schools">教室を探す</a></li>
+    <li><a href="#register">教室の登録（無料）</a></li>
     <li><a href="#about">ベリーダンスとは</a></li>
     <li><a href="#styles">スタイル</a></li>
     <li><a href="#moves">基本の動き</a></li>
@@ -1403,6 +1971,8 @@ SNSは Instagram／Threads の <a href="https://www.instagram.com/belly.techo/" 
     <li><a href="#hipscarf">ヒップスカーフ</a></li>
     <li><a href="#props">小物・プロップス</a></li>
     <li><a href="#reading-size">読み物：衣装のサイズ</a></li>
+    <li><a href="#reading-styles">読み物：スタイルの違い</a></li>
+    <li><a href="#reading-moves">読み物：基礎の動き入門</a></li>
     <li><a href="#new">新着</a></li>
     <li><a href="#items">アイテム紹介</a></li>
     <li><a href="#calc">予算シミュレーション</a></li>
@@ -1525,6 +2095,243 @@ Array.prototype.forEach.call(fabPanel.querySelectorAll("a"), function (a) {
   a.addEventListener("click", function () { closeFab(false); });
 });
 window.addEventListener("hashchange", function () { closeFab(false); });
+})();
+</script>
+<script>
+// ---------- page switching + school portal ----------
+(function () {
+"use strict";
+// ---- page switching (single-file, Seraphina official site style) ----
+var FIRST_ID = { top: "top", learn: "styles", costume: "costume", portal: "schools" };
+var pageEls = Array.prototype.slice.call(document.querySelectorAll("[data-page]"));
+var navBtns = Array.prototype.slice.call(document.querySelectorAll(".page-nav button"));
+function pageOfEl(el) {
+  var p = el && el.closest ? el.closest("[data-page]") : null;
+  return p ? p.getAttribute("data-page") : "top";
+}
+function activate(name) {
+  pageEls.forEach(function (el) { el.hidden = el.getAttribute("data-page") !== name; });
+  navBtns.forEach(function (b) {
+    var on = b.getAttribute("data-goto") === name;
+    b.classList.toggle("active", on);
+    if (on) { b.setAttribute("aria-current", "page"); } else { b.removeAttribute("aria-current"); }
+  });
+}
+function scrollToEl(el) {
+  setTimeout(function () { el.scrollIntoView({ block: "start" }); }, 40);
+}
+var resetSchoolView = null;
+function goToId(id) {
+  if (id === "schools" && resetSchoolView) resetSchoolView();
+  if (!id || id === "top") { activate("top"); window.scrollTo(0, 0); return; }
+  var el = document.getElementById(id);
+  if (!el) { activate("top"); window.scrollTo(0, 0); return; }
+  activate(pageOfEl(el));
+  scrollToEl(el);
+}
+navBtns.forEach(function (b) {
+  b.addEventListener("click", function () {
+    var p = b.getAttribute("data-goto");
+    if (p === "portal" && resetSchoolView) resetSchoolView();
+    activate(p);
+    window.scrollTo(0, 0);
+    try { history.replaceState(null, "", "#" + FIRST_ID[p]); } catch (e) {}
+  });
+});
+document.addEventListener("click", function (e) {
+  var t = e.target;
+  var a = t && t.closest ? t.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = a.getAttribute("href").slice(1);
+  if (!id) return;
+  if (id !== "top" && !document.getElementById(id)) return;
+  e.preventDefault();
+  goToId(id);
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+});
+if (location.hash.length > 1) {
+  var hel = document.getElementById(location.hash.slice(1));
+  if (hel) { activate(pageOfEl(hel)); scrollToEl(hel); } else { activate("top"); }
+} else {
+  activate("top");
+}
+
+// ---- school portal (data-driven; add entries to SCHOOLS to publish) ----
+// Entry shape: { name, pref, city, station, styles:[], features:[], forms:[], website, sns, intro }
+var SCHOOLS = [];
+var PREFS = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県","オンラインのみ"];
+var prefSel = document.getElementById("f-pref");
+var styleSel = document.getElementById("f-style");
+var formSel = document.getElementById("f-form");
+var grid = document.getElementById("schoolGrid");
+var emptyBox = document.getElementById("schoolEmpty");
+var noMatch = document.getElementById("schoolNoMatch");
+var countEl = document.getElementById("schoolCount");
+var chips = Array.prototype.slice.call(document.querySelectorAll(".feat-chip"));
+if (prefSel && grid) {
+  PREFS.forEach(function (p) {
+    var o = document.createElement("option");
+    o.value = p; o.textContent = p;
+    prefSel.appendChild(o);
+  });
+  function buildCard(s) {
+    var card = document.createElement("article");
+    card.className = "school-card" + (s.website ? " has-site" : "");
+    var h = document.createElement("h3");
+    if (s.website) {
+      var titleLink = document.createElement("a");
+      titleLink.className = "site-link";
+      titleLink.href = s.website; titleLink.target = "_blank"; titleLink.rel = "noopener";
+      titleLink.textContent = s.name;
+      h.appendChild(titleLink);
+    } else {
+      h.textContent = s.name;
+    }
+    card.appendChild(h);
+    var area = document.createElement("p"); area.className = "area";
+    area.textContent = s.pref + (s.city ? " " + s.city : "") + (s.station ? "／" + s.station : "");
+    card.appendChild(area);
+    if (s.intro) { var d = document.createElement("p"); d.className = "desc"; d.textContent = s.intro; card.appendChild(d); }
+    var tags = document.createElement("div"); tags.className = "stags";
+    (s.styles || []).concat(s.features || [], s.forms || []).forEach(function (t) {
+      var sp = document.createElement("span"); sp.className = "stag"; sp.textContent = t; tags.appendChild(sp);
+    });
+    if (tags.childNodes.length) card.appendChild(tags);
+    if (s.website) {
+      var go = document.createElement("p"); go.className = "go-site";
+      go.textContent = "公式サイトへ →";
+      card.appendChild(go);
+    }
+    if (s.sns) {
+      var links = document.createElement("div"); links.className = "links";
+      var a2 = document.createElement("a"); a2.className = "sns-link";
+      a2.href = s.sns; a2.target = "_blank"; a2.rel = "noopener"; a2.textContent = "SNSを見る";
+      links.appendChild(a2);
+      card.appendChild(links);
+    }
+    return card;
+  }
+  function renderSchools() {
+    var pref = prefSel.value, style = styleSel.value, form = formSel.value;
+    var feats = [];
+    chips.forEach(function (c) { if (c.classList.contains("on")) feats.push(c.getAttribute("data-feat")); });
+    var list = SCHOOLS.filter(function (s) {
+      if (pref && s.pref !== pref) return false;
+      if (style && (s.styles || []).indexOf(style) < 0) return false;
+      if (form && (s.forms || []).indexOf(form) < 0) return false;
+      for (var i = 0; i < feats.length; i++) { if ((s.features || []).indexOf(feats[i]) < 0) return false; }
+      return true;
+    });
+    var isFiltered = !!(pref || style || form || feats.length);
+    countEl.textContent = "掲載教室：" + list.length + "件";
+    grid.innerHTML = "";
+    list.forEach(function (s) { grid.appendChild(buildCard(s)); });
+    grid.hidden = list.length === 0;
+    if (SCHOOLS.length === 0) {
+      emptyBox.hidden = isFiltered;
+      noMatch.hidden = !isFiltered;
+    } else {
+      emptyBox.hidden = true;
+      noMatch.hidden = list.length !== 0;
+    }
+  }
+  [prefSel, styleSel, formSel].forEach(function (sel) { sel.addEventListener("change", renderSchools); });
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      var on = c.classList.toggle("on");
+      c.setAttribute("aria-pressed", on ? "true" : "false");
+      renderSchools();
+    });
+  });
+  renderSchools();
+
+  // ---- region index + prefecture sub-views ----
+  var REGIONS = [
+    { name: "北海道・東北", prefs: ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県"] },
+    { name: "関東", prefs: ["茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県"] },
+    { name: "中部", prefs: ["新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県"] },
+    { name: "近畿", prefs: ["三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県"] },
+    { name: "中国", prefs: ["鳥取県","島根県","岡山県","広島県","山口県"] },
+    { name: "四国", prefs: ["徳島県","香川県","愛媛県","高知県"] },
+    { name: "九州・沖縄", prefs: ["福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"] },
+    { name: "オンライン", prefs: ["オンラインのみ"] }
+  ];
+  var schoolHome = document.getElementById("schoolHome");
+  var prefView = document.getElementById("prefView");
+  var regionIndex = document.getElementById("regionIndex");
+  var prefTitle = document.getElementById("prefTitle");
+  var prefLead = document.getElementById("prefLead");
+  var prefCount = document.getElementById("prefCount");
+  var prefGrid = document.getElementById("prefGrid");
+  var prefEmpty = document.getElementById("prefEmpty");
+  var prefSwitch = document.getElementById("prefSwitch");
+  function countFor(p) {
+    return SCHOOLS.filter(function (s) { return s.pref === p; }).length;
+  }
+  function makePrefBtn(p, current) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "region-pref" + (current ? " current" : "");
+    b.textContent = p;
+    var c = document.createElement("span");
+    c.className = "cnt"; c.textContent = countFor(p) + "件";
+    b.appendChild(c);
+    if (current) { b.disabled = true; b.setAttribute("aria-current", "true"); }
+    else { b.addEventListener("click", function () { openPref(p, true); }); }
+    return b;
+  }
+  if (regionIndex) {
+    REGIONS.forEach(function (r) {
+      var block = document.createElement("div"); block.className = "region-block";
+      var h = document.createElement("h3"); h.textContent = r.name; block.appendChild(h);
+      var row = document.createElement("div"); row.className = "region-prefs";
+      r.prefs.forEach(function (p) { row.appendChild(makePrefBtn(p, false)); });
+      block.appendChild(row);
+      regionIndex.appendChild(block);
+    });
+  }
+  function openPref(p, pushHash) {
+    if (!schoolHome || !prefView) return;
+    schoolHome.hidden = true;
+    prefView.hidden = false;
+    prefTitle.textContent = p === "オンラインのみ" ? "オンラインの教室" : p + "の教室";
+    prefLead.textContent = p === "オンラインのみ"
+      ? "オンラインで受講できる教室へのリンク集です。カードを選ぶと各教室の公式サイトへ移動します。"
+      : p + "のベリーダンス教室・スタジオへのリンク集です。カードを選ぶと各教室の公式サイトへ移動します。";
+    var list = SCHOOLS.filter(function (s) { return s.pref === p; });
+    prefCount.textContent = "掲載教室：" + list.length + "件";
+    prefGrid.innerHTML = "";
+    list.forEach(function (s) { prefGrid.appendChild(buildCard(s)); });
+    prefGrid.hidden = list.length === 0;
+    prefEmpty.hidden = list.length !== 0;
+    if (prefSwitch) {
+      prefSwitch.innerHTML = "";
+      PREFS.forEach(function (q) { prefSwitch.appendChild(makePrefBtn(q, q === p)); });
+    }
+    if (pushHash) { try { history.replaceState(null, "", "#schools/" + encodeURIComponent(p)); } catch (e) {} }
+    var sec = document.getElementById("schools");
+    if (sec) sec.scrollIntoView({ block: "start" });
+  }
+  function closePref(pushHash) {
+    if (!schoolHome || !prefView) return;
+    prefView.hidden = true;
+    schoolHome.hidden = false;
+    if (pushHash) { try { history.replaceState(null, "", "#schools"); } catch (e) {} }
+    var sec = document.getElementById("schools");
+    if (sec) sec.scrollIntoView({ block: "start" });
+  }
+  resetSchoolView = function () { closePref(false); };
+  var pb1 = document.getElementById("prefBack");
+  var pb2 = document.getElementById("prefBack2");
+  if (pb1) pb1.addEventListener("click", function () { closePref(true); });
+  if (pb2) pb2.addEventListener("click", function () { closePref(true); });
+  // deep link: #schools/<都道府県>
+  if (location.hash.indexOf("#schools/") === 0) {
+    var hp = null;
+    try { hp = decodeURIComponent(location.hash.slice("#schools/".length)); } catch (e) {}
+    if (hp && PREFS.indexOf(hp) >= 0) { activate("portal"); openPref(hp, false); }
+  }
+}
 })();
 </script>
 </body>
