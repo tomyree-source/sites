@@ -20,7 +20,8 @@
 html,body{height:100%}
 body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Noto Sans JP",sans-serif;background:#10131f;color:#fff;overflow:hidden}
 #app{position:relative;width:100%;max-width:480px;height:100dvh;margin:0 auto;background:#000;overflow:hidden;box-shadow:0 0 40px rgba(0,0,0,.6)}
-#bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:opacity.45s}
+#bgBack{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:blur(16px) brightness(.5);transform:scale(1.12)}
+#bg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center 45%;transition:opacity.45s}
 #shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,10,24,.25) 0%,rgba(8,10,24,0) 30%,rgba(8,10,24,0) 52%,rgba(8,10,24,.88) 82%)}
 #hud{position:absolute;top:0;left:0;right:0;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;background:linear-gradient(to bottom,rgba(8,10,24,.78),rgba(8,10,24,0));z-index:5}
 #hud.row{display:flex;align-items:center;gap:8px;font-size:13px}
@@ -29,8 +30,8 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 #bar{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#ffd76e,#ff9ecb);transition:width.6s}
 #hud.num{font-weight:700;min-width:26px;text-align:right;text-shadow:0 1px 3px #000}
 #hud.sub{display:flex;justify-content:space-between;margin-top:3px;font-size:11.5px;color:#eaf2ff;text-shadow:0 1px 3px #000}
-#stagec{color:#ffd9ec;font-weight:600}
-#menu{position:absolute;top:calc(64px + env(safe-area-inset-top));right:8px;display:flex;flex-direction:column;gap:6px;z-index:6}
+#stagec{color:#ffd9ec;font-weight:600;flex:1 1 auto;min-width:0}
+#menu{position:absolute;top:calc(88px + env(safe-area-inset-top));right:8px;display:flex;flex-direction:column;gap:6px;z-index:6}
 #menu button{background:rgba(16,20,40,.72);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:7px 12px;font-size:12.5px;font-weight:700;min-width:64px;cursor:pointer;backdrop-filter:blur(3px)}
 #menu button.on{background:#ffd76e;color:#442c00;border-color:#ffd76e}
 #textbox{position:absolute;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));background:rgba(12,15,32,.86);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:14px 16px 18px;min-height:132px;cursor:pointer;z-index:4;backdrop-filter:blur(4px)}
@@ -96,6 +97,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 </head>
 <body>
 <div id="app">
+<img id="bgBack" alt="">
 <img id="bg" alt="">
 <div id="shade"></div>
 <div id="hud">
@@ -168,13 +170,14 @@ function endingFor2(v){ return v>=52? "f_high": (v>=34? "f_mid": "f_low");}
 const SHOKU_MAX = 170;
 const BR = {"BRANCH3": {"kind": "shoku", "hi": 75, "lo": 59, "high": "t_end_high", "mid": "t_end_mid", "low": "t_end_low"}, "BRANCH4": {"kind": "shoku", "hi": 78, "lo": 59, "high": "s_end_high", "mid": "s_end_mid", "low": "s_end_low"}, "BRANCH5": {"kind": "shoku", "hi": 81, "lo": 60, "high": "w_end_high", "mid": "w_end_mid", "low": "w_end_low"}, "BRANCH6": {"kind": "shoku", "hi": 87, "lo": 63, "high": "l_end_high", "mid": "l_end_mid", "low": "l_end_low"}, "BRANCH7": {"kind": "gab", "hi": 3, "lo": 1, "high": "v_end_high", "mid": "v_end_mid", "low": "v_end_low"}, "BRANCH8": {"kind": "shoku", "hi": 109, "lo": 79, "high": "k_end_high", "mid": "k_end_mid", "low": "k_end_low"}, "FINAL": {"kind": "final", "spI": 174, "hiS": 107, "stayI": 130, "loS": 88, "special": "end_special", "stay": "end_stay", "travel": "end_travel", "ret": "end_return"}};
 function branchFor(token){ const t = BR[token]; if(!t) return null; if(t.kind==="shoku"){ return S.shoku>=t.hi? t.high : (S.shoku>=t.lo? t.mid : t.low);} if(t.kind==="gab"){ const g=(S.flags&&S.flags.gab)||0; return g>=t.hi? t.high : (g>=t.lo? t.mid : t.low);} if(t.kind==="final"){ if(S.iyashi>=t.spI) return t.special; if(S.shoku>=t.hiS && S.iyashi>=t.stayI) return t.stay; if(S.shoku>=t.loS) return t.travel; return t.ret; } return null;}
+function setBg(src){ document.getElementById("bg").src = src; document.getElementById("bgBack").src = src; }
 function showScene(){
 const sc = SCENES[S.scene];
 recordSceneProgress(S.scene);
 audioSceneHook();
-if(sc.interlude){ document.getElementById("bg").src = assetSrc(sc.bg); startInterlude(sc.interlude, sc.target); return; }
+if(sc.interlude){ setBg(assetSrc(sc.bg)); startInterlude(sc.interlude, sc.target); return; }
 hideFree();
-document.getElementById("bg").src = assetSrc(sc.bg);
+setBg(assetSrc(sc.bg));
 const line = sc.lines[S.line];
 document.getElementById("who").textContent = line[0] || "";
 document.getElementById("text").textContent = line[1];
@@ -1129,7 +1132,7 @@ document.getElementById("soundModal").style.display = "block";
 document.getElementById("mSound").addEventListener("click", e=>{ e.stopPropagation(); audioUserStart(); openSound(); });
 if(document.addEventListener) document.addEventListener("pointerdown", ()=>{ audioUserStart(); }, {once:true});
 S = newState();
-document.getElementById("bg").src = "assets/02-florence.webp";
+setBg("assets/02-florence.webp");
 updateHUD();
 </script>
 </body>
