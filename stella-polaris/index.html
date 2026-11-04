@@ -204,6 +204,15 @@ header .btn{padding:8px 16px;font-size:12.5px;margin-left:6px;white-space:nowrap
 .profile-list{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
 .profile-list li{border:1px solid var(--line-soft);border-radius:10px;padding:13px 16px;font-size:14.5px;background:rgba(255,255,255,.02)}
 .profile-list li b{color:var(--gold-soft);font-weight:700}
+.treatment-gallery{margin-top:40px}
+.treatment-gallery h3{font-size:19px;letter-spacing:.05em;color:var(--gold-soft);margin-bottom:6px}
+.treatment-gallery .t-lead{font-size:14.5px;color:var(--txt-soft);max-width:44em}
+.treatment-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+@media(max-width:700px){.treatment-grid{grid-template-columns:1fr}}
+.treatment-grid figure{margin:0;background:var(--navy-850);border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
+.treatment-grid img{width:100%;height:auto;aspect-ratio:1776/1168;display:block}
+.treatment-grid figcaption{padding:12px 16px 14px;font-size:14px;color:var(--txt-soft);line-height:1.7}
+.treatment-grid figcaption b{color:var(--gold-soft);display:block;font-size:14.5px;font-weight:700}
 
 /* ---------- menu ---------- */
 .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -765,6 +774,20 @@ body.lang-en table.info th{width:9.5em}
           <p data-en="Thirty years of practice. Holding Japan's national acupuncture licence, he has cared for many bodies on a foundation of Oriental-medicine knowledge. <strong>No acupuncture is performed at this salon</strong> — but the eye for the whole body's flow and balance is carried straight into the oil massage and beauty seitai.">施術歴30年。鍼灸師の国家資格を持ち、東洋医学の知識を土台に、これまで多くの方のボディケアに携わってきました。<strong>当店では鍼灸施術は行いません</strong>が、体全体の巡りやバランスを見る視点は、オイルマッサージと美容整体の施術にそのまま活かしています。</p>
           <p data-en="He has also worked as an instructor in the field, and has appeared on instructional DVDs. The eye for reading a body, trained by teaching others, is the foundation of every session today.">以前は施術の講師を務め、DVDも出していた経歴があります。人に教える立場で培った、体を読む視点と手技の組み立てが、今の施術の土台になっています。</p>
           <p data-en="One male therapist looks after every guest, every time — the therapist never changes between visits, so there is no need to explain your condition or your preferred pressure all over again.">施術は男性セラピスト1名が担当し、担当が日によって変わることはありません。前回の状態やお好みの圧を覚えているので、伝え直す手間なく、その日の体調に合わせたケアから始められます。</p>
+        </div>
+      </div>
+<div class="treatment-gallery">
+        <h3 data-en="Treatment Scenes">施術の様子</h3>
+        <p class="t-lead" data-en="Scenes from an actual session, shown as illustrations. We explain the areas to be treated in advance, and adjust the pressure to suit you on the day.">実際の施術の様子をイラストでご紹介します。施術する部位は事前にご説明し、圧の強さは当日のご希望に合わせて調整します。</p>
+        <div class="treatment-grid">
+          <figure>
+            <img src="assets/treatment-neck.webp" alt="首・頭まわりの施術の様子（イラスト）" width="1776" height="1168" loading="lazy" />
+            <figcaption><b data-en="Care for the neck and head area">首・頭まわりのケア</b><span data-en="We carefully release the side of the neck and around the base of the head, checking in with you as we go.">首の側面から頭の付け根まわりを、様子をうかがいながら丁寧にほぐします。</span></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/treatment-leg.webp" alt="脚・股関節まわりの施術の様子（イラスト）" width="1776" height="1168" loading="lazy" />
+            <figcaption><b data-en="Care for the legs and hip area">脚・股関節まわりのケア</b><span data-en="While checking how the legs and hips move, we release them without forcing, at a comfortable pace.">脚や股関節の動きを確認しながら、無理のない範囲でゆっくりほぐしていきます。</span></figcaption>
+          </figure>
         </div>
       </div>
 <div class="more-link"><a class="btn btn-line" href="assets/about.html" data-en="More about your therapist &amp; our Oriental-medicine approach →">施術者と、東洋医学の考え方を詳しく見る →</a></div>
