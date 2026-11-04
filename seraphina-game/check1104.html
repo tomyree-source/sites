@@ -504,11 +504,12 @@ renderCollection(tab||"goods");
 document.getElementById("collectionModal").style.display="block";
 }
 const VIDEO_DEFS = [
+{file:"op.mp4", name:"オープニング動画", desc:"ゲームのオープニング動画です（27秒）。"},
 {file:"intro.mp4", name:"セラフィナ紹介動画", desc:"見習い天使セラフィナの紹介動画です（29秒）。"},
-{file:"ed_special.mp4", name:"エンディング動画「みんなの天使」", desc:"特別編エンディングの動画です（38秒）。", ending:"end_special"},
-{file:"ed_stay.mp4", name:"エンディング動画「大阪に残る天使」", desc:"エンディング「大阪に残る天使」の動画です（37秒）。", ending:"end_stay"},
-{file:"ed_travel.mp4", name:"エンディング動画「行き来する天使」", desc:"エンディング「行き来する天使」の動画です（34秒）。", ending:"end_travel"},
-{file:"ed_return.mp4", name:"エンディング動画「天界へ帰る」", desc:"エンディング「天界へ帰る」の動画です（38秒）。", ending:"end_return"}
+{file:"ed_special.mp4", name:"エンディング動画「みんなの天使」", desc:"特別編エンディングの動画です（38秒）。"},
+{file:"ed_stay.mp4", name:"エンディング動画「大阪に残る天使」", desc:"エンディング「大阪に残る天使」の動画です（37秒）。"},
+{file:"ed_travel.mp4", name:"エンディング動画「行き来する天使」", desc:"エンディング「行き来する天使」の動画です（34秒）。"},
+{file:"ed_return.mp4", name:"エンディング動画「天界へ帰る」", desc:"エンディング「天界へ帰る」の動画です（38秒）。"}
 ];
 function renderCollection(tab){
 const body = document.getElementById("collectionBody"); if(!body) return;
@@ -523,7 +524,7 @@ body.innerHTML = '<p class="colnote">到達済みの章だけ、代表場面を�
 return;
 }
 if(tab==="videos"){
-body.innerHTML = '<p class="colnote">紹介動画と、到達したエンディングの動画を見られます。</p><div class="itemgrid">' + VIDEO_DEFS.map(vd=>{ const got = !vd.ending || !!seraphinaCollection.endings[vd.ending]; return '<div class="itemcard '+(got?'':'locked')+'"><div class="itemname">'+(got?vd.name:'？？？')+'</div><p>'+(got?vd.desc:'このエンディングに到達すると見られます。')+'</p>'+(got?'<button data-video="'+vd.file+'" style="margin-top:8px;background:#ffd76e;color:#3a2c00;border:none;border-radius:99px;padding:9px 20px;font-weight:800;cursor:pointer">▶ 再生</button>':'')+'</div>'; }).join("") + '</div>';
+body.innerHTML = '<p class="colnote">ゲーム中の動画は、ここからいつでも見返せます。</p><div class="itemgrid">' + VIDEO_DEFS.map(vd=>{ return '<div class="itemcard"><div class="itemname">'+vd.name+'</div><p>'+vd.desc+'</p>'+'<button data-video="'+vd.file+'" style="margin-top:8px;background:#ffd76e;color:#3a2c00;border:none;border-radius:99px;padding:9px 20px;font-weight:800;cursor:pointer">▶ 再生</button>'+'</div>'; }).join("") + '</div>';
 body.querySelectorAll("[data-video]").forEach(b=>b.addEventListener("click",()=>playGameVideo(b.dataset.video)));
 return;
 }
