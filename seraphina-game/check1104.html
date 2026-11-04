@@ -43,16 +43,16 @@ document.addEventListener("DOMContentLoaded", function(){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
 <title>見習い天使セラフィナ -オタロードに降臨しちゃいました</title>
-<meta name="description" content="500年ぶりに大阪・日本橋へ降臨した見習い天使セラフィナの、癒し系コメディビジュアルノベル。全312シーン・エンディング4種・コレクション図鑑つき。ブラウザで無料で遊べます。">
+<meta name="description" content="500年ぶりに大阪・日本橋へ降臨した見習い天使セラフィナの、癒し系コメディビジュアルノベル。全313シーン・エンディング4種・コレクション図鑑つき。ブラウザで無料で遊べます。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="見習い天使セラフィナ">
 <meta property="og:title" content="見習い天使セラフィナ -オタロードに降臨しちゃいました">
-<meta property="og:description" content="500年ぶりに大阪・日本橋へ降臨した見習い天使の、癒し系コメディビジュアルノベル。全312シーン・エンディング4種・図鑑つき。無料で遊べます。">
+<meta property="og:description" content="500年ぶりに大阪・日本橋へ降臨した見習い天使の、癒し系コメディビジュアルノベル。全313シーン・エンディング4種・図鑑つき。無料で遊べます。">
 <meta property="og:url" content="https://tomyree-source.github.io/sites/seraphina-game/">
 <meta property="og:image" content="https://tomyree-source.github.io/sites/seraphina-game/ogp-16x9.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="見習い天使セラフィナ -オタロードに降臨しちゃいました">
-<meta name="twitter:description" content="500年ぶりに大阪・日本橋へ降臨した見習い天使の、癒し系コメディビジュアルノベル。全312シーン・エンディング4種・図鑑つき。無料で遊べます。">
+<meta name="twitter:description" content="500年ぶりに大阪・日本橋へ降臨した見習い天使の、癒し系コメディビジュアルノベル。全313シーン・エンディング4種・図鑑つき。無料で遊べます。">
 <meta name="twitter:image" content="https://tomyree-source.github.io/sites/seraphina-game/ogp-16x9.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -105,6 +105,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 #btnOpT{background:rgba(255,255,255,.92);color:#333}
 #btnDataT{background:rgba(255,255,255,.92);color:#333}
 #btnShareT{background:#000;color:#fff;border:1px solid rgba(255,255,255,.45)}
+#ver{margin-top:10px;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.1em}
 .sharebtn{margin-top:8px;background:#000;color:#fff;border:1px solid rgba(255,255,255,.35)}
 .databox{width:100%;min-height:96px;box-sizing:border-box;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.55;margin:2px 0 10px}
 .datafile{display:block;width:100%;box-sizing:border-box;color:#dfe8ff;font-size:13px;margin:2px 0 10px}
@@ -168,6 +169,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="btnOpT">オープニングを見る</button>
 <button id="btnDataT">データ引き継ぎ</button>
 <button id="btnShareT">Xで紹介する</button>
+<div id="ver">v1.1</div>
 <div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、癒し系コメディビジュアルノベルです。<br>序章＋全8章＋最終章／エンディング4種／コレクション図鑑つき。</div>
 </div>
 <div class="modal" id="saveModal"><button class="close" data-close="saveModal">閉じる</button><h2 id="saveTitle">セーブ</h2><div id="slots"></div></div>
@@ -210,8 +212,8 @@ const SHOKU_MAX = 170;
 const BR = {"BRANCH3": {"kind": "shoku", "hi": 75, "lo": 59, "high": "t_end_high", "mid": "t_end_mid", "low": "t_end_low"}, "BRANCH4": {"kind": "shoku", "hi": 78, "lo": 59, "high": "s_end_high", "mid": "s_end_mid", "low": "s_end_low"}, "BRANCH5": {"kind": "shoku", "hi": 81, "lo": 60, "high": "w_end_high", "mid": "w_end_mid", "low": "w_end_low"}, "BRANCH6": {"kind": "shoku", "hi": 87, "lo": 63, "high": "l_end_high", "mid": "l_end_mid", "low": "l_end_low"}, "BRANCH7": {"kind": "gab", "hi": 3, "lo": 1, "high": "v_end_high", "mid": "v_end_mid", "low": "v_end_low"}, "BRANCH8": {"kind": "shoku", "hi": 109, "lo": 79, "high": "k_end_high", "mid": "k_end_mid", "low": "k_end_low"}, "FINAL": {"kind": "final", "spI": 174, "hiS": 107, "stayI": 130, "loS": 88, "special": "end_special", "stay": "end_stay", "travel": "end_travel", "ret": "end_return"}};
 function branchFor(token){ const t = BR[token]; if(!t) return null; if(t.kind==="shoku"){ return S.shoku>=t.hi? t.high : (S.shoku>=t.lo? t.mid : t.low);} if(t.kind==="gab"){ const g=(S.flags&&S.flags.gab)||0; return g>=t.hi? t.high : (g>=t.lo? t.mid : t.low);} if(t.kind==="final"){ if(S.iyashi>=t.spI) return t.special; if(S.shoku>=t.hiS && S.iyashi>=t.stayI) return t.stay; if(S.shoku>=t.loS) return t.travel; return t.ret; } return null;}
 function setBg(src){ document.getElementById("bg").src = src; document.getElementById("bgBack").src = src; }
-const FACE_IMG = {"セラフィナ":"pt-seraphina","ルチア":"pt-lucia","ガブリエラ":"pt-gabriela","モコ":"pt-moko","ノワール":"pt-noir","天照大御神":"pt-amaterasu","観音菩薩":"pt-kannon"};
-const FACE_COLOR = {"セラフィナ":"#ffd76e","ルチア":"#ff9ecb","ガブリエラ":"#a8c8ff","モコ":"#ffffff","ノワール":"#e8b4ff","天照大御神":"#ffe9a8","観音菩薩":"#bfe8cf"};
+const FACE_IMG = {"セラフィナ":"pt-seraphina","ルチア":"pt-lucia","ガブリエラ":"pt-gabriela","モコ":"pt-moko","ノワール":"pt-noir","天照大御神":"pt-amaterasu","観音菩薩":"pt-kannon","柚月":"pt-yuzuki"};
+const FACE_COLOR = {"セラフィナ":"#ffd76e","ルチア":"#ff9ecb","ガブリエラ":"#a8c8ff","モコ":"#ffffff","ノワール":"#e8b4ff","天照大御神":"#ffe9a8","観音菩薩":"#bfe8cf","柚月":"#ffb27a"};
 function updateFace(who){
 const f = document.getElementById("face");
 const img = FACE_IMG[who];
@@ -305,7 +307,7 @@ const raw = localStorage.getItem(SAVE_KEY+i);
 const b = document.createElement("button"); b.className="slot";
 if(raw){
 const d = JSON.parse(raw);
-b.innerHTML = "スロット"+i+"<br><small>"+d.date+"／場面："+d.scene+"／蝕まれ度 "+d.shoku+"・癒し "+d.iyashi+"・所持金 "+(Number.isFinite(d.money)?d.money:3000)+"円</small>";
+b.innerHTML = "スロット"+i+"<br><small>"+d.date+"／場面："+sceneLabel(d.scene)+"／蝕まれ度 "+d.shoku+"・癒し "+d.iyashi+"・所持金 "+(Number.isFinite(d.money)?d.money:3000)+"円</small>";
 } else {
 b.innerHTML = "スロット"+i+"<br><small>（空き）</small>";
 }
@@ -436,6 +438,19 @@ if(sid[0]==="v") return "ch7";
 if(sid[0]==="k") return "ch8";
 if(sid.indexOf("INT")===0){ const map={INT1:"ch1",INT2:"ch2",INT3:"ch3",INT4:"ch4",INT5:"ch5",INT6:"ch6",INT7:"ch7"}; return map[sid]||null;}
 return null;
+}
+function sceneLabel(sid){
+if(!sid) return "物語の途中";
+if(sid === "hook0") return "序章「フィレンツェの天使」";
+if(sid === "e_trial") return "体験版のおわり";
+if(sid === "fin") return "最終章「帰還と選択」";
+const END_NAMES = {"end_special":"エンディング「みんなの天使」","end_stay":"エンディング「大阪に残る天使」","end_travel":"エンディング「行き来する天使」","end_return":"エンディング「天界へ帰る」"};
+if(END_NAMES[sid]) return END_NAMES[sid];
+const sc = SCENES[sid];
+if(sc && sc.interlude) return "幕間（自由行動）";
+const chId = chapterForScene(sid);
+const ch = CHAPTER_DEFS.find(c=>c.id===chId);
+return ch? ch.name : "物語の途中";
 }
 function recordSceneProgress(sid){
 const ch = chapterForScene(sid);
@@ -760,7 +775,7 @@ function openDataTransfer(){
 dataMsg("");
 document.getElementById("dataModal").style.display = "block";
 }
-document.getElementById("btnShareT").addEventListener("click", e=>{ e.stopPropagation(); shareOnX("『見習い天使セラフィナ -オタロードに降臨しちゃいました』500年ぶりに大阪・日本橋へ降臨した見習い天使の、癒し系コメディビジュアルノベル。全312シーン・エンディング4種、無料で遊べます。"); });
+document.getElementById("btnShareT").addEventListener("click", e=>{ e.stopPropagation(); shareOnX("『見習い天使セラフィナ -オタロードに降臨しちゃいました』500年ぶりに大阪・日本橋へ降臨した見習い天使の、癒し系コメディビジュアルノベル。全313シーン・エンディング4種、無料で遊べます。"); });
 document.getElementById("btnDataT").addEventListener("click", e=>{ e.stopPropagation(); openDataTransfer(); });
 document.getElementById("mData").addEventListener("click", e=>{ e.stopPropagation(); openDataTransfer(); });
 document.getElementById("btnExportCode").addEventListener("click", ()=>{
