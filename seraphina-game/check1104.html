@@ -542,8 +542,8 @@ if(idx===5 &&!S.flags.salary5){ S.flags.salary5=1; S.money+=3000; S.free.notice=
 } else { S.free.target = target;}
 showFree();
 }
-function showFree(){ const el=document.getElementById("freeAction"); if(el) el.style.display="block"; renderFree();}
-function hideFree(){ stopCraneTimer(); const el=document.getElementById("freeAction"); if(el) el.style.display="none";}
+function showFree(){ const el=document.getElementById("freeAction"); if(el) el.style.display="block"; const hud=document.getElementById("hud"); if(hud) hud.style.visibility="hidden"; renderFree();}
+function hideFree(){ stopCraneTimer(); const el=document.getElementById("freeAction"); if(el) el.style.display="none"; const hud=document.getElementById("hud"); if(hud) hud.style.visibility="";}
 function slotName(slot){ return ["午前","午後","夜"][slot] || "午前";}
 function effectSummary(shoku, iyashi, money, item){
 const parts=[]; if(shoku) parts.push("蝕まれ度 +"+shoku); if(iyashi) parts.push("癒し +"+iyashi); if(money) parts.push("所持金 "+(money>0?"+":"")+money.toLocaleString("ja-JP")+"円"); if(item && ITEMS[item]) parts.push("図鑑登録："+ITEMS[item].name); return parts.length? parts.join("／"): "ステータス変化なし";
