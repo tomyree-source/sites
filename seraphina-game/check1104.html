@@ -25,6 +25,13 @@ try{
     localStorage.setItem("seraphina_check_seeded_v1","1");
   }
 }catch(e){}
+/* チェック用：動画タブとOPボタンはゲーム内プレイヤーを使わず、動画ファイル自体を開く（iPhoneでゲーム内再生が失敗する端末向けの回避） */
+document.addEventListener("click", function(e){
+  var t = e.target;
+  var b = (t && t.closest) ? t.closest("[data-video]") : null;
+  if(b){ e.preventDefault(); e.stopPropagation(); location.href = "assets/video/" + b.getAttribute("data-video"); return; }
+  if(t && t.id === "btnOpT"){ e.preventDefault(); e.stopPropagation(); location.href = "assets/video/op.mp4"; }
+}, true);
 document.addEventListener("DOMContentLoaded", function(){
   var d = document.createElement("div");
   d.textContent = "チェック用（全開放）";
