@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="description" content="本格派セラピスト育成SLG『凪堂 ―セラピスト修行記―』の無料体験版。序章＋第1幕（国家試験・進路選択まで／全61シーン）をブラウザでそのまま遊べます。製品版はBOOTHにて販売予定（1,200円・R-18）。">
+<meta name="description" content="本格派セラピスト育成SLG『凪堂 ―セラピスト修行記―』の無料体験版。序章＋第1幕（国家試験・進路選択まで／全61シーン）をブラウザでそのまま遊べます。18歳未満の方はプレイをお控えください（R-18）。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="凪堂 ―セラピスト修行記― 無料体験版">
-<meta property="og:description" content="ツボと専門知識で信頼を勝ち取る、本格派セラピスト育成SLG。序章＋第1幕（国家試験・進路選択まで／全61シーン）を無料で遊べる体験版です。製品版はBOOTHにて販売予定（R-18）。">
+<meta property="og:description" content="ツボと専門知識で信頼を勝ち取る、本格派セラピスト育成SLG。序章＋第1幕（国家試験・進路選択まで／全61シーン）を無料で遊べる体験版です。（R-18）。">
 <meta property="og:url" content="https://tomyree-source.github.io/sites/nagido-slg-demo/">
 <meta property="og:image" content="https://tomyree-source.github.io/sites/nagido-slg-demo/assets/media-generation-cg-graduation-0-66d16030-9e3b-47e5-8683-b45589187c79.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="凪堂 ―セラピスト修行記― 無料体験版">
-<meta name="twitter:description" content="ツボと専門知識で信頼を勝ち取る、本格派セラピスト育成SLG。序章＋第1幕（国家試験・進路選択まで／全61シーン）を無料で遊べる体験版です。製品版はBOOTHにて販売予定（R-18）。">
+<meta name="twitter:description" content="ツボと専門知識で信頼を勝ち取る、本格派セラピスト育成SLG。序章＋第1幕（国家試験・進路選択まで／全61シーン）を無料で遊べる体験版です。（R-18）。">
 <meta name="twitter:image" content="https://tomyree-source.github.io/sites/nagido-slg-demo/assets/media-generation-cg-graduation-0-66d16030-9e3b-47e5-8683-b45589187c79.webp">
 <title>凪堂 ―セラピスト修行記―</title>
 <style>
@@ -149,7 +149,7 @@ body { font-family:"Hiragino Mincho ProN","Yu Mincho","游明朝",serif; color:#
 <body>
 <div id="stage">
 <audio id="bgmAudio" loop preload="auto"></audio>
-<img id="bgimg" alt=""><img id="chara" alt=""><div id="bg">凪</div>
+<img id="bgblur" alt=""><img id="bgimg" alt=""><img id="chara" alt=""><div id="bg">凪</div>
 <div id="status"></div>
 <div id="menu">
 <div class="mbox">
@@ -240,6 +240,8 @@ body { font-family:"Hiragino Mincho ProN","Yu Mincho","游明朝",serif; color:#
 <p id="bgmnow" style="font-size:13px">再生中：なし</p>
 <button class="bigbtn" id="bgmtoggle" onclick="NAGI.toggleBgm()">BGM：ON</button>
 <p style="font-size:14px">音量 <input type="range" id="bgmvol" min="0" max="100" step="1" value="60" oninput="NAGI.setVol(this.value)"> <span id="bgmvolval">60</span></p>
+<p style="font-size:14px">オート速度 <input type="range" id="autospeed" min="1" max="5" step="1" value="3" oninput="NAGI_AUTO.setSpeed(this.value)"> <span id="autospeedval">ふつう</span></p>
+<p style="font-size:12px;color:#8fa6bb">オート再生（自動で次の行へ進む）は、プレイ画面の「オート」ボタンでON／OFFします。</p>
 <button class="bigbtn" onclick="NAGI.closeSettings()">戻る</button>
 </div>
 
@@ -388,7 +390,7 @@ S.scene=nx; S.idx=0; show();
 }
 function endOfProto(){
 document.getElementById('name').textContent='';
-document.getElementById('text').textContent='体験版はここまでです。タイトル画面に戻って、回想や図鑑もお楽しみください。製品版『凪堂 ―セラピスト修行記―』はBOOTHにて販売予定です。';
+document.getElementById('text').textContent='体験版はここまでです。タイトル画面に戻って、回想や図鑑もお楽しみください。本作の販売は中止となりましたが、体験版は引き続きお楽しみいただけます。';
 }
 </script>
 <script>
@@ -15812,21 +15814,164 @@ mao: ['まだ施術はしていない。キックボクサー。減量期の身�
   } catch (e) {}
 })();
 </script>
+<style>
+/* ===== オート再生ボタン＋縦向き画像フィット（2026-11-04） ===== */
+#bgblur { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; visibility:hidden; pointer-events:none; }
+#autobtn.on { background:#7fa3c7; color:#10222f; border-color:#ffd98a; }
+@media (max-width:640px){
+  /* 横長の背景・CGは全体を表示し、余白は同じ画像をぼかして埋める（顔切れ対策） */
+  #bgimg { object-fit:contain; }
+  #bgblur.on { visibility:visible; filter:blur(22px) brightness(.55); transform:scale(1.25); }
+}
+</style>
+<script>
+// ===== オート再生＋縦向き画像フィット補助パッチ（2026-11-04） =====
+// ・オート再生：プレイ画面の「オート」ボタンでON/OFF。テキスト表示後、文字数と
+//   設定のオート速度に応じた待ち時間で自動で次行へ進む。選択肢・他画面表示中は進まない。
+//   ON/OFFと速度は既存の設定保存（nagido_bgm_settings_v1）へ相乗りする。
+// ・画像フィット：show()のたびに背景レイヤー（#bgblur）へ同じ画像を同期する。
+//   縦向き（max-width:640px）では #bgimg を contain 表示にし、余白を #bgblur の
+//   ぼかしで埋める（CSS側）。横向き・デスクトップでは #bgblur は常時非表示。
+(function(){
+function el(id){ return document.getElementById(id); }
+var SSET = null;
+try { SSET = (typeof NAGI !== 'undefined' && NAGI._settings) ? NAGI._settings() : null; } catch(e){}
+if (!SSET) { try { SSET = (typeof settings !== 'undefined') ? settings : null; } catch(e){} }
+if (SSET) { if (SSET.auto === undefined) SSET.auto = false; if (!SSET.autoSpeed) SSET.autoSpeed = 3; }
+function saveSet(){ try { if (SSET && typeof storeSet === 'function' && typeof SET_KEY !== 'undefined') storeSet(SET_KEY, SSET); else if (SSET) localStorage.setItem('nagido_bgm_settings_v1', JSON.stringify(SSET)); } catch(e){} }
+var FACTOR = [1.7, 1.3, 1.0, 0.7, 0.45];
+var LABEL = ['遅い', 'やや遅い', 'ふつう', 'やや速い', '速い'];
+var timer = 0;
+function autoOn(){ return !!(SSET && SSET.auto); }
+function cancelT(){ if (timer) { try { clearTimeout(timer); } catch(e){} timer = 0; } }
+function vis(id, disp){ var e = el(id); return !!(e && e.style && e.style.display === disp); }
+function anyOpen(){
+  if (vis('log', 'block')) return true;
+  var ids = ['statpop', 'settings', 'savepop', 'notebook', 'recall', 'gallery', 'galview', 'namepop', 'title', 'gate', 'howto', 'recallbar'];
+  for (var i = 0; i < ids.length; i++) if (vis(ids[i], 'flex')) return true;
+  var ft = el('ftscreen'), kt = el('ktscreen');
+  if (ft && ft.classList && ft.classList.contains('on')) return true;
+  if (kt && kt.classList && kt.classList.contains('on')) return true;
+  return false;
+}
+function choicesShown(){ return vis('choices', 'flex'); }
+function schedule(){
+  cancelT();
+  if (!autoOn()) return;
+  try {
+    if (choicesShown()) return;
+    var sc = (typeof cur === 'function') ? cur() : null;
+    if (!sc || !sc.lines) return;
+    if (!(S.idx < sc.lines.length)) return;
+    var L = sc.lines[S.idx];
+    if (!L || L.choice) return;
+  } catch(e){ return; }
+  var t = el('text');
+  var len = t ? (t.textContent || '').length : 0;
+  var f = FACTOR[(SSET.autoSpeed || 3) - 1] || 1;
+  var wait = Math.round((700 + 60 * len) * f);
+  if (wait < 500) wait = 500;
+  if (wait > 12000) wait = 12000;
+  timer = setTimeout(tick, wait);
+}
+function tick(){
+  timer = 0;
+  if (!autoOn()) return;
+  if (choicesShown()) return;
+  if (anyOpen()) { timer = setTimeout(tick, 600); return; }
+  try { advance(); } catch(e){}
+}
+function syncBlur(){
+  try {
+    var bi = el('bgimg'), bl = el('bgblur');
+    if (!bi || !bl || !bl.classList) return;
+    var src = bi.getAttribute ? bi.getAttribute('src') : '';
+    if (bi.style.display !== 'none' && src) {
+      if (bl.getAttribute('src') !== src) bl.setAttribute('src', src);
+      bl.classList.add('on');
+    } else {
+      bl.classList.remove('on');
+    }
+  } catch(e){}
+}
+if (typeof show === 'function') {
+  var _showAP = show;
+  show = function(){ var r = _showAP.apply(this, arguments); syncBlur(); schedule(); return r; };
+}
+function reflectBtn(){
+  var b = el('autobtn');
+  if (!b) return;
+  if (b.classList) b.classList.toggle('on', autoOn());
+  b.textContent = autoOn() ? 'オートON' : 'オート';
+}
+function injectBtn(){
+  try {
+    if (el('autobtn')) { reflectBtn(); return; }
+    var box = null;
+    try { box = document.querySelector('#menu .mbox'); } catch(e){}
+    if (!box) box = el('menu');
+    if (!box || !document.createElement) return;
+    var b = document.createElement('button');
+    b.id = 'autobtn';
+    b.type = 'button';
+    b.textContent = 'オート';
+    b.onclick = function(){
+      if (!SSET) return;
+      SSET.auto = !SSET.auto;
+      saveSet();
+      reflectBtn();
+      if (SSET.auto) schedule(); else cancelT();
+    };
+    box.appendChild(b);
+    reflectBtn();
+  } catch(e){}
+}
+function syncSpeedUI(){
+  try {
+    var r = el('autospeed'), v = el('autospeedval');
+    if (r && SSET) r.value = String(SSET.autoSpeed || 3);
+    if (v && SSET) v.textContent = LABEL[(SSET.autoSpeed || 3) - 1] || 'ふつう';
+  } catch(e){}
+}
+window.NAGI_AUTO = {
+  setSpeed: function(v){
+    if (!SSET) return;
+    var n = parseInt(v, 10);
+    if (!(n >= 1 && n <= 5)) n = 3;
+    SSET.autoSpeed = n;
+    saveSet();
+    syncSpeedUI();
+    schedule();
+  },
+  toggle: function(){ var b = el('autobtn'); if (b && b.onclick) b.onclick(); },
+  isOn: function(){ return autoOn(); }
+};
+try {
+  if (typeof NAGI !== 'undefined' && NAGI && typeof NAGI.openSettings === 'function') {
+    var _os = NAGI.openSettings;
+    NAGI.openSettings = function(){ var r = _os.apply(this, arguments); syncSpeedUI(); return r; };
+  }
+} catch(e){}
+injectBtn();
+syncSpeedUI();
+})();
+
+</script>
 
 <script>
 // ===== 無料体験版パッチ（公開用ビルド専用・製品版本体には含まれない） =====
 SCENES['demo_end'] = { next: null, lines: [
 {n:'', t:'体験版はここまでです。ごプレイ、ありがとうございました。'},
 {n:'', t:'国家試験に合格し、進路を選んだケント。物語はこの先、セラピストとして働く日々へと続いていく。'},
-{n:'', t:'製品版では第2幕から第4幕まで、27人の女性客・同僚・先輩との物語を最後まで遊べます。専門知識（解剖学・経絡／ツボ・アロマ・精油学・施術理論・臨床／症例）を育てる育成システムが、物語の行く末を左右します。'},
-{n:'', t:'製品版『凪堂 ―セラピスト修行記―』は、BOOTHにて販売予定です（価格1,200円）。購入特典として、実用ガイド「セルフケア・ツボ押しガイド」（PDF・全29ページ）が同梱されます。'},
-{n:'', t:'製品版のご案内と最新情報は公式サイトで、販売はBOOTHショップ「angel222」で行います。この先の画面に、公式サイトとBOOTHショップへのリンクボタンを用意しました。'},
+{n:'', t:'この先の物語では第2幕から第4幕まで、27人の女性客・同僚・先輩との物語が続いていきます。専門知識（解剖学・経絡／ツボ・アロマ・精油学・施術理論・臨床／症例）を育てる育成システムが、物語の行く末を左右します。'},
+{n:'', t:'本作の製品版は、販売を中止いたしました。これまで応援いただき、ありがとうございました。'},
+{n:'', t:'最新情報は公式サイトでご案内しています。この先の画面に、公式サイトへのリンクボタンを用意しました。'},
 {n:'', t:'タイトル画面の「シーン回想」から、体験版で読んだ場面を読み返せます。'}
 ]};
 SCENES['ep7'].next = 'demo_end';
 window.endOfProto = function(){
 document.getElementById('name').textContent = '';
-document.getElementById('text').textContent = '体験版はここまでです。タイトル画面に戻って、回想や図鑑もお楽しみください。製品版『凪堂 ―セラピスト修行記―』はBOOTHにて販売予定です。下のボタンから、公式サイトとBOOTHショップへ進めます。';
+document.getElementById('text').textContent = '体験版はここまでです。タイトル画面に戻って、回想や図鑑もお楽しみください。本作の販売は中止となりましたが、体験版は引き続きお楽しみいただけます。下のボタンから、公式サイトへ進めます。';
 try{
   var box = document.getElementById('choices');
   if(box){
@@ -15838,8 +15983,7 @@ try{
       a.style.textDecoration = 'none'; a.style.display = 'block';
       box.appendChild(a);
     };
-    mkLink('公式サイトで製品版のご案内を見る', 'https://tomyree-source.github.io/sites/nagido-official/#trial');
-    mkLink('BOOTHショップ「angel222」を見る', 'https://angel222.booth.pm/');
+    mkLink('公式サイトを見る', 'https://tomyree-source.github.io/sites/nagido-official/#trial');
     var shareText = '『凪堂 ―セラピスト修行記―』本格派セラピスト育成SLG（R-18）｜無料体験版を公開中 #凪堂 #セラピスト修行記';
     mkLink('Xでシェアする', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent('https://tomyree-source.github.io/sites/nagido-slg-demo/'));
     box.style.display = 'flex';
