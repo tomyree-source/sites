@@ -241,7 +241,8 @@ body { font-family:"Hiragino Mincho ProN","Yu Mincho","游明朝",serif; color:#
 <button class="bigbtn" id="bgmtoggle" onclick="NAGI.toggleBgm()">BGM：ON</button>
 <p style="font-size:14px">音量 <input type="range" id="bgmvol" min="0" max="100" step="1" value="60" oninput="NAGI.setVol(this.value)"> <span id="bgmvolval">60</span></p>
 <p style="font-size:14px">オート速度 <input type="range" id="autospeed" min="1" max="5" step="1" value="3" oninput="NAGI_AUTO.setSpeed(this.value)"> <span id="autospeedval">ふつう</span></p>
-<p style="font-size:12px;color:#8fa6bb">オート再生（自動で次の行へ進む）は、プレイ画面の「オート」ボタンでON／OFFします。</p>
+<p style="font-size:14px">文字表示速度 <input type="range" id="textspeed" min="0" max="3" step="1" value="2" oninput="NAGI_TEXT.setSpeed(this.value)"> <span id="textspeedval">ふつう</span></p>
+<p style="font-size:12px;color:#8fa6bb">オート再生（自動で次の行へ進む）は、プレイ画面の「オート」ボタンでON／OFFします。<br>文字表示速度を「即時」にすると、文章が一度に表示されます。表示途中で画面をタップすると、その行を最後まで表示します。<br>既読スキップは、プレイ画面の「スキップ」ボタンで使えます（既読の行を高速で送り、選択肢と未読の行で止まります）。</p>
 <button class="bigbtn" onclick="NAGI.closeSettings()">戻る</button>
 </div>
 
@@ -14284,28 +14285,28 @@ var FT_HERO = [
  {key:'hana', name:'栞', full:'花村栞', age:36, job:'花屋', worry:'腰と冷え', point:'腰と骨盤まわり', tsubo:'腎兪・次髎', scent:'イランイラン', base:'rose', accent:'smoke', route:'han_route', bday:'5月14日', bslot:[3,3,'flower'], gift:'aroma', miru:'腰と冷え。骨盤まわりの硬さと、下半身の巡りの悪さ。朝の市場通いの冷えが、腰に積もっている', keika:'腰が温まり、冷えが和らいだ。花の世話をする手つきまで軽くなり、店の常連が彼女の変化に気づいた', memo:'冷えは腰から。市場の朝の冷たさを、まず聞き取る'},
  {key:'azusa', name:'梓', full:'九重梓', age:42, job:'化粧品会社の社長', worry:'全身の疲労と頭痛', point:'全身オイル・頭と首肩', tsubo:'百会・肩井', scent:'サンダルウッド', base:'wood', accent:'smoke', route:'azu_route', bday:'11月11日', bslot:[4,1,'nagido'], gift:'flower', miru:'全身の疲労と頭痛。頭と首肩は岩のように硬く、全身の張りが抜けない。経営の重圧が、そのまま身体に出ている', keika:'全身がほぐれ、頭痛の頻度が減った。「任せる」ことを覚えた彼女の表情は、初対面の頃とは別人の柔らかさになった', memo:'最難関。頭と全身、両方の完全な解放が要る。信頼の積み重ねが前提'},
  {key:'akari', name:'あかり', full:'桐生あかり', age:30, job:'先輩セラピスト', worry:'肩甲骨内側の奥と首の付け根', point:'肩甲骨内側・首', tsubo:'天宗・天柱', scent:'ゼラニウム', base:'rose', accent:'mint', route:'aka_route2', rel:'akari', bday:'4月18日', bslot:[1,1,'nagido'], gift:'practical', miru:'肩甲骨内側の奥と首の付け根。天宗の深部に、施術者ならではの疲れが溜まっている', keika:'先輩の背中がほぐれた日、凪堂の技術は二人で磨くものになった。教える側の彼女が、素直に身を委ねるようになった', memo:'教える側の疲れは見えにくい。先輩の背中は、店の財産'},
- {key:'koharu', name:'こはる', full:'西村こはる', age:28, job:'同期のセラピスト', worry:'肩甲骨の内側、冷えて固まる腰', point:'肩甲骨内側・腰と仙骨', tsubo:'天宗・次髎', scent:'カモミール', base:'rose', accent:'sweet', route:'koh_route', rel:'koharu', bday:'6月25日', bslot:[1,2,'nagido'], gift:'practical', miru:'肩甲骨の内側と、冷えて固まる腰・仙骨まわり。緊張すると笑ってごまかす癖が、身体にも出ている', keika:'腰が温まり、同期の笑顔から緊張が消えた。「私もほぐせる側に回りたい」と、彼女は自分の課題を持ち帰った', memo:'笑ってごまかす癖が、身体の訴えを隠す。笑顔の奥を見る'},
+ {key:'koharu', name:'こはる', full:'西村こはる', age:19, job:'同期のセラピスト', worry:'肩甲骨の内側、冷えて固まる腰', point:'肩甲骨内側・腰と仙骨', tsubo:'天宗・次髎', scent:'カモミール', base:'rose', accent:'sweet', route:'koh_route', rel:'koharu', bday:'6月25日', bslot:[1,2,'nagido'], gift:'practical', miru:'肩甲骨の内側と、冷えて固まる腰・仙骨まわり。緊張すると笑ってごまかす癖が、身体にも出ている', keika:'腰が温まり、同期の笑顔から緊張が消えた。「私もほぐせる側に回りたい」と、彼女は自分の課題を持ち帰った', memo:'笑ってごまかす癖が、身体の訴えを隠す。笑顔の奥を見る'},
  {key:'kaoru', name:'薫', full:'藤原薫', age:38, job:'セミナー講師・アロマの師', worry:'首と肩の静かな疲れ', point:'首と肩・呼吸', tsubo:'風池・肩井', scent:'シダーウッド', base:'wood', accent:'spice', route:'kao_route', rel:'kaoru', bday:'11月30日', bslot:[1,4,'school'], gift:'aroma', miru:'香りの仕事に長く携わる人の、首と肩の静かな疲れ。嗅覚の鋭さの裏で、呼吸が浅くなっている', keika:'師の肩が下がり、呼吸が深くなった。技術と香りの両方で、ケントを一人前と認めた証の言葉があった', memo:'師の身体は、弟子の成長を測る物差しでもある'},
- {key:'shiori', name:'しおり', full:'葉山しおり', age:24, job:'鍼灸学校の同級生', worry:'岩のような肩', point:'肩と首', tsubo:'肩井・合谷', scent:'ヒノキ', base:'wood', accent:'mint', route:'shi_route', rel:'shiori', bday:'9月9日', bslot:[1,3,'school'], gift:'practical', miru:'岩のような肩。実技と勉強の両立で、肩も首も限界まで張っている。笑顔の裏に根詰めた疲れ', keika:'肩がほぐれ、実技の手つきまで変わった。国家試験への不安が、確かな手応えに置き換わっていった', memo:'勉強と実技の両立。肩の硬さは、根詰めの証拠'},
- {key:'yuki', name:'由紀', full:'由紀', age:24, job:'凪堂の受付', worry:'電話と予約表の姿勢で固まった肩', point:'肩', tsubo:'肩井・合谷', scent:'スイートオレンジ', base:'citrus', accent:'sweet', route:'yuk_route', bday:'1月15日', bslot:[2,1,'nagido'], gift:'aroma', miru:'電話と予約表の姿勢で固まった肩。肩井と合谷に、受付の最前線の疲れが集まっている', keika:'カルテと予約の仕組みが整い、彼女の肩の荷も下りた。凪堂の顔として、笑顔に余裕が戻った', memo:'店の顔の疲れは、店の疲れ。受付の肩が軽い店は、客も軽くなる'},
+ {key:'shiori', name:'しおり', full:'葉山しおり', age:22, job:'鍼灸学校の同級生', worry:'岩のような肩', point:'肩と首', tsubo:'肩井・合谷', scent:'ヒノキ', base:'wood', accent:'mint', route:'shi_route', rel:'shiori', bday:'9月9日', bslot:[1,3,'school'], gift:'practical', miru:'岩のような肩。実技と勉強の両立で、肩も首も限界まで張っている。笑顔の裏に根詰めた疲れ', keika:'肩がほぐれ、実技の手つきまで変わった。国家試験への不安が、確かな手応えに置き換わっていった', memo:'勉強と実技の両立。肩の硬さは、根詰めの証拠'},
+ {key:'yuki', name:'由紀', full:'三島由紀', age:24, job:'凪堂の受付', worry:'電話と予約表の姿勢で固まった肩', point:'肩', tsubo:'肩井・合谷', scent:'スイートオレンジ', base:'citrus', accent:'sweet', route:'yuk_route', bday:'1月15日', bslot:[2,1,'nagido'], gift:'aroma', miru:'電話と予約表の姿勢で固まった肩。肩井と合谷に、受付の最前線の疲れが集まっている', keika:'カルテと予約の仕組みが整い、彼女の肩の荷も下りた。凪堂の顔として、笑顔に余裕が戻った', memo:'店の顔の疲れは、店の疲れ。受付の肩が軽い店は、客も軽くなる'},
  {key:'ritsu', name:'律', full:'風間律', age:35, job:'バー「月影」のマスター', worry:'前腕、立ち仕事の肩と腰', point:'前腕・肩・腰', tsubo:'手三里・外関', scent:'シダーウッド', base:'wood', accent:'smoke', route:'rit_route', bday:'12月5日', bslot:[3,1,'bar'], gift:'practical', miru:'シェイカーを振る前腕、立ち仕事の肩と腰。締め付ける装いで呼吸が浅く、眠りも浅い', keika:'前腕と肩がほぐれ、呼吸が深くなった。凪堂の夜の常連として、彼女の店との縁も深まっていく', memo:'夜の仕事の身体は、昼の施術と相性がいい。呼吸の浅さに注意'},
  {key:'rio', name:'莉央', full:'早瀬莉央', age:19, job:'美容部員（成人社会人）', worry:'脚のむくみと肩の緊張', point:'ふくらはぎと足裏', tsubo:'承山・湧泉', scent:'オレンジスイート', base:'citrus', accent:'sweet', route:'rio_route', bday:'7月7日', bslot:[4,4,'street'], gift:'practical', miru:'立ち仕事とヒールでむくんだ脚、肩の緊張。ふくらはぎと足裏に、一日分の疲れが溜まっている', keika:'脚のむくみが引き、歩く姿が軽くなった。接客の笑顔に、本物の余裕が混じるようになった', memo:'若さで誤魔化せる疲れにも、限界は来る。早いうちのケアが大事'},
- {key:'reika', name:'麗華', full:'高嶺麗華', age:40, job:'ライバル店「ルーチェ」の女主人', worry:'経営と施術で積もった全身の疲労', point:'全身・首肩', tsubo:'肩井・天宗', scent:'ローズ', base:'rose', accent:'mint', route:'rei_route', bday:'10月31日', bslot:[3,2,'luce'], gift:'flower', miru:'長年の経営と施術で積もった、全身の静かな疲労。ライバル店の看板を背負う人の、見せない疲れ', keika:'敵同士の緊張が、技術への敬意に変わった。彼女の店との間に、静かな貸し借りが生まれた', memo:'敵店の主人の身体を預かる重さ。技術への敬意が信頼に変わる'},
- {key:'saki', name:'沙紀', full:'御影沙紀', age:29, job:'トレーナー・元総合格闘家', worry:'全身の張り、右膝と右股関節の古傷', point:'肩井・環跳・承山', tsubo:'環跳・承山', scent:'ペパーミント', base:'herb', accent:'mint', route:'sak_route', bday:'4月2日', bslot:[3,1,'gym'], gift:'practical', miru:'肩井・環跳・承山の強い張り。右膝と右股関節に古傷。格闘技の現役時代の蓄積が全身に残る', keika:'古傷まわりがほぐれ、指導の動きが戻った。今度は彼女が、ケントの身体の使い方を見る番になった', memo:'古傷は「治す」より「付き合う」。本人の身体感覚を尊重する'},
+ {key:'reika', name:'麗華', full:'黒崎麗華', age:40, job:'ライバル店「ルーチェ」の女主人', worry:'経営と施術で積もった全身の疲労', point:'全身・首肩', tsubo:'肩井・天宗', scent:'ローズ', base:'rose', accent:'mint', route:'rei_route', bday:'10月31日', bslot:[3,2,'luce'], gift:'flower', miru:'長年の経営と施術で積もった、全身の静かな疲労。ライバル店の看板を背負う人の、見せない疲れ', keika:'敵同士の緊張が、技術への敬意に変わった。彼女の店との間に、静かな貸し借りが生まれた', memo:'敵店の主人の身体を預かる重さ。技術への敬意が信頼に変わる'},
+ {key:'saki', name:'沙紀', full:'八神沙紀', age:29, job:'トレーナー・元総合格闘家', worry:'全身の張り、右膝と右股関節の古傷', point:'肩井・環跳・承山', tsubo:'環跳・承山', scent:'ペパーミント', base:'herb', accent:'mint', route:'sak_route', bday:'4月2日', bslot:[3,1,'gym'], gift:'practical', miru:'肩井・環跳・承山の強い張り。右膝と右股関節に古傷。格闘技の現役時代の蓄積が全身に残る', keika:'古傷まわりがほぐれ、指導の動きが戻った。今度は彼女が、ケントの身体の使い方を見る番になった', memo:'古傷は「治す」より「付き合う」。本人の身体感覚を尊重する'},
  {key:'eri', name:'絵里', full:'滝川絵里', age:28, job:'銀行員', worry:'頭の重さ・側頭部', point:'側頭部と目', tsubo:'太陽・攅竹', scent:'ローズマリー', base:'herb', accent:'smoke', route:'eri_route', bday:'3月3日', bslot:[2,2,'street'], gift:'practical', miru:'頭の重さと側頭部の張り。銀行の窓口の緊張と、数字に向き合う目の疲れ', keika:'頭が軽くなり、仕事終わりの表情が変わった。紹介の輪が、彼女の職場にも広がっていった', memo:'頭の重さは、真面目さの裏返し。窓口の笑顔の裏を読む'},
- {key:'tamaki', name:'環', full:'三雲環', age:34, job:'ベテランセラピスト', worry:'前腕と肩', point:'前腕・肩', tsubo:'手三里・合谷', scent:'ヒノキ', base:'wood', accent:'sweet', route:'tam_route', bday:'2月22日', bslot:[4,2,'nagido'], gift:'practical', miru:'前腕（橈側手根屈筋・腕橈骨筋）と肩。手三里・合谷・肩井・天宗に、同業者の勲章のような疲れ', keika:'同業の先輩の腕がほぐれた。技術を認め合う関係が、凪堂の財産になっていく', memo:'同業の身体は、技術の交流の場でもある'},
- {key:'mayu', name:'真由', full:'真由', age:35, job:'美容誌ライター（由紀の姉）', worry:'首・目・肩と右の手首', point:'首・目・手首', tsubo:'風池・合谷', scent:'ベルガモット', base:'citrus', accent:'smoke', route:'may_route', bday:'8月21日', bslot:[2,3,'street'], gift:'aroma', miru:'首・目・肩と右の手首。締切と原稿に追われる日々の、書き手の疲れ', keika:'手首と首がほぐれ、原稿の進みまで変わった。彼女の記事が、凪堂の名前を外へ運んでいく', memo:'書き手の手首は命綱。締切のリズムに合わせたケアを'},
- {key:'elena', name:'エレナ', full:'エレナ', age:32, job:'イタリア語講師', worry:'デスクワークの肩こりと首', point:'肩と首・目', tsubo:'肩井・風池', scent:'ベルガモット', base:'citrus', accent:'mint', route:'ele_route', bday:'8月30日', bslot:[4,1,'street'], gift:'flower', miru:'デスクワークの肩こりと首。言葉を教える仕事の、静かな目の疲れも重なっている', keika:'肩と首がほぐれ、笑顔のレッスンが戻った。ベルガモットの香りが、彼女との合言葉になった', memo:'異国で働く身体の疲れは、言葉にしにくい。故郷の香りが鍵'},
- {key:'anna', name:'アンナ', full:'アンナ', age:29, job:'バレエ講師', worry:'股関節と足首', point:'股関節・足首', tsubo:'環跳・丘墟', scent:'ローズマリー', base:'herb', accent:'spice', route:'ann_route', bday:'1月28日', bslot:[3,3,'street'], gift:'practical', miru:'股関節と足首。バレエの身体の使い方の蓄積が、開きと支えの両方に疲れを残している', keika:'股関節と足首が整い、レッスンの軸が戻った。踊る人の身体を預かる、難しい常連になった', memo:'踊る身体は楽器と同じ。微調整の精度が問われる'},
- {key:'sofia', name:'ソフィア', full:'ソフィア', age:27, job:'パティシエ', worry:'立ち仕事とオーブンの熱で全身の張り', point:'全身', tsubo:'足三里・肩井', scent:'オレンジスイート', base:'rose', accent:'sweet', route:'sof_route', bday:'9月27日', bslot:[3,4,'atelier'], gift:'flower', miru:'立ち仕事とオーブンの熱で全身が張っている。甘い香りの厨房で、身体だけが悲鳴を上げている', keika:'全身がほぐれ、仕込みの朝が楽になった。お礼の焼き菓子が、凪堂の休憩室の名物になった', memo:'熱と立ち仕事の全身疲労。甘い香りの厨房の、辛い裏側'},
- {key:'emma', name:'エマ', full:'エマ', age:26, job:'ALT（外国語指導助手）', worry:'運動後の筋肉疲労と異国暮らしの疲れ', point:'ふくらはぎ・大腿', tsubo:'承山・足三里', scent:'ペパーミント', base:'citrus', accent:'mint', route:'emm_route', bday:'6月6日', bslot:[3,2,'gym'], gift:'practical', miru:'運動後の筋肉疲労と、異国暮らしの疲れ。ふくらはぎと大腿に、言葉にできないホームシックも混じる', keika:'筋肉がほぐれ、日本の暮らしの疲れも軽くなった。凪堂が、彼女の「帰る場所」の一つになった', memo:'ホームシックは身体に出る。明るさの裏の疲れを見る'},
- {key:'saeko', name:'冴子', full:'冴子', age:38, job:'元モデル', worry:'火照り・眠りの浅さ・肩こり', point:'肩と全身', tsubo:'肩井・三陰交', scent:'ローズ', base:'rose', accent:'spice', route:'sae_route', bday:'10月2日', bslot:[4,3,'street'], gift:'flower', miru:'火照りと眠りの浅さ、肩こり。肩井・天宗・三陰交に、年齢と共に変わる身体の声が集まっている', keika:'眠りが深くなり、火照りが落ち着いた。凪堂のカルテが、彼女の節目を丁寧に支えた記録になった', memo:'年齢と共に変わる身体との付き合い方を、一緒に作る施術'},
- {key:'yukari', name:'ゆかり', full:'ゆかり', age:19, job:'OL1年目（成人社会人・冴子の娘）', worry:'デスクワークの腰痛', point:'腰', tsubo:'腎兪・委中', scent:'スイートオレンジ', base:'citrus', accent:'smoke', route:'yka_route', bday:'5月25日', bslot:[4,3,'street'], gift:'aroma', miru:'デスクワークの腰痛。腎兪のあたりに、座りっぱなしの重さが溜まっている', keika:'腰が軽くなり、仕事の合間の姿勢まで変わった。母娘そろって凪堂の常連になった', memo:'社会人の身体の土台作りは、一年目が勝負'},
- {key:'haruka', name:'遥', full:'遥', age:27, job:'看護師', worry:'夜勤の腰痛・脚のむくみ', point:'腰と脚', tsubo:'委中・承山', scent:'ペパーミント', base:'herb', accent:'sweet', route:'har_route', bday:'3月19日', bslot:[4,3,'hospital'], gift:'practical', miru:'夜勤の腰痛と脚のむくみ。委中のあたりに、眠れない勤務のリズムの疲れが溜まっている', keika:'腰と脚がほぐれ、夜勤明けの回復が早くなった。医療の現場同士、静かな信頼が生まれた', memo:'夜勤のリズムは、身体の時計を狂わせる。眠りの設計から'},
- {key:'mitsuki', name:'美月', full:'美月', age:31, job:'女教師', worry:'肩と手の張り（授業と保護者対応）', point:'肩と手', tsubo:'合谷・肩井', scent:'ローズマリー', base:'herb', accent:'mint', route:'mit_route', bday:'9月15日', bslot:[4,2,'street'], gift:'practical', miru:'授業と保護者対応のストレス。肩と手の張りに、黒板と人前に立つ緊張が出ている', keika:'肩と手がほぐれ、教室での声まで柔らかくなった。彼女の紹介で、同僚の来店も増えていく', memo:'人前に立つ緊張は、手と肩に出る。教室の外の顔を見る'},
- {key:'rena', name:'玲奈', full:'玲奈', age:28, job:'国際線CA', worry:'時差ぼけ・脚のむくみ', point:'脚と足裏', tsubo:'湧泉・三陰交', scent:'グレープフルーツ', base:'citrus', accent:'spice', route:'ren_route', bday:'12月24日', bslot:[4,4,'bar'], gift:'flower', miru:'時差ぼけと脚のむくみ。湧泉・承山・三陰交に、空を飛ぶ仕事の疲れが集まっている', keika:'むくみが引き、眠りのリズムが戻った。次のフライトの前に、必ず寄る店になった', memo:'時差は身体の時計の大敵。眠りと巡りの両面から整える'},
- {key:'aoi', name:'葵', full:'葵', age:23, job:'巫女', worry:'祭事の立ち仕事と足の冷え', point:'足裏と脚', tsubo:'湧泉・太谿', scent:'ヒノキ', base:'wood', accent:'spice', route:'aoi_route', bday:'1月7日', bslot:[4,4,'shrine'], gift:'aroma', miru:'祭事の立ち仕事と足の冷え。湧泉のあたりに、神職の凛とした日常の疲れが溜まっている', keika:'足が温まり、祭事の長い一日を立てるようになった。神社の静けさと凪堂の静けさが、彼女の中でつながった', memo:'凛とした日常の裏の、静かな疲れ。足の冷えが入口'},
- {key:'mao', name:'真央', full:'南雲真央', age:25, job:'キックボクサー', worry:'減量の疲労と古傷の右足首', point:'脚と足首', tsubo:'承山・丘墟', scent:'ペパーミントとユーカリ', base:'herb', accent:'spice', route:'mao_route', bday:'8月8日', bslot:[3,3,'gym'], gift:'practical', miru:'減量の疲労と、古傷の右足首。承山・足三里・丘墟に、リングに立つ者の蓄積がある', keika:'足首まわりがほぐれ、試合に向けた身体が整った。結果を出しにいく背中を、凪堂から送り出した', memo:'減量期の身体は繊細。攻めず、整える判断が問われる'}
+ {key:'tamaki', name:'環', full:'瀬戸環', age:34, job:'ベテランセラピスト', worry:'前腕と肩', point:'前腕・肩', tsubo:'手三里・合谷', scent:'ヒノキ', base:'wood', accent:'sweet', route:'tam_route', bday:'2月22日', bslot:[4,2,'nagido'], gift:'practical', miru:'前腕（橈側手根屈筋・腕橈骨筋）と肩。手三里・合谷・肩井・天宗に、同業者の勲章のような疲れ', keika:'同業の先輩の腕がほぐれた。技術を認め合う関係が、凪堂の財産になっていく', memo:'同業の身体は、技術の交流の場でもある'},
+ {key:'mayu', name:'真由', full:'三島真由', age:35, job:'美容誌ライター（由紀の姉）', worry:'首・目・肩と右の手首', point:'首・目・手首', tsubo:'風池・合谷', scent:'ベルガモット', base:'citrus', accent:'smoke', route:'may_route', bday:'8月21日', bslot:[2,3,'street'], gift:'aroma', miru:'首・目・肩と右の手首。締切と原稿に追われる日々の、書き手の疲れ', keika:'手首と首がほぐれ、原稿の進みまで変わった。彼女の記事が、凪堂の名前を外へ運んでいく', memo:'書き手の手首は命綱。締切のリズムに合わせたケアを'},
+ {key:'elena', name:'エレナ', full:'エレナ・ロッシ', age:32, job:'イタリア語講師', worry:'デスクワークの肩こりと首', point:'肩と首・目', tsubo:'肩井・風池', scent:'ベルガモット', base:'citrus', accent:'mint', route:'ele_route', bday:'8月30日', bslot:[4,1,'street'], gift:'flower', miru:'デスクワークの肩こりと首。言葉を教える仕事の、静かな目の疲れも重なっている', keika:'肩と首がほぐれ、笑顔のレッスンが戻った。ベルガモットの香りが、彼女との合言葉になった', memo:'異国で働く身体の疲れは、言葉にしにくい。故郷の香りが鍵'},
+ {key:'anna', name:'アンナ', full:'アンナ・ペトロワ', age:29, job:'バレエ講師', worry:'股関節と足首', point:'股関節・足首', tsubo:'環跳・丘墟', scent:'ローズマリー', base:'herb', accent:'spice', route:'ann_route', bday:'1月28日', bslot:[3,3,'street'], gift:'practical', miru:'股関節と足首。バレエの身体の使い方の蓄積が、開きと支えの両方に疲れを残している', keika:'股関節と足首が整い、レッスンの軸が戻った。踊る人の身体を預かる、難しい常連になった', memo:'踊る身体は楽器と同じ。微調整の精度が問われる'},
+ {key:'sofia', name:'ソフィア', full:'ソフィア・デュラン', age:27, job:'パティシエ', worry:'立ち仕事とオーブンの熱で全身の張り', point:'全身', tsubo:'足三里・肩井', scent:'オレンジスイート', base:'rose', accent:'sweet', route:'sof_route', bday:'9月27日', bslot:[3,4,'atelier'], gift:'flower', miru:'立ち仕事とオーブンの熱で全身が張っている。甘い香りの厨房で、身体だけが悲鳴を上げている', keika:'全身がほぐれ、仕込みの朝が楽になった。お礼の焼き菓子が、凪堂の休憩室の名物になった', memo:'熱と立ち仕事の全身疲労。甘い香りの厨房の、辛い裏側'},
+ {key:'emma', name:'エマ', full:'エマ・ウィルソン', age:26, job:'ALT（外国語指導助手）', worry:'運動後の筋肉疲労と異国暮らしの疲れ', point:'ふくらはぎ・大腿', tsubo:'承山・足三里', scent:'ペパーミント', base:'citrus', accent:'mint', route:'emm_route', bday:'6月6日', bslot:[3,2,'gym'], gift:'practical', miru:'運動後の筋肉疲労と、異国暮らしの疲れ。ふくらはぎと大腿に、言葉にできないホームシックも混じる', keika:'筋肉がほぐれ、日本の暮らしの疲れも軽くなった。凪堂が、彼女の「帰る場所」の一つになった', memo:'ホームシックは身体に出る。明るさの裏の疲れを見る'},
+ {key:'saeko', name:'冴子', full:'葛城冴子', age:38, job:'元モデル', worry:'火照り・眠りの浅さ・肩こり', point:'肩と全身', tsubo:'肩井・三陰交', scent:'ローズ', base:'rose', accent:'spice', route:'sae_route', bday:'10月2日', bslot:[4,3,'street'], gift:'flower', miru:'火照りと眠りの浅さ、肩こり。肩井・天宗・三陰交に、年齢と共に変わる身体の声が集まっている', keika:'眠りが深くなり、火照りが落ち着いた。凪堂のカルテが、彼女の節目を丁寧に支えた記録になった', memo:'年齢と共に変わる身体との付き合い方を、一緒に作る施術'},
+ {key:'yukari', name:'ゆかり', full:'葛城ゆかり', age:19, job:'OL1年目（成人社会人・冴子の娘）', worry:'デスクワークの腰痛', point:'腰', tsubo:'腎兪・委中', scent:'スイートオレンジ', base:'citrus', accent:'smoke', route:'yka_route', bday:'5月25日', bslot:[4,3,'street'], gift:'aroma', miru:'デスクワークの腰痛。腎兪のあたりに、座りっぱなしの重さが溜まっている', keika:'腰が軽くなり、仕事の合間の姿勢まで変わった。母娘そろって凪堂の常連になった', memo:'社会人の身体の土台作りは、一年目が勝負'},
+ {key:'haruka', name:'遥', full:'藤堂遥', age:27, job:'看護師', worry:'夜勤の腰痛・脚のむくみ', point:'腰と脚', tsubo:'委中・承山', scent:'ペパーミント', base:'herb', accent:'sweet', route:'har_route', bday:'3月19日', bslot:[4,3,'hospital'], gift:'practical', miru:'夜勤の腰痛と脚のむくみ。委中のあたりに、眠れない勤務のリズムの疲れが溜まっている', keika:'腰と脚がほぐれ、夜勤明けの回復が早くなった。医療の現場同士、静かな信頼が生まれた', memo:'夜勤のリズムは、身体の時計を狂わせる。眠りの設計から'},
+ {key:'mitsuki', name:'美月', full:'高坂美月', age:31, job:'女教師', worry:'肩と手の張り（授業と保護者対応）', point:'肩と手', tsubo:'合谷・肩井', scent:'ローズマリー', base:'herb', accent:'mint', route:'mit_route', bday:'9月15日', bslot:[4,2,'street'], gift:'practical', miru:'授業と保護者対応のストレス。肩と手の張りに、黒板と人前に立つ緊張が出ている', keika:'肩と手がほぐれ、教室での声まで柔らかくなった。彼女の紹介で、同僚の来店も増えていく', memo:'人前に立つ緊張は、手と肩に出る。教室の外の顔を見る'},
+ {key:'rena', name:'玲奈', full:'白瀬玲奈', age:28, job:'国際線CA', worry:'時差ぼけ・脚のむくみ', point:'脚と足裏', tsubo:'湧泉・三陰交', scent:'グレープフルーツ', base:'citrus', accent:'spice', route:'ren_route', bday:'12月24日', bslot:[4,4,'bar'], gift:'flower', miru:'時差ぼけと脚のむくみ。湧泉・承山・三陰交に、空を飛ぶ仕事の疲れが集まっている', keika:'むくみが引き、眠りのリズムが戻った。次のフライトの前に、必ず寄る店になった', memo:'時差は身体の時計の大敵。眠りと巡りの両面から整える'},
+ {key:'aoi', name:'葵', full:'神宮寺葵', age:23, job:'巫女', worry:'祭事の立ち仕事と足の冷え', point:'足裏と脚', tsubo:'湧泉・太谿', scent:'ヒノキ', base:'wood', accent:'spice', route:'aoi_route', bday:'1月7日', bslot:[4,4,'shrine'], gift:'aroma', miru:'祭事の立ち仕事と足の冷え。湧泉のあたりに、神職の凛とした日常の疲れが溜まっている', keika:'足が温まり、祭事の長い一日を立てるようになった。神社の静けさと凪堂の静けさが、彼女の中でつながった', memo:'凛とした日常の裏の、静かな疲れ。足の冷えが入口'},
+ {key:'mao', name:'真央', full:'桜井真央', age:25, job:'キックボクサー', worry:'減量の疲労と古傷の右足首', point:'脚と足首', tsubo:'承山・丘墟', scent:'ペパーミントとユーカリ', base:'herb', accent:'spice', route:'mao_route', bday:'8月8日', bslot:[3,3,'gym'], gift:'practical', miru:'減量の疲労と、古傷の右足首。承山・足三里・丘墟に、リングに立つ者の蓄積がある', keika:'足首まわりがほぐれ、試合に向けた身体が整った。結果を出しにいく背中を、凪堂から送り出した', memo:'減量期の身体は繊細。攻めず、整える判断が問われる'}
 ];
 FT.HERO = FT_HERO;
 function heroByKey(k){ for(var i=0;i<FT_HERO.length;i++) if(FT_HERO[i].key===k) return FT_HERO[i]; return null; }
@@ -15956,6 +15957,200 @@ injectBtn();
 syncSpeedUI();
 })();
 
+</script>
+
+<style>
+/* ===== 既読スキップ＋文字表示速度（2026-11-04） ===== */
+#skipbtn.on { background:#7fa3c7; color:#10222f; border-color:#ffd98a; }
+</style>
+<script>
+// ===== 既読スキップ＋文字表示速度パッチ（2026-11-04） =====
+// ・文字表示速度：設定画面の「文字表示速度」（即時／遅い／ふつう／速い）で本文の
+//   1文字ずつ表示する速さを変える。「即時」は従来どおり一括表示。表示途中で
+//   テキストボックスをタップすると、その行を最後まで表示する。
+// ・既読スキップ：表示した行を記録し（localStorage nagido_read_v1）、プレイ画面の
+//   「スキップ」ボタンで既読行を高速送りする。選択肢と未読行で自動停止する。
+// ・保存は既存の設定保存と同じ流儀（localStorageへJSON）。セーブデータとは独立で
+//   旧セーブ互換に影響しない。オート再生パッチとは独立に動作し、競合しない
+//   （オートの送りは advance() 経由のまま。タイピング完了は手動タップ時のみ）。
+(function(){
+function el(id){ return document.getElementById(id); }
+function loadJ(k, dflt){ try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : dflt; } catch(e){ return dflt; } }
+function saveJ(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+var TSET = loadJ('nagido_text_v1', null);
+if (!TSET || typeof TSET !== 'object') TSET = { speed: 2 };
+if (TSET.speed === undefined) TSET.speed = 2;
+var READ = loadJ('nagido_read_v1', null);
+if (!READ || typeof READ !== 'object') READ = {};
+var SPEED_LABEL = ['即時', '遅い', 'ふつう', '速い'];
+var CHARS_PER_TICK = [0, 0.4, 0.67, 2.0];
+var readDirty = 0, readSaveTimer = 0;
+function saveReadSoon(){
+  readDirty++;
+  if (readDirty >= 25) { readDirty = 0; saveJ('nagido_read_v1', READ); return; }
+  if (readSaveTimer) return;
+  try { readSaveTimer = setTimeout(function(){ readSaveTimer = 0; readDirty = 0; saveJ('nagido_read_v1', READ); }, 800); } catch(e){}
+}
+function curSpeed(){ var n = parseInt(TSET.speed, 10); return (n >= 0 && n <= 3) ? n : 2; }
+var timerOK = false;
+try { setTimeout(function(){ timerOK = true; }, 0); } catch(e){}
+/* ---- タイプライター表示 ---- */
+var typing = null;
+function stopTypeTimer(){ if (typing && typing.timer) { try { clearInterval(typing.timer); } catch(e){} typing.timer = 0; } }
+function finishTyping(){
+  if (!typing) return false;
+  stopTypeTimer();
+  var tx = el('text');
+  if (tx) { try { tx.textContent = typing.full; } catch(e){} }
+  typing = null;
+  return true;
+}
+function cancelTyping(){ stopTypeTimer(); typing = null; }
+function startTyping(){
+  var tx = el('text');
+  if (!tx || !tx.classList) return;
+  if (!timerOK) return;
+  if (curSpeed() === 0) return;
+  var full = '';
+  try { full = tx.textContent || ''; } catch(e){}
+  if (!full) return;
+  cancelTyping();
+  typing = { full: full, pos: 0, timer: 0 };
+  try { tx.textContent = ''; } catch(e){}
+  typing.timer = setInterval(function(){
+    if (!typing) return;
+    typing.pos += CHARS_PER_TICK[curSpeed()] || 0.67;
+    if (typing.pos >= typing.full.length) { finishTyping(); return; }
+    var t2 = el('text');
+    if (!t2) { cancelTyping(); return; }
+    try { t2.textContent = typing.full.slice(0, Math.floor(typing.pos)); } catch(e){}
+  }, 20);
+}
+/* ---- 既読スキップ ---- */
+var skipOn = false, skipTimer = 0;
+function vis(id, disp){ var e = el(id); return !!(e && e.style && e.style.display === disp); }
+function anyOpen(){
+  if (vis('log', 'block')) return true;
+  var ids = ['statpop', 'settings', 'savepop', 'notebook', 'recall', 'gallery', 'galview', 'namepop', 'title', 'gate', 'howto', 'recallbar'];
+  for (var i = 0; i < ids.length; i++) if (vis(ids[i], 'flex')) return true;
+  var ft = el('ftscreen'), kt = el('ktscreen');
+  if (ft && ft.classList && ft.classList.contains('on')) return true;
+  if (kt && kt.classList && kt.classList.contains('on')) return true;
+  return false;
+}
+function choicesShown(){ return vis('choices', 'flex'); }
+function reflectSkipBtn(){
+  var b = el('skipbtn');
+  if (!b) return;
+  if (b.classList) b.classList.toggle('on', skipOn);
+  b.textContent = skipOn ? 'スキップON' : 'スキップ';
+}
+function stopSkip(){
+  if (skipTimer) { try { clearTimeout(skipTimer); } catch(e){} skipTimer = 0; }
+  if (skipOn) { skipOn = false; reflectSkipBtn(); }
+}
+function scheduleSkip(){
+  if (!skipOn || skipTimer) return;
+  try { skipTimer = setTimeout(stepSkip, 130); } catch(e){}
+}
+function stepSkip(){
+  skipTimer = 0;
+  if (!skipOn) return;
+  if (choicesShown()) { stopSkip(); return; }
+  if (anyOpen()) { try { skipTimer = setTimeout(stepSkip, 300); } catch(e){} return; }
+  try { advance(); } catch(e){ stopSkip(); }
+}
+function startSkip(){
+  if (skipOn) { stopSkip(); return; }
+  if (choicesShown()) return;
+  finishTyping();
+  skipOn = true;
+  reflectSkipBtn();
+  scheduleSkip();
+}
+/* ---- show() ラップ ---- */
+function afterShow(){
+  var sc = null;
+  try { sc = (typeof cur === 'function') ? cur() : null; } catch(e){}
+  if (!sc || !sc.lines || !(S.idx < sc.lines.length)) { stopSkip(); cancelTyping(); return; }
+  if (choicesShown()) { stopSkip(); cancelTyping(); return; }
+  var L = sc.lines[S.idx];
+  if (!L || L.choice) { stopSkip(); cancelTyping(); return; }
+  cancelTyping();
+  var key = S.scene + ':' + S.idx;
+  var wasRead = !!READ[key];
+  if (!wasRead) { READ[key] = 1; saveReadSoon(); }
+  if (skipOn) {
+    if (wasRead) scheduleSkip(); else { stopSkip(); startTyping(); }
+    return;
+  }
+  startTyping();
+}
+if (typeof show === 'function') {
+  var _showT = show;
+  show = function(){ var r = _showT.apply(this, arguments); try { afterShow(); } catch(e){} return r; };
+}
+/* ---- タップ割り込み ---- */
+try {
+  window.addEventListener('click', function(ev){
+    try {
+      var box = el('textbox');
+      if (!box || !ev || !ev.target) return;
+      var n = ev.target, inBox = false;
+      while (n) { if (n === box) { inBox = true; break; } n = n.parentNode; }
+      if (!inBox) return;
+      if (typing) { finishTyping(); ev.stopPropagation(); if (ev.preventDefault) ev.preventDefault(); return; }
+      if (skipOn) { stopSkip(); ev.stopPropagation(); if (ev.preventDefault) ev.preventDefault(); return; }
+    } catch(e){}
+  }, true);
+} catch(e){}
+/* ---- スキップボタン ---- */
+function injectBtn(){
+  try {
+    if (el('skipbtn')) { reflectSkipBtn(); return; }
+    var box = null;
+    try { box = document.querySelector('#menu .mbox'); } catch(e){}
+    if (!box) box = el('menu');
+    if (!box || !document.createElement) return;
+    var b = document.createElement('button');
+    b.id = 'skipbtn';
+    b.type = 'button';
+    b.textContent = 'スキップ';
+    b.onclick = function(){ startSkip(); };
+    box.appendChild(b);
+    reflectSkipBtn();
+  } catch(e){}
+}
+/* ---- 設定UI ---- */
+function syncTextUI(){
+  try {
+    var r = el('textspeed'), v = el('textspeedval');
+    if (r) r.value = String(curSpeed());
+    if (v) v.textContent = SPEED_LABEL[curSpeed()] || 'ふつう';
+  } catch(e){}
+}
+window.NAGI_TEXT = {
+  setSpeed: function(v){
+    var n = parseInt(v, 10);
+    if (!(n >= 0 && n <= 3)) n = 2;
+    TSET.speed = n;
+    saveJ('nagido_text_v1', TSET);
+    syncTextUI();
+  },
+  isRead: function(scene, idx){ return !!READ[scene + ':' + idx]; },
+  skipToggle: function(){ startSkip(); },
+  isSkipping: function(){ return skipOn; },
+  finishTyping: function(){ return finishTyping(); }
+};
+try {
+  if (typeof NAGI !== 'undefined' && NAGI && typeof NAGI.openSettings === 'function') {
+    var _osT = NAGI.openSettings;
+    NAGI.openSettings = function(){ var r = _osT.apply(this, arguments); syncTextUI(); return r; };
+  }
+} catch(e){}
+injectBtn();
+syncTextUI();
+})();
 </script>
 
 <script>
