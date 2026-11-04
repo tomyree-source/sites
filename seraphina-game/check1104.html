@@ -111,7 +111,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 .datafile{display:block;width:100%;box-sizing:border-box;color:#dfe8ff;font-size:13px;margin:2px 0 10px}
 #videoModal{position:absolute;inset:0;z-index:35;display:none;background:#000}
 #gameVideo{width:100%;height:100%;object-fit:contain;background:#000}
-#btnVideoSkip{position:absolute;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));background:rgba(20,24,48,.88);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:99px;padding:11px 20px;font-size:14.5px;font-weight:700;cursor:pointer;min-height:46px}
+#btnVideoSkip{position:absolute;right:14px;bottom:calc(64px + env(safe-area-inset-bottom));background:rgba(20,24,48,.88);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:99px;padding:11px 20px;font-size:14.5px;font-weight:700;cursor:pointer;min-height:46px}
 #title.note{margin-top:14px;font-size:11.5px;color:#dfe8ff;text-align:center;line-height:1.6;text-shadow:0 1px 4px #000}
 .modal{position:absolute;inset:0;z-index:30;display:none;background:rgba(5,7,18,.9);padding:calc(18px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));overflow-y:auto}
 .modal h2{font-size:18px;margin-bottom:12px;color:#ffd76e}
@@ -178,7 +178,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <div class="modal" id="collectionModal"><button class="close" data-close="collectionModal">閉じる</button><h2>コレクション図鑑</h2><div class="coltabs"><button data-coltab="goods">グッズ</button><button data-coltab="endings">エンディング</button><button data-coltab="gallery">場面回想</button><button data-coltab="videos">動画</button></div><div id="collectionBody"></div></div>
 <div class="modal" id="soundModal"><button class="close" data-close="soundModal">閉じる</button><h2>音の設定</h2><div id="soundBody"></div></div>
 <div class="modal" id="dataModal"><button class="close" data-close="dataModal">閉じる</button><h2>データ引き継ぎ</h2><p class="colnote">セーブデータと図鑑・設定を、別のブラウザや端末へ移せます。書き出したコード（またはファイル）を、移したい先で読み込んでください。読み込むと、そのブラウザの今のデータは上書きされます。</p><p class="colnote"><b>書き出し</b>：コードを作ってコピーするか、ファイルで保存してください。</p><button class="slot" id="btnExportCode">コードを作る</button><textarea id="dataExportText" class="databox" readonly placeholder="ここに引き継ぎコードが表示されます"></textarea><button class="slot" id="btnExportFile">ファイルで保存</button><p class="colnote"><b>読み込み</b>：コードを貼り付けるか、保存したファイルを選んでから「読み込む」を押してください。</p><textarea id="dataImportText" class="databox" placeholder="引き継ぎコードを貼り付け"></textarea><input type="file" id="dataImportFile" class="datafile" accept=".txt,.json"><button class="slot" id="btnImportData">読み込む</button><p class="colnote" id="dataMsg"></p></div>
-<div id="videoModal"><video id="gameVideo" playsinline preload="auto"></video><button id="btnVideoSkip">スキップ ▶▶</button></div>
+<div id="videoModal"><video id="gameVideo" playsinline preload="auto" controls></video><button id="btnVideoSkip">スキップ ▶▶</button></div>
 <div id="toast"></div>
 </div>
 <script>
