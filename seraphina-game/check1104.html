@@ -169,7 +169,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="btnOpT">オープニングを見る</button>
 <button id="btnDataT">データ引き継ぎ</button>
 <button id="btnShareT">Xで紹介する</button>
-<div id="ver">v1.1</div>
+<div id="ver">v1.2</div>
 <div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、癒し系コメディビジュアルノベルです。<br>序章＋全8章＋最終章／エンディング4種／コレクション図鑑つき。</div>
 </div>
 <div class="modal" id="saveModal"><button class="close" data-close="saveModal">閉じる</button><h2 id="saveTitle">セーブ</h2><div id="slots"></div></div>
@@ -258,6 +258,13 @@ stopAuto();
 const edName = ED_VIDEOS[S.scene];
 S.scene = nxt; S.line = 0;
 playGameVideo(edName, ()=>{ showScene(); scheduleAuto(); });
+return;
+}
+if(SCENE_VIDEOS[nxt]){
+stopAuto();
+const svName = SCENE_VIDEOS[nxt];
+S.scene = nxt; S.line = 0;
+playGameVideo(svName, ()=>{ showScene(); scheduleAuto(); });
 return;
 }
 S.scene = nxt; S.line = 0; showScene(); scheduleAuto();
@@ -506,6 +513,11 @@ document.getElementById("collectionModal").style.display="block";
 const VIDEO_DEFS = [
 {file:"op.mp4", name:"オープニング動画", desc:"ゲームのオープニング動画です（27秒）。"},
 {file:"intro.mp4", name:"セラフィナ紹介動画", desc:"見習い天使セラフィナの紹介動画です（29秒）。"},
+{file:"scene_descent.mp4", name:"シーン動画「降臨」", desc:"第1章、大阪への降臨シーンの動画です（13秒）。"},
+{file:"scene_maid.mp4", name:"シーン動画「メイド喫茶」", desc:"第2章、メイド喫茶のシーン動画です（15秒）。"},
+{file:"scene_lucia.mp4", name:"シーン動画「ルチア登場」", desc:"第6章、悪魔ルチア登場シーンの動画です（24秒）。"},
+{file:"scene_gabriela.mp4", name:"シーン動画「先輩の視察」", desc:"第7章、ガブリエラ視察シーンの動画です（17秒）。"},
+{file:"scene_amaterasu.mp4", name:"シーン動画「天照大御神」", desc:"第8章、天照大御神との対面シーンの動画です（15秒）。"},
 {file:"ed_special.mp4", name:"エンディング動画「みんなの天使」", desc:"特別編エンディングの動画です（38秒）。"},
 {file:"ed_stay.mp4", name:"エンディング動画「大阪に残る天使」", desc:"エンディング「大阪に残る天使」の動画です（37秒）。"},
 {file:"ed_travel.mp4", name:"エンディング動画「行き来する天使」", desc:"エンディング「行き来する天使」の動画です（34秒）。"},
@@ -1140,6 +1152,7 @@ else { stopVoice(); speakLine(line[0]||"", line[1]||""); }
 /* ===== 動画の拡張：OP・ED動画 ===== */
 const VIDEO_SEEN_KEY = "seraphina_video_seen_v1";
 const ED_VIDEOS = {end_special:"ed_special.mp4", end_stay:"ed_stay.mp4", end_travel:"ed_travel.mp4", end_return:"ed_return.mp4"};
+const SCENE_VIDEOS = {c0:"scene_descent.mp4", n1:"scene_maid.mp4", t1:"scene_lucia.mp4", v1:"scene_gabriela.mp4", k2:"scene_amaterasu.mp4"};
 function videoSrc(name){ return "assets/video/" + name; }
 let videoBusy = false;
 let videoCloseFn = null;
