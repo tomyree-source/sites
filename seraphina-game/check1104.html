@@ -73,6 +73,12 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 #menu{position:absolute;top:calc(88px + env(safe-area-inset-top));right:8px;display:flex;flex-direction:column;gap:6px;z-index:6}
 #menu button{background:rgba(16,20,40,.72);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:7px 12px;font-size:12.5px;font-weight:700;min-width:64px;cursor:pointer;backdrop-filter:blur(3px)}
 #menu button.on{background:#ffd76e;color:#442c00;border-color:#ffd76e}
+#btnMenuToggle{display:none}
+@media(max-width:640px){
+#btnMenuToggle{display:block;position:absolute;top:calc(88px + env(safe-area-inset-top));right:8px;z-index:7;background:rgba(16,20,40,.8);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer;min-width:64px}
+#menu{display:none;top:calc(128px + env(safe-area-inset-top))}
+#menu.open{display:flex}
+}
 #textbox{position:absolute;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));background:rgba(12,15,32,.86);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:14px 16px 18px;min-height:132px;cursor:pointer;z-index:4;backdrop-filter:blur(4px);display:flex;gap:12px;align-items:flex-start}
 #face{width:68px;height:68px;border-radius:16px;object-fit:cover;border:2px solid rgba(255,215,110,.75);display:none;flex:none;background:#222;box-shadow:0 4px 14px rgba(0,0,0,.45)}
 #tcol{flex:1;min-width:0}
@@ -113,10 +119,10 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 #gameVideo{width:100%;height:100%;object-fit:contain;background:#000}
 #btnVideoSkip{position:absolute;right:14px;bottom:calc(64px + env(safe-area-inset-bottom));background:rgba(20,24,48,.88);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:99px;padding:11px 20px;font-size:14.5px;font-weight:700;cursor:pointer;min-height:46px}
 #title.note{margin-top:14px;font-size:11.5px;color:#dfe8ff;text-align:center;line-height:1.6;text-shadow:0 1px 4px #000}
-.modal{position:absolute;inset:0;z-index:30;display:none;background:rgba(5,7,18,.9);padding:calc(18px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));overflow-y:auto}
+.modal{position:absolute;inset:0;z-index:30;display:none;background:rgba(5,7,18,.97);padding:calc(18px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));overflow-y:auto}
 .modal h2{font-size:18px;margin-bottom:12px;color:#ffd76e}
 .modal.close{position:sticky;top:0;float:right;background:#ffd76e;color:#442c00;border:none;border-radius:99px;padding:9px 18px;font-weight:800;font-size:14px;cursor:pointer;min-height:44px}
-.slot{width:100%;text-align:left;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:13px 14px;margin-bottom:9px;font-size:14px;line-height:1.55;cursor:pointer;min-height:56px}
+.slot{width:100%;text-align:left;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:13px 14px;margin-bottom:9px;font-size:14px;line-height:1.55;cursor:pointer;min-height:56px}
 .slot small{color:#bcd0ff}
 #loglist{font-size:14.5px;line-height:1.8}
 #loglist.lw{color:#ffd76e;font-weight:700}
@@ -124,6 +130,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 @media(min-width:481px){#app{border-left:1px solid #333;border-right:1px solid #333}}
 
 #hud .sub{gap:10px;flex-wrap:wrap}
+#hud .sub>span{white-space:nowrap}
 .free{position:absolute;inset:0;z-index:18;display:none;background:linear-gradient(to bottom,rgba(7,9,22,.72),rgba(7,9,22,.94));padding:calc(62px + env(safe-area-inset-top)) 12px calc(14px + env(safe-area-inset-bottom));overflow-y:auto}
 .freehead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px;text-shadow:0 2px 5px #000}
 .freetitle{font-size:21px;font-weight:900;color:#ffe9a8}.freesub{font-size:12.5px;color:#dfe8ff;margin-top:2px}.freestats{font-size:12.5px;text-align:right;line-height:1.55;color:#fff;white-space:nowrap}.freenotice{background:rgba(255,215,110,.18);border:1px solid rgba(255,215,110,.55);border-radius:12px;padding:9px 11px;font-size:13.5px;margin-bottom:10px}
@@ -131,7 +138,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 .freecard h3{font-size:18px;color:#ffe9a8;margin-bottom:9px}.freecard p{font-size:14.5px;line-height:1.75;margin-bottom:10px}.freecard .effect{color:#ffd9ec;font-weight:700}.destlabel{font-size:12px;color:#bcd0ff;font-weight:800;margin-bottom:5px}
 .destgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.destbtn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.32);border-radius:14px;padding:13px;text-align:left;cursor:pointer;min-height:74px}.destbtn b{display:block;font-size:16px;margin-bottom:4px}.destbtn span{font-size:12px;color:#dfe8ff;line-height:1.45}
 .fbtn{display:block;width:100%;background:rgba(255,252,240,.96);color:#332d24;border:none;border-radius:12px;padding:13px 14px;font-size:14.5px;font-weight:800;cursor:pointer;margin-top:9px;min-height:48px}.fbtn.main{background:linear-gradient(90deg,#ffd76e,#ffb3d9);color:#4a2c00}.fbtn:disabled{opacity:.45;cursor:not-allowed}.sysbtns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}.sysbtns .fbtn{font-size:12.5px;padding:10px 6px}.optbtns{margin-top:12px}
-.itemgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.itemcard{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.24);border-radius:14px;padding:10px;overflow:hidden}.itemcard img{width:100%;height:92px;object-fit:cover;border-radius:9px;margin-bottom:7px}.itemcard p{font-size:12.5px;line-height:1.6}.itemcard.locked img{filter:grayscale(1) brightness(.28)}.itemname{font-weight:900;font-size:14.5px;line-height:1.4;margin-bottom:5px}.colnote{font-size:13px;line-height:1.65;color:#dfe8ff;margin-bottom:10px}.coltabs{display:flex;gap:7px;margin-bottom:12px}.coltabs button{flex:1;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:10px 5px;font-weight:800;cursor:pointer}.coltabs button.on{background:#ffd76e;color:#442c00;border-color:#ffd76e}
+.itemgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.itemcard{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);border-radius:14px;padding:10px;overflow:hidden}.itemcard img{width:100%;height:92px;object-fit:cover;border-radius:9px;margin-bottom:7px}.itemcard p{font-size:12.5px;line-height:1.6}.itemcard.locked img{filter:grayscale(1) brightness(.28)}.itemname{font-weight:900;font-size:14.5px;line-height:1.4;margin-bottom:5px}.colnote{font-size:13px;line-height:1.65;color:#dfe8ff;margin-bottom:10px}.coltabs{display:flex;gap:7px;margin-bottom:12px}.coltabs button{flex:1;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:10px 5px;font-weight:800;cursor:pointer}.coltabs button.on{background:#ffd76e;color:#442c00;border-color:#ffd76e}
 .cranetrack{position:relative;height:34px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:99px;margin:16px 0;overflow:hidden}.cranezone{position:absolute;top:0;bottom:0;left:42%;width:16%;background:rgba(255,215,110,.55)}.cranemarker{position:absolute;top:3px;bottom:3px;left:0;width:5px;margin-left:-2px;background:#fff;border-radius:99px;box-shadow:0 0 8px #fff}
 @media(max-width:380px){.destgrid,.itemgrid{grid-template-columns:1fr}.sysbtns{grid-template-columns:1fr}}
 </style>
@@ -143,8 +150,9 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <div id="shade"></div>
 <div id="hud">
 <div class="row"><span class="lbl">蝕まれ度</span><div id="barwrap"><div id="bar"></div></div><span class="num" id="shokunum">0</span></div>
-<div class="sub"><span id="stagec">輪はぴかぴか、翼もふんわり</span><span>癒し <b id="iyashinum">0</b></span><span>所持金 <b id="moneynum">0</b>円</span></div>
+<div class="sub"><span id="stagec">輪はぴかぴか、翼もふんわり</span><span>癒し <b id="iyashinum">0</b> ／ 所持金 <b id="moneynum">0</b>円</span></div>
 </div>
+<button id="btnMenuToggle">メニュー</button>
 <div id="menu">
 <button id="mSave">セーブ</button>
 <button id="mLoad">ロード</button>
@@ -169,7 +177,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="btnOpT">オープニングを見る</button>
 <button id="btnDataT">データ引き継ぎ</button>
 <button id="btnShareT">Xで紹介する</button>
-<div id="ver">v1.2</div>
+<div id="ver">v1.3</div>
 <div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、癒し系コメディビジュアルノベルです。<br>序章＋全8章＋最終章／エンディング4種／コレクション図鑑つき。</div>
 </div>
 <div class="modal" id="saveModal"><button class="close" data-close="saveModal">閉じる</button><h2 id="saveTitle">セーブ</h2><div id="slots"></div></div>
@@ -774,6 +782,8 @@ document.getElementById("btnCollectionT").addEventListener("click", e=>{ e.stopP
 document.getElementById("mCollection").addEventListener("click", e=>{ e.stopPropagation(); openCollection("goods");});
 document.querySelectorAll("[data-coltab]").forEach(b=> b.addEventListener("click", ()=>renderCollection(b.dataset.coltab)));
 document.getElementById("textbox").addEventListener("click", ()=>{ audioTap(); if(S && document.getElementById("title").style.display==="none") advance();});
+document.getElementById("btnMenuToggle").addEventListener("click", e=>{ e.stopPropagation(); seTap(); document.getElementById("menu").classList.toggle("open"); });
+document.querySelectorAll("#menu button").forEach(b=> b.addEventListener("click", ()=>document.getElementById("menu").classList.remove("open")));
 document.getElementById("btnStart").addEventListener("click", startGame);
 document.getElementById("btnLoadT").addEventListener("click", ()=>openSlots("load"));
 document.getElementById("mSave").addEventListener("click", e=>{ e.stopPropagation(); openSlots("save");});
