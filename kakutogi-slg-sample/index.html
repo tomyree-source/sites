@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>異種格闘年代記（仮） ― 見本</title>
+<style>
+  :root{
+    --bg:#0a0f1e; --panel:#111a30; --panel2:#16223e; --line:#2a3a5f;
+    --gold:#c9a227; --gold2:#e8c95a; --red:#a02525; --red2:#d64545;
+    --text:#e9e6da; --dim:#9aa5bd; --sei:#7ec8e3; --aku:#e07a7a;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;}
+  #app{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;
+    background:linear-gradient(180deg,#0d1526 0%,#0a0f1e 100%);}
+  /* HUD */
+  #hud{position:sticky;top:0;z-index:20;background:rgba(13,21,38,.97);border-bottom:2px solid var(--gold);
+    padding:8px 10px 7px;}
+  #hud .row1{display:flex;justify-content:space-between;align-items:baseline;gap:6px;}
+  #hud .age{font-size:13px;color:var(--gold2);font-weight:700;letter-spacing:.04em;}
+  #hud .chapter{font-size:11px;color:var(--dim);}
+  #hud .row2{display:flex;gap:10px;margin-top:5px;font-size:12px;flex-wrap:wrap;}
+  #hud .fame b{color:var(--gold2);font-size:14px;}
+  #hud .sei{color:var(--sei);} #hud .aku{color:var(--aku);}
+  .bar{height:6px;background:#1d2a47;border-radius:3px;overflow:hidden;margin-top:3px;}
+  .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .4s;}
+  .bar.hp>i{background:linear-gradient(90deg,#3f9e4d,#7ed37e);}
+  .bar.ehp>i{background:linear-gradient(90deg,var(--red),var(--red2));}
+  #hud .style{font-size:12px;color:var(--text);}
+  #hud .style b{color:var(--gold2);}
+  /* main */
+  #main{flex:1;padding:14px 14px 30px;}
+  .scene-tag{font-size:11px;color:var(--dim);letter-spacing:.15em;margin-bottom:8px;}
+  .line{margin:0 0 12px;line-height:1.85;font-size:15px;}
+  .line .sp{display:block;font-size:12px;color:var(--gold2);font-weight:700;margin-bottom:2px;letter-spacing:.06em;}
+  .line.narr{color:#d8d4c4;}
+  .line.sys{color:var(--dim);font-size:13px;border-left:3px solid var(--line);padding-left:10px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 12px;}
+  .card h3{margin:0 0 6px;font-size:16px;color:var(--gold2);}
+  .card p{margin:0 0 6px;font-size:13px;line-height:1.7;color:#cfd3c9;}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 10px;font-size:12px;color:var(--dim);margin-top:6px;}
+  .stats-grid b{color:var(--text);font-size:14px;}
+  button.choice{display:block;width:100%;text-align:left;background:var(--panel2);color:var(--text);
+    border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px;
+    padding:12px 14px;margin:0 0 10px;font-size:15px;cursor:pointer;line-height:1.5;}
+  button.choice small{display:block;color:var(--dim);font-size:12px;margin-top:3px;}
+  button.choice:active{background:#1e2c4e;}
+  button.choice.danger{border-left-color:var(--red2);}
+  button.next{display:block;width:100%;background:linear-gradient(180deg,#8e2323,#6d1a1a);color:#fff;
+    border:1px solid #c04545;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;margin-top:6px;}
+  button.ghost{background:none;border:1px solid var(--line);color:var(--dim);border-radius:8px;
+    padding:9px 12px;font-size:13px;cursor:pointer;}
+  .navrow{display:flex;gap:8px;justify-content:space-between;padding:10px 14px;border-top:1px solid var(--line);}
+  /* toast */
+  #toast{position:sticky;bottom:0;z-index:15;pointer-events:none;}
+  .toast-item{background:rgba(20,30,55,.96);border-top:1px solid var(--gold);color:var(--gold2);
+    font-size:13px;padding:8px 14px;animation:fadein .3s;}
+  .toast-item.bad{color:var(--aku);border-top-color:var(--red2);}
+  @keyframes fadein{from{opacity:0}to{opacity:1}}
+  /* SNS */
+  .sns{background:#0d1420;border:1px solid #233659;border-radius:12px;padding:12px;margin-bottom:12px;}
+  .sns .sns-head{display:flex;justify-content:space-between;color:#5f7bb0;font-size:12px;font-weight:700;letter-spacing:.1em;margin-bottom:10px;}
+  .post{border-bottom:1px solid #1b2a47;padding:9px 2px;}
+  .post:last-child{border-bottom:none;}
+  .post .who{font-size:13px;font-weight:700;}
+  .post .who span{color:#5f7bb0;font-weight:400;font-size:12px;margin-left:6px;}
+  .post .txt{font-size:14px;line-height:1.75;margin-top:3px;white-space:pre-wrap;}
+  .post.mine{background:rgba(201,162,39,.07);border-radius:8px;padding:9px 8px;}
+  /* battle */
+  .battle-head{display:flex;gap:10px;margin-bottom:10px;}
+  .fighter{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .fighter .nm{font-size:14px;font-weight:700;}
+  .fighter .sub{font-size:11px;color:var(--dim);margin:2px 0 6px;}
+  .fighter.enemy{border-color:#5f2b2b;}
+  .legtag{display:inline-block;font-size:11px;color:#ffb3b3;background:rgba(160,37,37,.25);
+    border:1px solid #7a3030;border-radius:4px;padding:1px 6px;margin-top:5px;}
+  .blog{background:#0b1120;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:12px;
+    max-height:190px;overflow-y:auto;font-size:13px;line-height:1.7;}
+  .blog .bl{margin-bottom:7px;}
+  .blog .bl .sp{color:var(--gold2);font-size:11px;font-weight:700;margin-right:6px;}
+  .blog .bl.cmt{color:#aebadd;font-size:12px;}
+  .blog .bl.cmt .sp{color:#5f7bb0;}
+  .turn-tag{font-size:12px;color:var(--gold2);font-weight:700;margin-bottom:8px;letter-spacing:.08em;}
+  /* status */
+  table.stat{width:100%;border-collapse:collapse;font-size:13px;}
+  table.stat td,table.stat th{border-bottom:1px solid var(--line);padding:7px 4px;text-align:left;}
+  table.stat th{color:var(--dim);font-weight:400;width:38%;}
+  table.stat td{font-weight:700;}
+  .title-screen{text-align:center;padding:38px 10px 10px;}
+  .title-screen .over{color:var(--dim);font-size:12px;letter-spacing:.3em;}
+  .title-screen h1{font-size:31px;margin:14px 0 4px;color:var(--gold2);letter-spacing:.06em;line-height:1.35;}
+  .title-screen .kari{font-size:12px;color:var(--aku);}
+  .title-screen .sub{color:#cfd3c9;font-size:14px;line-height:2;margin:16px 0 22px;}
+  .age-compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;}
+  .age-compare .col{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:12px;line-height:1.8;}
+  .age-compare .col b{display:block;color:var(--gold2);font-size:14px;margin-bottom:4px;}
+  .age-compare .col.future{border-color:#5f2b2b;}
+  .age-compare .col.future b{color:var(--red2);}
+  .hidden{display:none;}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud" class="hidden">
+    <div class="row1"><span class="age" id="hud-age">19歳</span><span class="chapter" id="hud-chapter">第1章 青年期</span></div>
+    <div class="row2">
+      <span class="fame">名声 <b id="hud-fame">0</b> <span class="sei">清名<span id="hud-sei">0</span></span>／<span class="aku">悪名<span id="hud-aku">0</span></span></span>
+      <span>金 <b id="hud-money">¥0</b></span>
+      <span>生徒 <b id="hud-students">0</b>人</span>
+    </div>
+    <div class="row2" style="align-items:center;">
+      <span style="flex:1;min-width:120px;">体力 <b id="hud-stamina">100</b><span class="bar hp" style="display:block;"><i id="hud-stamina-bar" style="width:100%"></i></span></span>
+      <span class="style" id="hud-style"></span>
+    </div>
+  </div>
+  <div id="main"></div>
+  <div id="toast"></div>
+  <div class="navrow" id="navrow">
+    <button class="ghost" id="btn-title">タイトルへ</button>
+    <button class="ghost" id="btn-restart">最初から</button>
+  </div>
+</div>
+<script>
+"use strict";
+/* ================= DATA ================= */
+/*DATA-START*/
+const STYLES=[
+ {id:"shito",name:"糸東流空手",stats:{"打撃":4,"蹴り":4,"組技":2,"寝技":1,"体力":3,"読み":3},sig:"正拳順突き",kata:"平安の型",
+  desc:"型と基本を積み上げる王道。中間距離の突きと蹴りの正確さが武器で、組技と寝技はこれから埋める課題。子供の頃から道場に通い、基本の反復だけで何年も過ごしてきた。",
+  exam:"審査の型は「平安」。一挙動ごとに止める審査員の目が、ごまかしの利かない流派の性格そのものだった。"},
+ {id:"shorinji",name:"不動禅少林寺拳法",stats:{"打撃":3,"蹴り":3,"組技":4,"寝技":2,"体力":3,"読み":4},sig:"天地拳からの崩し投げ",kata:"天地拳",
+  desc:"突き蹴りに、投げ・関節・崩しを織り交ぜる。立ったままの近距離で相手の力をいなすのが強み。護身の色が濃く、教える側に回ったときの説得力も大きい。",
+  exam:"審査は天地拳の型と、受けから崩しまでの約束組手。力で押さず、相手の重心を外せているかが見られる。"},
+ {id:"boxing",name:"ボクシング",stats:{"打撃":5,"蹴り":1,"組技":1,"寝技":0,"体力":4,"読み":3},sig:"ワンツーの連打",kata:"シャドーとミット審査",
+  desc:"拳だけの世界で、距離管理と手数と心肺を極める。蹴りも組技も無い代わりに、打撃の質とラウンドを戦う持久力は全流派でも随一。異種戦では「無いもの」をどう守るかが課題になる。",
+  exam:"この流派に型はない。段位審査は3ラウンドのシャドーとミットで、足が止まった瞬間に減点される。"},
+ {id:"kick",name:"キックボクシング",stats:{"打撃":4,"蹴り":5,"組技":1,"寝技":0,"体力":4,"読み":2},sig:"右ハイキック",kata:"シャドーとミット審査",
+  desc:"蹴りの火力は全流派トップクラス。首相撲からの膝も持つが、脚への負担と消耗が大きく、寝技は空白。派手さでSNS映えはするが、脚を止められたときの脆さも抱える。",
+  exam:"審査はミットの連打と首相撲の膝。最後まで蹴りの速度が落ちないかが、初段の条件だった。"},
+ {id:"gotente",name:"御殿手",stats:{"打撃":3,"蹴り":2,"組技":4,"寝技":3,"体力":2,"読み":5},sig:"至近の関節崩し",kata:"受けと崩しの型",
+  desc:"琉球の古流。至近距離の関節、急所、崩しに特化し、読みの鋭さで世代を越えて渡り合う。扱う技の一部は反則と紙一重で、使い方の倫理まで含めて流派の修行になる。",
+  exam:"審査は至近距離の受けと崩し。相手を傷つけずに倒す制御ができて、初めて初段である。"},
+ {id:"yiquan",name:"意拳",stats:{"打撃":4,"蹴り":2,"組技":2,"寝技":1,"体力":2,"読み":5},sig:"渾元力の発勁",kata:"站樁と試力の審査",
+  desc:"站樁で体幹と爆発力を作る、地味で奥の深い拳。型らしい型はなく、組み合っても崩れない体の使い方と、短い距離で放つ発勁が武器。後半に伸びる晩成型。",
+  exam:"審査は站樁の持続と、押されても崩れないか。地味な審査ほど、ごまかしが利かない。"}
+];
+const SCENES=[
+{id:"style",type:"style",tag:"流儀選択",lines:[
+ ["地","小学3年の冬、近所の道場の見学に行ったのが始まりだった。泣きながら基本を繰り返した日も、初めて型が決まった日の高揚も、全部が今日につながっている。"],
+ ["地","あれから10年余り。習ってきた流派は、ひとつだけ。今日、その流派の初段審査を受ける。黒帯はゴールではない。異種格闘の世界への、ただの入場券だ。"],
+ ["地","――どの流派で、ハヤトは歩いてきたことにする？"],
+ ["地","道場の先輩たちは言う。黒帯は『やっとスタートライン』だと。子供の頃は意味が分からなかったが、今日、審査会場へ向かう電車の中で、ハヤトはその言葉を何度も思い出していた。"],
+]},
+{id:"exam_intro",type:"say",tag:"序章 ― 初段審査",lines:[
+ ["地","審査会場は、地区の体育館。畳ではなく板の間に、審査員の長机が三席。午前中は型、午後から組手。合否は今日のうちに張り出される。"],
+ ["地","受付で渡された受験番号は7番。周りには、同じように初段を目指す大人たちの緊張した顔があった。年齢も職業も違うが、ここでは全員が『挑戦者』だ。"],
+ ["師範","ハヤト。初段は『一人前』やない。『ここから先は自分で考えて稽古しなさい』という許可証や。緊張はしとけ。ただし、体まで固めるな。"],
+ ["ハヤト","はい。……正直、手汗がひどいです。"],
+ ["師範","ええ証拠や。体が戦う準備をしとる。ほな、行ってこい。"],
+ ["ハヤト","（10年。週に2回、雨の日も、学校のテストの前日も通った。あの積み重ねが今日、たった数時間で測られる。それもまた、武道なんだろう）"],
+ ["地","{exam} 名前が呼ばれた。深呼吸ひとつ。――{流儀}、初段審査。始まる。"]
+]},
+{id:"kata1",type:"choice",tag:"初段審査 ― 型（前半）",prompt:"型の前半。審査員3人の視線が、足運びと止めの正確さに注がれている。どう通す？",
+ options:[
+  {label:"一挙動ずつ、止めを正確に",desc:"勢いより精度。基本の反復で積んだものを、そのまま出す。",fx:{exp:6},set:{k1:1},toast:"型の精度が評価された"},
+  {label:"力強く、速く通す",desc:"若さの勢いで押し切る。止めの甘さは目立つかもしれない。",fx:{att:1},toast:"迫力は伝わったが、止めが流れた"},
+  {label:"呼吸を長く取り、審査員と目を合わせる",desc:"落ち着きを見せる。大人の審査の受け方。",fx:{exp:3},set:{k1:1},toast:"落ち着きが評価された"}
+ ]},
+{id:"kata2",type:"choice",tag:"初段審査 ― 型（後半）",prompt:"型の後半、疲れで後ろ足がわずかに流れた。審査員のペンが動く。残りはあと十数挙動。どう締める？",
+ options:[
+  {label:"軸を立て直し、最後の一挙動まで運ぶ",desc:"乱れた分を取り戻すのは、立て直す力そのものだ。",fx:{exp:6},set:{k2:1},toast:"立て直しが評価された"},
+  {label:"流れたまま、気合で締める",desc:"若さのごまかし。減点は覚悟の上。",fx:{fatigue:5},toast:"気合は届いたが、減点も付いた"},
+  {label:"いったん止めて、仕切り直す",desc:"勇気のいる選択。逃げではなく、立て直しとして見せる。",fx:{exp:3},set:{k2:1},toast:"仕切り直しの潔さが評価された"}
+ ]},
+{id:"exam_battle",type:"battle",tag:"初段審査 ― 組手",battle:{mode:"exam",enemy:"先輩（組手審査相手）",enemySub:"二段・審査用の当て止めあり",enemyHp:34,turns:3,
+ intro:[
+  ["地","午後の組手審査。相手は二段の先輩。当て止めが原則だが、寸止めの距離で本気の圧が来る。3ラウンド相当、短い攻防で『戦える初段か』が見られる。"],
+  ["先輩","遠慮はいらんよ。初段を取りに来たんやろ。当て止めでも、当たる距離までは入ってくるからな。"]
+ ],
+ actionsNote:"組手審査：技を当てた分だけ評価が上がる。型の出来も、ここに効いてくる。",
+ comments:[
+  ["観客席の保護者","初段審査って、こんなに静まり返るんやな……"],
+  ["道場の後輩","先輩、がんばれ……！"],
+  ["審査員メモ","距離の詰め方が若い。だが悪くない"]
+ ]}},
+{id:"exam_result",type:"say",tag:"序章 ― 合否",pick:"exam",variants:{
+ great:[
+  ["地","夕方、張り出された合格者一覧。一番上に近い位置に、自分の名前があった。審査員講評には『型・組手ともに初段として申し分なし。特に立て直しの場面を評価する』とある。"],
+  ["師範","……上出来や。ほんまに上出来や。お前はな、崩れたあとが強い。それは才能と違う、生き方の癖や。大事にせえ。"],
+  ["ハヤト","ありがとうございます！ 黒帯、締めてもいいんですね。"],
+  ["師範","ああ。ただし今日からやぞ。『黒帯を締めた』やのうて、『黒帯に追いつく稽古』が始まるんは。"],
+  ["地","掲示板の前で、小さくガッツポーズをした。誰も見ていないところでするガッツポーズほど、正直なものはない。"]
+ ],
+ pass:[
+  ["地","夕方、合格者一覧に自分の名前があった。審査員講評は簡潔に『初段相当』。派手さはない。だが、10年余りの稽古は、今日、確かに一つの形になった。"],
+  ["師範","合格や。喜べ。……ただし講評の『相当』という字を忘れるな。相当、でしかない。これから本物にしていくんは、お前の仕事や。"],
+  ["ハヤト","はい。まだまだ、ですね。"],
+  ["師範","当たり前や。それが分かったら、初段の資格は十分ある。"],
+  ["地","掲示板の前で、静かに息を吐いた。派手な合格ではない。だが、嘘のない合格だった。"]
+ ],
+ barely:[
+  ["地","合格者一覧の最後のほうに、自分の名前があった。講評には『組手の評価は最低線。型の立て直しで拾った』とある。落ちる寸前での合格だった。"],
+  ["師範","拾ってもらった合格やな。……ええんや、それで。武道はな、落ちた回数やのうて、残った回数で決まる。今日残れたことを、明日の稽古で本物にせえ。"],
+  ["ハヤト","はい……。悔しい合格ですけど、合格は合格です。"],
+  ["師範","その悔しさを持っとる間は、大丈夫や。"],
+  ["地","掲示板の前で、しばらく名前を見つめていた。合格の2文字が、こんなに重いものだとは思わなかった。"]
+ ]}},
+{id:"shihan_talk",type:"say",tag:"序章 ― 帰り道",lines:[
+ ["地","帰り道、師範と並んで歩く。新しい黒帯は、バッグの中でまだ板のように硬い。"],
+ ["師範","ハヤト、これからどうするつもりや。流派の道場で指導員を目指すんか、それとも選手の世界を覗くんか。"],
+ ["ハヤト","正直、半々です。教える仕事は好きです。でも……最近、異種格闘技戦の配信を見てしまって。流派同士が本気で当たるやつ。あれを見てから、こっちの胸も騒ぐんです。"],
+ ["師範","ふん。騒ぐなら行け。流派の看板はな、道場の中だけで守るもんやない。外で試して、傷ついて、持ち帰ってくるもんや。"],
+ ["師範","ただし条件が三つ。怪我を隠すな。勝ち方を汚すな。そして――食えんくなったら、恥ずかしがらずに働け。武道家は清貧やない、ただの生活者や。"],
+ ["師範","もう一つ。世の中にはな、勝つための『汚い手』を知っとる人間が山ほどおる。知ることと、使うことは別や。お前は使うな。……使えば勝てる場面ほど、な。"],
+ ["ハヤト","はい。……ありがとうございます。"],
+ ["地","19歳。初段。所持金は雀の涙、道場はまだ無い。あるのは黒帯と、騒ぐ胸だけ。それでも、物語はここから始まる。"]
+]},
+{id:"daily",type:"say",tag:"第1章 ― 下積みの日常",lines:[
+ ["地","初段を取った翌週から、ハヤトの日常はこうだ。平日の夜は師範の道場で子供クラスの指導補助。土曜は公民館の空き室を借りて、『護身と基本』の小さな自主セミナーを開いている。"],
+ ["地","自主セミナーの参加者は、先月が2人、今月は1人。チラシを50枚刷って、来たのは近所のおばあちゃんと、そのお連れ合いだけだった。"],
+ ["女性の声","先生、今日もよろしくねえ。あのね、この前教えてもらった『転び方』、買い物で滑ったときに役立ったのよ。"],
+ ["ハヤト","（それは……嬉しい。けど、このままじゃ家賃どころか来月のチラシ代もない）"],
+ ["地","指導の仕事は、まだ月に数千円にしかならない。道場の先輩には『最初はそんなもんや』と笑われたが、笑い事ではない。来月の携帯代と交通費を数えると、指が止まる。"],
+ ["地","指導補助の謝礼は、時給換算すればコンビニバイト以下だ。それでもハヤトが辞めないのは、子供たちに『先生』と呼ばれる時間が、選手としての自分を叱ってくれるからだった。"],
+ ["地","帰宅は23時過ぎ。冷蔵庫には昨日の残りの味噌汁。食べて、風呂に入って、稽古ノートを開く。今日直すべきだった癖を1行だけ書いて、布団に入る。下積みの生活は、地味で、しかし確かだった。"],
+ ["地","そんな夜、スマホに通知が来た。スポットバイトのアプリ『ワークスポット』。単発の仕事が、明日の昼に一件出ている。"]
+]},
+{id:"baito",type:"choice",tag:"第1章 ― スポットバイト",prompt:"明日の単発バイト、どれを受ける？ どれも体は使う。金と疲労と、出会いが違う。",
+ options:[
+  {label:"倉庫の仕分け（6時間）",desc:"黙々と荷物を捌く。終了後に、異種格闘技戦の会場設営の求人も紹介される。",fx:{money:8200,fatigue:22},set:{baito:"warehouse"},toast:"所持金 +¥8,200 ／ 疲労が溜まった"},
+  {label:"イベント警備（5時間）",desc:"駅前の商業施設。人の流れを読む仕事は、そのまま読みの稽古になる。",fx:{money:7600,fatigue:16,exp:3},set:{baito:"security"},toast:"所持金 +¥7,600 ／ 人の流れを読む経験になった"},
+  {label:"引っ越しの補助（7時間）",desc:"一番きつくて、一番単価がいい。昼に美味しい賄いが出るらしい。",fx:{money:9800,fatigue:30},set:{baito:"moving"},toast:"所持金 +¥9,800 ／ 全身が疲れた"}
+ ]},
+{id:"baito_result",type:"say",tag:"第1章 ― バイトの収穫",pick:"baito",variants:{
+ warehouse:[
+  ["地","物流倉庫。ベルトコンベアの脇で、ひたすら荷物を方面別に捌く6時間。腰の入れ方ひとつで疲れ方が違うのは、型の重心移動と全く同じだった。"],
+  ["現場のリーダー","若いのに腰が入っとるね。あんた、なんかやってる？ ……へえ、武道。来月、格闘技の大会の会場設営があるんやけど、そっちも入れる？ 会場の中、見られる仕事やで。"],
+  ["ハヤト","（会場設営――大会の裏側を、先に知れるかもしれない）ぜひ、声をかけてください。"],
+  ["地","バイトはただの金策ではない。場所と人の縁が、次の扉になることがある。"],
+  ["地","帰りの電車で、紹介された設営バイトの連絡先を登録した。大会の『中側』を知ることは、選手としての目をもう一つ増やすことになるかもしれない。"]
+ ],
+ security:[
+  ["地","駅前の商業施設、警備の仕事。やることは『立って、見て、声をかける』。それだけのはずが、人の流れの淀みを読む目は、組手の間合いを読む目とそっくりだった。"],
+  ["先輩警備員","にいちゃん、目がいいね。酔っぱらいが絡む前に気づいてたやろ。ああいうの、殴るより先に『見つける力』なんやで。"],
+  ["ハヤト","ありがとうございます。……（見つける力、か。武道と同じなんだな）"],
+  ["地","トラブルは一件だけ、それも声かけで収まった。警備の顔として、施設の店員たちに名前を覚えられたのも、小さな収穫だった。"],
+  ["地","帰り道、先輩警備員の言葉をノートに書いた。『見つける力』――護身の本質は、戦う前に気づくこと。その言葉は、この先何度もハヤトを助けることになる。"]
+ ],
+ moving:[
+  ["地","引っ越し先は、3階建てエレベーターなしの階段地獄。冷蔵庫を担いだ時点で、『体幹』という言葉の意味を全身で理解した。"],
+  ["依頼主の女性","ありがとうねえ、助かったわ。……あら、あんた腕の筋肉、すごいね。何かやってるの？ 武道！ へえ、うちの子、護身術とか興味あるかも。"],
+  ["ハヤト","公民館で小さく教えてます。よかったらチラシ、置いていきますね。"],
+  ["地","賄いの親子丼は、人生で三番目くらいに美味かった。疲労は最大級。だが、チラシ1枚がどこで芽を出すかは、誰にも分からない。"],
+  ["地","全身の疲労と引き換えに得たものは、金と、チラシ1枚分の縁と、親子丼の味の記憶。下積みの収穫としては、悪くない部類だった。"]
+ ]}},
+{id:"week_intro",type:"say",tag:"第1章 ― 育成の1週間",lines:[
+ ["地","バイト代が入って、財布に少し余裕ができた。来週の稽古予定を前に、ハヤトは手帳を開く。時間をどう使うかで、来月の自分が変わる。"],
+ ["地","平日は通常運転。問題は、意識して使える2つの時間枠だ。1つ目は平日夜の自由時間、2つ目は日曜の丸一日。どう配分する？"],
+ ["地","武道の上達は、才能より先に『時間の配分』で決まる。師範の言葉だ。何を選ぶかではなく、何を選ばないか。1週間は誰にでも平等で、だからこそ残酷だ。"],
+]},
+{id:"train1",type:"choice",tag:"育成 ― 時間枠1（平日夜）",prompt:"平日夜の自由時間。何に使う？",
+ options:[
+  {label:"流儀の稽古（看板技の反復）",desc:"{看板技}を中心に、基本と型を叩き直す。流儀経験が大きく伸びる。",fx:{exp:10,fatigue:10},set:{train1:"keiko"},toast:"流儀経験 +10"},
+  {label:"指導補助を増やす",desc:"子供クラスの枠を増やしてもらう。わずかな謝礼と、指導力の伸び。",fx:{money:3500,guide:1},set:{train1:"shido"},toast:"所持金 +¥3,500 ／ 指導力 +1"},
+  {label:"しっかり休む",desc:"寝て、食べて、体を戻す。地味だが、次の質が変わる。",fx:{fatigue:-28},set:{train1:"rest"},toast:"疲労が回復した"}
+ ]},
+{id:"train1_result",type:"say",tag:"育成 ― 時間枠1の結果",pick:"train1",variants:{
+ keiko:[
+  ["地","道場の隅で、{看板技}の反復。最初は形を追い、中盤で力みを抜き、最後の10本でようやく『置きに行く』感覚が掴めた。"],
+  ["師範","（通りすがりに）……今の3本、悪なかったぞ。記録しとけ。良い感覚は、書かんと逃げる。"],
+  ["ハヤト","はい！（ノートに書く。『力まない。置く』――たったこれだけのことが、10年かかった）"],
+  ["地","稽古の最後、汗で畳が滑る中で打った一本が、今日一番の手応えだった。こういう一本のために、人は道場に通い続ける。"]
+ ],
+ shido:[
+  ["地","子供クラスの枠が増えた。8歳の男の子に前屈立ちを教えながら、自分の基本の曖昧さに何度も気づかされる。教えるとは、学び直すことだと先輩が言っていた意味が分かった。"],
+  ["子供","せんせー、ぼくの突き、強くなった？","ハヤト","強くなった。でも本当に強くなったのは、最後まで気を抜かなかったとこだな。"],
+  ["地","謝礼はわずか。だが『先生』と呼ばれる時間の蓄積が、じわじわ効いてくる気がした。"],
+  ["地","帰り際、男の子が『先生、また来週』と手を振った。指導の仕事の報酬は、金だけではないのだと思い知らされる瞬間だった。"]
+ ],
+ rest:[
+  ["地","風呂にゆっくり浸かり、洗濯をして、22時に寝た。たったそれだけの夜。"],
+  ["地","翌朝、鏡の中の顔が違う。疲労は判断を鈍らせ、判断の鈍りは怪我を呼ぶ。休むことも稽古のうち――師範の言葉は、こういう朝に効く。"],
+  ["地","スマホも見ずに過ごした夜。CLASHの通知は溜まっていたが、それは明日の自分に任せることにした。"]
+ ]}},
+{id:"train2",type:"choice",tag:"育成 ― 時間枠2（日曜）",prompt:"日曜の丸一日。何に使う？",
+ options:[
+  {label:"映像研究（他流派の試合を観る）",desc:"柔道の選手の試合映像を繰り返し観る。距離と入り方の癖が見えてくる。",fx:{exp:4},set:{train2:"video",weak:1},toast:"柔道の入り方に目星が付いた"},
+  {label:"基礎トレと体のケア",desc:"脚腰と体幹を作り、古傷予備軍のケアもする。派手さはないが土台になる。",fx:{fatigue:-8},set:{train2:"care"},toast:"体が軽くなった"},
+  {label:"セミナーのチラシ配りと挨拶回り",desc:"商店街を回る。顔を売る仕事は、名声の卵。",fx:{att:2,sei:1},set:{train2:"flyer"},toast:"商店街で顔を覚えられた"}
+ ]},
+{id:"train2_result",type:"say",tag:"育成 ― 週の締めと請求書",pick:"train2",variants:{
+ video:[
+  ["地","柔道の選手の試合映像。組み際の入り方、引き手の強さ、そして――勝っている試合でも、終盤に左脚をかばう瞬間がある。何度も巻き戻して、ノートに書いた。『左脚、終盤に落ちる』。"],
+  ["地","情報は武器だ。ただ、観ただけで勝てるほど甘くもない。目は肥えた。体は、これからだ。"]
+ ],
+ care:[
+  ["地","公園で脚腰の基礎トレ、帰ってストレッチと入念なケア。若い体は回復が早いが、早いからこそ雑に扱うと、ツケは40代で来る――とは師範談。"],
+  ["地","夕方、体の軽さに驚く。下積みの時期の『丁寧さ』は、きっと未来の自分への仕送りだ。"]
+ ],
+ flyer:[
+  ["地","商店街の店先を一軒ずつ回る。八百屋の大将は『若いのに偉いな』とチラシを店頭に貼ってくれた。花屋の店主は元・柔道部だと言い、昔話が30分続いた。"],
+  ["地","セミナーの申込は増えなかった。だが、顔と名前は確かに残った。名声というのは、こういう残り方から始まるのかもしれない。"]
+ ]},
+ lines_after:[
+  ["地","そして月末。請求書と引き落としの現実がやってくる。携帯代、交通費、道場の月謝の立替分、チラシの印刷代。財布の中身とスマホの残高通知を見比べて、ため息がひとつ。"],
+  ["ハヤト","（武道で食うって、まず『食う』の部分が難しいんだな……）"],
+  ["地","そんな夜更け、スマホが震えた。武術SNS『CLASH』の通知。自分の流儀の名前が、見知らぬ誰かの投稿に上がっていた。"]
+ ]},
+{id:"sns_intro",type:"say",tag:"第1章 ― CLASHの最強論争",lines:[
+["地","CLASH――武術・格闘技専門のSNS。最強論争は日常茶飯事で、流派のTier表がバズれば一晩で世論が動く、今や道場の外のもう一つの戦場だ。"],
+["地","今夜の火種は、流派Tier表で有名な発信者『Tier職人ミラ』の新作動画。流派別ランキングで、{流儀}が『過大評価』枠に入れられていた。コメント欄はすでに燃えている。"],
+["地","名指しこそされていない。だが、地域の若手で{流儀}の看板を背負う人間は限られる。これは、通り過ぎるか、拾うかの分かれ目だ。"],
+ ["地","CLASHの最強論争は、ただの言い争いではない。ここで付いた評価は、現実の集客と対戦相手の態度にまで染み出してくる。言葉もまた、間合いの取り合いなのだ。"],
+]},
+{id:"sns",type:"sns",tag:"SNS ― CLASH",sns:{
+head:"CLASH ― 武術SNS（架空）",
+posts:[
+{name:"Tier職人ミラ",handle:"@tier_mira",text:"更新しました。\n{流儀}は『過大評価』枠に移動。理由：型の美しさと実戦は別物。オープンルールのリングで結果を出してから語ってほしい。\n異論はコメント欄でどうぞ。強い言葉、正論、待ってます。"},
+{name:"通りすがりの柔道部",handle:"@judo_pass",text:"過大評価は言い過ぎでは……でも確かに、異種の大会で結果出してるの見たことないな"},
+{name:"古流研究家",handle:"@koryu_lab",text:"流派の価値は勝敗だけでは測れない、と毎回言っているのだが、毎回燃える"}
+],
+prompt:"ミラの投稿に、ハヤトとして返信する。言葉の属性で、返ってくるものが変わる。",
+replies:[
+{attr:"正論",label:"「結果で語れというなら、まず審査と組手の基準の違いから整理しませんか」",fx:{sei:2,att:2},set:{sns:"seiron"},toast:"清名 +2 ／ 注目 +2"},
+{attr:"経験談",label:"「10年やって初段を取りました。その10年が無駄かどうかは、組んでみれば分かります」",fx:{sei:1,att:2},set:{sns:"keiken"},toast:"清名 +1 ／ 注目 +2"},
+{attr:"ユーモア",label:"「過大評価枠、ありがとうございます。無評価より百倍いい」",fx:{sei:1,att:3},set:{sns:"yumor"},toast:"清名 +1 ／ 注目 +3"},
+{attr:"煽り",label:"「Tier表の中の人は、畳の上に立ったことがあるんですか？」",fx:{aku:2,att:4},set:{sns:"aori"},toast:"悪名 +2 ／ 注目 +4（燃え広がった）"}
+]}},
+{id:"sns_result",type:"say",tag:"SNS ― 返ってきたもの",pick:"sns",variants:{
+seiron:[
+["地","返信は一晩で小さく広がった。『若いのに筋を通す』『こういう反論は珍しい』。ミラ本人からも返信が来た。"],
+["Tier職人ミラ","基準の整理、面白いです。認めます、その点は私の雑でした。でも順位は変えません。変えさせたかったら、リングで結果をどうぞ。"],
+["ハヤト","（結果で変えろ、か……上等だ）"],
+["地","そして翌日、見知らぬアカウントから一通のDMが届くことになる。"],
+  ["地","論争は、正論で静まることもある。その代わり『静かに強い』という評価が、じわじわと広がっていくのが分かった。"]
+],
+keiken:[
+["地","経験談の返信は、意外なほど静かに効いた。『初段までの10年』という言葉に、同世代の武道経験者が次々と自分の年月を重ねて引用していく。"],
+["Tier職人ミラ","経験の重さは認める。でも経験談は全員が持ち出せるカードでもある。あなた個人の『結果』は、まだ無いんですよ。"],
+["ハヤト","（……痛いところを突く人だ。でも、事実だ）"],
+["地","そして翌日、見知らぬアカウントから一通のDMが届くことになる。"]
+],
+yumor:[
+["地","ユーモアの返信はバズった。『無評価より百倍いい』はミーム化し、コメント欄の空気が一変する。ミラも笑いながら引用した。"],
+["Tier職人ミラ","うまい。気に入りました。でも覚えておいて、笑いを取れる人間は、実力まで疑われなくなる分、期待のハードルも上がりますよ。"],
+["ハヤト","（ハードル、上げられた。……まあ、悪くない）"],
+["地","そして翌日、見知らぬアカウントから一通のDMが届くことになる。"]
+],
+aori:[
+["地","煽りは――燃えた。一晩で通知が止まらなくなり、賛否の両方が押し寄せる。『言ってやった』という快感と、『やりすぎた』という後味が、同時に残った。"],
+["Tier職人ミラ","あら、畳の外から石を投げる口の悪い子は嫌いじゃないよ。実力で証明できるなら、ね。"],
+["ハヤト","（……証明、するしかなくなったな。これはこれで、面倒なことになった）"],
+["地","そして翌日、見知らぬアカウントから一通のDMが届くことになる。"]
+]}},
+{id:"challenge",type:"say",tag:"第1章 ― 指名",lines:[
+["地","DMの送り主は、相沢凛。大学の柔道部に所属する20歳で、アマチュアのオープン大会で入賞経験のある、若手の実力者だった。"],
+["相沢凛","（DM）CLASH、見ました。{流儀}の人ですよね。言い争いは性に合わないので、一つ提案です。来週末、交流スパーリングをしませんか。流派同士、組んでみれば早い話です。"],
+["相沢凛","（DM）ルールは立技のみ・当て止めなしの軽接触、3分×2ラウンド。レフェリー付き。動画は両方の許可がある部分だけ公開。条件、悪くないと思います。"],
+["ハヤト","（格上だ。実績も、試合経験も向こうが上。断れば『口だけ』が確定する。受ければ――何かが起きる）"],
+["ハヤト","（DM）受けます。{流儀}、初段、ハヤト。当日はよろしくお願いします。"],
+["相沢凛","（DM）即答、いいですね。当日、楽しみにしています。――脚の具合は、万全にしておいてくださいね。"],
+ ["地","その夜、ハヤトは相沢凛の戦績をCLASHで調べた。組み際の速さに定評があり、投げのバリエーションも多い。逆に、立技の打ち合いだけで勝負した試合は少ない。――情報は集まった。あとは体で証明するだけだ。"],
+["地","最後の一文が、少し引っかかった。だが、その意味は当日まで分からなかった。"]
+]},
+{id:"spar_intro",type:"say",tag:"第1章 ― スパーリング当日",lines:[
+["地","当日。借りた体育館の半面にマットが敷かれ、観客は関係者とCLASHのフォロワー数人。レフェリーは、地域の大会で笛を吹く三好さん。女性レフェリーの的確な進行で、場が締まっている。"],
+ ["地","マットの端では、CLASHのフォロワーがスマホを構えている。許可した範囲だけ公開される約束だが、一度出た映像は一人歩きする時代だ。今日の戦い方は、そのまま明日の『分析材料』になる。"],
+["三好レフェリー","ルール確認。立技のみ、当ては軽接触、関節は掛け止め。反則は警告の対象。眼・喉・金的への攻撃は言うまでもなく禁止。いいですね、二人とも。"],
+["相沢凛","よろしくお願いします。……CLASHでは色々言われてたけど、直接組めるのが一番楽しみでした。"],
+["ハヤト","こちらこそ。柔道の人と本気で組むのは初めてです。胸を借ります。"],
+["相沢凛","胸は貸します。でも、勝ちまで貸す気はないので。"],
+ ["三好レフェリー","それと一つ。脚への攻撃は有効ですが、蓄積を狙うなら狙うで、相手も同じことを考えます。お互い、壊し合うためではなく、確かめ合うためにやりましょう。"],
+["地","柔道着の袖が、ばさりと鳴った。距離は遠距離。相手の得意は、その先にある『組み際』だ。"]
+]},
+{id:"spar_battle",type:"battle",tag:"指名試合 ― 相沢凛（柔道）",battle:{mode:"spar",enemy:"相沢凛（柔道）",enemySub:"20歳・アマ大会入賞経験あり",enemyHp:48,turns:5,
+intro:[
+["地","第1ラウンド開始。遠距離で様子を見るか、最初から踏み込むか。柔道の『組み際』に入る前に、こちらの距離で何を刻めるかが勝負だ。"],
+["相沢凛","来ないなら、こちらから組みに行きますよ。"]
+],
+actionsNote:"指名試合：5ターン。相手の脚への攻撃は部位ダメージとして蓄積する。最終盤には、反則の誘惑も顔を出す。",
+comments:[
+["Tier職人ミラ","実況席（CLASH）から見てる。初段くん、どこまでやれる？"],
+["観客A","柔道の組み際、やっぱ速いな……"],
+["観客B","距離で戦えてる。流派の色が出てるぞ"],
+["Tier職人ミラ","脚、見てる？ みんな、脚を見て"]
+]}},
+{id:"spar_after",type:"say",tag:"指名試合 ― 結果",pick:"spar",variants:{
+win:[
+["地","判定は、僅差でハヤト。最後まで距離を保ち、組み切らせなかった内容が評価された。マットの上で、二人ともしばらく息を整えていた。"],
+["相沢凛","……負けた。悔しいけど、清々しい負けです。あなたの距離、私の組みたい距離の、ちょうど外側にずっとあった。"],
+["ハヤト","終盤、脚が残ってなかったら結果は逆でした。紙一重です。"],
+["相沢凛","その紙一重を、紙一重と言える人が強いんです。……ねえ、また組みましょう。今度は私が距離を勉強してくる。"],
+["地","CLASHには切り抜き動画が上がり、『初段、柔道の実力者に勝つ』の見出しが付いた。だが同時に、徹底的に脚を狙った攻め方への分析投稿も――相手の弱点は、勝てば勝つほど公になる。"],
+  ["地","帰り道、スマホには『おめでとう』の通知が並んでいた。だが一番残ったのは、凛の『また組みましょう』という言葉だった。"]
+],
+lose:[
+["地","判定は相沢凛。組み際を一度許した瞬間、崩しから投げの圧に最後まで抗えなかった。実績の差は、やはり実績の差として残った。"],
+["相沢凛","ありがとうございました。……ねえ、終盤、あなたの右の入りが単調になってました。疲れると癖が出るタイプですね。次は直してきてください。"],
+["ハヤト","（負けた上に、癖まで読まれた――）ありがとうございます。次は、直してきます。"],
+["地","切り抜き動画はCLASHで広がり、分析好きのアカウントが『初段くんの癖まとめ』を投稿した。自分の弱点が、不特定多数の知るところになる。情報は、勝っても負けても漏れていく。"],
+  ["地","帰りの電車、窓ガラスに映る自分の顔を見た。悔しさは、しまい込まずに持ち帰る。明日の稽古の燃料にするために。"]
+],
+foulwin:[
+["地","判定はハヤト。だが、レフェリーの視線はしばらく手元に残っていた。最終盤の一手――眼への牽制で相手が怯んだ、その一瞬で流れが決まったのは、誰の目にも明らかだった。"],
+["三好レフェリー","……勝ちは勝ちです。ただし、あの一手。『事故だった』と言い切れる距離ではありませんでした。次に同じことをしたら、私は迷わず反則を取ります。"],
+["相沢凛","……私は、何も言いません。言えば、負け惜しみになるから。ただ次に組むときは、目を守って組みます。それだけです。"],
+["地","勝利の投稿より先に、切り抜き動画のスロー再生が拡散した。『あれ、眼突きじゃないの？』――勝ち方を問う声が、勝った事実より大きく育っていく。"],
+  ["地","帰り道、勝ったはずなのに足取りが重かった。勝ち星と一緒に、消えない映像も手に入れてしまった夜だった。"]
+],
+foullose:[
+["地","判定は相沢凛。最終盤、苦し紛れに出した眼への一手は流れを変えるに至らず、レフェリーの警告だけが記録に残った。"],
+["三好レフェリー","警告は公式に残します。勝ちたい気持ちは分かる。でも、その手で勝っても、誰もあなたを強いとは呼びません。"],
+["相沢凛","……最後のあれがなければ、いい試合だったのに。ねえ、あなたはあんな手を出さなくても戦える人のはずです。"],
+["地","負けと警告と、切り抜き動画。CLASHの分析アカウントは『初段くんの癖まとめ』に『焦ると手が出る』の項目を付け加えた。取り戻すには、勝ち方から取り戻すしかない。"],
+  ["地","帰りの電車では、警告の場面ばかりが頭の中で再生された。負けより、その一手の記憶の方が、ずっと長く残りそうだった。"]
+]}},
+{id:"night",type:"say",tag:"第1章 ― 夜の駅前",lines:[
+["地","指名試合から数日後。師範の道場の備品の買い出しの帰り、夜の駅前。改札前のロータリーは、仕事帰りの人波で満ちていた。"],
+["地","その人波の端で、声が荒れているのに気づいた。スーツ姿の女性が、酔った様子の男に腕を掴まれかけ、バッグを胸に抱えて後ずさっている。周囲の足は、見て見ぬふりで速くなった。"],
+ ["地","時計は22時40分。終電までまだ間がある時間帯で、駅前には飲み会帰りの集団や、塾帰りの学生の姿もあった。事件は、案外こういう『普通の夜』に起きる。"],
+["女性の声","やめてください、帰りますから……っ。"],
+["男の声","いいじゃん、ちょっとだけだって。なあ、顔も知ってるだろ、前に店で――"],
+["地","女性の目が、一瞬だけこちらを向いた。助けを求める目は、言葉より速い。ハヤトの足は、考えるより先に動いていた。"]
+]},
+{id:"boukan",type:"choice",tag:"暴漢イベント ― 対応",prompt:"どう動く？ 勝ち方まで問われる場面だ。",
+options:[
+{label:"大きな声をかける",desc:"「大丈夫ですか、警察呼びましょうか」。距離を保ち、周囲の目を集める。",fx:{sei:3,att:2},set:{boukan:"koe"},toast:"清名 +3 ／ 注目 +2"},
+{label:"間に割って入る",desc:"二人の間に体を入れる。掴まれれば、流儀の受けで制する。",fx:{sei:4,att:3,fatigue:8},set:{boukan:"warite"},toast:"清名 +4 ／ 注目 +3"},
+{label:"反則級の一撃で一瞬で終わらせる",desc:"眼への牽制から急所へ。確実に救えるが、やりすぎの議論は免れない。",fx:{aku:3,att:5,sei:1},set:{boukan:"hangeki"},danger:true,toast:"救えた。だが悪名 +3 ／ 注目 +5"}
+]},
+{id:"boukan_result",type:"say",tag:"暴漢イベント ― 顛末",pick:"boukan",variants:{
+koe:[
+["地","「そこの方、大丈夫ですか！ 駅員さん呼んでます！」――声はロータリーによく通った。振り返る通行人の数が、男の居場所を一瞬で消した。"],
+["男の声","な、なんだよ……知り合いだって言ってんだろ……。"],
+["地","男は視線の圧に負けて、人波の向こうへ消えた。女性は震える手でバッグを握り直し、何度も頭を下げた。"],
+["女性","ありがとうございます……。誰も、止まってくれなくて。声を出してくれただけで、こんなに違うんですね。"],
+["ハヤト","体、大丈夫ですか。駅員室まで一緒に行きましょう。念のため、駅員さんに話しておいた方がいい。"],
+  ["地","声を出すことは、本当は誰にでもできる。だが、実際に声を出せる人間は、驚くほど少ない。その差が、この夜の全部だった。"]
+],
+warite:[
+["地","ハヤトは二人の間に、静かに体を滑り込ませた。男の手が伸びた瞬間、その手首を受け、重心を外して一歩分だけ男を後ろへ返す。倒しも、殴りもしない。ただ、距離を作った。"],
+["男の声","いっ……なんだ、お前……。"],
+["ハヤト","これ以上は、やめておいた方がいいです。カメラも、人の目もあります。"],
+["地","男は捨て台詞を残して人波に消えた。受けの型が、道場の外で初めて人の役に立った瞬間だった。"],
+["女性","すごい……あの、倒したりしないんですね。あんなに静かに終わるなんて。"],
+["ハヤト","守るための武道は、倒す前に終わらせるのが理想なんです。……駅員さんに、一緒に話しておきましょう。"],
+  ["地","後で聞けば、防犯カメラの映像には、ハヤトが『静かに間に入る』様子がはっきり残っていたという。それが拡散の核になった。"]
+],
+hangeki:[
+["地","考えるより先に、手が出た。視界を奪う牽制のあと、急所への一撃。男はその場にうずくまった。女性は助かった。だが――。"],
+["女性","あ、ありがとう、ございます……。あの人、大丈夫ですか……？"],
+["ハヤト","（やりすぎた、かもしれない。でも、あのままなら――）大丈夫、救急と駅員を呼びます。あなたは下がっていてください。"],
+["地","駅員と警官が来て、事情は正当な防衛として処理された。だが、ロータリーの防犯カメラと、誰かのスマホの動画が残っている。この『勝ち方』の話は、ここでは終わらなかった。"],
+  ["地","正しかったのか、間違っていたのか。その答えは、たぶん一生出ない。出ないまま、抱えて進むしかない夜もある。"]
+]}},
+{id:"morning",type:"say",tag:"第1章 ― 拡散",lines:[
+["地","翌朝。CLASHの通知が、スマホの画面を埋め尽くしていた。駅前の動画が、『武道の若者が絡まれていた女性を救う』という文面と共に、数万回再生されていた。"],
+["地","コメント欄は称賛で溢れ、一部では勝ち方への議論も始まっている。だが全体の流れは、はっきりと追い風だった。昨夜まで無名だった初段の青年の名前が、地域の武術クラスタで知られ始めている。"],
+ ["地","再生数だけではない。フォロワーが一晩で3桁増え、セミナーの問い合わせフォームにも2件の着信があった。昨日の自分には無かったものが、確かに動き始めている。"],
+ ["ハヤト","（名声って、こうやって上がるのか。派手な大会の優勝だけじゃない。『誰かを守れたか』も、ちゃんと数えられるんだ）"],
+["Tier職人ミラ","駅前の件、見ました。勝ち方に議論はあるけど、人を守れる流儀は『過大評価』じゃないね。Tier、見直し候補に上げておきます。"],
+["地","そして昼前、公民館のセミナー受付に、一本の電話がかかってきた。昨夜の、あの女性からだった。"]
+]},
+{id:"nyumon",type:"say",tag:"第1章 ― 最初の道場生",lines:[
+["地","日曜の公民館。自主セミナーの準備をしていると、入口に昨夜の女性が立っていた。高瀬美咲、27歳、会社員。駅員室まで付き添った際、名刺代わりにセミナーのチラシを渡してあったのだ。"],
+["高瀬美咲","あの……昨夜は、本当にありがとうございました。あのあと、ずっと考えていて。怖かったのは、絡まれたことより、『声も出せなかった』ことなんです。"],
+["高瀬美咲","だから――私、自分を守れるようになりたいんです。護身を、ちゃんと習いたい。先生のところで、教えてもらえますか。"],
+["ハヤト","……もちろんです。うちは公民館の小さな集まりですけど、基本と護身は、ちゃんと教えます。"],
+["高瀬美咲","お願いします。――あ、私、運動は学生以来ですけど、大丈夫ですか？"],
+ ["高瀬美咲","実は、昨夜CLASHで先生の動画を見ました。戦い方もですけど……コメント欄で、皆さんが先生を応援してるのを見て、この人なら、と思ったんです。"],
+["ハヤト","大丈夫です。護身に必要なのは、筋力より先に『見つける目と、逃げる判断』です。それは大人から始めるほうが、むしろ身につくのが早いんですよ。"],
+["地","申込書に名前が書かれた。生徒、1人目。月謝はわずかだが、この1人は『守ること』から生まれた、最初の実りだった。"],
+["地","稽古の終わり、高瀬さんが笑いながら言った。『先生が間に立ったとき、周りの空気が変わったんですよ』――その言い回しが、後で効いてくることになる。"],
+ ["地","入門の理由は、人それぞれだ。強くなりたい人、誰かに勝ちたい人。そして――もう怖い思いをしたくない人。道場の役目は、その全部に応えることだ。"],
+]},
+{id:"nickname",type:"say",tag:"第1章 ― 二つ名の種",pick:"boukan",variants:{
+koe:[
+["地","数日後、CLASHのまとめ投稿で、ハヤトに最初の呼び名が付いた。『駅前の声』――声ひとつで場を変えた若者、という文脈だった。"],
+["ハヤト","（駅前の、声……。悪くない。いや、かなり嬉しい）"],
+["地","二つ名は、自分では付けられない。戦い方を見た他人が勝手に付ける、最初の勲章だ。"]
+],
+warite:[
+["地","数日後、CLASHのまとめ投稿に、高瀬さんの言葉が引用されていた。『間に立つ初段』――割って入り、倒さずに終わらせた若者、という文脈だった。"],
+["ハヤト","（間に立つ、か。……教わった受けの理想が、そのまま名前になるなんて）"],
+["地","二つ名は、自分では付けられない。戦い方を見た他人が勝手に付ける、最初の勲章だ。"]
+],
+hangeki:[
+["地","数日後、CLASHのまとめ投稿は、ハヤトを両義的な呼び名で紹介した。『一撃の初段』――助けた事実と、やりすぎ論がセットになった名前だった。"],
+["ハヤト","（一撃の、初段……。呼ばれるたびに、あの夜の判断を思い出すことになりそうだ）"],
+["地","二つ名は、自分では付けられない。戦い方を見た他人が勝手に付ける、最初の勲章であり、最初の枷でもある。"]
+]}},
+{id:"status",type:"status",tag:"記録 ― 第1章・中間記録",lines:[
+["地","見本の中間記録。ここまでの歩みが、数値と名前になって残った。"],
+["地","この記録は、本制作ではそのまま歩みの履歴になる。勝ち方、言葉の選び方、守り方――全部が、後の年代の自分を作っていく。"],
+ ["地","名声はまだ卵の段階だ。だが、卵は卵として、確かに温まり始めている。次の章では、この記録が『その後の選択』に効いてくる。"],
+]},
+{id:"age",type:"age",tag:"予告 ― 時は進む",lines:[
+["地","第1章は、ここで一区切り。だが、ハヤトの物語は51年間続く。このゲームでは、時間が静かに、しかし確実に進んでいく。"],
+["地","第2章は23歳、全盛前夜。体はさらに強くなり、道場は少しずつ形を持ち、格上の相手が名前を覚え始める。40代になれば体力の上限は下がり始め、古傷が疼く。代わりに、読みと指導と名声の深みが、若い頃には無い武器になる。"],
+["地","弟子は育ち、独立し、やがて師に挑む側にもなる。同世代のライバルは一緒に歳を取り、各年代に新しい世代の強者が現れる。"],
+ ["地","そして、学びの扉は最初から開いている。戦った相手の流派は『見取り稽古』で学び始めることができ、流派図鑑に記録した流派は、いつでも修行を始められる。最初から何でも習得できる――ただし、極めるには一生がいる。それが流派レベルLv10までの道だ。"],
+["地","そして最終章、70歳。最後の相手は、19歳の若き総合格闘チャンピオン――流派を持たない、時代そのもののような男。51年前、初段を取ったばかりだった自分との、鏡合わせの一戦が待っている。"],
+["地","勝ち続ける物語ではない。歳を取りながら、どう戦い、どう教え、どう名を残すかの物語だ。"]
+]},
+{id:"end",type:"end",tag:"見本 ― 終わり",lines:[
+["地","見本はここまで。流儀を選ぶところから、初段審査、下積みの生活、SNSの論争、指名試合、人を守ること、そして最初の生徒まで――核になる1周を体験してもらった。"],
+["地","本制作では、この先に第2章以降の年代記、他流儀を学ぶ副・流儀、流派レベルLv10までの道、弟子を奪い合う道場対抗戦が続いていく。"],
+ ["地","選択を変えれば、審査の講評も、試合の結末も、二つ名も変わります。見本の裏側では、すでにいくつもの『別のハヤト』が待っています。"],
+["地","遊んでくれてありがとうございました。もう一度遊ぶ場合は、別の流派や、別の勝ち方も試してみてください。結果と二つ名が、少しずつ変わります。"]
+]}
+];
+/*DATA-END*/
+
+/* ================= ENGINE ================= */
+const $=id=>document.getElementById(id);
+let S=null, sceneIdx=0, lineIdx=0, battle=null;
+const ENTRY_FX={nyumon:{students:1}};
+function newState(){return{age:19,chapter:"第1章 青年期",money:6800,fatigue:10,sei:0,aku:0,att:0,exp:0,guide:1,students:0,style:null,vars:{},flags:{}};}
+function fameTotal(){return S.sei+S.aku;}
+function fameRank(){const f=fameTotal();return f<=0?"無名":f<=4?"名前を覚えられ始めた":f<=9?"近所で有名":f<=15?"配信で話題":"流派の顔";}
+function nickname(){const b=S.vars.boukan;return b==="koe"?"駅前の声":b==="warite"?"間に立つ初段":b==="hangeki"?"一撃の初段":"（まだ無い）";}
+function fill(t){if(typeof t!=="string")return t;const st=S&&S.style;
+return t.replaceAll("{流儀}",st?st.name:"流儀").replaceAll("{看板技}",st?st.sig:"看板技")
+.replaceAll("{型}",st?st.kata:"型").replaceAll("{exam}",st?st.exam:"")
+.replaceAll("{二つ名}",nickname());}
+function stat(k){return S.style?S.style.stats[k]||0:0;}
+function hud(){
+if(!S)return;
+$("hud").classList.remove("hidden");
+$("hud-age").textContent=S.age+"歳";
+$("hud-chapter").textContent=S.chapter+(S.vars.boukan?"／二つ名："+nickname():"");
+$("hud-fame").textContent=fameTotal();
+$("hud-sei").textContent=S.sei; $("hud-aku").textContent=S.aku;
+$("hud-money").textContent="¥"+S.money.toLocaleString();
+$("hud-students").textContent=S.students;
+const sta=Math.max(0,100-S.fatigue);
+$("hud-stamina").textContent=sta; $("hud-stamina-bar").style.width=sta+"%";
+$("hud-style").innerHTML=S.style?("主・流儀 <b>"+S.style.name+"</b> Lv2 <span style='color:var(--dim)'>経験"+S.exp+"</span>"):"流儀 未選択";
+}
+function toast(msg,bad){const d=document.createElement("div");d.className="toast-item"+(bad?" bad":"");d.textContent=msg;
+$("toast").appendChild(d);setTimeout(()=>{d.style.opacity="0";d.style.transition="opacity.5s";setTimeout(()=>d.remove(),500);},2600);}
+function applyFx(fx){if(!fx)return;const notes=[];
+if(fx.money){S.money+=fx.money;notes.push("所持金 "+(fx.money>0?"+":"")+fx.money.toLocaleString()+"円");}
+if(fx.fatigue){S.fatigue=Math.min(100,Math.max(0,S.fatigue+fx.fatigue));notes.push(fx.fatigue>0?"疲労が溜まった":"疲労が回復した");}
+if(fx.sei){S.sei+=fx.sei;notes.push("清名 +"+fx.sei);}
+if(fx.aku){S.aku+=fx.aku;notes.push("悪名 +"+fx.aku);}
+if(fx.att){S.att+=fx.att;notes.push("注目 +"+fx.att);}
+if(fx.exp){S.exp+=fx.exp;notes.push("流儀経験 +"+fx.exp);}
+if(fx.guide){S.guide+=fx.guide;notes.push("指導力 +"+fx.guide);}
+if(fx.students){S.students+=fx.students;notes.push("生徒 +"+fx.students);}
+return notes;}
+function esc(s){return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;");}
+function lineHtml(pair){const[sp,tx]=pair;
+if(sp==="地")return `<p class="line narr">${esc(fill(tx))}</p>`;
+return `<p class="line"><span class="sp">${esc(sp)}</span>${esc(fill(tx))}</p>`;}
+function sceneLines(sc){
+let lines=[];
+if(sc.pick&&sc.variants){const key=S.vars[sc.pick];lines=lines.concat(sc.variants[key]||sc.variants[Object.keys(sc.variants)[0]]||[]);}
+if(sc.lines)lines=lines.concat(sc.lines);
+if(sc.lines_after)lines=lines.concat(sc.lines_after);
+return lines;}
+function gotoScene(i){sceneIdx=i;lineIdx=0;battle=null;render();}
+function nextScene(){
+const sc=SCENES[sceneIdx];
+if(ENTRY_FX[sc.id]){applyFx(ENTRY_FX[sc.id]);toast("生徒が1人増えた（高瀬美咲・27歳・護身志望）");}
+if(sceneIdx+1<SCENES.length)gotoScene(sceneIdx+1);}
+function render(){
+hud();
+const sc=SCENES[sceneIdx];const main=$("main");
+if(sc.type==="style")return renderStyle(sc,main);
+if(sc.type==="choice")return renderChoice(sc,main);
+if(sc.type==="sns")return renderSns(sc,main);
+if(sc.type==="battle")return renderBattle(sc,main);
+if(sc.type==="status")return renderSay(sc,main,statusPanel());
+if(sc.type==="age")return renderSay(sc,main,agePanel());
+return renderSay(sc,main,"");
+}
+function renderSay(sc,main,extraHtml){
+const lines=sceneLines(sc);const shown=lines.slice(0,lineIdx+1).map(lineHtml).join("");
+const last=lineIdx>=lines.length-1;
+main.innerHTML=`<div class="scene-tag">${esc(sc.tag||"")}</div>${extraHtml}${shown}
+<button class="next" id="btn-next">${last?(sc.type==="end"?"タイトルへ戻る":"次へ進む"):"次へ"}</button>`;
+$("btn-next").onclick=()=>{if(!last){lineIdx++;render();window.scrollTo(0,document.body.scrollHeight);}else{
+if(sc.type==="end")return showTitle(); nextScene(); window.scrollTo(0,0);}};
+}
+function renderStyle(sc,main){
+const lines=sc.lines.map(lineHtml).join("");
+const cards=STYLES.map((st,i)=>`<button class="choice" data-style="${i}"><b>${esc(st.name)}</b> ― 看板技：${esc(st.sig)}
+<small>${esc(st.desc)}</small>
+<span class="stats-grid">${Object.entries(st.stats).map(([k,v])=>`<span>${k} <b>${v}</b></span>`).join("")}</span></button>`).join("");
+main.innerHTML=`<div class="scene-tag">${esc(sc.tag)}</div>${lines}
+<p class="line sys">選んだ流派が主・流儀になる（Lv2・初段相当で開始）。パラメータと看板技は流派ごとに異なる。</p><p class="line sys">※製品版では開始候補はロスター全153流派。見本では代表6流派から選ぶ。</p>${cards}`;
+main.querySelectorAll("[data-style]").forEach(b=>b.onclick=()=>{
+S.style=STYLES[Number(b.dataset.style)];hud();
+toast("主・流儀："+S.style.name+"（Lv2・初段相当）");nextScene();window.scrollTo(0,0);});
+}
+function renderChoice(sc,main){
+main.innerHTML=`<div class="scene-tag">${esc(sc.tag)}</div>
+<p class="line narr">${esc(fill(sc.prompt))}</p>
+${sc.options.map((o,i)=>`<button class="choice${o.danger?" danger":""}" data-i="${i}">${esc(fill(o.label))}${o.desc?`<small>${esc(fill(o.desc))}</small>`:""}</button>`).join("")}`;
+main.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{
+const o=sc.options[Number(b.dataset.i)];
+if(o.set)Object.assign(S.vars,o.set);
+applyFx(o.fx);hud();
+if(o.toast)toast(o.toast,!!o.danger);
+nextScene();window.scrollTo(0,0);});
+}
+function renderSns(sc,main){
+const d=sc.sns;
+const posts=d.posts.map(p=>`<div class="post"><div class="who">${esc(p.name)}<span>${esc(p.handle)}</span></div><div class="txt">${esc(fill(p.text))}</div></div>`).join("");
+main.innerHTML=`<div class="scene-tag">${esc(sc.tag)}</div>
+<div class="sns"><div class="sns-head"><span>${esc(d.head)}</span><span>通知 99+</span></div>${posts}</div>
+<p class="line narr">${esc(fill(d.prompt))}</p>
+${d.replies.map((r,i)=>`<button class="choice" data-i="${i}"><b style="color:var(--gold2)"></b> ${esc(fill(r.label))}</button>`).join("")}`;
+main.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{
+const r=d.replies[Number(b.dataset.i)];
+if(r.set)Object.assign(S.vars,r.set);
+applyFx(r.fx);hud(); if(r.toast)toast(r.toast);
+nextScene();window.scrollTo(0,0);});
+}
+/* ---------- battle ---------- */
+function startBattle(sc){
+const b=sc.battle;
+battle={cfg:b,turn:1,ehp:b.enemyHp,ehpMax:b.enemyHp,
+php:b.mode==="spar"?(26+stat("体力")*4):100,phpMax:b.mode==="spar"?(26+stat("体力")*4):100,
+dealt:0,taken:0,leg:0,readBonus:0,control:0,readUsed:false,foul:false,sigUsed:false,
+kataBonus:(S.vars.k1?1:0)+(S.vars.k2?1:0),log:[],cmtIdx:0,done:false};
+(b.intro||[]).forEach(l=>battle.log.push({sp:l[0],tx:l[1]}));
+pushComment(b);
+}
+function pushComment(b){const c=b.comments[battle.cmtIdx%b.comments.length];battle.cmtIdx++;
+battle.log.push({sp:c[0],tx:c[1],cmt:true});}
+function bLog(sp,tx){battle.log.push({sp,tx});}
+function rnd(n){return Math.floor(Math.random()*(n+1));}
+function renderBattle(sc,main){
+if(!battle)startBattle(sc);
+const b=sc.battle,bt=battle;
+const playerBox=b.mode==="exam"
+?`<div class="fighter"><div class="nm">ハヤト（${esc(S.style.name)}・初段受験）</div><div class="sub">組手の評価は「当てた量」と「立て直し」で決まる</div>
+<div class="sub">型の評価ボーナス：+${bt.kataBonus} ／ 与えた有効打：<b>${bt.dealt}</b></div></div>`
+:`<div class="fighter"><div class="nm">ハヤト（${esc(S.style.name)}）</div><div class="sub">体力</div>
+<div class="bar hp"><i style="width:${Math.max(0,bt.php/bt.phpMax*100)}%"></i></div>
+<div class="sub">HP ${Math.max(0,bt.php)} ／ ${bt.phpMax}</div></div>`;
+const enemyBox=`<div class="fighter enemy"><div class="nm">${esc(b.enemy)}</div><div class="sub">${esc(b.enemySub||"")}</div>
+<div class="bar ehp"><i style="width:${Math.max(0,bt.ehp/bt.ehpMax*100)}%"></i></div>
+<div class="sub">HP ${Math.max(0,bt.ehp)} ／ ${bt.ehpMax}</div>
+${b.mode==="spar"&&bt.leg>0?`<span class="legtag">脚への部位ダメージ ×${bt.leg}${bt.leg>=3?"（脚が止まっている）":bt.leg===2?"（出足が鈍い）":""}</span>`:""}</div>`;
+const logHtml=bt.log.map(l=>l.cmt
+?`<div class="bl cmt"><span class="sp">${esc(l.sp)}</span>${esc(fill(l.tx))}</div>`
+:`<div class="bl"><span class="sp">${esc(l.sp)}</span>${esc(fill(l.tx))}</div>`).join("");
+let actions="";
+if(!bt.done){
+actions=`<div class="turn-tag">${b.mode==="exam"?"組手 "+bt.turn+" / "+b.turns:"ラウンド進行 "+bt.turn+" / "+b.turns+"ターン"}</div>`+battleActions(b).map((a,i)=>`<button class="choice${a.danger?" danger":""}" data-a="${i}">${esc(fill(a.label))}${a.desc?`<small>${esc(fill(a.desc))}</small>`:""}</button>`).join("");
+}else{
+actions=`<button class="next" id="btn-after">結果を見る</button>`;
+}
+main.innerHTML=`<div class="scene-tag">${esc(sc.tag)}</div>
+<div class="battle-head">${playerBox}${enemyBox}</div>
+<p class="line sys">${esc(fill(b.actionsNote||""))}</p>
+<div class="blog" id="blog">${logHtml}</div>${actions}`;
+const blog=$("blog");blog.scrollTop=blog.scrollHeight;
+if(!bt.done){main.querySelectorAll("[data-a]").forEach(btn=>btn.onclick=()=>{doAction(sc,Number(btn.dataset.a));renderBattle(sc,main);});}
+else{$("btn-after").onclick=()=>{nextScene();window.scrollTo(0,0);};}
+}
+function battleActions(b){
+const bt=battle;
+if(b.mode==="exam")return[
+{id:"base",label:"{流儀}の基本の一手",desc:"型で作った距離から、正確に当てる。"},
+{id:"sig",label:"看板技 ― {看板技}",desc:bt.sigUsed?"もう一度は難しい。体が覚えている範囲で。":"渾身。決まれば評価は大きい。"},
+{id:"recover",label:"受けて、立て直す",desc:"先輩の圧を受け、次の攻めの精度を上げる。"}];
+const acts=[
+{id:"strike",label:"突き系の一手で距離を刻む",desc:"打撃 "+stat("打撃")+"。こちらの距離を守る攻め。"},
+{id:"kick",label:"蹴り系の一手で牽制する",desc:"蹴り "+stat("蹴り")+"。組み際の手前で止める。"},
+{id:"grapple",label:"組み際へ踏み込む",desc:"組技 "+stat("組技")+"。相手の次の攻めも弱まる。"},
+{id:"read",label:"様子見 ― 読みに徹する",desc:"このターンの被ダメージ半減。次の攻めが鋭くなる。相手の癖も見える。"},
+{id:"leg",label:"相手の脚への攻撃",desc:"部位ダメージが蓄積する。脚が止まれば、組み際も遅くなる。"}];
+if(bt.turn>=4)acts.push({id:"foul",label:"眼突き（反則）",desc:"勝ちに近づく一手。ただし、勝ち方を一生問われる。",danger:true});
+return acts;
+}
+function doAction(sc,ai){
+const b=sc.battle,bt=battle;const a=battleActions(b)[ai];let dmg=0;const R=rnd(3);
+const mainStat=Math.max(stat("打撃"),stat("蹴り"));
+if(b.mode==="exam"){
+if(a.id==="base"){dmg=5+mainStat*2+bt.kataBonus*2+R+bt.readBonus;bt.readBonus=0;bLog("実況","正確な一手が先輩の腕をかすめ、距離の中で止まった。審査員のペンが動く。");}
+if(a.id==="sig"){dmg=bt.sigUsed?(6+mainStat+R):(11+mainStat*2+bt.kataBonus*2+R);bt.sigUsed=true;bLog("実況","{看板技}――会場の空気が変わった。先輩が一歩下がって間合いを測り直す。");}
+if(a.id==="recover"){dmg=2;bt.readBonus=5;bLog("実況","先輩の圧を体で受け、崩れかけた軸を立て直す。審査員の一人が小さく頷いた。");}
+bt.dealt+=dmg;bt.ehp-=dmg;
+if(rnd(1)===0)pushComment(b);
+}else{
+let enemyHalf=false;
+if(a.id==="strike"){dmg=5+stat("打撃")*2+R+bt.readBonus;bt.readBonus=0;bLog("実況","突きが距離を刻む。凛は組みたくても、あと一歩が届かない。");}
+if(a.id==="kick"){dmg=4+stat("蹴り")*2+R+bt.readBonus;bt.readBonus=0;bLog("実況","蹴りが組み際の手前で壁になる。観客席から小さく声が上がった。");}
+if(a.id==="grapple"){dmg=3+stat("組技")*2+R+bt.readBonus;bt.readBonus=0;bt.control=3;bLog("実況","組み合い――力負けはしないが、柔道の組みの圧はやはり本物だった。");}
+if(a.id==="read"){dmg=0;bt.readBonus=5;enemyHalf=true;
+if(!bt.readUsed){bt.readUsed=true;bLog("実況","様子見。凛の入りの癖と、終盤に左脚をかばう動きが見えた。");}
+else bLog("実況","読みに徹する。凛の呼吸の乱れまで見えてくる。");}
+if(a.id==="leg"){dmg=2+stat("蹴り")+R;bt.leg=Math.min(3,bt.leg+1);
+bLog("実況","脚への一撃。凛の出足が、わずかに重くなった。（脚への部位ダメージ "+bt.leg+"）");
+battle.log.push({sp:"Tier職人ミラ",tx:"脚、来た。みんな見た？ この積み方が彼の勝ち筋。",cmt:true});}
+if(a.id==="foul"){dmg=13;bt.foul=true;
+bLog("実況","――手が、眼の前へ。凛が顔を背けた一瞬、流れが止まった。レフェリーの笛が、半拍遅れて鳴る。");
+battle.log.push({sp:"観客",tx:"今の、何？ 眼じゃないの……？",cmt:true});
+battle.log.push({sp:"三好レフェリー",tx:"警告です。次は反則負けにします。",cmt:true});}
+bt.dealt+=dmg;bt.ehp-=dmg;
+const finished=bt.ehp<=0;
+if(!finished){
+let ed=6+rnd(3)-bt.control-(bt.leg>=3?2:bt.leg===2?1:0);
+if(enemyHalf)ed=Math.ceil(ed/2);
+ed=Math.max(1,ed);bt.php-=ed;bt.taken+=ed;bt.control=0;
+bLog("実況","凛の反撃。組み際の圧と崩しで、ハヤトに "+ed+" のダメージ。");
+if(rnd(1)===0)pushComment(b);
+}
+}
+bt.turn++;
+const over=bt.ehp<=0||bt.php<=0||bt.turn>b.turns;
+if(over)finishBattle(sc);
+}
+function finishBattle(sc){
+const b=sc.battle,bt=battle;bt.done=true;
+if(b.mode==="exam"){
+const grade=bt.dealt>=52?"great":bt.dealt>=34?"pass":"barely";
+S.vars.exam=grade;
+if(grade==="great"){applyFx({sei:2,exp:8});toast("審査結果：優秀合格（清名 +2）");}
+else if(grade==="pass"){applyFx({sei:1,exp:5});toast("審査結果：合格（清名 +1）");}
+else{applyFx({exp:3});toast("審査結果：辛くも合格");}
+applyFx({fatigue:8});
+bLog("結果","組手審査 終了。有効打の合計 "+bt.dealt+"。合否は夕方の張り出しで――");
+}else{
+const winRatio=bt.ehp/bt.ehpMax<bt.php/bt.phpMax;
+const win=bt.ehp<=0||(bt.php>0&&winRatio);
+const key=bt.foul?(win?"foulwin":"foullose"):(win?"win":"lose");
+S.vars.spar=key;
+if(key==="win"){applyFx({sei:3,att:3,exp:8});toast("判定勝ち（清名 +3 ／ 注目 +3）");}
+if(key==="lose"){applyFx({att:2,exp:6,fatigue:6});toast("判定負け（注目 +2 ／ 自分の弱点が漏れた）");}
+if(key==="foulwin"){applyFx({sei:1,aku:3,att:4,exp:6});toast("判定勝ち――だが勝ち方が問われる（悪名 +3）",true);}
+if(key==="foullose"){applyFx({aku:2,att:3,exp:5,fatigue:6});toast("判定負け＋警告（悪名 +2）",true);}
+applyFx({fatigue:10});
+bLog("結果","試合終了。判定は "+(win?"ハヤト":"相沢凛")+"。"+(bt.foul?"ただし、最終盤の一手への視線が、場に長く残った。":""));
+}
+hud();
+}
+/* ---------- panels ---------- */
+function statusPanel(){
+const st=S.style;const rows=[
+["年齢・時期",S.age+"歳／"+S.chapter],
+["主・流儀",st.name+" Lv2（初段相当）／経験 "+S.exp+"（Lv3まで あと"+Math.max(0,40-S.exp)+")"],
+["看板技",st.sig],
+["パラメータ",Object.entries(st.stats).map(([k,v])=>k+" "+v).join("／")],
+["指導力",String(S.guide)],
+["名声",fameTotal()+"（"+fameRank()+"）清名 "+S.sei+"／悪名 "+S.aku],
+["注目",String(S.att)],
+["所持金","¥"+S.money.toLocaleString()],
+["疲労",S.fatigue+"（体力 "+(100-S.fatigue)+")"],
+["生徒",S.students>0?S.students+"人 ― 高瀬美咲（27歳・会社員・護身志望）":"0人"],
+["二つ名",nickname()],
+["弱点情報",S.vars.spar==="lose"||S.vars.spar==="foullose"?"自分の癖がCLASHで分析された（漏洩）":S.vars.spar==="win"?"相手の脚の弱点が公になった":"特になし"]];
+return `<div class="card"><h3>ステータス</h3><table class="stat">${rows.map(r=>`<tr><th>${esc(r[0])}</th><td>${esc(r[1])}</td></tr>`).join("")}</table></div>`;
+}
+function agePanel(){
+return `<div class="age-compare">
+<div class="col"><b>19歳（現在）</b>体力は伸び盛り／読みは未熟／名声は卵／道場はまだ無い</div>
+<div class="col"><b>23歳（第2章）</b>体力さらに上昇／指導が板に付く／格上が名前を覚える／道場づくりが始まる</div>
+<div class="col future"><b>70歳（最終章）</b>体力は衰え、古傷が残る／読みと名声は最大／最後の相手は19歳の若き総合格闘チャンピオン</div></div>`;
+}
+/* ---------- title ---------- */
+function showTitle(){
+S=newState();sceneIdx=0;lineIdx=0;battle=null;
+$("hud").classList.add("hidden");$("toast").innerHTML="";
+$("main").innerHTML=`<div class="title-screen">
+<div class="over">武術育成シミュレーション ― 見本</div>
+<h1>異種格闘年代記</h1><div class="kari">（仮題 ― タイトル未定のため仮置き）</div>
+<p class="sub">19歳、初段を取った日から始まる、51年間の武道人生。<br>
+戦い、教え、守り、名を上げて、道場生を集めていく。<br>
+最終章は70歳。相手は、19歳の若き総合格闘チャンピオン。</p>
+<button class="next" id="btn-start">はじめる</button>
+<p class="line sys" style="text-align:left;margin-top:16px;">見本の範囲：流儀選択→初段審査→下積みとバイト→育成1週→SNS最強論争→指名試合→暴漢イベント→最初の道場生→「時は進む」予告。主人公の名前は「ハヤト」固定（見本仕様）。登場人物は全員成人です。</p></div>`;
+$("btn-start").onclick=()=>{S=newState();gotoScene(0);window.scrollTo(0,0);};
+}
+$("btn-title").onclick=showTitle;
+$("btn-restart").onclick=()=>{S=newState();gotoScene(0);window.scrollTo(0,0);};
+showTitle();
+</script>
+</body>
+</html>
