@@ -1,7 +1,7 @@
-// ロスターから自動生成・全153件
+// ロスターから自動生成・全154件
 // 生成方法: Nodeスクリプト production/generate-styles-data.js が
 //   ../styles-roster-2026-11-05.md のカテゴリ別テーブル（流派名・得意距離・特徴）をパースし、
-//   末尾「選択画面の表示順（メジャーな流派から）」1〜153の順序どおりに並べて出力した。
+//   末尾「選択画面の表示順（メジャーな流派から）」1〜154の順序どおりに並べて出力した。
 //   statsは得意距離から導出（遠→kick+2, 中→strike+2, 近→strike+1/grapple+1, 組→grapple+2, 寝→ground+2, 上限3）、
 //   venueはカテゴリから付与（空手系/柔術・柔道・合気・相撲系/中国武術/朝鮮半島=dojo, 立技打撃/東南アジア/グラップリング/欧米・その他/軍・警察=gym, 特殊・話題枠=special）。
 // 手作業で書き写したデータではない。再生成する場合はロスターを直してスクリプトを再実行すること。
@@ -127,39 +127,40 @@ const STYLES_DATA = [
   {"id":118,"name":"バンドー（タイン）","cat":"東南アジア","dist":["中","近"],"feature":"動物の型と実戦を束ねるビルマ武術の総称タインの一角","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"},
   {"id":119,"name":"クン・ボカトー","cat":"東南アジア","dist":["中","組"],"feature":"アンコール時代の古武術、肘と投げの古層","stats":{"strike":2,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
   {"id":120,"name":"パフラヴァーニー","cat":"グラップリング世界","dist":["組","中"],"feature":"ズールハーネの修練と一体のペルシャ古式レスリング","stats":{"strike":2,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":121,"name":"アリシュ","cat":"グラップリング世界","dist":["組"],"feature":"帯を離せないベルトレスリングの攻防","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":122,"name":"シュヴィンゲン","cat":"欧米・その他地域","dist":["組"],"feature":"麻のズボンを掴んで投げるアルプスの祭典相撲","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":123,"name":"グリマ","cat":"欧米・その他地域","dist":["組"],"feature":"バイキングの相撲。ベルトと脚を巡る古い攻防","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":124,"name":"グーレン","cat":"グラップリング世界","dist":["組"],"feature":"上着を掴んで投げるケルトの古式相撲","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":125,"name":"コーニッシュ・レスリング","cat":"グラップリング世界","dist":["組"],"feature":"上着掴みの投げ相撲、グーレンの親戚","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":126,"name":"ルチャ・カナリア","cat":"グラップリング世界","dist":["組"],"feature":"砂の円で短パンを掴み合う島の相撲","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":127,"name":"ティンク","cat":"特殊・話題枠","dist":["遠","中"],"feature":"収穫祭の儀礼として行われる殴り合い。喧嘩祭りの伝統","stats":{"strike":2,"kick":2,"grapple":0,"ground":0},"venue":"special","terms":"cert"},
-  {"id":128,"name":"HEMA素手部門（リンゲン／カンプフリンゲン）","cat":"特殊・話題枠","dist":["組","近"],"feature":"中世の武術書から復元された組討ち術","stats":{"strike":1,"kick":0,"grapple":3,"ground":0},"venue":"special","terms":"cert"},
-  {"id":129,"name":"特攻武術（トゥッコン・ムスル）","cat":"軍・警察系格闘術","dist":["中","組"],"feature":"距離の理論で組み立てられた特殊部隊の格闘術","stats":{"strike":2,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":130,"name":"レルドリット","cat":"軍・警察系格闘術","dist":["中","近"],"feature":"軍の実戦訓練として伝わるムエタイ系の近接術","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":131,"name":"浅山一伝流","cat":"日本の柔術・柔道・合気・相撲系","dist":["組","近"],"feature":"体術・棒・剣を束ねる古流の総合体系","stats":{"strike":1,"kick":0,"grapple":3,"ground":0},"venue":"dojo","terms":"belt"},
-  {"id":132,"name":"柳生心眼流","cat":"日本の柔術・柔道・合気・相撲系","dist":["組","近"],"feature":"剣と体術を一体で運ぶ、勝口の間合い","stats":{"strike":1,"kick":0,"grapple":3,"ground":0},"venue":"dojo","terms":"belt"},
-  {"id":133,"name":"金硬流（きんがいりゅう）","cat":"日本の空手系","dist":["中","近"],"feature":"剛直な型と武器術を一体で継ぐ沖縄古武道の双璧の一方","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"dojo","terms":"belt"},
-  {"id":134,"name":"劉衛流（りゅうえいりゅう）","cat":"日本の空手系","dist":["中"],"feature":"一子相伝だった秘伝の流派。攻防一体の連続動作が多い","stats":{"strike":2,"kick":0,"grapple":0,"ground":0},"venue":"dojo","terms":"belt"},
-  {"id":135,"name":"迷踪拳（燕青拳・迷踪芸）","cat":"中国武術","dist":["中","遠"],"feature":"軽霊な身法で軌跡を消す拳。霍元甲の芸として知られる","stats":{"strike":2,"kick":2,"grapple":0,"ground":0},"venue":"dojo","terms":"chinese"},
-  {"id":136,"name":"自然門","cat":"中国武術","dist":["中"],"feature":"決まった型を持たず気と歩法で育てる門派","stats":{"strike":2,"kick":0,"grapple":0,"ground":0},"venue":"dojo","terms":"chinese"},
-  {"id":137,"name":"地躺拳","cat":"中国武術","dist":["寝","中"],"feature":"地面を転がって戦う低い姿勢の奇門拳法","stats":{"strike":2,"kick":0,"grapple":0,"ground":2},"venue":"dojo","terms":"chinese"},
-  {"id":138,"name":"ドゥモグ","cat":"東南アジア","dist":["組","近"],"feature":"日常の衣服と地形を使う土着の組み技","stats":{"strike":1,"kick":0,"grapple":3,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":139,"name":"ナバン","cat":"東南アジア","dist":["組","寝"],"feature":"農村に伝わる土着レスリング、力と技の素朴な決着","stats":{"strike":0,"kick":0,"grapple":2,"ground":2},"venue":"gym","terms":"cert"},
-  {"id":140,"name":"フレシュ","cat":"グラップリング世界","dist":["組"],"feature":"ブフの兄弟分、着衣相撲の北の型","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":141,"name":"コフ","cat":"グラップリング世界","dist":["組"],"feature":"腰帯を組んで投げ合うコーカサスの古式相撲","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":142,"name":"ラーンブ","cat":"グラップリング世界","dist":["組","中"],"feature":"打撃ありの型もある国民的レスリング、砂と太鼓の祭り","stats":{"strike":2,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":143,"name":"エヴァラ","cat":"グラップリング世界","dist":["組"],"feature":"成人儀礼と結びついた西アフリカの祭礼レスリング","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":144,"name":"ココワ","cat":"グラップリング世界","dist":["組"],"feature":"西アフリカ内陸の伝統相撲、ダンベと同郷の力比べ","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":145,"name":"フカフカ","cat":"グラップリング世界","dist":["組"],"feature":"膝立ちから始まる儀礼レスリング","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":146,"name":"カンバーランド＆ウェストモーランド・レスリング","cat":"グラップリング世界","dist":["組"],"feature":"背中合わせに組んで投げる英国北部の伝統相撲","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":147,"name":"ダンベ","cat":"立技打撃","dist":["中"],"feature":"利き腕一本に全てを込める荒い伝統拳闘。蹴りも混じる","stats":{"strike":2,"kick":0,"grapple":0,"ground":0},"venue":"gym","terms":"striking"},
-  {"id":148,"name":"ムサングウェ","cat":"立技打撃","dist":["中"],"feature":"鉱山労働者たちが伝えた素手ボクシング","stats":{"strike":2,"kick":0,"grapple":0,"ground":0},"venue":"gym","terms":"striking"},
-  {"id":149,"name":"バーティツ","cat":"欧米・その他地域","dist":["中","近"],"feature":"柔術・ボクシング・サバットを混ぜた紳士の護身術。ホームズのモデル","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":150,"name":"ディフェンドゥ","cat":"欧米・その他地域","dist":["近","中"],"feature":"コマンドー部隊の実戦近接格闘、フェアバーンの体系","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":151,"name":"オキチトー","cat":"欧米・その他地域","dist":["中","近"],"feature":"先住民の戦技を近代護身に編み直した体系（武器技を含むが素手部門で扱う）","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":152,"name":"ルア（カプ・クイアルア）","cat":"欧米・その他地域","dist":["近","組"],"feature":"関節の破壊に特化したと伝わる古武術","stats":{"strike":1,"kick":0,"grapple":3,"ground":0},"venue":"gym","terms":"cert"},
-  {"id":153,"name":"リマ・ラマ","cat":"欧米・その他地域","dist":["近","中"],"feature":"サモア発祥の護身術、手の速さと投げの組み立て","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"}
+  {"id":121,"name":"骨法","cat":"日本の柔術・柔道・合気・相撲系","dist":["近","中"],"feature":"骨格と関節の急所を突く当身を核とする古流。鍛え上げた拳や肘で骨そのものを狙う、独特の打撃観を持つ","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"dojo","terms":"cert"},
+  {"id":122,"name":"アリシュ","cat":"グラップリング世界","dist":["組"],"feature":"帯を離せないベルトレスリングの攻防","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":123,"name":"シュヴィンゲン","cat":"欧米・その他地域","dist":["組"],"feature":"麻のズボンを掴んで投げるアルプスの祭典相撲","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":124,"name":"グリマ","cat":"欧米・その他地域","dist":["組"],"feature":"バイキングの相撲。ベルトと脚を巡る古い攻防","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":125,"name":"グーレン","cat":"グラップリング世界","dist":["組"],"feature":"上着を掴んで投げるケルトの古式相撲","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":126,"name":"コーニッシュ・レスリング","cat":"グラップリング世界","dist":["組"],"feature":"上着掴みの投げ相撲、グーレンの親戚","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":127,"name":"ルチャ・カナリア","cat":"グラップリング世界","dist":["組"],"feature":"砂の円で短パンを掴み合う島の相撲","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":128,"name":"ティンク","cat":"特殊・話題枠","dist":["遠","中"],"feature":"収穫祭の儀礼として行われる殴り合い。喧嘩祭りの伝統","stats":{"strike":2,"kick":2,"grapple":0,"ground":0},"venue":"special","terms":"cert"},
+  {"id":129,"name":"HEMA素手部門（リンゲン／カンプフリンゲン）","cat":"特殊・話題枠","dist":["組","近"],"feature":"中世の武術書から復元された組討ち術","stats":{"strike":1,"kick":0,"grapple":3,"ground":0},"venue":"special","terms":"cert"},
+  {"id":130,"name":"特攻武術（トゥッコン・ムスル）","cat":"軍・警察系格闘術","dist":["中","組"],"feature":"距離の理論で組み立てられた特殊部隊の格闘術","stats":{"strike":2,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":131,"name":"レルドリット","cat":"軍・警察系格闘術","dist":["中","近"],"feature":"軍の実戦訓練として伝わるムエタイ系の近接術","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":132,"name":"浅山一伝流","cat":"日本の柔術・柔道・合気・相撲系","dist":["組","近"],"feature":"体術・棒・剣を束ねる古流の総合体系","stats":{"strike":1,"kick":0,"grapple":3,"ground":0},"venue":"dojo","terms":"belt"},
+  {"id":133,"name":"柳生心眼流","cat":"日本の柔術・柔道・合気・相撲系","dist":["組","近"],"feature":"剣と体術を一体で運ぶ、勝口の間合い","stats":{"strike":1,"kick":0,"grapple":3,"ground":0},"venue":"dojo","terms":"belt"},
+  {"id":134,"name":"金硬流（きんがいりゅう）","cat":"日本の空手系","dist":["中","近"],"feature":"剛直な型と武器術を一体で継ぐ沖縄古武道の双璧の一方","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"dojo","terms":"belt"},
+  {"id":135,"name":"劉衛流（りゅうえいりゅう）","cat":"日本の空手系","dist":["中"],"feature":"一子相伝だった秘伝の流派。攻防一体の連続動作が多い","stats":{"strike":2,"kick":0,"grapple":0,"ground":0},"venue":"dojo","terms":"belt"},
+  {"id":136,"name":"迷踪拳（燕青拳・迷踪芸）","cat":"中国武術","dist":["中","遠"],"feature":"軽霊な身法で軌跡を消す拳。霍元甲の芸として知られる","stats":{"strike":2,"kick":2,"grapple":0,"ground":0},"venue":"dojo","terms":"chinese"},
+  {"id":137,"name":"自然門","cat":"中国武術","dist":["中"],"feature":"決まった型を持たず気と歩法で育てる門派","stats":{"strike":2,"kick":0,"grapple":0,"ground":0},"venue":"dojo","terms":"chinese"},
+  {"id":138,"name":"地躺拳","cat":"中国武術","dist":["寝","中"],"feature":"地面を転がって戦う低い姿勢の奇門拳法","stats":{"strike":2,"kick":0,"grapple":0,"ground":2},"venue":"dojo","terms":"chinese"},
+  {"id":139,"name":"ドゥモグ","cat":"東南アジア","dist":["組","近"],"feature":"日常の衣服と地形を使う土着の組み技","stats":{"strike":1,"kick":0,"grapple":3,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":140,"name":"ナバン","cat":"東南アジア","dist":["組","寝"],"feature":"農村に伝わる土着レスリング、力と技の素朴な決着","stats":{"strike":0,"kick":0,"grapple":2,"ground":2},"venue":"gym","terms":"cert"},
+  {"id":141,"name":"フレシュ","cat":"グラップリング世界","dist":["組"],"feature":"ブフの兄弟分、着衣相撲の北の型","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":142,"name":"コフ","cat":"グラップリング世界","dist":["組"],"feature":"腰帯を組んで投げ合うコーカサスの古式相撲","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":143,"name":"ラーンブ","cat":"グラップリング世界","dist":["組","中"],"feature":"打撃ありの型もある国民的レスリング、砂と太鼓の祭り","stats":{"strike":2,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":144,"name":"エヴァラ","cat":"グラップリング世界","dist":["組"],"feature":"成人儀礼と結びついた西アフリカの祭礼レスリング","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":145,"name":"ココワ","cat":"グラップリング世界","dist":["組"],"feature":"西アフリカ内陸の伝統相撲、ダンベと同郷の力比べ","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":146,"name":"フカフカ","cat":"グラップリング世界","dist":["組"],"feature":"膝立ちから始まる儀礼レスリング","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":147,"name":"カンバーランド＆ウェストモーランド・レスリング","cat":"グラップリング世界","dist":["組"],"feature":"背中合わせに組んで投げる英国北部の伝統相撲","stats":{"strike":0,"kick":0,"grapple":2,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":148,"name":"ダンベ","cat":"立技打撃","dist":["中"],"feature":"利き腕一本に全てを込める荒い伝統拳闘。蹴りも混じる","stats":{"strike":2,"kick":0,"grapple":0,"ground":0},"venue":"gym","terms":"striking"},
+  {"id":149,"name":"ムサングウェ","cat":"立技打撃","dist":["中"],"feature":"鉱山労働者たちが伝えた素手ボクシング","stats":{"strike":2,"kick":0,"grapple":0,"ground":0},"venue":"gym","terms":"striking"},
+  {"id":150,"name":"バーティツ","cat":"欧米・その他地域","dist":["中","近"],"feature":"柔術・ボクシング・サバットを混ぜた紳士の護身術。ホームズのモデル","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":151,"name":"ディフェンドゥ","cat":"欧米・その他地域","dist":["近","中"],"feature":"コマンドー部隊の実戦近接格闘、フェアバーンの体系","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":152,"name":"オキチトー","cat":"欧米・その他地域","dist":["中","近"],"feature":"先住民の戦技を近代護身に編み直した体系（武器技を含むが素手部門で扱う）","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":153,"name":"ルア（カプ・クイアルア）","cat":"欧米・その他地域","dist":["近","組"],"feature":"関節の破壊に特化したと伝わる古武術","stats":{"strike":1,"kick":0,"grapple":3,"ground":0},"venue":"gym","terms":"cert"},
+  {"id":154,"name":"リマ・ラマ","cat":"欧米・その他地域","dist":["近","中"],"feature":"サモア発祥の護身術、手の速さと投げの組み立て","stats":{"strike":3,"kick":0,"grapple":1,"ground":0},"venue":"gym","terms":"cert"}
 ];
 
 // ===== 流派別用語セット（企画書第38節）=====

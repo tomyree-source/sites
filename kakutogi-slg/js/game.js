@@ -367,7 +367,7 @@ function renderWeek(){
   const st = mainStyle();
   const acts = [
     ["train_main", "稽古（主・流儀）", (st ? st.name : "") + " Lv" + styleLv(S.mainStyle) + " の稽古。経験値+10"],
-    ["train_sub", "他流派を学ぶ", "全153流派から選ぶ（独学／セミナー／個人指導）"],
+    ["train_sub", "他流派を学ぶ", "全154流派から選ぶ（独学／セミナー／個人指導）"],
     ["basics", "基礎トレーニング", "持久と体幹を鍛える"],
     ["research", "映像研究", "読みが上がる。相手の研究にも"],
     ["teach", "道場指導", "収入と指導力。生徒 " + S.students.length + "人"],
@@ -986,7 +986,7 @@ function resumeFromSave(){
 function renderStyleSelect(){
   hud();
   const cards = STYLES_DATA.map(s => '<button class="btn choice stylecard" data-style="' + s.id + '"><b>' + esc(s.name) + '</b><span>' + esc(s.cat) + "／得意距離：" + s.dist.join("・") + "<br>" + esc(s.feature) + "</span></button>").join("");
-  $("main").innerHTML = '<div class="weekhead"><h2>主・流儀を選ぶ</h2><div class="weeksub">子供の頃から習い、19歳で一人前の入り口（Lv2）に達した流派。全153流派から選べます（知名度順）。他流派は後からいつでも学べます</div></div>' +
+  $("main").innerHTML = '<div class="weekhead"><h2>主・流儀を選ぶ</h2><div class="weeksub">子供の頃から習い、19歳で一人前の入り口（Lv2）に達した流派。全154流派から選べます（知名度順）。他流派は後からいつでも学べます</div></div>' +
     '<input id="style-search2" type="text" placeholder="流派名で検索" style="width:100%;padding:10px;margin-bottom:10px;">' +
     '<div class="styles">' + cards + "</div>";
   $("style-search2").addEventListener("input", e => {
