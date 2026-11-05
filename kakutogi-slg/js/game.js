@@ -199,6 +199,61 @@ function dopeVerdictLines(){
     {fx:{sei:2}},
   ];
 }
+// 裁判バトル（第46節）の結末変換。直前の議論バトル（court_case）で選んだ方針と勝敗から、和解／勝訴／敗訴と効果を決める
+function courtVerdictLines(){
+  const d = S.flags.lastDebate || {};
+  const attr = d.id === "court_case" ? d.attr : "弁護";
+  const win = !!d.win;
+  S.flags.courtDone = true; S.flags.courtWeek = S.absWeek;
+  if (attr === "謝罪"){
+    if (win){ S.flags.courtResult = "settle"; return [
+      {sp:"narr", t:"判決の前に、和解が成立した。賠償金6万円と、謝罪文の掲載。門脇も最後は小さく頭を下げた。「……リングでは、また別だ」"},
+      {fx:{money:-60000, sei:1, attention:1}},
+      {sp:"narr", t:"高い授業料だった。だが、逃げずに畳んだ姿勢は、界隈にも静かに伝わった。"},
+    ];}
+    S.flags.courtResult = "settle_hard"; return [
+      {sp:"narr", t:"和解は成立した。ただし条件は重く、賠償金は12万円。謝罪文の文面も、相手方と一語ずつ調整する苦い作業になった。"},
+      {fx:{money:-120000, aku:1, attention:2}},
+      {sp:"narr", t:"「匿名でも、言葉は金で償うことになる」――霧島沙耶のコラムが、静かに締めくくった。"},
+    ];
+  }
+  if (attr === "弁護"){
+    if (win){ S.flags.courtResult = "settle"; return [
+      {sp:"narr", t:"加納弁護士の交渉で、和解が成立した。賠償と弁護士費用で10万円。感情の応酬にならなかった分、傷は浅く済んだ。"},
+      {fx:{money:-100000, fatigue:-5}},
+      {sp:"narr", t:"「戦う場所を選ぶのも、実力のうちです」加納の言葉が、妙に残った。"},
+    ];}
+    S.flags.courtResult = "lose"; return [
+      {sp:"narr", t:"判決は敗訴。賠償金15万円の支払いが命じられた。プロに任せても、書き込みの悪質さは覆らなかった。"},
+      {fx:{money:-150000, aku:1, attention:2}},
+      {sp:"narr", t:"法廷を出ると、記者たちのフラッシュが待っていた。"},
+    ];
+  }
+  // 証拠／正論で争った場合
+  if (win){ S.flags.courtResult = "win"; return [
+    {sp:"narr", t:"勝訴。書き込みの一部は、正当な批評の範囲と認められた。"},
+    {sp:"narr", t:"だが、勝ったことと、匿名で悪口を書いた事実は、別の話だった。CLASHの反応も半々で、「勝訴＝正義」と言ってくれる者はいなかった。"},
+    {fx:{attention:3, sei:-1, aku:1}},
+  ];}
+  S.flags.courtResult = "lose"; return [
+    {sp:"narr", t:"敗訴。賠償金18万円に、謝罪投稿の掲載まで命じられた。争う姿勢そのものが心証を悪くした、とも報じられた。"},
+    {fx:{money:-180000, aku:2, attention:3}},
+    {sp:"narr", t:"謝罪投稿のコメント欄は、しばらく荒れたままだった。"},
+  ];
+}
+// 道場への乗り込み（第47節）の導入。裁判の結末（勝訴／敗訴）で、押しかける側の顔ぶれが変わる
+function raidIntroLines(){
+  if (S.flags.courtResult === "win"){
+    return [
+      {sp:"narr", t:"勝訴から数週間後。稽古の時間、道場の扉が乱暴に開いた。門脇道場の若手・タツヤと、その仲間たちだった。"},
+      {sp:"narr", t:"「法廷じゃ言葉で誤魔化しやがって……！ 師匠の無念は、俺たちがこの畳で晴らす！」門脇本人は来ていない。弟子たちの怒りだけが、熱を持って押しかけてきた。"},
+    ];
+  }
+  return [
+    {sp:"narr", t:"敗訴の報せから数週間後。稽古の時間、道場の扉が乱暴に開いた。門脇道場の若手・タツヤが、仲間を連れて立っていた。"},
+    {sp:"narr", t:"「金払えば終わりだと思ってるのか？ 先生は許しても、俺はあの書き込みを許さねえ！」賠償で畳んだはずの騒動が、別の形で火種を残していた。"},
+  ];
+}
 function sceneAdvance(){
   while (UI.queue.length){
     const st = UI.queue.shift();
@@ -220,6 +275,13 @@ function sceneAdvance(){
     if (st.warWinK){ dojoWarResultKatori(true); continue; }
     if (st.warLoseK){ dojoWarResultKatori(false); continue; }
     if (st.dopeVerdict){ UI.queue = dopeVerdictLines().concat(UI.queue); continue; }
+    if (st.bbsMark){
+      if (st.bbsMark === "post"){ S.flags.bbsPosted = true; S.flags.bbsPostWeek = S.absWeek; }
+      if (st.bbsMark === "expose"){ S.flags.bbsExposed = true; S.flags.bbsExposeWeek = S.absWeek; }
+      continue;
+    }
+    if (st.courtVerdict){ UI.queue = courtVerdictLines().concat(UI.queue); continue; }
+    if (st.raidIntro){ UI.queue = raidIntroLines().concat(UI.queue); continue; }
     if (st.douhanEnd){
       const score = (S.flags && S.flags.douhanScore) || 0;
       let lines;
@@ -369,6 +431,17 @@ function pickCh3Event(){
 function pickEndWeekEvent(){
   ensureStateCompat();
   if (S.chapter === 3){ const e3 = pickCh3Event(); if (e3) return e3; }
+  // 第46・47節: 匿名掲示板の連鎖（書く→身バレ→裁判→道場への乗り込み）。フラグと週数で段階発火し、1周で完結する
+  if (typeof CHAIN_EVENTS !== "undefined"){
+    let chainEv = null;
+    if (S.flags.bbsPosted && !S.seenEvents["sp_bbs_expose"] && S.absWeek >= (S.flags.bbsPostWeek || 0) + 2 && _rng() < 0.5)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_bbs_expose");
+    else if (S.flags.bbsExposed && !S.seenEvents["sp_bbs_court"] && S.absWeek >= (S.flags.bbsExposeWeek || 0) + 1 && _rng() < 0.65)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_bbs_court");
+    else if (S.flags.courtDone && !S.seenEvents["sp_dojo_raid"] && (S.flags.courtResult === "win" || S.flags.courtResult === "lose") && S.absWeek >= (S.flags.courtWeek || 0) + 2 && _rng() < 0.5)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_dojo_raid");
+    if (chainEv){ S.seenEvents[chainEv.id] = S.absWeek; logEventFire("chain", chainEv); return chainEv; }
+  }
   const yw = ((S.absWeek - 1) % WEEKS_PER_YEAR) + 1;
   const yearIdx = Math.floor((S.absWeek - 1) / WEEKS_PER_YEAR);
   if (typeof SEASONAL_EVENTS !== "undefined"){
@@ -392,6 +465,11 @@ function pickEndWeekEvent(){
   if (typeof DEBATE_EVENTS !== "undefined"){
     const dcands = DEBATE_EVENTS.filter(e => eventEligible(e) && !S.seenEvents[e.id] && !S.seenEvents["debate:" + e.debateId]);
     if (dcands.length && _rng() < 0.25){ const e = pickWeighted(dcands); S.seenEvents[e.id] = S.absWeek; S.seenEvents["debate:" + e.debateId] = S.absWeek; logEventFire("debate", e); return e; }
+  }
+  // 第45・46節: 全章共通の単発スペシャルイベント（詐称騒動／掲示板への書き込み。1周1回）
+  if (typeof SPECIAL_EVENTS !== "undefined"){
+    const spc = SPECIAL_EVENTS.filter(e => eventEligible(e) && !S.seenEvents[e.id]);
+    if (spc.length && _rng() < 0.22){ const e = pickWeighted(spc); S.seenEvents[e.id] = S.absWeek; logEventFire("special", e); return e; }
   }
   if (_rng() < 0.22){
     const cands = RANDOM_EVENTS.filter(e => e.condFatigue == null || S.fatigue >= e.condFatigue);
@@ -843,6 +921,7 @@ function startDebate(id){
     S.record.debates++;
     const score = r.score + S.stats.read * 0.4 + _rng() * 3;
     const win = score >= 7;
+    S.flags.lastDebate = {id, attr: r.attr, win};
     if (win){ S.record.debateWins++; applyFx(d.winFx); } else applyFx(d.loseFx);
     UI.screen = "scene";
     UI.queue = (win ? r.win : r.lose).concat(UI.queue);
@@ -978,6 +1057,8 @@ window.__gameTest = {
     if (typeof CH3_STUDENT_DRAMA !== "undefined") pools.push(...CH3_STUDENT_DRAMA);
     if (typeof CH3_SEASONAL_EVENTS !== "undefined") pools.push(...CH3_SEASONAL_EVENTS);
     if (typeof DEBATE_EVENTS !== "undefined") pools.push(...DEBATE_EVENTS);
+    if (typeof SPECIAL_EVENTS !== "undefined") pools.push(...SPECIAL_EVENTS);
+    if (typeof CHAIN_EVENTS !== "undefined") pools.push(...CHAIN_EVENTS);
     const e = pools.find(x => x.id === id);
     if (!e) return false;
     ensureStateCompat();
@@ -988,7 +1069,8 @@ window.__gameTest = {
   startChapter3: () => { if (typeof startChapter3 === "function") startChapter3(); },
   pools: () => ({ v2: (typeof WEEK_EVENTS_V2 !== "undefined" ? WEEK_EVENTS_V2 : []).map(e => ({id:e.id, category:e.category})), student: (typeof STUDENT_DRAMA_EVENTS !== "undefined" ? STUDENT_DRAMA_EVENTS : []).map(e => e.id), seasonal: (typeof SEASONAL_EVENTS !== "undefined" ? SEASONAL_EVENTS : []).map(e => e.id),
     ch3week: (typeof CH3_WEEK_EVENTS !== "undefined" ? CH3_WEEK_EVENTS : []).map(e => ({id:e.id, category:e.category})), ch3student: (typeof CH3_STUDENT_DRAMA !== "undefined" ? CH3_STUDENT_DRAMA : []).map(e => e.id), ch3seasonal: (typeof CH3_SEASONAL_EVENTS !== "undefined" ? CH3_SEASONAL_EVENTS : []).map(e => e.id),
-    debates: (typeof DEBATE_POOL !== "undefined" ? DEBATE_POOL : []).map(d => d.id), debateEvents: (typeof DEBATE_EVENTS !== "undefined" ? DEBATE_EVENTS : []).map(e => e.id) }),
+    debates: (typeof DEBATE_POOL !== "undefined" ? DEBATE_POOL : []).map(d => d.id), debateEvents: (typeof DEBATE_EVENTS !== "undefined" ? DEBATE_EVENTS : []).map(e => e.id),
+    special: (typeof SPECIAL_EVENTS !== "undefined" ? SPECIAL_EVENTS : []).map(e => e.id), chain: (typeof CHAIN_EVENTS !== "undefined" ? CHAIN_EVENTS : []).map(e => e.id) }),
 };
 
 // ---------- 自動テスト（?autotest=1&style=流派名&foul=0|1&seed=N） ----------
