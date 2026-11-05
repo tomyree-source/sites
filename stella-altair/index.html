@@ -9,7 +9,7 @@
     <link rel="canonical" href="https://tomyree-source.github.io/sites/stella-altair/" />
     <script>
       /* 旧ハッシュURL（#article-…・#recruit・#apply）の救済：外部から直接開かれた場合は対応する分割ページ（静的HTML）へ転送する。サイト内からの遷移では転送しない。 */
-      (function(){var h=location.hash||"";var ref=document.referrer||"";if(ref.indexOf("/sites/stella-altair/")>-1||ref.indexOf("/space-10")>-1)return;var B="headache,pms,cold,shoulder,sleep,season,waist,legs,dullness,posture,eyes,menopause,bloating,back".split(",");var m;if((m=h.match(/^#article-([a-z]+)$/))&&B.indexOf(m[1])>-1)location.replace("assets/b/"+m[1]+".html");else if(h==="#recruit"||h==="#apply")location.replace("assets/recruit.html");})();
+      (function(){var h=location.hash||"";var ref=document.referrer||"";if(ref.indexOf("/sites/stella-altair/")>-1||ref.indexOf("/space-10")>-1)return;var B="headache,pms,cold,shoulder,sleep,season,waist,legs,dullness,posture,eyes,menopause,bloating,back,feet,arms".split(",");var m;if((m=h.match(/^#article-([a-z]+)$/))&&B.indexOf(m[1])>-1)location.replace("assets/b/"+m[1]+".html");else if(h==="#recruit"||h==="#apply")location.replace("assets/recruit.html");})();
     </script>
     <meta property="og:title" content="ステラアルタイル｜京都の女性専用オイルマッサージ・美容整体サロン" />
     <meta property="og:description" content="京都・河原町／祇園エリアの女性専用プライベートサロン。施術歴30年の男性セラピストによるオイルマッサージと美容整体を、90分10,000円・完全予約制でご案内。月〜土17:00〜22:00、住所はご予約確定後にご案内します。" />
@@ -747,6 +747,8 @@
       .article-meta{font-size:12.5px;letter-spacing:.14em;color:#a07f37;margin:0 0 6px}
       @media (prefers-color-scheme: dark){.article-meta{color:var(--gold-soft)}}
       .article-body{max-width:760px}
+      .article-eyecatch{margin:0 0 22px}
+      .article-eyecatch img{width:100%;height:auto;display:block;border-radius:var(--radius);border:1px solid var(--line)}
       .article-body .lead{font-size:16.5px;color:var(--ink)}
       .article-body h2{font-family:"Shippori Mincho",serif;font-size:22px;font-weight:600;letter-spacing:.04em;margin:42px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line);line-height:1.5}
       .article-body p{color:var(--ink-soft);margin:0 0 14px}
@@ -816,6 +818,7 @@
           <span data-i18n="hero.status">近日開院予定｜ご予約の受付はまだ開始していません</span>
         </div>
       </div>
+<p class="line-inquiry" style="text-align:center;margin:18px 0"><a href="https://lin.ee/NHOXaMl" target="_blank" rel="noopener" style="display:inline-block;background:#06C755;color:#fff;font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;font-size:15px;letter-spacing:.03em">LINE公式アカウントでお問い合わせ</a><br><span style="font-size:12.5px">開院・受付開始のお知らせもLINEでお届けします</span></p>
       <div class="hero-split">
         <div class="hero-copy">
           <p class="hero-eyebrow"><span class="eb-line" aria-hidden="true"></span><span data-i18n="hero.eyebrow">京都｜女性専用プライベートサロン</span></p>
@@ -1184,6 +1187,18 @@
             <div class="tag" data-i18n="col14.tag">背中の張り</div>
             <h3 data-i18n="col14.h">京都で気になる背中の張り</h3>
             <p data-i18n="col14.p">夕方になると背中が張る感じがする、肩甲骨の内側が重い、背すじを伸ばしにくい——。気になる背中の張りについて、考えられる要因と日常で取り入れられるセルフケア、受診の目安をまとめました。</p>
+            <span class="more" data-i18n="col.more">記事を読む →</span>
+          </a>
+          <a class="column-card" href="#article-feet" data-route="article-feet">
+            <div class="tag" data-i18n="col15.tag">足の疲れ・歩き疲れ</div>
+            <h3 data-i18n="col15.h">京都で歩いた後に気になる足の疲れ</h3>
+            <p data-i18n="col15.p">寺社や町並みを歩いた日、足の裏が重だるい、ふくらはぎが張って一歩が重い——。歩いた後に気になる足の疲れについて、考えられる要因と無理のないセルフケア、受診の目安をまとめました。</p>
+            <span class="more" data-i18n="col.more">記事を読む →</span>
+          </a>
+          <a class="column-card" href="#article-arms" data-route="article-arms">
+            <div class="tag" data-i18n="col16.tag">腕・手の疲れ</div>
+            <h3 data-i18n="col16.h">京都で気になる腕・手の疲れ</h3>
+            <p data-i18n="col16.p">買い物の荷物を提げた日や、スマホ・パソコンを長く使った日、夕方になると腕がだるい、手に力が入りにくい——。気になる腕・手の疲れについて、考えられる要因と無理のないセルフケア、受診の目安をまとめました。</p>
             <span class="more" data-i18n="col.more">記事を読む →</span>
           </a>
         </div>
@@ -3522,6 +3537,306 @@
       </section>
     </div>
 
+    <!-- ARTICLE: TIRED FEET AFTER WALKING -->
+    <div id="pageArticleFeet" hidden>
+      <section class="recruit-page">
+      <div class="wrap">
+        <a class="back-home" href="#column" data-route="home">&larr; コラム一覧へ戻る</a>
+        <div class="article-body">
+          <p class="article-meta">お悩みコラム｜足の疲れ・歩き疲れ</p>
+          <div class="sec-head" style="margin-bottom:24px">
+            <h2 style="font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(26px,4.4vw,36px);line-height:1.5;letter-spacing:.05em;margin:0;border-bottom:0;padding-bottom:0">京都で歩いた後に気になる足の疲れ｜要因の整理とセルフケア、受診の目安</h2>
+          </div>
+          <p class="lead">
+            京都の寺社や町並みを歩いた日、夕方になると足の裏が重だるい、ふくらはぎが張って一歩が重く感じる、靴を脱いで休んでもなかなか疲れが抜けない——。
+            朝は気にならなかったのに、たくさん歩いた日の終わりに足の疲れに気づくという方は少なくありません。
+            この記事では、歩いた後に感じやすい足の疲れについて、一般的な解説と、考えられる要因の整理、無理のないセルフケア、受診の目安をまとめました。
+            なお、夕方に靴がきつく感じるような脚の「むくみ感」については<a href="#article-legs" data-route="article-legs">脚のむくみ感の記事</a>で扱っています。この記事では、むくみ感とは切り分けて、足の裏やふくらはぎの筋肉の疲れ感に絞ってご紹介します。
+          </p>
+          <div class="article-en-edition" hidden>
+            <p class="article-meta">Column｜Tired Feet After Walking</p>
+            <h2 style="font-size:clamp(26px,4.4vw,34px);border-bottom:0">Tired Feet After Walking in Kyoto — Factors, Self-Care, and When to See a Doctor</h2>
+            <p class="lead">After a day walking Kyoto's temples and old streets, your soles feel heavy by evening, your calves feel tight, every step feels like work, and the tiredness lingers even after you take your shoes off and rest. Many people notice this kind of foot tiredness only at the end of a long walking day. This English edition of our Japanese column gives a general explanation of that tired feeling, organises possible factors after walking without overstating them, and covers gentle self-care and the signs that mean you should see a doctor. The swollen feeling that makes shoes feel tight by evening is covered in a separate column; this one focuses on tiredness in the muscles of the soles and calves.</p>
+            <h2>What tired feet mean</h2>
+            <p>Tired feet is a general way of describing a heavy, tight, or worn-out feeling in the soles, the tops of the feet, the toes, or the calves. It is not a diagnosis in itself, and how it feels differs from person to person: some notice it only on the evening of a long walking day, others still feel a heaviness the next morning. When we walk, the muscles of the soles and calves take our weight and push the body forward, again and again. On days when we walk much further than usual, or walk Kyoto's stone paving, slopes, and stone steps, that repeated work builds up and is felt as tiredness. Start by noting where in the foot you feel it, when it appears, whether there is a difference between the two feet, and whether resting changes how it feels. If there is strong pain, numbness, or other marked symptoms, check the signs for seeing a doctor below before relying on self-care alone.</p>
+            <h2>Possible factors after a day of walking</h2>
+            <ul>
+              <li><strong>Distance and number of steps</strong> — on days when you walk several times your usual amount, the load on the muscles of the soles and calves builds up</li>
+              <li><strong>The state of the roads</strong> — stone paving, gravel paths, slopes, and stone steps ask the feet to work differently from flat ground, and can add to the load on the soles and ankles</li>
+              <li><strong>Your shoes</strong> — shoes you are not used to, thin-soled shoes, or high heels can change how impact reaches the soles compared with your usual footwear</li>
+              <li><strong>How you walk and carry things</strong> — carrying a bag on one side, or a posture that has slipped, can bias how the feet are used</li>
+              <li><strong>Few breaks</strong> — walking for hours with little rest lets tiredness build up on the spot</li>
+              <li><strong>Temperature and cold feet</strong> — cold stone paving in winter, or summer heat that drains stamina, can be part of the background</li>
+              <li><strong>Lack of sleep and accumulated tiredness</strong> — several busy days in a row, or a long journey to reach Kyoto, can be part of the background</li>
+            </ul>
+            <p>In traditional East Asian medicine, the feet are related to the Spleen and Kidney, and to meridians that run through the soles and calves. See our Guide by Concern on the home page for how treatments approach the legs. If what you notice is more a swollen feeling, see the leg swelling column; if your shoulders and neck also feel stiff, see the stiff shoulders and neck column; and if you have trouble falling asleep at night, see the column on sleep and fatigue.</p>
+            <h2>Gentle self-care to try</h2>
+            <ul>
+              <li><strong>Build in time to rest your feet</strong> — during sightseeing, sit down on a bench or in a cafe from time to time rather than walking for hours without stopping</li>
+              <li><strong>Press the soles gently</strong> — press the sole slowly with your fingers, or roll a soft ball lightly under the sole, within a pain-free range</li>
+              <li><strong>Move the toes and ankles in small motions</strong> — curl and spread the toes, or circle the ankles slowly; these can be done while seated</li>
+              <li><strong>Warm the feet</strong> — a foot bath after you return, or a slow soak in a bath that is not too hot</li>
+              <li><strong>Review your shoes</strong> — for a day of long walking, choose shoes you are used to, and check the thickness and cushioning of the soles</li>
+              <li><strong>Rest lying down and sleep</strong> — after a long day on your feet, avoid stacking a demanding evening on top, and give your feet time to rest</li>
+              <li><strong>Do not force strong massage or stretching</strong> — if a movement brings pain or leaves bruising, stop it and watch how you feel</li>
+            </ul>
+            <h2>See a doctor if…</h2>
+            <ul>
+              <li>There is sharp pain in one spot, such as the heel or the arch, or walking is difficult</li>
+              <li>There is numbness, or the foot feels hard to move or weak</li>
+              <li>The tiredness or pain continues for several days, keeps returning, or grows stronger little by little</li>
+              <li>Only one foot swells, or it comes with redness or a feeling of heat</li>
+              <li>Pain or swelling began after an injury or a sprain</li>
+              <li>A strong pain in the sole with the first steps of the morning continues day after day</li>
+            </ul>
+            <p>Stella Altair is not a medical clinic; treatments are for relaxation and beauty, and we do not diagnose or treat medical conditions. If any of the above applies, please consult a medical institution such as an orthopaedic or internal medicine clinic first.</p>
+            <div class="salon-box">
+              <h2>About the Salon — Stella Altair, Kyoto</h2>
+              <p>Stella Altair is a women-only private salon in Kyoto City, reached from Hankyu Kyoto-kawaramachi and Keihan Gion-Shijo stations (the exact address is shared once a booking is confirmed). Treatments combine aroma oil massage with beauty seitai bodywork, and counselling begins by asking how your body feels that day; the pressure is adjusted as we go. The salon opens in the evening, so it can also be used after a day of sightseeing.</p>
+              <p>The single basic course is 90 minutes for ¥10,000 (tax included). Open Monday to Saturday, 17:00–22:00 (closed Sundays), by reservation only. The salon is currently preparing to open, and bookings are not yet being accepted.</p>
+              <p style="margin-top:18px"><a class="btn btn-gold" href="#reserve">Booking Information</a></p>
+            </div>
+          </div>
+
+          <h2>足の「疲れ」とは</h2>
+          <p>
+            「足が疲れた」という感覚は、足の裏や足の甲、足指、ふくらはぎなどに感じる<strong>重だるさ・張り感・力が抜けたような感じ</strong>などをまとめて表す、一般的な表現です。
+            それ自体が病名というわけではなく、感じ方も人それぞれで、歩いた日の夕方だけ気になる方もいれば、翌朝まで重さが残るように感じる方もいます。
+          </p>
+          <p>
+            歩くとき、足の裏やふくらはぎの筋肉は、体重を受け止め、体を前に進めるために繰り返し働いています。
+            ふだんより長く歩いた日や、石畳・坂道・石段の多い道を歩いた日は、その働きが積み重なって、疲れとして感じやすくなります。
+            まずは「足のどのあたりが・どんなときに・左右で違いがあるか・休むとどう感じるか」を振り返ってみることが、ケアの出発点になります。
+            強い痛みやしびれなど目立つ症状がある場合は、セルフケアで様子を見る前に、後述の受診の目安もあわせてご確認ください。
+          </p>
+
+          <h2>歩いた後に考えられる要因</h2>
+          <p>歩いた後に足が気になるとき、その背景には一つの原因ではなく、その日の過ごし方が重なっていることがあります。一般に、要因として次のようなものが挙げられます。いずれも断定ではなく、ご自身の過ごし方を振り返るための整理としてご覧ください。</p>
+          <ul>
+            <li><strong>歩く距離と歩数</strong>：ふだんの生活より何倍も歩く日は、足の裏やふくらはぎの筋肉にかかる負担が積み重なります</li>
+            <li><strong>道の状態</strong>：石畳や砂利道、坂道や石段では、平らな道とは違う足の使い方になり、足の裏や足首まわりの負担が増えやすくなります</li>
+            <li><strong>靴の状態</strong>：履き慣れない靴や、底の薄い靴、かかとの高い靴などは、足の裏への衝撃の伝わり方がふだんと変わることがあります</li>
+            <li><strong>歩き方や荷物の持ち方</strong>：荷物を片側だけで持つことや、姿勢の崩れが続くことが、足の使い方の偏りにつながることがあります</li>
+            <li><strong>休憩の取り方</strong>：何時間も歩き続けて休憩が少ない日は、疲れがその場で積み重なりやすくなります</li>
+            <li><strong>気温や足元の冷え</strong>：冬の冷たい石畳や、夏の暑さで体力を消耗しやすい日など、足元のコンディションも影響することがあります</li>
+            <li><strong>睡眠不足や疲れの蓄積</strong>：忙しい日の重なりや、京都までの移動の疲れが背景にあることもあります</li>
+          </ul>
+          <p>
+            東洋医学では、足は「脾」や「腎」の働きと関係づけて考えられ、足の裏やふくらはぎを巡る経絡とも関わるとされます。
+            当サロンの<a href="#concerns">お悩み別ガイド</a>でも、脚まわりの施術でのアプローチをご紹介していますので、あわせてご覧ください。
+            むくみ感が気になる方は<a href="#article-legs" data-route="article-legs">脚のむくみ感の記事</a>、肩や首のこり感も気になる方は<a href="#article-shoulder" data-route="article-shoulder">肩と首のこり感の記事</a>、夜の寝つきが気になる方は<a href="#article-sleep" data-route="article-sleep">寝つきと疲労感の記事</a>も参考にしてみてください。
+          </p>
+
+          <h2>無理のないセルフケア</h2>
+          <p>歩いた日やその日の終わりに取り入れやすい対処をまとめました。痛みが強いときは無理をせず、痛みのない範囲で行ってください。</p>
+          <ul>
+            <li><strong>足を休める時間をつくる</strong>：観光中もベンチやカフェで座って休む区切りを入れ、何時間も歩き続けないようにする</li>
+            <li><strong>足の裏をやさしくほぐす</strong>：手の指で足の裏をゆっくり押す、柔らかいボールを足の裏で軽く転がすなど、痛みのない範囲で</li>
+            <li><strong>足指と足首を小さく動かす</strong>：足指を握る・開く動きをゆっくり繰り返す、足首をゆっくり回すなど、座ったままでもできる小さな動きから</li>
+            <li><strong>足を温める</strong>：帰宅後に足湯をする、熱すぎない温度の湯船にゆっくりつかるなど、温める時間をとってみてください</li>
+            <li><strong>靴を見直す</strong>：長く歩く日は履き慣れた靴を選び、靴底の厚みやクッション性もあわせて振り返る</li>
+            <li><strong>横になって休む時間と睡眠をとる</strong>：たくさん歩いた日は体力も使っています。夜に予定を詰め込まず、足を休ませる時間を優先することも大切です</li>
+            <li><strong>強いマッサージや無理なストレッチは避ける</strong>：痛みが出たり、あざができたりするような強い刺激は中止し、様子を見てください</li>
+          </ul>
+          <p>
+            京都の街歩きは、平坦な道だけでなく、石畳や緩やかな坂、寺社の石段も多く含まれます。翌日以降に予定がある場合は、
+            歩く距離や立ち寄る場所の順番をあらかじめ見直しておくことも、負担を重ねないための工夫になります。
+          </p>
+
+          <h2>こんなときは医療機関へ</h2>
+          <p>歩いた後の足の疲れの多くはその日の負担と関係しますが、中には医療機関での確認が必要な場合もあります。次のような場合は、整形外科や内科など医療機関への受診をご検討ください。</p>
+          <ul>
+            <li>かかとや土踏まずなど、特定の場所に鋭い痛みがある、歩くのがつらい</li>
+            <li>しびれがある、力が入りにくいと感じる</li>
+            <li>数日たっても疲れや痛みが続く、繰り返す、少しずつ強くなってきた</li>
+            <li>片足だけが腫れる、赤みや熱っぽさをともなう</li>
+            <li>けがや捻挫のあとから痛みや腫れが出てきた</li>
+            <li>朝起きて最初の一歩で、足の裏に強い痛みを感じる日が続く</li>
+          </ul>
+          <p>
+            当サロンは医療機関ではなく、施術はリラクゼーションと美容を目的としたものです。診断や治療は行いませんので、
+            気になる症状がある場合はまず医療機関へご相談ください。
+          </p>
+
+          <div class="salon-box">
+            <h2>サロンのご案内 — ステラアルタイル（京都）</h2>
+            <p>
+              ステラアルタイルは、阪急 京都河原町駅・京阪 祇園四条駅からアクセスできる、京都市内の女性専用プライベートサロンです
+              （詳しい住所は、ご予約が確定した方にご案内しています）。
+              施術は、オイルマッサージと美容整体を組み合わせた構成で、最初にカウンセリングでお体の状態やお悩みをうかがいながら進めます。圧の強さも都度調整します。
+              夕方17時からの営業のため、観光やお買い物のあとの時間にもご利用いただけます。
+            </p>
+            <p>
+              基本コースは90分・10,000円（税込）です。営業時間は月曜〜土曜の17:00〜22:00（日曜休み）、完全予約制で営業しています。
+              なお、現在は近日開院予定のため、ご予約の受付はまだ開始していません。受付開始はサイトでご案内します。
+            </p>
+            <div class="links">
+              <a href="#menu">施術メニューを見る</a>
+              <a href="#concerns">お悩み別ガイドを見る</a>
+              <a href="#price">料金・営業時間を見る</a>
+              <a href="#access">アクセスを見る</a>
+            </div>
+            <p style="margin-top:18px"><a class="btn btn-gold" href="#reserve">ご予約のご案内</a></p>
+          </div>
+        </div>
+        <a class="back-home bottom" href="#column" data-route="home">&larr; コラム一覧へ戻る</a>
+      </div>
+      </section>
+    </div>
+
+    <div id="pageArticleArms" hidden>
+      <section class="recruit-page">
+      <div class="wrap">
+        <a class="back-home" href="#column" data-route="home">&larr; コラム一覧へ戻る</a>
+        <div class="article-body">
+          <p class="article-meta">お悩みコラム｜腕・手の疲れ｜2026年11月5日</p>
+          <div class="sec-head" style="margin-bottom:24px">
+            <h2 style="font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(26px,4.4vw,36px);line-height:1.5;letter-spacing:.05em;margin:0;border-bottom:0;padding-bottom:0">京都で気になる腕・手の疲れ｜要因の整理とセルフケア、受診の目安</h2>
+          </div>
+          <figure class="article-eyecatch"><img src="assets/eyecatch-arms.webp" alt="クッションの上で休める腕と手のイラスト。京都の町家のような格子窓と行灯の灯り" width="2240" height="1120" /></figure>
+          <p class="lead">
+            買い物の袋を提げて歩いた日や、スマートフォンやパソコンを長く使った日、細かな手作業が続いた日——。
+            夕方になると腕がだるい、手に力が入りにくい、指先まで重く感じる、朝は気にならなかったのに一日の終わりに腕や手の疲れに気づくという方は少なくありません。
+            この記事では、腕・手の疲れについて、一般的な解説と、考えられる要因の整理、無理のないセルフケア、受診の目安をまとめました。
+            なお、夕方に靴がきつく感じるような脚の疲れやむくみ感、肩から背中にかけての張りとは切り分けて、ここでは腕から手指にかけての疲れ感に絞ってご紹介します。
+          </p>
+          <div class="article-en-edition" hidden>
+            <p class="article-meta">Column｜Tired Arms and Hands</p>
+            <h2 style="font-size:clamp(26px,4.4vw,34px);border-bottom:0">Tired Arms and Hands in Kyoto — Factors, Self-Care, and When to See a Doctor</h2>
+            <figure class="article-eyecatch"><img src="assets/eyecatch-arms.webp" alt="Illustration of arms and hands resting on a cushion, with a lattice window and paper lantern in a Kyoto townhouse style" width="2240" height="1120" /></figure>
+            <p class="lead">After a day carrying shopping bags, using a phone or computer for a long time, or doing fine handwork, many people notice by evening that their arms feel heavy, their hands feel weak, or even their fingertips feel tired. This English edition of our Japanese column gives a general explanation of tired arms and hands, organises possible factors without overstating them, and covers gentle self-care and the signs that mean you should see a doctor. It focuses on tiredness from the arms to the fingers, separately from tired or swollen legs and from tension across the shoulders and back.</p>
+            <h2>What tired arms and hands mean</h2>
+            <p>Tired arms and hands is a general way of describing a heavy, tight, worn-out, or stiff feeling in the upper arms, the forearms between elbow and wrist, the wrists, the palms, or the fingers. It is not a diagnosis in itself, and how it feels differs from person to person: some notice it only on the evening of a busy day, others still feel a heaviness the next day. Through the day, our arms and hands repeat many small movements — holding, carrying, gripping, typing, writing. On days with heavy bags, or when the same movement is repeated for a long time, that repeated work builds up and is felt as tiredness. Start by noting where in the arm or hand you feel it, when it appears, whether there is a difference between the two sides, and whether resting changes how it feels. If there is numbness, strong pain, or other marked symptoms, check the signs for seeing a doctor below before relying on self-care alone.</p>
+            <h2>Possible factors</h2>
+            <ul>
+              <li><strong>How you carry things</strong> — carrying shopping bags or a heavy bag on one arm or shoulder for a long time can concentrate the load on one side</li>
+              <li><strong>Phones and tablets</strong> — holding a device for long stretches, and repeating small fingertip movements such as scrolling and tapping</li>
+              <li><strong>Computer work</strong> — long hours on a keyboard and mouse keep a similar load on the forearms and wrists</li>
+              <li><strong>Fine handwork</strong> — writing, knitting and crafts, or practising an instrument can leave the hands feeling tired on days when they continue for a long time</li>
+              <li><strong>Housework and childcare</strong> — lifting while cooking and cleaning, and holding a child, keep the arms working</li>
+              <li><strong>Sightseeing and travel</strong> — taking photos with a camera or phone, and holding a handrail on trains and buses for a long time, add up over a day</li>
+              <li><strong>Cold</strong> — hands and fingertips meet the cold air easily, and can feel stiff along with the chill in air-conditioned rooms or on winter outings</li>
+              <li><strong>Lack of sleep and accumulated tiredness</strong> — several busy days in a row, or a long journey, can be part of the background</li>
+            </ul>
+            <p>In traditional East Asian medicine, the arms and hands are related to meridians such as the Lung, Large Intestine, Heart, and Small Intestine. See our Guide by Concern on the home page for how treatments approach the whole body, arms and hands included. If your shoulders and neck also feel stiff, see the stiff shoulders and neck column; if your eyes feel tired, see the eye strain column; and if cold hands and feet trouble you, see the column on feeling the cold.</p>
+            <h2>Gentle self-care to try</h2>
+            <ul>
+              <li><strong>Build in breaks for your arms and hands</strong> — put bags down, set your device aside and let both hands drop, rather than using them without a pause</li>
+              <li><strong>Open and close the fingers slowly</strong> — spread the fingers wide, then close them into a gentle grip, repeating slowly; these small movements can be done while seated</li>
+              <li><strong>Move the wrists and elbows gently</strong> — circle the wrists slowly, or bend and straighten the elbows, within a comfortable range</li>
+              <li><strong>Press the forearm gently</strong> — with the thumb of the other hand, press slowly from the elbow side toward the wrist, using a pressure that does not hurt</li>
+              <li><strong>Warm the arms and hands</strong> — soak your hands in warm water, lay a warmed towel over your hands or forearms, or choose sleeves that cover the wrists on days with strong air conditioning</li>
+              <li><strong>Review how you carry things</strong> — switch sides, use a backpack carried on both shoulders, or split heavy shopping into smaller loads so the load does not stay on one side</li>
+              <li><strong>Rest and sleep</strong> — after a day of heavy use of the arms and hands, avoid stacking a demanding evening on top, and give your whole body time to rest</li>
+              <li><strong>Do not force strong massage or stretching</strong> — if a movement brings pain or leaves bruising, stop it and watch how you feel</li>
+            </ul>
+            <p>When you walk around Kyoto, shopping tends to add up bag by bag. Leaving luggage in a locker or using a delivery service is another way to keep the load on your arms and hands from building up on the way back.</p>
+            <h2>See a doctor if…</h2>
+            <ul>
+              <li>There is numbness, the feeling in the hands seems dull, or the two sides feel different</li>
+              <li>The fingers are hard to move, objects are hard to grip or are dropped often, or the hand feels weak</li>
+              <li>There is strong pain or swelling in one spot, such as the wrist, elbow, or a finger joint</li>
+              <li>The tiredness or pain continues for several days, keeps returning, or grows stronger little by little</li>
+              <li>Pain or swelling began after an injury or a fall</li>
+              <li>Stiffness in the fingers on waking lasts for a long time, day after day</li>
+            </ul>
+            <p>Stella Altair is not a medical clinic; treatments are for relaxation and beauty, and we do not diagnose or treat medical conditions. If any of the above applies, please consult a medical institution such as an orthopaedic or internal medicine clinic first.</p>
+            <div class="salon-box">
+              <h2>About the Salon — Stella Altair, Kyoto</h2>
+              <p>Stella Altair is a women-only private salon in Kyoto City, reached from Hankyu Kyoto-kawaramachi and Keihan Gion-Shijo stations (the exact address is shared once a booking is confirmed). Treatments combine aroma oil massage with beauty seitai bodywork and care for the whole body, arms and hands included; counselling begins by asking how your body feels that day, and the pressure is adjusted as we go. The salon opens in the evening, so it can also be used after a day of sightseeing or shopping.</p>
+              <p>The single basic course is 90 minutes for ¥10,000 (tax included). Open Monday to Saturday, 17:00–22:00 (closed Sundays), by reservation only. The salon is currently preparing to open, and bookings are not yet being accepted.</p>
+              <p style="margin-top:18px"><a class="btn btn-gold" href="#reserve">Booking Information</a></p>
+            </div>
+          </div>
+
+          <h2>腕・手の「疲れ」とは</h2>
+          <p>
+            「腕や手が疲れた」という感覚は、肩から肘にかけての腕（上腕）や、肘から手首にかけての前腕、手首・手のひら・指先などに感じる<strong>だるさ・張り感・重さ・こわばったような感じ</strong>などをまとめて表す、一般的な表現です。
+            それ自体が病名というわけではなく、感じ方も人それぞれで、その日の夕方だけ気になる方もいれば、翌日までだるさが残るように感じる方もいます。
+          </p>
+          <p>
+            腕や手は、物を持つ・提げる・運ぶ、つかむ・握る、キーを打つ、字を書くといった、小さく細かな動きを一日の中で何度も繰り返しています。
+            重い荷物を持った日や、同じ動きを繰り返す作業が続いた日は、その働きが積み重なって、疲れとして感じやすくなります。
+            まずは「腕・手のどのあたりが・どんなときに・左右で違いがあるか・休ませるとどう感じるか」を振り返ってみることが、ケアの出発点になります。
+            しびれや強い痛みなど目立つ症状がある場合は、セルフケアで様子を見る前に、後述の受診の目安もあわせてご確認ください。
+          </p>
+
+          <h2>腕・手の疲れで考えられる要因</h2>
+          <p>腕や手が気になるとき、その背景には一つの原因ではなく、その日の過ごし方が重なっていることがあります。一般に、要因として次のようなものが挙げられます。いずれも断定ではなく、ご自身の過ごし方を振り返るための整理としてご覧ください。</p>
+          <ul>
+            <li><strong>荷物の持ち方</strong>：買い物袋や重いバッグを片方の腕や肩にかけ続ける、手提げで長く持ち歩くなど、片側に負担が寄る持ち方が重なることがあります</li>
+            <li><strong>スマートフォンやタブレットの使い方</strong>：端末を持ち続ける姿勢や、スクロール・タップといった指先の小さな動きの繰り返しが続くことがあります</li>
+            <li><strong>パソコン作業</strong>：キーボードやマウスの操作が長く続くと、前腕や手首まわりに同じ負担がかかり続けることがあります</li>
+            <li><strong>細かな手作業</strong>：書きものや編み物・手芸、楽器の練習など、指先を使う作業が続いた日は、手の疲れを感じやすくなります</li>
+            <li><strong>家事や育児の動作</strong>：料理や掃除で物を持ち上げる動作、子どもを抱く姿勢など、腕に力が入り続ける場面が重なることがあります</li>
+            <li><strong>観光や移動での使い方</strong>：カメラやスマートフォンでの撮影、電車やバスのつり革につかまる時間が長い日なども、腕や手を使う場面が積み重なります</li>
+            <li><strong>冷えや気温</strong>：手や指先は冷気に触れやすく、冷房の効いた室内や冬の外出では冷えとともにこわばりを感じやすくなることがあります</li>
+            <li><strong>睡眠不足や疲れの蓄積</strong>：忙しい日の重なりや、長距離の移動の疲れが背景にあることもあります</li>
+          </ul>
+          <p>
+            東洋医学では、腕や手は「肺経」「大腸経」「心経」「小腸経」といった経絡が巡る場所と関係づけて考えられます。
+            当サロンの<a href="#concerns">お悩み別ガイド</a>でも、腕を含めた全身の施術でのアプローチをご紹介していますので、あわせてご覧ください。
+            肩や首のこり感も気になる方は<a href="#article-shoulder" data-route="article-shoulder">肩と首のこり感の記事</a>、目の疲れ感も気になる方は<a href="#article-eyes" data-route="article-eyes">目の疲れ感の記事</a>、手足の冷えが気になる方は<a href="#article-cold" data-route="article-cold">冷えの記事</a>も参考にしてみてください。
+          </p>
+
+          <h2>無理のないセルフケア</h2>
+          <p>腕や手を使う日の合間や、その日の終わりに取り入れやすい対処をまとめました。痛みが強いときは無理をせず、痛みのない範囲で行ってください。</p>
+          <ul>
+            <li><strong>腕と手を休ませる区切りをつくる</strong>：荷物を置く、端末を置いて両手を下ろすなど、使い続けない時間を意識してはさむ</li>
+            <li><strong>手指をゆっくり開く・閉じる</strong>：指を大きく開く動きと、軽く握る動きをゆっくり繰り返す。座ったままでもできる小さな動きから</li>
+            <li><strong>手首と肘を小さく動かす</strong>：手首をゆっくり回す、肘を曲げ伸ばしするなど、動かせる範囲で小さく動かしてみてください</li>
+            <li><strong>前腕をやさしく押す</strong>：反対側の手の親指で、前腕をひじ側から手首側へゆっくり押していく。痛みのない範囲の力加減で</li>
+            <li><strong>腕や手を温める</strong>：手を温かい湯につける、温めたタオルを手や前腕に当てる、冷房の強い日は長袖や手首まで覆う服装を選ぶなど</li>
+            <li><strong>荷物の持ち方を見直す</strong>：左右で持ち替える、両肩で背負えるリュックにする、重い買い物は小分けにして運ぶなど、片側への負担が続かない工夫を</li>
+            <li><strong>休む時間と睡眠をとる</strong>：腕や手をよく使った日は体力も使っています。夜に予定を詰め込まず、体全体を休ませる時間を優先することも大切です</li>
+            <li><strong>強いマッサージや無理なストレッチは避ける</strong>：痛みが出たり、あざができたりするような強い刺激は中止し、様子を見てください</li>
+          </ul>
+          <p>
+            京都の街歩きでは、買い物で荷物が増えていくことも多くあります。帰り道の負担を考えて、荷物は早めに預ける、配送を利用するといった工夫も、
+            腕や手の疲れを重ねないための選択肢になります。
+          </p>
+
+          <h2>こんなときは医療機関へ</h2>
+          <p>腕・手の疲れの多くはその日の使い方と関係しますが、中には医療機関での確認が必要な場合もあります。次のような場合は、整形外科や内科など医療機関への受診をご検討ください。</p>
+          <ul>
+            <li>しびれがある、感覚が鈍いと感じる、左右で感じ方が違う</li>
+            <li>指が動かしにくい、物をつかみにくい・落としやすい、力が入りにくい</li>
+            <li>手首や肘、指の関節など、特定の場所に強い痛みや腫れがある</li>
+            <li>数日たっても疲れや痛みが続く、繰り返す、少しずつ強くなってきた</li>
+            <li>けがや転んだあとから痛みや腫れが出てきた</li>
+            <li>朝起きたときの手指のこわばりが長く続く</li>
+          </ul>
+          <p>
+            当サロンは医療機関ではなく、施術はリラクゼーションと美容を目的としたものです。診断や治療は行いませんので、
+            気になる症状がある場合はまず医療機関へご相談ください。
+          </p>
+
+          <div class="salon-box">
+            <h2>サロンのご案内 — ステラアルタイル（京都）</h2>
+            <p>
+              ステラアルタイルは、阪急 京都河原町駅・京阪 祇園四条駅からアクセスできる、京都市内の女性専用プライベートサロンです
+              （詳しい住所は、ご予約が確定した方にご案内しています）。
+              施術は、オイルマッサージと美容整体を組み合わせた構成で、腕や手も含めて全身をケアします。最初にカウンセリングでお体の状態やお悩みをうかがいながら進めます。圧の強さも都度調整します。
+              夕方17時からの営業のため、観光やお買い物のあとの時間にもご利用いただけます。
+            </p>
+            <p>
+              基本コースは90分・10,000円（税込）です。営業時間は月曜〜土曜の17:00〜22:00（日曜休み）、完全予約制で営業しています。
+              なお、現在は近日開院予定のため、ご予約の受付はまだ開始していません。受付開始はサイトでご案内します。
+            </p>
+            <div class="links">
+              <a href="#menu">施術メニューを見る</a>
+              <a href="#concerns">お悩み別ガイドを見る</a>
+              <a href="#price">料金・営業時間を見る</a>
+              <a href="#access">アクセスを見る</a>
+            </div>
+            <p style="margin-top:18px"><a class="btn btn-gold" href="#reserve">ご予約のご案内</a></p>
+          </div>
+        </div>
+        <a class="back-home bottom" href="#column" data-route="home">&larr; コラム一覧へ戻る</a>
+      </div>
+      </section>
+    </div>
+
     <footer class="site">
       <div class="wrap">
         <div>
@@ -3683,6 +3998,8 @@
         'col12.tag':'Menopause & Its Fluctuations','col12.h':'Menopause Fluctuations in Kyoto','col12.p':'Your face suddenly feels hot, you wake in the night sweating, falling asleep takes longer than it used to. The changes often felt around menopause in the late forties and fifties, possible factors behind them, gentle self-care, and when to see a doctor.',
         'col13.tag':'Abdominal Bloating & Constipation','col13.h':'Abdominal Bloating and Constipation in Kyoto','col13.p':'Your abdomen feels swollen or tight after meals, or you have not felt properly relieved for days. Possible factors behind abdominal bloating and constipation, gentle self-care, and when to see a doctor.',
         'col14.tag':'Back Tension','col14.h':'Back Tension in Kyoto','col14.p':'By evening your back feels tight, the area inside your shoulder blades feels heavy, and straightening your back feels hard. Possible factors behind back tension, self-care to build into daily life, and when to see a doctor.',
+        'col15.tag':'Tired Feet After Walking','col15.h':'Tired Feet After Walking in Kyoto','col15.p':'After a day walking temples and old streets, your soles feel heavy and your calves feel tight, and every step feels like work. Possible factors behind tired feet after walking, gentle self-care, and when to see a doctor.',
+        'col16.tag':'Tired Arms & Hands','col16.h':'Tired Arms and Hands in Kyoto','col16.p':'After a day carrying shopping bags or long hours on a phone or computer, your arms feel heavy by evening and your hands feel weak. Possible factors behind tired arms and hands, gentle self-care, and when to see a doctor.',
         'new.h':'New Books & Goods','new.intro':'Books that support self-care and learning about East Asian medicine and aromatherapy, plus goods that fit easily into everyday care — listed in the order we added them to this page. This time we have gathered hakka (Japanese mint) items, a scent that often comes up in consultations. (Updated 30 Oct 2026)','new.pr':'* The book and product links in this corner include affiliate links (PR).','new.cat.book':'Book','new.cat.goods':'Goods','new.date':'Added 2026.10.30','new.search':'Search on Amazon →','new.view':'View on Amazon →',
         'new.b1h':'Aromatherapy Kentei Official Textbook','new.b1by':'Aroma Environment Association of Japan (AEAJ)','new.b1p':'The official textbook for Japan’s Aromatherapy Kentei certification. Essential-oil profiles, fragrance fundamentals, and the basics of use are organised systematically — useful both for reviewing the oils used at the salon and as an introduction for first-time learners.',
         'new.b2h':'Anatomy Trains','new.b2by':'Thomas W. Myers / Igaku-Shoin','new.b2p':'A book explaining how the body’s fascia connects in “lines”. It underpins how we read the body’s connectedness in beauty seitai, and is useful reading for anyone interested in posture and how they use their body.',
@@ -3738,7 +4055,9 @@
         '#article-eyes': { title: 'Eye Strain After Sightseeing in Kyoto | Stella Altair', desc: 'For those who notice a tired-eye feeling after sightseeing in Kyoto: a general explanation, possible factors organised without overstatement, gentle self-care, when to see a doctor, and an introduction to Stella Altair, a women-only private salon.' },
         '#article-menopause': { title: 'Menopause Fluctuations in Kyoto | Stella Altair', desc: 'For those who notice the fluctuations of menopause in Kyoto — hot flushes, changes in sleep, and other changes often felt in the late forties and fifties: a general explanation, possible factors organised without overstatement, gentle self-care, when to see a doctor, and an introduction to Stella Altair, a women-only private salon.' },
         '#article-bloating': { title: 'Abdominal Bloating and Constipation in Kyoto | Stella Altair', desc: 'For those who notice abdominal bloating or constipation in Kyoto: a general explanation, possible factors organised without overstatement, gentle self-care, when to see a doctor, and an introduction to Stella Altair, a women-only private salon.' },
-        '#article-back': { title: 'Back Tension in Kyoto | Stella Altair', desc: 'For those who notice back tension in Kyoto: a general explanation, possible factors organised without overstatement, gentle self-care to build into daily life, when to see a doctor, and an introduction to Stella Altair, a women-only private salon.' }
+        '#article-back': { title: 'Back Tension in Kyoto | Stella Altair', desc: 'For those who notice back tension in Kyoto: a general explanation, possible factors organised without overstatement, gentle self-care to build into daily life, when to see a doctor, and an introduction to Stella Altair, a women-only private salon.' },
+        '#article-feet': { title: 'Tired Feet After Walking in Kyoto | Stella Altair', desc: 'For those who notice tired feet after walking in Kyoto: a general explanation of the tired feeling in the soles and calves, possible factors organised without overstatement, gentle self-care, when to see a doctor, and an introduction to Stella Altair, a women-only private salon.' },
+        '#article-arms': { title: 'Tired Arms and Hands in Kyoto | Stella Altair', desc: 'For those who notice tired arms and hands in Kyoto: a general explanation of the heavy, tight feeling from the arms to the fingers, possible factors organised without overstatement, gentle self-care, when to see a doctor, and an introduction to Stella Altair, a women-only private salon.' }
       };
       function applyTitle() {
         var title = homeTitle, desc = homeDesc;
@@ -3814,6 +4133,8 @@
       var pageArticleMenopause = document.getElementById('pageArticleMenopause');
       var pageArticleBloating = document.getElementById('pageArticleBloating');
       var pageArticleBack = document.getElementById('pageArticleBack');
+      var pageArticleFeet = document.getElementById('pageArticleFeet');
+      var pageArticleArms = document.getElementById('pageArticleArms');
       var homeTitle = document.title;
       var metaDesc = document.querySelector('meta[name="description"]');
       var homeDesc = metaDesc ? metaDesc.getAttribute('content') : '';
@@ -3832,7 +4153,9 @@
         '#article-eyes': { el: pageArticleEyes, title: '京都で観光の後に気になる目の疲れ感｜要因の整理とセルフケア、受診の目安｜ステラアルタイル（京都）', desc: '京都で観光や街歩きをした後に、目の疲れ感が気になる方へ。目の疲れ感の一般的な解説と、観光の後に考えられる要因の整理、無理のないセルフケア、医療機関への受診の目安、女性専用プライベートサロン「ステラアルタイル」のご案内です。' },
         '#article-menopause': { el: pageArticleMenopause, title: '京都で気になる更年期のゆらぎ｜感じやすい変化とセルフケア、受診の目安｜ステラアルタイル（京都）', desc: '京都で、40代後半から50代にかけて感じやすい更年期のゆらぎが気になる方へ。ほてりや寝つきの変化など感じやすい変化の一般的な解説と、考えられる要因の整理、無理のないセルフケア、医療機関への受診の目安、女性専用プライベートサロン「ステラアルタイル」のご案内です。' },
         '#article-bloating': { el: pageArticleBloating, title: '京都で気になるお腹の張り感と便秘｜要因の整理とセルフケア、受診の目安｜ステラアルタイル（京都）', desc: '京都でお腹の張り感や便秘が気になる方へ。お腹の張り感と便秘の一般的な解説と、考えられる要因の整理、無理のないセルフケア、医療機関への受診の目安、女性専用プライベートサロン「ステラアルタイル」のご案内です。' },
-        '#article-back': { el: pageArticleBack, title: '京都で気になる背中の張り｜要因の整理とセルフケア、受診の目安｜ステラアルタイル（京都）', desc: '京都で背中の張りが気になる方へ。背中の張りの一般的な解説と、考えられる要因の整理、日常で取り入れられるセルフケア、医療機関への受診の目安、女性専用プライベートサロン「ステラアルタイル」のご案内です。' }
+        '#article-back': { el: pageArticleBack, title: '京都で気になる背中の張り｜要因の整理とセルフケア、受診の目安｜ステラアルタイル（京都）', desc: '京都で背中の張りが気になる方へ。背中の張りの一般的な解説と、考えられる要因の整理、日常で取り入れられるセルフケア、医療機関への受診の目安、女性専用プライベートサロン「ステラアルタイル」のご案内です。' },
+        '#article-feet': { el: pageArticleFeet, title: '京都で歩いた後に気になる足の疲れ｜要因の整理とセルフケア、受診の目安｜ステラアルタイル（京都）', desc: '京都で観光や街歩きをした後に、足の疲れが気になる方へ。足裏やふくらはぎに感じる疲れ感の一般的な解説と、歩いた後に考えられる要因の整理、無理のないセルフケア、医療機関への受診の目安、女性専用プライベートサロン「ステラアルタイル」のご案内です。' },
+        '#article-arms': { el: pageArticleArms, title: '京都で気になる腕・手の疲れ｜要因の整理とセルフケア、受診の目安｜ステラアルタイル（京都）', desc: '京都で腕や手の疲れが気になる方へ。腕から手指にかけて感じるだるさや張り感の一般的な解説と、考えられる要因の整理、無理のないセルフケア、医療機関への受診の目安、女性専用プライベートサロン「ステラアルタイル」のご案内です。' }
       };
       subPages['#apply'] = subPages['#recruit'];
       var currentSub = null;
@@ -3859,6 +4182,8 @@
         pageArticleMenopause.hidden = true;
         pageArticleBloating.hidden = true;
         pageArticleBack.hidden = true;
+        pageArticleFeet.hidden = true;
+        pageArticleArms.hidden = true;
       }
       function showSub(hash) {
         var p = subPages[hash];
