@@ -35,7 +35,7 @@ dmg: {arm:0, leg:0, core:0, head:0},
 students: [], met: [], affection: {}, romanceEv: {}, partner: null,
 flags: {}, record: {fouls:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0},
 seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {},
-chapter1Clear: false, startedAt: Date.now(),
+chapter1Clear: false, chapter2Clear: false, startedAt: Date.now(),
 };
 }
 function fameTotal(){ return S.sei + S.aku;}
@@ -143,7 +143,7 @@ function startScene(steps, onDone){
   sceneAdvance();
 }
 function startSceneById(id){
-  const sc = STORY_CH1[id];
+  const sc = STORY_CH1[id] || (typeof STORY_CH2 !== "undefined" ? STORY_CH2[id] : null);
   if (!sc){ goWeek(); return; }
   startScene(sc.steps);
 }
@@ -160,6 +160,10 @@ function sceneAdvance(){
     if (st.jump){ startSceneById(st.jump); return; }
     if (st.week){ finishScene(); return; }
     if (st.endChapter){ chapterEndScreen(); return; }
+    if (st.endChapter2){ chapter2EndScreen(); return; }
+    if (st.ch2skip){ __ch2Skip(); return; }
+    if (st.warWin){ dojoWarResult(true); continue; }
+    if (st.warLose){ dojoWarResult(false); continue; }
     if (st.t !== undefined){ renderSay(st); return; }
     if (st.choice){ renderChoice(st); return; }
     if (st.battle){ startBattle(st.battle, st.win || [], st.lose || []); return; }
@@ -220,7 +224,8 @@ const BEATS = [
 ];
 function goWeek(){
   UI.screen = "week"; UI.portrait = null;
-  const beat = BEATS.find(b => b.week === S.absWeek && !S.beatsDone[b.week + ":" + b.id]);
+  const allBeats = (typeof BEATS_CH2 !== "undefined") ? BEATS.concat(BEATS_CH2) : BEATS;
+  const beat = allBeats.find(b => b.week === S.absWeek && !S.beatsDone[b.week + ":" + b.id]);
   if (beat){ S.beatsDone[beat.week + ":" + beat.id] = true; startSceneById(beat.id); return; }
   renderWeek();
 }
@@ -272,8 +277,14 @@ function endWeek(){
     if (S.absWeek % 4 === 0){
       const tuition = S.students.length * TUITION;
       if (tuition > 0){ S.money += tuition; toast("月謝 +" + tuition.toLocaleString() + "円（生徒" + S.students.length + "人）"); }
-      S.money -= MONTHLY_BILLS;
-      toast("月末の請求書 -" + MONTHLY_BILLS.toLocaleString() + "円（家賃・生活費）", S.money < 0);
+      // 第2章以降は道場賃料と生徒の用具代が加わる（支出の山）
+      const dojoRent = S.chapter >= 2 ? 48000 : 0;
+      const gearCost = S.chapter >= 2 ? S.students.length * 1500 : 0;
+      const onoCost = (S.chapter >= 2 && S.flags.onoPlan) ? 12000 : 0;
+      const bills = MONTHLY_BILLS + dojoRent + gearCost + onoCost;
+      S.money -= bills;
+      toast("月末の請求書 -" + bills.toLocaleString() + "円（家賃・生活費" + (S.chapter >= 2 ? "・道場賃料・用具代" + (onoCost ? "・食の契約" : "") : "") + "）", S.money < 0);
+      if (onoCost) S.fatigue = clamp(S.fatigue - 10, 0, 100); // 大野の定食で回復が良い
       if (S.money < 0) toast("所持金が底をついた……バイトで凌ぐしかない", true);
       if (S.money < -30000 && !S.flags.tamuraHelp){
         S.flags.tamuraHelp = true; S.money += 20000;
@@ -405,6 +416,7 @@ function mentorFor(style){
   if (!style) return null;
   if (style.name === "詠春拳") return {id:"chen", type:"厳格", note:"悪名のある者を門前払いする"};
   if (style.name === "空道（大道塾）") return {id:"onizuka", type:"実力主義", note:"評判は見ない。腕だけを見る"};
+  if (style.name === "サンボ（スポーツサンボ）") return {id:"anna", type:"実力主義", note:"評判は見ない。戦績と腕だけを見る"};
   if (style.cat === "日本の空手系") return {id:"todo", type:"寛容", note:"多少の悪名は笑って許す"};
   if (style.cat === "特殊・話題枠" || style.name === "クラヴマガ" || style.name === "システマ") return {id:"kurozaki", type:"無法歓迎", note:"悪名の高い者を歓迎する"};
   return null;
@@ -535,8 +547,14 @@ function startBattle(id, winSteps, loseSteps){
   UI.screen = "battle";
   const eStyle = def.enemyStyleName ? styleByName(def.enemyStyleName) : mainStyle();
   const maxPhp = Math.round((55 + S.stats.endure * 6 + styleLv(S.mainStyle) * 2) * (1 - S.fatigue / 250) - S.dmg.core * 4);
+  // 複合技（Lv7・設計書2.2）: 主・流儀Lv7以上＋副・流儀Lv5以上で解放
+  let comboStyle = null;
+  if (styleLv(S.mainStyle) >= 7){
+    for (const id in S.styleLv){ const sid = Number(id); if (sid !== S.mainStyle && S.styleLv[id] >= 5){ const cand = styleById(sid); if (cand && (!comboStyle || S.styleLv[id] > S.styleLv[comboStyle.id])) comboStyle = cand; } }
+  }
   UI.battle = { def, eStyle, php: Math.max(20, maxPhp), maxPhp: Math.max(20, maxPhp), ehp: def.hp, turn: 0, dealt: 0,
     log: [], cmtIdx: 0, foulUsed: false, sigUsed: false, readBonus: 0, control: 0, readGuard: false, secondUsed: false,
+    comboStyle, comboUsed: false,
     winSteps, loseSteps };
   bLog("実況", def.title + "――開始！");
   renderBattle();
@@ -568,6 +586,7 @@ function renderBattle(){
     ["recover", "息を整える", "体力を少し回復"],
   ];
   if (lv >= 5 && !b.sigUsed) acts.push(["sig", "看板技：" + sigName(), "1試合に1回"]);
+  if (b.comboStyle && !b.comboUsed) acts.push(["combo", "複合技：" + mainStyle().name.replace(/（[^）]*）/g, "") + "×" + b.comboStyle.name.replace(/（[^）]*）/g, ""), "主・流儀Lv7＋副・流儀Lv5で解放。1試合に1回"]);
   if (def.foul && !b.foulUsed) acts.push(["foul", "反則・眼突き", "勝てるが、評判を落とす諸刃"]);
   const enemyImg = def.img ? '<div class="portrait"><img src="../cast-art/cast-' + def.img + '-sera.webp" alt=""></div>' : "";
   $("main").innerHTML = '<div class="battle"><div class="vs">' +
@@ -590,6 +609,7 @@ function battleTurn(act){
   else if (act === "read"){ b.readBonus = 4 + Math.round(S.stats.read); b.readGuard = true; bLog("実況", "相手の癖を読む……次の手が冴える！"); }
   else if (act === "recover"){ b.php = Math.min(b.maxPhp, b.php + 9); bLog("実況", "息を整え、軸を立て直す"); }
   else if (act === "sig"){ dmg = 13 + Math.max(S.stats.strike, S.stats.kick, S.stats.grapple, S.stats.ground) * 3 + rnd(4); b.sigUsed = true; bLog("実況", sigName() + "――会場の空気が変わった！"); }
+  else if (act === "combo" && b.comboStyle){ dmg = 16 + styleLv(b.comboStyle.id) * 3 + rnd(4); b.comboUsed = true; bLog("実況", "複合技――" + mainStyle().name.replace(/（[^）]*）/g, "") + "の入り方から" + b.comboStyle.name.replace(/（[^）]*）/g, "") + "へ繋いだ！ 誰も見たことのない形だ！"); }
   else if (act === "foul"){
     dmg = 16 + rnd(4); b.foulUsed = true; S.record.fouls++;
     bLog("実況", "……今のは？ 指が目に――際どい攻防だ");
@@ -659,7 +679,7 @@ function hud(){
   const h = $("hud"); if (!h || !S) return;
   h.classList.remove("hidden");
   $("hud-age").textContent = S.age + "歳";
-  $("hud-chapter").textContent = "第1章 青年期";
+  $("hud-chapter").textContent = S.chapter === 2 ? "第2章 全盛前夜" : "第1章 青年期";
   $("hud-fame").textContent = fameTotal() + "（" + fameRank() + "）";
   $("hud-sei").textContent = S.sei;
   $("hud-aku").textContent = S.aku;
@@ -677,10 +697,13 @@ function chapterEndScreen(){
   $("main").innerHTML = '<div class="endcard"><h2>第1章 青年期 ―完―</h2>' +
     '<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 反則 " + r.fouls + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝</div>" +
     '<div class="stext">名声 ' + fameTotal() + "（" + fameRank() + "）／ 清名" + S.sei + "・悪名" + S.aku + " ／ 道場生 " + S.students.length + "人 ／ " + (mainStyle() ? mainStyle().name : "") + " Lv" + styleLv(S.mainStyle) + " ／ 純粋度 " + purity() + "%" + (S.partner ? " ／ 想い人：" + CAST_BY_ID[S.partner].name : "") + "</div>" +
-    '<div class="stext">【第2章予告】全盛前夜（23〜29歳）。本戦への挑戦、道場の独立、新しい世代の強者たち、そして師匠たちの門。このセーブデータは第2章へ引き継げます（次回制作）。</div>' +
-    '<button class="btn next" data-auto="to-title">タイトルへ戻る</button></div>';
+    '<div class="stext">【第2章予告】全盛前夜（23〜29歳）。本戦への挑戦、道場の独立、新しい世代の強者たち、そして師匠たちの門。</div>' +
+    (typeof startChapter2 === "function" ? '<button class="btn next" data-auto="to-ch2">第2章へ進む（23歳〜）</button>' : "") +
+    '<button class="btn" data-auto="to-title">タイトルへ戻る</button></div>';
   saveGame(false);
   $("main").querySelector("[data-auto='to-title']").addEventListener("click", renderTitle);
+  const ch2btn = $("main").querySelector("[data-auto='to-ch2']");
+  if (ch2btn) ch2btn.addEventListener("click", () => startChapter2());
 }
 function renderTitle(){
   UI.screen = "title";
@@ -689,10 +712,16 @@ function renderTitle(){
     '<p class="tagline">どの武術が一番強いのか――その論争に、人生で答える。</p>' +
     '<button class="btn next" data-auto="new">はじめから</button>' +
     (hasSave() ? '<button class="btn" data-auto="continue">つづきから</button>' : "") +
-    '<p class="note">第1章：青年期（19〜22歳）</p></div>';
+    '<p class="note">第1章：青年期（19〜22歳）／第2章：全盛前夜（23〜29歳）</p></div>';
   $("main").querySelector("[data-auto='new']").addEventListener("click", renderStyleSelect);
   const c = $("main").querySelector("[data-auto='continue']");
-  if (c) c.addEventListener("click", () => { if (loadGame()){ if (S.chapter1Clear) chapterEndScreen(); else goWeek(); } });
+  if (c) c.addEventListener("click", () => { if (loadGame()) resumeFromSave(); });
+}
+function resumeFromSave(){
+  if (S.chapter2Clear && typeof chapter2EndScreen === "function") chapter2EndScreen();
+  else if (S.chapter === 2) goWeek();
+  else if (S.chapter1Clear) chapterEndScreen();
+  else goWeek();
 }
 function renderStyleSelect(){
   hud();
@@ -731,7 +760,7 @@ function renderDex(){
 
 // ---------- ナビ・起動 ----------
 $("btn-save").addEventListener("click", () => { if (S) saveGame(true); });
-$("btn-load").addEventListener("click", () => { if (loadGame()){ toast("ロードしました"); if (S.chapter1Clear) chapterEndScreen(); else goWeek(); } else toast("セーブデータがありません", true); });
+$("btn-load").addEventListener("click", () => { if (loadGame()){ toast("ロードしました"); resumeFromSave(); } else toast("セーブデータがありません", true); });
 $("btn-title").addEventListener("click", renderTitle);
 if (new URLSearchParams(location.search).has("autotest")) { /* game.js 末尾の自動テストが処理 */ }
 renderTitle();
@@ -743,13 +772,15 @@ renderTitle();
   _rng = mulberry32(Number(q.get("seed") || 42));
   const wantStyle = q.get("style") || "糸東流";
   const useFoul = q.get("foul") === "1";
+  const ch2test = q.has("ch2test");
+  const CLICK_LIMIT = ch2test ? 80000 : 20000;
   let clicks = 0, cycle = 0;
   const finish = (ok, why) => {
     clearInterval(timer);
-    const res = { ok, why: why || "", screen: UI.screen, absWeek: S ? S.absWeek : 0, age: S ? S.age : 0,
+    const res = { ok, why: why || "", screen: UI.screen, absWeek: S ? S.absWeek : 0, age: S ? S.age : 0, chapter: S ? S.chapter : 0,
       fame: S ? fameTotal() : 0, sei: S ? S.sei : 0, aku: S ? S.aku : 0, students: S ? S.students.length : 0,
       mainLv: S ? styleLv(S.mainStyle) : 0, money: S ? S.money : 0, partner: S ? S.partner : null,
-      chapter1Clear: S ? S.chapter1Clear : false, record: S ? S.record : null, clicks, errors: window.__errors };
+      chapter1Clear: S ? S.chapter1Clear : false, chapter2Clear: S ? !!S.chapter2Clear : false, record: S ? S.record : null, clicks, errors: window.__errors };
     const d = document.createElement("div"); d.id = "autotest-result";
     d.textContent = "AUTOTEST_RESULT " + JSON.stringify(res);
     document.body.appendChild(d);
@@ -757,8 +788,15 @@ renderTitle();
   const timer = setInterval(() => {
     try {
       clicks++;
-      if (clicks > 20000) return finish(false, "ステップ上限到達");
-      if (UI.screen === "end") return finish(true);
+      if (clicks > CLICK_LIMIT) return finish(false, "ステップ上限到達");
+      if (UI.screen === "end"){
+        if (ch2test && S && !S.chapter2Clear){
+          const b2 = $("main").querySelector("[data-auto='to-ch2']");
+          if (b2){ b2.click(); return; }
+          return finish(false, "第2章へのボタンが見つからない");
+        }
+        return finish(true);
+      }
       const main = $("main"); if (!main) return;
       const styleCards = main.querySelectorAll("[data-style]");
       if (styleCards.length){
@@ -779,6 +817,7 @@ renderTitle();
         if (B && B.php < B.maxPhp * 0.22){ const rc = main.querySelector("[data-bact='recover']"); if (rc){ rc.click(); return; } }
         let sel = null;
         if (useFoul && B && B.def.foul && !B.foulUsed) sel = main.querySelector("[data-bact='foul']");
+        if (!sel) sel = main.querySelector("[data-bact='combo']");
         if (!sel) sel = main.querySelector("[data-bact='sig']");
         if (!sel && B){ const st = mainStyle(); const prim = st.stats.kick >= st.stats.strike && st.stats.kick >= st.stats.grapple && st.stats.kick >= st.stats.ground ? "kick" : st.stats.grapple >= st.stats.ground && st.stats.grapple >= st.stats.strike ? "grapple" : st.stats.ground > st.stats.strike && st.stats.ground > st.stats.kick ? "ground" : "strike"; sel = main.querySelector("[data-bact='" + prim + "']"); }
         if (!sel) sel = main.querySelector("[data-bact='strike']");
