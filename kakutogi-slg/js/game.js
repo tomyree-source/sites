@@ -41,16 +41,18 @@ chapter1Clear: false, chapter2Clear: false, startedAt: Date.now(),
 function fameTotal(){ return S.sei + S.aku;}
 function fameRankIdx(){ const f = fameTotal(); let i = 0; FAME_THRESHOLDS.forEach((t, k) => { if (f >= t) i = k;}); return i;}
 function fameRank(){ return FAME_RANKS[fameRankIdx()];}
+function mainTerms(){ return styleTerms(mainStyle());}
 function nickname(){
-if (!S) return "若き黒帯";
-if (S.record.fouls >= 2) return "眼突きの黒帯";
-if (S.flags.champion) return "予選を制した黒帯";
+const T = mainTerms();
+if (!S) return T.nickYoung;
+if (S.record.fouls >= 2) return T.nickFoul;
+if (S.flags.champion) return T.nickChamp;
 if (S.record.works >= 24) return "バイト戦士";
 const b = S.flags.boukanHow;
 if (b === "voice") return "駅前の声";
-if (b === "help") return "間に立つ初段";
-if (b === "fight") return "一撃の初段";
-return "若き黒帯";
+if (b === "help") return T.nickHelp;
+if (b === "fight") return T.nickFight;
+return T.nickYoung;
 }
 function styleById(id){ return STYLES_DATA.find(s => s.id === id) || null;}
 function styleByName(name){ return STYLES_DATA.find(s => s.name === name) || null;}
@@ -59,9 +61,15 @@ function sigName(){ const st = mainStyle(); return st? st.name.replace(/（[^）
 function fill(t){
 if (typeof t!== "string") return t;
 const st = mainStyle();
+const T = mainTerms();
 return t.replaceAll("{style}", st? st.name: "流派")
 .replaceAll("{sig}", sigName())
 .replaceAll("{nickname}", nickname())
+.replaceAll("{young}", T.nickYoung)
+.replaceAll("{exam}", T.exam)
+.replaceAll("{proof}", T.proof)
+.replaceAll("{rank}", T.rank)
+.replaceAll("{who}", T.who)
 .replaceAll("{age}", S? S.age: 19)
 .replaceAll("{years}", S? (S.age - 19): 0);
 }
@@ -726,7 +734,7 @@ function resumeFromSave(){
 function renderStyleSelect(){
   hud();
   const cards = STYLES_DATA.map(s => '<button class="btn choice stylecard" data-style="' + s.id + '"><b>' + esc(s.name) + '</b><span>' + esc(s.cat) + "／得意距離：" + s.dist.join("・") + "<br>" + esc(s.feature) + "</span></button>").join("");
-  $("main").innerHTML = '<div class="weekhead"><h2>主・流儀を選ぶ</h2><div class="weeksub">子供の頃から習い、19歳で初段相当（Lv2）に達した流派。全153流派から選べます（知名度順）。他流派は後からいつでも学べます</div></div>' +
+  $("main").innerHTML = '<div class="weekhead"><h2>主・流儀を選ぶ</h2><div class="weeksub">子供の頃から習い、19歳で一人前の入り口（Lv2）に達した流派。全153流派から選べます（知名度順）。他流派は後からいつでも学べます</div></div>' +
     '<input id="style-search2" type="text" placeholder="流派名で検索" style="width:100%;padding:10px;margin-bottom:10px;">' +
     '<div class="styles">' + cards + "</div>";
   $("style-search2").addEventListener("input", e => {
