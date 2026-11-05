@@ -33,10 +33,26 @@ mainStyle: null, styleLv: {}, styleExp: {},
 expMainTotal: 0, expTotal: 0,
 dmg: {arm:0, leg:0, core:0, head:0},
 students: [], met: [], affection: {}, romanceEv: {}, partner: null,
-flags: {}, record: {fouls:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0},
-seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {},
-chapter1Clear: false, chapter2Clear: false, startedAt: Date.now(),
+flags: {}, record: {fouls:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0},
+seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {}, seenEvents: {},
+chapter1Clear: false, chapter2Clear: false, chapter3Clear: false, startedAt: Date.now(),
 };
+}
+function ensureStateCompat(){
+  if (!S) return;
+  if (!S.flags || typeof S.flags !== "object") S.flags = {};
+  if (!S.record || typeof S.record !== "object") S.record = {fouls:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0};
+  if (S.record.winStreak == null) S.record.winStreak = 0;
+  if (S.record.bestWinStreak == null) S.record.bestWinStreak = S.record.winStreak || 0;
+  if (!S.seenEvents || typeof S.seenEvents !== "object") S.seenEvents = {};
+  if (!S.beatsDone || typeof S.beatsDone !== "object") S.beatsDone = {};
+  if (!Array.isArray(S.students)) S.students = [];
+  if (!Array.isArray(S.met)) S.met = [];
+  if (!S.dmg) S.dmg = {arm:0, leg:0, core:0, head:0};
+  if (!S.affection) S.affection = {};
+  if (!S.styleLv) S.styleLv = {};
+  if (!S.styleExp) S.styleExp = {};
+  if (S.chapter3Clear == null) S.chapter3Clear = false;
 }
 function fameTotal(){ return S.sei + S.aku;}
 function fameRankIdx(){ const f = fameTotal(); let i = 0; FAME_THRESHOLDS.forEach((t, k) => { if (f >= t) i = k;}); return i;}
@@ -111,6 +127,12 @@ if (fx.expMain && S.mainStyle!= null){ gainStyleExp(S.mainStyle, fx.expMain, not
 if (fx.stat){ for (const k in fx.stat){ S.stats[k] = Math.round((S.stats[k] + fx.stat[k]) * 10) / 10;}}
 if (fx.dmg){ for (const p in fx.dmg){ S.dmg[p] = clamp(S.dmg[p] + fx.dmg[p], 0, 3); if (fx.dmg[p] > 0) notes.push("部位ダメージ：" + ({arm:"腕", leg:"脚", core:"体幹", head:"頭"})[p] + " が悪化した"); if (fx.dmg[p] < 0) notes.push("部位ダメージが回復した");}}
 if (fx.flags){ Object.assign(S.flags, fx.flags);}
+if (fx.douhan){ S.flags.douhanScore = (S.flags.douhanScore || 0) + fx.douhan; notes.push(fx.douhan > 0 ? "ユイの評価が上がった" : fx.douhan < 0 ? "ユイの評価が下がった" : "ユイの評価は変わらなかった");}
+if (fx.dopeUse){ S.flags.dopeUsed = (S.flags.dopeUsed || 0) + 1; S.flags.dopeUntilWeek = S.absWeek + 8; notes.push("短期的な強化を得た（検査・告発・疑惑のリスクを背負う)");}
+if (fx.dopeSuspect){ S.flags.dopeSuspect = Math.max(0, (S.flags.dopeSuspect || 0) + fx.dopeSuspect); if (fx.dopeSuspect > 0) notes.push("ドーピング疑惑が強まった"); else if (fx.dopeSuspect < 0) notes.push("ドーピング疑惑が弱まった");}
+if (fx.oldWound){ if (!S.flags.oldWounds || typeof S.flags.oldWounds !== "object") S.flags.oldWounds = {}; for (const p in fx.oldWound){ S.flags.oldWounds[p] = fx.oldWound[p]; notes.push("古傷として残った部位がある");}}
+if (fx.studentTrust){ for (const stu of S.students){ stu.trust = clamp((stu.trust || 50) + fx.studentTrust, 0, 100);} if (S.students.length) notes.push(fx.studentTrust > 0 ? "生徒たちの信頼が上がった" : "生徒たちの信頼が下がった");}
+if (fx.studentSkill){ for (const stu of S.students){ stu.skill = clamp((stu.skill || 1) + fx.studentSkill, 1, 10);} if (S.students.length) notes.push("生徒たちの上達度が上がった");}
 if (fx.meet){ for (const id of fx.meet){ if (!S.met.includes(id)) S.met.push(id);}}
 if (fx.affection){ for (const id in fx.affection){ S.affection[id] = clamp((S.affection[id] || 0) + fx.affection[id], 0, 100); notes.push(CAST_BY_ID[id].name + " の好感度が上がった");}}
 if (fx.record){ for (const k in fx.record){ S.record[k] = (S.record[k] || 0) + fx.record[k];}}
@@ -137,7 +159,7 @@ try { localStorage.setItem(SAVE_KEY, JSON.stringify({v:1, savedAt: Date.now(), s
 catch(e){ if (manual) toast("セーブに失敗しました", true); return false;}
 }
 function loadGame(){
-try { const raw = localStorage.getItem(SAVE_KEY); if (!raw) return false; const d = JSON.parse(raw); S = d.state; return true;}
+try { const raw = localStorage.getItem(SAVE_KEY); if (!raw) return false; const d = JSON.parse(raw); S = d.state; ensureStateCompat(); return true;}
 catch(e){ return false;}
 }
 function hasSave(){ try { return!!localStorage.getItem(SAVE_KEY);} catch(e){ return false;}}
@@ -151,9 +173,31 @@ function startScene(steps, onDone){
   sceneAdvance();
 }
 function startSceneById(id){
-  const sc = STORY_CH1[id] || (typeof STORY_CH2 !== "undefined" ? STORY_CH2[id] : null);
+  const sc = STORY_CH1[id] || (typeof STORY_CH2 !== "undefined" ? STORY_CH2[id] : null) || (typeof STORY_CH3 !== "undefined" ? STORY_CH3[id] : null);
   if (!sc){ goWeek(); return; }
   startScene(sc.steps);
+}
+// ドーピング検査の結果発表（第3章）。使用の有無で分岐する
+function dopeVerdictLines(){
+  if ((S.flags.dopeUsed || 0) > 0){
+    if (!S.flags.dopeVerdictDone){
+      S.flags.dopeVerdictDone = true;
+      return [
+        {sp:"narr", t:"結果は、白石遥の手で公表された。陽性――セルゲイの『ケア』の痕跡が、検出された。"},
+        {img:"shiraishi"},
+        {sp:"shiraishi", t:"……残念です。あなたの体は守れても、信頼は、私にも守りきれません"},
+        {sp:"narr", t:"資格停止の処分と、大きな批判が押し寄せた。積み上げてきた清らかな看板の色は、深く傷ついた。"},
+        {fx:{aku:3, sei:-2, attention:3, flags:{dopeExposed:true}}},
+      ];
+    }
+    return [{sp:"narr", t:"検査の結果は既に公表済みだ。疑惑と処分の影は、まだ完全には晴れていない。"}];
+  }
+  return [
+    {sp:"narr", t:"結果は、白石遥の手で公表された。陰性。疑惑は、数字で晴れた。"},
+    {img:"shiraishi"},
+    {sp:"shiraishi", t:"あなたの体は、正直でした。……疑われた分だけ、潔白の重みが増しましたね"},
+    {fx:{sei:2}},
+  ];
 }
 function sceneAdvance(){
   while (UI.queue.length){
@@ -170,6 +214,20 @@ function sceneAdvance(){
     if (st.endChapter){ chapterEndScreen(); return; }
     if (st.endChapter2){ chapter2EndScreen(); return; }
     if (st.ch2skip){ __ch2Skip(); return; }
+    if (st.endChapter3){ chapter3EndScreen(); return; }
+    if (st.endChapter3retire){ retireEndScreen(); return; }
+    if (st.ch3skip){ __ch3Skip(); return; }
+    if (st.warWinK){ dojoWarResultKatori(true); continue; }
+    if (st.warLoseK){ dojoWarResultKatori(false); continue; }
+    if (st.dopeVerdict){ UI.queue = dopeVerdictLines().concat(UI.queue); continue; }
+    if (st.douhanEnd){
+      const score = (S.flags && S.flags.douhanScore) || 0;
+      let lines;
+      if (score >= 4) lines = [{sp:"narr", t:"店を出る頃、ユイが小さく言った。「今日の同伴、すごく楽しかった。……また、誘ってくれる？」作務衣の第一印象から食事の選び方まで、今夜の選択は彼女の中で高く残ったようだ。"},{fx:{sei:1, attention:1}}];
+      else if (score >= 1) lines = [{sp:"narr", t:"店を出る頃、ユイは穏やかに笑った。「今日はありがとう。落ち着く同伴だった」大きな失敗も、大きな爪痕もない。だが、悪くない夜だった。"},{fx:{attention:1}}];
+      else lines = [{sp:"narr", t:"店を出る頃、ユイは少しだけ苦笑した。「今日は……うん、武術家らしい夜だったね」評価は伸びなかった。夜の街の礼儀は、リングとは別の難しさがあった。"}];
+      UI.queue = lines.concat(UI.queue); continue;
+    }
     if (st.warWin){ dojoWarResult(true); continue; }
     if (st.warLose){ dojoWarResult(false); continue; }
     if (st.t !== undefined){ renderSay(st); return; }
@@ -232,7 +290,7 @@ const BEATS = [
 ];
 function goWeek(){
   UI.screen = "week"; UI.portrait = null;
-  const allBeats = (typeof BEATS_CH2 !== "undefined") ? BEATS.concat(BEATS_CH2) : BEATS;
+  const allBeats = BEATS.concat(typeof BEATS_CH2 !== "undefined" ? BEATS_CH2 : [], typeof BEATS_CH3 !== "undefined" ? BEATS_CH3 : []);
   const beat = allBeats.find(b => b.week === S.absWeek && !S.beatsDone[b.week + ":" + b.id]);
   if (beat){ S.beatsDone[beat.week + ":" + beat.id] = true; startSceneById(beat.id); return; }
   renderWeek();
@@ -268,18 +326,76 @@ function afterAction(notes){
   for (const n of (notes || [])) toast(n);
   endWeek();
 }
-function endWeek(){
-  // ランダムイベント
-  let ev = null;
-  if (S.absWeek - S.lastRandomWeek >= 2 && _rng() < 0.22){
-    const cands = RANDOM_EVENTS.filter(e => e.condFatigue == null || S.fatigue >= e.condFatigue);
-    if (cands.length){
-      let tot = 0; for (const c of cands) tot += c.weight;
-      let r = _rng() * tot;
-      for (const c of cands){ r -= c.weight; if (r <= 0){ ev = c; break; } }
-      ev = ev || cands[0];
+function logEventFire(category, e){
+  window.__eventLog = window.__eventLog || [];
+  window.__eventLog.push({category: category, id: e.id, week: S.absWeek, chapter: S.chapter});
+}
+function eventEligible(e){
+  if (e.chapters && !e.chapters.includes(S.chapter)) return false;
+  if (e.minStudents != null && S.students.length < e.minStudents) return false;
+  if (e.minFameRank != null && fameRankIdx() < e.minFameRank) return false;
+  if (e.condFatigue != null && S.fatigue < e.condFatigue) return false;
+  return true;
+}
+function pickWeighted(cands){
+  let tot = 0; for (const c of cands) tot += (c.weight || 1);
+  let r = _rng() * tot;
+  for (const c of cands){ r -= (c.weight || 1); if (r <= 0) return c; }
+  return cands[0];
+}
+// 第3章専用プールの抽選（story-ch3.js の CH3_* プール。共通プールは chapters:[1,2] のため第3章では発火しない）
+function pickCh3Event(){
+  const yw = ((S.absWeek - 1) % WEEKS_PER_YEAR) + 1;
+  const yearIdx = Math.floor((S.absWeek - 1) / WEEKS_PER_YEAR);
+  if (typeof CH3_SEASONAL_EVENTS !== "undefined"){
+    const seasonCount = Object.keys(S.seenEvents).filter(k => k.indexOf("season3:") === 0 && k.endsWith(":" + yearIdx)).length;
+    if (seasonCount < 2){
+      const sc = CH3_SEASONAL_EVENTS.filter(e => eventEligible(e) && yw >= e.window[0] && yw <= e.window[1] && !S.seenEvents["season3:" + e.id + ":" + yearIdx]);
+      if (sc.length && _rng() < 0.55){ const e = sc[rnd(sc.length - 1)]; S.seenEvents["season3:" + e.id + ":" + yearIdx] = S.absWeek; logEventFire("season3", e); return e; }
     }
   }
+  if (S.absWeek - S.lastRandomWeek < 2) return null;
+  if (typeof CH3_STUDENT_DRAMA !== "undefined"){
+    const dc = CH3_STUDENT_DRAMA.filter(e => eventEligible(e) && !S.seenEvents[e.id]);
+    if (dc.length && _rng() < 0.30){ const e = pickWeighted(dc); S.seenEvents[e.id] = S.absWeek; logEventFire("student3", e); return e; }
+  }
+  if (typeof CH3_WEEK_EVENTS !== "undefined"){
+    const vc = CH3_WEEK_EVENTS.filter(e => eventEligible(e) && !S.seenEvents[e.id]);
+    if (vc.length && _rng() < 0.32){ const e = pickWeighted(vc); S.seenEvents[e.id] = S.absWeek; logEventFire(e.category, e); return e; }
+  }
+  return null;
+}
+// 週末イベント抽選（ワンパターン対策・第39/40節）: 季節（年最大2本）→生徒ドラマ→共通プールV2→従来プールの順
+function pickEndWeekEvent(){
+  ensureStateCompat();
+  if (S.chapter === 3){ const e3 = pickCh3Event(); if (e3) return e3; }
+  const yw = ((S.absWeek - 1) % WEEKS_PER_YEAR) + 1;
+  const yearIdx = Math.floor((S.absWeek - 1) / WEEKS_PER_YEAR);
+  if (typeof SEASONAL_EVENTS !== "undefined"){
+    const seasonCount = Object.keys(S.seenEvents).filter(k => k.indexOf("season:") === 0 && k.endsWith(":" + yearIdx)).length;
+    if (seasonCount < 2){
+      const sc = SEASONAL_EVENTS.filter(e => eventEligible(e) && yw >= e.window[0] && yw <= e.window[1] && !S.seenEvents["season:" + e.id + ":" + yearIdx]);
+      if (sc.length && _rng() < 0.55){ const e = sc[rnd(sc.length - 1)]; S.seenEvents["season:" + e.id + ":" + yearIdx] = S.absWeek; logEventFire("season", e); return e; }
+    }
+  }
+  if (S.absWeek - S.lastRandomWeek < 2) return null;
+  if (typeof STUDENT_DRAMA_EVENTS !== "undefined"){
+    const dc = STUDENT_DRAMA_EVENTS.filter(e => eventEligible(e) && !S.seenEvents[e.id]);
+    const dp = S.chapter >= 2 ? 0.30 : 0.16; // 第2章（生徒が育った時期）では出やすく
+    if (dc.length && _rng() < dp){ const e = pickWeighted(dc); S.seenEvents[e.id] = S.absWeek; logEventFire("student", e); return e; }
+  }
+  if (typeof WEEK_EVENTS_V2 !== "undefined"){
+    const vc = WEEK_EVENTS_V2.filter(e => eventEligible(e) && !S.seenEvents[e.id]);
+    if (vc.length && _rng() < 0.30){ const e = pickWeighted(vc); S.seenEvents[e.id] = S.absWeek; logEventFire(e.category, e); return e; }
+  }
+  if (_rng() < 0.22){
+    const cands = RANDOM_EVENTS.filter(e => e.condFatigue == null || S.fatigue >= e.condFatigue);
+    if (cands.length){ const e = pickWeighted(cands); logEventFire("legacy", e); return e; }
+  }
+  return null;
+}
+function endWeek(){
+  const ev = pickEndWeekEvent();
   const proceed = () => {
     // 月末処理
     if (S.absWeek % 4 === 0){
@@ -485,6 +601,7 @@ function trainSub(st, route, mentor){
 }
 // ---------- 口説き ----------
 function prefMatch(c){
+  if (c.id === "shiraishi" && S.flags && (S.flags.dopeUsed || 0) > 0) return false; // 白石遥：ドーピング使用は決定的な減点（設計書3.2）
   if (c.pref === "sei") return S.sei >= S.aku;
   if (c.pref === "aku") return S.aku >= 3;
   if (c.pref === "power") return styleLv(S.mainStyle) >= 4 || S.record.wins >= 3;
@@ -536,7 +653,15 @@ function doRomance(id){
   S.money = Math.max(0, S.money - 1500);
   const lines = R.flirt[rnd(R.flirt.length - 1)];
   const gain = prefMatch(c) ? 8 : 5;
-  startScene(head.concat(lines), () => { applyFx({affection:{[id]:gain}}); endWeek(); });
+  startScene(head.concat(lines), () => {
+    applyFx({affection:{[id]:gain}});
+    // 弟子への口説きのSNS炎上リスク（設計書3.4：禁止ではなく代償のある選択）。早乙女楓（弟子世代）が対象
+    if (id === "saotome" && fameRankIdx() >= 2 && _rng() < 0.3){
+      applyFx({aku:1, attention:2});
+      toast("CLASHで『師匠と弟子』の目撃談が拡散した……悪名と注目が付いた", true);
+    }
+    endWeek();
+  });
 }
 
 // ---------- バトル ----------
@@ -560,11 +685,22 @@ function startBattle(id, winSteps, loseSteps){
   if (styleLv(S.mainStyle) >= 7){
     for (const id in S.styleLv){ const sid = Number(id); if (sid !== S.mainStyle && S.styleLv[id] >= 5){ const cand = styleById(sid); if (cand && (!comboStyle || S.styleLv[id] > S.styleLv[comboStyle.id])) comboStyle = cand; } }
   }
+  ensureStateCompat();
+  // 研究・対策メタ（軽量版・第39/40節）: 連勝が続くと相手陣営が主・流儀／看板技を研究してくる
+  const streak = S.record.winStreak || 0;
+  const counterLevel = streak >= 5 ? 2 : streak >= 3 ? 1 : 0;
+  const counterHasSig = styleLv(S.mainStyle) >= 5;
   UI.battle = { def, eStyle, php: Math.max(20, maxPhp), maxPhp: Math.max(20, maxPhp), ehp: def.hp, turn: 0, dealt: 0,
     log: [], cmtIdx: 0, foulUsed: false, sigUsed: false, readBonus: 0, control: 0, readGuard: false, secondUsed: false,
-    comboStyle, comboUsed: false,
+    comboStyle, comboUsed: false, counterLevel, counterStreak: streak, counterHasSig,
     winSteps, loseSteps };
+  window.__lastCounter = {level: counterLevel, streak: streak, battleId: def.id, hasSig: counterHasSig};
   bLog("実況", def.title + "――開始！");
+  if (counterLevel > 0){
+    bLog("対策", "【研究・対策】" + def.enemyName + "陣営は、" + streak + "連勝中のあなたの映像を研究済みだ。" +
+      (counterHasSig ? sigName() + "への対策が用意されている（看板技の威力が下がる）。" : "看板技は未解放のため、主・流儀の代表的な型への対策が用意されている（通常攻撃が少し読まれやすい）。") +
+      "ただし、複合技や新しい流派の技は研究が追いついていない。");
+  }
   renderBattle();
 }
 function bLog(sp, tx){ UI.battle.log.push({sp, tx}); }
@@ -576,6 +712,9 @@ function playerPower(kind){
   const lv = styleLv(S.mainStyle);
   const base = {strike: S.stats.strike, kick: S.stats.kick, grapple: S.stats.grapple, ground: S.stats.ground}[kind];
   let p = 5 + base * 3 + lv + rnd(4) + UI.battle.readBonus;
+  if (S.flags.dopeUntilWeek && S.absWeek <= S.flags.dopeUntilWeek) p += 4; // ドーピングの短期強化（第3章）
+  // 対策メタ: 看板技が未解放の場合、主・流儀の代表技（通常攻撃）が対策で少し割り引かれる
+  if (UI.battle && UI.battle.counterLevel > 0 && !UI.battle.counterHasSig) p = p * (UI.battle.counterLevel >= 2 ? 0.85 : 0.92);
   if (kind === "kick") p -= S.dmg.leg * 2;
   if (kind === "strike" || kind === "grapple") p -= S.dmg.arm * 2;
   if (kind === "ground") p += UI.battle.control;
@@ -597,7 +736,8 @@ function renderBattle(){
   if (b.comboStyle && !b.comboUsed) acts.push(["combo", "複合技：" + mainStyle().name.replace(/（[^）]*）/g, "") + "×" + b.comboStyle.name.replace(/（[^）]*）/g, ""), "主・流儀Lv7＋副・流儀Lv5で解放。1試合に1回"]);
   if (def.foul && !b.foulUsed) acts.push(["foul", "反則・眼突き", "勝てるが、評判を落とす諸刃"]);
   const enemyImg = def.img ? '<div class="portrait"><img src="../cast-art/cast-' + def.img + '-sera.webp" alt=""></div>' : "";
-  $("main").innerHTML = '<div class="battle"><div class="vs">' +
+  const counterBanner = b.counterLevel > 0 ? '<div class="weeksub" style="color:var(--aku);">【研究・対策】相手陣営があなたの主・流儀／看板技を研究済み（対策レベル' + b.counterLevel + "／" + b.counterStreak + '連勝中）。看板技は威力が下がる。ただし複合技や新しい流派の技は研究が追いついていない。</div>' : "";
+  $("main").innerHTML = '<div class="battle">' + counterBanner + '<div class="vs">' +
     '<div class="fighter"><div class="nm">ハヤト（' + esc(mainStyle().name) + " Lv" + lv + '）</div><div class="bar hp"><i style="width:' + clamp(b.php / b.maxPhp * 100, 0, 100) + '%"></i></div><div class="sub">体力 ' + Math.max(0, b.php) + " ／ 部位：腕" + S.dmg.arm + " 脚" + S.dmg.leg + " 体幹" + S.dmg.core + '</div></div>' +
     '<div class="fighter enemy"><div class="nm">' + esc(def.enemyName) + '</div><div class="bar ehp"><i style="width:' + clamp(b.ehp / def.hp * 100, 0, 100) + '%"></i></div><div class="sub">' + esc(def.enemyStyleName || "同流派") + " ／ 耐久 " + Math.max(0, b.ehp) + "</div></div>" +
     enemyImg + '</div>' +
@@ -616,8 +756,10 @@ function battleTurn(act){
   else if (act === "ground"){ dmg = playerPower("ground"); bLog("実況", "寝技の展開！ 極めを狙う"); }
   else if (act === "read"){ b.readBonus = 4 + Math.round(S.stats.read); b.readGuard = true; bLog("実況", "相手の癖を読む……次の手が冴える！"); }
   else if (act === "recover"){ b.php = Math.min(b.maxPhp, b.php + 9); bLog("実況", "息を整え、軸を立て直す"); }
-  else if (act === "sig"){ dmg = 13 + Math.max(S.stats.strike, S.stats.kick, S.stats.grapple, S.stats.ground) * 3 + rnd(4); b.sigUsed = true; bLog("実況", sigName() + "――会場の空気が変わった！"); }
-  else if (act === "combo" && b.comboStyle){ dmg = 16 + styleLv(b.comboStyle.id) * 3 + rnd(4); b.comboUsed = true; bLog("実況", "複合技――" + mainStyle().name.replace(/（[^）]*）/g, "") + "の入り方から" + b.comboStyle.name.replace(/（[^）]*）/g, "") + "へ繋いだ！ 誰も見たことのない形だ！"); }
+  else if (act === "sig"){ dmg = 13 + Math.max(S.stats.strike, S.stats.kick, S.stats.grapple, S.stats.ground) * 3 + rnd(4); b.sigUsed = true; bLog("実況", sigName() + "――会場の空気が変わった！");
+    if (b.counterLevel > 0){ const before = dmg; dmg = Math.max(2, Math.round(dmg * (b.counterLevel >= 2 ? 0.7 : 0.8))); window.__lastCounterCorrection = {act:"sig", level:b.counterLevel, before:before, after:dmg}; bLog("対策", "だが看板技は研究されている！ 入りを読まれ、威力が割り引かれた（対策レベル" + b.counterLevel + "）"); } }
+  else if (act === "combo" && b.comboStyle){ dmg = 16 + styleLv(b.comboStyle.id) * 3 + rnd(4); b.comboUsed = true; bLog("実況", "複合技――" + mainStyle().name.replace(/（[^）]*）/g, "") + "の入り方から" + b.comboStyle.name.replace(/（[^）]*）/g, "") + "へ繋いだ！ 誰も見たことのない形だ！");
+    if (b.counterLevel > 0) bLog("対策", "複合技は研究が追いついていない！ 対策の影響を受けなかった"); }
   else if (act === "foul"){
     dmg = 16 + rnd(4); b.foulUsed = true; S.record.fouls++;
     bLog("実況", "……今のは？ 指が目に――際どい攻防だ");
@@ -652,8 +794,10 @@ function battleTurn(act){
 }
 function finishBattle(win){
   const b = UI.battle;
+  ensureStateCompat();
   S.record.matches++;
-  if (win) S.record.wins++;
+  if (win){ S.record.wins++; S.record.winStreak = (S.record.winStreak || 0) + 1; S.record.bestWinStreak = Math.max(S.record.bestWinStreak || 0, S.record.winStreak); }
+  else S.record.winStreak = 0;
   S.fatigue = clamp(S.fatigue + 12, 0, 100);
   const steps = win ? b.winSteps : b.loseSteps;
   UI.battle = null; UI.screen = "scene";
@@ -687,7 +831,7 @@ function hud(){
   const h = $("hud"); if (!h || !S) return;
   h.classList.remove("hidden");
   $("hud-age").textContent = S.age + "歳";
-  $("hud-chapter").textContent = S.chapter === 2 ? "第2章 全盛前夜" : "第1章 青年期";
+  $("hud-chapter").textContent = S.chapter === 3 ? "第3章 全盛期" : S.chapter === 2 ? "第2章 全盛前夜" : "第1章 青年期";
   $("hud-fame").textContent = fameTotal() + "（" + fameRank() + "）";
   $("hud-sei").textContent = S.sei;
   $("hud-aku").textContent = S.aku;
@@ -720,13 +864,16 @@ function renderTitle(){
     '<p class="tagline">どの武術が一番強いのか――その論争に、人生で答える。</p>' +
     '<button class="btn next" data-auto="new">はじめから</button>' +
     (hasSave() ? '<button class="btn" data-auto="continue">つづきから</button>' : "") +
-    '<p class="note">第1章：青年期（19〜22歳）／第2章：全盛前夜（23〜29歳）</p></div>';
+    '<p class="note">第1章：青年期（19〜22歳）／第2章：全盛前夜（23〜29歳）／第3章：全盛期（30〜39歳）</p></div>';
   $("main").querySelector("[data-auto='new']").addEventListener("click", renderStyleSelect);
   const c = $("main").querySelector("[data-auto='continue']");
   if (c) c.addEventListener("click", () => { if (loadGame()) resumeFromSave(); });
 }
 function resumeFromSave(){
-  if (S.chapter2Clear && typeof chapter2EndScreen === "function") chapter2EndScreen();
+  if (S.flags && S.flags.retiredEnding && typeof retireEndScreen === "function") retireEndScreen();
+  else if (S.chapter3Clear && typeof chapter3EndScreen === "function") chapter3EndScreen();
+  else if (S.chapter === 3) goWeek();
+  else if (S.chapter2Clear && typeof chapter2EndScreen === "function") chapter2EndScreen();
   else if (S.chapter === 2) goWeek();
   else if (S.chapter1Clear) chapterEndScreen();
   else goWeek();
@@ -759,7 +906,7 @@ function renderDex(){
   const women = CAST_DATA.filter(c => c.sex === "F");
   $("main").innerHTML = '<div class="weekhead"><h2>図鑑・記録</h2></div>' +
     '<h3>道場生（' + S.students.length + "人）</h3>" + (S.students.length ? S.students.map(s => '<div class="dexrow">' + esc(s.name) + " ― " + esc(s.style) + " 上達度" + s.skill + "</div>").join("") : '<div class="dexrow">まだいない</div>') +
-    '<h3>出会った人々</h3>' + CAST_DATA.filter(c => S.met.includes(c.id)).map(c => '<div class="dexrow">' + esc(c.name) + "（" + c.age + "歳）― " + esc(c.role) + (c.sex === "F" ? " 好感度" + (S.affection[c.id] || 0) : "") + "</div>").join("") +
+    '<h3>出会った人々</h3>' + CAST_DATA.filter(c => S.met.includes(c.id)).map(c => '<div class="dexrow">' + esc(c.name) + (c.age != null ? "（" + c.age + "歳）" : "") + " ― " + esc(c.role) + (c.sex === "F" ? " 好感度" + (S.affection[c.id] || 0) : "") + "</div>").join("") +
     '<h3>習得した流派</h3>' + Object.keys(S.styleLv).map(id => { const st = styleById(Number(id)); return st ? '<div class="dexrow">' + esc(st.name) + " Lv" + S.styleLv[id] + "</div>" : ""; }).join("") +
     '<h3>女性キャスト（全' + women.length + '名・口説き対象）</h3>' + women.map(c => '<div class="dexrow">' + esc(c.name) + " ― 第" + c.debut + "章登場" + (S.met.includes(c.id) ? "" : "（未登場）") + "</div>").join("") +
     '<button class="btn ghost" data-back="1">戻る</button>';
@@ -773,6 +920,51 @@ $("btn-title").addEventListener("click", renderTitle);
 if (new URLSearchParams(location.search).has("autotest")) { /* game.js 末尾の自動テストが処理 */ }
 renderTitle();
 
+// ---------- 第2章終了画面への「第3章へ進む」導線（story-ch2.js は変更しないため、ここでラップして追加する） ----------
+if (typeof chapter2EndScreen === "function" && typeof startChapter3 === "function"){
+  const _origChapter2EndScreen = chapter2EndScreen;
+  chapter2EndScreen = function(){
+    _origChapter2EndScreen();
+    if (UI.screen !== "end") return;
+    const mainEl = $("main"); if (!mainEl || mainEl.querySelector("[data-auto='to-ch3']")) return;
+    const btn = document.createElement("button");
+    btn.className = "btn next"; btn.setAttribute("data-auto", "to-ch3"); btn.textContent = "第3章へ進む（30歳〜）";
+    btn.addEventListener("click", () => startChapter3());
+    const titleBtn = mainEl.querySelector("[data-auto='to-title']");
+    if (titleBtn) titleBtn.before(btn); else mainEl.appendChild(btn);
+  };
+}
+
+// ---------- 検証フック（QC用：対策メタ／新規イベント／同伴イベントの発火を実測するための内部状態の公開） ----------
+window.__gameTest = {
+  state: () => S,
+  ensureCompat: () => ensureStateCompat(),
+  setWinStreak: n => { ensureStateCompat(); S.record.winStreak = n; S.record.bestWinStreak = Math.max(S.record.bestWinStreak || 0, n); },
+  battle: () => UI.battle,
+  startBattle: id => startBattle(id, [], []),
+  startSceneById: id => startSceneById(id),
+  eventLog: () => window.__eventLog || [],
+  forceEvent: id => {
+    const pools = [];
+    if (typeof WEEK_EVENTS_V2 !== "undefined") pools.push(...WEEK_EVENTS_V2);
+    if (typeof STUDENT_DRAMA_EVENTS !== "undefined") pools.push(...STUDENT_DRAMA_EVENTS);
+    if (typeof SEASONAL_EVENTS !== "undefined") pools.push(...SEASONAL_EVENTS);
+    if (typeof RANDOM_EVENTS !== "undefined") pools.push(...RANDOM_EVENTS);
+    if (typeof CH3_WEEK_EVENTS !== "undefined") pools.push(...CH3_WEEK_EVENTS);
+    if (typeof CH3_STUDENT_DRAMA !== "undefined") pools.push(...CH3_STUDENT_DRAMA);
+    if (typeof CH3_SEASONAL_EVENTS !== "undefined") pools.push(...CH3_SEASONAL_EVENTS);
+    const e = pools.find(x => x.id === id);
+    if (!e) return false;
+    ensureStateCompat();
+    logEventFire(e.category || (typeof SEASONAL_EVENTS !== "undefined" && SEASONAL_EVENTS.includes(e) ? "season" : "forced"), e);
+    startScene(e.steps, () => goWeek());
+    return true;
+  },
+  startChapter3: () => { if (typeof startChapter3 === "function") startChapter3(); },
+  pools: () => ({ v2: (typeof WEEK_EVENTS_V2 !== "undefined" ? WEEK_EVENTS_V2 : []).map(e => ({id:e.id, category:e.category})), student: (typeof STUDENT_DRAMA_EVENTS !== "undefined" ? STUDENT_DRAMA_EVENTS : []).map(e => e.id), seasonal: (typeof SEASONAL_EVENTS !== "undefined" ? SEASONAL_EVENTS : []).map(e => e.id),
+    ch3week: (typeof CH3_WEEK_EVENTS !== "undefined" ? CH3_WEEK_EVENTS : []).map(e => ({id:e.id, category:e.category})), ch3student: (typeof CH3_STUDENT_DRAMA !== "undefined" ? CH3_STUDENT_DRAMA : []).map(e => e.id), ch3seasonal: (typeof CH3_SEASONAL_EVENTS !== "undefined" ? CH3_SEASONAL_EVENTS : []).map(e => e.id) }),
+};
+
 // ---------- 自動テスト（?autotest=1&style=流派名&foul=0|1&seed=N） ----------
 (function(){
   const q = new URLSearchParams(location.search);
@@ -781,14 +973,20 @@ renderTitle();
   const wantStyle = q.get("style") || "糸東流";
   const useFoul = q.get("foul") === "1";
   const ch2test = q.has("ch2test");
-  const CLICK_LIMIT = ch2test ? 80000 : 20000;
+  const ch3test = q.has("ch3test");
+  const CLICK_LIMIT = ch3test ? 150000 : ch2test ? 80000 : 20000;
   let clicks = 0, cycle = 0;
   const finish = (ok, why) => {
     clearInterval(timer);
     const res = { ok, why: why || "", screen: UI.screen, absWeek: S ? S.absWeek : 0, age: S ? S.age : 0, chapter: S ? S.chapter : 0,
       fame: S ? fameTotal() : 0, sei: S ? S.sei : 0, aku: S ? S.aku : 0, students: S ? S.students.length : 0,
       mainLv: S ? styleLv(S.mainStyle) : 0, money: S ? S.money : 0, partner: S ? S.partner : null,
-      chapter1Clear: S ? S.chapter1Clear : false, chapter2Clear: S ? !!S.chapter2Clear : false, record: S ? S.record : null, clicks, errors: window.__errors };
+      chapter1Clear: S ? S.chapter1Clear : false, chapter2Clear: S ? !!S.chapter2Clear : false, chapter3Clear: S ? !!S.chapter3Clear : false,
+      retired: S ? !!(S.flags && S.flags.retiredEnding) : false, dopeUsed: S ? (S.flags.dopeUsed || 0) : 0, oldWounds: S ? (S.flags.oldWounds || {}) : {},
+      met: S ? S.met : [], record: S ? S.record : null, clicks, errors: window.__errors,
+      eventLog: window.__eventLog || [], seenEvents: S ? Object.keys(S.seenEvents || {}) : [],
+      douhan: S ? {wear: S.flags.douhanWear || null, place: S.flags.douhanPlace || null, score: S.flags.douhanScore || 0} : null,
+      lastCounter: window.__lastCounter || null, counterCorrection: window.__lastCounterCorrection || null };
     const d = document.createElement("div"); d.id = "autotest-result";
     d.textContent = "AUTOTEST_RESULT " + JSON.stringify(res);
     document.body.appendChild(d);
@@ -798,6 +996,16 @@ renderTitle();
       clicks++;
       if (clicks > CLICK_LIMIT) return finish(false, "ステップ上限到達");
       if (UI.screen === "end"){
+        if (ch3test && S && !S.chapter3Clear && !(S.flags && S.flags.retiredEnding)){
+          if (!S.chapter2Clear){
+            const b2 = $("main").querySelector("[data-auto='to-ch2']");
+            if (b2){ b2.click(); return; }
+            return finish(false, "第2章へのボタンが見つからない");
+          }
+          const b3 = $("main").querySelector("[data-auto='to-ch3']");
+          if (b3){ b3.click(); return; }
+          return finish(false, "第3章へのボタンが見つからない");
+        }
         if (ch2test && S && !S.chapter2Clear){
           const b2 = $("main").querySelector("[data-auto='to-ch2']");
           if (b2){ b2.click(); return; }
@@ -815,7 +1023,10 @@ renderTitle();
       if (UI.screen === "title"){ const b = main.querySelector("[data-auto='new']"); if (b) b.click(); return; }
       if (UI.screen === "scene"){
         const ch = main.querySelectorAll("[data-choice]");
-        if (ch.length){ ch[cycle++ % ch.length].click(); return; }
+        if (ch.length){
+          if (ch3test){ const cont = Array.from(ch).find(b => b.textContent.includes("現役を続ける")); if (cont){ cont.click(); return; } }
+          ch[cycle++ % ch.length].click(); return;
+        }
         const nx = main.querySelector("[data-auto='next']"); if (nx) nx.click();
         return;
       }

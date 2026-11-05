@@ -104,7 +104,7 @@ const BEATS_CH2 = [
 {week:196, id:"ch2_ono"}, {week:199, id:"ch2_yan"}, {week:202, id:"ch2_ryuno"}, {week:205, id:"ch2_chen"},
 {week:208, id:"ch2_tier_a"}, {week:212, id:"ch2_yearskip"},
 {week:241, id:"birthday"}, {week:244, id:"ch2_todo"}, {week:247, id:"ch2_kurozaki"}, {week:250, id:"ch2_jinguji"},
-{week:253, id:"ch2_elena"}, {week:257, id:"ch2_war1"}, {week:260, id:"ch2_yearskip"},
+{week:253, id:"ch2_elena"}, {week:255, id:"ch2_douhan"}, {week:257, id:"ch2_war1"}, {week:260, id:"ch2_yearskip"},
 {week:289, id:"birthday"}, {week:292, id:"ch2_miura"}, {week:295, id:"ch2_aisha"}, {week:299, id:"ch2_mariana"},
 {week:303, id:"ch2_tier_b"}, {week:308, id:"ch2_yearskip"},
 {week:337, id:"birthday"}, {week:340, id:"ch2_anna"}, {week:343, id:"ch2_kirishima"}, {week:347, id:"ch2_onizuka"},
@@ -992,4 +992,54 @@ Object.assign(ROMANCE, {
     ], confessNg:[
       {sp:"ono", t:"嬉しいこと言ってくれるね。……でも、今の私は、まだ「みんなの女将」でいたいの。ごめんね"},
     ]},
+});
+
+// ===== 同伴イベント（企画書第37節・第40節で第2章への差し込みが決定） =====
+// 相手はガールズバーの店員ユイ（24歳・架空のサブキャラクター。口説き対象28名には含めない）。
+// 食事→店へ同伴の流れ。評価は専用フラグ douhanScore（S.flags）で管理し、ROMANCE の affection は使わない。
+// 終盤の評価分岐は game.js の {douhanEnd:true} ステップ処理が douhanScore で解決する。
+Object.assign(STORY_CH2, {
+ch2_douhan: {
+title: "同伴 ― 夜の約束",
+steps: [
+{sp:"narr", t:"警備バイト先のビルで顔なじみになった、ガールズバーの店員ユイ（24歳）。出勤前の食事に誘われていた。「今日は私の出勤に合わせて、ご飯食べてから店まで一緒に行ってくれる？」"},
+{sp:"narr", t:"食事をしてから、彼女の働く店へ同伴する約束だ。服装と行き先で、彼女の評価も、周囲の目も変わっていく。"},
+{sp:"me", t:"（さて、何を着ていくか。夜の街に合わせるか、自分の色を出すか――）"},
+{choice:[
+{label:"作務衣でいく", fx:{douhan:2, sei:1, attention:1, flags:{douhanWear:"samue"}}, say:[
+{sp:"narr", t:"待ち合わせ場所に作務衣で現れると、ユイは目を丸くしてから、声を上げて笑った。「作務衣！？ ……でも待って、めちゃくちゃ似合ってる。渋いし、他の人と被らない」"},
+{sp:"narr", t:"通りすがりの常連客まで振り返る。CLASHの小ネタ投稿では「作務衣の武術家、夜の街に現る」と小さく話題になった。"},
+]},
+{label:"きちんとしたスーツでいく", fx:{douhan:1, flags:{douhanWear:"suit"}}, say:[
+{sp:"narr", t:"ユイは上下を見て頷いた。「うん、安心感ある。お店の子にも紹介しやすいタイプ」堅実な評価だった。"},
+]},
+{label:"普段着のカジュアルでいく", fx:{douhan:0, fatigue:-3, flags:{douhanWear:"casual"}}, say:[
+{sp:"narr", t:"ユイは「あ、普段通りなんだ」と小さく笑った。悪くはない。悪くはないが、特別感も薄かった。"},
+]},
+{label:"稽古帰りのジャージでいく", fx:{douhan:-1, aku:1, attention:1, flags:{douhanWear:"jersey"}}, say:[
+{sp:"narr", t:"「え、その格好で来たの……？」ユイに突っ込まれ、周囲の視線も集まった。武術家らしいと言えば、らしいのだが。"},
+]},
+]},
+{sp:"me", t:"（服装は決まった。次は、食事の行き先だ）"},
+{choice:[
+{label:"フードコート「ブレッドガーデン」で軽く食べる", fx:{douhan:1, money:-1500, attention:1, flags:{douhanPlace:"breadgarden"}}, say:[
+{sp:"narr", t:"フードコート「ブレッドガーデン」。ユイは最初「同伴前って、もっと高い店かと思った」と笑ったが、好きなものを少しずつ選べる気軽さに、すぐに上機嫌になった。"},
+{sp:"narr", t:"「飾らなくていいんだ、この人」――帰り際、彼女が小さく呟いたのが聞こえた。安さではなく、気楽さが刺さったようだ。"},
+]},
+{label:"予約した高級イタリアンで食べる", fx:{douhan:2, money:-18000, flags:{douhanPlace:"italian"}}, say:[
+{sp:"narr", t:"静かな個室と丁寧な料理。ユイは「ちゃんと用意してくれたんだ」と嬉しそうだった。財布は大きく軽くなったが、評価は確実に上がった。"},
+]},
+{label:"大野千鶴の定食屋で腹ごしらえする", fx:{douhan:1, money:-3000, sei:1, flags:{douhanPlace:"ono"}}, say:[
+{sp:"narr", t:"千鶴の定食は、味も量も間違いがなかった。ユイは「同伴前に定食屋って初めて。でも、こういうの嫌いじゃない」と笑った。"},
+]},
+{label:"焼肉で景気よくいく", fx:{douhan:1, money:-9000, fatigue:5, flags:{douhanPlace:"yakiniku"}}, say:[
+{sp:"narr", t:"煙と笑い声の焼肉は、場の力で盛り上がった。出勤前に匂いが付くことだけ、ユイに軽く突っ込まれた。"},
+]},
+]},
+{sp:"narr", t:"食事を終え、二人で夜の街を歩く。同伴は、店の入口をくぐるまでの時間も含めて「同伴」なのだと、ユイが教えてくれた。"},
+{sp:"narr", t:"店に着くと、他のスタッフが「ユイ、同伴のお客さん、雰囲気ある人じゃん」とざわついた。席ではマナーを守り、長居はせず、彼女の仕事を邪魔しない。それが夜の街の礼儀だった。"},
+{douhanEnd:true},
+{week:true},
+],
+},
 });

@@ -936,3 +936,228 @@ Object.assign(STORY_CH1, {
     ],
   },
 });
+
+// ===== ワンパターン対策（第39・40節）新規イベントプール =====
+// WEEK_EVENTS_V2: 5系統（street=街 / dojo=道場 / sns=SNS / baito=バイト先 / media=メディア）各3本以上・合計16本。
+// 既存 RANDOM_EVENTS とは別プール（使い回しなし）。原則1回だけ（S.seenEvents で管理、game.js 側で判定）。
+// 条件フィールド: chapters（対象章）/ minStudents / minFameRank（fameRankIdx）/ weight
+const WEEK_EVENTS_V2 = [
+  {id:"v2_st_lost", category:"street", weight:2, chapters:[1,2], steps:[
+    {sp:"narr", t:"駅前で、困り顔の老婦人が落とした財布を拾った。中には免許証と、孫の写真。"},
+    {choice:[
+      {label:"交番まで届ける", fx:{sei:1, fatigue:3}, say:[{sp:"narr", t:"交番で手続きを済ませると、老婦人が何度も頭を下げた。小さな善行は、地域の目に静かに残る。"}]},
+      {label:"落とし主を探して声をかける", fx:{sei:1, attention:1}, say:[{sp:"narr", t:"近くのベンチで探し回る持ち主がいた。感謝の言葉と共に、道場の名前も覚えてもらえた。"}]},
+      {label:"時間が無い。駅員に預ける", fx:{fatigue:-3}, say:[{sp:"narr", t:"駅員に事情を伝えて預けた。稽古の時間は守れたが、少しだけ後ろ髪を引かれた。"}]},
+    ]},
+  ]},
+  {id:"v2_st_drunk", category:"street", weight:2, chapters:[1,2], steps:[
+    {sp:"narr", t:"帰り道、路上で座り込んだ酔客がいた。放っておけば車道に倒れそうだ。"},
+    {choice:[
+      {label:"水を買って介抱する", fx:{money:-500, sei:1, fatigue:5}, say:[{sp:"narr", t:"水を飲ませ、タクシーを呼んだ。酔客は「兄ちゃん、優しいな」と繰り返していた。"}]},
+      {label:"駅員と交番に連絡する", fx:{sei:1}, say:[{sp:"narr", t:"専門家に任せるのが一番安全だった。見守る通行人も、ほっとした顔をしていた。"}]},
+      {label:"関わらずに帰る", fx:{attention:1}, say:[{sp:"narr", t:"誰かが通報したようで、遠くでサイレンが聞こえた。何もしない選択も、噂になる時代だった。"}]},
+    ]},
+  ]},
+  {id:"v2_st_tourist", category:"street", weight:2, chapters:[1,2], steps:[
+    {sp:"narr", t:"商店街で、地図を片手に途方に暮れる観光客の親子に声をかけられた。"},
+    {choice:[
+      {label:"目的地まで一緒に歩いて案内する", fx:{sei:1, attention:1, fatigue:4}, say:[{sp:"narr", t:"親子は大喜びで、道場のパンフレットまで受け取ってくれた。縁は、どこで生まれるか分からない。"}]},
+      {label:"丁寧に道順だけ教える", fx:{sei:1}, say:[{sp:"narr", t:"身振りを交えて説明すると、親子は笑顔で手を振って歩いていった。"}]},
+    ]},
+  ]},
+  {id:"v2_st_patrol", category:"street", weight:2, chapters:[1,2], steps:[
+    {sp:"narr", t:"夜の見回り中、路地で若者同士の口論がエスカレートしていた。今にも手が出そうだ。"},
+    {choice:[
+      {label:"間に立って収める", say:[
+        {battle:"street2", win:[
+          {sp:"narr", t:"一触即発の空気は、体を張った仲裁で収まった。見回りの腕章が、少し誇らしく見えた。"},
+          {fx:{sei:2, attention:1, record:{streetWins:1}},},
+        ], lose:[
+          {sp:"narr", t:"揉み合いになったが、駆けつけた警官が全員を引き離した。怪我は軽い。"},
+          {fx:{sei:1, dmg:{arm:1}},},
+        ]},
+      ]},
+      {label:"離れた場所から通報し、見守る", fx:{sei:1}, say:[{sp:"narr", t:"警官の到着で口論は収まった。戦わない仲裁も、地域を守る仕事だった。"}]},
+    ]},
+  ]},
+  {id:"v2_dj_trial", category:"dojo", weight:3, chapters:[1,2], steps:[
+    {sp:"narr", t:"道場の前で、チラシを握った若者がずっと中を覗いていた。体験入門の飛び込みだ。"},
+    {choice:[
+      {label:"その場で無料体験を受け入れる", fx:{sei:1, joinStudent:true}, say:[{sp:"narr", t:"基本の型を教えると、若者の目が輝いた。「来週から、通いたいです」――新しい生徒が増えた（定員に空きがある場合）。"}]},
+      {label:"丁寧に説明し、正規の日程を案内する", fx:{sei:1, attention:1}, say:[{sp:"narr", t:"若者は納得して帰っていった。焦らず迎える姿勢が、道場の評判を作る。"}]},
+    ]},
+  ]},
+  {id:"v2_dj_gear", category:"dojo", weight:2, chapters:[1,2], minStudents:1, steps:[
+    {sp:"narr", t:"稽古中、長く使ったミットが裂けた。備品の買い替えは、道場の悩みの種だ。"},
+    {choice:[
+      {label:"新しい道具を買う（8,000円）", fx:{money:-8000, sei:1}, say:[{sp:"narr", t:"新しいミットの感触に、生徒たちの声が弾んだ。道具への投資は、信頼への投資だった。"}]},
+      {label:"生徒と一緒に修理して使う", fx:{fatigue:5, stat:{teach:0.3}}, say:[{sp:"narr", t:"修理の時間は、道具を大切にする心を教える時間になった。"}]},
+      {label:"当面は古いままで凌ぐ", fx:{fatigue:3}, say:[{sp:"narr", t:"やり繰りは大事だが、生徒の目が少し曇った気がした。"}]},
+    ]},
+  ]},
+  {id:"v2_dj_joint", category:"dojo", weight:2, chapters:[1,2], steps:[
+    {sp:"narr", t:"近隣の道場から、合同稽古の誘いが届いた。流派の垣根を越えた交流の機会だ。"},
+    {choice:[
+      {label:"誘いを受ける", fx:{expMain:6, stat:{read:0.3}, fatigue:8}, say:[{sp:"narr", t:"他流派の動きに触れる一日は、自分の流派の輪郭をくっきりさせた。"}]},
+      {label:"今は自分の稽古を優先して断る", fx:{fatigue:-8}, say:[{sp:"narr", t:"丁重に断り、静かな稽古の時間を確保した。選ぶことも、強さのうちだ。"}]},
+    ]},
+  ]},
+  {id:"v2_sns_clip", category:"sns", weight:3, chapters:[1,2], minFameRank:1, steps:[
+    {sp:"narr", t:"稽古の一場面を切り抜いた動画が、CLASHで静かに伸び始めていた。コメント欄は好意的な声で埋まっている。"},
+    {choice:[
+      {label:"感謝の投稿で返す", fx:{attention:3, sei:1}, say:[{sp:"narr", t:"丁寧な感謝がさらに好感を呼び、フォロワーが増えた。"}]},
+      {label:"あえて煽る一言を添える", fx:{attention:3, aku:1}, say:[{sp:"narr", t:"煽りは数字を跳ねさせたが、「荒くなった」と惜しむ声も混じった。"}]},
+      {label:"何もせず稽古に集中する", fx:{attention:1, expMain:3}, say:[{sp:"narr", t:"話題は自然に収まった。数字より中身、と決めた週だった。"}]},
+    ]},
+  ]},
+  {id:"v2_sns_anti", category:"sns", weight:2, chapters:[1,2], steps:[
+    {sp:"narr", t:"CLASHに、心ないアンチコメントが付いた。「所詮、地域レベルの選手」。指先が、熱を持つ。"},
+    {choice:[
+      {label:"戦績と事実で丁寧に反論する", fx:{sei:1, attention:1}, say:[{sp:"narr", t:"冷静な反論に、味方の声が集まった。言葉のリングでも、正道は通じた。"}]},
+      {label:"ユーモアで受け流す", fx:{attention:2}, say:[{sp:"narr", t:"軽い返しが笑いを呼び、アンチの熱だけが取り残された。"}]},
+      {label:"完全に無視する", fx:{fatigue:-5}, say:[{sp:"narr", t:"反応しない強さもある。スマホを置いて、型の稽古に戻った。"}]},
+    ]},
+  ]},
+  {id:"v2_sns_collab", category:"sns", weight:2, chapters:[1,2], minFameRank:1, steps:[
+    {sp:"narr", t:"他流派のインフルエンサーから、コラボ動画の打診が来た。数字は確実だが、相手は煽り芸で知られる人物だ。"},
+    {choice:[
+      {label:"コラボを受ける", fx:{attention:3, money:15000, fatigue:8}, say:[{sp:"narr", t:"撮影は騒がしかったが、届く層は確かに広がった。出演料も入った。"}]},
+      {label:"自分の流派の芯がぶれると断る", fx:{sei:1}, say:[{sp:"narr", t:"断る決断に、「芯がある」と評価する声が付いた。"}]},
+    ]},
+  ]},
+  {id:"v2_ba_rookie", category:"baito", weight:2, chapters:[1,2], steps:[
+    {sp:"narr", t:"倉庫バイトの日。現場リーダーの田村から、新人の教育係を頼まれた。"},
+    {choice:[
+      {label:"丁寧に教える", fx:{money:3000, stat:{teach:0.4}, record:{works:1}}, say:[{sp:"narr", t:"教える手際の良さに、田村が頷いた。「あんた、指導者だな」。バイト代に色が付いた。"}]},
+      {label:"自分の作業に集中する", fx:{money:6000, fatigue:8, record:{works:1}}, say:[{sp:"narr", t:"黙々とこなして歩合を稼いだ。新人は少し寂しそうだったが、金は金だ。"}]},
+    ]},
+  ]},
+  {id:"v2_ba_guard", category:"baito", weight:2, chapters:[1,2], steps:[
+    {sp:"narr", t:"イベント警備のバイト中、控室エリアで他流派の選手と鉢合わせた。休憩時間、自然と技術談義になった。"},
+    {choice:[
+      {label:"相手の流派の話を深く聞く", fx:{stat:{read:0.4}, attention:1}, say:[{sp:"narr", t:"警備員と選手、立場を越えた情報交換は、次の試合の読みに生きるはずだ。"}]},
+      {label:"職務に集中し、距離を保つ", fx:{money:4000, sei:1, record:{works:1}}, say:[{sp:"narr", t:"真面目な警備ぶりが運営の目に留まり、次回の指名も約束された。"}]},
+    ]},
+  ]},
+  {id:"v2_ba_setup", category:"baito", weight:2, chapters:[1,2], steps:[
+    {sp:"narr", t:"大会設営のバイト中、リングの部材が足りないトラブルが発生した。開始時刻が迫っている。"},
+    {choice:[
+      {label:"残って手伝い、開催に間に合わせる", fx:{money:5000, sei:1, fatigue:10, record:{works:1}}, say:[{sp:"narr", t:"機転と体力でトラブルを収め、運営から感謝と上乗せのバイト代を受け取った。"}]},
+      {label:"定時で上がる", fx:{money:2000, record:{works:1}}, say:[{sp:"narr", t:"契約は契約だ。だが、ざわつく会場を背に帰る足は、少し重かった。"}]},
+    ]},
+  ]},
+  {id:"v2_md_paper", category:"media", weight:2, chapters:[1,2], minFameRank:1, steps:[
+    {sp:"narr", t:"地方紙の記者から取材の申し込みが来た。「地域で戦う若手特集」で取り上げたいという。"},
+    {choice:[
+      {label:"取材を受ける", fx:{attention:3, sei:1, fatigue:5}, say:[{sp:"narr", t:"記事は丁寧で、道場の住所まで載った。地域の目が、少しだけこちらを向いた。"}]},
+      {label:"今は試合に集中したいと断る", fx:{expMain:4}, say:[{sp:"narr", t:"記者は「結果で語るタイプですね」と笑って帰っていった。"}]},
+    ]},
+  ]},
+  {id:"v2_md_radio", category:"media", weight:2, chapters:[1,2], steps:[
+    {sp:"narr", t:"地元ラジオ局から、深夜番組へのゲスト出演の打診が来た。出演料はわずかだが、声だけの勝負だ。"},
+    {choice:[
+      {label:"出演する", fx:{attention:2, money:10000, fatigue:6}, say:[{sp:"narr", t:"武術への思いを語った放送は、意外なほど反響があった。声の届く範囲は、想像より広い。"}]},
+      {label:"話題作りが過ぎると断る", fx:{sei:1}, say:[{sp:"narr", t:"静かに断った。リングの外の戦いは、選んで戦うものだ。"}]},
+    ]},
+  ]},
+  {id:"v2_md_stream", category:"media", weight:2, chapters:[2], minFameRank:1, steps:[
+    {sp:"narr", t:"人気配信番組からゲスト出演のオファーが来た。第2章の看板には、メディアの目も集まり始めている。"},
+    {choice:[
+      {label:"真面目に武術の魅力を語る", fx:{attention:3, sei:1, money:15000}, say:[{sp:"narr", t:"真摯な語りが「ギャップが良い」と評判になり、出演料も入った。"}]},
+      {label:"他流派への宣戦布告で盛り上げる", fx:{attention:4, aku:2, money:20000}, say:[{sp:"narr", t:"番組は大いに盛り上がった。だが、言葉の火種は、後で必ず自分に返ってくる。"}]},
+      {label:"出演を断る", fx:{fatigue:-5}, say:[{sp:"narr", t:"静かな週を選んだ。話題より、積み上げだ。"}]},
+    ]},
+  ]},
+];
+// ===== 道場生の個別ドラマ（別枠・5本） =====
+// minStudents で生徒数条件、第2章では抽選ウェイトが上がる（game.js 側）。studentTrust / studentSkill は applyFx の拡張で全生徒へ反映。
+const STUDENT_DRAMA_EVENTS = [
+  {id:"stu_worry", weight:2, chapters:[1,2], minStudents:1, steps:[
+    {sp:"narr", t:"稽古終わり、生徒の一人が残って相談してきた。「仕事が忙しくて、稽古との両立が正直きついんです」"},
+    {choice:[
+      {label:"通うペースの調整を一緒に考える", fx:{studentTrust:8, stat:{teach:0.3}}, say:[{sp:"narr", t:"「辞めるしかないと思ってました」――生徒の顔がほっと緩んだ。続ける形は、一つじゃない。"}]},
+      {label:"「続けるなら本気で」と厳しく言う", fx:{studentTrust:-6, aku:1}, say:[{sp:"narr", t:"生徒は黙って頷いた。厳しさが正解かどうかは、来週の出席が教えてくれる。"}]},
+    ]},
+  ]},
+  {id:"stu_quit", weight:2, chapters:[1,2], minStudents:2, steps:[
+    {sp:"narr", t:"生徒の一人から、静かな申し出があった。「先生、道場を辞めようと思ってます。……強くなれてない気がして」"},
+    {choice:[
+      {label:"辞める理由を、最後まで聞く", fx:{studentTrust:10, sei:1}, say:[{sp:"narr", t:"話を聞くうちに、生徒自身が「もう少しだけ、やってみます」と言った。成長の実感は、言葉で手渡せることもある。"}]},
+      {label:"潔く送り出す", fx:{studentTrust:-3, sei:1}, say:[{sp:"narr", t:"「いつでも戻ってきていい」。そう言って送り出した。道場の扉は、出ていく者にも開けておくものだ。"}]},
+    ]},
+  ]},
+  {id:"stu_tournament", weight:2, chapters:[1,2], minStudents:2, steps:[
+    {sp:"narr", t:"生徒の一人が、アマチュア大会への出場を申し出てきた。目には、不安と期待が半分ずつある。"},
+    {choice:[
+      {label:"出場を後押しし、参加費を補助する（5,000円）", fx:{money:-5000, studentTrust:8, studentSkill:1, sei:1}, say:[{sp:"narr", t:"生徒の背中が、少しだけ大きくなった気がした。弟子の試合は、師の試合でもある。"}]},
+      {label:"「まだ早い」と止める", fx:{studentTrust:-4}, say:[{sp:"narr", t:"生徒は頷いたが、目には不満が残った。止める判断にも、責任が伴う。"}]},
+    ]},
+  ]},
+  {id:"stu_referral", weight:2, chapters:[1,2], minStudents:3, steps:[
+    {sp:"narr", t:"古参の生徒が言った。「先生、友達が体験に来たがってます。道場の雰囲気がいいって、話してるんです」"},
+    {choice:[
+      {label:"紹介の受け入れを正式に始める", fx:{studentTrust:5, joinStudent:true, sei:1}, say:[{sp:"narr", t:"紹介で来た新しい顔が、道場に加わった（定員に空きがある場合）。生徒が人を呼ぶ道場は、強い。"}]},
+      {label:"大げさにせず、自然な紹介だけ受ける", fx:{sei:1}, say:[{sp:"narr", t:"派手な制度は作らなかったが、生徒の言葉そのものが一番の広告だった。"}]},
+    ]},
+  ]},
+  {id:"stu_family", weight:2, chapters:[1,2], minStudents:1, steps:[
+    {sp:"narr", t:"生徒の家族から連絡があった。「格闘技なんて、危ないんじゃないか」と心配しているという。"},
+    {choice:[
+      {label:"家族向けに、稽古の様子と安全対策を丁寧に説明する", fx:{sei:2, studentTrust:6, fatigue:5}, say:[{sp:"narr", t:"説明を聞いた家族の声が、少しずつ柔らかくなった。道場の信用は、リングの外で作られる。"}]},
+      {label:"生徒本人に任せる", fx:{studentTrust:-2}, say:[{sp:"narr", t:"大人の生徒の判断を尊重した。だが、道場としてできることがあった気もした。"}]},
+    ]},
+  ]},
+];
+// ===== 季節イベント（7本・年あたり発火は最大2本まで＝game.js 側で制御） =====
+// window はその年の週番号（yw: 1〜48）の範囲。chapters で対象章を絞る。
+const SEASONAL_EVENTS = [
+  {id:"se_newyear", window:[1,4], chapters:[1,2], steps:[
+    {sp:"narr", t:"正月。道場は静かで、鏡餅の横に新しい年の稽古始めの予定が貼ってある。"},
+    {choice:[
+      {label:"初詣で一年の無事と飛躍を祈る", fx:{sei:1, fatigue:-15}, say:[{sp:"narr", t:"凛とした空気の中で手を合わせた。今年も、戦う年になる。"}]},
+      {label:"書き初めで今年の一字を決める", fx:{stat:{read:0.3}, attention:1}, say:[{sp:"narr", t:"大きく書いた一字を道場に貼った。生徒たちの目が、自然とそこへ向く。"}]},
+    ]},
+  ]},
+  {id:"se_spring", window:[9,12], chapters:[1,2], steps:[
+    {sp:"narr", t:"春。近くの公園の桜が満開になり、道場の面々で外稽古と花見を兼ねた集まりが開かれた。"},
+    {choice:[
+      {label:"桜の下で合同稽古を主催する", fx:{sei:1, studentTrust:5, fatigue:5}, say:[{sp:"narr", t:"花びらの中の稽古は、いつもと違う集中を生んだ。通りがかりの人も足を止めていた。"}]},
+      {label:"静かに花見を楽しむ", fx:{fatigue:-12}, say:[{sp:"narr", t:"戦いの季節の前に、心を整える時間も必要だった。"}]},
+    ]},
+  ]},
+  {id:"se_gw", window:[17,20], chapters:[2], steps:[
+    {sp:"narr", t:"大型連休。体験入門の問い合わせが一気に増えた。自分の道場を持ったからこそ受ける、春の波だ。"},
+    {choice:[
+      {label:"連休返上で体験会を開く", fx:{money:20000, joinStudent:true, fatigue:12}, say:[{sp:"narr", t:"忙しい連休になったが、道場の空気は確実に厚くなった（定員に空きがあれば新入門）。"}]},
+      {label:"体を休めることを優先する", fx:{fatigue:-20}, say:[{sp:"narr", t:"波を逃す代わりに、体を整えた。本戦の年は、まだ長い。"}]},
+    ]},
+  ]},
+  {id:"se_summer", window:[25,28], chapters:[1], steps:[
+    {sp:"narr", t:"夏。源田師範の声かけで、山あいの施設での短期合宿が開かれた。朝の空気が、稽古の質を変える。"},
+    {choice:[
+      {label:"合宿で徹底的に追い込む", fx:{expMain:8, fatigue:15, stat:{endure:0.4}}, say:[{sp:"narr", t:"汗の量だけ、体が答えてくれた。夏の貯金は、冬に効く。"}]},
+      {label:"後輩の指導役に回る", fx:{stat:{teach:0.5}, sei:1}, say:[{sp:"narr", t:"教える側の合宿も、学びが多かった。若い世代の目が、まっすぐだった。"}]},
+    ]},
+  ]},
+  {id:"se_obon", window:[29,32], chapters:[1], steps:[
+    {sp:"narr", t:"お盆。稽古は休みになり、帰省と墓参りの静かな日々が過ぎていく。"},
+    {choice:[
+      {label:"家族や恩人への礼を尽くす", fx:{sei:1, fatigue:-15}, say:[{sp:"narr", t:"支えてくれる人たちへの感謝が、戦う理由をまた一つ確かにした。"}]},
+      {label:"休み中も自主稽古を欠かさない", fx:{expMain:5, fatigue:5}, say:[{sp:"narr", t:"静かな道場で一人、型を繰り返した。休む者と休まない者の差は、小さく、大きい。"}]},
+    ]},
+  ]},
+  {id:"se_autumn", window:[37,40], chapters:[1], steps:[
+    {sp:"narr", t:"秋祭り。商店街の神輿の担ぎ手に、道場の面々が声をかけられた。"},
+    {choice:[
+      {label:"神輿を担いで地域に混ざる", fx:{sei:2, attention:1, fatigue:8}, say:[{sp:"narr", t:"祭りの熱の中で、道場の名前が地域に溶けていった。信用は、こういう日に貯まる。"}]},
+      {label:"出店の警備を手伝う", fx:{money:8000, sei:1, record:{works:1}}, say:[{sp:"narr", t:"祭りの裏方の働きも、地域への立派な貢献だった。"}]},
+    ]},
+  ]},
+  {id:"se_yearend", window:[45,48], chapters:[1], steps:[
+    {sp:"narr", t:"年末。道場の大掃除と、一年を振り返る静かな稽古納めの日が来た。"},
+    {choice:[
+      {label:"生徒たちと一年の感謝を語り合う", fx:{sei:1, studentTrust:6, fatigue:-10}, say:[{sp:"narr", t:"一年の終わりに残るのは、勝敗だけじゃない。共に過ごした時間だった。"}]},
+      {label:"一人で黙々と稽古納めをする", fx:{expMain:6}, say:[{sp:"narr", t:"静かな打ち込みで一年を締めた。来年の自分への、静かな宣戦布告だった。"}]},
+    ]},
+  ]},
+];
