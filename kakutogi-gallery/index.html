@@ -5,32 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>新ゲーム 画像確認用ページ</title>
 <style>
-  body{margin:0;background:#10131c;color:#e8e6df;font-family:"Hiragino Sans","Noto Sans JP",sans-serif;}
-  header{padding:20px 16px 6px;max-width:960px;margin:0 auto;}
-  h1{font-size:20px;margin:0 0 6px;color:#e9c46a;}
-  .note{color:#9aa0ae;font-size:13px;line-height:1.7;}
-  main{max-width:960px;margin:0 auto;padding:10px 16px 40px;}
-  .card{background:#171b28;border:1px solid #2a2f42;border-radius:12px;padding:14px;margin:16px 0;}
-  .card img{width:100%;height:auto;display:block;border-radius:8px;background:#0b0d13;}
-  .cap{margin-top:10px;font-size:14px;line-height:1.8;}
-  .cap b{color:#e9c46a;}
-  .tag{display:inline-block;background:#26304a;color:#cfd8ea;border-radius:999px;padding:2px 10px;font-size:12px;margin-right:6px;}
-  footer{max-width:960px;margin:0 auto;padding:0 16px 30px;color:#6d7484;font-size:12px;}
+body{margin:0;background:#0d1020;color:#e8e6da;font-family:sans-serif;padding:16px}
+h1{font-size:20px} h2{font-size:16px;margin-top:28px;color:#d8b25c}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+figure{margin:0;background:#171a2e;border-radius:10px;padding:8px}
+img{width:100%;height:auto;display:block;border-radius:6px}
+figure.hero{grid-column:1/-1;max-width:560px}
+figcaption{font-size:12px;line-height:1.5;padding-top:6px;color:#c9c6b8}
+figcaption b{color:#fff;font-size:13px}
+p.note{font-size:12px;color:#9a97a8}
 </style>
 </head>
 <body>
-<header>
-  <h1>新ゲーム（異種格闘技育成SLG）画像確認用ページ</h1>
-  <p class="note">制作した画像をここに集めて確認するためのページです。画像は見切れないよう全体表示にしています。追加の画像ができたらこのページに足していきます。</p>
-</header>
-<main>
-  <div class="card">
-    <img src="title-keyvisual.webp" alt="タイトル画面用キービジュアル：道着の青年と各流派の使い手たち、時計と砂時計">
-    <div class="cap"><span class="tag">タイトル画面</span><span class="tag">見本に組込中</span><br>
-    <b>タイトル・キービジュアル</b>（2026-11-05 制作）<br>
-    19歳の主人公（道着・黒帯）を中央に、各流派の使い手のシルエットと、年月を表す時計・砂時計を配した一枚。紺×金×深紅。文字は入れず、タイトル文字は画面側で重ねる前提。</div>
-  </div>
-</main>
-<footer>確認用ページ（新ゲーム制作）／収録 1点</footer>
+<h1>新ゲーム（異種格闘年代記・仮）画像確認用</h1>
+<p class="note">本人の確認用ページです。リンクは外部に貼らないでください。収録：タイトル画像1点＋キャスト設定画22点（全員分）。</p>
+<h2>タイトル・キービジュアル</h2>
+<div class="grid"><figure class="hero"><img src="title-keyvisual.webp" alt="タイトル画像"><figcaption><b>タイトル・キービジュアル</b><br>見本のタイトル画面に使用中</figcaption></figure></div>
+<h2>キャスト設定画（全22名）</h2>
+<div class="grid">
+<figure><img src="cast-hayato.webp" alt="ハヤト（19）"><figcaption><b>ハヤト（19）</b><br>主人公。初段から始める下積み</figcaption></figure>
+<figure><img src="cast-genda.webp" alt="源田 巌（62）"><figcaption><b>源田 巌（62）</b><br>子供の頃からの師範</figcaption></figure>
+<figure><img src="cast-tamura.webp" alt="田村 康太（26）"><figcaption><b>田村 康太（26）</b><br>倉庫バイトのリーダー。情報の窓口</figcaption></figure>
+<figure><img src="cast-aizawa.webp" alt="相沢 凛（20・柔道）"><figcaption><b>相沢 凛（20・柔道）</b><br>見本の指名試合の相手。同世代の好敵手</figcaption></figure>
+<figure><img src="cast-takase.webp" alt="高瀬 美咲（27・会社員）"><figcaption><b>高瀬 美咲（27・会社員）</b><br>守られて入門する最初の道場生</figcaption></figure>
+<figure><img src="cast-miyoshi.webp" alt="三好 涼子（34・レフェリー）"><figcaption><b>三好 涼子（34・レフェリー）</b><br>反則の発覚判定の顔</figcaption></figure>
+<figure><img src="cast-mira.webp" alt="ミラ（26・インフルエンサー）"><figcaption><b>ミラ（26・インフルエンサー）</b><br>Tier表職人。最強論争の火付け役</figcaption></figure>
+<figure><img src="cast-kujo.webp" alt="九条 沙織（38・プロモーター）"><figcaption><b>九条 沙織（38・プロモーター）</b><br>大会運営者。ルール交渉の相手</figcaption></figure>
+<figure><img src="cast-shiratori.webp" alt="白鳥 恵（29・ケアトレーナー）"><figcaption><b>白鳥 恵（29・ケアトレーナー）</b><br>怪我と部位ダメージのケア担当</figcaption></figure>
+<figure><img src="cast-ryuno.webp" alt="龍野 舞（24・ムエタイ）"><figcaption><b>龍野 舞（24・ムエタイ）</b><br>蹴りの名手。セミナー講師</figcaption></figure>
+<figure><img src="cast-elena.webp" alt="エレナ・コワルスキ（27・レスリング）"><figcaption><b>エレナ・コワルスキ（27・レスリング）</b><br>組みの強豪。実力主義</figcaption></figure>
+<figure><img src="cast-chen.webp" alt="陳 美玲（31・詠春拳）"><figcaption><b>陳 美玲（31・詠春拳）</b><br>師匠枠＝厳格型</figcaption></figure>
+<figure><img src="cast-todo.webp" alt="藤堂 静（45・空手）"><figcaption><b>藤堂 静（45・空手）</b><br>師匠枠＝寛容型の女性師範</figcaption></figure>
+<figure><img src="cast-kurozaki.webp" alt="黒崎 ラン（28・裏の指導者）"><figcaption><b>黒崎 ラン（28・裏の指導者）</b><br>師匠枠＝無法歓迎型</figcaption></figure>
+<figure><img src="cast-jinguji.webp" alt="神宮寺 澪（23・カポエイラ）"><figcaption><b>神宮寺 澪（23・カポエイラ）</b><br>SNS映えするトリッキーな使い手</figcaption></figure>
+<figure><img src="cast-aisha.webp" alt="アイシャ・ラーマン（26・シラット）"><figcaption><b>アイシャ・ラーマン（26・シラット）</b><br>静かで礼儀正しく、実は強い</figcaption></figure>
+<figure><img src="cast-saotome.webp" alt="早乙女 楓（19・弟子世代）"><figcaption><b>早乙女 楓（19・弟子世代）</b><br>第3章で入門する星弟子。世代交代の軸</figcaption></figure>
+<figure><img src="cast-oba.webp" alt="大場 鉄平（19・極真空手）"><figcaption><b>大場 鉄平（19・極真空手）</b><br>同世代ライバル</figcaption></figure>
+<figure><img src="cast-onizuka.webp" alt="鬼塚 徹（50・空道）"><figcaption><b>鬼塚 徹（50・空道）</b><br>師匠枠＝実力主義型</figcaption></figure>
+<figure><img src="cast-gunnar.webp" alt="グンナル（33・アーマードバトル）"><figcaption><b>グンナル（33・アーマードバトル）</b><br>北欧の重戦車。中盤の壁</figcaption></figure>
+<figure><img src="cast-raijin.webp" alt="ザ・グレート雷神（48・プロレス）"><figcaption><b>ザ・グレート雷神（48・プロレス）</b><br>見せる戦いの達人</figcaption></figure>
+<figure><img src="cast-kuze.webp" alt="久世 怜（最終章で19・総合格闘）"><figcaption><b>久世 怜（最終章で19・総合格闘）</b><br>最終章の若き王者</figcaption></figure>
+</div>
 </body>
 </html>
