@@ -388,6 +388,11 @@ function pickEndWeekEvent(){
     const vc = WEEK_EVENTS_V2.filter(e => eventEligible(e) && !S.seenEvents[e.id]);
     if (vc.length && _rng() < 0.30){ const e = pickWeighted(vc); S.seenEvents[e.id] = S.absWeek; logEventFire(e.category, e); return e; }
   }
+  // 第44節: SNS議論バトルの汎用ネタプール（全章共通・1周で同じネタは繰り返さない）
+  if (typeof DEBATE_EVENTS !== "undefined"){
+    const dcands = DEBATE_EVENTS.filter(e => eventEligible(e) && !S.seenEvents[e.id] && !S.seenEvents["debate:" + e.debateId]);
+    if (dcands.length && _rng() < 0.25){ const e = pickWeighted(dcands); S.seenEvents[e.id] = S.absWeek; S.seenEvents["debate:" + e.debateId] = S.absWeek; logEventFire("debate", e); return e; }
+  }
   if (_rng() < 0.22){
     const cands = RANDOM_EVENTS.filter(e => e.condFatigue == null || S.fatigue >= e.condFatigue);
     if (cands.length){ const e = pickWeighted(cands); logEventFire("legacy", e); return e; }
@@ -480,8 +485,22 @@ function doAction(act){
     afterAction(notes); return;
   }
   if (act === "sns"){
-    if (!S.flags.clashDone || _rng() < 0.55){
+    ensureStateCompat();
+    if (!S.flags.clashDone){
       S.flags.clashDone = true;
+      startScene([{sp:"narr", t:"CLASHを開くと、小さな論争が燃えていた。"}, {debate:"mini1"}], () => endWeek());
+      return;
+    }
+    // 第44節: 2回目以降は汎用ネタプール（DEBATE_POOL）の未見ネタを優先して出す。1周で同じネタは繰り返さない
+    const cands = unseenPoolDebates();
+    if (cands.length && _rng() < 0.8){
+      const d = cands[rnd(cands.length - 1)];
+      S.seenEvents["debate:" + d.id] = S.absWeek; S.seenEvents["dev_" + d.id] = S.absWeek;
+      logEventFire("debate", d);
+      startScene([{sp:"narr", t:"CLASHを開くと、また新しい論争が燃えていた。"}, {debate:d.id}], () => endWeek());
+      return;
+    }
+    if (_rng() < 0.45){
       startScene([{sp:"narr", t:"CLASHを開くと、小さな論争が燃えていた。"}, {debate:"mini1"}], () => endWeek());
       return;
     }
@@ -806,6 +825,11 @@ function finishBattle(win){
 }
 
 // ---------- SNS議論バトル ----------
+// 第44節: 汎用ネタプール（story-ch1.js の DEBATE_POOL）のうち、まだ見ていないネタの一覧
+function unseenPoolDebates(){
+  if (typeof DEBATE_POOL === "undefined") return [];
+  return DEBATE_POOL.filter(d => !S.seenEvents["debate:" + d.id]);
+}
 function startDebate(id){
   const d = DEBATES[id];
   UI.screen = "debate"; UI.debate = { def: d, id };
@@ -953,6 +977,7 @@ window.__gameTest = {
     if (typeof CH3_WEEK_EVENTS !== "undefined") pools.push(...CH3_WEEK_EVENTS);
     if (typeof CH3_STUDENT_DRAMA !== "undefined") pools.push(...CH3_STUDENT_DRAMA);
     if (typeof CH3_SEASONAL_EVENTS !== "undefined") pools.push(...CH3_SEASONAL_EVENTS);
+    if (typeof DEBATE_EVENTS !== "undefined") pools.push(...DEBATE_EVENTS);
     const e = pools.find(x => x.id === id);
     if (!e) return false;
     ensureStateCompat();
@@ -962,7 +987,8 @@ window.__gameTest = {
   },
   startChapter3: () => { if (typeof startChapter3 === "function") startChapter3(); },
   pools: () => ({ v2: (typeof WEEK_EVENTS_V2 !== "undefined" ? WEEK_EVENTS_V2 : []).map(e => ({id:e.id, category:e.category})), student: (typeof STUDENT_DRAMA_EVENTS !== "undefined" ? STUDENT_DRAMA_EVENTS : []).map(e => e.id), seasonal: (typeof SEASONAL_EVENTS !== "undefined" ? SEASONAL_EVENTS : []).map(e => e.id),
-    ch3week: (typeof CH3_WEEK_EVENTS !== "undefined" ? CH3_WEEK_EVENTS : []).map(e => ({id:e.id, category:e.category})), ch3student: (typeof CH3_STUDENT_DRAMA !== "undefined" ? CH3_STUDENT_DRAMA : []).map(e => e.id), ch3seasonal: (typeof CH3_SEASONAL_EVENTS !== "undefined" ? CH3_SEASONAL_EVENTS : []).map(e => e.id) }),
+    ch3week: (typeof CH3_WEEK_EVENTS !== "undefined" ? CH3_WEEK_EVENTS : []).map(e => ({id:e.id, category:e.category})), ch3student: (typeof CH3_STUDENT_DRAMA !== "undefined" ? CH3_STUDENT_DRAMA : []).map(e => e.id), ch3seasonal: (typeof CH3_SEASONAL_EVENTS !== "undefined" ? CH3_SEASONAL_EVENTS : []).map(e => e.id),
+    debates: (typeof DEBATE_POOL !== "undefined" ? DEBATE_POOL : []).map(d => d.id), debateEvents: (typeof DEBATE_EVENTS !== "undefined" ? DEBATE_EVENTS : []).map(e => e.id) }),
 };
 
 // ---------- 自動テスト（?autotest=1&style=流派名&foul=0|1&seed=N） ----------
