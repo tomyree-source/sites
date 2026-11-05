@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tomyree-source.github.io/sites/higashimikuni/</loc><lastmod>2026-10-31</lastmod></url>
-  <url><loc>https://tomyree-source.github.io/sites/higashimikuni/assets/blog.html</loc><lastmod>2026-11-03</lastmod></url>
+  <url><loc>https://tomyree-source.github.io/sites/higashimikuni/assets/blog.html</loc><lastmod>2026-11-04</lastmod></url>
+  <url><loc>https://tomyree-source.github.io/sites/higashimikuni/assets/b/ude-te-tsukare.html</loc><lastmod>2026-11-04</lastmod></url>
+  <url><loc>https://tomyree-source.github.io/sites/higashimikuni/assets/b/tai-darusa.html</loc><lastmod>2026-11-04</lastmod></url>
   <url><loc>https://tomyree-source.github.io/sites/higashimikuni/assets/b/senaka-hari.html</loc><lastmod>2026-11-03</lastmod></url>
   <url><loc>https://tomyree-source.github.io/sites/higashimikuni/assets/b/jiritsu-shinkei.html</loc><lastmod>2026-11-03</lastmod></url>
   <url><loc>https://tomyree-source.github.io/sites/higashimikuni/assets/b/shisei-nekoze.html</loc><lastmod>2026-11-02</lastmod></url>
@@ -419,7 +421,7 @@
   </url>
   <url>
     <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/symptoms.html</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-05</lastmod>
   </url>
   <url>
     <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/menu.html</loc>
@@ -432,5 +434,85 @@
   <url>
     <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/access.html</loc>
     <lastmod>2026-11-04</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/kubi-mae-hari.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/sakotsu-omosa.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/kata-ageru-tsumari.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/kenkoukotsu-yose.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/waki-rokkotsu-hari.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/kotsuban-chikara.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/tekubi-sorashi.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/te-mukumi.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/hiji-nobashi.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/zenwan-hari.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/kokansetsu-hiraki.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/hizaura-hari.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/fukurahagi-hari.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/sune-hari.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/ashikubi-mawashi.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/ashiyubi-tsukare.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/kakato-itami.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/tsuchifumazu-tsukare.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/mizoochi-hari.html</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/higashimikuni/assets/d/onaka-hie.html</loc>
+    <lastmod>2026-11-05</lastmod>
   </url>
 </urlset>
