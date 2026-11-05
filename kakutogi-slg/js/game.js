@@ -910,6 +910,8 @@ function unseenPoolDebates(){
 }
 function startDebate(id){
   const d = DEBATES[id];
+  // 第49節: 汎用プールの議論は、どの経路で再生されても既出として記録する（イベント内包時の二重発火防止）
+  if (typeof DEBATE_POOL !== "undefined" && DEBATE_POOL.some(x => x.id === id)) S.seenEvents["debate:" + id] = S.absWeek;
   UI.screen = "debate"; UI.debate = { def: d, id };
   hud();
   $("main").innerHTML = '<div class="debate"><h2>CLASH ― ' + esc(d.title) + "</h2>" +

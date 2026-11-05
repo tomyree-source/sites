@@ -1,4 +1,4 @@
-// キャストデータ（正本：~/workspace/new-game/cast.md 全45名）
+// キャストデータ（正本：~/workspace/new-game/cast.md 全46名）
 // 全員架空の成人。img は ~/workspace/new-game/cast-art/cast-<id>-sera.webp に対応。
 // pref（口説きの好み条件）: "sei"=清名型 / "aku"=悪名型 / "power"=実力型
 const CAST_DATA = [
@@ -51,6 +51,8 @@ const CAST_DATA = [
   {id:"umezu", name:"梅津 久", age:63, sex:"M", style:"高専柔道", role:"源田の旧友・晩年の相談役", debut:5},
   // 追加キャスト第45名（企画書第42節・cast.md末尾が正本）。年齢は正本に指定がないため null（表示箇所では年齢表記を省略する）。口説き対象外のため pref は付けない
   {id:"akai", name:"赤井 ケン", age:null, sex:"M", style:"空手系", role:"コスプレ格闘家／対戦相手・イベントキャラ", debut:3},
+  // 追加キャスト第46名（企画書第49節・cast.md末尾が正本）。口説き対象外のため pref は付けない
+  {id:"bushika", name:"武鹿", age:36, sex:"M", style:"筋トレ／アクション", role:"馬マスクのアクション俳優／イベントキャラ", debut:3},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;
