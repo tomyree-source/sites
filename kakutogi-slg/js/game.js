@@ -790,9 +790,14 @@ function startBattle(id, winSteps, loseSteps){
   UI.battle = { def, eStyle, php: Math.max(20, maxPhp), maxPhp: Math.max(20, maxPhp), ehp: def.hp, turn: 0, dealt: 0,
     log: [], cmtIdx: 0, foulUsed: false, sigUsed: false, readBonus: 0, control: 0, readGuard: false, secondUsed: false,
     comboStyle, comboUsed: false, counterLevel, counterStreak: streak, counterHasSig,
+    blur: 0, eyeHits: 0, eyeTurn: 0, misses: 0,
     winSteps, loseSteps };
   window.__lastCounter = {level: counterLevel, streak: streak, battleId: def.id, hasSig: counterHasSig};
   bLog("実況", def.title + "――開始！");
+  if (def.eyeThrust){
+    bLog("メツキング", "証明する、と言った。ゴーグル越しでも構わない――本気で、目を突く");
+    bLog("実況", "メツキングの二指が、静かに目線の高さへ上がった。本当に、目を狙う構えだ");
+  }
   if (counterLevel > 0){
     bLog("対策", "【研究・対策】" + def.enemyName + "陣営は、" + streak + "連勝中のあなたの映像を研究済みだ。" +
       (counterHasSig ? sigName() + "への対策が用意されている（看板技の威力が下がる）。" : "看板技は未解放のため、主・流儀の代表的な型への対策が用意されている（通常攻撃が少し読まれやすい）。") +
@@ -834,7 +839,8 @@ function renderBattle(){
   if (def.foul && !b.foulUsed) acts.push(["foul", "反則・眼突き", "勝てるが、評判を落とす諸刃"]);
   const enemyImg = def.img ? '<div class="portrait"><img src="../cast-art/cast-' + def.img + '-sera.webp" alt=""></div>' : "";
   const counterBanner = b.counterLevel > 0 ? '<div class="weeksub" style="color:var(--aku);">【研究・対策】相手陣営があなたの主・流儀／看板技を研究済み（対策レベル' + b.counterLevel + "／" + b.counterStreak + '連勝中）。看板技は威力が下がる。ただし複合技や新しい流派の技は研究が追いついていない。</div>' : "";
-  $("main").innerHTML = '<div class="battle">' + counterBanner + '<div class="vs">' +
+  const blurBanner = b.blur > 0 ? '<div class="weeksub" style="color:var(--aku);">【視界不良】ゴーグルが霞んで狙いが定まらない（あと' + b.blur + '手）。「相手を読む」「組み付く（手を捌く）」で視界を立て直せる</div>' : "";
+  $("main").innerHTML = '<div class="battle">' + counterBanner + blurBanner + '<div class="vs">' +
     '<div class="fighter"><div class="nm">ハヤト（' + esc(mainStyle().name) + " Lv" + lv + '）</div><div class="bar hp"><i style="width:' + clamp(b.php / b.maxPhp * 100, 0, 100) + '%"></i></div><div class="sub">体力 ' + Math.max(0, b.php) + " ／ 部位：腕" + S.dmg.arm + " 脚" + S.dmg.leg + " 体幹" + S.dmg.core + '</div></div>' +
     '<div class="fighter enemy"><div class="nm">' + esc(def.enemyName) + '</div><div class="bar ehp"><i style="width:' + clamp(b.ehp / def.hp * 100, 0, 100) + '%"></i></div><div class="sub">' + esc(def.enemyStyleName || "同流派") + " ／ 耐久 " + Math.max(0, b.ehp) + "</div></div>" +
     enemyImg + '</div>' +
@@ -865,6 +871,19 @@ function battleTurn(act){
       else if (_rng() < 0.35){ applyFx({aku:1, attention:1}); bLog("実況", "映像がCLASHに切り抜かれた。「あれは反則だ」と拡散が始まっている"); }
     }
   }
+  // メツキング戦（第51節）: 視界デバフ（blur）。霞んだ視界では攻撃が逸れやすい（蹴りは間合いが遠い分だけ軽減）。
+  // 「相手を読む」「組み付く（相手の手を捌く）」は視界の立て直しになりデバフを解除する。看板技・複合技は体の覚えた動きなので逸れない
+  if (b.blur > 0){
+    if (act === "read" || act === "grapple"){ b.blur = 0; bLog("実況", "顔を逸らし、相手の手を捌く――視界が晴れてきた！"); }
+    else {
+      b.blur--;
+      if (dmg > 0 && act !== "sig" && act !== "combo" && _rng() < (act === "kick" ? 0.25 : 0.4)){
+        dmg = 0; b.misses++;
+        bLog("実況", "視界が霞んで、攻撃が逸れた！");
+        if (window.__lastEyeThrust) window.__lastEyeThrust.misses = b.misses;
+      }
+    }
+  }
   if (dmg > 0){ b.ehp -= dmg; b.dealt += dmg; b.readBonus = 0; }
   pushComment();
   // セコンド（源田）: 決勝・ルール交渉で選択した場合に1回
@@ -878,6 +897,23 @@ function battleTurn(act){
   let edmg = def.power + rnd(4) + Math.round(((b.eStyle && b.eStyle.stats.grapple) || 1));
   if (def.id === "fin_rin" && S.flags.ruleFx === "stand") edmg = Math.round(edmg * 0.85);
   if (def.id === "fin_rin" && S.flags.ruleFx === "open") edmg = Math.round(edmg * 1.15);
+  // メツキング戦（第51節）: 敵の攻撃が「目を狙う高速の突き」になる。ゴーグルが受けるため体力ダメージは軽いが、視界デバフ（blur=2）が付く。4手ごとには専用技「連環三突き」
+  let eyeLogged = false;
+  if (def.eyeThrust){
+    b.eyeTurn++;
+    const combo = b.eyeTurn % 4 === 0;
+    if (combo || _rng() < 0.45){
+      edmg = Math.max(2, Math.round(edmg * (combo ? 0.9 : 0.55)));
+      b.blur = 2; b.eyeHits++;
+      if (combo) bLog("メツキング", "形意拳・連環三突き――三つとも、目だ");
+      bLog("実況", combo ? "三連の突きが、全部ゴーグルを捉えた！ レンズが白く霞み、視界が奪われる！" : "メツキングの二指が一直線に目元へ――ゴーグルに鋭い音が響いた！ 視界が霞む！");
+      window.__lastEyeThrust = {battleId: def.id, eyeHits: b.eyeHits, blur: b.blur, combo: combo, misses: b.misses};
+      eyeLogged = true;
+    } else {
+      bLog("実況", "崩拳の圧が正面から押し寄せる。こちらの体力が削られる");
+      eyeLogged = true;
+    }
+  }
   if (b.readGuard){ edmg = Math.round(edmg / 2); b.readGuard = false; }
   b.php -= edmg;
   if (_rng() < 0.18){
@@ -885,7 +921,7 @@ function battleTurn(act){
     S.dmg[p] = clamp(S.dmg[p] + 1, 0, 3);
     bLog("実況", "攻め込まれた拍子に" + ({leg:"脚", arm:"腕", core:"体幹"})[p] + "を痛めた！");
   }
-  bLog("実況", def.enemyName + "の反撃。こちらの体力が削られる");
+  if (!eyeLogged) bLog("実況", def.enemyName + "の反撃。こちらの体力が削られる");
   if (b.php <= 0) return finishBattle(false);
   renderBattle();
 }
