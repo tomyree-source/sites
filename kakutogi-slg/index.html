@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>異種格闘年代記（仮）― 第1章 青年期</title>
+<style>
+  :root{ --bg:#0d1220; --panel:#16203a; --panel2:#1d2a4d; --gold:#c9a44a; --crimson:#a33342; --text:#e8e6df; --sub:#9aa5c0; --sei:#7fc7e8; --aku:#e87f9a; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--text); font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; }
+  #app{ max-width:880px; margin:0 auto; padding:12px; }
+  #hud{ background:var(--panel); border:1px solid var(--gold); border-radius:10px; padding:10px 14px; margin-bottom:12px; }
+  #hud.hidden{ display:none; }
+  #hud .row1{ display:flex; gap:14px; align-items:baseline; margin-bottom:6px; }
+  #hud .age{ font-size:1.25em; font-weight:bold; color:var(--gold); }
+  #hud .chapter{ color:var(--sub); }
+  #hud .row2{ display:flex; flex-wrap:wrap; gap:8px 18px; font-size:.92em; align-items:center; }
+  #hud .sei{ color:var(--sei); } #hud .aku{ color:var(--aku); }
+  .bar{ display:inline-block; width:110px; height:9px; background:#333; border-radius:5px; overflow:hidden; vertical-align:middle; margin-left:6px; }
+  .bar i{ display:block; height:100%; background:#7fc97f; }
+  .bar.ehp i{ background:var(--crimson); }
+  .bar.hp i{ background:#7fc97f; }
+  .navrow{ display:flex; gap:8px; margin-top:14px; }
+  button.btn{ background:var(--panel2); color:var(--text); border:1px solid var(--gold); border-radius:8px; padding:10px 16px; font-size:1em; cursor:pointer; }
+  button.btn:hover{ background:#27355e; }
+  button.btn.next{ background:var(--crimson); border-color:var(--crimson); font-weight:bold; }
+  button.btn.ghost{ background:transparent; border-color:var(--sub); color:var(--sub); }
+  button.btn[disabled]{ opacity:.45; cursor:default; }
+  .title{ text-align:center; padding:48px 10px; }
+  .title h1{ font-size:2.2em; color:var(--gold); letter-spacing:.08em; }
+  .title h1 span{ font-size:.5em; color:var(--sub); }
+  .title .tagline{ color:var(--sub); margin-bottom:28px; }
+  .title .btn{ margin:4px; }
+  .scene{ display:flex; gap:16px; align-items:flex-start; }
+  .portrait{ flex:0 0 240px; background:#0a0e1a; border:1px solid #2a3757; border-radius:10px; padding:6px; }
+  .portrait img{ width:100%; height:340px; object-fit:contain; display:block; }
+  .dialog{ flex:1; background:var(--panel); border-radius:10px; padding:18px; min-height:200px; }
+  .spname{ color:var(--gold); font-weight:bold; margin-bottom:8px; }
+  .stext{ line-height:1.9; white-space:pre-wrap; margin-bottom:16px; }
+  .choices{ display:flex; flex-direction:column; gap:8px; }
+  .weekhead h2{ color:var(--gold); margin:4px 0; }
+  .weeksub{ color:var(--sub); font-size:.9em; margin-bottom:10px; }
+  .actions{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .actions .btn.act{ text-align:left; display:flex; flex-direction:column; gap:2px; }
+  .actions .btn.act span{ color:var(--sub); font-size:.83em; }
+  .styles{ display:flex; flex-direction:column; gap:6px; max-height:60vh; overflow:auto; }
+  .stylecard{ text-align:left; display:flex; flex-direction:column; gap:2px; }
+  .stylecard span{ color:var(--sub); font-size:.85em; line-height:1.5; }
+  .battle .vs{ display:flex; gap:14px; align-items:flex-start; margin-bottom:10px; }
+  .fighter{ flex:1; background:var(--panel); border-radius:10px; padding:12px; }
+  .fighter .nm{ font-weight:bold; margin-bottom:6px; }
+  .fighter .sub{ color:var(--sub); font-size:.85em; margin-top:4px; }
+  .fighter .bar{ width:100%; margin:4px 0 0; }
+  .blog{ background:#0a0e1a; border:1px solid #2a3757; border-radius:10px; padding:10px 14px; height:190px; overflow:auto; margin-bottom:10px; line-height:1.7; font-size:.94em; }
+  .blog .bl span{ color:var(--gold); margin-right:8px; font-size:.85em; }
+  .debate .post{ background:var(--panel); border-radius:10px; padding:12px 14px; margin-bottom:8px; }
+  .debate .who{ font-weight:bold; } .debate .who span{ color:var(--sub); font-weight:normal; margin-left:8px; font-size:.85em; }
+  .debate .txt{ line-height:1.8; margin-top:4px; }
+  .debate h2{ color:var(--gold); }
+  .dexrow{ background:var(--panel); border-radius:8px; padding:8px 12px; margin-bottom:5px; font-size:.94em; }
+  .endcard{ background:var(--panel); border:1px solid var(--gold); border-radius:12px; padding:24px; }
+  .endcard h2{ color:var(--gold); }
+  #toast{ position:fixed; right:14px; bottom:14px; display:flex; flex-direction:column; gap:6px; z-index:50; }
+  .toast-item{ background:#22335c; border:1px solid var(--gold); color:var(--text); padding:8px 12px; border-radius:8px; font-size:.88em; max-width:300px; }
+  .toast-item.bad{ border-color:var(--crimson); background:#3d1d28; }
+  select, input[type="text"]{ background:var(--panel); color:var(--text); border:1px solid var(--sub); border-radius:8px; }
+  @media (max-width:640px){
+    .scene{ flex-direction:column; }
+    .portrait{ flex:none; width:100%; } .portrait img{ height:260px; }
+    .actions{ grid-template-columns:1fr; }
+    .battle .vs{ flex-direction:column; } .battle .portrait{ width:100%; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud" class="hidden">
+    <div class="row1"><span class="age" id="hud-age">19歳</span><span class="chapter" id="hud-chapter">第1章 青年期</span></div>
+    <div class="row2">
+      <span>名声 <b id="hud-fame">0</b> <span class="sei">清名 <span id="hud-sei">0</span></span>／<span class="aku">悪名 <span id="hud-aku">0</span></span></span>
+      <span>金 <b id="hud-money">¥0</b></span>
+      <span>生徒 <b id="hud-students">0</b>人</span>
+      <span>体力 <b id="hud-stamina">100</b><span class="bar hp"><i id="hud-stamina-bar" style="width:100%"></i></span></span>
+      <span id="hud-style"></span>
+    </div>
+  </div>
+  <div id="main"></div>
+  <div class="navrow">
+    <button class="btn ghost" id="btn-save">セーブ</button>
+    <button class="btn ghost" id="btn-load">ロード</button>
+    <button class="btn ghost" id="btn-title">タイトルへ</button>
+  </div>
+</div>
+<div id="toast"></div>
+<script src="js/data-styles.js"></script>
+<script src="js/data-cast.js"></script>
+<script src="js/story-ch1.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
