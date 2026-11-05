@@ -199,7 +199,7 @@ body { font-family:"Hiragino Mincho ProN","Yu Mincho","游明朝",serif; color:#
 <div class="nbrow"><b>パラメータの見方</b><br>画面上部に常時表示されます。専門知識5種（解剖学／経絡・ツボ／アロマ・精油学／施術理論／臨床・症例）と体術は、勉強と施術で伸びます。資金はバイトと施術で増え、評判はお客さんの満足で変わります。</div>
 <div class="nbrow"><b>手帳（前提条件）</b><br>各キャラクターの次のイベントが起きる条件（信頼・パラメータ・曜日・場所など）を確認できます。「次に何をすればいいか」に迷ったら、まず手帳を開いてください。</div>
 <div class="nbrow"><b>カルテ</b><br>出会った人の症状と施術の記録です。正しいツボと正しい香りの組み合わせで「完全改善」になると、特別な物語が開きます。</div>
-<div class="nbrow"><b>図鑑・鑑賞</b><br>ツボ図鑑（実在のツボ36種）・実績・サントラ・CGギャラリーを集める場所です。シーン回想では、一度見た場面を読み返せます。</div>
+<div class="nbrow"><b>図鑑・鑑賞</b><br>ツボ図鑑（実在のツボ36種）・実績・サントラ・CGギャラリー・ヒロイン紹介動画を集める場所です。シーン回想では、一度見た場面を読み返せます。</div>
 <div class="nbrow"><b>進め方のコツ</b><br>物語は画面タップと選択肢で進みます。誰を優先するか、どのツボと香りを選ぶかで信頼が変わります。セーブは画面右上のメニューからいつでも行えます。音量は「設定」で調整できます。</div>
 </div>
 <button class="bigbtn" onclick="NAGI2.closeHowto()">閉じる</button>
@@ -391,7 +391,7 @@ S.scene=nx; S.idx=0; show();
 }
 function endOfProto(){
 document.getElementById('name').textContent='';
-document.getElementById('text').textContent='体験版はここまでです。タイトル画面に戻って、回想や図鑑もお楽しみください。本作の販売は中止となりましたが、体験版は引き続きお楽しみいただけます。';
+document.getElementById('text').textContent='体験版はここまでです。タイトル画面に戻って、回想や図鑑もお楽しみください。製品版はBOOTHで販売中です。物語の続きは、ぜひ製品版でお楽しみください。';
 }
 </script>
 <script>
@@ -14280,17 +14280,19 @@ FT.kanzenCount = kanzenCount;
 /* ヒロイン基礎データ。症例ノート・設定資料・調合の正解・誕生日で共用し、PDF特典と項目設計を共有する。
    base/accent は調合の最適解（ベース4種＝herb/citrus/rose/wood、アクセント4種＝sweet/mint/spice/smoke）。 */
 var FT_HERO = [
+ {key:'koharu', name:'こはる', full:'西村こはる', age:19, job:'同期のセラピスト', worry:'肩甲骨の内側、冷えて固まる腰', point:'肩甲骨内側・腰と仙骨', tsubo:'天宗・次髎', scent:'カモミール', base:'rose', accent:'sweet', route:'koh_route', rel:'koharu', bday:'6月25日', bslot:[1,2,'nagido'], gift:'practical', miru:'肩甲骨の内側と、冷えて固まる腰・仙骨まわり。緊張すると笑ってごまかす癖が、身体にも出ている', keika:'腰が温まり、同期の笑顔から緊張が消えた。「私もほぐせる側に回りたい」と、彼女は自分の課題を持ち帰った', memo:'笑ってごまかす癖が、身体の訴えを隠す。笑顔の奥を見る'},
+ {key:'rio', name:'莉央', full:'早瀬莉央', age:19, job:'美容部員（成人社会人）', worry:'脚のむくみと肩の緊張', point:'ふくらはぎと足裏', tsubo:'承山・湧泉', scent:'オレンジスイート', base:'citrus', accent:'sweet', route:'rio_route', bday:'7月7日', bslot:[4,4,'street'], gift:'practical', miru:'立ち仕事とヒールでむくんだ脚、肩の緊張。ふくらはぎと足裏に、一日分の疲れが溜まっている', keika:'脚のむくみが引き、歩く姿が軽くなった。接客の笑顔に、本物の余裕が混じるようになった', memo:'若さで誤魔化せる疲れにも、限界は来る。早いうちのケアが大事'},
+ {key:'yukari', name:'ゆかり', full:'葛城ゆかり', age:19, job:'OL1年目（成人社会人・冴子の娘）', worry:'デスクワークの腰痛', point:'腰', tsubo:'腎兪・委中', scent:'スイートオレンジ', base:'citrus', accent:'smoke', route:'yka_route', bday:'5月25日', bslot:[4,3,'street'], gift:'aroma', miru:'デスクワークの腰痛。腎兪のあたりに、座りっぱなしの重さが溜まっている', keika:'腰が軽くなり、仕事の合間の姿勢まで変わった。母娘そろって凪堂の常連になった', memo:'社会人の身体の土台作りは、一年目が勝負'},
+ {key:'shiori', name:'しおり', full:'葉山しおり', age:22, job:'鍼灸学校の同級生', worry:'岩のような肩', point:'肩と首', tsubo:'肩井・合谷', scent:'ヒノキ', base:'wood', accent:'mint', route:'shi_route', rel:'shiori', bday:'9月9日', bslot:[1,3,'school'], gift:'practical', miru:'岩のような肩。実技と勉強の両立で、肩も首も限界まで張っている。笑顔の裏に根詰めた疲れ', keika:'肩がほぐれ、実技の手つきまで変わった。国家試験への不安が、確かな手応えに置き換わっていった', memo:'勉強と実技の両立。肩の硬さは、根詰めの証拠'},
+ {key:'aoi', name:'葵', full:'神宮寺葵', age:23, job:'巫女', worry:'祭事の立ち仕事と足の冷え', point:'足裏と脚', tsubo:'湧泉・太谿', scent:'ヒノキ', base:'wood', accent:'spice', route:'aoi_route', bday:'1月7日', bslot:[4,4,'shrine'], gift:'aroma', miru:'祭事の立ち仕事と足の冷え。湧泉のあたりに、神職の凛とした日常の疲れが溜まっている', keika:'足が温まり、祭事の長い一日を立てるようになった。神社の静けさと凪堂の静けさが、彼女の中でつながった', memo:'凛とした日常の裏の、静かな疲れ。足の冷えが入口'},
+ {key:'yuki', name:'由紀', full:'三島由紀', age:24, job:'凪堂の受付', worry:'電話と予約表の姿勢で固まった肩', point:'肩', tsubo:'肩井・合谷', scent:'スイートオレンジ', base:'citrus', accent:'sweet', route:'yuk_route', bday:'1月15日', bslot:[2,1,'nagido'], gift:'aroma', miru:'電話と予約表の姿勢で固まった肩。肩井と合谷に、受付の最前線の疲れが集まっている', keika:'カルテと予約の仕組みが整い、彼女の肩の荷も下りた。凪堂の顔として、笑顔に余裕が戻った', memo:'店の顔の疲れは、店の疲れ。受付の肩が軽い店は、客も軽くなる'},
  {key:'mio', name:'澪', full:'雨宮澪', age:32, job:'広告代理店の管理職', worry:'肩こり・眼精疲労・不眠', point:'ヘッドと肩', tsubo:'百会・安眠', scent:'ラベンダー', base:'herb', accent:'smoke', route:'mio_route', bday:'2月10日', bslot:[3,4,'street'], gift:'aroma', miru:'肩こりと眼精疲労、不眠。頭皮は硬く、首の付け根に強い張り。デスクワークの緊張が、眠る時間まで持ち越されている', keika:'頭と肩がほぐれ、眠りの質が戻った。本人が「休むのも仕事」と言えるようになった日、肩の力も抜けた', memo:'眠りの質が全ての起点。本人の「休む許可」を引き出すのが施術の核'},
  {key:'saori', name:'沙織', full:'白鳥沙織', age:29, job:'外科医', worry:'腰痛と手の疲れ', point:'腰と足裏・腸腰筋', tsubo:'腎兪・湧泉', scent:'ユズ', base:'citrus', accent:'mint', route:'sao_route', bday:'7月19日', bslot:[3,2,'street'], gift:'practical', miru:'腰痛と手の疲れ。腸腰筋の硬さと足裏のアーチの崩れ。立つ・座る・執刀する、全ての姿勢を腰で受けている', keika:'腰と足裏が整い、長い手術でも腰が悲鳴を上げなくなった。医療者同士の紹介が、静かに増えていく', memo:'医療者ゆえの遠慮がある。身体の声は、職業人としての顔より正直'},
  {key:'hana', name:'栞', full:'花村栞', age:36, job:'花屋', worry:'腰と冷え', point:'腰と骨盤まわり', tsubo:'腎兪・次髎', scent:'イランイラン', base:'rose', accent:'smoke', route:'han_route', bday:'5月14日', bslot:[3,3,'flower'], gift:'aroma', miru:'腰と冷え。骨盤まわりの硬さと、下半身の巡りの悪さ。朝の市場通いの冷えが、腰に積もっている', keika:'腰が温まり、冷えが和らいだ。花の世話をする手つきまで軽くなり、店の常連が彼女の変化に気づいた', memo:'冷えは腰から。市場の朝の冷たさを、まず聞き取る'},
  {key:'azusa', name:'梓', full:'九重梓', age:42, job:'化粧品会社の社長', worry:'全身の疲労と頭痛', point:'全身オイル・頭と首肩', tsubo:'百会・肩井', scent:'サンダルウッド', base:'wood', accent:'smoke', route:'azu_route', bday:'11月11日', bslot:[4,1,'nagido'], gift:'flower', miru:'全身の疲労と頭痛。頭と首肩は岩のように硬く、全身の張りが抜けない。経営の重圧が、そのまま身体に出ている', keika:'全身がほぐれ、頭痛の頻度が減った。「任せる」ことを覚えた彼女の表情は、初対面の頃とは別人の柔らかさになった', memo:'最難関。頭と全身、両方の完全な解放が要る。信頼の積み重ねが前提'},
  {key:'akari', name:'あかり', full:'桐生あかり', age:30, job:'先輩セラピスト', worry:'肩甲骨内側の奥と首の付け根', point:'肩甲骨内側・首', tsubo:'天宗・天柱', scent:'ゼラニウム', base:'rose', accent:'mint', route:'aka_route2', rel:'akari', bday:'4月18日', bslot:[1,1,'nagido'], gift:'practical', miru:'肩甲骨内側の奥と首の付け根。天宗の深部に、施術者ならではの疲れが溜まっている', keika:'先輩の背中がほぐれた日、凪堂の技術は二人で磨くものになった。教える側の彼女が、素直に身を委ねるようになった', memo:'教える側の疲れは見えにくい。先輩の背中は、店の財産'},
- {key:'koharu', name:'こはる', full:'西村こはる', age:19, job:'同期のセラピスト', worry:'肩甲骨の内側、冷えて固まる腰', point:'肩甲骨内側・腰と仙骨', tsubo:'天宗・次髎', scent:'カモミール', base:'rose', accent:'sweet', route:'koh_route', rel:'koharu', bday:'6月25日', bslot:[1,2,'nagido'], gift:'practical', miru:'肩甲骨の内側と、冷えて固まる腰・仙骨まわり。緊張すると笑ってごまかす癖が、身体にも出ている', keika:'腰が温まり、同期の笑顔から緊張が消えた。「私もほぐせる側に回りたい」と、彼女は自分の課題を持ち帰った', memo:'笑ってごまかす癖が、身体の訴えを隠す。笑顔の奥を見る'},
  {key:'kaoru', name:'薫', full:'藤原薫', age:38, job:'セミナー講師・アロマの師', worry:'首と肩の静かな疲れ', point:'首と肩・呼吸', tsubo:'風池・肩井', scent:'シダーウッド', base:'wood', accent:'spice', route:'kao_route', rel:'kaoru', bday:'11月30日', bslot:[1,4,'school'], gift:'aroma', miru:'香りの仕事に長く携わる人の、首と肩の静かな疲れ。嗅覚の鋭さの裏で、呼吸が浅くなっている', keika:'師の肩が下がり、呼吸が深くなった。技術と香りの両方で、ケントを一人前と認めた証の言葉があった', memo:'師の身体は、弟子の成長を測る物差しでもある'},
- {key:'shiori', name:'しおり', full:'葉山しおり', age:22, job:'鍼灸学校の同級生', worry:'岩のような肩', point:'肩と首', tsubo:'肩井・合谷', scent:'ヒノキ', base:'wood', accent:'mint', route:'shi_route', rel:'shiori', bday:'9月9日', bslot:[1,3,'school'], gift:'practical', miru:'岩のような肩。実技と勉強の両立で、肩も首も限界まで張っている。笑顔の裏に根詰めた疲れ', keika:'肩がほぐれ、実技の手つきまで変わった。国家試験への不安が、確かな手応えに置き換わっていった', memo:'勉強と実技の両立。肩の硬さは、根詰めの証拠'},
- {key:'yuki', name:'由紀', full:'三島由紀', age:24, job:'凪堂の受付', worry:'電話と予約表の姿勢で固まった肩', point:'肩', tsubo:'肩井・合谷', scent:'スイートオレンジ', base:'citrus', accent:'sweet', route:'yuk_route', bday:'1月15日', bslot:[2,1,'nagido'], gift:'aroma', miru:'電話と予約表の姿勢で固まった肩。肩井と合谷に、受付の最前線の疲れが集まっている', keika:'カルテと予約の仕組みが整い、彼女の肩の荷も下りた。凪堂の顔として、笑顔に余裕が戻った', memo:'店の顔の疲れは、店の疲れ。受付の肩が軽い店は、客も軽くなる'},
  {key:'ritsu', name:'律', full:'風間律', age:35, job:'バー「月影」のマスター', worry:'前腕、立ち仕事の肩と腰', point:'前腕・肩・腰', tsubo:'手三里・外関', scent:'シダーウッド', base:'wood', accent:'smoke', route:'rit_route', bday:'12月5日', bslot:[3,1,'bar'], gift:'practical', miru:'シェイカーを振る前腕、立ち仕事の肩と腰。締め付ける装いで呼吸が浅く、眠りも浅い', keika:'前腕と肩がほぐれ、呼吸が深くなった。凪堂の夜の常連として、彼女の店との縁も深まっていく', memo:'夜の仕事の身体は、昼の施術と相性がいい。呼吸の浅さに注意'},
- {key:'rio', name:'莉央', full:'早瀬莉央', age:19, job:'美容部員（成人社会人）', worry:'脚のむくみと肩の緊張', point:'ふくらはぎと足裏', tsubo:'承山・湧泉', scent:'オレンジスイート', base:'citrus', accent:'sweet', route:'rio_route', bday:'7月7日', bslot:[4,4,'street'], gift:'practical', miru:'立ち仕事とヒールでむくんだ脚、肩の緊張。ふくらはぎと足裏に、一日分の疲れが溜まっている', keika:'脚のむくみが引き、歩く姿が軽くなった。接客の笑顔に、本物の余裕が混じるようになった', memo:'若さで誤魔化せる疲れにも、限界は来る。早いうちのケアが大事'},
  {key:'reika', name:'麗華', full:'黒崎麗華', age:40, job:'ライバル店「ルーチェ」の女主人', worry:'経営と施術で積もった全身の疲労', point:'全身・首肩', tsubo:'肩井・天宗', scent:'ローズ', base:'rose', accent:'mint', route:'rei_route', bday:'10月31日', bslot:[3,2,'luce'], gift:'flower', miru:'長年の経営と施術で積もった、全身の静かな疲労。ライバル店の看板を背負う人の、見せない疲れ', keika:'敵同士の緊張が、技術への敬意に変わった。彼女の店との間に、静かな貸し借りが生まれた', memo:'敵店の主人の身体を預かる重さ。技術への敬意が信頼に変わる'},
  {key:'saki', name:'沙紀', full:'八神沙紀', age:29, job:'トレーナー・元総合格闘家', worry:'全身の張り、右膝と右股関節の古傷', point:'肩井・環跳・承山', tsubo:'環跳・承山', scent:'ペパーミント', base:'herb', accent:'mint', route:'sak_route', bday:'4月2日', bslot:[3,1,'gym'], gift:'practical', miru:'肩井・環跳・承山の強い張り。右膝と右股関節に古傷。格闘技の現役時代の蓄積が全身に残る', keika:'古傷まわりがほぐれ、指導の動きが戻った。今度は彼女が、ケントの身体の使い方を見る番になった', memo:'古傷は「治す」より「付き合う」。本人の身体感覚を尊重する'},
  {key:'eri', name:'絵里', full:'滝川絵里', age:28, job:'銀行員', worry:'頭の重さ・側頭部', point:'側頭部と目', tsubo:'太陽・攅竹', scent:'ローズマリー', base:'herb', accent:'smoke', route:'eri_route', bday:'3月3日', bslot:[2,2,'street'], gift:'practical', miru:'頭の重さと側頭部の張り。銀行の窓口の緊張と、数字に向き合う目の疲れ', keika:'頭が軽くなり、仕事終わりの表情が変わった。紹介の輪が、彼女の職場にも広がっていった', memo:'頭の重さは、真面目さの裏返し。窓口の笑顔の裏を読む'},
@@ -14301,11 +14303,9 @@ var FT_HERO = [
  {key:'sofia', name:'ソフィア', full:'ソフィア・デュラン', age:27, job:'パティシエ', worry:'立ち仕事とオーブンの熱で全身の張り', point:'全身', tsubo:'足三里・肩井', scent:'オレンジスイート', base:'rose', accent:'sweet', route:'sof_route', bday:'9月27日', bslot:[3,4,'atelier'], gift:'flower', miru:'立ち仕事とオーブンの熱で全身が張っている。甘い香りの厨房で、身体だけが悲鳴を上げている', keika:'全身がほぐれ、仕込みの朝が楽になった。お礼の焼き菓子が、凪堂の休憩室の名物になった', memo:'熱と立ち仕事の全身疲労。甘い香りの厨房の、辛い裏側'},
  {key:'emma', name:'エマ', full:'エマ・ウィルソン', age:26, job:'ALT（外国語指導助手）', worry:'運動後の筋肉疲労と異国暮らしの疲れ', point:'ふくらはぎ・大腿', tsubo:'承山・足三里', scent:'ペパーミント', base:'citrus', accent:'mint', route:'emm_route', bday:'6月6日', bslot:[3,2,'gym'], gift:'practical', miru:'運動後の筋肉疲労と、異国暮らしの疲れ。ふくらはぎと大腿に、言葉にできないホームシックも混じる', keika:'筋肉がほぐれ、日本の暮らしの疲れも軽くなった。凪堂が、彼女の「帰る場所」の一つになった', memo:'ホームシックは身体に出る。明るさの裏の疲れを見る'},
  {key:'saeko', name:'冴子', full:'葛城冴子', age:38, job:'元モデル', worry:'火照り・眠りの浅さ・肩こり', point:'肩と全身', tsubo:'肩井・三陰交', scent:'ローズ', base:'rose', accent:'spice', route:'sae_route', bday:'10月2日', bslot:[4,3,'street'], gift:'flower', miru:'火照りと眠りの浅さ、肩こり。肩井・天宗・三陰交に、年齢と共に変わる身体の声が集まっている', keika:'眠りが深くなり、火照りが落ち着いた。凪堂のカルテが、彼女の節目を丁寧に支えた記録になった', memo:'年齢と共に変わる身体との付き合い方を、一緒に作る施術'},
- {key:'yukari', name:'ゆかり', full:'葛城ゆかり', age:19, job:'OL1年目（成人社会人・冴子の娘）', worry:'デスクワークの腰痛', point:'腰', tsubo:'腎兪・委中', scent:'スイートオレンジ', base:'citrus', accent:'smoke', route:'yka_route', bday:'5月25日', bslot:[4,3,'street'], gift:'aroma', miru:'デスクワークの腰痛。腎兪のあたりに、座りっぱなしの重さが溜まっている', keika:'腰が軽くなり、仕事の合間の姿勢まで変わった。母娘そろって凪堂の常連になった', memo:'社会人の身体の土台作りは、一年目が勝負'},
  {key:'haruka', name:'遥', full:'藤堂遥', age:27, job:'看護師', worry:'夜勤の腰痛・脚のむくみ', point:'腰と脚', tsubo:'委中・承山', scent:'ペパーミント', base:'herb', accent:'sweet', route:'har_route', bday:'3月19日', bslot:[4,3,'hospital'], gift:'practical', miru:'夜勤の腰痛と脚のむくみ。委中のあたりに、眠れない勤務のリズムの疲れが溜まっている', keika:'腰と脚がほぐれ、夜勤明けの回復が早くなった。医療の現場同士、静かな信頼が生まれた', memo:'夜勤のリズムは、身体の時計を狂わせる。眠りの設計から'},
  {key:'mitsuki', name:'美月', full:'高坂美月', age:31, job:'女教師', worry:'肩と手の張り（授業と保護者対応）', point:'肩と手', tsubo:'合谷・肩井', scent:'ローズマリー', base:'herb', accent:'mint', route:'mit_route', bday:'9月15日', bslot:[4,2,'street'], gift:'practical', miru:'授業と保護者対応のストレス。肩と手の張りに、黒板と人前に立つ緊張が出ている', keika:'肩と手がほぐれ、教室での声まで柔らかくなった。彼女の紹介で、同僚の来店も増えていく', memo:'人前に立つ緊張は、手と肩に出る。教室の外の顔を見る'},
  {key:'rena', name:'玲奈', full:'白瀬玲奈', age:28, job:'国際線CA', worry:'時差ぼけ・脚のむくみ', point:'脚と足裏', tsubo:'湧泉・三陰交', scent:'グレープフルーツ', base:'citrus', accent:'spice', route:'ren_route', bday:'12月24日', bslot:[4,4,'bar'], gift:'flower', miru:'時差ぼけと脚のむくみ。湧泉・承山・三陰交に、空を飛ぶ仕事の疲れが集まっている', keika:'むくみが引き、眠りのリズムが戻った。次のフライトの前に、必ず寄る店になった', memo:'時差は身体の時計の大敵。眠りと巡りの両面から整える'},
- {key:'aoi', name:'葵', full:'神宮寺葵', age:23, job:'巫女', worry:'祭事の立ち仕事と足の冷え', point:'足裏と脚', tsubo:'湧泉・太谿', scent:'ヒノキ', base:'wood', accent:'spice', route:'aoi_route', bday:'1月7日', bslot:[4,4,'shrine'], gift:'aroma', miru:'祭事の立ち仕事と足の冷え。湧泉のあたりに、神職の凛とした日常の疲れが溜まっている', keika:'足が温まり、祭事の長い一日を立てるようになった。神社の静けさと凪堂の静けさが、彼女の中でつながった', memo:'凛とした日常の裏の、静かな疲れ。足の冷えが入口'},
  {key:'mao', name:'真央', full:'桜井真央', age:25, job:'キックボクサー', worry:'減量の疲労と古傷の右足首', point:'脚と足首', tsubo:'承山・丘墟', scent:'ペパーミントとユーカリ', base:'herb', accent:'spice', route:'mao_route', bday:'8月8日', bslot:[3,3,'gym'], gift:'practical', miru:'減量の疲労と、古傷の右足首。承山・足三里・丘墟に、リングに立つ者の蓄積がある', keika:'足首まわりがほぐれ、試合に向けた身体が整った。結果を出しにいく背中を、凪堂から送り出した', memo:'減量期の身体は繊細。攻めず、整える判断が問われる'}
 ];
 FT.HERO = FT_HERO;
@@ -14488,12 +14488,13 @@ FT.open = function(tab){
   FT.render();
 };
 FT.close = function(){
+  FT.closeVideo();
   var scr = el10('ftscreen'); if(scr) scr.classList.remove('on');
   FT.restoreMusic();
 };
 FT.render = function(){
   var scr = el10('ftscreen'); if(!scr) return;
-  var tabs = [['case','症例ノート'],['tsubo','ツボ図鑑'],['ach','実績・称号'],['music','サントラ'],['prof','設定資料']];
+  var tabs = [['case','症例ノート'],['tsubo','ツボ図鑑'],['ach','実績・称号'],['music','サントラ'],['prof','設定資料'],['video','紹介動画']];
   var h = '<div class="nbwrap"><div class="nbhead"><div class="nbttl">図鑑・鑑賞</div><button class="btn sub" onclick="FT.close()">閉じる</button></div>';
   h += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0">';
   tabs.forEach(function(t){ h += '<button class="btn '+(FT.tab===t[0]?'':'sub')+'" style="flex:1;min-width:96px" onclick="FT.open(\''+t[0]+'\')">'+t[1]+'</button>'; });
@@ -14504,6 +14505,7 @@ FT.render = function(){
   else if(FT.tab==='tsubo') b.innerHTML = repNameHtml(FT.renderTsubo());
   else if(FT.tab==='ach') b.innerHTML = repNameHtml(FT.renderAch());
   else if(FT.tab==='music') b.innerHTML = repNameHtml(FT.renderMusic());
+  else if(FT.tab==='video') b.innerHTML = FT.renderVideo();
   else b.innerHTML = repNameHtml(FT.renderProf());
 };
 FT.renderCase = function(){
@@ -14573,6 +14575,34 @@ FT.renderProf = function(){
   h += ftRow('心映香', '惚れ薬のアロマ。月下香よりさらに希少で、薫が生涯に数本しか作らない。気持ちを「作る」ものではなく、増幅の質が違う');
   h += ftRow('資格制度', '国家資格の鍼灸師に加え、協会認定の追加資格が4種ある（精油調合師／リフレクソロジスト／スポーツケアトレーナー／経絡治療上級）。取得は幕間の自宅から受験できる');
   return h;
+};
+FT.renderVideo = function(){
+  var h = '<div class="nbsec">ヒロイン紹介動画（全27人・各38秒）この画面からそのまま再生できます</div>';
+  FT_HERO.forEach(function(he){
+    h += ftRow(he.full + '（' + he.age + '歳）', esc(he.job) + '<br><button class="btn sub" onclick="FT.playVideo(\'' + he.key + '\')">▶ 紹介動画を再生</button>');
+  });
+  return h;
+};
+FT.playVideo = function(key){
+  var he = heroByKey(key); if(!he) return;
+  try{ var a = el10('bgmAudio'); if(a) a.pause(); }catch(e){}
+  var ov = el10('ftvideo');
+  if(!ov){
+    ov = document.createElement('div'); ov.id = 'ftvideo';
+    ov.setAttribute('style', 'position:fixed;inset:0;z-index:30;background:rgba(2,4,7,.94);display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px');
+    document.body.appendChild(ov);
+  }
+  ov.innerHTML = '<div style="color:#f2e3c2;font-size:17px;font-weight:700">' + esc(he.full) + ' ― 紹介動画</div>'
+    + '<video id="ftvideoEl" src="assets/videos/intro-' + key + '.mp4" controls playsinline style="width:min(960px,94vw);max-height:74vh;background:#000;border-radius:10px"></video>'
+    + '<button class="btn sub" onclick="FT.closeVideo()">閉じる</button>';
+  ov.style.display = 'flex';
+  try{ var v = el10('ftvideoEl'); if(v && v.play){ var p = v.play(); if(p && p.catch) p.catch(function(){}); } }catch(e){}
+};
+FT.closeVideo = function(){
+  var ov = el10('ftvideo'); if(!ov) return;
+  try{ var v = el10('ftvideoEl'); if(v){ if(v.pause) v.pause(); v.removeAttribute('src'); if(v.load) v.load(); } }catch(e){}
+  ov.style.display = 'none'; ov.innerHTML = '';
+  FT.restoreMusic();
 };
 FT.play = function(key){
   try{
@@ -16159,14 +16189,14 @@ SCENES['demo_end'] = { next: null, lines: [
 {n:'', t:'体験版はここまでです。ごプレイ、ありがとうございました。'},
 {n:'', t:'国家試験に合格し、進路を選んだケント。物語はこの先、セラピストとして働く日々へと続いていく。'},
 {n:'', t:'この先の物語では第2幕から第4幕まで、27人の女性客・同僚・先輩との物語が続いていきます。専門知識（解剖学・経絡／ツボ・アロマ・精油学・施術理論・臨床／症例）を育てる育成システムが、物語の行く末を左右します。'},
-{n:'', t:'本作の製品版は、販売を中止いたしました。これまで応援いただき、ありがとうございました。'},
-{n:'', t:'最新情報は公式サイトでご案内しています。この先の画面に、公式サイトへのリンクボタンを用意しました。'},
+{n:'', t:'本作の製品版は、BOOTHにて販売中です（1,200円）。第2幕から第4幕まで、27人の物語の続きをお楽しみいただけます。'},
+{n:'', t:'この先の画面に、公式サイトと製品版の商品ページへのリンクボタンを用意しました。'},
 {n:'', t:'タイトル画面の「シーン回想」から、体験版で読んだ場面を読み返せます。'}
 ]};
 SCENES['ep7'].next = 'demo_end';
 window.endOfProto = function(){
 document.getElementById('name').textContent = '';
-document.getElementById('text').textContent = '体験版はここまでです。タイトル画面に戻って、回想や図鑑もお楽しみください。本作の販売は中止となりましたが、体験版は引き続きお楽しみいただけます。下のボタンから、公式サイトへ進めます。';
+document.getElementById('text').textContent = '体験版はここまでです。タイトル画面に戻って、回想や図鑑もお楽しみください。製品版はBOOTHで販売中です。下のボタンから、公式サイトと商品ページへ進めます。';
 try{
   var box = document.getElementById('choices');
   if(box){
@@ -16179,6 +16209,8 @@ try{
       box.appendChild(a);
     };
     mkLink('公式サイトを見る', 'https://tomyree-source.github.io/sites/nagido-official/#trial');
+    // 購入導線：BOOTH商品ページ（商品ID 9100372、2026-11-05販売開始時に確定）
+    mkLink('製品版をBOOTHで見る', 'https://angel222.booth.pm/items/9100372');
     var shareText = '『凪堂 ―セラピスト修行記―』本格派セラピスト育成SLG（R-18）｜無料体験版を公開中 #凪堂 #セラピスト修行記';
     mkLink('Xでシェアする', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent('https://tomyree-source.github.io/sites/nagido-slg-demo/'));
     box.style.display = 'flex';
