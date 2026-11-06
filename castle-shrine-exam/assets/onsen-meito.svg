@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+<rect width="300" height="420" fill="#2f6f6a"/>
+<rect x="14" y="14" width="272" height="392" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+<text x="150" y="80" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff" font-family="sans-serif">日本の名湯</text>
+<text x="150" y="112" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-family="sans-serif">全18種アソート 入浴剤</text>
+<ellipse cx="150" cy="268" rx="86" ry="30" fill="#e8f2ee"/>
+<ellipse cx="150" cy="260" rx="86" ry="30" fill="#bcd8cf"/>
+<path d="M64 260 a86 30 0 0 0 172 0 l0 14 a86 30 0 0 1 -172 0 Z" fill="#9db8ad"/>
+<path d="M118 218 q6 -14 0 -26 q-6 -12 0 -24" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+<path d="M150 222 q6 -14 0 -26 q-6 -12 0 -24" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+<path d="M182 218 q6 -14 0 -26 q-6 -12 0 -24" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+<text x="150" y="352" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-family="sans-serif">バスクリン</text>
+<text x="150" y="378" text-anchor="middle" font-size="10" letter-spacing="3" fill="#ffffff" opacity="0.65" font-family="sans-serif">BATH SALT</text>
+</svg>

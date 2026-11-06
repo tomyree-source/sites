@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+<rect width="300" height="420" fill="#5d4632"/>
+<rect x="14" y="14" width="272" height="392" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+<text x="150" y="76" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff" font-family="sans-serif">全国12蔵元</text>
+<text x="150" y="106" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff" font-family="sans-serif">地酒飲み比べセット</text>
+<g>
+<path d="M62 190 h16 v10 l4 8 v62 a8 8 0 0 1 -8 8 h-8 a8 8 0 0 1 -8 -8 v-62 l4 -8 Z" fill="#7a9e7e"/>
+<path d="M106 190 h16 v10 l4 8 v62 a8 8 0 0 1 -8 8 h-8 a8 8 0 0 1 -8 -8 v-62 l4 -8 Z" fill="#c8b06a"/>
+<path d="M150 190 h16 v10 l4 8 v62 a8 8 0 0 1 -8 8 h-8 a8 8 0 0 1 -8 -8 v-62 l4 -8 Z" fill="#8fa8c8"/>
+<path d="M194 190 h16 v10 l4 8 v62 a8 8 0 0 1 -8 8 h-8 a8 8 0 0 1 -8 -8 v-62 l4 -8 Z" fill="#c88a7a"/>
+<path d="M238 190 h16 v10 l4 8 v62 a8 8 0 0 1 -8 8 h-8 a8 8 0 0 1 -8 -8 v-62 l4 -8 Z" fill="#a8a29a"/>
+<rect x="62" y="226" width="16" height="26" fill="#fffdf7" opacity="0.9"/>
+<rect x="106" y="226" width="16" height="26" fill="#fffdf7" opacity="0.9"/>
+<rect x="150" y="226" width="16" height="26" fill="#fffdf7" opacity="0.9"/>
+<rect x="194" y="226" width="16" height="26" fill="#fffdf7" opacity="0.9"/>
+<rect x="238" y="226" width="16" height="26" fill="#fffdf7" opacity="0.9"/>
+</g>
+<rect x="48" y="282" width="204" height="8" fill="#fffdf7" opacity="0.6"/>
+<text x="150" y="330" text-anchor="middle" font-size="13" fill="#ffffff" opacity="0.9" font-family="sans-serif">180ml × 12本</text>
+<text x="150" y="378" text-anchor="middle" font-size="10" letter-spacing="3" fill="#ffffff" opacity="0.65" font-family="sans-serif">JIZAKE SET</text>
+</svg>

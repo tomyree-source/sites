@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+<rect width="300" height="420" fill="#23272e"/>
+<rect x="14" y="14" width="272" height="392" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+<text x="150" y="84" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff" font-family="sans-serif" letter-spacing="4">HINEMOS</text>
+<text x="150" y="114" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-family="sans-serif">日本酒 飲み比べセット</text>
+<g>
+<path d="M96 196 h20 v12 l5 10 v66 a9 9 0 0 1 -9 9 h-12 a9 9 0 0 1 -9 -9 v-66 l5 -10 Z" fill="#d9c58f"/>
+<path d="M140 196 h20 v12 l5 10 v66 a9 9 0 0 1 -9 9 h-12 a9 9 0 0 1 -9 -9 v-66 l5 -10 Z" fill="#a9c6de"/>
+<path d="M184 196 h20 v12 l5 10 v66 a9 9 0 0 1 -9 9 h-12 a9 9 0 0 1 -9 -9 v-66 l5 -10 Z" fill="#e6e0d2"/>
+<rect x="95" y="234" width="22" height="30" fill="#23272e" opacity="0.85"/>
+<rect x="139" y="234" width="22" height="30" fill="#23272e" opacity="0.85"/>
+<rect x="183" y="234" width="22" height="30" fill="#23272e" opacity="0.85"/>
+</g>
+<text x="150" y="336" text-anchor="middle" font-size="13" fill="#ffffff" opacity="0.9" font-family="sans-serif">dinner time 4銘柄</text>
+<text x="150" y="378" text-anchor="middle" font-size="10" letter-spacing="3" fill="#ffffff" opacity="0.65" font-family="sans-serif">SAKE SET</text>
+</svg>

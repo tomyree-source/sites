@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+<rect width="300" height="420" fill="#2f4a6b"/>
+<rect x="14" y="14" width="272" height="392" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+<text x="150" y="70" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff" font-family="sans-serif">日本の名城</text>
+<text x="150" y="102" text-anchor="middle" font-size="15" fill="#ffffff" opacity="0.9" font-family="sans-serif">ジョイジョイコレクション</text>
+<text x="150" y="140" text-anchor="middle" font-size="30" font-weight="700" fill="#ffffff" font-family="sans-serif">松山城</text>
+<path d="M85 300 L85 250 L105 250 L105 232 L122 232 L122 214 L138 214 L150 196 L162 214 L178 214 L178 232 L195 232 L195 250 L215 250 L215 300 Z" fill="#fffdf7" opacity="0.92"/>
+<rect x="70" y="300" width="160" height="10" fill="#fffdf7" opacity="0.7"/>
+<text x="150" y="345" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-family="sans-serif">童友社 1/450 プラモデル</text>
+<text x="150" y="378" text-anchor="middle" font-size="10" letter-spacing="3" fill="#ffffff" opacity="0.65" font-family="sans-serif">PLASTIC MODEL JJ-7</text>
+</svg>
