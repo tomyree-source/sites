@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+<rect width="300" height="420" fill="#31456b"/>
+<rect x="14" y="14" width="272" height="392" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+<text x="150" y="78" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff" font-family="sans-serif">ゼロから分かる！</text>
+<text x="150" y="110" text-anchor="middle" font-size="21" font-weight="700" fill="#ffffff" font-family="sans-serif">図解日本酒入門</text>
+<path d="M132 176 h36 v18 l8 14 v84 a10 10 0 0 1 -10 10 h-32 a10 10 0 0 1 -10 -10 v-84 l8 -14 Z" fill="#eef3e6"/>
+<rect x="124" y="222" width="52" height="52" fill="#b7412f"/>
+<text x="150" y="256" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff" font-family="sans-serif">酒</text>
+<ellipse cx="212" cy="292" rx="26" ry="10" fill="#dfe9f2"/>
+<path d="M186 292 a26 10 0 0 0 52 0 l-4 14 a22 8 0 0 1 -44 0 Z" fill="#c7d6e4"/>
+<text x="150" y="352" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-family="sans-serif">山本 洋子</text>
+<text x="150" y="378" text-anchor="middle" font-size="10" letter-spacing="3" fill="#ffffff" opacity="0.65" font-family="sans-serif">SAKE BOOK</text>
+</svg>

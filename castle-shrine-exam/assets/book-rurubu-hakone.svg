@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+<rect width="300" height="420" fill="#2f4a6b"/>
+<rect x="14" y="14" width="272" height="392" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+<text x="150" y="82" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff" font-family="sans-serif">るるぶ箱根</text>
+<text x="150" y="112" text-anchor="middle" font-size="13" fill="#ffffff" opacity="0.9" font-family="sans-serif">'26</text>
+<path d="M40 250 L120 168 L168 214 L205 178 L262 250 Z" fill="#dfe9f2" opacity="0.9"/>
+<path d="M120 168 L146 194 L120 204 L100 190 Z" fill="#ffffff"/>
+<rect x="58" y="262" width="184" height="34" rx="8" fill="#7fb3a8"/>
+<path d="M96 252 q5 -11 0 -20 q-5 -9 0 -18" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+<path d="M150 252 q5 -11 0 -20 q-5 -9 0 -18" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+<path d="M204 252 q5 -11 0 -20 q-5 -9 0 -18" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+<text x="150" y="352" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-family="sans-serif">JTBパブリッシング</text>
+<text x="150" y="378" text-anchor="middle" font-size="10" letter-spacing="3" fill="#ffffff" opacity="0.65" font-family="sans-serif">TRAVEL GUIDE</text>
+</svg>

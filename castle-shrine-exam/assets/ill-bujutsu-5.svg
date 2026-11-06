@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img">
+<rect width="800" height="450" fill="#eef0e6"/>
+<rect y="340" width="800" height="110" fill="#b7ac93"/>
+<g><rect x="70" y="200" width="220" height="140" fill="#f0e7d2"/><polygon points="58,200 302,200 180,150" fill="#6b5844"/>
+<rect x="480" y="185" width="250" height="155" fill="#e7dcc2"/><polygon points="466,185 744,185 605,132" fill="#5a4632"/>
+<rect x="540" y="130" width="130" height="34" fill="#f7f2df" stroke="#5a4632" stroke-width="3"/>
+<text x="605" y="155" font-size="21" text-anchor="middle" fill="#33302a" font-family="serif">道場</text></g>
+<g stroke="#2e2a24" stroke-width="5" stroke-linecap="round"><line x1="330" y1="322" x2="404" y2="262"/><line x1="452" y1="322" x2="392" y2="258"/></g>
+<g fill="#f5f2ea" stroke="#2e2a24" stroke-width="3"><circle cx="322" cy="292" r="12"/><circle cx="462" cy="292" r="12"/>
+<path d="M300 308 q22 -12 44 0 l6 66 h-56 z"/><path d="M440 308 q22 -12 44 0 l6 66 h-56 z"/></g>
+<g fill="#b7412f"><rect x="298" y="330" width="50" height="8"/><rect x="438" y="330" width="50" height="8"/></g>
+<g fill="#7d9b76"><polygon points="0,340 60,270 120,340"/><polygon points="690,340 750,262 800,340"/></g>
+</svg>

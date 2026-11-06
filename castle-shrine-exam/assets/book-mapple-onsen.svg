@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+<rect width="300" height="420" fill="#8a5a2b"/>
+<rect x="14" y="14" width="272" height="392" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+<text x="150" y="80" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff" font-family="sans-serif">まっぷる 温泉やど</text>
+<text x="150" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" font-family="sans-serif">北海道</text>
+<rect x="88" y="170" width="124" height="86" rx="6" fill="#fffdf7" opacity="0.94"/>
+<path d="M104 190 q10 -8 20 0 q10 8 20 0 q10 -8 20 0 q10 8 20 0" fill="none" stroke="#2f6f6a" stroke-width="4" stroke-linecap="round"/>
+<path d="M118 232 q5 -10 0 -18 q-5 -8 0 -16" fill="none" stroke="#b7412f" stroke-width="4" stroke-linecap="round"/>
+<path d="M150 232 q5 -10 0 -18 q-5 -8 0 -16" fill="none" stroke="#b7412f" stroke-width="4" stroke-linecap="round"/>
+<path d="M182 232 q5 -10 0 -18 q-5 -8 0 -16" fill="none" stroke="#b7412f" stroke-width="4" stroke-linecap="round"/>
+<rect x="70" y="256" width="160" height="10" fill="#fffdf7" opacity="0.7"/>
+<text x="150" y="352" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-family="sans-serif">昭文社</text>
+<text x="150" y="378" text-anchor="middle" font-size="10" letter-spacing="3" fill="#ffffff" opacity="0.65" font-family="sans-serif">ONSEN GUIDE</text>
+</svg>
