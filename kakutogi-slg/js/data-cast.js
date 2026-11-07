@@ -1,4 +1,4 @@
-// キャストデータ（正本：~/workspace/new-game/cast.md 全66名）
+// キャストデータ（正本：~/workspace/new-game/cast.md 全78名）
 // 全員架空の成人。img は ~/workspace/new-game/cast-art/cast-<id>-sera.webp に対応。
 // pref（口説きの好み条件）: "sei"=清名型 / "aku"=悪名型 / "power"=実力型
 const CAST_DATA = [
@@ -77,6 +77,19 @@ const CAST_DATA = [
   {id:"uema", name:"上間 巌", age:72, sex:"M", style:"沖縄空手", role:"師匠枠（厳格型）／独自理論で知られる沖縄空手の重鎮", debut:6},
   {id:"aragaki", name:"新垣 翔太", age:41, sex:"M", style:"沖縄空手／総合格闘技", role:"沖縄空手出身の総合格闘家／対戦・交流枠", debut:4},
   {id:"kurashina", name:"倉科 尚人", age:64, sex:"M", style:"古武道（剣術・居合）", role:"俳優でもある古武道家／達人枠", debut:6},
+  // 追加キャスト第67〜78名（企画書第61節・cast.md末尾が正本）。インフルエンサー系オマージュ（架空名・顔は似せない、雰囲気のみ）。実在の団体名・イベント名は使わず、短時間マッチ企画として一般化。師匠枠は付けず全員がCLASHの論客・配信者・対戦枠。口説き対象外のため pref は付けない
+  {id:"shiina", name:"椎名 駆", age:32, sex:"M", style:"総合格闘技", role:"最大手インフルエンサー／短時間マッチ企画の仕掛け人・論客枠", debut:3},
+  {id:"minato", name:"椎名 湊", age:27, sex:"M", style:"総合格闘技", role:"トップファイター／椎名駆の弟・対戦枠", debut:3},
+  {id:"shinohara", name:"篠原 悠真", age:38, sex:"M", style:"キックボクシング", role:"元王者から配信者へ転身した先駆け／解説・対戦枠", debut:2},
+  {id:"amaha", name:"天羽 琉聖", age:30, sex:"M", style:"キックボクシング", role:"煽りと発信の人気ファイター／論客・対戦枠", debut:3},
+  {id:"kiryu", name:"霧生 恭也", age:35, sex:"M", style:"総合格闘技", role:"アウトロー出身の人気ファイター／対戦枠", debut:3},
+  {id:"kurose", name:"黒瀬 豪", age:44, sex:"M", style:"―（元格闘家）", role:"アウトロー系論客インフルエンサー／物言いで場を掴む論客枠", debut:3},
+  {id:"sakai", name:"堺 聡志", age:37, sex:"M", style:"総合格闘技", role:"元トップ選手の解説系配信者／技術解説と毒舌の論客枠", debut:2},
+  {id:"fukaya", name:"深谷 勇作", age:42, sex:"M", style:"フルコンタクト空手", role:"空手系配信者／型と組手の解説で支持を集める職人枠", debut:2},
+  {id:"kusakabe", name:"草壁 明弘", age:67, sex:"M", style:"総合格闘技（黎明期）", role:"レジェンドご意見番／配信で若手を斬る重鎮", debut:5},
+  {id:"misaki", name:"岬 宗久", age:57, sex:"M", style:"総合格闘技（ハイブリッド系）", role:"黎明期レジェンド／穏やかな重鎮・発信者", debut:5},
+  {id:"takeru", name:"殴られ屋タケル", age:31, sex:"M", style:"短時間マッチ企画", role:"殴られ屋／倒れないタフさが売りの名物キャラ・対戦枠", debut:2},
+  {id:"namioka", name:"波岡 駿", age:25, sex:"M", style:"総合格闘技", role:"短時間マッチ企画の発信型ファイター／対戦・論客枠", debut:3},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;
