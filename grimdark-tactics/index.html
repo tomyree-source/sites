@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v14 自由対戦</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v15 自由対戦＋育成・ストーリー</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -80,21 +80,43 @@
   #board{border:none;border-radius:0}
   #zoomRow{margin:2px 0 6px}
   .zoomBtn{padding:6px 12px;font-size:12px}
+.modeBtn{padding:8px 14px;margin:0 4px 8px 0}
+  .modeBtn.on{background:#5a4a2f;color:#f0e6d2;border-color:#d8b25a}
+  .chapRow{display:flex;justify-content:space-between;gap:8px;padding:8px 10px;margin:4px 0;background:#241f19;border:1px solid #3a332a;border-radius:6px;cursor:pointer;font-size:13px}
+  .chapRow.sel{border-color:#d8b25a;background:#2e2a20}
+  .chapRow.locked{opacity:.45;cursor:default}
+  .chapState{color:#d8b25a;font-size:11px;white-space:nowrap}
+  #storyText{background:#1d1915;border:1px solid #3a332a;border-radius:6px;padding:8px 10px;font-size:13px;line-height:1.7;margin:8px 0}
+  #storyText p{margin:4px 0}
+  #growthInfo{font-size:12px;color:#cbbfa5;line-height:1.8;margin-top:8px}
+  #battleResults{background:#221d16;border:1px solid #d8b25a;border-radius:8px;padding:10px 12px;margin-top:10px;font-size:13px;line-height:1.8}
+  #battleResults .up{color:#d8b25a;font-weight:bold}
 </style>
 </head>
 <body>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v14｜盤面を実物の比率に拡大（12×16マス）。ズーム表示対応。交互行動・反撃・射線・移動経路を実装。</div>
+  <div class="sub">見本v15｜12×16盤面＋ズーム対応。育成システム（経験値・レベル・勲章）とストーリー第1戦を追加。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
+    <div id="modeRow"><button id="modeFree" class="modeBtn on">自由対戦</button><button id="modeStory" class="modeBtn">ストーリー（育成）</button></div>
+    <div id="freeSetup">
     <div>あなたの勢力</div>
     <select id="pf"></select>
     <div>相手の勢力</div>
     <select id="ef"></select>
     <button id="startBtn">対戦開始</button>
     <button id="randBtn">相手をランダムにする</button>
+    </div>
+    <div id="storySetup" class="hidden">
+      <div style="font-size:13px;color:#cbbfa5">物語は帝国騎士団の小隊で進みます。戦うほど小隊が育ち、記録はこの端末に保存されます。</div>
+      <div id="chapterList"></div>
+      <div id="storyText"></div>
+      <button id="storyStartBtn">出撃する</button>
+      <button id="resetSaveBtn">育成データを消す</button>
+      <div id="growthInfo"></div>
+    </div>
     <div id="setupInfo" style="font-size:12px;color:#9a8f7a;margin-top:6px"></div>
     <div id="artRow">
       <div class="artBox"><div class="artCap" id="pfCap"></div><img id="pfImg" alt="あなたの勢力のイラスト"></div>
@@ -122,6 +144,7 @@
         <button id="backBtn">勢力選択に戻る</button>
       </div>
     </div>
+    <div id="battleResults" class="hidden"></div>
     <div id="log"></div>
   </div>
 </div>
@@ -207,12 +230,83 @@ const $=id=>document.getElementById(id);
 const BW=12, BH=16;
 let zoomLevel=1;
 const COVERS=new Set(["3,4","4,4","8,11","7,11","5,7","6,8","2,10","9,5"]);
+
+// ===== 育成・ストーリー（v15） =====
+const XP_TH=[0,100,250,450,700,1000,1350,1750,2200,2700];
+function lvOf(xp){ let lv=1; for(let i=0;i<XP_TH.length;i++) if(xp>=XP_TH[i]) lv=i+1; return Math.min(10,lv); }
+let SAVE=(()=>{ try{ const v=JSON.parse(localStorage.getItem("tekkanSaveV1")); if(v&&v.roster) return v; }catch(e){} return {roster:{}, cleared:{}}; })();
+function storeSave(){ try{ localStorage.setItem("tekkanSaveV1", JSON.stringify(SAVE)); }catch(e){} }
+function recOf(name){ if(!SAVE.roster[name]) SAVE.roster[name]={xp:0,kills:0,battles:0,survives:0,medals:[]}; return SAVE.roster[name]; }
+function growthBadge(name){ const r=SAVE.roster[name]; if(!r) return ""; return ' <span style="color:#d8b25a;font-size:11px">Lv'+lvOf(r.xp)+(r.medals.length?" 勲章×"+r.medals.length:"")+'</span>'; }
+function skillOf(name, lv){ const sk={hitB:0,dmgB:0,rangeB:0,healAmt:0,dmgCut:0,names:[]};
+  if(name.includes("ヴァルク")){ if(lv>=3){ sk.hitB=1; sk.names.push("指揮"); } if(lv>=6){ sk.dmgB+=1; sk.names.push("英雄"); } }
+  else if(name.includes("ミラ")){ if(lv>=3){ sk.healAmt=6; sk.names.push("大祈祷"); } if(lv>=6){ sk.healAmt=9; sk.names.push("広域の祈り"); } }
+  else if(name.includes("ブラム")||name.includes("トア")){ if(lv>=3){ sk.dmgCut=1; sk.names.push("鉄壁"); } if(lv>=6){ sk.dmgCut=2; sk.names.push("金剛"); } }
+  else if(name.includes("シン")){ if(lv>=3){ sk.rangeB=1; sk.names.push("狙撃"); } if(lv>=6){ sk.dmgB+=1; sk.names.push("連射"); } }
+  return sk; }
+function applyGrowth(u){ const r=recOf(u.name); const lv=lvOf(r.xp); u.lv=lv;
+  if(lv>1){ u.maxhp+=2*(lv-1); u.hp=u.maxhp; }
+  const sk=skillOf(u.name, lv);
+  u.dmg+=Math.floor(lv/2)+sk.dmgB; u.hit=Math.min(5, u.hit+sk.hitB); u.range+=sk.rangeB;
+  u.healAmt=sk.healAmt||0; u.dmgCut=sk.dmgCut||0; u.skills=sk.names; }
+let gameMode="free", storyChapter=1, startAsStory=false, selChapter=1;
+let battleXP={}, battleMedals={}, growthDone=false;
+function xpRate(){ return gameMode==="story"?1:0.5; }
+function awardXP(u, base){ if(!u||u.side!=="p"||u.key!=="knights") return; const amt=Math.round(base*xpRate()); if(amt<=0) return; recOf(u.name).xp+=amt; battleXP[u.id]=(battleXP[u.id]||0)+amt; }
+function awardKill(u){ if(!u||u.side!=="p"||u.key!=="knights") return; recOf(u.name).kills++; awardXP(u,30); }
+const CHAPTERS=[
+ {n:1, title:"第1戦 遺跡の前哨戦", enemy:"barbarians", playable:true,
+  intro:"ヴァルク「霧が濃い。この先が遺跡の入口だ。全員、目を離すな」\nミラ「負傷者は私が診ます。無理だけはしないでください」\nシン「瓦礫の向こう、何か動きました…蛮族です！」",
+  outro:"ヴァルク「追い払ったか。だが、これは始まりにすぎない」\nミラ「遺跡の奥で、何かが目覚めた気がします…」"},
+ {n:2, title:"第2戦 徴発の村", enemy:"barbarians", playable:false},
+ {n:3, title:"第3戦 ゴーレム目覚める", enemy:"merc", playable:false},
+ {n:4, title:"第4戦 ドワーフの門前", enemy:"dwarf", playable:false},
+ {n:5, title:"第5戦 霧の沼地", enemy:"barbarians", playable:false},
+ {n:6, title:"最終戦 古代神殿", enemy:"demon", playable:false}
+];
+function finalizeGrowth(win){ if(growthDone) return; if(playerKey!=="knights") return; growthDone=true;
+  const deployed=units.filter(u=>u.side==="p"&&u.key==="knights");
+  deployed.forEach(u=>{ const r=recOf(u.name); r.battles++;
+    if(win&&u.alive){ const amt=Math.round(20*xpRate()); r.xp+=amt; battleXP[u.id]=(battleXP[u.id]||0)+amt; r.survives++; }
+    const nm=[];
+    if(!r.medals.includes("初陣")){ r.medals.push("初陣"); nm.push("初陣"); }
+    if(r.kills>=5&&!r.medals.includes("猛者")){ r.medals.push("猛者"); nm.push("猛者"); }
+    if(r.survives>=5&&!r.medals.includes("不屈")){ r.medals.push("不屈"); nm.push("不屈"); }
+    battleMedals[u.id]=nm; });
+  if(gameMode==="story"&&win){ SAVE.cleared[storyChapter]=true;
+    deployed.forEach(u=>{ const r=recOf(u.name); const m="章クリア（第"+storyChapter+"戦）"; if(!r.medals.includes(m)){ r.medals.push(m); (battleMedals[u.id]=battleMedals[u.id]||[]).push(m); } }); }
+  storeSave(); showResults(win, deployed); }
+function showResults(win, deployed){ const box=$("battleResults"); if(!box) return;
+  let html="<b>"+(gameMode==="story"?CHAPTERS[storyChapter-1].title+"：":"")+(win?"勝利":"敗北")+" ― 戦果</b>";
+  if(gameMode==="story"&&win&&CHAPTERS[storyChapter-1].outro) html+="<div style='margin:6px 0;color:#cbbfa5'>"+CHAPTERS[storyChapter-1].outro.split("\n").join("<br>")+"</div>";
+  html+=deployed.map(u=>{ const r=recOf(u.name); const gain=battleXP[u.id]||0; const before=lvOf(r.xp-gain), after=lvOf(r.xp);
+    return "<div>"+u.name+"：経験値 +"+gain+"（Lv"+before+(after>before?" → <span class='up'>Lv"+after+" に上がった！</span>":"")+"）"+((battleMedals[u.id]||[]).length?" 勲章獲得："+battleMedals[u.id].join("・"):"")+"</div>"; }).join("");
+  html+="<div style='margin-top:6px'><button id='resClose'>閉じる</button>"+(gameMode==="story"?" <button id='resBack'>章選択に戻る</button>":"")+"</div>";
+  box.innerHTML=html; box.classList.remove("hidden");
+  $("resClose").onclick=()=>box.classList.add("hidden");
+  const rb=$("resBack"); if(rb) rb.onclick=()=>{ box.classList.add("hidden"); $("backBtn").click(); setTimeout(()=>{ const ms=$("modeStory"); if(ms) ms.click(); },50); }; }
+function renderGrowth(){ const f=FACTIONS.knights; $("growthInfo").innerHTML="<b>小隊の育成状況</b>"+f.units.map(u=>{ const r=SAVE.roster[u.name]; if(!r) return "<div>"+u.name+"：Lv1</div>";
+  return "<div>"+u.name+"：Lv"+lvOf(r.xp)+"（経験値"+r.xp+"／通算撃破"+r.kills+"／勲章："+(r.medals.join("・")||"なし")+"）</div>"; }).join(""); }
+function renderStory(){ const cl=$("chapterList"); if(!cl) return;
+  cl.innerHTML=CHAPTERS.map(c=>{ const unlocked=(c.n===1||SAVE.cleared[c.n-1]); const state=SAVE.cleared[c.n]?"クリア済み":(!c.playable?"（次回追加）":(unlocked?"出撃可能":"未解放"));
+    return '<div class="chapRow'+(c.n===selChapter?" sel":"")+((!c.playable||!unlocked)?" locked":"")+'" data-ch="'+c.n+'"><span>'+c.title+'</span><span class="chapState">'+state+'</span></div>'; }).join("");
+  cl.querySelectorAll(".chapRow").forEach(rw=>{ rw.onclick=()=>{ const n=Number(rw.dataset.ch); const c=CHAPTERS[n-1]; if(!c.playable||!(n===1||SAVE.cleared[n-1])) return; selChapter=n; renderStory(); }; });
+  const c=CHAPTERS[selChapter-1];
+  $("storyText").innerHTML=c.intro? c.intro.split("\n").map(l=>"<p>"+l+"</p>").join("") : "<p>（この章は次回追加されます）</p>";
+  $("storyStartBtn").disabled=!(c.playable&&(selChapter===1||SAVE.cleared[selChapter-1]));
+  renderGrowth(); }
+$("modeFree").onclick=()=>{ $("modeFree").classList.add("on"); $("modeStory").classList.remove("on"); $("freeSetup").classList.remove("hidden"); $("storySetup").classList.add("hidden"); };
+$("modeStory").onclick=()=>{ $("modeStory").classList.add("on"); $("modeFree").classList.remove("on"); $("freeSetup").classList.add("hidden"); $("storySetup").classList.remove("hidden"); renderStory(); };
+$("storyStartBtn").onclick=()=>{ const c=CHAPTERS[selChapter-1]; $("pf").value="knights"; $("ef").value=c.enemy; startAsStory=true; storyChapter=selChapter; startGame(); };
+let resetArm=false;
+$("resetSaveBtn").onclick=()=>{ if(!resetArm){ resetArm=true; $("resetSaveBtn").textContent="本当に消しますか？（もう一度押すと消去）"; setTimeout(()=>{ resetArm=false; $("resetSaveBtn").textContent="育成データを消す"; },3000); return; } SAVE={roster:{},cleared:{}}; storeSave(); resetArm=false; $("resetSaveBtn").textContent="育成データを消す"; renderStory(); setupInfo(); };
+
 function buildSquad(fk, side){
   const f=FACTIONS[fk];
   return f.units.map((u,i)=>{ const info=(UNIT_INFO[fk]||[])[i]||{role:"",desc:""};
-    return { id: fk+"-"+i, key: fk, idx: i, side: side, name: u.name, icon: u.icon, hp: u.hp, maxhp: u.hp,
+    const __u={ id: fk+"-"+i, key: fk, idx: i, side: side, name: u.name, icon: u.icon, hp: u.hp, maxhp: u.hp,
       move: (u.move===2?3:u.move), range: (u.range>=3?u.range+1:u.range), hit: u.hit, dmg: u.dmg, fly: !!u.fly, heal: !!u.heal, duel: !!f.duel,
-      role: info.role, desc: info.desc, art: (UNIT_ART[fk]||[])[i]||"", x:0, y:0, alive:true, acted:false, moved:false, px:0, py:0 }; });
+      role: info.role, desc: info.desc, art: (UNIT_ART[fk]||[])[i]||"", x:0, y:0, alive:true, acted:false, moved:false, px:0, py:0 }; if(fk==="knights") applyGrowth(__u); return __u; });
 }
 function unitById(id){ return units.find(u=>u.id===id); }
 function sel(){ return selectedId? unitById(selectedId): null; }
@@ -256,8 +350,8 @@ async function resolveAttack(att, def, isCounter){
   await sleep(210);
   const hit=roll<=need;
   log(att.name+" の"+(isCounter?"反撃":"攻撃")+" → "+def.name+"：出目"+roll+"（"+need+"以下で命中）"+(notes.length?"［"+notes.join("・")+"］":""));
-  if(hit){ const dmg=att.dmg+(duelBonus?1:0); def.hp-=dmg; SFX.hit(); fxUnit(def.id,"fxHit"); popAt(def.x,def.y,"-"+dmg,false);
-    if(def.hp<=0){ def.hp=0; def.alive=false; await sleep(260); SFX.die(); log(def.name+" が倒れた！"); await sleep(200); }
+  if(hit){ let dmg=att.dmg+(duelBonus?1:0); if(def.dmgCut) dmg=Math.max(1,dmg-def.dmgCut); def.hp-=dmg; awardXP(att,10); SFX.hit(); fxUnit(def.id,"fxHit"); popAt(def.x,def.y,"-"+dmg,false);
+    if(def.hp<=0){ def.hp=0; def.alive=false; awardKill(att); await sleep(260); SFX.die(); log(def.name+" が倒れた！"); await sleep(200); }
     else await sleep(240);
   } else { SFX.miss(); popAt(def.x,def.y,"MISS",false); log("→ 外れた"); await sleep(200); }
   render();
@@ -267,13 +361,13 @@ async function resolveAttack(att, def, isCounter){
     await resolveAttack(def, att, true);
   }
 }
-async function resolveHeal(h, t){ const amt=3; t.hp=Math.min(t.maxhp, t.hp+amt); SFX.heal(); fxUnit(t.id,"fxHeal"); popAt(t.x,t.y,"+"+amt,true); log(h.name+" は "+t.name+" を "+amt+" 回復した"); await sleep(320); render(); }
+async function resolveHeal(h, t){ const amt=h.healAmt||3; t.hp=Math.min(t.maxhp, t.hp+amt); SFX.heal(); fxUnit(t.id,"fxHeal"); popAt(t.x,t.y,"+"+amt,true); log(h.name+" は "+t.name+" を "+amt+" 回復した"); awardXP(h,15); await sleep(320); render(); }
 function livingUnits(side){ return units.filter(u=>u.alive&&u.side===side); }
 function unactedUnits(side){ return livingUnits(side).filter(u=>!u.acted); }
 function checkEnd(){ const p=livingUnits("p").length, e=livingUnits("e").length;
   if(p>0&&e>0) return false; gameOver=true; busy=false;
   log(p>0?"勝利！ 敵を全滅させた":"敗北… 自軍が全滅した", p>0?"win":"lose");
-  if(p>0) SFX.win(); else SFX.lose(); render(); return true; }
+  if(p>0) SFX.win(); else SFX.lose(); finalizeGrowth(p>0); render(); return true; }
 async function drive(){
   if(driving||gameOver) return; driving=true;
   try{
@@ -354,7 +448,7 @@ function render(){
     if(pending&&u&&u.id===pending.targetId) cell.classList.add("confirm");
     if(s&&u&&u.id===s.id) cell.classList.add("sel");
     if(u){ const wrap=document.createElement("div"); wrap.dataset.uid=u.id; if(u.acted) wrap.className="done";
-      wrap.innerHTML='<img class="uimg '+u.side+'" style="width:'+Math.round(40*zoomLevel)+'px;height:'+Math.round(40*zoomLevel)+'px" alt="'+u.name+'"><div class="uname '+u.side+'">'+u.name+'</div><div class="hpbar"><div class="hpfill" style="width:'+Math.max(0,u.hp/u.maxhp*100)+'%;background:'+(u.side==="p"?"#4a8ac7":"#c74a3a")+'"></div></div><div class="uhp" style="font-size:'+Math.max(8,Math.round(8*zoomLevel))+'px;text-align:center">HP'+Math.max(0,u.hp)+'</div>';
+      wrap.innerHTML='<img class="uimg '+u.side+'" style="width:'+Math.round(40*zoomLevel)+'px;height:'+Math.round(40*zoomLevel)+'px" alt="'+u.name+'"><div class="uname '+u.side+'">'+u.name+(u.lv?" Lv"+u.lv:"")+'</div><div class="hpbar"><div class="hpfill" style="width:'+Math.max(0,u.hp/u.maxhp*100)+'%;background:'+(u.side==="p"?"#4a8ac7":"#c74a3a")+'"></div></div><div class="uhp" style="font-size:'+Math.max(8,Math.round(8*zoomLevel))+'px;text-align:center">HP'+Math.max(0,u.hp)+'</div>';
       cell.appendChild(wrap);
       const im=wrap.querySelector("img.uimg"); if(im&&u.art) im.src=u.art; }
     cell.onclick=()=>onCell(x,y);
@@ -391,7 +485,7 @@ function fillOptions(){ const pf=$("pf"), ef=$("ef");
   pf.value="knights"; ef.value="barbarians"; }
 function rosterHTML(key,title){ const f=FACTIONS[key];
   const rows=f.units.map((u,i)=>{ const info=(UNIT_INFO[key]||[])[i]||{role:"",desc:""};
-    return '<div class="rUnit"><img data-k="'+key+'" data-i="'+i+'" alt="'+u.name+'"><div><span class="rName">'+u.name+'</span> <span class="rRole">'+(info.role||"")+'</span><div class="rStats">HP'+u.hp+' 攻撃'+u.dmg+' 射程'+u.range+' 移動'+u.move+' 命中'+u.hit+'以下'+(u.fly?" 飛行":"")+(u.heal?" 回復":"")+'</div><div class="rDesc">'+(info.desc||"")+'</div></div></div>'; }).join("");
+    return '<div class="rUnit"><img data-k="'+key+'" data-i="'+i+'" alt="'+u.name+'"><div><span class="rName">'+u.name+'</span>'+(key==="knights"?growthBadge(u.name):"")+' <span class="rRole">'+(info.role||"")+'</span><div class="rStats">HP'+u.hp+' 攻撃'+u.dmg+' 射程'+u.range+' 移動'+u.move+' 命中'+u.hit+'以下'+(u.fly?" 飛行":"")+(u.heal?" 回復":"")+'</div><div class="rDesc">'+(info.desc||"")+'</div></div></div>'; }).join("");
   return '<div class="rosterTitle">'+title+"："+f.name+"（"+f.units.length+"体）</div>"+rows; }
 function setupInfo(){ const pk=$("pf").value, ek=$("ef").value;
   $("setupInfo").textContent=FACTIONS[pk].name+"（"+FACTIONS[pk].units.length+"体） vs "+FACTIONS[ek].name+"（"+FACTIONS[ek].units.length+"体）｜盤面12×16・交互行動・反撃・射線あり";
@@ -400,6 +494,7 @@ function setupInfo(){ const pk=$("pf").value, ek=$("ef").value;
   const ro=$("roster"); ro.innerHTML=rosterHTML(pk,"あなたの編成")+rosterHTML(ek,"相手の編成");
   ro.querySelectorAll("img[data-k]").forEach(im=>{ im.src=(UNIT_ART[im.dataset.k]||[])[Number(im.dataset.i)]||""; }); }
 function startGame(){
+  battleXP={}; battleMedals={}; growthDone=false; if(startAsStory){ gameMode="story"; startAsStory=false; } else { gameMode="free"; } const br=$("battleResults"); if(br) br.classList.add("hidden");
   playerKey=$("pf").value; enemyKey=$("ef").value;
   units=buildSquad(playerKey,"p").concat(buildSquad(enemyKey,"e"));
   const PPOS=[[4,15],[6,15],[8,15],[5,14],[7,14]], EPOS=[[4,0],[6,0],[8,0],[5,1],[7,1]];
