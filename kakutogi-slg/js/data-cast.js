@@ -89,7 +89,7 @@ const CAST_DATA = [
   {id:"kusakabe", name:"草壁 明弘", age:67, sex:"M", style:"総合格闘技（黎明期）", role:"レジェンドご意見番／配信で若手を斬る重鎮", debut:5},
   {id:"misaki", name:"岬 宗久", age:57, sex:"M", style:"総合格闘技（ハイブリッド系）", role:"黎明期レジェンド／穏やかな重鎮・発信者", debut:5},
   {id:"takeru", name:"殴られ屋タケル", age:31, sex:"M", style:"短時間マッチ企画", role:"殴られ屋／倒れないタフさが売りの名物キャラ・対戦枠", debut:2},
-  {id:"namioka", name:"波岡 駿", age:25, sex:"M", style:"総合格闘技", role:"短時間マッチ企画の発信型ファイター／対戦・論客枠", debut:3},
+  {id:"namioka", name:"綾瀬 莉央", age:23, sex:"F", style:"中国武術（武術太極拳・長拳系）", role:"中国武術系の発信型パフォーマー／インフルエンサー", debut:3},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;
