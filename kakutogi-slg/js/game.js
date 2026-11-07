@@ -208,6 +208,19 @@ return t.replaceAll("{style}", st? st.name: "流派")
 .replaceAll("{age}", S? S.age: 19)
 .replaceAll("{years}", S? (S.age - 19): 0);
 }
+// ---------- 攻撃系統（第73節：流派別の攻撃系統制限） ----------
+// プレイヤーが使える系統 = 習得した全流派（主・流儀＋学んだ流派）の systems の和集合。
+// 他流派を学ぶほど系統が広がる（混合ルートの利点）。純粋ルートは系統が狭い代わりに
+// 主・流儀の精度・看板技・対策メタ回避などの既存の強みが生きる。
+function playerSystems(){
+  const set = {};
+  if (S){
+    if (S.mainStyle != null) styleSystems(styleById(S.mainStyle)).forEach(k => { set[k] = true; });
+    for (const id in S.styleLv) styleSystems(styleById(Number(id))).forEach(k => { set[k] = true; });
+  }
+  return ATTACK_SYSTEMS.map(a => a.kind).filter(k => set[k]);
+}
+function systemsKindLabel(kind){ const d = ATTACK_SYSTEMS.find(a => a.kind === kind); return d ? d.label : kind; }
 function styleLv(id){ return S.styleLv[id] || 1;}
 function expNeed(lv){ return lv * 20;}
 function gainStyleExp(id, pts, notes){
@@ -885,7 +898,9 @@ function renderSubStylePick(){
   const drawRoutes = () => {
     const st = styleById(Number(sel.value || 1)); if (!st) return;
     const lv = styleLv(st.id);
-    info.textContent = st.name + " Lv" + lv + " ― " + st.feature + (lv >= 5 ? "（看板技 習得済み）" : lv >= 3 ? "（精度完成）" : "");
+    const newSys = styleSystems(st).filter(k => !playerSystems().includes(k));
+    info.textContent = st.name + " Lv" + lv + " ― " + st.feature + (lv >= 5 ? "（看板技 習得済み）" : lv >= 3 ? "（精度完成）" : "") +
+      "／使える攻撃：" + systemsLabel(st) + (newSys.length ? "（学ぶと新たに「" + newSys.map(systemsKindLabel).join("・") + "」が使えるようになる）" : "");
     const m = mentorFor(st);
     let html = '<button class="btn act" data-route="self"><b>独学・映像</b><span>経験値+4。誰でもいつでも</span></button>' +
                '<button class="btn act" data-route="seminar"><b>公開セミナー・交流稽古</b><span>経験値+7。評判では断られない</span></button>';
@@ -904,6 +919,7 @@ function renderSubStylePick(){
 function trainSub(st, route, mentor){
   S.fatigue = clamp(S.fatigue + 16, 0, 100);
   const notes = [];
+  const sysBefore = playerSystems();
   if (route === "mentor"){
     if (!mentorCheck(mentor)){
       const msgs = {"厳格":"静かに、しかしきっぱりと断られた。「出直してきなさい」", "寛容":"「今のあんたは、ちょっと荒れてるねえ」と笑って断られた", "実力主義":"「腕を見せてから来い」と門前払いされた", "無法歓迎":"「つまらない優等生には教えない」と断られた"};
@@ -917,6 +933,9 @@ function trainSub(st, route, mentor){
     }
   } else if (route === "seminar"){ gainStyleExp(st.id, 7, notes); S.money = Math.max(0, S.money - 5000); toast("セミナー受講 -5,000円"); }
   else { gainStyleExp(st.id, 4, notes); }
+  // 第73節: 新しい流派を身につけると、使える攻撃系統が広がることがある
+  const sysGained = playerSystems().filter(k => !sysBefore.includes(k));
+  if (sysGained.length) toast(st.name + " の型が体に入り、新しい攻撃「" + sysGained.map(systemsKindLabel).join("・") + "」が使えるようになった！");
   afterAction(notes);
 }
 // ---------- 口説き ----------
@@ -1043,20 +1062,25 @@ function playerPower(kind){
   if (kind === "kick") p -= S.dmg.leg * 2;
   if (kind === "strike" || kind === "grapple") p -= S.dmg.arm * 2;
   if (kind === "ground") p += UI.battle.control;
+  // 第73節: 組みで作った支配（control）は投げ・組み自体の威力にも一部還る。
+  // 寝技を持たない純・組み技ルートでも「組み→支配→強い投げ」の勝ち筋が成立するための配慮
+  if (kind === "grapple") p += Math.floor(UI.battle.control / 2);
   return Math.max(2, Math.round(p));
 }
 function renderBattle(){
   hud();
   const b = UI.battle, def = b.def;
   const lv = styleLv(S.mainStyle);
-  const acts = [
-    ["strike", "打撃で攻める", "中距離"],
-    ["kick", "蹴りで攻める", "遠距離" + (S.dmg.leg ? "（脚のダメージで低下中）" : "")],
-    ["grapple", "組み付く", "近距離・組技"],
-    ["ground", "寝技に誘う", "寝技" + (b.control ? "（支配 +" + b.control + "）" : "")],
-    ["read", "相手を読む", "次の攻撃↑・被ダメ半減"],
-    ["recover", "息を整える", "体力を少し回復"],
-  ];
+  // 第73節: 使える系統の攻撃だけをボタンにする（使えない系統は出さない）
+  const sysActs = {
+    strike: ["strike", "打撃で攻める", "手技・中距離"],
+    kick: ["kick", "蹴りで攻める", "足技・遠距離" + (S.dmg.leg ? "（脚のダメージで低下中）" : "")],
+    grapple: ["grapple", "組み付く", "投げ・組み・近距離" + (b.control ? "（支配 +" + b.control + "）" : "")],
+    ground: ["ground", "寝技に誘う", "寝技・関節" + (b.control ? "（支配 +" + b.control + "）" : "")],
+  };
+  const acts = playerSystems().map(k => sysActs[k]).filter(Boolean);
+  acts.push(["read", "相手を読む", "次の攻撃↑・被ダメ半減"]);
+  acts.push(["recover", "息を整える", "体力を少し回復"]);
   if (lv >= 5 && !b.sigUsed) acts.push(["sig", "看板技：" + sigName(), "1試合に1回"]);
   if (b.comboStyle && !b.comboUsed) acts.push(["combo", "複合技：" + mainStyle().name.replace(/（[^）]*）/g, "") + "×" + b.comboStyle.name.replace(/（[^）]*）/g, ""), "主・流儀Lv7＋副・流儀Lv5で解放。1試合に1回"]);
   if (def.foul && !b.foulUsed) acts.push(["foul", "反則・眼突き", "勝てるが、評判を落とす諸刃"]);
@@ -1065,7 +1089,7 @@ function renderBattle(){
   const blurBanner = b.blur > 0 ? '<div class="weeksub" style="color:var(--aku);">【視界不良】ゴーグルが霞んで狙いが定まらない（あと' + b.blur + '手）。「相手を読む」「組み付く（手を捌く）」で視界を立て直せる</div>' : "";
   $("main").innerHTML = '<div class="battle">' + counterBanner + blurBanner + '<div class="vs">' +
     '<div class="fighter"><div class="nm">ハヤト（' + esc(mainStyle().name) + " Lv" + lv + '）</div><div class="bar hp"><i style="width:' + clamp(b.php / b.maxPhp * 100, 0, 100) + '%"></i></div><div class="sub">体力 ' + Math.max(0, b.php) + " ／ 部位：腕" + S.dmg.arm + " 脚" + S.dmg.leg + " 体幹" + S.dmg.core + '</div></div>' +
-    '<div class="fighter enemy"><div class="nm">' + esc(def.enemyName) + '</div><div class="bar ehp"><i style="width:' + clamp(b.ehp / def.hp * 100, 0, 100) + '%"></i></div><div class="sub">' + esc(def.enemyStyleName || "同流派") + " ／ 耐久 " + Math.max(0, b.ehp) + "</div></div>" +
+    '<div class="fighter enemy"><div class="nm">' + esc(def.enemyName) + '</div><div class="bar ehp"><i style="width:' + clamp(b.ehp / def.hp * 100, 0, 100) + '%"></i></div><div class="sub">' + esc(def.enemyStyleName || "同流派") + " ／ 耐久 " + Math.max(0, b.ehp) + (b.eStyle ? " ／ 使える攻撃：" + systemsLabel(b.eStyle) : "") + "</div></div>" +
     enemyImg + '</div>' +
     '<div class="blog">' + b.log.map(l => '<div class="bl"><span>' + esc(l.sp) + "</span>" + esc(fill(l.tx)) + "</div>").join("") + "</div>" +
     '<div class="actions">' + acts.map(a => '<button class="btn act" data-bact="' + a[0] + '"><b>' + a[1] + '</b><span>' + a[2] + "</span></button>").join("") + "</div></div>";
@@ -1074,6 +1098,8 @@ function renderBattle(){
 }
 function battleTurn(act){
   const b = UI.battle, def = b.def;
+  // 第73節: 使えない系統の攻撃は実行しない（ボタン非表示の二重ガード）
+  if (["strike", "kick", "grapple", "ground"].includes(act) && !playerSystems().includes(act)) return;
   b.turn++;
   let dmg = 0;
   if (act === "strike"){ dmg = playerPower("strike"); bLog("実況", "突きが距離を刻む！"); }
@@ -1082,7 +1108,9 @@ function battleTurn(act){
   else if (act === "ground"){ dmg = playerPower("ground"); bLog("実況", "寝技の展開！ 極めを狙う"); }
   else if (act === "read"){ b.readBonus = 4 + Math.round(S.stats.read); b.readGuard = true; bLog("実況", "相手の癖を読む……次の手が冴える！"); }
   else if (act === "recover"){ b.php = Math.min(b.maxPhp, b.php + 9); bLog("実況", "息を整え、軸を立て直す"); }
-  else if (act === "sig"){ dmg = 13 + Math.max(S.stats.strike, S.stats.kick, S.stats.grapple, S.stats.ground) * 3 + rnd(4); b.sigUsed = true; bLog("実況", sigName() + "――会場の空気が変わった！");
+  else if (act === "sig"){ // 第73節: 看板技は主・流儀が使える系統の中から構成される（威力もその系統の能力で決まる）
+    const sigBase = Math.max(...styleSystems(mainStyle()).map(k => S.stats[k]));
+    dmg = 13 + sigBase * 3 + rnd(4); b.sigUsed = true; bLog("実況", sigName() + "――会場の空気が変わった！");
     if (b.counterLevel > 0){ const before = dmg; dmg = Math.max(2, Math.round(dmg * (b.counterLevel >= 2 ? 0.7 : 0.8))); window.__lastCounterCorrection = {act:"sig", level:b.counterLevel, before:before, after:dmg}; bLog("対策", "だが看板技は研究されている！ 入りを読まれ、威力が割り引かれた（対策レベル" + b.counterLevel + "）"); } }
   else if (act === "combo" && b.comboStyle){ dmg = 16 + styleLv(b.comboStyle.id) * 3 + rnd(4); b.comboUsed = true; bLog("実況", "複合技――" + mainStyle().name.replace(/（[^）]*）/g, "") + "の入り方から" + b.comboStyle.name.replace(/（[^）]*）/g, "") + "へ繋いだ！ 誰も見たことのない形だ！");
     if (b.counterLevel > 0) bLog("対策", "複合技は研究が追いついていない！ 対策の影響を受けなかった"); }
@@ -1116,8 +1144,19 @@ function battleTurn(act){
   }
   if (b.ehp <= 0) return finishBattle(true);
   if (def.mode === "exam" && b.turn >= (def.turnLimit || 6)) return finishBattle(b.dealt >= 25);
-  // 敵の反撃
-  let edmg = def.power + rnd(4) + Math.round(((b.eStyle && b.eStyle.stats.grapple) || 1));
+  // 敵の反撃（第73節：敵も自分の流派が使える系統でしか反撃できない。
+  // その流派の得意な系統ほど選ばれやすく、威力の上乗せもその系統の能力値から取る）
+  const eKinds = styleSystems(b.eStyle);
+  let eKind = eKinds[0] || "strike";
+  { let bestW = -1;
+    for (const k of eKinds){
+      const v = b.eStyle ? (b.eStyle.stats[k] || 0) : 1;
+      const w = v * 2 + _rng() * 2;
+      if (w > bestW){ bestW = w; eKind = k; }
+    }
+  }
+  window.__lastEnemyKind = {battleId: def.id, kind: eKind, kinds: eKinds};
+  let edmg = def.power + rnd(4) + Math.round(((b.eStyle && b.eStyle.stats[eKind]) || 1));
   if (def.id === "fin_rin" && S.flags.ruleFx === "stand") edmg = Math.round(edmg * 0.85);
   if (def.id === "fin_rin" && S.flags.ruleFx === "open") edmg = Math.round(edmg * 1.15);
   // メツキング戦（第51節）: 敵の攻撃が「目を狙う高速の突き」になる。ゴーグルが受けるため体力ダメージは軽いが、視界デバフ（blur=2）が付く。4手ごとには専用技「連環三突き」
@@ -1144,7 +1183,16 @@ function battleTurn(act){
     S.dmg[p] = clamp(S.dmg[p] + 1, 0, 3);
     bLog("実況", "攻め込まれた拍子に" + ({leg:"脚", arm:"腕", core:"体幹"})[p] + "を痛めた！");
   }
-  if (!eyeLogged) bLog("実況", def.enemyName + "の反撃。こちらの体力が削られる");
+  if (!eyeLogged){
+    // 第73節: 反撃の実況も、敵が実際に使った系統に合わせる
+    const eLines = {
+      strike: def.enemyName + "の手技が襲う！ こちらの体力が削られる",
+      kick: def.enemyName + "の蹴りが風を切って飛んでくる！ こちらの体力が削られる",
+      grapple: def.enemyName + "が組み付き、投げの形に入る！ こちらの体力が削られる",
+      ground: def.enemyName + "が引き込んで関節を狙う！ こちらの体力が削られる",
+    };
+    bLog("実況", eLines[eKind] || (def.enemyName + "の反撃。こちらの体力が削られる"));
+  }
   if (b.php <= 0) return finishBattle(false);
   renderBattle();
 }
@@ -1269,7 +1317,7 @@ function resumeFromSave(){
 }
 function renderStyleSelect(){
   hud();
-  const cards = STYLES_DATA.map(s => '<button class="btn choice stylecard" data-style="' + s.id + '"><b>' + esc(s.name) + '</b><span>' + esc(s.cat) + "／得意距離：" + s.dist.join("・") + "<br>" + esc(s.feature) + "</span></button>").join("");
+  const cards = STYLES_DATA.map(s => '<button class="btn choice stylecard" data-style="' + s.id + '"><b>' + esc(s.name) + '</b><span>' + esc(s.cat) + "／得意距離：" + s.dist.join("・") + "／使える攻撃：" + systemsLabel(s) + "<br>" + esc(s.feature) + "</span></button>").join("");
   $("main").innerHTML = '<div class="weekhead"><h2>主・流儀を選ぶ</h2><div class="weeksub">子供の頃から習い、19歳で一人前の入り口（Lv2）に達した流派。全156流派から選べます（知名度順）。他流派は後からいつでも学べます</div></div>' +
     '<input id="style-search2" type="text" placeholder="流派名で検索" style="width:100%;padding:10px;margin-bottom:10px;">' +
     '<div class="styles">' + cards + "</div>";
@@ -1296,7 +1344,8 @@ function renderDex(){
   $("main").innerHTML = '<div class="weekhead"><h2>図鑑・記録</h2></div>' +
     '<h3>道場生（' + S.students.length + "人）</h3>" + (S.students.length ? S.students.map(s => '<div class="dexrow">' + esc(s.name) + " ― " + esc(s.style) + " 上達度" + s.skill + "</div>").join("") : '<div class="dexrow">まだいない</div>') +
     '<h3>出会った人々</h3>' + CAST_DATA.filter(c => S.met.includes(c.id)).map(c => '<div class="dexrow">' + esc(c.name) + (c.age != null ? "（" + c.age + "歳）" : "") + " ― " + esc(c.role) + (c.sex === "F" ? " 好感度" + (S.affection[c.id] || 0) : "") + "</div>").join("") +
-    '<h3>習得した流派</h3>' + Object.keys(S.styleLv).map(id => { const st = styleById(Number(id)); return st ? '<div class="dexrow">' + esc(st.name) + " Lv" + S.styleLv[id] + "</div>" : ""; }).join("") +
+    '<h3>習得した流派</h3>' + Object.keys(S.styleLv).map(id => { const st = styleById(Number(id)); return st ? '<div class="dexrow">' + esc(st.name) + " Lv" + S.styleLv[id] + " ― 使える攻撃：" + systemsLabel(st) + "</div>" : ""; }).join("") +
+    '<div class="dexrow">現在使える攻撃（全流派の合計）：' + playerSystems().map(systemsKindLabel).join("・") + "</div>" +
     '<h3>女性キャスト（全' + women.length + '名・口説き対象）</h3>' + women.map(c => '<div class="dexrow">' + esc(c.name) + " ― 第" + c.debut + "章登場" + (S.met.includes(c.id) ? "" : "（未登場）") + "</div>").join("") +
     '<button class="btn ghost" data-back="1">戻る</button>';
   $("main").querySelector("[data-back]").addEventListener("click", renderWeek);
@@ -1334,6 +1383,11 @@ window.__gameTest = {
   startSceneById: id => startSceneById(id),
   eventLog: () => window.__eventLog || [],
   version: () => GAME_VERSION,
+  playerSystems: () => playerSystems(),
+  styleSystems: name => styleSystems(styleByName(name)),
+  systemsLabel: name => systemsLabel(styleByName(name)),
+  battleTurn: act => battleTurn(act),
+  lastEnemyKind: () => window.__lastEnemyKind || null,
   likes: () => getLikes(),
   posts: () => getPosts(),
   toggleLike: id => toggleLike(id),
@@ -1444,6 +1498,7 @@ window.__gameTest = {
         if (!sel) sel = main.querySelector("[data-bact='sig']");
         if (!sel && B){ const st = mainStyle(); const prim = st.stats.kick >= st.stats.strike && st.stats.kick >= st.stats.grapple && st.stats.kick >= st.stats.ground ? "kick" : st.stats.grapple >= st.stats.ground && st.stats.grapple >= st.stats.strike ? "grapple" : st.stats.ground > st.stats.strike && st.stats.ground > st.stats.kick ? "ground" : "strike"; sel = main.querySelector("[data-bact='" + prim + "']"); }
         if (!sel) sel = main.querySelector("[data-bact='strike']");
+        if (!sel) sel = main.querySelector("[data-bact='grapple'],[data-bact='ground'],[data-bact='kick'],[data-bact='read']"); // 第73節: 主・流儀の系統に無い攻撃はボタン自体が無い
         if (sel) sel.click();
         return;
       }
