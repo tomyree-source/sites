@@ -90,6 +90,9 @@ const CAST_DATA = [
   {id:"misaki", name:"岬 宗久", age:57, sex:"M", style:"総合格闘技（ハイブリッド系）", role:"黎明期レジェンド／穏やかな重鎮・発信者", debut:5},
   {id:"takeru", name:"殴られ屋タケル", age:31, sex:"M", style:"短時間マッチ企画", role:"殴られ屋／倒れないタフさが売りの名物キャラ・対戦枠", debut:2},
   {id:"namioka", name:"綾瀬 莉央", age:23, sex:"F", style:"中国武術（武術太極拳・長拳系）", role:"中国武術系の発信型パフォーマー／インフルエンサー", debut:3},
+  // 追加キャスト第79名（企画書第70節・cast.md末尾が正本）。気・ノータッチ系達人の類型（架空名・特定個人の再現にはしない）。師匠枠なし・対戦／検証イベント枠。口説き対象外のため pref は付けない
+  {id:"haguro", name:"羽黒 幻海", age:69, sex:"M", style:"気功・合気系（独自の気の武術）", role:"『触れずに倒す』と噂される気の達人／検証イベント枠", debut:3},
+  {id:"eka", name:"エカ", age:32, sex:"M", style:"古流武術（真壁門下）", role:"真壁鉄厳の熱烈な信者／『先の先』至上主義者・論争と対戦のイベント枠", debut:2},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;
