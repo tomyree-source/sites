@@ -1,4 +1,4 @@
-// キャストデータ（正本：~/workspace/new-game/cast.md 全48名）
+// キャストデータ（正本：~/workspace/new-game/cast.md 全56名）
 // 全員架空の成人。img は ~/workspace/new-game/cast-art/cast-<id>-sera.webp に対応。
 // pref（口説きの好み条件）: "sei"=清名型 / "aku"=悪名型 / "power"=実力型
 const CAST_DATA = [
@@ -57,6 +57,15 @@ const CAST_DATA = [
   {id:"metsuking", name:"メツキング", age:34, sex:"M", style:"形意拳", role:"眼突き最強論の論客『侮術王者』／イベントキャラ", debut:3},
   // 追加キャスト第48名（企画書第55節・cast.md末尾が正本）。秘伝系オマージュ見本（架空名・顔は似せない）。師匠枠（厳格型）のため role に明記。口説き対象外のため pref は付けない
   {id:"makabe", name:"真壁 鉄厳", age:74, sex:"M", style:"古流武術（居合・柔術）", role:"師匠枠（厳格型）／伝説の宗家・『消える動き』の達人", debut:6},
+  // 追加キャスト第49〜56名（企画書第56節・cast.md末尾が正本）。秘伝系オマージュ（架空名・顔は似せない、雰囲気のみ）。師匠枠の型は role に明記。口説き対象外のため pref は付けない
+  {id:"sugiura", name:"杉浦 玄道", age:56, sex:"M", style:"独自の身体操法（武術研究）", role:"師匠枠（寛容型）／身体理論を語る研究者肌の武術家", debut:5},
+  {id:"ando", name:"安藤 歩", age:78, sex:"M", style:"身体操法・古武道研究", role:"師匠枠（寛容型）／徒歩で各地を巡る小柄な老師", debut:6},
+  {id:"sakakibara", name:"榊原 剛", age:44, sex:"M", style:"伝統派空手", role:"師匠枠（実力主義型）／現代空手の第一人者", debut:4},
+  {id:"kiyose", name:"清瀬 涼介", age:36, sex:"M", style:"合気道", role:"『美しい合気道』の若手実力者／交流稽古枠", debut:4},
+  {id:"miyake", name:"三宅 理一郎", age:65, sex:"M", style:"合気武道（理合の合気）", role:"師匠枠（厳格型）／物理学者でもある合気の達人", debut:5},
+  {id:"morioka", name:"森岡 俊平", age:63, sex:"M", style:"運動科学・身体操法", role:"武術を科学で読み解く研究者／『ゆる』の体操の伝道者", debut:5},
+  {id:"arimoto", name:"有本 文彦", age:68, sex:"M", style:"合気道", role:"文筆家としても知られる合気道家／達人枠", debut:6},
+  {id:"iwaki", name:"岩城 章吾", age:55, sex:"M", style:"フルコンタクト空手", role:"師匠枠（実力主義型）／剛心会館長・百人組手達成者", debut:4},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;
