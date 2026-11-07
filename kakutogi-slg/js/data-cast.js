@@ -114,6 +114,8 @@ const CAST_DATA = [
   {id:"yoshimura", name:"吉村 史郎", age:36, sex:"M", style:"武道研究", role:"研究者・解説枠／身体操作を理論化する新世代", debut:5},
   {id:"saijo", name:"西条 冬樹", age:56, sex:"M", style:"―（映像監督）", role:"映像・制作枠／達人の演武を撮り続ける映画監督（対戦なし）", debut:5},
   {id:"yajima", name:"矢島 勇人", age:34, sex:"M", style:"総合格闘技", role:"達人検証の受け手／格闘家の身体で技を確かめる検証枠", debut:4},
+  // 追加キャスト第101名（企画書第84節・cast.md末尾が正本）。居合の達人のオマージュ（モデル＝町井勲。架空名・雰囲気のみで特定個人の再現にはしない）。師匠枠なし・検証／批評の実力者枠。口説き対象外のため pref は付けない
+  {id:"mai", name:"真井 勇作", age:52, sex:"M", style:"居合・試斬（現代居合）", role:"『空中の小さな弾を斬る』記録級の離れ業で知られる居合の超人／鋭い批評を公然とする批評家気質の実力者・検証枠", debut:2},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;

@@ -25,11 +25,18 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.3";
+const GAME_VERSION = "1.32";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.32", date:"2026-11-08", items:[
+    "居合の達人・真井勇作を追加（キャスト総数101名）。飛んでくる小さな弾さえ真剣で斬る記録級の離れ業で知られる超人が、第2章から検証・批評の実力者として登場",
+    "「試斬動画の大論争」エピソードを加筆：批判側に真井が立ち、当事者同士の本気の争いと、それを祭りにしてしまう界隈の温度差を描く",
+  ]},
+  {v:"1.31", date:"2026-11-08", items:[
+    "師匠の絵を流派ごとに差し替え：序章の認定審査に立つ師範と、流派詳細（他流派を学ぶ画面）の師範像が、選んだ流派の系統に合った人物になった（カテゴリ別10種＋相撲・ムエタイ・カポエイラ・忍術・アーマードバトル・シルムの個別6種）",
+  ]},
   {v:"1.3", date:"2026-11-08", items:[
     "達人系の発信者20名を追加（キャスト総数100名）。第4〜6章で本格登場し、第1〜3章では映像・噂のカメオで顔見せ。検証コラボのハブ役など固有コラボ2本も追加",
     "誹謗中傷の裏ルートを追加：バックに組織がいる相手を中傷すると、数週置いて『黒い車の訪問』が来る（謝罪／弁護士／無視で圧力が段階的に変化）",
@@ -45,7 +52,7 @@ const CHANGELOG = [
   {v:"1.1", date:"2026-11-08", items:[
     "実在モデル組が第1章から段階的に登場（カメオ→第2章で絡む→第3章で対面）",
     "年末イベント『BOTY（武クラ・オブ・ザ・イヤー）』を追加",
-    "武術界隈の変なエピソード（地面斬り擁護合戦・レスバ十段ほか）と、気の達人・羽黒幻海／真壁信者エカを追加",
+    "武術界隈の変なエピソード（試斬動画の大論争・レスバ十段ほか）と、気の達人・羽黒幻海／真壁信者エカを追加",
     "エピソードごとに『CLASHに書き込む』投稿と👍反応（いいね）を追加。感想は端末内のCLASHに残り、フォーム送信で全体の人気集計にも参加できます",
   ]},
   {v:"1.0", date:"2026-11-07", items:[
@@ -124,7 +131,7 @@ function episodeLabel(id){
 }
 // いいね・投稿の対象ID → CLASHのハッシュタグ（#は付けずに返す）
 const EPISODE_TAGS = {
-  aru_jimen:"地面斬り擁護合戦", aru_resuba:"レスバ十段", aru_lawsuit:"法的措置を検討します",
+  aru_jimen:"試斬動画の大論争", aru_resuba:"レスバ十段", aru_lawsuit:"法的措置を検討します",
   aru_screenshot:"スクショ全保存", aru_soke:"一子相伝の宗家", aru_eka:"先の先の実験",
   sp_eka:"先の先の実験", sp_haguro:"触れぬ先の投げ", sp_metsuking:"目突きこそ最強",
   sp_bushika:"まずスクワット", sp_rankfraud:"段位詐称は許せるか",
@@ -962,6 +969,7 @@ function sceneAdvance(){
       UI.queue = lines.concat(UI.queue); continue;
     }
     if (st.img !== undefined){ UI.portrait = st.img; continue; }
+    if (st.mimg){ const ms = mainStyle(); UI.portrait = ms ? "master-" + masterArtKey(ms) : null; continue; }
     if (st.ep !== undefined){ UI.episode = st.ep; continue; }
     if (st.fx){ applyFx(st.fx); continue; }
     if (st.jump){ startSceneById(st.jump); return; }
@@ -1552,6 +1560,39 @@ function renderCarePick(){
     afterAction([]);
   }));
 }
+// ---------- 流派別の師匠像（第83節） ----------
+// 序章の認定審査などで出る「その流派の師範」の絵は、流派のカテゴリごとに用意した師匠像を使う
+// （白道着の師範がボクシングやムエタイの審査に出る、といった違和感をなくすため）。
+// 画像は cast-art/cast-master-<key>-sera.webp。portrait の仕組みで "master-<key>" として参照する。
+// 固有名のある師匠（源田巌・mentorFor のキャスト）は従来どおりで、ここは汎用の師範像のみを担う。
+const MASTER_BY_CAT = {
+  "日本の空手系": "karate",
+  "日本の柔術・柔道・合気・相撲系": "jujutsu",
+  "中国武術": "chinese",
+  "立技打撃": "striking",
+  "グラップリング世界": "grappling",
+  "朝鮮半島": "korean",
+  "東南アジア": "seasia",
+  "欧米・その他地域": "western",
+  "軍・警察系格闘術": "military",
+  "特殊・話題枠": "special",
+};
+// カテゴリ内でも姿が大きく異なる流派は、個別の師匠像を使う
+const MASTER_OVERRIDE = {
+  "相撲": "sumo", "沖縄角力（シマ）": "sumo",
+  "ムエタイ": "muay", "ムエボーラン": "muay", "ムエラオ": "muay", "プラダル・セレイ（クン・クメール）": "muay",
+  "カポエイラ・ヘジョナル": "capoeira", "カポエイラ・アンゴラ": "capoeira",
+  "忍術体術（武神館）": "ninja",
+  "アーマードバトル（ブフルト）": "armor",
+  "シルム": "ssireum",
+};
+function masterArtKey(style){
+  if (!style) return "jujutsu";
+  return MASTER_OVERRIDE[style.name] || MASTER_BY_CAT[style.cat] || "jujutsu";
+}
+function masterPortraitHtml(style){
+  return '<div class="portrait"><img src="../cast-art/cast-master-' + masterArtKey(style) + '-sera.webp" alt=""></div>';
+}
 // ---------- 他流派と師匠 ----------
 function mentorFor(style){
   if (!style) return null;
@@ -1583,8 +1624,11 @@ function renderSubStylePick(){
     const st = styleById(Number(sel.value || 1)); if (!st) return;
     const lv = styleLv(st.id);
     const newSys = styleSystems(st).filter(k => !playerSystems().includes(k));
-    info.textContent = st.name + " Lv" + lv + " ― " + st.feature + (lv >= 5 ? "（看板技 習得済み）" : lv >= 3 ? "（精度完成）" : "") +
+    const infoText = st.name + " Lv" + lv + " ― " + st.feature + (lv >= 5 ? "（看板技 習得済み）" : lv >= 3 ? "（精度完成）" : "") +
       "／使える攻撃：" + systemsLabel(st) + (newSys.length ? "（学ぶと新たに「" + newSys.map(systemsKindLabel).join("・") + "」が使えるようになる）" : "");
+    // 第83節: 流派詳細では、その流派の師範像（カテゴリ別の絵）を合わせて表示する
+    info.innerHTML = '<div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;">' + masterPortraitHtml(st) +
+      '<div style="flex:1;min-width:200px;">' + esc(infoText) + '<br><span>（絵は' + esc(st.name) + "の師範）</span></div></div>";
     const m = mentorFor(st);
     let html = '<button class="btn act" data-route="self"><b>独学・映像</b><span>経験値+4。誰でもいつでも</span></button>' +
                '<button class="btn act" data-route="seminar"><b>公開セミナー・交流稽古</b><span>経験値+7。評判では断られない</span></button>';
