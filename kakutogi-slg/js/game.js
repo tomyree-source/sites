@@ -22,6 +22,125 @@ const MONTHLY_BILLS = 52000; // 家賃32,000＋生活費20,000
 const TUITION = 8000; // 生徒1人の月謝
 const WEEKS_PER_YEAR = 48;
 
+// ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
+// 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
+// (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
+const GAME_VERSION = "1.1";
+const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
+const LIKES_KEY = "kakutogi_likes_v1";
+const POSTS_KEY = "kakutogi_posts_v1";
+const CHANGELOG = [
+  {v:"1.1", date:"2026-11-08", items:[
+    "実在モデル組が第1章から段階的に登場（カメオ→第2章で絡む→第3章で対面）",
+    "年末イベント『BOTY（武クラ・オブ・ザ・イヤー）』を追加",
+    "武術界隈の変なエピソード（地面斬り擁護合戦・レスバ十段ほか）と、気の達人・羽黒幻海／真壁信者エカを追加",
+    "エピソードごとに『CLASHに書き込む』投稿と👍反応（いいね）を追加。感想は端末内のCLASHに残り、フォーム送信で全体の人気集計にも参加できます",
+  ]},
+  {v:"1.0", date:"2026-11-07", items:[
+    "第1章 青年期（19〜22歳）／第2章 全盛前夜（23〜29歳）／第3章 全盛期（30〜39歳）を公開",
+    "全156流派・登場人物80名・道場経営と名声（清名／悪名）・口説き・反則と裁判バトルまで実装",
+  ]},
+];
+function getLikes(){
+  try { const d = JSON.parse(localStorage.getItem(LIKES_KEY) || "{}"); return (d && typeof d === "object" && !Array.isArray(d)) ? d : {}; }
+  catch(e){ return {}; }
+}
+function isLiked(id){ return !!getLikes()[id]; }
+function setLiked(id, on){
+  const l = getLikes();
+  if (on) l[id] = Date.now(); else delete l[id];
+  try { localStorage.setItem(LIKES_KEY, JSON.stringify(l)); } catch(e){}
+  return !!l[id];
+}
+function toggleLike(id){ return setLiked(id, !isLiked(id)); }
+function getPosts(){
+  try { const d = JSON.parse(localStorage.getItem(POSTS_KEY) || "[]"); return Array.isArray(d) ? d : []; }
+  catch(e){ return []; }
+}
+function addPost(p){
+  const arr = getPosts(); arr.push(p);
+  try { localStorage.setItem(POSTS_KEY, JSON.stringify(arr)); } catch(e){}
+  return arr;
+}
+function allEventPools(){
+  const pools = [];
+  if (typeof WEEK_EVENTS_V2 !== "undefined") pools.push(WEEK_EVENTS_V2);
+  if (typeof STUDENT_DRAMA_EVENTS !== "undefined") pools.push(STUDENT_DRAMA_EVENTS);
+  if (typeof SEASONAL_EVENTS !== "undefined") pools.push(SEASONAL_EVENTS);
+  if (typeof RANDOM_EVENTS !== "undefined") pools.push(RANDOM_EVENTS);
+  if (typeof CH3_WEEK_EVENTS !== "undefined") pools.push(CH3_WEEK_EVENTS);
+  if (typeof CH3_STUDENT_DRAMA !== "undefined") pools.push(CH3_STUDENT_DRAMA);
+  if (typeof CH3_SEASONAL_EVENTS !== "undefined") pools.push(CH3_SEASONAL_EVENTS);
+  if (typeof DEBATE_EVENTS !== "undefined") pools.push(DEBATE_EVENTS);
+  if (typeof SPECIAL_EVENTS !== "undefined") pools.push(SPECIAL_EVENTS);
+  if (typeof CHAIN_EVENTS !== "undefined") pools.push(CHAIN_EVENTS);
+  if (typeof CAMEO_EVENTS !== "undefined") pools.push(CAMEO_EVENTS);
+  return pools;
+}
+function firstStepText(steps){
+  if (!steps) return "";
+  for (const st of steps){ if (st && st.t) return String(st.t).replace(/\{[^}]*\}/g, ""); }
+  return "";
+}
+// いいね・投稿の対象ID → 表示名（タイトル画面の一覧・投稿履歴用）
+function episodeLabel(id){
+  if (!id) return "エピソード";
+  if (id === "boty") return "BOTY（武クラ・オブ・ザ・イヤー）年末発表";
+  if (id.indexOf("ep:") === 0){
+    const c = (typeof CAST_BY_ID !== "undefined") && CAST_BY_ID[id.slice(3)];
+    return c ? c.name + "のエピソード場面" : "エピソード場面";
+  }
+  for (const pool of allEventPools()){
+    const e = pool.find(x => x.id === id);
+    if (e){
+      if (e.title) return e.title;
+      if (e.debateId && typeof DEBATES !== "undefined" && DEBATES[e.debateId]) return "CLASH論争『" + DEBATES[e.debateId].title + "』";
+      const t = firstStepText(e.steps);
+      if (t) return t.length > 30 ? t.slice(0, 30) + "…" : t;
+      return id;
+    }
+  }
+  for (const book of [typeof STORY_CH1 !== "undefined" ? STORY_CH1 : null, typeof STORY_CH2 !== "undefined" ? STORY_CH2 : null, typeof STORY_CH3 !== "undefined" ? STORY_CH3 : null]){
+    if (book && book[id]){
+      if (book[id].title) return book[id].title;
+      const t = firstStepText(book[id].steps);
+      if (t) return t.length > 30 ? t.slice(0, 30) + "…" : t;
+      return id;
+    }
+  }
+  return id;
+}
+// いいね・投稿の対象ID → CLASHのハッシュタグ（#は付けずに返す）
+const EPISODE_TAGS = {
+  aru_jimen:"地面斬り擁護合戦", aru_resuba:"レスバ十段", aru_lawsuit:"法的措置を検討します",
+  aru_screenshot:"スクショ全保存", aru_soke:"一子相伝の宗家", aru_eka:"先の先の実験",
+  sp_eka:"先の先の実験", sp_haguro:"触れぬ先の投げ", sp_metsuking:"目突きこそ最強",
+  sp_bushika:"まずスクワット", sp_rankfraud:"段位詐称は許せるか",
+  sp_bbs_write:"匿名掲示板騒動", sp_bbs_expose:"匿名掲示板騒動", sp_bbs_court:"裁判バトル", sp_dojo_raid:"道場乗り込み",
+  boty:"BOTY",
+};
+function episodeTag(id){
+  if (!id) return "武クラ";
+  if (EPISODE_TAGS[id]) return EPISODE_TAGS[id];
+  let slug = null;
+  if (id.indexOf("ep:") === 0) slug = id.slice(3);
+  else { const m = id.match(/^(?:cam1_|cam_|sp_)([a-z]+?)\d*$/); if (m) slug = m[1]; }
+  if (slug && typeof CAST_BY_ID !== "undefined" && CAST_BY_ID[slug]) return CAST_BY_ID[slug].name;
+  for (const pool of allEventPools()){
+    const e = pool.find(x => x.id === id);
+    if (e && e.debateId && typeof DEBATES !== "undefined" && DEBATES[e.debateId]) return DEBATES[e.debateId].title.replace(/[\s　]/g, "").slice(0, 14);
+  }
+  const lbl = episodeLabel(id).replace(/[\s　『』「」【】（）・…]/g, "");
+  return lbl ? lbl.slice(0, 14) : "武クラ";
+}
+// このIDが「エピソードの終わりにCLASHバーを出す」対象か（イベントプール所属 or カメオ場面 or BOTY）
+function isLikeableId(id){
+  if (!id) return false;
+  if (id === "boty") return true;
+  if (/^cam1_/.test(id)) return true;
+  return allEventPools().some(p => p.some(e => e.id === id));
+}
+
 // ---------- 状態 ----------
 let S = null;
 function newState(){
@@ -165,10 +284,11 @@ catch(e){ return false;}
 function hasSave(){ try { return!!localStorage.getItem(SAVE_KEY);} catch(e){ return false;}}
 
 // ---------- シーン再生エンジン ----------
-const UI = { screen:"title", queue:[], portrait:null, episode:null, battle:null, debate:null, afterWeek:null };
-function startScene(steps, onDone){
+const UI = { screen:"title", queue:[], portrait:null, episode:null, battle:null, debate:null, afterWeek:null, likeId:null };
+function startScene(steps, onDone, likeId){
   UI.screen = "scene";
   UI.episode = null;
+  UI.likeId = likeId || null;
   UI.queue = steps.slice();
   UI.onSceneDone = onDone || null;
   sceneAdvance();
@@ -176,7 +296,7 @@ function startScene(steps, onDone){
 function startSceneById(id){
   const sc = STORY_CH1[id] || (typeof STORY_CH2 !== "undefined" ? STORY_CH2[id] : null) || (typeof STORY_CH3 !== "undefined" ? STORY_CH3[id] : null);
   if (!sc){ goWeek(); return; }
-  startScene(sc.steps);
+  startScene(sc.steps, null, id);
 }
 // ドーピング検査の結果発表（第3章）。使用の有無で分岐する
 function dopeVerdictLines(){
@@ -327,20 +447,103 @@ function renderSay(st){
   $("main").innerHTML = episodeHtml() + '<div class="scene">' + portraitHtml() +
     '<div class="dialog">' + (name ? '<div class="spname">' + esc(name) + '</div>' : "") +
     '<div class="stext">' + esc(fill(st.t)) + '</div>' +
-    '<button class="btn next" data-auto="next">次へ</button></div></div>';
+    '<button class="btn next" data-auto="next">次へ</button>' + clashBarHtml() + '<div data-composer></div></div></div>';
   $("main").querySelector(".next").addEventListener("click", sceneAdvance);
+  bindClashBar();
 }
 function renderChoice(st){
   hud();
   const btns = st.choice.map((c, i) => '<button class="btn choice" data-choice="' + i + '">' + esc(fill(c.label)) + '</button>').join("");
   $("main").innerHTML = episodeHtml() + '<div class="scene">' + portraitHtml() +
-    '<div class="dialog"><div class="stext">――どうする？</div><div class="choices">' + btns + '</div></div></div>';
+    '<div class="dialog"><div class="stext">――どうする？</div><div class="choices">' + btns + '</div>' + clashBarHtml() + '<div data-composer></div></div></div>';
   $("main").querySelectorAll("[data-choice]").forEach(b => b.addEventListener("click", () => {
     const c = st.choice[Number(b.dataset.choice)];
     if (c.fx) applyFx(c.fx);
     UI.queue = (c.say || []).concat(UI.queue);
     sceneAdvance();
   }));
+  bindClashBar();
+}
+
+// ---------- CLASH投稿バー（第72節）: エピソード毎の👍反応と「CLASHに書き込む」 ----------
+// 表示条件: エピソードイラスト表示中は常時／イベント（カメオ・スペシャル・あるある等）はその終わりの画面で
+function currentLikeTarget(){
+  if (UI.episode) return UI.likeId || ("ep:" + UI.episode);
+  if (UI.likeId && isLikeableId(UI.likeId)) return UI.likeId;
+  return null;
+}
+function sceneHasMoreContent(){
+  return UI.queue.some(st => st.t !== undefined || st.choice || st.battle || st.debate || st.jump !== undefined);
+}
+function clashBarHtml(){
+  const target = currentLikeTarget();
+  if (!target) return "";
+  if (!UI.episode && sceneHasMoreContent()) return ""; // イベント本編の途中では出さない（イラスト表示時は常時）
+  const liked = isLiked(target);
+  return '<div class="clashbar"><span class="clashmark">CLASH</span>' +
+    '<button class="btn clashreact' + (liked ? " liked" : "") + '" data-like="' + esc(target) + '">' + (liked ? "👍 面白かった（反応済み）" : "👍 面白かった") + '</button>' +
+    '<button class="btn ghost" data-compose="' + esc(target) + '">✍ CLASHに書き込む</button></div>';
+}
+function bindClashBar(){
+  const main = $("main"); if (!main) return;
+  const rb = main.querySelector("[data-like]");
+  if (rb) rb.addEventListener("click", () => {
+    const now = toggleLike(rb.dataset.like);
+    rb.classList.toggle("liked", now);
+    rb.textContent = now ? "👍 面白かった（反応済み）" : "👍 面白かった";
+    toast(now ? "👍を記録しました（タイトルの『あなたのCLASH投稿』で確認できます）" : "👍を取り消しました");
+  });
+  const cb = main.querySelector("[data-compose]");
+  if (cb) cb.addEventListener("click", () => openComposer(cb.dataset.compose));
+}
+// 投稿パネル: エピソードのタグが自動で付き、本文を書いて「投稿する」と端末内のCLASHに残る。
+// 「この内容を開発にも送る」は本文をクリップボードへコピーしてから Googleフォームを新しいタブで開く
+function openComposer(target){
+  const box = $("main").querySelector("[data-composer]");
+  if (!box) return;
+  const tag = episodeTag(target);
+  const liked = isLiked(target);
+  box.innerHTML = '<div class="clashpost">' +
+    '<div class="who">あなた <span>@player ― CLASHに書き込む</span></div>' +
+    '<div><span class="tagchip">#' + esc(tag) + '</span> <span class="tagchip dim">' + esc(episodeLabel(target)) + '</span></div>' +
+    '<textarea data-post-text rows="3" maxlength="500" placeholder="このエピソードの感想・ツッコミ・ネタ・改善案など"></textarea>' +
+    '<label class="reactline"><input type="checkbox" data-post-react' + (liked ? " checked" : "") + '> 👍 このエピソードに反応する（面白かった）</label>' +
+    '<div class="composerrow">' +
+      '<button class="btn next" data-post-submit>投稿する</button>' +
+      '<button class="btn" data-post-send>この内容を開発にも送る</button>' +
+      '<button class="btn ghost" data-post-close>閉じる</button>' +
+    '</div>' +
+    '<div class="sendnote">「開発にも送る」は、本文をコピーしてから意見フォーム（人気投票つき）を新しいタブで開きます。フォームに貼り付けて送信すると、全体の集計に反映されます。</div>' +
+    '<div data-post-feed></div></div>';
+  const ta = box.querySelector("[data-post-text]");
+  if (ta) ta.focus();
+  box.querySelector("[data-post-close]").addEventListener("click", () => { box.innerHTML = ""; });
+  box.querySelector("[data-post-submit]").addEventListener("click", () => {
+    const text = (ta.value || "").trim();
+    const react = box.querySelector("[data-post-react]").checked;
+    if (!text && !react){ toast("本文を書くか、👍反応を付けてください", true); return; }
+    if (react) setLiked(target, true);
+    const p = {ep: target, tag: tag, text: text, liked: react, at: Date.now()};
+    addPost(p);
+    const rb = $("main").querySelector("[data-like]");
+    if (rb && react){ rb.classList.add("liked"); rb.textContent = "👍 面白かった（反応済み）"; }
+    const feed = box.querySelector("[data-post-feed]");
+    feed.innerHTML = '<div class="clashpost mine"><div class="who">あなた <span>@player</span></div>' +
+      '<div><span class="tagchip">#' + esc(tag) + '</span></div>' +
+      (text ? '<div class="txt">' + esc(text) + '</div>' : "") +
+      (react ? '<div class="reactdisp">👍 面白かった</div>' : "") +
+      '<div class="sendnote">CLASHに投稿しました（この端末に保存されています）</div></div>';
+    toast("CLASHに投稿しました");
+  });
+  box.querySelector("[data-post-send]").addEventListener("click", () => {
+    const text = (ta.value || "").trim();
+    const body = "#" + tag + "\n" + text;
+    const open = () => window.open(FEEDBACK_FORM_URL, "_blank", "noopener");
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(body).then(() => { toast("本文をコピーしました。フォームに貼り付けて送信してください"); open(); },
+        () => { toast("コピーはできませんでしたが、フォームを開きます", true); open(); });
+    } else open();
+  });
 }
 
 // ---------- 週間ループ ----------
@@ -528,7 +731,7 @@ function endWeek(){
     saveGame(false);
     goWeek();
   };
-  if (ev){ S.lastRandomWeek = S.absWeek; startScene(ev.steps, proceed); }
+  if (ev){ S.lastRandomWeek = S.absWeek; startScene(ev.steps, proceed, ev.id); }
   else proceed();
 }
 
@@ -1021,14 +1224,39 @@ function chapterEndScreen(){
 function renderTitle(){
   UI.screen = "title";
   $("hud").classList.add("hidden");
+  const likes = getLikes();
+  const likeIds = Object.keys(likes);
+  const posts = getPosts().slice().reverse();
+  const likeList = likeIds.length
+    ? likeIds.map(id => '<div class="dexrow">👍 ' + esc(episodeLabel(id)) + ' <span class="tagchip">#' + esc(episodeTag(id)) + "</span></div>").join("")
+    : '<div class="dexrow">まだありません。エピソードの終わりやイラスト表示中の👍ボタンで記録できます</div>';
+  const postList = posts.length
+    ? posts.slice(0, 20).map(p => '<div class="dexrow postitem"><span class="ptag">#' + esc(p.tag || "") + "</span> <span class=\"pdate\">" + esc(new Date(p.at).toLocaleString("ja-JP", {month:"numeric", day:"numeric", hour:"2-digit", minute:"2-digit"})) + "</span>" + (p.liked ? " 👍" : "") + (p.text ? '<div class="ptxt">' + esc(p.text) + "</div>" : "") + "</div>").join("")
+    : '<div class="dexrow">まだ投稿がありません。各エピソードの終わりに「CLASHに書き込む」ボタンがあります</div>';
   $("main").innerHTML = '<div class="title"><img class="title-kv" src="assets/title-keyvisual3.webp" alt="異種格闘年代記の登場人物たち">' + '<h1>異種格闘年代記<span>（仮）</span></h1>' +
     '<p class="tagline">どの武術が一番強いのか――その論争に、人生で答える。</p>' +
     '<button class="btn next" data-auto="new">はじめから</button>' +
     (hasSave() ? '<button class="btn" data-auto="continue">つづきから</button>' : "") +
-    '<p class="note">第1章：青年期（19〜22歳）／第2章：全盛前夜（23〜29歳）／第3章：全盛期（30〜39歳）</p></div>';
+    '<p class="note">第1章：青年期（19〜22歳）／第2章：全盛前夜（23〜29歳）／第3章：全盛期（30〜39歳）</p>' +
+    '<p class="ver">ver ' + GAME_VERSION + "</p></div>" +
+    '<div class="voice"><h3>あなたのCLASH投稿</h3>' +
+    '<p class="voicenote">エピソードごとの感想は、作中SNS「CLASH」への書き込みとして、この端末に残ります。人気投票とコメントはフォームで集計し、次回バージョンアップに反映します。面白かったエピソードには👍、改善要望やネタはCLASH投稿から「開発にも送る」で届きます。</p>' +
+    "<h4>👍したエピソード（" + likeIds.length + "件）</h4>" + likeList +
+    "<h4>あなたの投稿（" + posts.length + "件）</h4>" + postList +
+    '<div class="voicerow"><a class="btn next formlink" href="' + FEEDBACK_FORM_URL + '" target="_blank" rel="noopener">感想・改善要望・ネタを送る（フォーム）</a>' +
+    '<button class="btn" data-auto="changelog">更新履歴</button></div></div>';
   $("main").querySelector("[data-auto='new']").addEventListener("click", renderStyleSelect);
   const c = $("main").querySelector("[data-auto='continue']");
   if (c) c.addEventListener("click", () => { if (loadGame()) resumeFromSave(); });
+  $("main").querySelector("[data-auto='changelog']").addEventListener("click", renderChangelog);
+}
+function renderChangelog(){
+  UI.screen = "changelog";
+  $("hud").classList.add("hidden");
+  $("main").innerHTML = '<div class="endcard"><h2>更新履歴</h2>' +
+    CHANGELOG.map(c => "<h3>v" + c.v + "（" + c.date + "）</h3>" + c.items.map(i => '<div class="dexrow">' + esc(i) + "</div>").join("")).join("") +
+    '<div class="navrow"><button class="btn" data-auto="to-title">タイトルへ戻る</button></div></div>';
+  $("main").querySelector("[data-auto='to-title']").addEventListener("click", renderTitle);
 }
 function resumeFromSave(){
   if (S.flags && S.flags.retiredEnding && typeof retireEndScreen === "function") retireEndScreen();
@@ -1105,6 +1333,14 @@ window.__gameTest = {
   startBattle: id => startBattle(id, [], []),
   startSceneById: id => startSceneById(id),
   eventLog: () => window.__eventLog || [],
+  version: () => GAME_VERSION,
+  likes: () => getLikes(),
+  posts: () => getPosts(),
+  toggleLike: id => toggleLike(id),
+  episodeLabel: id => episodeLabel(id),
+  episodeTag: id => episodeTag(id),
+  clashTarget: () => currentLikeTarget(),
+  openComposer: id => { const b = document.querySelector("[data-compose]"); if (b){ b.click(); return true; } return false; },
   forceEvent: id => {
     const pools = [];
     if (typeof WEEK_EVENTS_V2 !== "undefined") pools.push(...WEEK_EVENTS_V2);
@@ -1122,7 +1358,7 @@ window.__gameTest = {
     if (!e) return false;
     ensureStateCompat();
     logEventFire(e.category || (typeof SEASONAL_EVENTS !== "undefined" && SEASONAL_EVENTS.includes(e) ? "season" : "forced"), e);
-    startScene(e.steps, () => goWeek());
+    startScene(e.steps, () => goWeek(), e.id);
     return true;
   },
   startChapter3: () => { if (typeof startChapter3 === "function") startChapter3(); },

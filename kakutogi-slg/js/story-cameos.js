@@ -220,7 +220,7 @@ function tryBotyScene(){
   if (intoYear > 4){ S.flags.botyDone[target] = "skip"; return false; }
   S.flags.botyDone[target] = true;
   if (typeof logEventFire === "function") logEventFire("boty", {id:"boty_" + target});
-  startScene(buildBotySteps(target), () => goWeek());
+  startScene(buildBotySteps(target), () => goWeek(), "boty");
   return true;
 }
 
