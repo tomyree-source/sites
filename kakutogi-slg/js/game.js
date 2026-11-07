@@ -165,9 +165,10 @@ catch(e){ return false;}
 function hasSave(){ try { return!!localStorage.getItem(SAVE_KEY);} catch(e){ return false;}}
 
 // ---------- シーン再生エンジン ----------
-const UI = { screen:"title", queue:[], portrait:null, battle:null, debate:null, afterWeek:null };
+const UI = { screen:"title", queue:[], portrait:null, episode:null, battle:null, debate:null, afterWeek:null };
 function startScene(steps, onDone){
   UI.screen = "scene";
+  UI.episode = null;
   UI.queue = steps.slice();
   UI.onSceneDone = onDone || null;
   sceneAdvance();
@@ -263,6 +264,7 @@ function sceneAdvance(){
       UI.queue = lines.concat(UI.queue); continue;
     }
     if (st.img !== undefined){ UI.portrait = st.img; continue; }
+    if (st.ep !== undefined){ UI.episode = st.ep; continue; }
     if (st.fx){ applyFx(st.fx); continue; }
     if (st.jump){ startSceneById(st.jump); return; }
     if (st.week){ finishScene(); return; }
@@ -313,11 +315,16 @@ function portraitHtml(){
   if (!UI.portrait) return "";
   return '<div class="portrait"><img src="../cast-art/cast-' + UI.portrait + '-sera.webp" alt=""></div>';
 }
+// エピソードイラスト（第68節）: シーンに {ep:"<slug>"} を持たせると場面イラストを表示する。見切れ防止のため object-fit:contain（CSS .epimg）
+function episodeHtml(){
+  if (!UI.episode) return "";
+  return '<div class="epimg"><img src="assets/episodes/ep-' + UI.episode + '.webp" alt="" onerror="this.parentNode.style.display=\'none\'"></div>';
+}
 function renderSay(st){
   hud();
   const sp = st.sp || "narr";
   const name = speakerName(sp);
-  $("main").innerHTML = '<div class="scene">' + portraitHtml() +
+  $("main").innerHTML = episodeHtml() + '<div class="scene">' + portraitHtml() +
     '<div class="dialog">' + (name ? '<div class="spname">' + esc(name) + '</div>' : "") +
     '<div class="stext">' + esc(fill(st.t)) + '</div>' +
     '<button class="btn next" data-auto="next">次へ</button></div></div>';
@@ -326,7 +333,7 @@ function renderSay(st){
 function renderChoice(st){
   hud();
   const btns = st.choice.map((c, i) => '<button class="btn choice" data-choice="' + i + '">' + esc(fill(c.label)) + '</button>').join("");
-  $("main").innerHTML = '<div class="scene">' + portraitHtml() +
+  $("main").innerHTML = episodeHtml() + '<div class="scene">' + portraitHtml() +
     '<div class="dialog"><div class="stext">――どうする？</div><div class="choices">' + btns + '</div></div></div>';
   $("main").querySelectorAll("[data-choice]").forEach(b => b.addEventListener("click", () => {
     const c = st.choice[Number(b.dataset.choice)];
@@ -339,6 +346,9 @@ function renderChoice(st){
 // ---------- 週間ループ ----------
 const BEATS = [
   {week:1, id:"beat_underling"}, {week:3, id:"beat_seminar_fail"}, {week:5, id:"beat_baito_clash"},
+  // 第68節: 実在モデル組の段階的登場（第1章の固定カメオ。場面定義は story-cameos.js が STORY_CH1 へ追加する）
+  {week:2, id:"cam1_shiina"}, {week:7, id:"cam1_takeru"}, {week:10, id:"cam1_fukaya"},
+  {week:14, id:"cam1_namioka"}, {week:18, id:"cam1_shinohara"}, {week:22, id:"cam1_akai"}, {week:26, id:"cam1_bushika"},
   {week:12, id:"beat_rin_match"}, {week:16, id:"beat_boukan"}, {week:20, id:"beat_ozeki"},
   {week:24, id:"beat_jiyun"}, {week:28, id:"beat_otowa_cup"}, {week:32, id:"beat_kujo"},
   {week:36, id:"beat_shiratori"}, {week:40, id:"beat_kurozaki"},
@@ -351,7 +361,9 @@ const BEATS = [
   {week:176, id:"finale1"},
 ];
 function goWeek(){
-  UI.screen = "week"; UI.portrait = null;
+  UI.screen = "week"; UI.portrait = null; UI.episode = null;
+  // 年末イベント BOTY（武クラ・オブ・ザ・イヤー／第68節）: 年が明けた直後の週に、前の年の発表を1回だけ挟む
+  if (typeof tryBotyScene === "function" && tryBotyScene()) return;
   const allBeats = BEATS.concat(typeof BEATS_CH2 !== "undefined" ? BEATS_CH2 : [], typeof BEATS_CH3 !== "undefined" ? BEATS_CH3 : []);
   const beat = allBeats.find(b => b.week === S.absWeek && !S.beatsDone[b.week + ":" + b.id]);
   if (beat){ S.beatsDone[beat.week + ":" + beat.id] = true; startSceneById(beat.id); return; }
@@ -441,6 +453,14 @@ function pickEndWeekEvent(){
     else if (S.flags.courtDone && !S.seenEvents["sp_dojo_raid"] && (S.flags.courtResult === "win" || S.flags.courtResult === "lose") && S.absWeek >= (S.flags.courtWeek || 0) + 2 && _rng() < 0.5)
       chainEv = CHAIN_EVENTS.find(e => e.id === "sp_dojo_raid");
     if (chainEv){ S.seenEvents[chainEv.id] = S.absWeek; logEventFire("chain", chainEv); return chainEv; }
+  }
+  // 第68節: 実在モデル組の段階的登場カメオ＋武クラあるある小ネタ（story-cameos.js の CAMEO_EVENTS）。3週に1回までの間隔で、1周1回だけ発火する
+  if (typeof CAMEO_EVENTS !== "undefined"){
+    const lastCam = (S.flags && S.flags.cameoLastWeek != null) ? S.flags.cameoLastWeek : -99;
+    if (S.absWeek - lastCam >= 3){
+      const cc = CAMEO_EVENTS.filter(e => eventEligible(e) && !S.seenEvents[e.id]);
+      if (cc.length && _rng() < 0.5){ const e = pickWeighted(cc); S.seenEvents[e.id] = S.absWeek; S.flags.cameoLastWeek = S.absWeek; logEventFire(e.category || "cameo", e); return e; }
+    }
   }
   const yw = ((S.absWeek - 1) % WEEKS_PER_YEAR) + 1;
   const yearIdx = Math.floor((S.absWeek - 1) / WEEKS_PER_YEAR);
@@ -1097,6 +1117,7 @@ window.__gameTest = {
     if (typeof DEBATE_EVENTS !== "undefined") pools.push(...DEBATE_EVENTS);
     if (typeof SPECIAL_EVENTS !== "undefined") pools.push(...SPECIAL_EVENTS);
     if (typeof CHAIN_EVENTS !== "undefined") pools.push(...CHAIN_EVENTS);
+    if (typeof CAMEO_EVENTS !== "undefined") pools.push(...CAMEO_EVENTS);
     const e = pools.find(x => x.id === id);
     if (!e) return false;
     ensureStateCompat();
@@ -1108,7 +1129,8 @@ window.__gameTest = {
   pools: () => ({ v2: (typeof WEEK_EVENTS_V2 !== "undefined" ? WEEK_EVENTS_V2 : []).map(e => ({id:e.id, category:e.category})), student: (typeof STUDENT_DRAMA_EVENTS !== "undefined" ? STUDENT_DRAMA_EVENTS : []).map(e => e.id), seasonal: (typeof SEASONAL_EVENTS !== "undefined" ? SEASONAL_EVENTS : []).map(e => e.id),
     ch3week: (typeof CH3_WEEK_EVENTS !== "undefined" ? CH3_WEEK_EVENTS : []).map(e => ({id:e.id, category:e.category})), ch3student: (typeof CH3_STUDENT_DRAMA !== "undefined" ? CH3_STUDENT_DRAMA : []).map(e => e.id), ch3seasonal: (typeof CH3_SEASONAL_EVENTS !== "undefined" ? CH3_SEASONAL_EVENTS : []).map(e => e.id),
     debates: (typeof DEBATE_POOL !== "undefined" ? DEBATE_POOL : []).map(d => d.id), debateEvents: (typeof DEBATE_EVENTS !== "undefined" ? DEBATE_EVENTS : []).map(e => e.id),
-    special: (typeof SPECIAL_EVENTS !== "undefined" ? SPECIAL_EVENTS : []).map(e => e.id), chain: (typeof CHAIN_EVENTS !== "undefined" ? CHAIN_EVENTS : []).map(e => e.id) }),
+    special: (typeof SPECIAL_EVENTS !== "undefined" ? SPECIAL_EVENTS : []).map(e => e.id), chain: (typeof CHAIN_EVENTS !== "undefined" ? CHAIN_EVENTS : []).map(e => e.id),
+    cameos: (typeof CAMEO_EVENTS !== "undefined" ? CAMEO_EVENTS : []).map(e => ({id:e.id, category:e.category, chapters:e.chapters})) }),
 };
 
 // ---------- 自動テスト（?autotest=1&style=流派名&foul=0|1&seed=N） ----------
