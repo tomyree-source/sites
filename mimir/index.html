@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>耳ツボ専門店ミミル 梅田｜貼るだけ耳ツボケア・男女可・完全予約制</title>
+<meta name="description" content="大阪・梅田の耳ツボ専門店ミミル。鍼を使わない「貼る」耳ツボケア専門店。耳ツボ施術40分5,000円、ヘッド付き80分10,000円、全身マッサージ付き120分15,000円。女性はジュエリータイプ、男性は目立たないシードタイプ。完全予約制・男女可。">
+<!-- 本制作時に公開URLの絶対パスへ差し替え -->
+<meta property="og:title" content="耳ツボ専門店ミミル 梅田">
+<meta property="og:description" content="貼るだけ耳ツボケア専門店。40分5,000円から／完全予約制／男女可／梅田">
+<meta property="og:image" content="assets/eyecatch-top.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/eyecatch-top.jpg">
+<style>
+  :root{
+    --teal:#0d3535; --teal2:#14524c; --gold:#c19a3d; --gold-l:#e7cf8f;
+    --cream:#faf6ec; --ink:#26302c; --mut:#5c6a64; --line:#ddd3ba;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Hiragino Mincho ProN","Yu Mincho","Hiragino Kaku Gothic ProN",serif;color:var(--ink);background:var(--cream);line-height:1.85}
+  .sans{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
+  .notice{background:var(--gold);color:#fff;text-align:center;font-size:.85rem;padding:.45rem 1rem;letter-spacing:.08em}
+  header{background:var(--teal);color:#fff;padding:1.1rem 1.2rem;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.4rem}
+  header .logo{font-size:1.35rem;letter-spacing:.14em}
+  header .logo small{display:block;font-size:.68rem;letter-spacing:.34em;color:var(--gold-l)}
+  header .hinfo{font-size:.8rem;color:#d8e4de;text-align:right}
+  .hero{position:relative}
+  .hero img{width:100%;height:min(62vh,520px);object-fit:cover;object-position:center;display:block}
+  .hero .copy{position:absolute;inset:auto 0 0 0;background:linear-gradient(transparent,rgba(9,38,36,.88) 55%);color:#fff;padding:3.2rem 1.2rem 1.6rem}
+  .hero h1{font-size:clamp(1.5rem,4.6vw,2.4rem);letter-spacing:.06em;font-weight:600}
+  .hero p{font-size:clamp(.9rem,2.6vw,1.05rem);color:#e9efe9;margin-top:.4rem}
+  .badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem}
+  .badge{border:1px solid var(--gold-l);color:#fff;border-radius:999px;padding:.18rem .8rem;font-size:.8rem;background:rgba(13,53,53,.55)}
+  .badge b{color:var(--gold-l)}
+  main{max-width:880px;margin:0 auto;padding:0 1.1rem 3rem}
+  section{margin-top:2.6rem}
+  h2{font-size:1.32rem;color:var(--teal);border-bottom:2px solid var(--gold);padding-bottom:.35rem;letter-spacing:.08em}
+  h2 .en{font-size:.68rem;color:var(--gold);letter-spacing:.3em;display:block}
+  p.lead{margin-top:.9rem}
+  table.price{width:100%;border-collapse:collapse;margin-top:1rem;background:#fff}
+  table.price th,table.price td{border:1px solid var(--line);padding:.75rem .8rem;text-align:left;vertical-align:top}
+  table.price th{background:#f1ead6;width:58%;font-weight:600}
+  table.price td{font-weight:700;color:var(--teal);white-space:nowrap;font-size:1.05rem}
+  table.price small{display:block;font-weight:400;color:var(--mut);font-size:.8rem}
+  .note{font-size:.83rem;color:var(--mut);margin-top:.6rem}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+  @media(max-width:640px){.cards{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--gold);padding:1.1rem 1.1rem 1rem}
+  .card h3{color:var(--teal2);font-size:1.05rem;margin-bottom:.4rem}
+  .media-list{margin-top:1rem;display:grid;gap:.9rem}
+  .media-item{background:#fff;border:1px solid var(--line);padding:1rem 1.1rem}
+  .media-item .meta{font-size:.78rem;color:var(--gold);letter-spacing:.06em;font-weight:700}
+  .media-item h3{font-size:1rem;color:var(--teal);margin:.15rem 0 .3rem}
+  .media-item p{font-size:.9rem}
+  .media-item a{color:var(--teal2);font-size:.83rem}
+  .origin{background:var(--teal);color:#eef3ee;padding:1.4rem 1.3rem;margin-top:1rem}
+  .origin h3{color:var(--gold-l);letter-spacing:.1em;margin-bottom:.5rem}
+  dl.info{margin-top:1rem;background:#fff;border:1px solid var(--line);padding:1rem 1.1rem}
+  dl.info dt{font-weight:700;color:var(--teal);margin-top:.7rem}
+  dl.info dt:first-child{margin-top:0}
+  dl.info dd{margin-left:0}
+  .cta{margin-top:1.2rem;text-align:center}
+  .btn-disabled{display:inline-block;background:#9aa79f;color:#fff;padding:.85rem 2.2rem;border-radius:999px;font-size:.95rem;letter-spacing:.06em}
+  details{background:#fff;border:1px solid var(--line);padding:.8rem 1rem;margin-top:.6rem}
+  summary{font-weight:700;color:var(--teal);cursor:pointer}
+  footer{background:var(--teal);color:#cfe0d8;text-align:center;padding:1.6rem 1rem;font-size:.8rem;margin-top:3rem}
+</style>
+</head>
+<body>
+
+<div class="notice sans">近日開業予定 ― 現在、開業準備中です。予約受付の開始はLINE公式アカウントでお知らせします</div>
+
+<header>
+  <div class="logo">耳ツボ専門店ミミル<small>MIMIR　UMEDA</small></div>
+  <div class="hinfo sans">完全予約制／男女可<br>大阪・梅田（レンタルサロンACE梅田内）</div>
+</header>
+<nav class="sans" style="background:#14524c;padding:.55rem 1rem;text-align:center;font-size:.86rem">
+<a href="index.html" style="color:#fff;margin:0 .55rem">トップ</a>
+<a href="menu.html" style="color:#fff;margin:0 .55rem">メニュー・料金</a>
+<a href="about.html" style="color:#fff;margin:0 .55rem">耳ツボについて</a>
+<a href="addiction/addiction-pillar.html" style="color:#e7cf8f;margin:0 .55rem">依存症ケア特集</a>
+<a href="access.html" style="color:#fff;margin:0 .55rem">アクセス</a>
+<a href="faq.html" style="color:#fff;margin:0 .55rem">よくある質問</a></nav>
+
+<div class="hero">
+  <img src="assets/eyecatch-top.jpg" alt="クリスタルとゴールドの耳ツボジュエリーを着けた耳元のおしゃれなクローズアップ">
+  <div class="copy">
+    <h1>耳に澄ます、からだの声。</h1>
+    <p>鍼を使わない「貼る」耳ツボケアの専門店。耳には全身につながるポイントが集まっています。気になるお悩みに合わせて、鍼灸師が耳からケアします。</p>
+    <div class="badges sans">
+      <span class="badge">耳ツボ施術 40分 <b>5,000円</b>から</span>
+      <span class="badge">初回割引なし・表示価格のみ</span>
+      <span class="badge">女性はジュエリー／男性は目立たないシード</span>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<section id="price">
+  <h2><span class="en">MENU &amp; PRICE</span>メニュー・料金</h2>
+  <p class="lead">料金は最初にすべてお見せします。コースの押し売りや、当日の追加請求はありません。</p>
+  <table class="price">
+    <tr><th>耳ツボ施術 40分<small>カウンセリング＋両耳への貼付＋耳まわりのケア。肩こり・目の疲れ・眠りのお悩みなど、気になるテーマに合わせて選点します</small></th><td>5,000円</td></tr>
+    <tr><th>耳ツボ＋ヘッド 80分<small>耳ツボ施術に、ドライヘッド（頭・首・肩）のケアを組み合わせたコース</small></th><td>10,000円</td></tr>
+    <tr><th>耳ツボ＋全身マッサージ 120分<small>耳ツボ施術と全身マッサージのフルコース。じっくり整えたい日に</small></th><td>15,000円</td></tr>
+  </table>
+  <p class="note">※貼り替えのみ（前回の貼付をはがして新しいものに替える）15分 2,000円。※当店では鍼（はり）は使いません。粒のついたシールを貼る方法のみです。※金属アレルギーのある方は、事前にご相談ください。素材の選択肢をご案内します。</p>
+</section>
+
+<section id="style">
+  <h2><span class="en">TWO STYLES</span>選べる2つのスタイル</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>女性に ― ジュエリータイプ</h3>
+      <p>ピアスのように見える、きらめく粒。耳元のおしゃれを楽しみながらケアできます。推し活やイベント前の仕上げにも。</p>
+    </div>
+    <div class="card">
+      <h3>男性に ― 目立たないシードタイプ</h3>
+      <p>肌色・透明のシールに小さな粒を合わせた、目立たない仕様。仕事中もそのまま過ごせます。肩こり・目の疲れ・眠りのケアに。</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2><span class="en">ABOUT</span>耳ツボケアについて</h2>
+  <p class="lead">耳介（耳たぶを含む耳全体）には、全身の状態と対応するポイントが集まっているという考え方が、東洋医学とフランス発祥の耳介療法の両方にあります。ミミルでは、独自に整理した耳のポイントデータをもとに、お悩みと耳の反応を見ながら貼る位置を決めていきます。施術は国家資格の鍼灸師が行いますが、当店の施術は「貼るだけ」で、鍼は一切使いません。</p>
+</section>
+
+<section id="media">
+  <h2><span class="en">MEDIA</span>耳ツボがメディアで紹介されています</h2>
+  <p class="note">※以下は当店が取材・掲載されたものではありません。耳ツボ／耳つぼジュエリーという施術・アイテムがテレビや雑誌で取り上げられた事例の紹介です。各媒体で語られる効果は各媒体の表現であり、当店が効果を保証するものではありません。</p>
+  <div class="media-list">
+    <div class="media-item">
+      <div class="meta sans">テレビ ― フジテレビ系「イット！」2025年11月11日放送／FNNプライムオンライン</div>
+      <h3>Z世代トレンド大賞2025、ファッション部門1位に「耳つぼジュエリー」</h3>
+      <p>SHIBUYA109 lab.トレンド大賞2025の発表を伝えるニュースで、耳つぼジュエリーがファッション部門の1位として紹介されました。</p>
+      <a href="https://www.fnn.jp/articles/-/959079" target="_blank" rel="noopener">FNNプライムオンラインの記事を読む</a>
+    </div>
+    <div class="media-item">
+      <div class="meta sans">テレビ・WEB ― めざましmedia（フジテレビ）2025年3月2日</div>
+      <h3>特集「話題沸騰『耳つぼジュエリー』」体験リポート</h3>
+      <p>生見愛瑠さん、栗原恵さんら愛用者の紹介とともに、スタッフが施術を体験する特集記事。耳には100種類以上のツボがあると紹介されています。</p>
+      <a href="https://mezamashi.media/articles/-/124093" target="_blank" rel="noopener">めざましmediaの記事を読む</a>
+    </div>
+    <div class="media-item">
+      <div class="meta sans">テレビ ― TBS NEWS DIG（チューリップテレビ）2025年3月8日</div>
+      <h3>「おしゃれに体調整える『耳つぼジュエリー』人気のワケ」</h3>
+      <p>穴を開けずに楽しめる耳つぼジュエリーの人気を、富山のサロンから伝えるニュース特集です。</p>
+      <a href="https://newsdig.tbs.co.jp/articles/-/1772953" target="_blank" rel="noopener">TBS NEWS DIGの記事を読む</a>
+    </div>
+    <div class="media-item">
+      <div class="meta sans">雑誌 ― 『美的』2025年11月号（小学館）／美的.com</div>
+      <h3>加藤シゲアキさんの耳つぼジュエリー体験レポート</h3>
+      <p>連載「NEWSな美意識」で、加藤シゲアキさんが耳つぼジュエリーを初体験する様子が掲載されました。男性の利用も広がっています。</p>
+      <a href="https://www.biteki.com/2056586/" target="_blank" rel="noopener">美的.comの記事を読む</a>
+    </div>
+  </div>
+  <p class="note">このほか、日本テレビ「ZIP!」でも芸能人を担当する耳つぼセラピストが紹介されるなど、情報番組での取り上げが続いています。</p>
+</section>
+
+<section id="name">
+  <h2><span class="en">OUR NAME</span>店名「ミミル」の由来</h2>
+  <div class="origin">
+    <h3>知恵の泉を守る、北欧神話の賢者</h3>
+    <p>ミミルは、北欧神話に登場する賢者の名前です。世界樹ユグドラシルの根元にある「知恵の泉」の守り手で、最高神オーディンも知恵を授かりに訪れ、大切なことは必ずミミルに相談したといいます。からだの小さな声に耳を澄まし、知恵をもって応える場所でありたい。その思いを店名に込めました。</p>
+  </div>
+</section>
+
+<section id="faq">
+  <h2><span class="en">FAQ</span>よくある質問</h2>
+  <details><summary>鍼は使いませんか？ 痛いですか？</summary><p>鍼は使いません。粒のついたシールを貼るだけです。貼る瞬間に少し刺激を感じることがありますが、強い痛みはありません。刺激の強さは調整できます。</p></details>
+  <details><summary>どのくらい貼ったままにしますか？</summary><p>数日〜1週間が目安です。はがす時期と、肌を休める期間は施術時にご案内します。かゆみや赤みが出たら、無理せず早めにはがしてください。</p></details>
+  <details><summary>仕事中、目立ちませんか？</summary><p>男性向けのシードタイプは肌色・透明シールで目立ちにくい仕様です。接客業の方もご利用いただけます。</p></details>
+  <details><summary>耳ツボは治療ですか？</summary><p>当店の施術は医療行為・治療ではありません。日々のコンディションを整えるためのケアとしてご利用ください。体調に不安がある場合は、医療機関への受診をおすすめします。</p></details>
+</section>
+
+<section id="access">
+  <h2><span class="en">ACCESS</span>店舗情報・アクセス</h2>
+  <dl class="info">
+    <dt>店名</dt><dd>耳ツボ専門店ミミル 梅田（MIMIR）</dd>
+    <dt>施術者</dt><dd>平賀伸人 ― 施術歴30年／鍼灸師（国家資格）・登録販売者・アロマセラピスト・パーソナルトレーナー</dd>
+    <dt>場所</dt><dd>レンタルサロンACE梅田内（大阪市北区堂山町12-5 ロイヤルハイツ梅田Ⅱ）／地下鉄谷町線「中崎町駅」徒歩5分、梅田各駅から徒歩圏内</dd>
+    <dt>営業形態</dt><dd>完全予約制・男女可（開業準備中）</dd>
+    <dt>お支払い</dt><dd>準備中（開業時にご案内します）</dd>
+  </dl>
+  <div class="cta">
+    <span class="btn-disabled sans">LINE公式アカウント準備中（予約受付は開始後にお知らせします）</span>
+  </div>
+</section>
+
+<div class="sans" style="text-align:center;font-size:.85rem;margin-top:2.2rem">
+<a href="index.html">トップ</a>｜<a href="menu.html">メニュー・料金</a>｜<a href="about.html">耳ツボについて</a>｜<a href="addiction/addiction-pillar.html">依存症ケア特集</a>｜<a href="access.html">アクセス</a>｜<a href="faq.html">よくある質問</a></div>
+</main>
+
+<footer>
+  耳ツボ専門店ミミル 梅田（MIMIR）｜大阪・梅田の貼る耳ツボケア専門店<br>
+  本ページの施術は医療行為ではありません
+</footer>
+
+</body>
+</html>
