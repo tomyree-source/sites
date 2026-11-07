@@ -1001,7 +1001,7 @@ function chapterEndScreen(){
 function renderTitle(){
   UI.screen = "title";
   $("hud").classList.add("hidden");
-  $("main").innerHTML = '<div class="title"><img class="title-kv" src="assets/title-keyvisual.webp" alt="異種格闘年代記の登場人物たち">' + '<h1>異種格闘年代記<span>（仮）</span></h1>' +
+  $("main").innerHTML = '<div class="title"><img class="title-kv" src="assets/title-keyvisual3.webp" alt="異種格闘年代記の登場人物たち">' + '<h1>異種格闘年代記<span>（仮）</span></h1>' +
     '<p class="tagline">どの武術が一番強いのか――その論争に、人生で答える。</p>' +
     '<button class="btn next" data-auto="new">はじめから</button>' +
     (hasSave() ? '<button class="btn" data-auto="continue">つづきから</button>' : "") +
