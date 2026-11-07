@@ -1,4 +1,4 @@
-// キャストデータ（正本：~/workspace/new-game/cast.md 全47名）
+// キャストデータ（正本：~/workspace/new-game/cast.md 全48名）
 // 全員架空の成人。img は ~/workspace/new-game/cast-art/cast-<id>-sera.webp に対応。
 // pref（口説きの好み条件）: "sei"=清名型 / "aku"=悪名型 / "power"=実力型
 const CAST_DATA = [
@@ -55,6 +55,8 @@ const CAST_DATA = [
   {id:"bushika", name:"武鹿", age:36, sex:"M", style:"筋トレ／アクション", role:"馬マスクのアクション俳優／イベントキャラ", debut:3},
   // 追加キャスト第47名（企画書第51節・cast.md末尾が正本）。口説き対象外のため pref は付けない
   {id:"metsuking", name:"メツキング", age:34, sex:"M", style:"形意拳", role:"眼突き最強論の論客『侮術王者』／イベントキャラ", debut:3},
+  // 追加キャスト第48名（企画書第55節・cast.md末尾が正本）。秘伝系オマージュ見本（架空名・顔は似せない）。師匠枠（厳格型）のため role に明記。口説き対象外のため pref は付けない
+  {id:"makabe", name:"真壁 鉄厳", age:74, sex:"M", style:"古流武術（居合・柔術）", role:"師匠枠（厳格型）／伝説の宗家・『消える動き』の達人", debut:6},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;
