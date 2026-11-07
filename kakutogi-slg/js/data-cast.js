@@ -1,4 +1,4 @@
-// キャストデータ（正本：~/workspace/new-game/cast.md 全56名）
+// キャストデータ（正本：~/workspace/new-game/cast.md 全66名）
 // 全員架空の成人。img は ~/workspace/new-game/cast-art/cast-<id>-sera.webp に対応。
 // pref（口説きの好み条件）: "sei"=清名型 / "aku"=悪名型 / "power"=実力型
 const CAST_DATA = [
@@ -66,6 +66,17 @@ const CAST_DATA = [
   {id:"morioka", name:"森岡 俊平", age:63, sex:"M", style:"運動科学・身体操法", role:"武術を科学で読み解く研究者／『ゆる』の体操の伝道者", debut:5},
   {id:"arimoto", name:"有本 文彦", age:68, sex:"M", style:"合気道", role:"文筆家としても知られる合気道家／達人枠", debut:6},
   {id:"iwaki", name:"岩城 章吾", age:55, sex:"M", style:"フルコンタクト空手", role:"師匠枠（実力主義型）／剛心会館長・百人組手達成者", debut:4},
+  // 追加キャスト第57〜66名（企画書第57節・cast.md末尾が正本）。秘伝系オマージュ第2波（架空名・顔は似せない、雰囲気のみ）。伝説枠2名は第7章の回想・語り継ぎで登場想定。師匠枠の型は role に明記。口説き対象外のため pref は付けない
+  {id:"shiramine", name:"白峰 玄海", age:58, sex:"M", style:"合気道", role:"伝説枠／『神技の合気』と呼ばれた小柄な達人", debut:7},
+  {id:"kumagai", name:"熊谷 源蔵", age:63, sex:"M", style:"古流合気柔術", role:"伝説枠／『透明な力』と呼ばれた合気柔術の怪物", debut:7},
+  {id:"kazama", name:"風間 俊樹", age:42, sex:"M", style:"古流合気体術", role:"師匠枠（厳格型）／宗家直伝を継ぐ若手の実力者", debut:4},
+  {id:"saeki", name:"佐伯 宗一郎", age:52, sex:"M", style:"古流柔術（当身・殺活法）", role:"師匠枠（実力主義型）／当身と殺活法の研究家", debut:5},
+  {id:"asahina", name:"朝比奈 義久", age:62, sex:"M", style:"合気柔術（古流）", role:"師匠枠（寛容型）／歴史研究でも知られる師範", debut:5},
+  {id:"namikawa", name:"並河 宗助", age:57, sex:"M", style:"ナンバ身体操法", role:"ナンバ歩きの身体文化を広める伝道者", debut:5},
+  {id:"higa", name:"比嘉 康雄", age:63, sex:"M", style:"中国武術（沖縄伝来）", role:"師匠枠（寛容型）／沖縄で中国武術を伝える老師", debut:4},
+  {id:"uema", name:"上間 巌", age:72, sex:"M", style:"沖縄空手", role:"師匠枠（厳格型）／独自理論で知られる沖縄空手の重鎮", debut:6},
+  {id:"aragaki", name:"新垣 翔太", age:41, sex:"M", style:"沖縄空手／総合格闘技", role:"沖縄空手出身の総合格闘家／対戦・交流枠", debut:4},
+  {id:"kurashina", name:"倉科 尚人", age:64, sex:"M", style:"古武道（剣術・居合）", role:"俳優でもある古武道家／達人枠", debut:6},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;
