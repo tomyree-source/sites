@@ -93,6 +93,27 @@ const CAST_DATA = [
   // 追加キャスト第79名（企画書第70節・cast.md末尾が正本）。気・ノータッチ系達人の類型（架空名・特定個人の再現にはしない）。師匠枠なし・対戦／検証イベント枠。口説き対象外のため pref は付けない
   {id:"haguro", name:"羽黒 幻海", age:69, sex:"M", style:"気功・合気系（独自の気の武術）", role:"『触れずに倒す』と噂される気の達人／検証イベント枠", debut:3},
   {id:"eka", name:"エカ", age:32, sex:"M", style:"古流武術（真壁門下）", role:"真壁鉄厳の熱烈な信者／『先の先』至上主義者・論争と対戦のイベント枠", debut:2},
+  // 追加キャスト第81〜100名（企画書第79節・cast.md末尾が正本）。達人系YouTuber未登場20名のオマージュ（架空名・ビジュアルは本人寄せ、実在の団体名は一般化）。全員口説き対象外（prefなし）。debutは第4〜6章に分散し、第1〜3章は映像・噂のカメオで顔見せ
+  {id:"kitajima", name:"北嶋 憲吾", age:45, sex:"M", style:"ロシア武術システマ", role:"検証コラボのハブ／達人同士をつなぐ仕掛け人・解説枠", debut:4},
+  {id:"ishihara", name:"石原 拳吾", age:42, sex:"M", style:"ジークンドー", role:"ワンインチパンチの実演家／検証・対戦枠", debut:4},
+  {id:"nishioka", name:"西岡 徹", age:52, sex:"M", style:"身体操法（椅子軸メソッド）", role:"身体操法の開発者／解説・対談枠", debut:5},
+  {id:"fujimiya", name:"藤宮 将吾", age:44, sex:"M", style:"空手・身体操作（仙骨の鍛錬法）", role:"身体操作の創始者／解説枠", debut:5},
+  {id:"bando", name:"坂東 颯", age:46, sex:"M", style:"零距離戦闘術（波の型）", role:"アクション俳優／ワンカット斬撃で知られる・対戦／検証枠", debut:4},
+  {id:"sekiya", name:"関谷 展久", age:56, sex:"M", style:"古流総合武術", role:"師匠枠（寛容型）／古流を現代の言葉で説く宗家筋・解説枠", debut:5},
+  {id:"nakazato", name:"中里 宗玄", age:52, sex:"M", style:"古流兵法（抜刀術）", role:"達人枠／抜刀の映像で知られる一門の師家", debut:6},
+  {id:"kawabe", name:"川辺 仁蔵", age:66, sex:"M", style:"古流忍術", role:"達人枠／『最後の忍者』と呼ばれる宗家筋", debut:6},
+  {id:"seigan", name:"青巌 玄蔵", age:47, sex:"M", style:"忍術・剣術", role:"忍びの剣術を説く忍道家／交流・検証枠", debut:5},
+  {id:"hoshino", name:"星野 光莉", age:35, sex:"F", style:"鞭拳空手", role:"しなる鞭拳の使い手／演武・解説枠", debut:4},
+  {id:"iguchi", name:"井口 誠司", age:70, sex:"M", style:"フルコンタクト空手", role:"達人枠／70歳で70人組手に挑む道場主・結節点", debut:6},
+  {id:"nonaka", name:"野中 哲郎", age:56, sex:"M", style:"躰道・整体", role:"身体操作と整体を往く解説者／身体操作枠", debut:5},
+  {id:"shiroma", name:"城間 実", age:62, sex:"M", style:"沖縄拳法空手", role:"師匠枠（厳格型）／滅多に表に出ない直伝の老師・レアキャラ", debut:6},
+  {id:"tachibana", name:"橘 卓也", age:44, sex:"M", style:"フルコンタクト空手", role:"世界大会三連覇・百人組手達成の王者／対戦・解説枠", debut:5},
+  {id:"genta", name:"白峰 玄太", age:35, sex:"M", style:"合気道", role:"白峰玄海の孫／達人インタビュアー・対談枠", debut:5},
+  {id:"kodo", name:"虎堂 光", age:41, sex:"M", style:"中国武術", role:"中国武術の実演家／検証・交流枠", debut:4},
+  {id:"hirose", name:"広瀬 道心", age:61, sex:"M", style:"護身武道", role:"達人枠／護りと武道の間を説く宗家筋・対談枠", debut:6},
+  {id:"yoshimura", name:"吉村 史郎", age:36, sex:"M", style:"武道研究", role:"研究者・解説枠／身体操作を理論化する新世代", debut:5},
+  {id:"saijo", name:"西条 冬樹", age:56, sex:"M", style:"―（映像監督）", role:"映像・制作枠／達人の演武を撮り続ける映画監督（対戦なし）", debut:5},
+  {id:"yajima", name:"矢島 勇人", age:34, sex:"M", style:"総合格闘技", role:"達人検証の受け手／格闘家の身体で技を確かめる検証枠", debut:4},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;

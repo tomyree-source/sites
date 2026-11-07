@@ -114,6 +114,8 @@ const BOTY_FIXED_CANDS = [
   {label:"レスバ十段、堂々の爆誕", blurb:"自らプロフィールに刻んだ前人未到の段位。1日の投稿数は、界隈の誰の稽古量をも上回った"},
   {label:"『法的措置を検討します』の人", blurb:"論争に敗れて三度目の検討宣言。界隈はもう、検討の行方を静かに見守っている"},
   {label:"セミナー常連、一子相伝の宗家へ転身", blurb:"半年前は受講生席の最前列にいた。人は変わる。看板は、もっと早く変わる"},
+  // 第76節: 現象型の固定候補（実在の個人を指す形にしない）
+  {label:"訴訟が原因で彼女に逃げられた男", blurb:"法廷では勝った（または負けた）。だが一番の敗北は、リングの外で起きた"},
 ];
 function botyPlayCandidates(yearIdx){
   const w0 = yearIdx * 48 + 1, w1 = (yearIdx + 1) * 48;
@@ -132,6 +134,18 @@ function botyPlayCandidates(yearIdx){
       out.push({kind:"hero", label:"段位・経歴詐称の追及", blurb:"盛られた経歴は暴かれた。査定の厳しさに、界隈が少しだけ引き締まった"});
     } else if (key === "sp_bushika"){
       out.push({kind:"model", slug:"bushika", label:"武鹿との公開組手", blurb:"馬の仮面と本気の組手。『筋肉は裏切らない』は本当だったのか"});
+    } else if (key === "sp_clash_sue2"){
+      out.push({kind:"laugh", label:"CLASHの煽りが訴訟に発展", blurb:"論争の勝者、法廷の被告人になる。言葉の試合にも請求書が来る時代"});
+    } else if (key === "sp_video_sue"){
+      out.push({kind:"laugh", label:"無断動画の肖像権騒動", blurb:"バズった動画の代償は、削除と謝罪と賠償金だった"});
+    } else if (key === "sp_injury2" || key === "sp_injury3"){
+      out.push({kind:"laugh", label:"傷害の示談交渉", blurb:"守るための一撃が、警察と示談の席に繋がった年だった"});
+    } else if (key === "sp_collab_haguro"){
+      out.push({kind:"model", slug:"haguro", label:"羽黒幻海との気の検証配信", blurb:"気は届いたのか、届かなかったのか。コメント欄だけが大盛り上がりだった"});
+    } else if (key === "sp_collab_eka"){
+      out.push({kind:"model", slug:"eka", label:"エカとの先の先検証配信", blurb:"全ラウンド、先を取られ続けた検証。笑いでは今年一番の再生数"});
+    } else if (key.indexOf("okan:") === 0){
+      out.push({kind:"laugh", label:"実家帰省、オカンの年金明細に敗れる", blurb:"『アンタの稼ぎ、私の年金より少ない』――最強の相手は、実家にいた"});
     } else if (key === "sp_metsuking"){
       out.push({kind:"model", slug:"metsuking", label:"メツキングとの目突き決着", blurb:"ゴーグル着用の特別ルール。証明と安全、その両方を懸けた一戦だった"});
     } else if (key === "sp_haguro"){
@@ -156,6 +170,8 @@ function botyPlayCandidates(yearIdx){
     if (c) out.push({kind:"model", slug:slug, label:c.name + "の目撃談", blurb:"まだ画面や会場の向こうの人だった頃の、鮮烈な第一印象"});
   }
   if (S.flags.courtDone && inYear(S.flags.courtWeek)) out.push({kind:"laugh", label:"裁判バトル", blurb:"法廷でも戦った一年。結果より、そこに至る流れが全部ネタになった"});
+  // 第76節: その年に交際が終わっていたら、笑われ役の候補に入る
+  if (inYear(S.flags.partnerBrokeWeek)) out.push({kind:"laugh", label:"訴訟と借金で彼女に逃げられた男", blurb:"法廷の決着より、関係の決着の方が重かった。界隈の誰もが、そっと同情した"});
   // 重複ラベルを除く
   const uniq = []; const used = {};
   for (const c of out){ if (!used[c.label]){ used[c.label] = true; uniq.push(c); } }
@@ -578,6 +594,133 @@ const CAMEO_EVENTS = [
   {sp:"narr", t:"それでも告知の受講料の横には『残席わずか』とあった。なお界隈の掟により、申し込み状況を確かめた者は、まだ一人もいない。"},
   {fx:{attention:1}},
 ]},
+// ---------- 第79節: 達人系発信者20名のカメオ（第1〜3章では映像・噂・軽い絡み。本格登場は debut の第4〜6章） ----------
+{id:"cam_kitajima", category:"cameo", weight:2, chapters:[2,3], steps:[
+  {fx:{meet:["kitajima"]}},
+  {sp:"narr", t:"CLASHで回ってきた検証動画。システマの北嶋憲吾が、他流派の達人と格闘家を同じ畳に集め、武器術の検証をしていた。誰の技にもまず敬意を払い、最後に全員で笑って終わる。界隈の『結節点』と呼ばれる理由が分かる動画だった。"},
+  {ep:"kitajima"},
+  {sp:"narr", t:"コメント欄には「北嶋の場なら、誰の技も試せる」という声。検証の作法というものを、考えさせられた。"},
+  {fx:{attention:1}},
+]},
+{id:"cam_ishihara", category:"cameo", weight:2, chapters:[2,3], steps:[
+  {fx:{meet:["ishihara"]}},
+  {sp:"narr", t:"ジークンドーの石原拳吾のワンインチパンチ実演が、またバズっていた。数センチの距離から、厚いパッドごと大男が吹き飛ぶ。検証コラボの常連で、実演の前には必ず相手の安全確認をする職人肌だという。"},
+  {ep:"ishihara"},
+  {fx:{attention:1}},
+]},
+{id:"cam_bando", category:"cameo", weight:2, chapters:[2,3], steps:[
+  {fx:{meet:["bando"]}},
+  {sp:"narr", t:"映画のワンカット長回しで数百人を斬り続けたアクション俳優、坂東颯の零距離戦闘術の実演動画が回ってきた。波のようにうねる動きは、エンタメと実戦の境目を界隈に問い続けている。"},
+  {ep:"bando"},
+  {fx:{attention:1}},
+]},
+{id:"cam_hoshino", category:"cameo", weight:2, chapters:[2], steps:[
+  {fx:{meet:["hoshino"]}},
+  {sp:"narr", t:"鞭拳空手の星野光莉の演武動画が話題になっていた。腕がムチのようにしなって、音を置いて打撃が届く。省エネの受けも含め、「力を使わない強さ」の見本のような演武だった。"},
+  {ep:"hoshino"},
+  {fx:{attention:1}},
+]},
+{id:"cam_kodo", category:"cameo", weight:2, chapters:[2], steps:[
+  {fx:{meet:["kodo"]}},
+  {sp:"narr", t:"中国武術の虎堂光の演武が回ってきた。低い馬歩から放たれる突きの重さは、画面越しにも伝わる。体軸メソッドの使い手たちとのセッションも計画されているらしい。"},
+  {ep:"kodo"},
+  {fx:{attention:1}},
+]},
+{id:"cam_yajima", category:"cameo", weight:2, chapters:[2,3], steps:[
+  {fx:{meet:["yajima"]}},
+  {sp:"narr", t:"総合格闘家の矢島勇人が、達人の技を自分の体で受ける検証シリーズの新作が上がっていた。「受け手」のプロとして、技の本物と演出を見分ける目利きとして、界隈の信頼は厚い。"},
+  {ep:"yajima"},
+  {fx:{attention:1}},
+]},
+{id:"cam_nishioka", category:"cameo", weight:1, chapters:[2], steps:[
+  {fx:{meet:["nishioka"]}},
+  {sp:"narr", t:"「椅子に座るだけで体軸が整う」という西岡徹のメソッドが、プロ格闘家の体験動画で話題になっていた。座ったまま押されても、びくともしない。本人は穏やかに、椅子の背に手を置いて笑っていた。"},
+  {ep:"nishioka"},
+  {fx:{attention:1}},
+]},
+{id:"cam_fujimiya", category:"cameo", weight:1, chapters:[2], steps:[
+  {fx:{meet:["fujimiya"]}},
+  {sp:"narr", t:"「仙骨を入れる」身体操作の藤宮将吾の試割動画が回ってきた。深く沈んだ構えからの一撃で、厚い板の束が砕ける。現役格闘家が学びに通うというのも、頷ける迫力だった。"},
+  {ep:"fujimiya"},
+  {fx:{attention:1}},
+]},
+{id:"cam_sekiya", category:"cameo", weight:1, chapters:[1,2], steps:[
+  {fx:{meet:["sekiya"]}},
+  {sp:"narr", t:"古流総合武術の関谷展久の解説動画が、珍しく大きな数字を伸ばしていた。古い型の意味を、現代の言葉で一手ずつ解く。海外向けの発信もあり、コメント欄は多言語で賑わっていた。"},
+  {ep:"sekiya"},
+  {fx:{attention:1}},
+]},
+{id:"cam_seigan", category:"cameo", weight:1, chapters:[2], steps:[
+  {fx:{meet:["seigan"]}},
+  {sp:"narr", t:"忍道家・青巌玄蔵の「忍びの剣術」交流企画の動画が回ってきた。他流派の達人たちが、忍びの歩法と剣に翻弄されながら笑っている。学ぶ側の楽しさが伝わる企画だった。"},
+  {ep:"seigan"},
+  {fx:{attention:1}},
+]},
+{id:"cam_nonaka", category:"cameo", weight:1, chapters:[2], steps:[
+  {fx:{meet:["nonaka"]}},
+  {sp:"narr", t:"躰道の世界王者だった野中哲郎の回転蹴りの映像が回ってきた。今は整体師として、武道と整体を行き来しながら身体操作を説いているという。跳躍の高さは、年齢を感じさせなかった。"},
+  {ep:"nonaka"},
+  {fx:{attention:1}},
+]},
+{id:"cam_tachibana", category:"cameo", weight:1, chapters:[2], steps:[
+  {fx:{meet:["tachibana"]}},
+  {sp:"narr", t:"フルコンタクト空手の世界大会三連覇、橘卓也の中段膝蹴りの解説動画が伸びていた。百人組手を達成した王者の言葉は、一つ一つが短く、重かった。"},
+  {ep:"tachibana"},
+  {fx:{attention:1}},
+]},
+{id:"cam_genta", category:"cameo", weight:1, chapters:[2], steps:[
+  {fx:{meet:["genta"]}},
+  {sp:"narr", t:"合気道の白峰玄太の対談シリーズが回ってきた。伝説の白峰玄海の孫が、古い世代の達人たちに次々と話を聞いていく。聞き手としての腕は確かで、達人たちも饒舌だった。"},
+  {ep:"genta"},
+  {fx:{attention:1}},
+]},
+{id:"cam_yoshimura", category:"cameo", weight:1, chapters:[1,2], steps:[
+  {fx:{meet:["yoshimura"]}},
+  {sp:"narr", t:"武道研究家の吉村史郎の講義動画が界隈で静かに伸びていた。達人の「なんとなく」を、ホワイトボードの図で「再現可能な形」に翻訳していく。感覚派の達人からも一目置かれているという。"},
+  {ep:"yoshimura"},
+  {fx:{attention:1}},
+]},
+{id:"cam_saijo", category:"cameo", weight:1, chapters:[1,2], steps:[
+  {fx:{meet:["saijo"]}},
+  {sp:"narr", t:"映画監督の西条冬樹が撮った達人の演武映像が、映画祭の武道特集で紹介されていた。本人は達人ではない。だが界隈の名演武の多くは、彼のレンズを通して世に出ている。"},
+  {ep:"saijo"},
+  {fx:{attention:1}},
+]},
+{id:"cam_nakazato", category:"cameo", weight:1, chapters:[1,2], steps:[
+  {fx:{meet:["nakazato"]}},
+  {sp:"narr", t:"古流兵法の中里宗玄の一門の抜刀動画が、海外で大量に回っていた。数秒の短い映像に、稽古の密度が詰まっている。女性門人の演武も一門の名物だという。"},
+  {ep:"nakazato"},
+  {fx:{attention:1}},
+]},
+{id:"cam_kawabe", category:"cameo", weight:1, chapters:[1,2], steps:[
+  {fx:{meet:["kawabe"]}},
+  {sp:"narr", t:"「最後の忍者」と呼ばれる川辺仁蔵の特集記事が回ってきた。忍びの家系の流れを継ぐ宗家筋で、大学でも忍術の講座を持つという。海外メディアの取材も絶えないらしい。"},
+  {ep:"kawabe"},
+  {fx:{attention:1}},
+]},
+{id:"cam_kawabe2", category:"cameo", weight:1, chapters:[2], steps:[
+  {fx:{meet:["kawabe"]}},
+  {sp:"narr", t:"忍びの里の稽古場を映した記録映像が回ってきた。川辺仁蔵が若い門弟に手裏剣の打ち方を説く。技術よりも先に説くのは「忍びは、争わないための術」という心構えだった。"},
+  {fx:{attention:1}},
+]},
+{id:"cam_iguchi", category:"cameo", weight:1, chapters:[1,2], steps:[
+  {fx:{meet:["iguchi"]}},
+  {sp:"narr", t:"70歳で70人組手に挑む井口誠司の特集が回ってきた。自ら創始した会派の最高師範で、挑戦自体を発信し続けている。達人たちが次々と組手の相手に名乗りを上げる「結節点」でもあるという。"},
+  {ep:"iguchi"},
+  {fx:{attention:1}},
+]},
+{id:"cam_shiroma", category:"cameo", weight:1, chapters:[1,2], steps:[
+  {fx:{meet:["shiroma"]}},
+  {sp:"narr", t:"沖縄拳法の城間実の名が、達人の口から珍しく出た。コラボに滅多に現れない「レアキャラ」の老師で、その一門の体の使い方を学んだ格闘家が、大舞台で秒殺KOを決めたことでも知られる。映像はほとんど出回っていない。"},
+  {ep:"shiroma"},
+  {fx:{attention:1}},
+]},
+{id:"cam_hirose", category:"cameo", weight:1, chapters:[1,2], steps:[
+  {fx:{meet:["hirose"]}},
+  {sp:"narr", t:"護身武道の広瀬道心の対談が回ってきた。「護身」と「武道」の間を説く穏やかな語り口で、達人たちの聞き手としても知られる宗家筋。争わない強さ、という言葉が印象に残った。"},
+  {ep:"hirose"},
+  {fx:{attention:1}},
+]},
 ];
 
 // ---------- 第70節: 羽黒幻海の公開検証イベント（第3章・全章共通スペシャル枠へ追加。企画書第70節） ----------
@@ -652,3 +795,275 @@ SPECIAL_EVENTS.push(
 ]},
 );
 }
+
+// ================= 第77節: 実家とオカン（借金帰省ルート） =================
+// 借金が多い年末に実家へ帰る年次イベント。発火判定は game.js の pickEndWeekEvent（年末の週・年1回）。
+// 母親はキャスト登録なしの端役（表示名は speakerName が「オカン」をそのまま返す）。毒舌だが根は心配している。
+function okanHomeSteps(){
+  const debt = S.flags.debt || 0;
+  const tuition = (S.students ? S.students.length : 0) * 8000;
+  const again = (S.flags.okanDebtYears || 0) >= 2;
+  return [
+    {sp:"narr", t:"年末。久しぶりに、実家へ帰った。玄関先の匂いは変わらない。――変わったのは、この一年で増えた借金の方だった。"},
+    {sp:"オカン", t:"おかえり。……あんた、少し痩せたんと違うか。ご飯、ちゃんと食べてるんか"},
+    {sp:"narr", t:"夕食の煮物の横に、オカンは何気なく――いや、狙って――年金の明細書を置いた。数字が、はっきりと見える位置に。"},
+    {sp:"オカン", t:"あんたの道場の月謝収入、こないだ電話で聞いたやろ。あれ計算してみたんやけどね"},
+    {sp:"オカン", t:"アンタの稼ぎ、私の年金より少ない"},
+    {sp:"narr", t:"容赦がなかった。月" + tuition.toLocaleString() + "円の月謝収入と、年金明細の数字。畳の上で組むどんな相手より、オカンの数字の方が鋭く効いた。"},
+    {sp:"オカン", t:"しかも聞いたで。あんた、借金が" + debt.toLocaleString() + "円もあるんやって？ 訴訟やら何やらで。……武道で飯を食うって、そういうことなんか"},
+    ...(again ? [
+      {sp:"オカン", t:"去年も同じ話したなあ。進歩がないのは、型の稽古だけにしてくれへんか"},
+    ] : []),
+    {choice:[
+      {label:"言い返す（売り言葉に買い言葉）", fx:{aku:1, fatigue:5}, say:[
+        {sp:"me", t:"「年金は税金から出てるやろ！ こっちは自分の力で稼いで――」"},
+        {sp:"オカン", t:"「その『自分の力』とやらで、借金は減ったんか？ 言い訳の段位は、あんたもう十段やなあ」"},
+        {sp:"narr", t:"泥沼になった。最強論争は、CLASHではなく実家の食卓でこそ、決着がつかないものだった。"},
+        {sp:"narr", t:"それでも帰り際、駅まで見送りに来たオカンは、タッパーに入れた煮物を無理やり持たせた。「……体だけは、壊すなよ」"},
+      ]},
+      {label:"黙って飯を食う", fx:{fatigue:-25, dmg:{core:-1, arm:-1}}, say:[
+        {sp:"narr", t:"反論はせず、煮物を黙々と食べた。味付けは少し濃い。だが体に染みる。積み重なった疲れと、気づけば古傷の疼きまで、少し引いていく気がした。"},
+        {sp:"オカン", t:"「……ふん。食べる元気があるなら、まだ大丈夫やな。借金の話は、来年までに少しは減らしとき」"},
+        {sp:"narr", t:"小言は止まなかった。だが食卓の皿は、最後まで空にならなかった。"},
+      ]},
+      {label:"開き直って援助を頼む", say: again ? [
+        {sp:"me", t:"「……母さん。悪いけど、今年も少しだけ」"},
+        {sp:"オカン", t:"「去年も言うたな。今年は1万円までや。へそくりも無限やないんやで」"},
+        {fx:{money:10000, sei:-1}},
+        {sp:"オカン", t:"「プライドがどうとか言う年やないやろ。……ただし、借金の内訳は全部書き出しとき。隠すのが一番あかん」"},
+        {sp:"narr", t:"説教は長かった。だが、隠さないこと。それだけは、この実家で昔から変わらないルールだった。"},
+      ] : [
+        {sp:"me", t:"「……母さん。悪いけど、少しだけ、助けてくれへんか」"},
+        {sp:"オカン", t:"しばらく沈黙があった。やがてオカンは立ち上がり、タンスの引き出しから、封筒を取り出した。「へそくり。4万円。……あんたが小さい頃、怪我して寝込んだ時のために置いてたやつや」"},
+        {fx:{money:40000, sei:-1}},
+        {sp:"オカン", t:"「返さんでええ。ただし約束せえ。借金の内訳を隠すな。あんたは小さい頃から、隠し事だけは下手くそやった」"},
+        {sp:"narr", t:"プライドは少し傷ついた。だが帰りの電車で、その封筒はずしりと重かった。"},
+      ]},
+    ]},
+    {sp:"narr", t:"実家を出る頃、年は静かに暮れかけていた。最強の相手は、今年も実家にいた。"},
+  ];
+}
+
+// 逆転版: 借金苦の年を経験した後、借金が解消して余裕のある年に帰省すると「仕送りをする側」になる
+function okanHomeGoodSteps(){
+  return [
+    {sp:"narr", t:"年末、実家。借金の残高は、ゼロ。月謝収入も、年金明細に負けない数字になった。堂々と、玄関の戸を開けた。"},
+    {sp:"オカン", t:"おかえり。……あんた、今年は顔色が違うな。借金、終わったんか"},
+    {sp:"me", t:"「終わった。今年は、こっちから渡す番や」"},
+    {choice:[
+      {label:"仕送りをする（5万円）", fx:{money:-50000, sei:2}, say:[
+        {sp:"オカン", t:"封筒をしばらく見つめて、オカンは小さく笑った。「……今度はアンタの稼ぎ、私の年金を追い抜いたねえ」"},
+        {sp:"オカン", t:"「へそくり、返してもらわんでええ。あれは、あの時のあんたへの投資やったんや」"},
+        {sp:"narr", t:"煮物の味は、相変わらず少し濃かった。だが今年の食卓には、借金の小言がなかった。"},
+      ]},
+      {label:"様子だけ見て帰る", fx:{fatigue:-20}, say:[
+        {sp:"オカン", t:"「無理はせんでええ。あんたが元気で戻ってくるのが、一番の仕送りや」"},
+        {sp:"narr", t:"オカンの飯で体がほぐれた。来年は、もう少し背伸びをしてみようと思えた。"},
+      ]},
+    ]},
+  ];
+}
+
+// 固有コラボ4: 北嶋憲吾の「達人検証のハブ」（第79節。受け手・矢島勇人と、石原拳吾のワンインチ検証を束ねる大型検証）
+function collabKitajimaSteps(){
+  return [
+    {fx:{meet:["kitajima","yajima","ishihara"]}},
+    {sp:"narr", t:"システマの北嶋憲吾から、検証コラボの誘いが来た。「私の道場で、流派を越えた検証をやりましょう。受け手は矢島勇人さん。今日の検証対象は、石原拳吾さんのワンインチパンチです」"},
+    {img:"kitajima"},
+    {ep:"kitajima"},
+    {sp:"kitajima", t:"検証の作法は三つ。まず敬意。次に安全。最後に、結果への正直さです。では――石原さん、お願いできますか"},
+    {sp:"narr", t:"石原の拳が、矢島の胸の数センチ手前に置かれた。短い音。巨体の矢島が、二歩、三歩と後ろに流れた。「……今の、距離ゼロですよね？」受け手のプロの目が、確かに見開かれた。"},
+    {choice:[
+      {label:"自分も受けてみる", say:[
+        {sp:"narr", t:"パッド越しに受けた。距離ゼロから、体幹ごと押されるような圧が来た。派手な破壊ではない。だが「短い距離でも力は出る」という事実は、体に刻まれた。"},
+        {fx:{expMain:20}},
+      ]},
+      {label:"進行と安全確認を手伝う", fx:{sei:1}, say:[
+        {sp:"narr", t:"北嶋の進行は見事だった。検証の条件を一つずつ言語化し、視聴者の疑問を先回りして潰していく。「検証は、疑う側への敬意でもあるんです」。進行の腕も、技のうちだった。"},
+      ]},
+    ]},
+    {sp:"narr", t:"配信は穏やかに、しかし大きく伸びた。収益は80,000円。北嶋は最後に言った。「また集まりましょう。界隈は、戦うだけの場所じゃない」"},
+    {fx:{attention:5, money:80000}},
+  ];
+}
+
+// 固有コラボ5: 城間実の「レアキャラの稽古会」（第79節。新垣翔太の口利きで実現する、滅多に開かれない直伝の稽古）
+function collabShiromaSteps(){
+  return [
+    {fx:{meet:["shiroma","aragaki"]}},
+    {sp:"narr", t:"新垣翔太から、珍しく神妙な連絡が来た。「俺の先生筋の方が、稽古を見せてくれることになった。沖縄拳法の城間実先生。……滅多にない機会だ。失礼のないようにな」"},
+    {img:"shiroma"},
+    {ep:"shiroma"},
+    {sp:"narr", t:"沖縄の古い道場。生成りの稽古着の老師は、言葉少なにナイハンチの型を打った。重心の低さと、足裏の「噛み」が違う。派手さは一切ない。だが一挙動ごとに、畳が軋んだ。"},
+    {sp:"shiroma", t:"あんたの型は、速い。だが――足が、畳に嘘をついておる。本物は、ごまかしが効かん"},
+    {sp:"me", t:"（一目で、重心の逃げを見抜かれた。……これが、直伝というものか）"},
+    {choice:[
+      {label:"その場で型を打ち直す", say:[
+        {sp:"narr", t:"指摘された一点だけを、一時間打ち続けた。城間は一度も頷かなかった。だが帰り際、ぽつりと言った。「……悪くない。来月も、来い」"},
+        {fx:{expMain:40, sei:1}},
+      ]},
+      {label:"撮影と配信の許可を願い出る", fx:{aku:1, attention:2}, say:[
+        {sp:"narr", t:"「配信？」城間の眉が動いた。「稽古は、見せるものじゃない。やるものだ」。撮影は断られた。だが、その断り方まで含めて、界隈では静かに話題になった。"},
+      ]},
+    ]},
+    {sp:"narr", t:"収益は、ない。だが得たものは、金では買えない種類のものだった。レアキャラの稽古会は、こうして静かに終わった。"},
+    {fx:{attention:3}},
+  ];
+}
+
+// ================= 第78節: コラボ動画配信・コラボイベント =================
+// インフルエンサー系キャストと出会った後（第2章以降）、行動「コラボ企画」から相手×形式を選ぶ仕組み。
+// kind: big=大手（拡散力大・商業色で清名に小さな傷） / uchi=界隈の身内（安定） / aku=悪名系（バズか炎上の振れ幅） / special=固有脚本あり
+const COLLAB_PARTNERS = [
+  {id:"shiina", kind:"big", desc:"最大手の発信者。拡散力は圧倒的だが、商業色が強く清名には小さな傷"},
+  {id:"minato", kind:"big", desc:"トップファイター。実力派との対談は格が上がるが、台本色は強め"},
+  {id:"mira", kind:"uchi", desc:"Tier表職人。界隈の身内で、安定した数字と穏やかな空気"},
+  {id:"otowa", kind:"uchi", desc:"実況アナウンサー。進行が上手く、初見の視聴者にも届く"},
+  {id:"sakai", kind:"uchi", desc:"解説系配信者。落ち着いた対談向き"},
+  {id:"shinohara", kind:"uchi", desc:"元王者の配信者。王道の組手検証が映える"},
+  {id:"takeru", kind:"uchi", desc:"殴られ屋。検証企画の被験者として鉄板の人気"},
+  {id:"namioka", kind:"uchi", desc:"中国武術パフォーマー。演武コラボの画が強い"},
+  {id:"fukaya", kind:"uchi", desc:"空手系配信者。型と組手の解説コラボ向き"},
+  {id:"kiryou", kind:"aku", desc:"アウトロー系の人気者。バズるか炎上するか、振れ幅が大きい"},
+  {id:"amaha", kind:"aku", desc:"煽りの人気ファイター。数字は伸びるがコメント欄は荒れやすい"},
+  {id:"kurose", kind:"aku", desc:"アウトロー系論客。対談は刺さるが、切り取られ方も激しい"},
+  {id:"metsuking", kind:"aku", desc:"眼突き論客。検証企画は刺さるが、物議もセットで付いてくる"},
+  {id:"haguro", kind:"special", desc:"気の検証配信（固有コラボ）。着地は、今回も断定しない"},
+  {id:"eka", kind:"special", desc:"先の先検証配信（固有コラボ）。笑い担当"},
+  {id:"kitajima", kind:"special", desc:"達人検証のハブ（固有コラボ）。受け手と達人を集めた本格検証"},
+  {id:"shiroma", kind:"special", desc:"レアキャラの稽古会（固有コラボ）。滅多に開かれない直伝の稽古"},
+  {id:"ishihara", kind:"uchi", desc:"ワンインチパンチの実演家。検証コラボの数字が堅い"},
+  {id:"nishioka", kind:"uchi", desc:"椅子軸メソッドの開発者。体軸セッションは対談向き"},
+  {id:"sekiya", kind:"uchi", desc:"古流の解説者。型の共演は画も話も厚い"},
+  {id:"yajima", kind:"uchi", desc:"達人検証の受け手。検証企画の相方として鉄板"},
+  {id:"bando", kind:"big", desc:"アクション俳優。画の力は最大級だが、撮影日程の拘束が強い"},
+];
+const COLLAB_SCRIPTED = {haguro:1, eka:1, shiina:1, kitajima:1, shiroma:1};
+function collabPartnerList(){
+  return COLLAB_PARTNERS.filter(p => S.met && S.met[p.id] && CAST_BY_ID[p.id]);
+}
+function startCollab(id, type){
+  const p = COLLAB_PARTNERS.find(x => x.id === id);
+  if (!p) return;
+  S.flags.collabCdUntil = S.absWeek + 3;
+  if (COLLAB_SCRIPTED[id] && !(S.flags.collabDone && S.flags.collabDone[id])){
+    S.flags.collabDone = S.flags.collabDone || {};
+    S.flags.collabDone[id] = S.absWeek;
+    const steps = id === "haguro" ? collabHaguroSteps() : id === "eka" ? collabEkaSteps() : id === "kitajima" ? collabKitajimaSteps() : id === "shiroma" ? collabShiromaSteps() : collabShiinaSteps();
+    startScene(steps, null, "sp_collab_" + id);
+    return;
+  }
+  startScene(genericCollabSteps(p, type), null, "collab_generic");
+}
+function genericCollabSteps(p, type){
+  const c = CAST_BY_ID[p.id];
+  const steps = [];
+  if (type === "video"){
+    steps.push({sp:"narr", t:c.name + "とのコラボ動画を撮った。対談と公開組手、そして例の論争テーマへの本音トークまで、密度の濃い一本になった。"});
+    if (p.kind === "big"){
+      const yen = Math.round((90000 + _rng() * 60000) / 1000) * 1000;
+      steps.push({sp:"narr", t:"公開直後から数字が跳ねた。切り抜きも次々に作られ、道場の名前が界隈の外にまで届いた。配信収益は" + yen.toLocaleString() + "円。ただしコメント欄には「商業に寄りすぎでは」の声も混ざり、清名には小さな傷がついた。"});
+      steps.push({fx:{attention:6, sei:-1, money:yen}});
+    } else if (p.kind === "aku"){
+      if (_rng() < 0.5){
+        steps.push({sp:"narr", t:"これがバズった。際どい掛け合いが切り抜かれて独り歩きし、再生数は跳ね上がった。配信収益は100,000円。注目も悪名も、両方ついてきた。"});
+        steps.push({fx:{attention:7, aku:1, money:100000}});
+      } else {
+        steps.push({sp:"narr", t:"炎上した。挑発的な一言が文脈ごと切り取られ、批判が殺到した。配信収益は40,000円止まり。だが名前だけは、確実に広まった。"});
+        steps.push({fx:{attention:5, aku:2, money:40000}});
+      }
+    } else {
+      steps.push({sp:"narr", t:"穏やかに、だが着実に数字が伸びた。配信収益は30,000円。そして数日後、視聴者だったという若者が、道場の体験に現れた。"});
+      steps.push({fx:{attention:3, money:30000}});
+      if (_rng() < 0.3) steps.push({fx:{joinStudent:1}});
+    }
+  } else {
+    const fame = (S.sei || 0) + (S.aku || 0);
+    const base = 8 + fame + (p.kind === "big" ? 15 : p.kind === "aku" ? 10 : 6);
+    const n = Math.max(3, Math.round(base * (0.8 + _rng() * 0.4)));
+    const yen = n * 3000;
+    steps.push({sp:"narr", t:c.name + "との合同イベント。セミナーとエキシビションマッチの二部構成で、参加者は" + n + "人。参加費収入は" + yen.toLocaleString() + "円になった。"});
+    steps.push({fx:{attention: p.kind === "big" ? 3 : 2, money: yen}});
+    if (p.kind === "aku" && _rng() < 0.25){
+      steps.push({sp:"narr", t:"ただし終盤、煽り合いの空気が暴走し、参加者の一部と小さな揉め事になった。数字は伸びたが、後味は悪かった。"});
+      steps.push({fx:{aku:1, attention:4}});
+    } else if (_rng() < 0.5){
+      steps.push({sp:"narr", t:"参加者の一人が、そのまま道場への入門を決めた。コラボは、月謝の入口にもなる。"});
+      steps.push({fx:{joinStudent:1}});
+    }
+  }
+  steps.push({sp:"narr", t:"コラボは終わった。次の企画の話は、また3週間ほど間を置いてからになりそうだ。"});
+  return steps;
+}
+
+// 固有コラボ1: 羽黒幻海との「気の検証」配信（第70節の公開検証と世界観を共有。着地は断定しない）
+function collabHaguroSteps(){
+  return [
+    {fx:{meet:["haguro"]}},
+    {sp:"narr", t:"羽黒幻海とのコラボ配信が決まった。タイトルは『気の検証、第二幕』。第3章で世間を騒がせた公開検証の続きを、今度は配信の場でやるという。"},
+    {img:"haguro"},
+    {ep:"haguro"},
+    {sp:"haguro", t:"検証の相手は、視聴者から募った第三者でござる。稽古も、気の訓練もしたことのない方。それでこそ、検証になる"},
+    {sp:"narr", t:"生配信。被験者は一般公募の会社員。羽黒が手をかざす。被験者は――ふらついた。だが、倒れはしなかった。「何か、圧みたいなのは……分からないです。すみません」。コメント欄が、今年一番の速度で流れていく。"},
+    {sp:"narr", t:"正直な被験者だった。羽黒は少しも不機嫌な顔を見せず、頷いた。"},
+    {sp:"haguro", t:"届かぬときは、届かぬ。それもまた、気の真実でござる"},
+    {choice:[
+      {label:"正直に伝える「今日は届かなかった」", fx:{sei:1}, say:[
+        {sp:"narr", t:"配信の締めに、そう言った。コメント欄は意外なほど穏やかだった。『正直なのが一番刺さる』『この師弟（？）コンビ、推せる』。切り抜きは、検証の白黒ではなく、その誠実さの方で回っていった。"},
+      ]},
+      {label:"演出を盛る「あと一歩だった！」", fx:{aku:1, attention:2}, say:[
+        {sp:"narr", t:"盛った。数字は跳ねた。だが後日、検証系の配信者に「あの反応、演技では」と切り抜かれ、小さな火種になった。気は届かなくても、嘘は届いてしまうのだった。"},
+      ]},
+    ]},
+    {sp:"narr", t:"配信収益は50,000円。結論は、今回も出なかった。だが界隈の誰もが、また来年もこの検証を見たがっている。"},
+    {fx:{attention:4, money:50000}},
+  ];
+}
+
+// 固有コラボ2: エカとの「先の先検証」配信（第71節と連動・笑い担当）
+function collabEkaSteps(){
+  return [
+    {fx:{meet:["eka"]}},
+    {sp:"narr", t:"エカとのコラボ配信。企画は単純明快、『先の先は実在するのか、10ラウンド検証』。エカは開始前から、静かに確信に満ちていた。"},
+    {img:"eka"},
+    {sp:"eka", t:"今日の検証で、先の先の実在を証明します。あなたの先手の、さらに先を取ります。10ラウンド、すべて"},
+    {sp:"narr", t:"1ラウンド目。フェイントに過剰反応し、先を取られた。2ラウンド目。静止したこちらの「次の動き」を読みすぎて、先を取られた。3ラウンド目。コメント欄の『木に気をつけろ』の書き込みに気を取られ、先を取られた。"},
+    {sp:"narr", t:"――10ラウンド目まで、すべて先を取られた。だが不思議なことに、コメント欄は今年一番の温かさだった。『エカ、頑張れ』『検証は失敗。でも男としては今年一番好き』『先の先は心にあった』。"},
+    {sp:"eka", t:"……データは取れました。今日の検証は、先の先の布石です。次こそ証明します"},
+    {sp:"narr", t:"配信収益は40,000円。数字以上に、エカという男の株が上がった検証だった。"},
+    {fx:{attention:5, money:40000}},
+  ];
+}
+
+// 固有コラボ3: 椎名駆との大型コラボ（短時間マッチ企画への出演オファー。商業と本音の駆け引き）
+function collabShiinaSteps(){
+  return [
+    {fx:{meet:["shiina"]}},
+    {sp:"narr", t:"椎名駆から、直接のオファーが来た。彼の主宰する短時間マッチ企画への出演だ。提示された出演料は15万円。界隈最大の舞台だが、企画の色は強烈に商業的だった。"},
+    {img:"shiina"},
+    {sp:"shiina", t:"条件はシンプル。1分間、全力で殴り合ってほしい。視聴者が求めてるのは、技術論じゃなく『物語』なんだ。あんたの物語は、数字になる"},
+    {sp:"me", t:"（数字になる物語、か。……だがリングに上がるのは、この体だ）"},
+    {choice:[
+      {label:"出演する（刺客戦へ）", say:[
+        {sp:"narr", t:"契約書にサインした。出演料150,000円。ただし企画が用意した「刺客」は、思った以上に本気の若手だった。カメラの前で、真剣勝負が始まる。"},
+        {battle:"collab_match",
+          win:[
+            {fx:{money:150000, sei:-1, attention:6}},
+            {sp:"narr", t:"配信は大盛況だった。だが帰り道、ふと思った。今日の試合は、自分の物語だったのか、それとも企画の物語だったのか、と。"},
+          ],
+          lose:[
+            {fx:{money:75000, aku:2, attention:4}},
+            {sp:"narr", t:"一方的に倒された。切り抜きは「格の違い」と題して拡散し、企画側もその後の連絡を静かに減らした。出演料は半額。――このエピソードは、最悪の形で閉じた。だが、年代記は続いていく。"},
+          ]},
+      ]},
+      {label:"条件交渉する（安全面と編集権を要求）", say:[
+        {sp:"narr", t:"「出演はする。ただしメディカルチェックの徹底と、発言の切り取り方には条件を付けさせてほしい」。椎名駆は少し笑って、頷いた。「交渉できる奴は、リングでも強いんだよな」。条件付きで出演が決まり、出演料は100,000円に落ち着いた。"},
+        {fx:{money:100000, attention:5}},
+      ]},
+      {label:"断る（自分のリングは自分で作る）", fx:{sei:1}, say:[
+        {sp:"narr", t:"丁重に断った。椎名駆は「残念。でも、その断り方は好きだよ」とだけ言った。数字の近道を蹴った分、自分の道場の看板は少しだけ重くなった気がした。"},
+      ]},
+    ]},
+  ];
+}
+
