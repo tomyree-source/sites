@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v21｜勝利条件を追加：拠点確保（中央の遺跡を囲む4マス、3点先取）とラウンド上限（自由対戦12・ストーリー15、到達時は判定）。回復は1体あたり3回まで。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v22｜「遊び方・ルール」欄を追加。ルール（交互行動・反撃・遮蔽・射線・ポイント編成・拠点・育成）をゲーム内で読めるようになりました。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -118,12 +118,29 @@ img.uimg{transition:transform .15s ease}
 <body>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v21｜勝利条件を追加：自由対戦に「拠点確保」（中央の遺跡を囲む金色の4マスを多く占めた側が毎ラウンド1点、3点先取）。ラウンド上限（自由対戦12／ストーリー15）で終わらない対戦を防ぎ、到達時は拠点点数→残存数→体力で判定。回復は1体あたり3回まで。</div>
+  <div class="sub">見本v22｜「遊び方・ルール」欄を追加しました（下のボタンから開けます）。ルールの要点：両軍が1体ずつ交互に行動、攻撃はサイコロ判定で反撃あり、遺跡は遮蔽と射線遮断、回復は1体3回まで。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
     <div id="modeRow"><button id="modeFree" class="modeBtn on">自由対戦</button><button id="modeStory" class="modeBtn">ストーリー（育成）</button></div>
     <div id="diffRow" style="margin:8px 0;font-size:13px">難易度 <select id="diffSel"><option value="easy">やさしい（AIは素直・敵は弱め）</option><option value="normal" selected>ふつう（AI強化）</option><option value="hard">つよい（AI強化・敵は強め）</option></select></div>
+    <button id="howtoBtn" style="margin:4px 0 8px;padding:8px 14px">遊び方・ルール</button>
+    <div id="howto" class="hidden" style="text-align:left;font-size:13px;line-height:1.75;color:#ddd3ba;background:#221d16;border:1px solid #6b5a35;border-radius:8px;padding:12px 14px;margin-bottom:10px">
+      <div style="color:#ffd98a;font-weight:700">■ このゲームについて</div>
+      12×16マスの盤面で戦うターン制タクティクスです。自由対戦（8つの勢力から選んで対戦）と、帝国騎士団の小隊を育てながら進むストーリー（全6戦）があります。
+      <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ 行動の流れ（交互行動）</div>
+      両軍が1体ずつ交互に行動します。自分の番では、未行動の駒をタップして選び、光ったマスへ移動し、射程内の敵をタップすると攻撃の確認が出ます。「移動を戻す」で移動だけ取り消せます。「待機」でその駒の行動を終え、「次の未行動へ」「全員待機」のボタンもあります。全員が行動するとラウンドが進みます。
+      <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ 攻撃と命中</div>
+      攻撃はサイコロ1個で判定し、出目が「命中」の数以下なら当たります。攻撃された側は、射程内にいて射線が通れば反撃します（反撃は命中−1）。遺跡（瓦礫のマス）の上や隣にいる駒は遮蔽で撃たれにくく（命中−1）、遺跡は射線も遮ります。射程2以上の駒が隣の敵を撃つと命中−1。サムライは、周囲に味方のいない敵への攻撃が「一騎打ち」になり命中+1・ダメージ+1です。
+      <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ 飛行と回復</div>
+      飛行の駒は遺跡を越えて移動できます。回復役（癒しの天使セラフィナ、戦闘神官ミラ）は傷ついた味方を回復できますが、1回の対戦で3回までです。ストーリーの育成でミラの回復量は増えていきます。
+      <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ 自由対戦</div>
+      難易度は やさしい／ふつう／つよい（敵の強さとAIが変わります）。編成はポイント制で、予算（50／70／90pt）の中で名簿から出撃させる駒を選びます。相手も同じ予算で自動編成されます。勝利条件は「殲滅」か「拠点確保」です。拠点確保は、中央の遺跡を囲む金色の4マスをラウンド終了時に多く占めていた側が1点、3点先取で勝ちです。ラウンド上限は12で、到達した場合は拠点点数→残存数→残り体力の順で判定します。
+      <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ ストーリーと育成</div>
+      騎士団の小隊で全6戦を戦います。戦うと経験値が入り、レベルが上がるとHPや攻撃が伸び、固有スキルも開きます。勲章の収集もあります。記録はこの端末に自動保存されます（「育成データを消す」でリセット）。第2戦を勝つと見習い騎士レオンが加入し、第3戦では古代ゴーレムが目覚めて両軍を襲います。ラウンド上限は15で、時間切れは敗北です。
+      <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ その他</div>
+      音のON／OFF、盤面の表示倍率（全体／拡大／特大）が切り替えられます。拡大時は盤面をスクロールできます。
+    </div>
     <div id="freeSetup">
     <div>あなたの勢力</div>
     <select id="pf"></select>
@@ -646,6 +663,7 @@ function startGame(){
 $("startBtn").onclick=startGame;
 $("diffSel").value=DIFF;
 $("diffSel").onchange=()=>{ DIFF=$("diffSel").value; try{ localStorage.setItem("tekkanDiff",DIFF); }catch(e){} };
+$("howtoBtn").onclick=()=>{ $("howto").classList.toggle("hidden"); };
 $("budgetSel").onchange=()=>{ setupInfo(); };
 $("randBtn").onclick=()=>{ const ks=Object.keys(FACTIONS); $("ef").value=ks[Math.floor(Math.random()*ks.length)]; setupInfo(); };
 $("pf").onchange=()=>{ resetPicks(); setupInfo(); }; $("ef").onchange=setupInfo;
