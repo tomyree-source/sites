@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v20｜改善バッチB：AI強化（集中攻撃・回復役狙い・遮蔽活用）、ポイント制の編成、難易度（やさしい／ふつう／つよい）を追加。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v21｜勝利条件を追加：拠点確保（中央の遺跡を囲む4マス、3点先取）とラウンド上限（自由対戦12・ストーリー15、到達時は判定）。回復は1体あたり3回まで。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -112,12 +112,13 @@ img.uimg{transition:transform .15s ease}
 .uname{position:absolute;left:50%;transform:translateX(-50%);bottom:5px;z-index:2;background:rgba(10,8,6,.75);padding:0 3px;border-radius:3px;white-space:nowrap}
 .hpbar{position:absolute;left:50%;transform:translateX(-50%);bottom:0;z-index:2;margin-top:0}
 .costTag{color:#ffd98a;font-weight:700} .pickBox{width:18px;height:18px;vertical-align:middle;margin-right:6px} .warn{color:#ff9a8a !important;font-weight:700}
+.cell.obj{box-shadow:inset 0 0 0 3px #ffd34d, inset 0 0 16px rgba(255,211,77,.5)}
 </style>
 </head>
 <body>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v20｜改善バッチB：AIを強化（倒せる相手への集中攻撃、回復役狙い、遮蔽の活用）。自由対戦はポイント制の編成（予算内で名簿から選択、相手も同予算で自動編成）。難易度は やさしい／ふつう／つよい から選べます。</div>
+  <div class="sub">見本v21｜勝利条件を追加：自由対戦に「拠点確保」（中央の遺跡を囲む金色の4マスを多く占めた側が毎ラウンド1点、3点先取）。ラウンド上限（自由対戦12／ストーリー15）で終わらない対戦を防ぎ、到達時は拠点点数→残存数→体力で判定。回復は1体あたり3回まで。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
@@ -131,6 +132,7 @@ img.uimg{transition:transform .15s ease}
     <button id="startBtn">対戦開始</button>
     <button id="randBtn">相手をランダムにする</button>
     <div style="margin-top:8px;font-size:13px">編成予算 <select id="budgetSel"><option value="50">50pt（小規模）</option><option value="70" selected>70pt（標準）</option><option value="90">90pt（大規模）</option></select> <span style="color:#9a8f7a">下の名簿で出撃させるユニットを選べます（相手は同じ予算で自動編成）</span></div>
+    <div style="margin-top:8px;font-size:13px">勝利条件 <select id="winSel"><option value="annihilate" selected>殲滅（相手を全滅）</option><option value="objective">拠点確保（3点先取）</option></select> <span style="color:#9a8f7a">ラウンド上限12（到達時は判定で勝敗）／回復は1体3回まで</span></div>
     </div>
     <div id="storySetup" class="hidden">
       <div style="font-size:13px;color:#cbbfa5">物語は帝国騎士団の小隊で進みます。戦うほど小隊が育ち、記録はこの端末に保存されます。</div>
@@ -179,7 +181,7 @@ const FACTIONS = {
     {icon:"🛡",name:"盾兵ブラム",hp:12,move:3,range:1,hit:4,dmg:3},
     {icon:"🛡",name:"盾兵トア",hp:12,move:3,range:1,hit:4,dmg:3},
     {icon:"🏹",name:"クロスボウ兵シン",hp:8,move:3,range:3,hit:4,dmg:3},
-    {icon:"✝",name:"戦闘神官ミラ",hp:9,move:3,range:2,hit:4,dmg:2}]},
+    {icon:"✝",name:"戦闘神官ミラ",hp:9,move:3,range:2,hit:4,dmg:2,heal:true}]},
   barbarians:{name:"呪われた蛮族",units:[
     {icon:"🐺",name:"頭目ガルム",hp:13,move:4,range:1,hit:4,dmg:4},
     {icon:"💀",name:"蛮族戦士A",hp:10,move:3,range:1,hit:4,dmg:3},
@@ -377,7 +379,7 @@ function atkValue(u,x,y,t){ const d=Math.abs(x-t.x)+Math.abs(y-t.y); if(d>u.rang
 async function enemyActivateSmart(u){
   detailId=u.id; render(); focusCell(u.x,u.y); await sleep(320);
   if(!u.alive){ u.acted=true; return; }
-  if(u.heal){
+  if(u.heal&&(u.healsLeft===undefined||u.healsLeft>0)){
     const wounded=livingUnits(u.side).filter(a=>a.hp<a.maxhp).sort((a,b)=>((a.hp/a.maxhp)-(b.hp/b.maxhp))||((a.maxhp-a.hp)-(b.maxhp-b.hp)));
     if(wounded.length){ const t=wounded[0];
       const tiles=[[u.x,u.y]]; reachable(u).forEach((c,k)=>{ const p=k.split(","); tiles.push([Number(p[0]),Number(p[1])]); });
@@ -394,18 +396,43 @@ async function enemyActivateSmart(u){
   tiles.forEach(([x,y])=>{ let av=-1, at=null; foes.forEach(t=>{ const v=atkValue(u,x,y,t); if(v>av){ av=v; at=t; } });
     const th=threatAt(x,y,u.side); let s;
     if(av>=0){ s=av-th*3.0+(isCover(x,y)?3:0); } else { const dd=Math.abs(x-pref.x)+Math.abs(y-pref.y); s=40-dd*2.2-th*3.0+(isCover(x,y)?3:0); }
+    if(objMode()&&OBJ_SET.has(x+","+y)) s+=26;
     s-=(Math.abs(x-u.x)+Math.abs(y-u.y))*0.15;
     if(s>bs){ bs=s; best=[x,y]; bestT=(av>=0?at:null); } });
   if(best&&(best[0]!==u.x||best[1]!==u.y)){ u.x=best[0]; u.y=best[1]; SFX.move(); render(); fxUnit(u.id,"fxMove"); await sleep(320); }
   if(bestT&&u.alive&&bestT.alive&&d2(u,bestT)<=u.range&&!losBlocked(u.x,u.y,bestT.x,bestT.y)) await resolveAttack(u,bestT,false);
   u.acted=true; render();
 }
-// ===== 改善バッチB ここまで =====
+// ===== 勝利条件（v21）：拠点確保・ラウンド上限 =====
+const OBJ_SET=new Set(["5,6","4,7","6,7","5,8"]);
+let vpP=0, vpE=0, endWinner=null, endReason="";
+function objMode(){ return gameMode==="free" && document.getElementById("winSel") && document.getElementById("winSel").value==="objective"; }
+function roundLimit(){ return gameMode==="story"?15:12; }
+function endBattle(w, reason){ if(gameOver) return true; gameOver=true; busy=false; endWinner=w; endReason=reason||"";
+  const win=w==="p", draw=w==="draw";
+  log(draw?("引き分け（"+reason+"）"):win?("勝利！ "+reason):("敗北… "+reason), draw?"":win?"win":"lose");
+  if(win) SFX.win(); else if(!draw) SFX.lose();
+  showBanner(draw?"引 分":win?"勝 利":"敗 北", gameMode==="story"?((CHAPTERS[storyChapter-1]||{}).title||"")+"｜"+reason:reason);
+  finalizeGrowth(win); render(); return true; }
+function scoreObjective(){ const pc=units.filter(u=>u.alive&&u.side==="p"&&OBJ_SET.has(u.x+","+u.y)).length;
+  const ec=units.filter(u=>u.alive&&u.side==="e"&&OBJ_SET.has(u.x+","+u.y)).length;
+  if(pc===ec){ log("拠点：両軍同数で得点なし（自軍 "+vpP+" - "+vpE+" 敵）"); return; }
+  if(pc>ec){ vpP++; log("拠点を確保！ 自軍 +1点（自軍 "+vpP+" - "+vpE+" 敵）"); } else { vpE++; log("拠点を奪われた… 敵 +1点（自軍 "+vpP+" - "+vpE+" 敵）"); }
+  if(vpP>=3) endBattle("p","拠点を制圧した"); else if(vpE>=3) endBattle("e","拠点を制圧された");
+  render(); }
+function endByTime(){ if(gameMode==="story"){ endBattle("e","時間切れ（第"+roundLimit()+"ラウンド到達）"); return; }
+  if(objMode()&&vpP!==vpE){ endBattle(vpP>vpE?"p":"e","時間切れ判定：拠点ポイント "+vpP+"-"+vpE); return; }
+  const p=livingUnits("p"), e=livingUnits("e");
+  if(p.length!==e.length){ endBattle(p.length>e.length?"p":"e","時間切れ判定：残存数 "+p.length+"-"+e.length); return; }
+  const ph=p.reduce((s,u)=>s+u.hp/u.maxhp,0), eh=e.reduce((s,u)=>s+u.hp/u.maxhp,0);
+  if(Math.abs(ph-eh)>0.001){ endBattle(ph>eh?"p":"e","時間切れ判定：残り体力で優位"); return; }
+  endBattle("draw","時間切れ判定：互角"); }
+// ===== 改善バッチB ここまで =======
 function buildSquad(fk, side){
   const f=FACTIONS[fk];
   return f.units.map((u,i)=>{ const info=(UNIT_INFO[fk]||[])[i]||{role:"",desc:""};
     const __u={ id: side+"-"+fk+"-"+i, key: fk, idx: i, side: side, name: u.name, icon: u.icon, hp: u.hp, maxhp: u.hp,
-      move: (u.move===2?3:u.move), range: (u.range>=3?u.range+1:u.range), hit: u.hit, dmg: u.dmg, fly: !!u.fly, heal: !!u.heal, duel: !!f.duel,
+      move: (u.move===2?3:u.move), range: (u.range>=3?u.range+1:u.range), hit: u.hit, dmg: u.dmg, fly: !!u.fly, heal: !!u.heal, healsLeft: u.heal?3:0, duel: !!f.duel,
       role: info.role, desc: info.desc, art: (UNIT_ART[fk]||[])[i]||"", x:0, y:0, alive:true, acted:false, moved:false, px:0, py:0 }; if(fk==="knights") applyGrowth(__u); return __u; });
 }
 function unitById(id){ return units.find(u=>u.id===id); }
@@ -461,20 +488,19 @@ async function resolveAttack(att, def, isCounter){
     await resolveAttack(def, att, true);
   }
 }
-async function resolveHeal(h, t){ const amt=h.healAmt||3; t.hp=Math.min(t.maxhp, t.hp+amt); SFX.heal(); fxUnit(t.id,"fxHeal"); glowAt(t.x,t.y); popAt(t.x,t.y,"+"+amt,true); log(h.name+" は "+t.name+" を "+amt+" 回復した"); awardXP(h,15); await sleep(320); render(); }
+async function resolveHeal(h, t){ if(h.healsLeft!==undefined){ if(h.healsLeft<=0){ log(h.name+" はもう回復できない（1体3回まで）"); return; } h.healsLeft--; } const amt=h.healAmt||3; t.hp=Math.min(t.maxhp, t.hp+amt); SFX.heal(); fxUnit(t.id,"fxHeal"); glowAt(t.x,t.y); popAt(t.x,t.y,"+"+amt,true); log(h.name+" は "+t.name+" を "+amt+" 回復した"+(h.healsLeft!==undefined?"（回復あと"+h.healsLeft+"回）":"")); awardXP(h,15); await sleep(320); render(); }
 function livingUnits(side){ return units.filter(u=>u.alive&&u.side===side); }
 function unactedUnits(side){ return livingUnits(side).filter(u=>!u.acted); }
 function checkEnd(){ const p=livingUnits("p").length, e=livingUnits("e").length;
-  if(p>0&&e>0) return false; gameOver=true; busy=false;
-  log(p>0?"勝利！ 敵を全滅させた":"敗北… 自軍が全滅した", p>0?"win":"lose");
-  if(p>0) SFX.win(); else SFX.lose(); showBanner(p>0?"勝 利":"敗 北", gameMode==="story"?CHAPTERS[storyChapter-1].title:""); finalizeGrowth(p>0); render(); return true; }
+  if(p>0&&e>0) return false;
+  return endBattle(p>0?"p":"e", p>0?"敵を全滅させた":"自軍が全滅した"); }
 async function drive(){
   if(driving||gameOver) return; driving=true;
   try{
     while(!gameOver){
       if(checkEnd()) break;
       const pL=unactedUnits("p"), eL=unactedUnits("e");
-      if(!pL.length&&!eL.length){ roundNo++; units.forEach(u=>{ u.acted=false; u.moved=false; }); turnSide="p"; log("―― 第"+roundNo+"ラウンド ――"); render(); if(await golemTurn()){ if(checkEnd()) break; } continue; }
+      if(!pL.length&&!eL.length){ if(objMode()){ scoreObjective(); if(gameOver) break; } if(roundNo>=roundLimit()){ endByTime(); break; } roundNo++; units.forEach(u=>{ u.acted=false; u.moved=false; }); turnSide="p"; log("―― 第"+roundNo+"ラウンド ――"); render(); if(await golemTurn()){ if(checkEnd()) break; } continue; }
       if(turnSide==="p"){
         if(pL.length){ busy=false; render(); break; }
         turnSide="e"; continue;
@@ -498,7 +524,7 @@ function moveToward(u, t){
 async function enemyActivate(u){
   detailId=u.id; render(); focusCell(u.x,u.y); await sleep(320);
   if(!u.alive){ u.acted=true; return; }
-  if(u.heal){
+  if(u.heal&&(u.healsLeft===undefined||u.healsLeft>0)){
     const wounded=livingUnits(u.side).filter(a=>a!==u&&a.hp<a.maxhp).sort((a,b)=>(a.hp/a.maxhp)-(b.hp/b.maxhp));
     if(wounded.length){ const t=wounded[0];
       if(d2(u,t)>u.range){ moveToward(u,t); await sleep(300); }
@@ -529,6 +555,7 @@ function onCell(x,y){
 async function execPending(){
   const s=sel(); if(!s||!pending) return; const t=unitById(pending.targetId); const type=pending.type; pending=null;
   if(!t||!t.alive){ render(); return; }
+  if(type!=="atk"&&s.healsLeft!==undefined&&s.healsLeft<=0){ log(s.name+" はもう回復できない（1体3回まで）"); render(); return; }
   busy=true;
   if(type==="atk") await resolveAttack(s,t,false); else await resolveHeal(s,t);
   if(checkEnd()) return;
@@ -544,24 +571,25 @@ function render(){
     const u=unitAt(x,y);
     if(s&&reach.has(x+","+y)&&!u) cell.classList.add("move");
     if(s&&u&&u.side!=="p"&&d2(s,u)<=s.range&&!losBlocked(s.x,s.y,u.x,u.y)) cell.classList.add("target");
-    if(s&&s.heal&&u&&u.side==="p"&&u.id!==s.id&&d2(s,u)<=s.range&&u.hp<u.maxhp) cell.classList.add("healable");
+    if(s&&s.heal&&(s.healsLeft===undefined||s.healsLeft>0)&&u&&u.side==="p"&&u.id!==s.id&&d2(s,u)<=s.range&&u.hp<u.maxhp) cell.classList.add("healable");
     if(pending&&u&&u.id===pending.targetId) cell.classList.add("confirm");
     if(s&&u&&u.id===s.id) cell.classList.add("sel");
     if(u){ const wrap=document.createElement("div"); wrap.dataset.uid=u.id; if(u.acted) wrap.className="done";
       wrap.innerHTML='<img class="uimg '+u.side+'" style="width:'+IW+'px;height:'+IW+'px" alt="'+u.name+'"><div class="uname '+u.side+'">'+u.name+(u.lv?" Lv"+u.lv:"")+'</div><div class="hpbar"><div class="hpfill" style="width:'+Math.max(0,u.hp/u.maxhp*100)+'%;background:'+(u.side==="p"?"#4a8ac7":"#c74a3a")+'"></div></div><div class="uhp" style="font-size:'+Math.max(8,Math.round(8*zoomLevel))+'px;text-align:center">HP'+Math.max(0,u.hp)+'</div>';
       cell.appendChild(wrap);
       const im=wrap.querySelector("img.uimg"); if(im&&u.art) im.src=u.art; }
+    if(objMode()&&OBJ_SET.has(x+","+y)) cell.classList.add("obj");
     cell.onclick=()=>onCell(x,y);
     boardEl.appendChild(cell);
   }
   const pL=unactedUnits("p").length, eL=unactedUnits("e").length;
-  $("phase").textContent=gameOver?(livingUnits("p").length?"勝利！ 敵を全滅させた":"敗北… 自軍が全滅した")
-    :"第"+roundNo+"ラウンド｜"+(turnSide==="p"?"あなたの番":"敵の番")+"：自軍の残り行動"+pL+"体・敵の残り行動"+eL+"体（交互に1体ずつ行動）";
+  $("phase").textContent=gameOver?(endWinner?(endWinner==="draw"?"引き分け（"+endReason+"）":endWinner==="p"?"勝利！ "+endReason:"敗北… "+endReason):(livingUnits("p").length?"勝利！ 敵を全滅させた":"敗北… 自軍が全滅した"))
+    :"第"+roundNo+"ラウンド｜"+(turnSide==="p"?"あなたの番":"敵の番")+"：自軍の残り行動"+pL+"体・敵の残り行動"+eL+"体（交互に1体ずつ行動）"+(objMode()?"｜拠点 自軍 "+vpP+" - "+vpE+" 敵":"")+"｜上限まであと"+Math.max(0,roundLimit()-roundNo+1)+"ラウンド";
   const du=pending?unitById(pending.targetId):(detailId?unitById(detailId):s);
   if(du){ $("detail").style.display="flex"; const dImg=$("dImg"); if(du.art) dImg.src=du.art;
     $("dName").textContent=du.name+"（"+(FACTIONS[du.key]?FACTIONS[du.key].name:"古代の守護者")+"・"+(du.side==="p"?"味方":(du.side==="n"?"第3勢力":"敵"))+(du.alive?"":"・戦闘不能")+"）";
     $("dRole").textContent=du.role||"";
-    $("dStats").textContent="HP "+Math.max(0,du.hp)+"/"+du.maxhp+"｜攻撃 "+du.dmg+"｜射程 "+du.range+"｜移動 "+du.move+"｜命中 "+du.hit+"以下"+(du.fly?"｜飛行":"")+(du.heal?"｜回復":"")+(du.duel?"｜一騎打ち":"");
+    $("dStats").textContent="HP "+Math.max(0,du.hp)+"/"+du.maxhp+"｜攻撃 "+du.dmg+"｜射程 "+du.range+"｜移動 "+du.move+"｜命中 "+du.hit+"以下"+(du.fly?"｜飛行":"")+(du.heal?"｜回復":"")+(du.duel?"｜一騎打ち":"")+(du.heal&&du.healsLeft!==undefined?"｜回復あと"+du.healsLeft+"回":"");
     $("dDesc").textContent=du.desc||""; }
   else $("detail").style.display="none";
   const cb=$("confirmBtn");
@@ -608,9 +636,11 @@ function startGame(){
   const PPOS=[[4,15],[6,15],[8,15],[5,14],[7,14],[3,15]], EPOS=[[4,0],[6,0],[8,0],[5,1],[7,1],[9,0]];
   units.forEach(u=>{ const row=units.filter(v=>v.side===u.side); const i=row.indexOf(u); const pos=(u.side==="p")?PPOS[i]:EPOS[i]; u.x=pos[0]; u.y=pos[1]; });
   if(gameMode==="story"&&(CHAPTERS[storyChapter-1]||{}).golem) units.push(makeGolem());
-  selectedId=null; detailId=null; pending=null; gameOver=false; busy=false; roundNo=1; turnSide="p";
+  selectedId=null; detailId=null; pending=null; gameOver=false; busy=false; roundNo=1; turnSide="p"; vpP=0; vpE=0; endWinner=null; endReason="";
   $("setup").classList.add("hidden"); $("game").classList.remove("hidden");
   $("log").innerHTML=""; log("対戦開始："+FACTIONS[playerKey].name+" vs "+FACTIONS[enemyKey].name+"（交互に1体ずつ行動します）"); showBanner(gameMode==="story"?CHAPTERS[storyChapter-1].title:"対戦開始", FACTIONS[playerKey].name+" vs "+FACTIONS[enemyKey].name); if(gameMode==="story"&&(CHAPTERS[storyChapter-1]||{}).golem) log("遺跡の中央で、巨大な石像が眠っている…");
+  if(objMode()) log("拠点確保戦：中央の遺跡を囲む金色の4マスを多く占めた側が、ラウンド終了時に1点。3点先取です");
+  if(gameMode==="free") log("ラウンド上限は"+roundLimit()+"（到達した場合は拠点点数→残存数→残り体力で判定します）");
   $("endBtn").textContent="全員待機（敵の番へ）"; if(zoomLevel>1) applyZoom(zoomLevel);
   render(); drive(); }
 $("startBtn").onclick=startGame;
