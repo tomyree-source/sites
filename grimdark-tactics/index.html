@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v19｜女性キャラを一新。天使・悪魔はセラフィナの面々（ガブリエラ／セラフィナ／ルチア／セヴェルたち）が参戦し、全員プレミアム像スタイルの美人になりました。駒が隠れない表示修正（v18）も含みます。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v20｜改善バッチB：AI強化（集中攻撃・回復役狙い・遮蔽活用）、ポイント制の編成、難易度（やさしい／ふつう／つよい）を追加。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -111,16 +111,18 @@ img.uimg{transition:transform .15s ease}
 #board .cell>div{position:relative;line-height:0}
 .uname{position:absolute;left:50%;transform:translateX(-50%);bottom:5px;z-index:2;background:rgba(10,8,6,.75);padding:0 3px;border-radius:3px;white-space:nowrap}
 .hpbar{position:absolute;left:50%;transform:translateX(-50%);bottom:0;z-index:2;margin-top:0}
+.costTag{color:#ffd98a;font-weight:700} .pickBox{width:18px;height:18px;vertical-align:middle;margin-right:6px} .warn{color:#ff9a8a !important;font-weight:700}
 </style>
 </head>
 <body>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v19｜女性キャラを一新：天使・悪魔はセラフィナの面々（ガブリエラ／セラフィナ／ルチア／セヴェルたち）が参戦し、全員プレミアム像スタイルの美人になりました。駒が隠れない表示修正（正方形マス＋名札）も含みます。</div>
+  <div class="sub">見本v20｜改善バッチB：AIを強化（倒せる相手への集中攻撃、回復役狙い、遮蔽の活用）。自由対戦はポイント制の編成（予算内で名簿から選択、相手も同予算で自動編成）。難易度は やさしい／ふつう／つよい から選べます。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
     <div id="modeRow"><button id="modeFree" class="modeBtn on">自由対戦</button><button id="modeStory" class="modeBtn">ストーリー（育成）</button></div>
+    <div id="diffRow" style="margin:8px 0;font-size:13px">難易度 <select id="diffSel"><option value="easy">やさしい（AIは素直・敵は弱め）</option><option value="normal" selected>ふつう（AI強化）</option><option value="hard">つよい（AI強化・敵は強め）</option></select></div>
     <div id="freeSetup">
     <div>あなたの勢力</div>
     <select id="pf"></select>
@@ -128,6 +130,7 @@ img.uimg{transition:transform .15s ease}
     <select id="ef"></select>
     <button id="startBtn">対戦開始</button>
     <button id="randBtn">相手をランダムにする</button>
+    <div style="margin-top:8px;font-size:13px">編成予算 <select id="budgetSel"><option value="50">50pt（小規模）</option><option value="70" selected>70pt（標準）</option><option value="90">90pt（大規模）</option></select> <span style="color:#9a8f7a">下の名簿で出撃させるユニットを選べます（相手は同じ予算で自動編成）</span></div>
     </div>
     <div id="storySetup" class="hidden">
       <div style="font-size:13px;color:#cbbfa5">物語は帝国騎士団の小隊で進みます。戦うほど小隊が育ち、記録はこの端末に保存されます。</div>
@@ -342,16 +345,66 @@ function showBanner(main, sub){ const b=$("banner"); if(!b) return; $("bannerMai
 function shakeBoard(){ const v=$("boardView"); if(!v) return; v.classList.remove("boardShake"); void v.offsetWidth; v.classList.add("boardShake"); setTimeout(()=>v.classList.remove("boardShake"), 500); }
 function slashAt(x,y){ const cell=$("board").children[y*BW+x]; if(!cell) return; cell.classList.remove("fxSlash"); void cell.offsetWidth; cell.classList.add("fxSlash"); setTimeout(()=>cell.classList.remove("fxSlash"), 430); }
 function glowAt(x,y){ const cell=$("board").children[y*BW+x]; if(!cell) return; cell.classList.remove("fxGlow"); void cell.offsetWidth; cell.classList.add("fxGlow"); setTimeout(()=>cell.classList.remove("fxGlow"), 550); }
-$("modeFree").onclick=()=>{ $("modeFree").classList.add("on"); $("modeStory").classList.remove("on"); $("freeSetup").classList.remove("hidden"); $("storySetup").classList.add("hidden"); };
-$("modeStory").onclick=()=>{ $("modeStory").classList.add("on"); $("modeFree").classList.remove("on"); $("freeSetup").classList.add("hidden"); $("storySetup").classList.remove("hidden"); renderStory(); };
+$("modeFree").onclick=()=>{ $("modeFree").classList.add("on"); $("modeStory").classList.remove("on"); $("freeSetup").classList.remove("hidden"); $("storySetup").classList.add("hidden"); freePtsOn=true; setupInfo(); };
+$("modeStory").onclick=()=>{ $("modeStory").classList.add("on"); $("modeFree").classList.remove("on"); $("freeSetup").classList.add("hidden"); $("storySetup").classList.remove("hidden"); freePtsOn=false; setupInfo(); renderStory(); };
 $("storyStartBtn").onclick=()=>{ const c=CHAPTERS[selChapter-1]; $("pf").value="knights"; $("ef").value=c.enemy; startAsStory=true; storyChapter=selChapter; startGame(); };
 let resetArm=false;
 $("resetSaveBtn").onclick=()=>{ if(!resetArm){ resetArm=true; $("resetSaveBtn").textContent="本当に消しますか？（もう一度押すと消去）"; setTimeout(()=>{ resetArm=false; $("resetSaveBtn").textContent="育成データを消す"; },3000); return; } SAVE={roster:{},cleared:{}}; storeSave(); resetArm=false; $("resetSaveBtn").textContent="育成データを消す"; renderStory(); setupInfo(); };
 
+// ===== 改善バッチB（v20）：難易度・ポイント制 =====
+let DIFF="normal"; try{ const d=localStorage.getItem("tekkanDiff"); if(d) DIFF=d; }catch(e){}
+let freePtsOn=true;
+function unitCost(fk,i){ const u=FACTIONS[fk].units[i]; const mv=(u.move===2?3:u.move), rg=(u.range>=3?u.range+1:u.range);
+  return Math.round(u.hp*0.5 + u.dmg*1.6 + mv*0.8 + rg*1.2 + (6-u.hit)*1.4 + (u.fly?3:0) + (u.heal?4:0)); }
+function budgetNow(){ const b=document.getElementById("budgetSel"); return b? Number(b.value):70; }
+let pickSet=new Set();
+function defaultPicks(fk,budget){ let tot=0; const s=new Set(); FACTIONS[fk].units.forEach((u,i)=>{ const c=unitCost(fk,i); if(tot+c<=budget){ s.add(i); tot+=c; } });
+  if(s.size<2){ const cheap=FACTIONS[fk].units.map((u,i)=>i).sort((a,b)=>unitCost(fk,a)-unitCost(fk,b)); return new Set(cheap.slice(0,2)); } return s; }
+function resetPicks(){ const pf=document.getElementById("pf"); pickSet=defaultPicks(pf?pf.value:"knights", budgetNow()); }
+function pickCost(){ const pf=document.getElementById("pf"); if(!pf) return 0; let t=0; pickSet.forEach(i=>{ t+=unitCost(pf.value,i); }); return t; }
+function autoPick(fk,budget){ const idxs=FACTIONS[fk].units.map((u,i)=>i);
+  for(let i=idxs.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const tmp=idxs[i]; idxs[i]=idxs[j]; idxs[j]=tmp; }
+  let tot=0; const picked=[]; idxs.forEach(i=>{ const c=unitCost(fk,i); if(tot+c<=budget){ picked.push(i); tot+=c; } });
+  if(picked.length<2){ return idxs.slice().sort((a,b)=>unitCost(fk,a)-unitCost(fk,b)).slice(0,2); } return picked; }
+function threatAt(x,y,side){ let t=0; const foes=livingUnits(side==="p"?"e":"p");
+  foes.forEach(f=>{ const dd=Math.abs(x-f.x)+Math.abs(y-f.y); if(dd<=f.move+f.range && !losBlocked(x,y,f.x,f.y)){ let need=f.hit-(coverBonus({x:x,y:y})?1:0); if(f.range>1&&dd===1) need-=1; need=Math.max(1,Math.min(6,need)); t+=f.dmg*(need/6); } });
+  return t; }
+function atkValue(u,x,y,t){ const d=Math.abs(x-t.x)+Math.abs(y-t.y); if(d>u.range||losBlocked(x,y,t.x,t.y)) return -1;
+  let need=u.hit-(coverBonus(t)?1:0); if(u.range>1&&d===1) need-=1; if(u.duel&&alliesAdjacent(t)===0) need+=1; need=Math.max(1,Math.min(6,need)); const p=need/6;
+  let v=p*Math.min(u.dmg,t.hp)*10; if(t.hp<=u.dmg) v+=p*45; if(t.heal) v+=22; else if(t.range>=2) v+=7; v+=(1-t.hp/t.maxhp)*14;
+  if(t.hp>u.dmg&&t.dmg>0&&d<=t.range&&!losBlocked(t.x,t.y,x,y)){ let cn=t.hit-(coverBonus({x:x,y:y})?1:0)-1; if(t.range>1&&d===1) cn-=1; cn=Math.max(1,Math.min(6,cn)); v-=(cn/6)*t.dmg*4; }
+  return v; }
+async function enemyActivateSmart(u){
+  detailId=u.id; render(); focusCell(u.x,u.y); await sleep(320);
+  if(!u.alive){ u.acted=true; return; }
+  if(u.heal){
+    const wounded=livingUnits(u.side).filter(a=>a.hp<a.maxhp).sort((a,b)=>((a.hp/a.maxhp)-(b.hp/b.maxhp))||((a.maxhp-a.hp)-(b.maxhp-b.hp)));
+    if(wounded.length){ const t=wounded[0];
+      const tiles=[[u.x,u.y]]; reachable(u).forEach((c,k)=>{ const p=k.split(","); tiles.push([Number(p[0]),Number(p[1])]); });
+      let best=null, bs=-1e9;
+      tiles.forEach(([x,y])=>{ const dd=Math.abs(x-t.x)+Math.abs(y-t.y); if(dd>u.range||losBlocked(x,y,t.x,t.y)) return; const s=100-threatAt(x,y,u.side)*3-(Math.abs(x-u.x)+Math.abs(y-u.y))*0.2; if(s>bs){ bs=s; best=[x,y]; } });
+      if(best&&(best[0]!==u.x||best[1]!==u.y)){ u.x=best[0]; u.y=best[1]; SFX.move(); render(); fxUnit(u.id,"fxMove"); await sleep(300); }
+      if(u.alive&&t.alive&&d2(u,t)<=u.range&&!losBlocked(u.x,u.y,t.x,t.y)) await resolveHeal(u,t);
+      u.acted=true; render(); return; }
+  }
+  const foes=livingUnits(u.side==="p"?"e":"p"); if(!foes.length){ u.acted=true; render(); return; }
+  const tiles=[[u.x,u.y]]; reachable(u).forEach((c,k)=>{ const p=k.split(","); tiles.push([Number(p[0]),Number(p[1])]); });
+  const pref=foes.slice().sort((a,b)=>((a.hp+(a.heal?-25:0))-(b.hp+(b.heal?-25:0))))[0];
+  let best=null, bs=-1e9, bestT=null;
+  tiles.forEach(([x,y])=>{ let av=-1, at=null; foes.forEach(t=>{ const v=atkValue(u,x,y,t); if(v>av){ av=v; at=t; } });
+    const th=threatAt(x,y,u.side); let s;
+    if(av>=0){ s=av-th*3.0+(isCover(x,y)?3:0); } else { const dd=Math.abs(x-pref.x)+Math.abs(y-pref.y); s=40-dd*2.2-th*3.0+(isCover(x,y)?3:0); }
+    s-=(Math.abs(x-u.x)+Math.abs(y-u.y))*0.15;
+    if(s>bs){ bs=s; best=[x,y]; bestT=(av>=0?at:null); } });
+  if(best&&(best[0]!==u.x||best[1]!==u.y)){ u.x=best[0]; u.y=best[1]; SFX.move(); render(); fxUnit(u.id,"fxMove"); await sleep(320); }
+  if(bestT&&u.alive&&bestT.alive&&d2(u,bestT)<=u.range&&!losBlocked(u.x,u.y,bestT.x,bestT.y)) await resolveAttack(u,bestT,false);
+  u.acted=true; render();
+}
+// ===== 改善バッチB ここまで =====
 function buildSquad(fk, side){
   const f=FACTIONS[fk];
   return f.units.map((u,i)=>{ const info=(UNIT_INFO[fk]||[])[i]||{role:"",desc:""};
-    const __u={ id: fk+"-"+i, key: fk, idx: i, side: side, name: u.name, icon: u.icon, hp: u.hp, maxhp: u.hp,
+    const __u={ id: side+"-"+fk+"-"+i, key: fk, idx: i, side: side, name: u.name, icon: u.icon, hp: u.hp, maxhp: u.hp,
       move: (u.move===2?3:u.move), range: (u.range>=3?u.range+1:u.range), hit: u.hit, dmg: u.dmg, fly: !!u.fly, heal: !!u.heal, duel: !!f.duel,
       role: info.role, desc: info.desc, art: (UNIT_ART[fk]||[])[i]||"", x:0, y:0, alive:true, acted:false, moved:false, px:0, py:0 }; if(fk==="knights") applyGrowth(__u); return __u; });
 }
@@ -426,7 +479,7 @@ async function drive(){
         if(pL.length){ busy=false; render(); break; }
         turnSide="e"; continue;
       } else {
-        if(eL.length){ busy=true; render(); await sleep(420); await enemyActivate(eL[0]); turnSide="p"; continue; }
+        if(eL.length){ busy=true; render(); await sleep(420); await (DIFF==="easy"? enemyActivate(eL[0]) : enemyActivateSmart(eL[0])); turnSide="p"; continue; }
         turnSide="p"; continue;
       }
     }
@@ -532,19 +585,26 @@ function fillOptions(){ const pf=$("pf"), ef=$("ef");
   pf.value="knights"; ef.value="barbarians"; }
 function rosterHTML(key,title){ const f=FACTIONS[key];
   const rows=f.units.map((u,i)=>{ const info=(UNIT_INFO[key]||[])[i]||{role:"",desc:""};
-    return '<div class="rUnit"><img data-k="'+key+'" data-i="'+i+'" alt="'+u.name+'"><div><span class="rName">'+u.name+'</span>'+(key==="knights"?growthBadge(u.name):"")+' <span class="rRole">'+(info.role||"")+'</span><div class="rStats">HP'+u.hp+' 攻撃'+u.dmg+' 射程'+u.range+' 移動'+u.move+' 命中'+u.hit+'以下'+(u.fly?" 飛行":"")+(u.heal?" 回復":"")+'</div><div class="rDesc">'+(info.desc||"")+'</div></div></div>'; }).join("");
+    const cb=(freePtsOn&&title.indexOf("あなた")===0)? '<input type="checkbox" class="pickBox" data-i="' + i + '"' + (pickSet.has(i)?" checked":"") + '>' : "";
+    return '<div class="rUnit">' + cb + '<img data-k="'+key+'" data-i="'+i+'" alt="'+u.name+'"><div><span class="rName">'+u.name+'</span>'+(key==="knights"?growthBadge(u.name):"")+' <span class="costTag">' + unitCost(key,i) + 'pt</span> <span class="rRole">'+(info.role||"")+'</span><div class="rStats">HP'+u.hp+' 攻撃'+u.dmg+' 射程'+u.range+' 移動'+u.move+' 命中'+u.hit+'以下'+(u.fly?" 飛行":"")+(u.heal?" 回復":"")+'</div><div class="rDesc">'+(info.desc||"")+'</div></div></div>'; }).join("");
   return '<div class="rosterTitle">'+title+"："+f.name+"（"+f.units.length+"体）</div>"+rows; }
 function setupInfo(){ const pk=$("pf").value, ek=$("ef").value;
   $("setupInfo").textContent=FACTIONS[pk].name+"（"+FACTIONS[pk].units.length+"体） vs "+FACTIONS[ek].name+"（"+FACTIONS[ek].units.length+"体）｜盤面12×16・交互行動・反撃・射線あり";
   $("pfCap").textContent="あなた："+FACTIONS[pk].name; $("efCap").textContent="相手："+FACTIONS[ek].name;
   $("pfImg").src=FACTION_ART[pk]; $("efImg").src=FACTION_ART[ek];
   const ro=$("roster"); ro.innerHTML=rosterHTML(pk,"あなたの編成")+rosterHTML(ek,"相手の編成");
+  ro.querySelectorAll("input.pickBox").forEach(cb=>{ cb.onchange=()=>{ const i=Number(cb.dataset.i); if(cb.checked) pickSet.add(i); else pickSet.delete(i); setupInfo(); }; });
+  if(freePtsOn){ const pc=pickCost(), bd=budgetNow(); const si=$("setupInfo"); si.textContent+="｜編成コスト "+pc+"pt / 予算 "+bd+"pt"+(pc>bd?"（予算オーバー）":pickSet.size<2?"（2体以上選んでください）":""); si.classList.toggle("warn", pc>bd||pickSet.size<2); }
   ro.querySelectorAll("img[data-k]").forEach(im=>{ im.src=(UNIT_ART[im.dataset.k]||[])[Number(im.dataset.i)]||""; }); }
 function startGame(){
   battleXP={}; battleMedals={}; growthDone=false; golemAwake=false; golemDown=false; if(startAsStory){ gameMode="story"; startAsStory=false; } else { gameMode="free"; } const br=$("battleResults"); if(br) br.classList.add("hidden");
   playerKey=$("pf").value; enemyKey=$("ef").value;
-  units=buildSquad(playerKey,"p").concat(buildSquad(enemyKey,"e"));
+  if(gameMode==="free"){ const bd=budgetNow(); if(pickSet.size<2||pickCost()>bd){ const si=$("setupInfo"); si.textContent="編成が予算に収まっていません（2体以上・"+bd+"pt以内で選んでください）"; si.classList.add("warn"); return; } }
+  if(gameMode==="free"){ const ep=new Set(autoPick(enemyKey,budgetNow())); units=buildSquad(playerKey,"p").filter(u=>pickSet.has(u.idx)).concat(buildSquad(enemyKey,"e").filter(u=>ep.has(u.idx)));
+    if(playerKey===enemyKey) units.forEach(u=>{ if(u.side==="e") u.name=u.name+"II"; });
+  } else { units=buildSquad(playerKey,"p").concat(buildSquad(enemyKey,"e")); }
   if(gameMode==="story"){ const ch=CHAPTERS[storyChapter-1]; COVERS=ch.covers? new Set(ch.covers.map(c=>c[0]+","+c[1])) : new Set(DEFAULT_COVERS); if(SAVE.cleared[2]) units.push(makeLeon()); const b=ch.eLv||1; if(b>1) units.forEach(u=>{ if(u.side==="e"){ u.maxhp+=2*(b-1); u.hp=u.maxhp; u.dmg+=Math.floor(b/2); u.lv=b; } }); } else { COVERS=new Set(DEFAULT_COVERS); }
+  if(DIFF!=="normal"){ units.forEach(u=>{ if(u.side==="e"&&!u.isGolem){ if(DIFF==="easy"){ u.maxhp=Math.max(1,u.maxhp-2); u.hp=Math.min(u.hp,u.maxhp); } else { u.maxhp+=2; u.hp+=2; u.dmg+=1; } } }); }
   const PPOS=[[4,15],[6,15],[8,15],[5,14],[7,14],[3,15]], EPOS=[[4,0],[6,0],[8,0],[5,1],[7,1],[9,0]];
   units.forEach(u=>{ const row=units.filter(v=>v.side===u.side); const i=row.indexOf(u); const pos=(u.side==="p")?PPOS[i]:EPOS[i]; u.x=pos[0]; u.y=pos[1]; });
   if(gameMode==="story"&&(CHAPTERS[storyChapter-1]||{}).golem) units.push(makeGolem());
@@ -554,8 +614,11 @@ function startGame(){
   $("endBtn").textContent="全員待機（敵の番へ）"; if(zoomLevel>1) applyZoom(zoomLevel);
   render(); drive(); }
 $("startBtn").onclick=startGame;
+$("diffSel").value=DIFF;
+$("diffSel").onchange=()=>{ DIFF=$("diffSel").value; try{ localStorage.setItem("tekkanDiff",DIFF); }catch(e){} };
+$("budgetSel").onchange=()=>{ setupInfo(); };
 $("randBtn").onclick=()=>{ const ks=Object.keys(FACTIONS); $("ef").value=ks[Math.floor(Math.random()*ks.length)]; setupInfo(); };
-$("pf").onchange=setupInfo; $("ef").onchange=setupInfo;
+$("pf").onchange=()=>{ resetPicks(); setupInfo(); }; $("ef").onchange=setupInfo;
 $("confirmBtn").onclick=()=>{ execPending(); };
 $("undoBtn").onclick=()=>{ const s=sel(); if(s&&s.moved&&!busy){ s.x=s.px; s.y=s.py; s.moved=false; SFX.select(); render(); } };
 $("waitBtn").onclick=()=>{ const s=sel(); if(s&&!busy) finishActivation(s); };
@@ -571,7 +634,7 @@ function focusCell(x,y){ if(zoomLevel<=1) return; const cell=$("board").children
 document.querySelectorAll(".zoomBtn").forEach(b=>{ b.onclick=()=>applyZoom(Number(b.dataset.z)); });
 $("board").style.backgroundImage="url("+BOARD_ART+")";
 $("board").style.backgroundSize="cover"; $("board").style.backgroundRepeat="no-repeat";
-fillOptions(); setupInfo();
+fillOptions(); resetPicks(); setupInfo();
 </script>
 </body>
 </html>
