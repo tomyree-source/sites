@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v22｜「遊び方・ルール」欄を追加。ルール（交互行動・反撃・遮蔽・射線・ポイント編成・拠点・育成）をゲーム内で読めるようになりました。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v23｜操作ボタンの行を画面下に固定表示（スクロールなしで攻撃・待機に届く）。回復の確認文が実際の回復量を表示するよう修正。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -113,12 +113,15 @@ img.uimg{transition:transform .15s ease}
 .hpbar{position:absolute;left:50%;transform:translateX(-50%);bottom:0;z-index:2;margin-top:0}
 .costTag{color:#ffd98a;font-weight:700} .pickBox{width:18px;height:18px;vertical-align:middle;margin-right:6px} .warn{color:#ff9a8a !important;font-weight:700}
 .cell.obj{box-shadow:inset 0 0 0 3px #ffd34d, inset 0 0 16px rgba(255,211,77,.5)}
+#btnRow{position:fixed;bottom:0;left:0;right:0;max-width:560px;margin:0 auto;z-index:30;background:rgba(24,20,14,.96);padding:6px 2px;border-top:1px solid #6b5a35}
+#game{padding-bottom:170px}
+#btnRow button{padding:7px 8px;font-size:13px;margin:2px 1px}
 </style>
 </head>
 <body>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v22｜「遊び方・ルール」欄を追加しました（下のボタンから開けます）。ルールの要点：両軍が1体ずつ交互に行動、攻撃はサイコロ判定で反撃あり、遺跡は遮蔽と射線遮断、回復は1体3回まで。</div>
+  <div class="sub">見本v23｜操作ボタンの行を画面の下に固定しました。盤面を見ながら、そのまま「攻撃する」「待機」が押せます。回復の確認文も実際の回復量で出るようになりました。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
@@ -176,8 +179,7 @@ img.uimg{transition:transform .15s ease}
     <div id="panel">
       <div id="detail"><img id="dImg" alt="ユニットの絵"><div><div id="dName"></div><span id="dRole"></span><div id="dStats"></div><div id="dDesc"></div></div></div>
       <div id="info">ユニットを選んでください。</div>
-      <div id="forecast"></div>
-      <div style="margin-top:8px">
+      <div id="btnRow" style="margin-top:8px">
         <button id="confirmBtn" class="hidden">攻撃する</button>
         <button id="undoBtn">移動を戻す</button>
         <button class="sndBtn">音：ON</button>
@@ -614,7 +616,7 @@ function render(){
     if(pending.type==="atk"){ let need=s.hit; if(coverBonus(t)) need-=1; if(s.range>1&&d2(s,t)===1) need-=1; const duelB=(s.duel&&alliesAdjacent(t)===0); if(duelB) need+=1; need=Math.max(1,Math.min(6,need));
       $("info").textContent=t.name+" を攻撃しますか？ 命中 "+need+"以下／ダメージ "+(s.dmg+(duelB?1:0))+"（相手が生き残れば反撃されます）";
       cb.textContent="攻撃する"; }
-    else { $("info").textContent=t.name+" を3回復しますか？"; cb.textContent="回復する"; }
+    else { $("info").textContent=t.name+" を"+(s.healAmt||3)+"回復しますか？"; cb.textContent="回復する"; }
     cb.classList.remove("hidden");
   } else { cb.classList.add("hidden");
     if(!gameOver&&turnSide==="p"&&!busy) $("info").textContent=s?(s.name+" を選択中。光ったマスへ移動、敵をタップで攻撃"+(s.heal?"、傷ついた味方をタップで回復":"")+"。"):"駒をタップして選んでください。敵の駒をタップすると性能が見られます。";
