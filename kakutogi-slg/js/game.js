@@ -25,11 +25,17 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.33";
+const GAME_VERSION = "1.4";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.4", date:"2026-11-09", items:[
+    "第4章「円熟期」（40〜49歳）を追加：散打の間宮健一率いる道場との対抗戦が主敵ラインとして開幕（第5章へ続く長期戦の第1幕）。赤井道場が開かれ、弟子全員が同じ赤い道着の『赤い軍団』として登場",
+    "第4章の初登場：王麗華（58・陳式太極拳、厳格型の老師）／間宮健一（55・散打）／高村蒼太（19・サバット、若手の星）／呉志強（61・酔拳、寛容型の老師）。カメオで顔見せ済みの達人たちとも直接対面できるようになった",
+    "流派Lv9「指導の高み」とLv10「奥義・皆伝」を完全実装：Lv9で高額セミナーと指導収入が跳ね上がり、Lv10で試合中に一度だけ放てる奥義（純粋度で強化）が解放される。王麗華の口説き固有イベントも追加",
+    "円熟期の体の変化を実装：戦闘時の体力上限はピーク比80%、回復は遅く連戦の代償が重い。代わりに『相手を読む』効果とセミナー・指導の収益効率が全章で最も高い。道場の設備投資・弟子の遠征費・医療ケア費など、円熟期の支出の山も追加",
+  ]},
   {v:"1.33", date:"2026-11-08", items:[
     "「試斬動画の大論争」エピソードに、老師の語り草を追記：かつて忍術の使い手と揉めた折にタバコをくわえたまま吐き捨てた『この河童野郎！』の一件が、界隈の物真似の定番フレーズになっている",
   ]},
@@ -93,6 +99,9 @@ function allEventPools(){
   if (typeof CH3_WEEK_EVENTS !== "undefined") pools.push(CH3_WEEK_EVENTS);
   if (typeof CH3_STUDENT_DRAMA !== "undefined") pools.push(CH3_STUDENT_DRAMA);
   if (typeof CH3_SEASONAL_EVENTS !== "undefined") pools.push(CH3_SEASONAL_EVENTS);
+  if (typeof CH4_WEEK_EVENTS !== "undefined") pools.push(CH4_WEEK_EVENTS);
+  if (typeof CH4_STUDENT_DRAMA !== "undefined") pools.push(CH4_STUDENT_DRAMA);
+  if (typeof CH4_SEASONAL_EVENTS !== "undefined") pools.push(CH4_SEASONAL_EVENTS);
   if (typeof DEBATE_EVENTS !== "undefined") pools.push(DEBATE_EVENTS);
   if (typeof SPECIAL_EVENTS !== "undefined") pools.push(SPECIAL_EVENTS);
   if (typeof CHAIN_EVENTS !== "undefined") pools.push(CHAIN_EVENTS);
@@ -122,7 +131,7 @@ function episodeLabel(id){
       return id;
     }
   }
-  for (const book of [typeof STORY_CH1 !== "undefined" ? STORY_CH1 : null, typeof STORY_CH2 !== "undefined" ? STORY_CH2 : null, typeof STORY_CH3 !== "undefined" ? STORY_CH3 : null]){
+  for (const book of [typeof STORY_CH1 !== "undefined" ? STORY_CH1 : null, typeof STORY_CH2 !== "undefined" ? STORY_CH2 : null, typeof STORY_CH3 !== "undefined" ? STORY_CH3 : null, typeof STORY_CH4 !== "undefined" ? STORY_CH4 : null]){
     if (book && book[id]){
       if (book[id].title) return book[id].title;
       const t = firstStepText(book[id].steps);
@@ -185,7 +194,7 @@ dmg: {arm:0, leg:0, core:0, head:0},
 students: [], met: [], affection: {}, romanceEv: {}, partner: null,
 flags: {}, record: {fouls:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0},
 seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {}, seenEvents: {},
-chapter1Clear: false, chapter2Clear: false, chapter3Clear: false, startedAt: Date.now(),
+chapter1Clear: false, chapter2Clear: false, chapter3Clear: false, chapter4Clear: false, startedAt: Date.now(),
 };
 }
 function ensureStateCompat(){
@@ -203,6 +212,7 @@ function ensureStateCompat(){
   if (!S.styleLv) S.styleLv = {};
   if (!S.styleExp) S.styleExp = {};
   if (S.chapter3Clear == null) S.chapter3Clear = false;
+  if (S.chapter4Clear == null) S.chapter4Clear = false;
 }
 function fameTotal(){ return S.sei + S.aku;}
 function fameRankIdx(){ const f = fameTotal(); let i = 0; FAME_THRESHOLDS.forEach((t, k) => { if (f >= t) i = k;}); return i;}
@@ -264,7 +274,7 @@ if (id === S.mainStyle) S.expMainTotal += pts;
 let lv = styleLv(id);
 while (lv < 10 && S.styleExp[id] >= expNeed(lv)){
 S.styleExp[id] -= expNeed(lv); lv++;
-if (notes) notes.push("" + (styleById(id)? styleById(id).name: "") + " Lv" + lv + (lv === 5? "！ 看板技が開きました": lv === 3? "！ 基本の精度が完成しました": ""));
+if (notes) notes.push("" + (styleById(id)? styleById(id).name: "") + " Lv" + lv + (lv === 10? "！ 奥義・皆伝――その流派を極めた証明。試合で一度だけ放てる奥義と、高額セミナーの頂点が開きました": lv === 9? "！ 指導の高みに達しました。高額セミナーと指導収入が跳ね上がり、遠方から生徒が集まるようになります": lv === 5? "！ 看板技が開きました": lv === 3? "！ 基本の精度が完成しました": ""));
 }
 S.styleLv[id] = lv;
 }
@@ -342,7 +352,7 @@ function startScene(steps, onDone, likeId){
   sceneAdvance();
 }
 function startSceneById(id){
-  const sc = STORY_CH1[id] || (typeof STORY_CH2 !== "undefined" ? STORY_CH2[id] : null) || (typeof STORY_CH3 !== "undefined" ? STORY_CH3[id] : null);
+  const sc = STORY_CH1[id] || (typeof STORY_CH2 !== "undefined" ? STORY_CH2[id] : null) || (typeof STORY_CH3 !== "undefined" ? STORY_CH3[id] : null) || (typeof STORY_CH4 !== "undefined" ? STORY_CH4[id] : null);
   if (!sc){ goWeek(); return; }
   startScene(sc.steps, null, id);
 }
@@ -758,7 +768,7 @@ function abroadEligible(){
   return lv >= S.flags.abroadOfferLv + 2; // 見送った場合は、主・流儀が2レベル上がるごとに再提示
 }
 function nextBeatAbsWeek(){
-  const allBeats = BEATS.concat(typeof BEATS_CH2 !== "undefined" ? BEATS_CH2 : [], typeof BEATS_CH3 !== "undefined" ? BEATS_CH3 : []);
+  const allBeats = BEATS.concat(typeof BEATS_CH2 !== "undefined" ? BEATS_CH2 : [], typeof BEATS_CH3 !== "undefined" ? BEATS_CH3 : [], typeof BEATS_CH4 !== "undefined" ? BEATS_CH4 : []);
   let best = Infinity;
   for (const b of allBeats){ if (b.week > S.absWeek && !S.beatsDone[b.week + ":" + b.id]) best = Math.min(best, b.week); }
   return best;
@@ -776,7 +786,8 @@ function skipWeeksAbroad(n){
       const dojoRent = S.chapter >= 2 ? 48000 : 0;
       const gearCost = S.chapter >= 2 ? S.students.length * 1500 : 0;
       const onoCost = (S.chapter >= 2 && S.flags.onoPlan) ? 12000 : 0;
-      S.money -= (MONTHLY_BILLS + dojoRent + gearCost + onoCost);
+      const ch4Cost = ch4MonthlyCosts();
+      S.money -= (MONTHLY_BILLS + dojoRent + gearCost + onoCost + ch4Cost.total);
       monthlyDebtPayment(false);
     }
   }
@@ -985,6 +996,11 @@ function sceneAdvance(){
     if (st.ch3skip){ __ch3Skip(); return; }
     if (st.warWinK){ dojoWarResultKatori(true); continue; }
     if (st.warLoseK){ dojoWarResultKatori(false); continue; }
+    if (st.endChapter4){ chapter4EndScreen(); return; }
+    if (st.endChapter4retire){ chapter4RetireScreen(); return; }
+    if (st.ch4skip){ __ch4Skip(); return; }
+    if (st.warWinM){ dojoWarResultMamiya(true); continue; }
+    if (st.warLoseM){ dojoWarResultMamiya(false); continue; }
     if (st.dopeVerdict){ UI.queue = dopeVerdictLines().concat(UI.queue); continue; }
     if (st.bbsMark){
       if (st.bbsMark === "post"){ S.flags.bbsPosted = true; S.flags.bbsPostWeek = S.absWeek; }
@@ -1189,7 +1205,7 @@ function goWeek(){
     startScene(abroadOfferSteps(), null, "abroad_offer");
     return;
   }
-  const allBeats = BEATS.concat(typeof BEATS_CH2 !== "undefined" ? BEATS_CH2 : [], typeof BEATS_CH3 !== "undefined" ? BEATS_CH3 : []);
+  const allBeats = BEATS.concat(typeof BEATS_CH2 !== "undefined" ? BEATS_CH2 : [], typeof BEATS_CH3 !== "undefined" ? BEATS_CH3 : [], typeof BEATS_CH4 !== "undefined" ? BEATS_CH4 : []);
   const beat = allBeats.find(b => b.week === S.absWeek && !S.beatsDone[b.week + ":" + b.id]);
   if (beat){ S.beatsDone[beat.week + ":" + beat.id] = true; startSceneById(beat.id); return; }
   renderWeek();
@@ -1269,10 +1285,33 @@ function pickCh3Event(){
   }
   return null;
 }
+// 第4章専用プールの抽選（story-ch4.js の CH4_* プール。第3章の pickCh3Event と同方式）
+function pickCh4Event(){
+  const yw = ((S.absWeek - 1) % WEEKS_PER_YEAR) + 1;
+  const yearIdx = Math.floor((S.absWeek - 1) / WEEKS_PER_YEAR);
+  if (typeof CH4_SEASONAL_EVENTS !== "undefined"){
+    const seasonCount = Object.keys(S.seenEvents).filter(k => k.indexOf("season4:") === 0 && k.endsWith(":" + yearIdx)).length;
+    if (seasonCount < 2){
+      const sc = CH4_SEASONAL_EVENTS.filter(e => eventEligible(e) && yw >= e.window[0] && yw <= e.window[1] && !S.seenEvents["season4:" + e.id + ":" + yearIdx]);
+      if (sc.length && _rng() < 0.55){ const e = sc[rnd(sc.length - 1)]; S.seenEvents["season4:" + e.id + ":" + yearIdx] = S.absWeek; logEventFire("season4", e); return e; }
+    }
+  }
+  if (S.absWeek - S.lastRandomWeek < 2) return null;
+  if (typeof CH4_STUDENT_DRAMA !== "undefined"){
+    const dc = CH4_STUDENT_DRAMA.filter(e => eventEligible(e) && !S.seenEvents[e.id]);
+    if (dc.length && _rng() < 0.30){ const e = pickWeighted(dc); S.seenEvents[e.id] = S.absWeek; logEventFire("student4", e); return e; }
+  }
+  if (typeof CH4_WEEK_EVENTS !== "undefined"){
+    const vc = CH4_WEEK_EVENTS.filter(e => eventEligible(e) && !S.seenEvents[e.id]);
+    if (vc.length && _rng() < 0.32){ const e = pickWeighted(vc); S.seenEvents[e.id] = S.absWeek; logEventFire(e.category, e); return e; }
+  }
+  return null;
+}
 // 週末イベント抽選（ワンパターン対策・第39/40節）: 季節（年最大2本）→生徒ドラマ→共通プールV2→従来プールの順
 function pickEndWeekEvent(){
   ensureStateCompat();
   if (S.chapter === 3){ const e3 = pickCh3Event(); if (e3) return e3; }
+  if (S.chapter === 4){ const e4 = pickCh4Event(); if (e4) return e4; }
   // 第46・47節: 匿名掲示板の連鎖（書く→身バレ→裁判→道場への乗り込み）。フラグと週数で段階発火し、1周で完結する
   if (typeof CHAIN_EVENTS !== "undefined"){
     let chainEv = null;
@@ -1381,6 +1420,16 @@ function pickEndWeekEvent(){
   }
   return null;
 }
+// 第86節: 第4章（円熟期）の月次コスト。設備投資・維持＋弟子の遠征/育成費＋医療/ケア費（古傷の数で増える）
+function ch4MonthlyCosts(){
+  if (!S || S.chapter < 4) return {equip:0, expedition:0, care:0, total:0};
+  const ow = (S.flags && S.flags.oldWounds) || {};
+  const owCount = Object.keys(ow).filter(p => ow[p] > 0).length;
+  const equip = 30000;
+  const expedition = S.students.length * 1200;
+  const care = 10000 + owCount * 3000;
+  return {equip, expedition, care, total: equip + expedition + care};
+}
 function endWeek(){
   const ev = pickEndWeekEvent();
   const proceed = () => {
@@ -1392,9 +1441,11 @@ function endWeek(){
       const dojoRent = S.chapter >= 2 ? 48000 : 0;
       const gearCost = S.chapter >= 2 ? S.students.length * 1500 : 0;
       const onoCost = (S.chapter >= 2 && S.flags.onoPlan) ? 12000 : 0;
-      const bills = MONTHLY_BILLS + dojoRent + gearCost + onoCost;
+      // 第86節: 第4章からは円熟期の支出の山（設備投資・遠征育成費・医療ケア費）が上乗せされる
+      const ch4Cost = ch4MonthlyCosts();
+      const bills = MONTHLY_BILLS + dojoRent + gearCost + onoCost + ch4Cost.total;
       S.money -= bills;
-      toast("月末の請求書 -" + bills.toLocaleString() + "円（家賃・生活費" + (S.chapter >= 2 ? "・道場賃料・用具代" + (onoCost ? "・食の契約" : "") : "") + "）", S.money < 0);
+      toast("月末の請求書 -" + bills.toLocaleString() + "円（家賃・生活費" + (S.chapter >= 2 ? "・道場賃料・用具代" + (onoCost ? "・食の契約" : "") : "") + (S.chapter >= 4 ? "・設備・遠征・ケア費" : "") + "）", S.money < 0);
       // 第74節: 借金の分割返済（残高の1/5・最低1万円）。借金がある間はCLASHで噂が立つ
       monthlyDebtPayment(true);
       if (debtOf() > 0 && _rng() < 0.35) toast("CLASHで『借金残高" + debtOf().toLocaleString() + "円の男、今月の返済は済んだのか』と噂になっている", true);
@@ -1410,8 +1461,8 @@ function endWeek(){
       for (const stu of S.students){ if (_rng() < 0.3) stu.skill = Math.min(10, stu.skill + 1); }
     }
     if (S.seminarCd > 0) S.seminarCd--;
-    // 部位ダメージの自然回復（4週ごと）
-    if (S.absWeek % 4 === 0){ for (const p of ["leg","arm","core","head"]){ if (S.dmg[p] > 0){ S.dmg[p]--; break; } } }
+    // 部位ダメージの自然回復（4週ごと。第4章からは回復が鈍り、4割の月は回復しない＝円熟期の遅さ）
+    if (S.absWeek % 4 === 0 && (S.chapter < 4 || _rng() < 0.6)){ for (const p of ["leg","arm","core","head"]){ if (S.dmg[p] > 0){ S.dmg[p]--; break; } } }
     S.absWeek++;
     if ((S.absWeek - 1) % WEEKS_PER_YEAR === 0) S.age++;
     saveGame(false);
@@ -1451,19 +1502,28 @@ function doAction(act){
     afterAction(notes); return;
   }
   if (act === "teach"){
-    const base = S.students.length > 0 ? 6000 + S.students.length * 1500 : 5000;
+    let base = S.students.length > 0 ? 6000 + S.students.length * 1500 : 5000;
+    // 第86節: Lv9「指導の高み」では師範代行・高額指導が可能になり、指導収入が跳ね上がる
+    const lv9teach = styleLv(S.mainStyle) >= 9;
+    if (lv9teach) base = Math.round(base * 1.5);
     S.money += base; S.fatigue = clamp(S.fatigue + 10, 0, 100);
     growStat("teach", 0.4);
     const n = []; gainStyleExp(S.mainStyle, 2, n);
-    toast("道場指導 +" + base.toLocaleString() + "円（教えることは学ぶことだ）");
+    toast("道場指導 +" + base.toLocaleString() + "円（教えることは学ぶことだ" + (lv9teach ? "。指導の高みの評判で高額指導になった" : "") + "）");
     afterAction(n); return;
   }
   if (act === "seminar"){
     if (S.seminarCd > 0){ toast("セミナーは準備中です", true); return; }
     S.seminarCd = 3; S.record.seminars++;
     S.fatigue = clamp(S.fatigue + 14, 0, 100);
-    const guests = Math.min(40, Math.max(0, Math.round((2 + S.attention * 0.8 + fameTotal() * 0.5 + S.stats.teach * 0.7) * randf(0.7, 1.3) * (S.flags.abroadDone ? 1.3 : 1)))); // 第75節: 本場留学後は「本場仕込み」の看板で集客+3割
-    const income = guests * 3000;
+    const mainLv = styleLv(S.mainStyle);
+    // 第86節: 円熟期はセミナー集客効率が全章最高（×1.2）。Lv9以上は「遠方から生徒が来る」高額セミナー（単価と集客が跳ね上がる）、Lv10はその頂点
+    let guests = Math.min(40, Math.max(0, Math.round((2 + S.attention * 0.8 + fameTotal() * 0.5 + S.stats.teach * 0.7) * randf(0.7, 1.3) * (S.flags.abroadDone ? 1.3 : 1) * (S.chapter >= 4 ? 1.2 : 1) * (mainLv >= 9 ? 1.3 : 1))));
+    // 第86節: 第4章からはセミナー会場費がかかる（支出の山）
+    let venueFee = 0;
+    if (S.chapter >= 4){ venueFee = 12000; S.money -= venueFee; }
+    const unitPrice = mainLv >= 10 ? 5000 : mainLv >= 9 ? 4000 : 3000;
+    const income = guests * unitPrice;
     S.money += income;
     if (guests >= 10){ S.sei += 1; toast("セミナーは盛況だった！"); }
     if (guests >= 8 && _rng() < 0.5){ const j = joinGenericStudent(); if (j) toast("参加者の" + j.name + "が入門した！"); }
@@ -1552,9 +1612,9 @@ function renderCarePick(){
     '<button class="btn ghost" data-back="1">戻る</button></div>';
   $("main").querySelector("[data-back]").addEventListener("click", renderWeek);
   $("main").querySelectorAll("[data-care]").forEach(b => b.addEventListener("click", () => {
-    if (b.dataset.care === "rest"){ S.fatigue = clamp(S.fatigue - 45, 0, 100); toast("しっかり休んだ"); }
+    if (b.dataset.care === "rest"){ S.fatigue = clamp(S.fatigue - (S.chapter >= 4 ? 32 : 45), 0, 100); toast(S.chapter >= 4 ? "しっかり休んだ（40代の回復は、若い頃よりゆっくりだ）" : "しっかり休んだ"); }
     else {
-      S.fatigue = clamp(S.fatigue - 30, 0, 100);
+      S.fatigue = clamp(S.fatigue - (S.chapter >= 4 ? 22 : 30), 0, 100);
       let heal = S.flags.carePro ? 2 : 1;
       if (S.flags.carePro){ if (S.money >= 3000){ S.money -= 3000; } else { heal = 1; toast("治療費が足りず、簡易ケアになった", true); } }
       for (const p of ["leg","arm","core","head"]){ while (heal > 0 && S.dmg[p] > 0){ S.dmg[p]--; heal--; } }
@@ -1600,6 +1660,8 @@ function masterPortraitHtml(style){
 function mentorFor(style){
   if (!style) return null;
   if (style.name === "詠春拳") return {id:"chen", type:"厳格", note:"悪名のある者を門前払いする"};
+  if (style.name === "陳式太極拳") return {id:"lihua", type:"厳格", note:"清らかな格と、高みに届く腕（主・流儀Lv6以上）を見る。高Lv帯の指導者"};
+  if (style.name === "酔拳") return {id:"zhiqiang", type:"寛容", note:"多少の悪名は笑って許す。再起の指導に強い"};
   if (style.name === "空道（大道塾）") return {id:"onizuka", type:"実力主義", note:"評判は見ない。腕だけを見る"};
   if (style.name === "サンボ（スポーツサンボ）") return {id:"anna", type:"実力主義", note:"評判は見ない。戦績と腕だけを見る"};
   if (style.cat === "日本の空手系") return {id:"todo", type:"寛容", note:"多少の悪名は笑って許す"};
@@ -1607,6 +1669,7 @@ function mentorFor(style){
   return null;
 }
 function mentorCheck(m){
+  if (m.id === "lihua") return S.aku <= 1 && styleLv(S.mainStyle) >= 6; // 王麗華: 厳格型＋高Lv帯の指導（設計書2.4）
   if (m.type === "厳格") return S.aku <= 1;
   if (m.type === "寛容") return S.aku <= 6;
   if (m.type === "実力主義") return S.record.wins >= 1 || styleLv(S.mainStyle) >= 3;
@@ -1743,13 +1806,19 @@ function resolveBattleDef(id){
     const e = def.enemyByYear[Math.min(def.enemyByYear.length - 1, Math.max(0, S.age - 20))];
     Object.assign(def, e);
   }
+  // 未定義バトルのフォールバック（hp/power が NaN だと試合が永遠に終わらないため、汎用定義で受ける）
+  if (typeof def.hp !== "number" || typeof def.power !== "number"){
+    Object.assign(def, {title: def.title || "指名試合", enemyName: def.enemyName || "挑戦者", hp: 120, power: 12, mode: "match", foul: false, comments: def.comments || []});
+  }
   return def;
 }
 function startBattle(id, winSteps, loseSteps){
   const def = resolveBattleDef(id);
   UI.screen = "battle";
   const eStyle = def.enemyStyleName ? styleByName(def.enemyStyleName) : mainStyle();
-  const maxPhp = Math.round((55 + S.stats.endure * 6 + styleLv(S.mainStyle) * 2) * (1 - S.fatigue / 250) - S.dmg.core * 4);
+  // 第86節: 円熟期（第4章〜）は体力上限がピーク比80%まで低下する。代わりに読みと奥義が効く
+  const ageHpFactor = S.chapter >= 4 ? 0.8 : 1;
+  const maxPhp = Math.round(((55 + S.stats.endure * 6 + styleLv(S.mainStyle) * 2) * (1 - S.fatigue / 250) - S.dmg.core * 4) * ageHpFactor);
   // 複合技（Lv7・設計書2.2）: 主・流儀Lv7以上＋副・流儀Lv5以上で解放
   let comboStyle = null;
   if (styleLv(S.mainStyle) >= 7){
@@ -1761,7 +1830,7 @@ function startBattle(id, winSteps, loseSteps){
   const counterLevel = streak >= 5 ? 2 : streak >= 3 ? 1 : 0;
   const counterHasSig = styleLv(S.mainStyle) >= 5;
   UI.battle = { def, eStyle, php: Math.max(20, maxPhp), maxPhp: Math.max(20, maxPhp), ehp: def.hp, turn: 0, dealt: 0,
-    log: [], cmtIdx: 0, foulUsed: false, sigUsed: false, readBonus: 0, control: 0, readGuard: false, secondUsed: false,
+    log: [], cmtIdx: 0, foulUsed: false, sigUsed: false, ougiUsed: false, readBonus: 0, control: 0, readGuard: false, secondUsed: false,
     comboStyle, comboUsed: false, counterLevel, counterStreak: streak, counterHasSig,
     blur: 0, eyeHits: 0, eyeTurn: 0, misses: 0,
     winSteps, loseSteps };
@@ -1813,6 +1882,8 @@ function renderBattle(){
   acts.push(["read", "相手を読む", "次の攻撃↑・被ダメ半減"]);
   acts.push(["recover", "息を整える", "体力を少し回復"]);
   if (lv >= 5 && !b.sigUsed) acts.push(["sig", "看板技：" + sigName(), "1試合に1回"]);
+  // 第86節: Lv10「奥義・皆伝」の完全実装。純粋度が高いほど奥義が強化される（設計書2.2）
+  if (lv >= 10 && !b.ougiUsed) acts.push(["ougi", "奥義：" + mainStyle().name.replace(/（[^）]*）/g, "") + "の奥義", "皆伝の証。1試合に1回（純粋度" + purity() + "%で強化）"]);
   if (b.comboStyle && !b.comboUsed) acts.push(["combo", "複合技：" + mainStyle().name.replace(/（[^）]*）/g, "") + "×" + b.comboStyle.name.replace(/（[^）]*）/g, ""), "主・流儀Lv7＋副・流儀Lv5で解放。1試合に1回"]);
   if (def.foul && !b.foulUsed) acts.push(["foul", "反則・眼突き", "勝てるが、評判を落とす諸刃"]);
   const enemyImg = def.img ? '<div class="portrait"><img src="../cast-art/cast-' + def.img + '-sera.webp" alt=""></div>' : "";
@@ -1837,7 +1908,14 @@ function battleTurn(act){
   else if (act === "kick"){ dmg = playerPower("kick"); bLog("実況", "蹴りが間合いを支配する！"); }
   else if (act === "grapple"){ dmg = playerPower("grapple"); b.control = Math.min(6, b.control + 2); bLog("実況", "組み合った！ 支配が少しずつこちらに傾く"); }
   else if (act === "ground"){ dmg = playerPower("ground"); bLog("実況", "寝技の展開！ 極めを狙う"); }
-  else if (act === "read"){ b.readBonus = 4 + Math.round(S.stats.read); b.readGuard = true; bLog("実況", "相手の癖を読む……次の手が冴える！"); }
+  else if (act === "read"){ // 第86節: 円熟期は「読み」の効きが最大級になる（体力の低下を読みで補う設計）
+    b.readBonus = Math.round((4 + Math.round(S.stats.read)) * (S.chapter >= 4 ? 1.5 : 1)); b.readGuard = true; bLog("実況", "相手の癖を読む……次の手が冴える！" + (S.chapter >= 4 ? " 円熟の読みが、若さの速さを上回る" : "")); }
+  else if (act === "ougi" && styleLv(S.mainStyle) >= 10 && !b.ougiUsed){ // 第86節: 奥義・皆伝（Lv10）。純粋度が高いと強化される
+    const ougiBase = Math.max(...styleSystems(mainStyle()).map(k => S.stats[k]));
+    dmg = 22 + ougiBase * 4 + rnd(4);
+    if (purity() >= 70){ dmg = Math.round(dmg * 1.25); bLog("実況", "純粋に磨き抜いた奥義が、冴え渡る！"); }
+    b.ougiUsed = true; window.__lastOugi = {battleId: def.id, dmg: dmg, purity: purity()};
+    bLog("実況", "奥義――" + mainStyle().name.replace(/（[^）]*）/g, "") + "を極めた者にだけ許される一手が、静かに放たれた！"); }
   else if (act === "recover"){ b.php = Math.min(b.maxPhp, b.php + 9); bLog("実況", "息を整え、軸を立て直す"); }
   else if (act === "sig"){ // 第73節: 看板技は主・流儀が使える系統の中から構成される（威力もその系統の能力で決まる）
     const sigBase = Math.max(...styleSystems(mainStyle()).map(k => S.stats[k]));
@@ -1859,7 +1937,7 @@ function battleTurn(act){
     if (act === "read" || act === "grapple"){ b.blur = 0; bLog("実況", "顔を逸らし、相手の手を捌く――視界が晴れてきた！"); }
     else {
       b.blur--;
-      if (dmg > 0 && act !== "sig" && act !== "combo" && _rng() < (act === "kick" ? 0.25 : 0.4)){
+      if (dmg > 0 && act !== "sig" && act !== "combo" && act !== "ougi" && _rng() < (act === "kick" ? 0.25 : 0.4)){
         dmg = 0; b.misses++;
         bLog("実況", "視界が霞んで、攻撃が逸れた！");
         if (window.__lastEyeThrust) window.__lastEyeThrust.misses = b.misses;
@@ -1937,7 +2015,8 @@ function finishBattle(win){
   }
   if (win){ S.record.wins++; S.record.winStreak = (S.record.winStreak || 0) + 1; S.record.bestWinStreak = Math.max(S.record.bestWinStreak || 0, S.record.winStreak); }
   else S.record.winStreak = 0;
-  S.fatigue = clamp(S.fatigue + 12, 0, 100);
+  // 第86節: 円熟期は連戦の代償が重い（試合後の疲労増）
+  S.fatigue = clamp(S.fatigue + (S.chapter >= 4 ? 18 : 12), 0, 100);
   const steps = win ? b.winSteps : b.loseSteps;
   UI.battle = null; UI.screen = "scene";
   UI.queue = steps.concat(UI.queue);
@@ -1995,7 +2074,7 @@ function hud(){
   const h = $("hud"); if (!h || !S) return;
   h.classList.remove("hidden");
   $("hud-age").textContent = S.age + "歳";
-  $("hud-chapter").textContent = S.chapter === 3 ? "第3章 全盛期" : S.chapter === 2 ? "第2章 全盛前夜" : "第1章 青年期";
+  $("hud-chapter").textContent = S.chapter === 4 ? "第4章 円熟期" : S.chapter === 3 ? "第3章 全盛期" : S.chapter === 2 ? "第2章 全盛前夜" : "第1章 青年期";
   $("hud-fame").textContent = fameTotal() + "（" + fameRank() + "）";
   $("hud-sei").textContent = S.sei;
   $("hud-aku").textContent = S.aku;
@@ -2037,7 +2116,7 @@ function renderTitle(){
     '<p class="tagline">どの武術が一番強いのか――その論争に、人生で答える。</p>' +
     '<button class="btn next" data-auto="new">はじめから</button>' +
     (hasSave() ? '<button class="btn" data-auto="continue">つづきから</button>' : "") +
-    '<p class="note">第1章：青年期（19〜22歳）／第2章：全盛前夜（23〜29歳）／第3章：全盛期（30〜39歳）</p>' +
+    '<p class="note">第1章：青年期（19〜22歳）／第2章：全盛前夜（23〜29歳）／第3章：全盛期（30〜39歳）／第4章：円熟期（40〜49歳）</p>' +
     '<p class="ver">ver ' + GAME_VERSION + "</p></div>" +
     '<div class="voice"><h3>あなたのCLASH投稿</h3>' +
     '<p class="voicenote">エピソードごとの感想は、作中SNS「CLASH」への書き込みとして、この端末に残ります。人気投票とコメントはフォームで集計し、次回バージョンアップに反映します。面白かったエピソードには👍、改善要望やネタはCLASH投稿から「開発にも送る」で届きます。</p>' +
@@ -2060,7 +2139,10 @@ function renderChangelog(){
   $("main").querySelector("[data-auto='to-title']").addEventListener("click", renderTitle);
 }
 function resumeFromSave(){
-  if (S.flags && S.flags.retiredEnding && typeof retireEndScreen === "function") retireEndScreen();
+  if (S.flags && S.flags.retiredEnding && S.chapter >= 4 && typeof chapter4RetireScreen === "function") chapter4RetireScreen();
+  else if (S.flags && S.flags.retiredEnding && typeof retireEndScreen === "function") retireEndScreen();
+  else if (S.chapter4Clear && typeof chapter4EndScreen === "function") chapter4EndScreen();
+  else if (S.chapter === 4) goWeek();
   else if (S.chapter3Clear && typeof chapter3EndScreen === "function") chapter3EndScreen();
   else if (S.chapter === 3) goWeek();
   else if (S.chapter2Clear && typeof chapter2EndScreen === "function") chapter2EndScreen();
@@ -2126,6 +2208,26 @@ if (typeof chapter2EndScreen === "function" && typeof startChapter3 === "functio
   };
 }
 
+// ---------- 第3章終了画面への「第4章へ進む」導線（第86節。story-ch3.js は変更しないため、ここでラップして追加する） ----------
+if (typeof chapter3EndScreen === "function" && typeof startChapter4 === "function"){
+  const _origChapter3EndScreen = chapter3EndScreen;
+  chapter3EndScreen = function(){
+    _origChapter3EndScreen();
+    if (UI.screen !== "end") return;
+    const mainEl = $("main"); if (!mainEl || mainEl.querySelector("[data-auto='to-ch4']")) return;
+    const btn = document.createElement("button");
+    btn.className = "btn next"; btn.setAttribute("data-auto", "to-ch4"); btn.textContent = "第4章へ進む（40歳〜）";
+    btn.addEventListener("click", () => startChapter4());
+    const titleBtn = mainEl.querySelector("[data-auto='to-title']");
+    if (titleBtn) titleBtn.before(btn); else mainEl.appendChild(btn);
+  };
+}
+
+// ---------- 第86節: カメオ・あるあるを第4章でも発火可能にする（読み込み順の都合で game.js 側で実施） ----------
+if (typeof CAMEO_EVENTS !== "undefined"){
+  CAMEO_EVENTS.forEach(e => { if (Array.isArray(e.chapters) && e.chapters.includes(3) && !e.chapters.includes(4)) e.chapters.push(4); });
+}
+
 // ---------- 検証フック（QC用：対策メタ／新規イベント／同伴イベントの発火を実測するための内部状態の公開） ----------
 window.__gameTest = {
   state: () => S,
@@ -2174,6 +2276,9 @@ window.__gameTest = {
     if (typeof CH3_WEEK_EVENTS !== "undefined") pools.push(...CH3_WEEK_EVENTS);
     if (typeof CH3_STUDENT_DRAMA !== "undefined") pools.push(...CH3_STUDENT_DRAMA);
     if (typeof CH3_SEASONAL_EVENTS !== "undefined") pools.push(...CH3_SEASONAL_EVENTS);
+    if (typeof CH4_WEEK_EVENTS !== "undefined") pools.push(...CH4_WEEK_EVENTS);
+    if (typeof CH4_STUDENT_DRAMA !== "undefined") pools.push(...CH4_STUDENT_DRAMA);
+    if (typeof CH4_SEASONAL_EVENTS !== "undefined") pools.push(...CH4_SEASONAL_EVENTS);
     if (typeof DEBATE_EVENTS !== "undefined") pools.push(...DEBATE_EVENTS);
     if (typeof SPECIAL_EVENTS !== "undefined") pools.push(...SPECIAL_EVENTS);
     if (typeof CHAIN_EVENTS !== "undefined") pools.push(...CHAIN_EVENTS);
@@ -2186,8 +2291,12 @@ window.__gameTest = {
     return true;
   },
   startChapter3: () => { if (typeof startChapter3 === "function") startChapter3(); },
+  startChapter4: () => { if (typeof startChapter4 === "function") startChapter4(); },
+  ch4Costs: () => ch4MonthlyCosts(),
+  lastOugi: () => window.__lastOugi || null,
   pools: () => ({ v2: (typeof WEEK_EVENTS_V2 !== "undefined" ? WEEK_EVENTS_V2 : []).map(e => ({id:e.id, category:e.category})), student: (typeof STUDENT_DRAMA_EVENTS !== "undefined" ? STUDENT_DRAMA_EVENTS : []).map(e => e.id), seasonal: (typeof SEASONAL_EVENTS !== "undefined" ? SEASONAL_EVENTS : []).map(e => e.id),
     ch3week: (typeof CH3_WEEK_EVENTS !== "undefined" ? CH3_WEEK_EVENTS : []).map(e => ({id:e.id, category:e.category})), ch3student: (typeof CH3_STUDENT_DRAMA !== "undefined" ? CH3_STUDENT_DRAMA : []).map(e => e.id), ch3seasonal: (typeof CH3_SEASONAL_EVENTS !== "undefined" ? CH3_SEASONAL_EVENTS : []).map(e => e.id),
+    ch4week: (typeof CH4_WEEK_EVENTS !== "undefined" ? CH4_WEEK_EVENTS : []).map(e => ({id:e.id, category:e.category})), ch4student: (typeof CH4_STUDENT_DRAMA !== "undefined" ? CH4_STUDENT_DRAMA : []).map(e => e.id), ch4seasonal: (typeof CH4_SEASONAL_EVENTS !== "undefined" ? CH4_SEASONAL_EVENTS : []).map(e => e.id), beats4: (typeof BEATS_CH4 !== "undefined" ? BEATS_CH4 : []).map(b => b.id),
     debates: (typeof DEBATE_POOL !== "undefined" ? DEBATE_POOL : []).map(d => d.id), debateEvents: (typeof DEBATE_EVENTS !== "undefined" ? DEBATE_EVENTS : []).map(e => e.id),
     special: (typeof SPECIAL_EVENTS !== "undefined" ? SPECIAL_EVENTS : []).map(e => e.id), chain: (typeof CHAIN_EVENTS !== "undefined" ? CHAIN_EVENTS : []).map(e => e.id),
     cameos: (typeof CAMEO_EVENTS !== "undefined" ? CAMEO_EVENTS : []).map(e => ({id:e.id, category:e.category, chapters:e.chapters})) }),
@@ -2202,14 +2311,15 @@ window.__gameTest = {
   const useFoul = q.get("foul") === "1";
   const ch2test = q.has("ch2test");
   const ch3test = q.has("ch3test");
-  const CLICK_LIMIT = ch3test ? 150000 : ch2test ? 80000 : 20000;
+  const ch4test = q.has("ch4test");
+  const CLICK_LIMIT = ch4test ? 300000 : ch3test ? 150000 : ch2test ? 80000 : 20000;
   let clicks = 0, cycle = 0;
   const finish = (ok, why) => {
     clearInterval(timer);
     const res = { ok, why: why || "", screen: UI.screen, absWeek: S ? S.absWeek : 0, age: S ? S.age : 0, chapter: S ? S.chapter : 0,
       fame: S ? fameTotal() : 0, sei: S ? S.sei : 0, aku: S ? S.aku : 0, students: S ? S.students.length : 0,
       mainLv: S ? styleLv(S.mainStyle) : 0, money: S ? S.money : 0, partner: S ? S.partner : null,
-      chapter1Clear: S ? S.chapter1Clear : false, chapter2Clear: S ? !!S.chapter2Clear : false, chapter3Clear: S ? !!S.chapter3Clear : false,
+      chapter1Clear: S ? S.chapter1Clear : false, chapter2Clear: S ? !!S.chapter2Clear : false, chapter3Clear: S ? !!S.chapter3Clear : false, chapter4Clear: S ? !!S.chapter4Clear : false,
       retired: S ? !!(S.flags && S.flags.retiredEnding) : false, dopeUsed: S ? (S.flags.dopeUsed || 0) : 0, oldWounds: S ? (S.flags.oldWounds || {}) : {},
       met: S ? S.met : [], record: S ? S.record : null, clicks, errors: window.__errors,
       eventLog: window.__eventLog || [], seenEvents: S ? Object.keys(S.seenEvents || {}) : [],
@@ -2224,6 +2334,21 @@ window.__gameTest = {
       clicks++;
       if (clicks > CLICK_LIMIT) return finish(false, "ステップ上限到達");
       if (UI.screen === "end"){
+        if (ch4test && S && !S.chapter4Clear && !(S.flags && S.flags.retiredEnding)){
+          if (!S.chapter2Clear){
+            const b2 = $("main").querySelector("[data-auto='to-ch2']");
+            if (b2){ b2.click(); return; }
+            return finish(false, "第2章へのボタンが見つからない");
+          }
+          if (!S.chapter3Clear){
+            const b3 = $("main").querySelector("[data-auto='to-ch3']");
+            if (b3){ b3.click(); return; }
+            return finish(false, "第3章へのボタンが見つからない");
+          }
+          const b4 = $("main").querySelector("[data-auto='to-ch4']");
+          if (b4){ b4.click(); return; }
+          return finish(false, "第4章へのボタンが見つからない");
+        }
         if (ch3test && S && !S.chapter3Clear && !(S.flags && S.flags.retiredEnding)){
           if (!S.chapter2Clear){
             const b2 = $("main").querySelector("[data-auto='to-ch2']");
@@ -2252,7 +2377,7 @@ window.__gameTest = {
       if (UI.screen === "scene"){
         const ch = main.querySelectorAll("[data-choice]");
         if (ch.length){
-          if (ch3test){ const cont = Array.from(ch).find(b => b.textContent.includes("現役を続ける")); if (cont){ cont.click(); return; } }
+          if (ch3test || ch4test){ const cont = Array.from(ch).find(b => b.textContent.includes("現役を続ける")); if (cont){ cont.click(); return; } }
           ch[cycle++ % ch.length].click(); return;
         }
         const nx = main.querySelector("[data-auto='next']"); if (nx) nx.click();
@@ -2264,6 +2389,7 @@ window.__gameTest = {
         if (B && B.php < B.maxPhp * 0.22){ const rc = main.querySelector("[data-bact='recover']"); if (rc){ rc.click(); return; } }
         let sel = null;
         if (useFoul && B && B.def.foul && !B.foulUsed) sel = main.querySelector("[data-bact='foul']");
+        if (!sel) sel = main.querySelector("[data-bact='ougi']");
         if (!sel) sel = main.querySelector("[data-bact='combo']");
         if (!sel) sel = main.querySelector("[data-bact='sig']");
         if (!sel && B){ const st = mainStyle(); const prim = st.stats.kick >= st.stats.strike && st.stats.kick >= st.stats.grapple && st.stats.kick >= st.stats.ground ? "kick" : st.stats.grapple >= st.stats.ground && st.stats.grapple >= st.stats.strike ? "grapple" : st.stats.ground > st.stats.strike && st.stats.ground > st.stats.kick ? "ground" : "strike"; sel = main.querySelector("[data-bact='" + prim + "']"); }
