@@ -25,11 +25,16 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.43";
+const GAME_VERSION = "1.44";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.44", date:"2026-11-09", items:[
+    "実際の武クラの年末話題（BOTY候補）の「型」を反映：CLASH論争プールに4件追加（『刀は突くもの』論争／伝系の明示を巡る多正面論争／往年の達人『贋作』レッテル論争／達人の民間療法への専門職クラスタの反論）",
+    "あるある小ネタを2件追加：当事者の過去投稿を九百件以上も調べ上げた『全数調査』の検証記事で長期化する交流会の急所技騒動と、普段は批判されがちな実力者が現役トップ選手との稽古動画で静かに株を上げる話",
+    "BOTYの固定候補に『年間論争王（無冠の論客）』を追加：大賞は最強の選手ではなく、その年の論争を一番牽引した人に贈られるという、実クラスタの年末の空気を反映",
+  ]},
   {v:"1.43", date:"2026-11-09", items:[
     "戦闘演出フルセットを追加：ヒット時の画面シェイクと端フラッシュ、ダメージ数字のポップ表示、HPバーの残像（遅れて減る白バー）、奥義発動時のカットイン（暗転＋設定画＋技名）、決着時の『K.O.！』の溜め演出、バトル実況のタイプライター表示。効果音（打撃・ガード・空振り・ゴング・歓声）もブラウザ生成で追加し、画面下のボタンで音と演出のON／OFFを切り替えられる。演出は表示と音だけで、バトルの計算・勝敗・セーブには影響しない",
   ]},
@@ -168,6 +173,7 @@ const EPISODE_TAGS = {
   sp_victory_declare:"勝利宣言", sp_night_attack:"夜道の襲撃", debt_deadend:"夜逃げ",
   sp_burn1:"界隈大炎上", sp_burn2:"界隈大炎上", sp_burn3:"目つき騒動", sp_burn4:"界隈大炎上",
   sp_burn5:"界隈大炎上", sp_burn6:"界隈大炎上", sp_burn7:"界隈大炎上", sp_burn8:"界隈大炎上",
+  aru_zenchosa:"全数調査の検証記事", aru_keiko:"静かに株を上げる",
   boty:"BOTY",
 };
 function episodeTag(id){
