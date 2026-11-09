@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v26｜ビジュアルと戦闘エフェクトを全面強化（飛び道具・破裂・撃破演出／スライド移動／灰の雨／勢力カラー）。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v27｜攻撃カットインを追加（全キャラに攻撃名つき、全攻撃で表示。設定でOFF可）。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -133,17 +133,27 @@ img.uimg{transition:transform .15s ease}
 #banner.show #bannerMain{animation:bannerGlow 1.6s ease}
 @keyframes bannerGlow{0%{text-shadow:0 2px 14px #000,0 0 34px rgba(243,210,122,.4)}30%{text-shadow:0 2px 14px #000,0 0 52px rgba(243,210,122,.95)}100%{text-shadow:0 2px 14px #000,0 0 34px rgba(243,210,122,.4)}}
 #detail{border-left:4px solid #5a4a2f}
+
+#cutin{position:fixed;inset:0;z-index:55;display:flex;align-items:flex-end;overflow:hidden;background:rgba(5,4,3,.45)}
+#cutin.hidden{display:none}
+#cutinBg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}
+#cutinShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,4,3,.55),rgba(5,4,3,.15) 40%,rgba(5,4,3,.82))}
+#cutinArt{position:relative;height:60vh;max-width:66vw;object-fit:contain;filter:drop-shadow(0 8px 22px rgba(0,0,0,.75));margin-bottom:7vh;-webkit-mask-image:radial-gradient(ellipse 82% 72% at 50% 48%,#000 50%,transparent 92%);mask-image:radial-gradient(ellipse 82% 72% at 50% 48%,#000 50%,transparent 92%)}
+#cutinPlate{position:absolute;left:0;right:0;bottom:3.5vh;text-align:center;pointer-events:none}
+#cutinName{font-size:15px;font-weight:bold;letter-spacing:.14em;text-shadow:0 2px 8px #000}
+#cutinMove{font-size:32px;font-weight:bold;font-family:serif;letter-spacing:.12em;text-shadow:0 3px 12px #000,0 0 30px rgba(0,0,0,.6);margin-top:2px}
 </style>
 </head>
 <body>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v26｜見た目と手応えを全面強化しました。矢・銃弾・魔法が飛び、命中時に火花が散り、撃破時には「撃破！」と盤面が震えます。駒はマスを滑って移動し、盤面には灰の雨が舞い続けます。勢力カラーの差し色、HPバーのグラデーションと瀕死の点滅も入りました。</div>
+  <div class="sub">見本v27｜攻撃カットインを追加しました。攻撃のたびに（反撃・回復も）キャラの全身絵と固有の攻撃名が勢力の集合絵を背に表示されます。自軍は右から、敵は左から登場します。タップで飛ばせます。テンポが気になる場合は、設定の「攻撃演出」でカットインなしにもできます。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
     <div id="modeRow"><button id="modeFree" class="modeBtn on">自由対戦</button><button id="modeStory" class="modeBtn">ストーリー（育成）</button></div>
     <div id="diffRow" style="margin:8px 0;font-size:13px">難易度 <select id="diffSel"><option value="easy">やさしい（AIは素直・敵は弱め）</option><option value="normal" selected>ふつう（AI強化）</option><option value="hard">つよい（AI強化・敵は強め）</option></select></div>
+    <div id="cutinRow" style="margin:8px 0;font-size:13px">攻撃演出 <select id="cutinSel"><option value="on">カットインあり（全攻撃）</option><option value="off">カットインなし</option></select></div>
     <button id="howtoBtn" style="margin:4px 0 8px;padding:8px 14px">遊び方・ルール</button>
     <div id="howto" class="hidden" style="text-align:left;font-size:13px;line-height:1.75;color:#ddd3ba;background:#221d16;border:1px solid #6b5a35;border-radius:8px;padding:12px 14px;margin-bottom:10px">
       <div style="color:#ffd98a;font-weight:700">■ このゲームについて</div>
@@ -189,6 +199,7 @@ img.uimg{transition:transform .15s ease}
   </div>
 
   <div id="game" class="hidden">
+<div id="cutin" class="hidden"><img id="cutinBg" alt=""><div id="cutinShade"></div><img id="cutinArt" alt=""><div id="cutinPlate"><div id="cutinName"></div><div id="cutinMove"></div></div></div>
 <div id="banner" class="hidden"><div id="bannerMain"></div><div id="bannerSub"></div></div>
     <div id="phase">-</div>
     <div id="zoomRow"><button class="zoomBtn" data-z="1">全体</button><button class="zoomBtn" data-z="1.6">拡大</button><button class="zoomBtn" data-z="2.4">特大</button><span style="font-size:11px;color:#9a8f7a">拡大時はスクロールで盤面を移動できます</span></div>
@@ -501,6 +512,7 @@ function alliesAdjacent(u){ return units.filter(v=>v.alive&&v.side===u.side&&v!=
 function fxUnit(uid, cls){ const el=document.querySelector('[data-uid="'+uid+'"]'); if(el){ el.classList.add(cls); setTimeout(()=>el.classList.remove(cls), 480); } }
 function popAt(x,y,txt,heal,big){ const cell=$("board").children[y*BW+x]; if(!cell) return; const s=document.createElement("span"); s.className="dmgpop"+(heal?" heal":"")+(big?" big":""); s.textContent=txt; cell.appendChild(s); setTimeout(()=>s.remove(), 880); }
 async function resolveAttack(att, def, isCounter){
+  if(cutinOn()) await showCutin(att,"atk");
   const d=d2(att,def);
   let need=att.hit; const notes=[]; let duelBonus=false;
   if(!isCounter&&att.duel&&alliesAdjacent(def)===0){ need+=1; duelBonus=true; notes.push("一騎打ち"); }
@@ -524,7 +536,7 @@ async function resolveAttack(att, def, isCounter){
     await resolveAttack(def, att, true);
   }
 }
-async function resolveHeal(h, t){ if(h.healsLeft!==undefined){ if(h.healsLeft<=0){ log(h.name+" はもう回復できない（1体3回まで）"); return; } h.healsLeft--; } const amt=h.healAmt||3; t.hp=Math.min(t.maxhp, t.hp+amt); SFX.heal(); fxUnit(t.id,"fxHeal"); glowAt(t.x,t.y); burstAt(t.x,t.y,"#8affc1",6); popAt(t.x,t.y,"+"+amt,true); log(h.name+" は "+t.name+" を "+amt+" 回復した"+(h.healsLeft!==undefined?"（回復あと"+h.healsLeft+"回）":"")); awardXP(h,15); await sleep(320); render(); }
+async function resolveHeal(h, t){ if(cutinOn()) await showCutin(h,"heal"); if(h.healsLeft!==undefined){ if(h.healsLeft<=0){ log(h.name+" はもう回復できない（1体3回まで）"); return; } h.healsLeft--; } const amt=h.healAmt||3; t.hp=Math.min(t.maxhp, t.hp+amt); SFX.heal(); fxUnit(t.id,"fxHeal"); glowAt(t.x,t.y); burstAt(t.x,t.y,"#8affc1",6); popAt(t.x,t.y,"+"+amt,true); log(h.name+" は "+t.name+" を "+amt+" 回復した"+(h.healsLeft!==undefined?"（回復あと"+h.healsLeft+"回）":"")); awardXP(h,15); await sleep(320); render(); }
 function livingUnits(side){ return units.filter(u=>u.alive&&u.side===side); }
 function unactedUnits(side){ return livingUnits(side).filter(u=>!u.acted); }
 function checkEnd(){ const p=livingUnits("p").length, e=livingUnits("e").length;
@@ -745,6 +757,48 @@ function burstAt(x,y,color,n){ const board=document.getElementById("board"); if(
     s.style.left=(Math.random()*100)+"%"; s.style.width=sz+"px"; s.style.height=sz+"px";
     s.style.animationDuration=(7+Math.random()*8)+"s"; s.style.animationDelay=(-Math.random()*12)+"s"; af.appendChild(s); }
   const bb=document.getElementById("backBtn"); if(bb) bb.addEventListener("click", ()=>{ af.style.display="none"; }); })();
+
+const ATK_NAMES={
+"騎士長ヴァルク":"誓いの剣閃","盾兵ブラム":"鉄壁の盾撃ち","盾兵トア":"守護の一撃","クロスボウ兵シン":"穿つ一矢","戦闘神官ミラ":"聖なる鉄槌",
+"頭目ガルム":"呪われし戦斧","蛮族戦士":"野生の猛撃","投槍兵":"投擲の槍","呪術師":"呪いの炎",
+"傭兵隊長":"歴戦の剣技","槍兵":"傭兵の槍捌き","斥候":"疾風の短剣","石弓兵":"狙い澄ました一矢",
+"ギルド長":"鍛冶長の鉄槌","斧兵":"岩をも砕く斧","銃兵":"轟く銃声","工匠":"工匠の撃鉄",
+"エルフの長":"古森の剣","エルフ弓兵":"森を駆ける矢","エルフ魔法使い":"精霊の魔力","エルフ剣士":"葉隠れの太刀",
+"大天使ガブリエラ":"裁きの大剣","戦天使ミカエラ":"天翔ける槍","癒しの天使セラフィナ":"光の小剣","光の射手アリエル":"連なる光の矢",
+"大悪魔セヴェル":"魂を刈る契約","悪魔戦士ルチア":"黒剣の舞踏","小悪魔ノワール":"鈴音の爪撃","炎の呪術師ネヴェ":"紫炎の呪縛",
+"武将":"一刀両断","侍":"居合の一閃","足軽槍兵":"足軽の突き","弓侍":"弓取りの矢","忍者":"闇に紛れる苦無",
+"見習い騎士レオン":"若き英雄の槍","古代ゴーレム":"遺跡の鉄拳"};
+const HEAL_NAMES={"戦闘神官ミラ":"癒しの祈祷","癒しの天使セラフィナ":"天使の癒し"};
+function cutinOn(){ try{ return localStorage.getItem("tekkanCutin")!=="off"; }catch(e){ return true; } }
+function atkNameOf(u){ if(ATK_NAMES[u.name]) return ATK_NAMES[u.name];
+  const base=(u.name||"").replace(/[A-Z]$/,""); if(ATK_NAMES[base]) return ATK_NAMES[base];
+  if(u.icon==="\u{1F3F9}") return "放たれた矢"; if(u.icon==="\u{1F4A5}") return "銃撃";
+  if(u.icon==="\u{1F52E}") return "魔力の一撃"; if(u.icon==="\u{1F5E1}") return "一閃";
+  return "渾身の一撃"; }
+function showCutin(att, mode){ return new Promise(res=>{ const c=document.getElementById("cutin");
+  if(!c||!att||!att.art){ res(); return; }
+  const bg=document.getElementById("cutinBg"); const fa=(typeof FACTION_ART!=="undefined")?FACTION_ART[att.key]:null;
+  if(fa){ bg.src=fa; bg.style.display=""; } else { bg.removeAttribute("src"); bg.style.display="none"; }
+  const im=document.getElementById("cutinArt"); im.src=att.art;
+  const nm=document.getElementById("cutinName"); nm.textContent=att.name;
+  nm.style.color=(window.FACTION_COLORS||{})[att.key]||"#e8e2d0";
+  const mv=document.getElementById("cutinMove");
+  mv.textContent=(mode==="heal")?(HEAL_NAMES[att.name]||"癒しの祈り"):atkNameOf(att);
+  mv.style.color=(mode==="heal")?"#8affc1":"#ffd25a";
+  c.style.justifyContent=(att.side==="e")?"flex-start":"flex-end";
+  c.classList.remove("hidden");
+  const dir=(att.side==="e")?-70:70;
+  im.animate([{transform:"translateX("+dir+"px)",opacity:0},{transform:"translateX(0)",opacity:1}],{duration:180,easing:"ease-out"});
+  const plate=document.getElementById("cutinPlate");
+  plate.animate([{transform:"translateY(14px)",opacity:0},{transform:"translateY(0)",opacity:1}],{duration:200,easing:"ease-out"});
+  let done=false; const finish=()=>{ if(done) return; done=true; c.removeEventListener("click",finish); c.classList.add("hidden"); res(); };
+  c.addEventListener("click",finish);
+  setTimeout(finish, 720);
+}); }
+(function(){ const sel=document.getElementById("cutinSel"); if(!sel) return;
+  sel.value=cutinOn()?"on":"off";
+  sel.addEventListener("change", ()=>{ try{ localStorage.setItem("tekkanCutin", sel.value); }catch(e){} });
+})();
 
 fillOptions(); resetPicks(); setupInfo();
 </script>
