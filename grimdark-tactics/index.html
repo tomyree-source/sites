@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v31｜オートバトル機能を追加。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v32｜オープニングを追加。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -155,12 +155,39 @@ img.uimg{transition:transform .15s ease}
 #dlgSkip29{float:right;background:#3a2d1a;color:#e8cf9a;border:1px solid #6d5836;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer}
 .dlgChoice29{display:block;width:100%;text-align:left;margin:8px 0 0;background:#2e2413;color:#f0e6cf;border:1px solid #8a6f3e;border-radius:9px;padding:10px 12px;font-size:15px;cursor:pointer}
 .dlgChoice29 span{display:block;color:#b9a678;font-size:12.5px;margin-top:2px}
+
+/* ===== v32 opening ===== */
+#op32{position:fixed;inset:0;z-index:200;background:#060503;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;transition:opacity .6s ease;font-family:inherit}
+#op32.fadeout{opacity:0;pointer-events:none}
+#opBg32{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34;filter:saturate(.75) brightness(.8);animation:opZoom32 36s linear forwards}
+@keyframes opZoom32{from{transform:scale(1)}to{transform:scale(1.14)}}
+#opShade32{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.25) 0%,rgba(0,0,0,.78) 78%,#060503 100%)}
+#opAsh32{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+#opAsh32 span{position:absolute;top:-3vh;border-radius:50%;background:#cfc4a8;animation-name:opAshFall32;animation-timing-function:linear;animation-iteration-count:infinite}
+@keyframes opAshFall32{0%{transform:translate(0,-3vh)}50%{transform:translate(2.2vw,52vh)}100%{transform:translate(-1vw,106vh)}}
+#opInner32{position:relative;text-align:center;padding:0 6vw;max-width:820px;width:100%}
+#opTitle32{opacity:0;transform:translateY(10px);transition:opacity 1.4s ease,transform 1.4s ease}
+#opTitle32.show{opacity:1;transform:none}
+#opOrn32{color:#a68d5f;font-size:22px;letter-spacing:.6em;margin-bottom:10px}
+#opMain32{font-size:min(64px,13vw);font-weight:800;letter-spacing:.18em;line-height:1.15;background:linear-gradient(180deg,#fdf3cd 20%,#e9c96e 55%,#9a742f 90%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 3px 14px rgba(233,201,110,.25))}
+#opSub32{color:#e8cf9a;font-size:min(19px,4.6vw);letter-spacing:.5em;margin-top:12px}
+#opRule32{width:180px;height:1px;margin:20px auto 0;background:linear-gradient(90deg,transparent,#a68d5f,transparent)}
+#opText32{margin-top:9vh;min-height:96px;color:#f0e6cf;font-size:min(20px,4.9vw);line-height:2.05;opacity:0;transition:opacity .55s ease;text-shadow:0 2px 10px rgba(0,0,0,.9)}
+#opText32.show{opacity:1}
+#opCount32{margin-top:14px;color:#8d7c58;font-size:12px;letter-spacing:.35em;min-height:16px}
+#opFinal32{margin-top:8vh;opacity:0;pointer-events:none;transition:opacity .8s ease}
+#opFinal32.show{opacity:1;pointer-events:auto}
+#opStartBtn32{background:rgba(20,15,8,.72);color:#ffd98a;border:1px solid #a68d5f;border-radius:10px;padding:13px 34px;font-size:17px;letter-spacing:.25em;cursor:pointer;animation:opPulse32 1.6s ease-in-out infinite}
+@keyframes opPulse32{0%,100%{box-shadow:0 0 0 rgba(255,217,138,0)}50%{box-shadow:0 0 22px rgba(255,217,138,.35)}}
+#opSkip32{position:absolute;top:14px;right:14px;background:rgba(20,15,8,.66);color:#cbb27f;border:1px solid #6d5836;border-radius:8px;padding:6px 12px;font-size:12.5px;cursor:pointer;z-index:3}
+#opHint32{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#8d7c58;font-size:12px;letter-spacing:.2em}
 </style>
 </head>
 <body>
+<div id="op32"><img id="opBg32" alt=""><div id="opShade32"></div><div id="opAsh32"></div><button id="opSkip32">スキップ ≫</button><div id="opInner32"><div id="opTitle32"><div id="opOrn32">⚔</div><div id="opMain32">鉄冠戦記</div><div id="opSub32">- 灰燼の聖戦 -</div><div id="opRule32"></div></div><div id="opText32"></div><div id="opCount32"></div><div id="opFinal32"><button id="opStartBtn32">物語を始める</button></div></div><div id="opHint32">タップで進む</div></div>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v31｜オートバトルを追加しました。戦闘中の「オート」ボタンをONにすると、自軍も自動で行動します（強化AIが移動・攻撃・回復を判断）。もう一度押せばその場で手動に戻ります。戦闘速度「超高速」と組み合わせると、AI同士の対戦を一気に観戦できます。</div>
+  <div class="sub">見本v32｜オープニングを追加しました。起動時に、タイトル演出と物語の導入ナレーション（灰の雨と王冠の欠片をめぐる物語）が流れます。タップで文章を送れて、スキップも可能です。勢力選択の「オープニングを見る」からいつでも再生できます。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
@@ -171,6 +198,7 @@ img.uimg{transition:transform .15s ease}
 <div id="speedRow" style="margin:8px 0;font-size:13px">戦闘速度 <select id="speedSel"><option value="normal">ふつう</option><option value="fast">はやい（演出を短く）</option><option value="fastest">超高速（ほぼ待ちなし）</option></select></div>
 <div id="bgmRow" style="margin:8px 0;font-size:13px">BGM <select id="bgmSel"><option value="on">あり（灰の雨の環境音）</option><option value="off">なし</option></select></div>
 <button id="howtoBtn" style="margin:4px 0 8px;padding:8px 14px">遊び方・ルール</button>
+    <button id="opReplay32" style="margin:4px 0 8px 6px;padding:8px 14px">オープニングを見る</button>
     <div id="howto" class="hidden" style="text-align:left;font-size:13px;line-height:1.75;color:#ddd3ba;background:#221d16;border:1px solid #6b5a35;border-radius:8px;padding:12px 14px;margin-bottom:10px">
       <div style="color:#ffd98a;font-weight:700">■ このゲームについて</div>
       12×16マスの盤面で戦うターン制タクティクスです。自由対戦（8つの勢力から選んで対戦）と、帝国騎士団の小隊を育てながら進むストーリー（全6戦）があります。
@@ -183,7 +211,7 @@ img.uimg{transition:transform .15s ease}
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ 自由対戦</div>
       難易度は やさしい／ふつう／つよい（敵の強さとAIが変わります）。編成はポイント制で、予算（50／70／90pt）の中で名簿から出撃させる駒を選びます。相手も同じ予算で自動編成されます。勝利条件は「殲滅」か「拠点確保」です。拠点確保は、中央の遺跡を囲む金色の4マスをラウンド終了時に多く占めていた側が1点、3点先取で勝ちです。ラウンド上限は12で、到達した場合は拠点点数→残存数→残り体力の順で判定します。
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ ストーリーと育成</div>
-      騎士団の小隊で全6戦を戦います。戦うと経験値が入り、レベルが上がるとHPや攻撃が伸び、固有スキルも開きます。勲章の収集もあります。記録はこの端末に自動保存されます（「育成データを消す」でリセット）。第2戦を勝つと見習い騎士レオンが加入し、第3戦では古代ゴーレムが目覚めて両軍を襲います。ラウンド上限は15で、時間切れは敗北です。章の前後には顔絵つきの会話シーンがあり、第2戦・第4戦・第5戦の勝利後には進路の選択（分岐）が出ます。選択は次の戦いの展開や最終戦の結末を変えます。自由対戦でも、どの勢力でも自軍ユニットが経験値を得て育ちます（設定の「育成反映」で切り替え可能）。攻撃前には戦闘予測（与えるダメージ・命中率・撃破可否・相手の反撃とその危険度）が出ます。設定で戦闘速度（ふつう／はやい／超高速）とBGMのON/OFFを切り替えられます。戦闘中の「オート」をONにすると、自軍も自動で行動します（もう一度押すと止まります。速度設定と組み合わせると観戦も高速で進みます）。
+      騎士団の小隊で全6戦を戦います。戦うと経験値が入り、レベルが上がるとHPや攻撃が伸び、固有スキルも開きます。勲章の収集もあります。記録はこの端末に自動保存されます（「育成データを消す」でリセット）。第2戦を勝つと見習い騎士レオンが加入し、第3戦では古代ゴーレムが目覚めて両軍を襲います。ラウンド上限は15で、時間切れは敗北です。章の前後には顔絵つきの会話シーンがあり、第2戦・第4戦・第5戦の勝利後には進路の選択（分岐）が出ます。選択は次の戦いの展開や最終戦の結末を変えます。自由対戦でも、どの勢力でも自軍ユニットが経験値を得て育ちます（設定の「育成反映」で切り替え可能）。攻撃前には戦闘予測（与えるダメージ・命中率・撃破可否・相手の反撃とその危険度）が出ます。設定で戦闘速度（ふつう／はやい／超高速）とBGMのON/OFFを切り替えられます。戦闘中の「オート」をONにすると、自軍も自動で行動します（もう一度押すと止まります。速度設定と組み合わせると観戦も高速で進みます）。起動時にはオープニング（物語の導入）が流れます。タップで文章を送り、右上の「スキップ」ですぐに始められます。「オープニングを見る」ボタンからいつでも見直せます。
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ その他</div>
       音のON／OFF、盤面の表示倍率（全体／拡大／特大）が切り替えられます。拡大時は盤面をスクロールできます。
     </div>
@@ -1009,6 +1037,76 @@ function autoLabel30(){ const b=document.getElementById("autoBtn30"); if(b) b.te
 (()=>{ const b=document.getElementById("autoBtn30"); if(!b) return;
   b.onclick=()=>{ window.autoBattle30=!window.autoBattle30; autoLabel30();
     if(window.autoBattle30){ pending=null; selectedId=null; drive(); } };
+})();
+
+// ===== v32: オープニング =====
+// タイトル演出 → 物語ナレーション（タップで送る／自動送り）→ ゲーム開始。
+// 背景は騎士団の集合絵をゆっくりズーム（ケン・バーンズ）、灰の粒子を降らせる。
+const OP_LINES32=[
+ "かつて、大陸を統一した帝国があった。",
+ "しかし帝国は内乱によって滅び、あれから百年――",
+ "帝国が滅んだ年から、「灰の雨」は降りやまない。",
+ "北の砦に残る帝国騎士団は、割れた王冠の欠片を集め、灰の雨を止める聖戦を掲げた。",
+ "東の霧の沼地からは、呪いで姿を変えた蛮族が押し寄せる。南では傭兵が、西の地底ではドワーフが、それぞれの思惑で動き始めていた。",
+ "そして今、大陸各地の古代遺跡で、眠っていたはずの力が目覚め始めている。",
+ "王冠の欠片が指し示す先、古代神殿の扉が開くとき――物語が始まる。"
+];
+let opTimer32=null, opPhase32="title", opIdx32=-1, opOpen32=false;
+function opClear32(){ if(opTimer32){ clearTimeout(opTimer32); opTimer32=null; } }
+function opShowLine32(i){
+  opIdx32=i; opPhase32="story";
+  const t=document.getElementById("opTitle32"), tx=document.getElementById("opText32"),
+        ct=document.getElementById("opCount32"), fin=document.getElementById("opFinal32");
+  t.classList.remove("show"); fin.classList.remove("show");
+  tx.classList.remove("show");
+  setTimeout(()=>{ tx.textContent=OP_LINES32[i]; tx.classList.add("show"); ct.textContent=(i+1)+" / "+OP_LINES32.length; },260);
+  opTimer32=setTimeout(()=>{ if(i+1<OP_LINES32.length) opShowLine32(i+1); else opFinal32(); },3600);
+}
+function opFinal32(){
+  opPhase32="final";
+  const tx=document.getElementById("opText32"), ct=document.getElementById("opCount32"), fin=document.getElementById("opFinal32");
+  tx.classList.remove("show"); ct.textContent="";
+  setTimeout(()=>{ fin.classList.add("show"); },300);
+}
+function opAdvance32(){
+  if(!opOpen32) return;
+  opClear32();
+  if(opPhase32==="title"){ opShowLine32(0); }
+  else if(opPhase32==="story"){ if(opIdx32+1<OP_LINES32.length) opShowLine32(opIdx32+1); else opFinal32(); }
+  else if(opPhase32==="final"){ opClose32(); }
+}
+function opClose32(){
+  opClear32(); opOpen32=false;
+  const ov=document.getElementById("op32");
+  ov.classList.add("fadeout");
+  setTimeout(()=>{ ov.style.display="none"; ov.classList.remove("fadeout"); },650);
+}
+function opStart32(){
+  const ov=document.getElementById("op32"); if(!ov) return;
+  opClear32(); opOpen32=true; opPhase32="title"; opIdx32=-1;
+  ov.style.display="flex"; ov.classList.remove("fadeout");
+  const bg=document.getElementById("opBg32");
+  if(bg && typeof FACTION_ART!=="undefined" && FACTION_ART.knights && !bg.src) bg.src=FACTION_ART.knights;
+  const t=document.getElementById("opTitle32"), tx=document.getElementById("opText32"),
+        ct=document.getElementById("opCount32"), fin=document.getElementById("opFinal32");
+  tx.classList.remove("show"); tx.textContent=""; ct.textContent=""; fin.classList.remove("show");
+  t.classList.remove("show"); void t.offsetWidth; t.classList.add("show");
+  opTimer32=setTimeout(()=>{ if(opOpen32) opShowLine32(0); },3000);
+}
+(()=>{ const ov=document.getElementById("op32"); if(!ov) return;
+  // 灰の粒子
+  const ash=document.getElementById("opAsh32");
+  if(ash && !ash.childElementCount){ for(let i=0;i<26;i++){ const s=document.createElement("span");
+    s.style.left=(Math.random()*100)+"%"; const sz=(2+Math.random()*2.5).toFixed(1);
+    s.style.width=sz+"px"; s.style.height=sz+"px";
+    s.style.animationDuration=(6+Math.random()*7).toFixed(1)+"s";
+    s.style.animationDelay=(-Math.random()*10).toFixed(1)+"s";
+    s.style.opacity=(0.35+Math.random()*0.45).toFixed(2); ash.appendChild(s); } }
+  ov.addEventListener("click", e=>{ if(e.target.id==="opSkip32") return; opAdvance32(); });
+  document.getElementById("opSkip32").addEventListener("click", e=>{ e.stopPropagation(); opClose32(); });
+  document.getElementById("opStartBtn32").addEventListener("click", e=>{ e.stopPropagation(); opClose32(); });
+  const rp=document.getElementById("opReplay32"); if(rp) rp.addEventListener("click", ()=>opStart32());
+  opStart32();
 })();
 
 fillOptions(); resetPicks(); setupInfo();
