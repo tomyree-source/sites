@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v24｜全ユニットのダメージを+1し、一撃の重みと決着の速さを強化。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v25｜勢力総当たり実測で最下位だった悪魔を底上げ（セヴェル・ルチア・ノワールのHP増）。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -121,7 +121,7 @@ img.uimg{transition:transform .15s ease}
 <body>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v24｜攻撃を厳しくしました。全ユニットのダメージ+1に加え、敵AIが距離を取らずに踏み込んで攻撃してくるよう改良（従来は射程の手前で止まってしまうことがありました）。殲滅戦の決着が早くなります。</div>
+  <div class="sub">見本v25｜全勢力の総当たり実測（56戦）で最下位だった悪魔を底上げしました。大悪魔セヴェルHP17→19、悪魔戦士ルチア11→14、小悪魔ノワール6→8。悪魔は70pt編成で2体しか出ず数で押されていたため、1体ごとの耐久を上げています。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
@@ -228,9 +228,9 @@ const FACTIONS = {
     {icon:"💙",name:"癒しの天使セラフィナ",hp:9,move:4,range:2,hit:4,dmg:3,fly:true,heal:true},
     {icon:"🏹",name:"光の射手アリエル",hp:9,move:4,range:3,hit:3,dmg:4,fly:true}]},
   demon:{name:"悪魔（魔界の軍団）",units:[
-    {icon:"😈",name:"大悪魔セヴェル",hp:17,move:4,range:2,hit:3,dmg:6,fly:true},
-    {icon:"👹",name:"悪魔戦士ルチア",hp:11,move:4,range:1,hit:3,dmg:5},
-    {icon:"🦇",name:"小悪魔ノワール",hp:6,move:5,range:2,hit:4,dmg:3,fly:true},
+    {icon:"😈",name:"大悪魔セヴェル",hp:19,move:4,range:2,hit:3,dmg:6,fly:true},
+    {icon:"👹",name:"悪魔戦士ルチア",hp:14,move:4,range:1,hit:3,dmg:5},
+    {icon:"🦇",name:"小悪魔ノワール",hp:8,move:5,range:2,hit:4,dmg:3,fly:true},
     {icon:"🔥",name:"炎の呪術師ネヴェ",hp:7,move:3,range:3,hit:4,dmg:5}]},
   samurai:{name:"サムライ（東の武士団）",duel:true,units:[
     {icon:"🏯",name:"武将",hp:14,move:3,range:1,hit:3,dmg:6},
