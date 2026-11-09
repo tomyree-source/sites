@@ -25,11 +25,14 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.41";
+const GAME_VERSION = "1.42";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.42", date:"2026-11-09", items:[
+    "「界隈大炎上編」に界隈の決め台詞『目を突くように嘘を吐く』を追記：『目つき』騒動のコメント欄で生まれた言葉遊びが、説明の二転三転する騒動全体を指す合言葉として広がっていく",
+  ]},
   {v:"1.41", date:"2026-11-09", items:[
     "連鎖イベント「界隈大炎上編」を追加（第2章以降・週をまたぐ全8段）：人気インフルエンサーの疑惑報道に端を発し、達人グループの内紛、別件の『目つき』騒動、説明の二転三転、映画企画の大ゴケとグループ離散、無関係な配信者の便乗まで、燃え続ける騒動の連鎖を描く。疑惑の当事者は架空の人物で、真偽は作中でも断定しない",
   ]},
