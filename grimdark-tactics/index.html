@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v30｜テンポと分かりやすさ（戦闘予測・速度設定・BGM）。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v31｜オートバトル機能を追加。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -160,7 +160,7 @@ img.uimg{transition:transform .15s ease}
 <body>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v30｜テンポと分かりやすさを強化しました。①戦闘予測：攻撃前に、与えるダメージ・命中率・撃破できるか・相手の反撃（ダメージと危険度）まで表示します。②戦闘速度：設定で「はやい／超高速」にすると、敵の行動や演出の待ち時間が縮みます。③BGM：灰の雨の世界に合わせた環境音（低い持続音と遠くの鐘）を追加しました。設定でON/OFFできます。</div>
+  <div class="sub">見本v31｜オートバトルを追加しました。戦闘中の「オート」ボタンをONにすると、自軍も自動で行動します（強化AIが移動・攻撃・回復を判断）。もう一度押せばその場で手動に戻ります。戦闘速度「超高速」と組み合わせると、AI同士の対戦を一気に観戦できます。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
@@ -183,7 +183,7 @@ img.uimg{transition:transform .15s ease}
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ 自由対戦</div>
       難易度は やさしい／ふつう／つよい（敵の強さとAIが変わります）。編成はポイント制で、予算（50／70／90pt）の中で名簿から出撃させる駒を選びます。相手も同じ予算で自動編成されます。勝利条件は「殲滅」か「拠点確保」です。拠点確保は、中央の遺跡を囲む金色の4マスをラウンド終了時に多く占めていた側が1点、3点先取で勝ちです。ラウンド上限は12で、到達した場合は拠点点数→残存数→残り体力の順で判定します。
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ ストーリーと育成</div>
-      騎士団の小隊で全6戦を戦います。戦うと経験値が入り、レベルが上がるとHPや攻撃が伸び、固有スキルも開きます。勲章の収集もあります。記録はこの端末に自動保存されます（「育成データを消す」でリセット）。第2戦を勝つと見習い騎士レオンが加入し、第3戦では古代ゴーレムが目覚めて両軍を襲います。ラウンド上限は15で、時間切れは敗北です。章の前後には顔絵つきの会話シーンがあり、第2戦・第4戦・第5戦の勝利後には進路の選択（分岐）が出ます。選択は次の戦いの展開や最終戦の結末を変えます。自由対戦でも、どの勢力でも自軍ユニットが経験値を得て育ちます（設定の「育成反映」で切り替え可能）。攻撃前には戦闘予測（与えるダメージ・命中率・撃破可否・相手の反撃とその危険度）が出ます。設定で戦闘速度（ふつう／はやい／超高速）とBGMのON/OFFを切り替えられます。
+      騎士団の小隊で全6戦を戦います。戦うと経験値が入り、レベルが上がるとHPや攻撃が伸び、固有スキルも開きます。勲章の収集もあります。記録はこの端末に自動保存されます（「育成データを消す」でリセット）。第2戦を勝つと見習い騎士レオンが加入し、第3戦では古代ゴーレムが目覚めて両軍を襲います。ラウンド上限は15で、時間切れは敗北です。章の前後には顔絵つきの会話シーンがあり、第2戦・第4戦・第5戦の勝利後には進路の選択（分岐）が出ます。選択は次の戦いの展開や最終戦の結末を変えます。自由対戦でも、どの勢力でも自軍ユニットが経験値を得て育ちます（設定の「育成反映」で切り替え可能）。攻撃前には戦闘予測（与えるダメージ・命中率・撃破可否・相手の反撃とその危険度）が出ます。設定で戦闘速度（ふつう／はやい／超高速）とBGMのON/OFFを切り替えられます。戦闘中の「オート」をONにすると、自軍も自動で行動します（もう一度押すと止まります。速度設定と組み合わせると観戦も高速で進みます）。
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ その他</div>
       音のON／OFF、盤面の表示倍率（全体／拡大／特大）が切り替えられます。拡大時は盤面をスクロールできます。
     </div>
@@ -230,6 +230,7 @@ img.uimg{transition:transform .15s ease}
         <button id="waitBtn">待機（行動終了）</button>
         <button id="nextBtn">次の未行動へ</button>
         <button id="endBtn">ターン終了（敵の番へ）</button>
+        <button id="autoBtn30">オート：OFF</button>
         <button id="backBtn">勢力選択に戻る</button>
       </div>
     </div>
@@ -567,7 +568,7 @@ async function drive(){
       const pL=unactedUnits("p"), eL=unactedUnits("e");
       if(!pL.length&&!eL.length){ if(objMode()){ scoreObjective(); if(gameOver) break; } if(roundNo>=roundLimit()){ endByTime(); break; } roundNo++; units.forEach(u=>{ u.acted=false; u.moved=false; }); turnSide="p"; log("―― 第"+roundNo+"ラウンド ――"); render(); if(await golemTurn()){ if(checkEnd()) break; } continue; }
       if(turnSide==="p"){
-        if(pL.length){ busy=false; render(); break; }
+        if(pL.length){ if(window.autoBattle30 && !document.getElementById("dlg29").classList.contains("open")){ busy=true; render(); await sleep(420); await enemyActivateSmart(pL[0]); turnSide="e"; continue; } busy=false; render(); break; }
         turnSide="e"; continue;
       } else {
         if(eL.length){ busy=true; render(); await sleep(420); await (DIFF==="easy"? enemyActivate(eL[0]) : enemyActivateSmart(eL[0])); turnSide="p"; continue; }
@@ -698,7 +699,7 @@ function setupInfo(){ const pk=$("pf").value, ek=$("ef").value;
   if(freePtsOn){ const pc=pickCost(), bd=budgetNow(); const si=$("setupInfo"); si.textContent+="｜編成コスト "+pc+"pt / 予算 "+bd+"pt"+(pc>bd?"（予算オーバー）":pickSet.size<2?"（2体以上選んでください）":""); si.classList.toggle("warn", pc>bd||pickSet.size<2); }
   ro.querySelectorAll("img[data-k]").forEach(im=>{ im.src=(UNIT_ART[im.dataset.k]||[])[Number(im.dataset.i)]||""; }); }
 function startGame(){
-  battleXP={}; battleMedals={}; growthDone=false; golemAwake=false; golemDown=false; if(startAsStory){ gameMode="story"; startAsStory=false; } else { gameMode="free"; } const br=$("battleResults"); if(br) br.classList.add("hidden");
+  window.autoBattle30=false; autoLabel30(); battleXP={}; battleMedals={}; growthDone=false; golemAwake=false; golemDown=false; if(startAsStory){ gameMode="story"; startAsStory=false; } else { gameMode="free"; } const br=$("battleResults"); if(br) br.classList.add("hidden");
   playerKey=$("pf").value; enemyKey=$("ef").value;
   if(gameMode==="free"){ const bd=budgetNow(); if(pickSet.size<2||pickCost()>bd){ const si=$("setupInfo"); si.textContent="編成が予算に収まっていません（2体以上・"+bd+"pt以内で選んでください）"; si.classList.add("warn"); return; } }
   if(gameMode==="free"){ const ep=new Set(autoPick(enemyKey,budgetNow())); units=buildSquad(playerKey,"p").filter(u=>pickSet.has(u.idx)).concat(buildSquad(enemyKey,"e").filter(u=>ep.has(u.idx)));
@@ -1000,6 +1001,14 @@ window.addEventListener("pointerdown", function(){ startBGM30(); if(bgmCtx30&&bg
   const bs=document.getElementById("bgmSel");
   if(bs){ bs.value=bgmOn30()?"on":"off";
     bs.onchange=()=>{ try{ localStorage.setItem("tekkanBgm", bs.value==="off"?"off":"on"); }catch(e){} if(bs.value==="on") startBGM30(); }; }
+})();
+
+// ===== v31: オートバトル =====
+window.autoBattle30=false;
+function autoLabel30(){ const b=document.getElementById("autoBtn30"); if(b) b.textContent=window.autoBattle30?"オート：ON":"オート：OFF"; }
+(()=>{ const b=document.getElementById("autoBtn30"); if(!b) return;
+  b.onclick=()=>{ window.autoBattle30=!window.autoBattle30; autoLabel30();
+    if(window.autoBattle30){ pending=null; selectedId=null; drive(); } };
 })();
 
 fillOptions(); resetPicks(); setupInfo();
