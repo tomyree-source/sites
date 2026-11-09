@@ -25,11 +25,14 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.4";
+const GAME_VERSION = "1.41";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.41", date:"2026-11-09", items:[
+    "連鎖イベント「界隈大炎上編」を追加（第2章以降・週をまたぐ全8段）：人気インフルエンサーの疑惑報道に端を発し、達人グループの内紛、別件の『目つき』騒動、説明の二転三転、映画企画の大ゴケとグループ離散、無関係な配信者の便乗まで、燃え続ける騒動の連鎖を描く。疑惑の当事者は架空の人物で、真偽は作中でも断定しない",
+  ]},
   {v:"1.4", date:"2026-11-09", items:[
     "第4章「円熟期」（40〜49歳）を追加：散打の間宮健一率いる道場との対抗戦が主敵ラインとして開幕（第5章へ続く長期戦の第1幕）。赤井道場が開かれ、弟子全員が同じ赤い道着の『赤い軍団』として登場",
     "第4章の初登場：王麗華（58・陳式太極拳、厳格型の老師）／間宮健一（55・散打）／高村蒼太（19・サバット、若手の星）／呉志強（61・酔拳、寛容型の老師）。カメオで顔見せ済みの達人たちとも直接対面できるようになった",
@@ -157,6 +160,8 @@ const EPISODE_TAGS = {
   sp_collab_kitajima:"達人検証のハブ", sp_collab_shiroma:"レアキャラの稽古会",
   sp_back_visit1:"黒い車の訪問", sp_back_visit2:"黒い車の訪問", sp_back_visit3:"黒い車の訪問",
   sp_victory_declare:"勝利宣言", sp_night_attack:"夜道の襲撃", debt_deadend:"夜逃げ",
+  sp_burn1:"界隈大炎上", sp_burn2:"界隈大炎上", sp_burn3:"目つき騒動", sp_burn4:"界隈大炎上",
+  sp_burn5:"界隈大炎上", sp_burn6:"界隈大炎上", sp_burn7:"界隈大炎上", sp_burn8:"界隈大炎上",
   boty:"BOTY",
 };
 function episodeTag(id){
@@ -1357,6 +1362,24 @@ function pickEndWeekEvent(){
       chainEv = CHAIN_EVENTS.find(e => e.id === "sp_victory_declare");
     else if (S.flags.victoryDeclared && !S.seenEvents["sp_night_attack"] && S.absWeek >= (S.flags.victoryDeclaredWeek || 0) + 1 && _rng() < 0.55)
       chainEv = CHAIN_EVENTS.find(e => e.id === "sp_night_attack");
+    // 第87節: 界隈大炎上編（第2章以降・1周1回。週をまたいで8段が連鎖する。疑惑の当事者は架空人物、
+    // 達人グループの反応役と目つき騒動にはオマージュキャストを充てる。借金・訴訟系には接続しない）
+    else if (S.chapter >= 2 && !S.seenEvents["sp_burn1"] && _rng() < 0.22)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_burn1");
+    else if (S.flags.burn2 && !S.seenEvents["sp_burn2"] && S.absWeek >= (S.flags.burn2Week || 0) + 3 && _rng() < 0.55)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_burn2");
+    else if (S.flags.burn3 && !S.seenEvents["sp_burn3"] && S.absWeek >= (S.flags.burn3Week || 0) + 2 && _rng() < 0.55)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_burn3");
+    else if (S.flags.burn4 && !S.seenEvents["sp_burn4"] && S.absWeek >= (S.flags.burn4Week || 0) + 3 && _rng() < 0.55)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_burn4");
+    else if (S.flags.burn5 && !S.seenEvents["sp_burn5"] && S.absWeek >= (S.flags.burn5Week || 0) + 2 && _rng() < 0.6)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_burn5");
+    else if (S.flags.burn6 && !S.seenEvents["sp_burn6"] && S.absWeek >= (S.flags.burn6Week || 0) + 3 && _rng() < 0.55)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_burn6");
+    else if (S.flags.burn7 && !S.seenEvents["sp_burn7"] && S.absWeek >= (S.flags.burn7Week || 0) + 3 && _rng() < 0.55)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_burn7");
+    else if (S.flags.burn8 && !S.seenEvents["sp_burn8"] && S.absWeek >= (S.flags.burn8Week || 0) + 3 && _rng() < 0.6)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_burn8");
     if (chainEv){ S.seenEvents[chainEv.id] = S.absWeek; logEventFire("chain", chainEv); return chainEv; }
   }
   // 第77節: 年末の帰省（借金が多い年はオカンの小言／借金が解消した年は仕送り側の逆転版）。年1回・年末の週だけ
