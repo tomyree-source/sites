@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v29｜物語と育成を強化（会話シーン・進路の分岐・自由対戦でも育成）。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v30｜テンポと分かりやすさ（戦闘予測・速度設定・BGM）。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -160,7 +160,7 @@ img.uimg{transition:transform .15s ease}
 <body>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v29｜物語と育成を強化しました。①会話シーン：章の前後に顔絵つきの会話が入ります（自由対戦でも両軍リーダーの口上あり）。②分岐：第2戦・第4戦・第5戦の勝利後に進路を選ぶと、次の戦いの展開（援軍・奇襲・補給）と最終戦の結末が変わります。③自由対戦でも育成：どの勢力で戦っても自軍が経験値を得て育つようになりました（従来は騎士団のみ）。設定の「育成反映」で無効にもできます。</div>
+  <div class="sub">見本v30｜テンポと分かりやすさを強化しました。①戦闘予測：攻撃前に、与えるダメージ・命中率・撃破できるか・相手の反撃（ダメージと危険度）まで表示します。②戦闘速度：設定で「はやい／超高速」にすると、敵の行動や演出の待ち時間が縮みます。③BGM：灰の雨の世界に合わせた環境音（低い持続音と遠くの鐘）を追加しました。設定でON/OFFできます。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
@@ -168,6 +168,8 @@ img.uimg{transition:transform .15s ease}
     <div id="diffRow" style="margin:8px 0;font-size:13px">難易度 <select id="diffSel"><option value="easy">やさしい（AIは素直・敵は弱め）</option><option value="normal" selected>ふつう（AI強化）</option><option value="hard">つよい（AI強化・敵は強め）</option></select></div>
     <div id="cutinRow" style="margin:8px 0;font-size:13px">攻撃演出 <select id="cutinSel"><option value="on">カットインあり（全攻撃）</option><option value="off">カットインなし</option></select></div>
     <div id="growthRow" style="margin:8px 0;font-size:13px">育成反映（自由対戦） <select id="growthSel"><option value="on">あり（全勢力の自軍が育つ）</option><option value="off">なし（素の能力で対戦）</option></select></div>
+<div id="speedRow" style="margin:8px 0;font-size:13px">戦闘速度 <select id="speedSel"><option value="normal">ふつう</option><option value="fast">はやい（演出を短く）</option><option value="fastest">超高速（ほぼ待ちなし）</option></select></div>
+<div id="bgmRow" style="margin:8px 0;font-size:13px">BGM <select id="bgmSel"><option value="on">あり（灰の雨の環境音）</option><option value="off">なし</option></select></div>
 <button id="howtoBtn" style="margin:4px 0 8px;padding:8px 14px">遊び方・ルール</button>
     <div id="howto" class="hidden" style="text-align:left;font-size:13px;line-height:1.75;color:#ddd3ba;background:#221d16;border:1px solid #6b5a35;border-radius:8px;padding:12px 14px;margin-bottom:10px">
       <div style="color:#ffd98a;font-weight:700">■ このゲームについて</div>
@@ -181,7 +183,7 @@ img.uimg{transition:transform .15s ease}
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ 自由対戦</div>
       難易度は やさしい／ふつう／つよい（敵の強さとAIが変わります）。編成はポイント制で、予算（50／70／90pt）の中で名簿から出撃させる駒を選びます。相手も同じ予算で自動編成されます。勝利条件は「殲滅」か「拠点確保」です。拠点確保は、中央の遺跡を囲む金色の4マスをラウンド終了時に多く占めていた側が1点、3点先取で勝ちです。ラウンド上限は12で、到達した場合は拠点点数→残存数→残り体力の順で判定します。
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ ストーリーと育成</div>
-      騎士団の小隊で全6戦を戦います。戦うと経験値が入り、レベルが上がるとHPや攻撃が伸び、固有スキルも開きます。勲章の収集もあります。記録はこの端末に自動保存されます（「育成データを消す」でリセット）。第2戦を勝つと見習い騎士レオンが加入し、第3戦では古代ゴーレムが目覚めて両軍を襲います。ラウンド上限は15で、時間切れは敗北です。章の前後には顔絵つきの会話シーンがあり、第2戦・第4戦・第5戦の勝利後には進路の選択（分岐）が出ます。選択は次の戦いの展開や最終戦の結末を変えます。自由対戦でも、どの勢力でも自軍ユニットが経験値を得て育ちます（設定の「育成反映」で切り替え可能）。
+      騎士団の小隊で全6戦を戦います。戦うと経験値が入り、レベルが上がるとHPや攻撃が伸び、固有スキルも開きます。勲章の収集もあります。記録はこの端末に自動保存されます（「育成データを消す」でリセット）。第2戦を勝つと見習い騎士レオンが加入し、第3戦では古代ゴーレムが目覚めて両軍を襲います。ラウンド上限は15で、時間切れは敗北です。章の前後には顔絵つきの会話シーンがあり、第2戦・第4戦・第5戦の勝利後には進路の選択（分岐）が出ます。選択は次の戦いの展開や最終戦の結末を変えます。自由対戦でも、どの勢力でも自軍ユニットが経験値を得て育ちます（設定の「育成反映」で切り替え可能）。攻撃前には戦闘予測（与えるダメージ・命中率・撃破可否・相手の反撃とその危険度）が出ます。設定で戦闘速度（ふつう／はやい／超高速）とBGMのON/OFFを切り替えられます。
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ その他</div>
       音のON／OFF、盤面の表示倍率（全体／拡大／特大）が切り替えられます。拡大時は盤面をスクロールできます。
     </div>
@@ -314,7 +316,7 @@ const SFX={
 };
 // ===== v10 logic: alternating activations, counterattack, BFS movement, line of sight =====
 let units=[], selectedId=null, detailId=null, pending=null, gameOver=false, busy=false, roundNo=1, turnSide="p", playerKey="knights", enemyKey="barbarians", soundOn=true, driving=false;
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const sleep=ms=>new Promise(r=>setTimeout(r,Math.max(0,Math.round(ms*spdMul30()))));
 const $=id=>document.getElementById(id);
 const BW=12, BH=16;
 let zoomLevel=1;
@@ -667,9 +669,7 @@ function render(){
   else $("detail").style.display="none";
   const cb=$("confirmBtn");
   if(pending&&s){ const t=unitById(pending.targetId);
-    if(pending.type==="atk"){ let need=s.hit; if(coverBonus(t)) need-=1; if(s.range>1&&d2(s,t)===1) need-=1; const duelB=(s.duel&&alliesAdjacent(t)===0); if(duelB) need+=1; need=Math.max(1,Math.min(6,need));
-      $("info").textContent=t.name+" を攻撃しますか？ 命中 "+need+"以下／ダメージ "+(s.dmg+(duelB?1:0))+"（相手が生き残れば反撃されます）";
-      cb.textContent="攻撃する"; }
+    if(pending.type==="atk"){ $("info").innerHTML=forecastHTML30(s,t); cb.textContent="攻撃する"; }
     else { $("info").textContent=t.name+" を"+(s.healAmt||3)+"回復しますか？"; cb.textContent="回復する"; }
     cb.classList.remove("hidden");
   } else { cb.classList.add("hidden");
@@ -808,7 +808,7 @@ function showCutin(att, mode){ return new Promise(res=>{ const c=document.getEle
   plate.animate([{transform:"translateY(14px)",opacity:0},{transform:"translateY(0)",opacity:1}],{duration:200,easing:"ease-out"});
   let done=false; const finish=()=>{ if(done) return; done=true; c.removeEventListener("click",finish); c.classList.add("hidden"); res(); };
   c.addEventListener("click",finish);
-  setTimeout(finish, 720);
+  setTimeout(finish, Math.round(720*spdMul30()));
 }); }
 (function(){ const sel=document.getElementById("cutinSel"); if(!sel) return;
   sel.value=cutinOn()?"on":"off";
@@ -919,6 +919,88 @@ async function v29FreeIntro(){
   await showDialogue29([{sp:a.sp,tx:a.atk},{sp:d.sp,tx:d.def}]);
 }
 (()=>{ const gs=document.getElementById("growthSel"); if(gs){ gs.value=growthOn29()?"on":"off"; gs.onchange=()=>{ try{ localStorage.setItem("tekkanGrowth", gs.value==="off"?"off":"on"); }catch(e){} }; } })();
+
+// ===== v30: 戦闘速度・戦闘予測・BGM =====
+function spdMul30(){ try{ const v=localStorage.getItem("tekkanSpeed"); return v==="fast"?0.45 : v==="fastest"?0.15 : 1; }catch(e){ return 1; } }
+function bgmOn30(){ try{ return localStorage.getItem("tekkanBgm")!=="off"; }catch(e){ return true; } }
+function forecastHTML30(s,t){
+  const d=d2(s,t); const notes=[];
+  let need=s.hit; const duelB=(s.duel&&alliesAdjacent(t)===0); if(duelB){ need+=1; notes.push("一騎打ち"); }
+  if(coverBonus(t)){ need-=1; notes.push("遮蔽"); }
+  if(s.range>1&&d===1){ need-=1; notes.push("近接射撃"); }
+  need=Math.max(1,Math.min(6,need));
+  let dmg=s.dmg+(duelB?1:0); if(t.dmgCut) dmg=Math.max(1,dmg-t.dmgCut);
+  const pct=Math.round(need/6*100);
+  let h="<b>"+t.name+" への攻撃</b>｜ダメージ <b>"+dmg+"</b>（命中 "+pct+"%）";
+  if(dmg>=t.hp) h+=" <b style='color:#ffd25a'>撃破可能！</b>"; else h+="（あと"+(t.hp-dmg)+"残る）";
+  if(notes.length) h+=" <span style='color:#a68d5f'>［"+notes.join("・")+"］</span>";
+  const canCounter = dmg<t.hp && t.dmg>0 && d<=t.range && !losBlocked(t.x,t.y,s.x,s.y);
+  if(canCounter){
+    let cn=t.hit; const cnotes=[];
+    if(coverBonus(s)){ cn-=1; cnotes.push("遮蔽"); }
+    if(t.range>1&&d===1){ cn-=1; cnotes.push("近接射撃"); }
+    cn-=1; cnotes.push("反撃");
+    cn=Math.max(1,Math.min(6,cn));
+    let cd=t.dmg; if(s.dmgCut) cd=Math.max(1,cd-s.dmgCut);
+    h+="<br>反撃："+t.name+" から ダメージ <b>"+cd+"</b>（命中 "+Math.round(cn/6*100)+"%）";
+    if(cd>=s.hp) h+=" <b style='color:#ff9a7a'>危険：反撃で倒される恐れ</b>";
+  } else if(dmg>=t.hp){ h+="<br>撃破すれば反撃なし"; }
+  else if(t.dmg<=0){ h+="<br>相手は反撃できない"; }
+  else if(d>t.range){ h+="<br>反撃なし（相手の射程外）"; }
+  else { h+="<br>反撃なし（射線が通らない）"; }
+  return h;
+}
+// ---- procedural BGM: ash-rain ambient ----
+let bgmCtx30=null, bgmGain30=null, bgmStep30=0;
+function bell30(f, dur, vol){
+  const ctx=bgmCtx30; if(!ctx||!bgmGain30) return; const now=ctx.currentTime;
+  const o=ctx.createOscillator(); o.type="sine"; o.frequency.value=f;
+  const o2=ctx.createOscillator(); o2.type="sine"; o2.frequency.value=f*2.01;
+  const g=ctx.createGain(); g.gain.setValueAtTime(0.0001,now); g.gain.exponentialRampToValueAtTime(vol,now+0.04); g.gain.exponentialRampToValueAtTime(0.0001,now+dur);
+  const g2=ctx.createGain(); g2.gain.value=0.25; o.connect(g); o2.connect(g2); g2.connect(g); g.connect(bgmGain30);
+  o.start(now); o2.start(now); o.stop(now+dur+0.1); o2.stop(now+dur+0.1);
+}
+function startBGM30(){
+  if(bgmCtx30||!bgmOn30()) return;
+  const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
+  try{
+    const ctx=new AC(); bgmCtx30=ctx;
+    const master=ctx.createGain(); master.gain.value=(typeof soundOn!=="undefined"&&!soundOn)?0:0.14;
+    const an=ctx.createAnalyser(); an.fftSize=512; master.connect(an); an.connect(ctx.destination);
+    bgmGain30=master; window._bgmAn30=an;
+    const lp=ctx.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=300; lp.connect(master);
+    [[55,"triangle",0.50],[82.41,"sine",0.34],[110,"sine",0.16]].forEach(function(cfg){
+      const o=ctx.createOscillator(); o.type=cfg[1]; o.frequency.value=cfg[0];
+      const og=ctx.createGain(); og.gain.value=cfg[2]; o.connect(og); og.connect(lp); o.start();
+    });
+    const nb=ctx.createBuffer(1, ctx.sampleRate*2, ctx.sampleRate); const chn=nb.getChannelData(0);
+    for(let i=0;i<chn.length;i++) chn[i]=Math.random()*2-1;
+    const ns=ctx.createBufferSource(); ns.buffer=nb; ns.loop=true;
+    const bp=ctx.createBiquadFilter(); bp.type="bandpass"; bp.frequency.value=460; bp.Q.value=0.7;
+    const ng=ctx.createGain(); ng.gain.value=0.014; ns.connect(bp); bp.connect(ng); ng.connect(master); ns.start();
+    const lfo=ctx.createOscillator(); lfo.frequency.value=0.07; const lg=ctx.createGain(); lg.gain.value=170;
+    lfo.connect(lg); lg.connect(bp.frequency); lfo.start();
+    const SCALE=[110,130.81,146.83,164.81,196,220,261.63];
+    const PAT=[0,-1,2,-1,4,-1,3,1,-1,5,-1,2,0,-1,-1,4];
+    setInterval(function(){
+      if(!bgmGain30) return;
+      bgmGain30.gain.value=(bgmOn30()&&(typeof soundOn==="undefined"||soundOn))?0.14:0;
+      if(!bgmOn30()||(typeof soundOn!=="undefined"&&!soundOn)) return;
+      const st=PAT[bgmStep30%PAT.length]; bgmStep30++;
+      if(st>=0) bell30(SCALE[st%SCALE.length], 2.8, 0.10);
+      if(bgmStep30%16===0) bell30(55, 4.0, 0.06);
+    }, 2100);
+  }catch(e){}
+}
+window.addEventListener("pointerdown", function(){ startBGM30(); if(bgmCtx30&&bgmCtx30.state==="suspended") bgmCtx30.resume(); });
+(()=>{ 
+  const ss=document.getElementById("speedSel");
+  if(ss){ try{ ss.value=localStorage.getItem("tekkanSpeed")||"normal"; }catch(e){}
+    ss.onchange=()=>{ try{ localStorage.setItem("tekkanSpeed", ss.value); }catch(e){} }; }
+  const bs=document.getElementById("bgmSel");
+  if(bs){ bs.value=bgmOn30()?"on":"off";
+    bs.onchange=()=>{ try{ localStorage.setItem("tekkanBgm", bs.value==="off"?"off":"on"); }catch(e){} if(bs.value==="on") startBGM30(); }; }
+})();
 
 fillOptions(); resetPicks(); setupInfo();
 </script>
