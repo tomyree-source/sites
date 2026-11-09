@@ -25,11 +25,19 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.44";
+const GAME_VERSION = "1.46";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.46", date:"2026-11-09", items:[
+    "あるある小ネタ『伝説の挑戦者の昔話』を追加：『世界王者にも勝てる』と豪語した論客が、元プロのスパー招聘に逃げずに応えて一方的にやられ、結果の投稿を消したことで『強がるが結果を隠す人』の代名詞になった昔話。ただし『逃げずに来た』一点だけは今も界隈に評価される、という両面性を描く",
+    "BOTYの固定候補に『伝説の挑戦者の昔話』を追加",
+  ]},
+  {v:"1.45", date:"2026-11-09", items:[
+    "連鎖イベント『一夏の対面要求騒動』を追加（第2章以降・夏に始まる全6段）: 地方の実践者が『プロは素人に手を出せない』構造を逆手に取って現役王者に対面を迫り、条件提示、物騒な投稿での空気の変化、主催イベントでの土下座、翌日の相手ジム訪問を経て、活動休止に至るまでを描く。主人公は傍観者の位置で、騒動を名声の稼ぎ場にはできない",
+    "BOTYの固定候補に『一夏燃え続けた対面要求騒動』を追加",
+  ]},
   {v:"1.44", date:"2026-11-09", items:[
     "実際の武クラの年末話題（BOTY候補）の「型」を反映：CLASH論争プールに4件追加（『刀は突くもの』論争／伝系の明示を巡る多正面論争／往年の達人『贋作』レッテル論争／達人の民間療法への専門職クラスタの反論）",
     "あるある小ネタを2件追加：当事者の過去投稿を九百件以上も調べ上げた『全数調査』の検証記事で長期化する交流会の急所技騒動と、普段は批判されがちな実力者が現役トップ選手との稽古動画で静かに株を上げる話",
@@ -173,7 +181,10 @@ const EPISODE_TAGS = {
   sp_victory_declare:"勝利宣言", sp_night_attack:"夜道の襲撃", debt_deadend:"夜逃げ",
   sp_burn1:"界隈大炎上", sp_burn2:"界隈大炎上", sp_burn3:"目つき騒動", sp_burn4:"界隈大炎上",
   sp_burn5:"界隈大炎上", sp_burn6:"界隈大炎上", sp_burn7:"界隈大炎上", sp_burn8:"界隈大炎上",
+  sp_foil1:"対面要求騒動", sp_foil2:"対面要求騒動", sp_foil3:"対面要求騒動", sp_foil4:"対面要求騒動",
+  sp_foil5:"対面要求騒動", sp_foil6:"対面要求騒動",
   aru_zenchosa:"全数調査の検証記事", aru_keiko:"静かに株を上げる",
+  aru_spar:"伝説の挑戦者",
   boty:"BOTY",
 };
 function episodeTag(id){
@@ -1324,6 +1335,8 @@ function pickCh4Event(){
   }
   return null;
 }
+// 第90節: 一夏の対面要求騒動の開始季節（初夏〜夏の終わり。1年の週番号で判定する）
+function isFoilSeason(){ const yw = ((S.absWeek - 1) % WEEKS_PER_YEAR) + 1; return yw >= 21 && yw <= 36; }
 // 週末イベント抽選（ワンパターン対策・第39/40節）: 季節（年最大2本）→生徒ドラマ→共通プールV2→従来プールの順
 function pickEndWeekEvent(){
   ensureStateCompat();
@@ -1392,6 +1405,21 @@ function pickEndWeekEvent(){
       chainEv = CHAIN_EVENTS.find(e => e.id === "sp_burn7");
     else if (S.flags.burn8 && !S.seenEvents["sp_burn8"] && S.absWeek >= (S.flags.burn8Week || 0) + 3 && _rng() < 0.6)
       chainEv = CHAIN_EVENTS.find(e => e.id === "sp_burn8");
+    // 第90節: 一夏の対面要求騒動（第2章以降・夏に始まり1周1回。地方の実践者が「プロは素人に
+    // 手を出せない」構造を逆手に取って現役王者に対面を迫る連鎖。当事者はその場限りの架空人物で、
+    // 主人公は傍観者。名声の稼ぎ場にはせず、借金・訴訟系にも接続しない）
+    else if (S.chapter >= 2 && !S.seenEvents["sp_foil1"] && isFoilSeason() && _rng() < 0.3)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_foil1");
+    else if (S.flags.foil2 && !S.seenEvents["sp_foil2"] && S.absWeek >= (S.flags.foil2Week || 0) + 2 && _rng() < 0.55)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_foil2");
+    else if (S.flags.foil3 && !S.seenEvents["sp_foil3"] && S.absWeek >= (S.flags.foil3Week || 0) + 2 && _rng() < 0.55)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_foil3");
+    else if (S.flags.foil4 && !S.seenEvents["sp_foil4"] && S.absWeek >= (S.flags.foil4Week || 0) + 2 && _rng() < 0.6)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_foil4");
+    else if (S.flags.foil5 && !S.seenEvents["sp_foil5"] && S.absWeek >= (S.flags.foil5Week || 0) + 1 && _rng() < 0.65)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_foil5");
+    else if (S.flags.foil6 && !S.seenEvents["sp_foil6"] && S.absWeek >= (S.flags.foil6Week || 0) + 3 && _rng() < 0.55)
+      chainEv = CHAIN_EVENTS.find(e => e.id === "sp_foil6");
     if (chainEv){ S.seenEvents[chainEv.id] = S.absWeek; logEventFire("chain", chainEv); return chainEv; }
   }
   // 第77節: 年末の帰省（借金が多い年はオカンの小言／借金が解消した年は仕送り側の逆転版）。年1回・年末の週だけ
