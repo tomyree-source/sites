@@ -25,11 +25,16 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.46";
+const GAME_VERSION = "1.47";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.47", date:"2026-11-09", items:[
+    "実際の武クラの論争の「型」を反映：CLASH論争プールに2件追加（武器の前提が警棒→竹刀→木刀→鉄パイプと広がっていく『素手対棒はどこまでやれるか』論争と、専門用語の用法ミスを秒で突かれても認めず勝利宣言する『悪魔の証明』論争。主張の食い違いは、作中でも判定しない）",
+    "あるある小ネタを2件追加：論が不利になるたび得物の前提が育っていく様式美『また前提が育った』と、株とゲームが本業の一般アカウントが元プロの復帰戦動画に技術酷評を連投する話",
+    "BOTYの固定候補に『今年の論客名鑑の読み上げ』を追加：元プロが年末、今年相手にした論客たちを一括りで読み上げる風物詩（渾名は全て作中オリジナル）",
+  ]},
   {v:"1.46", date:"2026-11-09", items:[
     "あるある小ネタ『伝説の挑戦者の昔話』を追加：『世界王者にも勝てる』と豪語した論客が、元プロのスパー招聘に逃げずに応えて一方的にやられ、結果の投稿を消したことで『強がるが結果を隠す人』の代名詞になった昔話。ただし『逃げずに来た』一点だけは今も界隈に評価される、という両面性を描く",
     "BOTYの固定候補に『伝説の挑戦者の昔話』を追加",
@@ -185,6 +190,7 @@ const EPISODE_TAGS = {
   sp_foil5:"対面要求騒動", sp_foil6:"対面要求騒動",
   aru_zenchosa:"全数調査の検証記事", aru_keiko:"静かに株を上げる",
   aru_spar:"伝説の挑戦者",
+  aru_joken:"また前提が育った", aru_kokuhyo:"素人の技術酷評",
   boty:"BOTY",
 };
 function episodeTag(id){
