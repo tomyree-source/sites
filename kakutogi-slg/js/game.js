@@ -25,11 +25,14 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.48";
+const GAME_VERSION = "1.49";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.49", date:"2026-11-09", items:[
+    "タイトル画面にオープニング絵を追加：主人公を中心に各流派の格闘家たちが躍動する集合イラストを、タイトル画面のキービジュアルとして採用した",
+  ]},
   {v:"1.48", date:"2026-11-09", items:[
     "実際の武クラの検証文化の「型」を反映：CLASH論争プールに3件追加（元プロと有名流派の代表による『触れずに倒す』デモを、検証系の書き手が『実績の権威の転用』としてビジネス構造ごと批判する論争／合気系発信者の師事・段位の主張を数年分の過去投稿で検証する『全件検証』の是非を巡る論争／大物の公の実績以外の面まで踏み込む告発レポートの是非を巡る論争。いずれも真偽は作中でも断定しない）",
     "あるある小ネタを1件追加：海外本部の資格トラブルで除名された指導者たちが別ブランドを立ち上げ、流派が真っ二つに割れる話。時系列の経緯まとめ長文が、界隈の基礎資料になる",
@@ -2209,7 +2212,7 @@ function renderTitle(){
   const postList = posts.length
     ? posts.slice(0, 20).map(p => '<div class="dexrow postitem"><span class="ptag">#' + esc(p.tag || "") + "</span> <span class=\"pdate\">" + esc(new Date(p.at).toLocaleString("ja-JP", {month:"numeric", day:"numeric", hour:"2-digit", minute:"2-digit"})) + "</span>" + (p.liked ? " 👍" : "") + (p.text ? '<div class="ptxt">' + esc(p.text) + "</div>" : "") + "</div>").join("")
     : '<div class="dexrow">まだ投稿がありません。各エピソードの終わりに「CLASHに書き込む」ボタンがあります</div>';
-  $("main").innerHTML = '<div class="title"><img class="title-kv" src="assets/title-keyvisual3.webp" alt="異種格闘年代記の登場人物たち">' + '<h1>異種格闘年代記<span>（仮）</span></h1>' +
+  $("main").innerHTML = '<div class="title"><img class="title-kv" src="assets/title-opening.webp" alt="異種格闘年代記の登場人物たち">' + '<h1>異種格闘年代記<span>（仮）</span></h1>' +
     '<p class="tagline">どの武術が一番強いのか――その論争に、人生で答える。</p>' +
     '<button class="btn next" data-auto="new">はじめから</button>' +
     (hasSave() ? '<button class="btn" data-auto="continue">つづきから</button>' : "") +
