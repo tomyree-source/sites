@@ -25,11 +25,14 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.42";
+const GAME_VERSION = "1.43";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.43", date:"2026-11-09", items:[
+    "戦闘演出フルセットを追加：ヒット時の画面シェイクと端フラッシュ、ダメージ数字のポップ表示、HPバーの残像（遅れて減る白バー）、奥義発動時のカットイン（暗転＋設定画＋技名）、決着時の『K.O.！』の溜め演出、バトル実況のタイプライター表示。効果音（打撃・ガード・空振り・ゴング・歓声）もブラウザ生成で追加し、画面下のボタンで音と演出のON／OFFを切り替えられる。演出は表示と音だけで、バトルの計算・勝敗・セーブには影響しない",
+  ]},
   {v:"1.42", date:"2026-11-09", items:[
     "「界隈大炎上編」に界隈の決め台詞『目を突くように嘘を吐く』を追記：『目つき』騒動のコメント欄で生まれた言葉遊びが、説明の二転三転する騒動全体を指す合言葉として広がっていく",
   ]},
@@ -1859,6 +1862,7 @@ function startBattle(id, winSteps, loseSteps){
     log: [], cmtIdx: 0, foulUsed: false, sigUsed: false, ougiUsed: false, readBonus: 0, control: 0, readGuard: false, secondUsed: false,
     comboStyle, comboUsed: false, counterLevel, counterStreak: streak, counterHasSig,
     blur: 0, eyeHits: 0, eyeTurn: 0, misses: 0,
+    finishing: false, fxPrevP: null, fxPrevE: null,
     winSteps, loseSteps };
   window.__lastCounter = {level: counterLevel, streak: streak, battleId: def.id, hasSig: counterHasSig};
   bLog("実況", def.title + "――開始！");
@@ -1872,6 +1876,7 @@ function startBattle(id, winSteps, loseSteps){
       "ただし、複合技や新しい流派の技は研究が追いついていない。");
   }
   renderBattle();
+  if (window.FX) FX.battleStart(); // 第88節: 開始ゴング（演出のみ）
 }
 function bLog(sp, tx){ UI.battle.log.push({sp, tx}); }
 function pushComment(){
@@ -1915,21 +1920,28 @@ function renderBattle(){
   const enemyImg = def.img ? '<div class="portrait"><img src="../cast-art/cast-' + def.img + '-sera.webp" alt=""></div>' : "";
   const counterBanner = b.counterLevel > 0 ? '<div class="weeksub" style="color:var(--aku);">【研究・対策】相手陣営があなたの主・流儀／看板技を研究済み（対策レベル' + b.counterLevel + "／" + b.counterStreak + '連勝中）。看板技は威力が下がる。ただし複合技や新しい流派の技は研究が追いついていない。</div>' : "";
   const blurBanner = b.blur > 0 ? '<div class="weeksub" style="color:var(--aku);">【視界不良】ゴーグルが霞んで狙いが定まらない（あと' + b.blur + '手）。「相手を読む」「組み付く（手を捌く）」で視界を立て直せる</div>' : "";
+  // 第88節: HPバーは残像バー（.fx-ghost=前回表示値）＋本体バー（.fx-fill=現在値）の2層にする。演出のみで計算には無関係
+  const pCur = clamp(b.php / b.maxPhp * 100, 0, 100), eCur = clamp(b.ehp / def.hp * 100, 0, 100);
+  const pPrev = b.fxPrevP == null ? pCur : b.fxPrevP, ePrev = b.fxPrevE == null ? eCur : b.fxPrevE;
   $("main").innerHTML = '<div class="battle">' + counterBanner + blurBanner + '<div class="vs">' +
-    '<div class="fighter"><div class="nm">ハヤト（' + esc(mainStyle().name) + " Lv" + lv + '）</div><div class="bar hp"><i style="width:' + clamp(b.php / b.maxPhp * 100, 0, 100) + '%"></i></div><div class="sub">体力 ' + Math.max(0, b.php) + " ／ 部位：腕" + S.dmg.arm + " 脚" + S.dmg.leg + " 体幹" + S.dmg.core + '</div></div>' +
-    '<div class="fighter enemy"><div class="nm">' + esc(def.enemyName) + '</div><div class="bar ehp"><i style="width:' + clamp(b.ehp / def.hp * 100, 0, 100) + '%"></i></div><div class="sub">' + esc(def.enemyStyleName || "同流派") + " ／ 耐久 " + Math.max(0, b.ehp) + (b.eStyle ? " ／ 使える攻撃：" + systemsLabel(b.eStyle) : "") + "</div></div>" +
+    '<div class="fighter"><div class="nm">ハヤト（' + esc(mainStyle().name) + " Lv" + lv + '）</div><div class="bar hp"><i class="fx-ghost" data-to="' + pCur + '" style="width:' + pPrev + '%"></i><i class="fx-fill" style="width:' + pCur + '%"></i></div><div class="sub">体力 ' + Math.max(0, b.php) + " ／ 部位：腕" + S.dmg.arm + " 脚" + S.dmg.leg + " 体幹" + S.dmg.core + '</div></div>' +
+    '<div class="fighter enemy"><div class="nm">' + esc(def.enemyName) + '</div><div class="bar ehp"><i class="fx-ghost" data-to="' + eCur + '" style="width:' + ePrev + '%"></i><i class="fx-fill" style="width:' + eCur + '%"></i></div><div class="sub">' + esc(def.enemyStyleName || "同流派") + " ／ 耐久 " + Math.max(0, b.ehp) + (b.eStyle ? " ／ 使える攻撃：" + systemsLabel(b.eStyle) : "") + "</div></div>" +
     enemyImg + '</div>' +
     '<div class="blog">' + b.log.map(l => '<div class="bl"><span>' + esc(l.sp) + "</span>" + esc(fill(l.tx)) + "</div>").join("") + "</div>" +
     '<div class="actions">' + acts.map(a => '<button class="btn act" data-bact="' + a[0] + '"><b>' + a[1] + '</b><span>' + a[2] + "</span></button>").join("") + "</div></div>";
+  b.fxPrevP = pCur; b.fxPrevE = eCur;
   const blog = $("main").querySelector(".blog"); if (blog) blog.scrollTop = blog.scrollHeight;
   $("main").querySelectorAll("[data-bact]").forEach(x => x.addEventListener("click", () => battleTurn(x.dataset.bact)));
+  if (window.FX){ FX.applyGhosts($("main")); FX.typeLastLog(); } // 第88節: 残像の追随と最新実況のタイプライター
 }
 function battleTurn(act){
   const b = UI.battle, def = b.def;
+  if (!b || b.finishing) return; // 第88節: 決着の溜め演出中は二重実行しない
   // 第73節: 使えない系統の攻撃は実行しない（ボタン非表示の二重ガード）
   if (["strike", "kick", "grapple", "ground"].includes(act) && !playerSystems().includes(act)) return;
   b.turn++;
   let dmg = 0;
+  let fxKind = "normal", fxMissed = false, fxGuarded = false; // 第88節: 演出フック用（計算には無関係）
   if (act === "strike"){ dmg = playerPower("strike"); bLog("実況", "突きが距離を刻む！"); }
   else if (act === "kick"){ dmg = playerPower("kick"); bLog("実況", "蹴りが間合いを支配する！"); }
   else if (act === "grapple"){ dmg = playerPower("grapple"); b.control = Math.min(6, b.control + 2); bLog("実況", "組み合った！ 支配が少しずつこちらに傾く"); }
@@ -1941,16 +1953,18 @@ function battleTurn(act){
     dmg = 22 + ougiBase * 4 + rnd(4);
     if (purity() >= 70){ dmg = Math.round(dmg * 1.25); bLog("実況", "純粋に磨き抜いた奥義が、冴え渡る！"); }
     b.ougiUsed = true; window.__lastOugi = {battleId: def.id, dmg: dmg, purity: purity()};
+    fxKind = "ougi";
+    if (window.FX) FX.cutin({img: "hayato", name: "ハヤト", text: mainStyle().name.replace(/（[^）]*）/g, "") + " 奥義"}); // 第88節: 奥義カットイン
     bLog("実況", "奥義――" + mainStyle().name.replace(/（[^）]*）/g, "") + "を極めた者にだけ許される一手が、静かに放たれた！"); }
-  else if (act === "recover"){ b.php = Math.min(b.maxPhp, b.php + 9); bLog("実況", "息を整え、軸を立て直す"); }
+  else if (act === "recover"){ const fxHealBefore = b.php; b.php = Math.min(b.maxPhp, b.php + 9); if (window.FX && b.php > fxHealBefore) FX.heal({amount: b.php - fxHealBefore}); bLog("実況", "息を整え、軸を立て直す"); }
   else if (act === "sig"){ // 第73節: 看板技は主・流儀が使える系統の中から構成される（威力もその系統の能力で決まる）
     const sigBase = Math.max(...styleSystems(mainStyle()).map(k => S.stats[k]));
-    dmg = 13 + sigBase * 3 + rnd(4); b.sigUsed = true; bLog("実況", sigName() + "――会場の空気が変わった！");
+    dmg = 13 + sigBase * 3 + rnd(4); b.sigUsed = true; fxKind = "sig"; bLog("実況", sigName() + "――会場の空気が変わった！");
     if (b.counterLevel > 0){ const before = dmg; dmg = Math.max(2, Math.round(dmg * (b.counterLevel >= 2 ? 0.7 : 0.8))); window.__lastCounterCorrection = {act:"sig", level:b.counterLevel, before:before, after:dmg}; bLog("対策", "だが看板技は研究されている！ 入りを読まれ、威力が割り引かれた（対策レベル" + b.counterLevel + "）"); } }
-  else if (act === "combo" && b.comboStyle){ dmg = 16 + styleLv(b.comboStyle.id) * 3 + rnd(4); b.comboUsed = true; bLog("実況", "複合技――" + mainStyle().name.replace(/（[^）]*）/g, "") + "の入り方から" + b.comboStyle.name.replace(/（[^）]*）/g, "") + "へ繋いだ！ 誰も見たことのない形だ！");
+  else if (act === "combo" && b.comboStyle){ dmg = 16 + styleLv(b.comboStyle.id) * 3 + rnd(4); b.comboUsed = true; fxKind = "combo"; bLog("実況", "複合技――" + mainStyle().name.replace(/（[^）]*）/g, "") + "の入り方から" + b.comboStyle.name.replace(/（[^）]*）/g, "") + "へ繋いだ！ 誰も見たことのない形だ！");
     if (b.counterLevel > 0) bLog("対策", "複合技は研究が追いついていない！ 対策の影響を受けなかった"); }
   else if (act === "foul"){
-    dmg = 16 + rnd(4); b.foulUsed = true; S.record.fouls++;
+    dmg = 16 + rnd(4); b.foulUsed = true; fxKind = "foul"; S.record.fouls++;
     bLog("実況", "……今のは？ 指が目に――際どい攻防だ");
     if (def.mode === "match"){
       if (_rng() < 0.45){ applyFx({aku:2, attention:1}); bLog("判定", "レフェリーから警告！ 反則行為として記録された"); }
@@ -1964,13 +1978,15 @@ function battleTurn(act){
     else {
       b.blur--;
       if (dmg > 0 && act !== "sig" && act !== "combo" && act !== "ougi" && _rng() < (act === "kick" ? 0.25 : 0.4)){
-        dmg = 0; b.misses++;
+        dmg = 0; fxMissed = true; b.misses++;
         bLog("実況", "視界が霞んで、攻撃が逸れた！");
         if (window.__lastEyeThrust) window.__lastEyeThrust.misses = b.misses;
       }
     }
   }
-  if (dmg > 0){ b.ehp -= dmg; b.dealt += dmg; b.readBonus = 0; }
+  if (dmg > 0){ b.ehp -= dmg; b.dealt += dmg; b.readBonus = 0;
+    if (window.FX) FX.playerHit({dmg, kind: fxKind, ratio: def.hp > 0 ? dmg / def.hp : 0}); // 第88節: 与ダメ演出
+  } else if (fxMissed && window.FX){ FX.playerHit({dmg: 0, kind: fxKind, ratio: 0, missed: true}); } // 第88節: 空振り演出
   pushComment();
   // セコンド（源田）: 決勝・ルール交渉で選択した場合に1回
   if (!b.secondUsed && S.flags.ruleFx === "second" && def.id === "fin_rin" && b.php < b.maxPhp * 0.4 && b.ehp > 0){
@@ -2011,8 +2027,9 @@ function battleTurn(act){
       eyeLogged = true;
     }
   }
-  if (b.readGuard){ edmg = Math.round(edmg / 2); b.readGuard = false; }
+  if (b.readGuard){ edmg = Math.round(edmg / 2); b.readGuard = false; fxGuarded = true; }
   b.php -= edmg;
+  if (window.FX) FX.playerHurt({dmg: edmg, guarded: fxGuarded, ratio: b.maxPhp > 0 ? edmg / b.maxPhp : 0}); // 第88節: 被ダメ演出
   if (_rng() < 0.18){
     const parts = ["leg", "arm", "core"]; const p = parts[rnd(2)];
     S.dmg[p] = clamp(S.dmg[p] + 1, 0, 3);
@@ -2031,7 +2048,17 @@ function battleTurn(act){
   if (b.php <= 0) return finishBattle(false);
   renderBattle();
 }
+// 第88節: 決着時は演出の溜め（K.O.表示＋ゴング＋歓声）を挟んでから本体処理へ進む。
+// 演出OFF／自動テスト時は即座に本体処理へ進むため、進行・検証には一切影響しない
 function finishBattle(win){
+  const b = UI.battle;
+  if (!b || b.finishing) return;
+  b.finishing = true;
+  const koText = win ? (b.ehp <= 0 ? "K.O.！" : "判定勝ち！") : "敗北";
+  if (window.FX) FX.battleEnd(win, koText, () => doFinishBattle(win));
+  else doFinishBattle(win);
+}
+function doFinishBattle(win){
   const b = UI.battle;
   ensureStateCompat();
   S.record.matches++;
@@ -2268,6 +2295,8 @@ window.__gameTest = {
   styleSystems: name => styleSystems(styleByName(name)),
   systemsLabel: name => systemsLabel(styleByName(name)),
   battleTurn: act => battleTurn(act),
+  fxLog: () => (window.FX ? FX.events() : []), // 第88節: 演出の発火検証用
+  fxConfig: () => (window.FX ? FX.cfg : null),
   lastEnemyKind: () => window.__lastEnemyKind || null,
   likes: () => getLikes(),
   posts: () => getPosts(),
