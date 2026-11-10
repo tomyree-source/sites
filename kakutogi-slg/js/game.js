@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.63";
+const GAME_VERSION = "1.64";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -953,7 +953,7 @@ function abroadPayLines(mode){
   }
   addDebt(cost);
   return [
-    {img:"genda"},
+    {mimg:true},
     {sp:"narr", t:"借入の段取りは、思いのほか早く進んだ。バイト先の田村が金融屋の知人を紹介し、保証人の欄には――源田巌が、黙って判を押した。"},
     {sp:"genda", t:"借りた金は、稽古で返せ。……行ってこい、本場へ"},
     {sp:"narr", t:"留学費用" + cost.toLocaleString() + "円を借り入れた（借金残高" + debtOf().toLocaleString() + "円）。月末の精算で、少しずつ返していく。"},
@@ -998,7 +998,7 @@ function abroadOfferSteps(){
   S.flags.abroadPlace = dest.place;
   const trip = abroadTripSteps();
   return [
-    {img:"genda"},
+    {mimg:true},
     {sp:"narr", t:"稽古の後、源田巌が静かに言った。「お前の{style}は、型の『意味』で止まっている。本場の空気を吸ってこい。――{abroad}だ」"},
     {sp:"genda", t:"期間は二か月ほど。費用は" + dest.cost.toLocaleString() + "円かかる。安くはない。だが、{style}の本場で揉まれる経験は、ここでは買えん"},
     {sp:"narr", t:"大きな誘いだった。行くかどうか、そして金の工面を、決めなければならない。"},

@@ -265,7 +265,7 @@ const CAMEO_EVENTS = [
   {fx:{attention:1}},
 ]},
 {id:"cam_shiramine", category:"cameo", weight:2, chapters:[1,2], steps:[
-  {img:"genda"},
+  {mimg:true},
   {sp:"genda", t:"……白峰玄海という男を知っているか。合気の『神技』と呼ばれた人だ。小柄でな、握手すれば、こっちの腕がどこかへ行く"},
   {ep:"shiramine"},
   {sp:"me", t:"今の選手と戦ったら、どっちが強いんですか？"},
