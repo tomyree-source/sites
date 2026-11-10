@@ -25,11 +25,32 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.65";
+const GAME_VERSION = "1.71";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.71", date:"2026-11-10", items:[
+    "あるある小ネタ『武クラ自虐あるある』を追加（企画書第109節）：『武クラで学んだこと＝技より先に論争の作法』『腕立て伏せ5回できれば上位15%』といった、界隈の自虐系あるある投稿がCLASHで回る話。原帖は未特定のため、特定の誰かの投稿としては書かず、CLASHで回ってくる「あるある投稿」として描いた。笑いの矛先は界隈全体と主人公自身への自虐に置いた",
+  ]},
+  {v:"1.70", date:"2026-11-10", items:[
+    "あるある小ネタ『株上げレクチャー』を追加（企画書第108節）：普段は批判されがちなベテランの実力者が、現役トップ選手に技術レクチャーをする動画で、体格差の中で通用する理屈と教え方を見せ、辛口の観測勢からも『あれは本物だ』と静かに株を上げた、という実クラスタBOTY調査（ほっこり・好感部門）の型。当事者は架空の人物で、実在の人物名・団体名・競技名は出さない。既存の『静かに株を上げる』（交流稽古で受けと間合いが崩れなかった話）と同じ素材の別角度で、こちらは「教える側」の評価が覆る話として描いた",
+    "BOTYの固定候補に『静かに株を上げた男』を追加",
+  ]},
+  {v:"1.69", date:"2026-11-10", items:[
+    "あるある小ネタ『開示の先の話』を追加（企画書第107節）：八卦掌の使い手へ匿名の中傷を続けていた男が、開示請求で身元が割れ、使い手が話し合いのために男の練習場所を訪ねたところ、男のほうから勝負を挑み、挑んだ側が顎の骨を折られた――と語られる語り草。当事者は無名のまま、真偽は作中でも断定せず、中傷の文面は転記せず要約のみ、骨折は結果の一文のみで怪我の詳細は描かない。『中傷した側が悪いのは前提。それでも乗り込みも骨折も行き過ぎで、どっちも得をしていない』という両面の反応を混ぜ、『言葉は現実に返ってくる』という界隈の自戒として描いた",
+    "BOTYの固定候補に『『開示』の先をめぐる大論争』を追加",
+  ]},
+  {v:"1.68", date:"2026-11-10", items:[
+    "自社おすすめ枠の送客先を見直し：セラフィナ製品版とイラストパックを外し、送客先はグッズ「222キャラ工房」・LINEスタンプ・鉄冠戦記の3件になった（企画書第105節）",
+  ]},
+  {v:"1.67", date:"2026-11-10", items:[
+    "あるある小ネタ『九節鞭の語り草』を追加（企画書第104節）：ネットの口論が対面に発展し、『じゃあ死ね！』の一言とともに九節鞭で襲いかかり、倒れた相手をバイクに繋いで引き摺った――と語られる、界隈最古級の語り草。当事者は無名のまま、真偽は作中でも断定せず、引き摺った距離は語り手ごとに伸びていく伝聞の曖昧さとして描いた。笑い話にはせず、『やりすぎだ』『口論を現実に持ち込むな』という界隈の自戒と戒めとして語り継がれる話に置いた",
+    "BOTYの固定候補に『九節鞭伝説の真偽論争』を追加",
+  ]},
+  {v:"1.66", date:"2026-11-10", items:[
+    "流派『二天一流』を追加（全157流派）：宮本武蔵が創始した二刀の剣術。大小二刀と一刀の兵法を伝える古流で、主・流儀にも、後から学ぶ他流派にも選べるようになった",
+  ]},
   {v:"1.63", date:"2026-11-10", items:[
     "戦闘演出を全部入りで強化（企画書第100節）：攻撃系統（手技／足技／投げ・組み／寝技・関節／反則）ごとに、エフェクトの色・画面の揺れ方・効果音を変えた。技の軌跡ラインと、命中した瞬間に一瞬止まるヒットストップも追加",
     "会心の専用演出を追加：看板技・複合技・奥義、「相手を読む」の的中、大ダメージが会心扱いになり、大きな赤い数字と専用の音・強い揺れで表示される（ダメージ計算や判定そのものは従来どおりで、演出だけの変更）",
@@ -125,7 +146,7 @@ const CHANGELOG = [
   ]},
   {v:"1.0", date:"2026-11-07", items:[
     "第1章 青年期（19〜22歳）／第2章 全盛前夜（23〜29歳）／第3章 全盛期（30〜39歳）を公開",
-    "全156流派・登場人物80名・道場経営と名声（清名／悪名）・口説き・反則と裁判バトルまで実装",
+    "全157流派・登場人物80名・道場経営と名声（清名／悪名）・口説き・反則と裁判バトルまで実装",
   ]},
 ];
 
@@ -134,8 +155,6 @@ const CHANGELOG = [
 // 枠の不具合でゲーム本体を止めないよう、呼び出し側は全て try/catch で隔離し、外部スクリプトは使わず静的リンクのみ。
 const HOUSE_AD_SLOTS = { title: true, menu: true, ending: true };
 const HOUSE_ADS = [
-  { title: "見習い天使セラフィナ 製品版（全編）発売中", sub: "BOOTHで販売中／天使見習いの物語・全編", url: "https://angel222.booth.pm/items/9093919" },
-  { title: "イラストパック 第1〜12弾", sub: "セラフィナたちのイラスト集（BOOTH）", url: "https://angel222.booth.pm/" },
   { title: "グッズ「222キャラ工房」", sub: "SUZURIでグッズ販売中", url: "https://suzuri.jp/222chara" },
   { title: "LINEスタンプ販売中", sub: "毎日使えるスタンプ各種（LINEストア）", url: "https://line.me/S/sticker/37862812" },
   { title: "鉄冠戦記 -灰燼の聖戦-", sub: "無料で遊べる盤面タクティクス", url: "https://tomyree-source.github.io/sites/grimdark-tactics/" },
@@ -292,7 +311,7 @@ const EPISODE_TAGS = {
   aru_zenchosa:"全数調査の検証記事", aru_keiko:"静かに株を上げる",
   aru_spar:"伝説の挑戦者", aru_bunretsu:"流派の分裂騒動",
   aru_joken:"また前提が育った", aru_kokuhyo:"素人の技術酷評",
-  aru_kinshi:"太字の禁止事項",
+  aru_kinshi:"太字の禁止事項", aru_ben:"九節鞭の語り草", aru_kaiji:"開示の先の話", aru_kabuage:"株上げレクチャー", aru_jigyaku:"腕立て上位15%",
   boty:"BOTY",
 };
 function episodeTag(id){
@@ -466,11 +485,25 @@ return st;
 
 // ---------- セーブ ----------
 function saveGame(manual){
-try { localStorage.setItem(SAVE_KEY, JSON.stringify({v:1, savedAt: Date.now(), state: S})); if (manual) toast("セーブしました"); return true;}
+try { localStorage.setItem(SAVE_KEY, JSON.stringify({v:1, sver:2, savedAt: Date.now(), state: S})); if (manual) toast("セーブしました"); return true;}
 catch(e){ if (manual) toast("セーブに失敗しました", true); return false;}
 }
+// v1.66: 二天一流を表示順41位へ追加したため、旧セーブ（流派156件時代）の流派IDが41以降で1つずれる。
+// 旧形式のセーブ（sverなし）を読み込むときだけ、ID 41以上を +1 へ振り直してから読み込む（第103節）。
+function migrateStyleIds166(){
+  if (!S) return;
+  const shift = id => (typeof id === "number" && id >= 41) ? id + 1 : id;
+  if (S.mainStyle != null) S.mainStyle = shift(S.mainStyle);
+  for (const key of ["styleLv", "styleExp"]){
+    if (S[key] && typeof S[key] === "object"){
+      const out = {};
+      for (const k of Object.keys(S[key])){ const n = Number(k); out[Number.isNaN(n) ? k : shift(n)] = S[key][k]; }
+      S[key] = out;
+    }
+  }
+}
 function loadGame(){
-try { const raw = localStorage.getItem(SAVE_KEY); if (!raw) return false; const d = JSON.parse(raw); S = d.state; ensureStateCompat(); return true;}
+try { const raw = localStorage.getItem(SAVE_KEY); if (!raw) return false; const d = JSON.parse(raw); S = d.state; if (!d.sver || d.sver < 2) migrateStyleIds166(); ensureStateCompat(); return true;}
 catch(e){ return false;}
 }
 function hasSave(){ try { return!!localStorage.getItem(SAVE_KEY);} catch(e){ return false;}}
@@ -1358,7 +1391,7 @@ function renderWeek(){
   const st = mainStyle();
   const acts = [
     ["train_main", "稽古（主・流儀）", (st ? st.name : "") + " Lv" + styleLv(S.mainStyle) + " の稽古。経験値+10"],
-    ["train_sub", "他流派を学ぶ", "全156流派から選ぶ（独学／セミナー／個人指導）"],
+    ["train_sub", "他流派を学ぶ", "全157流派から選ぶ（独学／セミナー／個人指導）"],
     ["basics", "基礎トレーニング", "持久と体幹を鍛える"],
     ["research", "映像研究", "読みが上がる。相手の研究にも"],
     ["teach", "道場指導", "収入と指導力。生徒 " + S.students.length + "人"],
@@ -2449,7 +2482,7 @@ function resumeFromSave(){
 function renderStyleSelect(){
   hud();
   const cards = STYLES_DATA.map(s => '<button class="btn choice stylecard" data-style="' + s.id + '"><b>' + esc(s.name) + '</b><span>' + esc(s.cat) + "／得意距離：" + s.dist.join("・") + "／使える攻撃：" + systemsLabel(s) + "<br>" + esc(s.feature) + "</span></button>").join("");
-  $("main").innerHTML = '<div class="weekhead"><h2>主・流儀を選ぶ</h2><div class="weeksub">子供の頃から習い、19歳で一人前の入り口（Lv2）に達した流派。全156流派から選べます（知名度順）。他流派は後からいつでも学べます</div></div>' +
+  $("main").innerHTML = '<div class="weekhead"><h2>主・流儀を選ぶ</h2><div class="weeksub">子供の頃から習い、19歳で一人前の入り口（Lv2）に達した流派。全157流派から選べます（知名度順）。他流派は後からいつでも学べます</div></div>' +
     '<input id="style-search2" type="text" placeholder="流派名で検索" style="width:100%;padding:10px;margin-bottom:10px;">' +
     '<div class="styles">' + cards + "</div>";
   $("style-search2").addEventListener("input", e => {
