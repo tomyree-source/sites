@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v34｜勢力を増強（各勢力に新ユニット追加）。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v35｜バランス調整（拠点戦込みで実測）。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -200,7 +200,7 @@ img.uimg{transition:transform .15s ease}
 <div id="op32"><img id="opBg32" alt=""><div id="opShade32"></div><div id="opAsh32"></div><button id="opSkip32">スキップ ≫</button><div id="opInner32"><div id="opTitle32"><div id="opOrn32">⚔</div><div id="opMain32">鉄冠戦記</div><div id="opSub32">- 灰燼の聖戦 -</div><div id="opRule32"></div></div><div id="opText32"></div><div id="opCount32"></div><div id="opFinal32"><button id="opStartBtn32">物語を始める</button></div></div><div id="opHint32">タップで進む</div></div>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v34｜勢力を増強しました。各勢力に新ユニットを2体ずつ追加し、名簿は全8勢力・合計51体に。蛮族とエルフには初の回復役が加わり、配置マスも11マスに拡張しました。</div>
+  <div class="sub">見本v35｜バランスを調整しました。殲滅戦と拠点確保戦の両方で総当たり実測し、突出していたドワーフの銃兵の射程をそろえ、弱かった傭兵団・天使・悪魔・騎士団を底上げしました。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
@@ -284,7 +284,7 @@ img.uimg{transition:transform .15s ease}
 <script>
 const FACTIONS = {
   knights:{name:"帝国騎士団",units:[
-    {icon:"♞",name:"騎士長ヴァルク",hp:14,move:3,range:1,hit:3,dmg:5},
+    {icon:"♞",name:"騎士長ヴァルク",hp:14,move:3,range:1,hit:3,dmg:6},
     {icon:"🛡",name:"盾兵ブラム",hp:12,move:3,range:1,hit:4,dmg:4},
     {icon:"🛡",name:"盾兵トア",hp:12,move:3,range:1,hit:4,dmg:4},
     {icon:"🏹",name:"クロスボウ兵シン",hp:8,move:3,range:3,hit:4,dmg:4},
@@ -298,18 +298,18 @@ const FACTIONS = {
     {icon:"🗡",name:"投槍兵",hp:7,move:3,range:3,hit:5,dmg:4},
     {icon:"🔮",name:"呪術師",hp:8,move:3,range:3,hit:4,dmg:5},
     {icon:"🪓",name:"狂戦士",hp:11,move:4,range:1,hit:4,dmg:5},
-    {icon:"🔮",name:"沼地の巫女",hp:7,move:3,range:2,hit:4,dmg:3,heal:true}]},
+    {icon:"🔮",name:"沼地の巫女",hp:7,move:4,range:2,hit:4,dmg:3,heal:true}]},
   merc:{name:"自由都市の傭兵団",units:[
-    {icon:"⚔",name:"傭兵隊長",hp:13,move:4,range:1,hit:3,dmg:4},
-    {icon:"🛡",name:"槍兵",hp:9,move:3,range:1,hit:4,dmg:4},
-    {icon:"👁",name:"斥候",hp:7,move:5,range:2,hit:4,dmg:3},
-    {icon:"🏹",name:"石弓兵",hp:8,move:3,range:3,hit:3,dmg:4},
+    {icon:"⚔",name:"傭兵隊長",hp:13,move:4,range:1,hit:3,dmg:5},
+    {icon:"🛡",name:"槍兵",hp:11,move:3,range:1,hit:4,dmg:4},
+    {icon:"👁",name:"斥候",hp:9,move:5,range:2,hit:4,dmg:3},
+    {icon:"🏹",name:"石弓兵",hp:8,move:3,range:3,hit:3,dmg:5},
     {icon:"🗡",name:"決闘者",hp:12,move:4,range:1,hit:3,dmg:5},
     {icon:"🏹",name:"弩兵長",hp:9,move:3,range:3,hit:3,dmg:5}]},
   dwarf:{name:"ドワーフの鍛冶ギルド",units:[
-    {icon:"⛏",name:"ギルド長",hp:14,move:2,range:1,hit:3,dmg:5},
+    {icon:"⛏",name:"ギルド長",hp:13,move:2,range:1,hit:3,dmg:5},
     {icon:"🪓",name:"斧兵",hp:13,move:2,range:1,hit:4,dmg:5},
-    {icon:"💥",name:"銃兵",hp:9,move:2,range:4,hit:4,dmg:4},
+    {icon:"💥",name:"銃兵",hp:9,move:2,range:3,hit:4,dmg:4},
     {icon:"🔧",name:"工匠",hp:8,move:2,range:2,hit:4,dmg:3},
     {icon:"💥",name:"重銃兵",hp:9,move:2,range:4,hit:4,dmg:5},
     {icon:"🛡",name:"盾衛兵",hp:13,move:2,range:1,hit:4,dmg:4}]},
@@ -322,16 +322,16 @@ const FACTIONS = {
     {icon:"🗡",name:"エルフ槍兵",hp:9,move:4,range:1,hit:3,dmg:4}]},
   angel:{name:"天使（天の軍団）",units:[
     {icon:"👼",name:"大天使ガブリエラ",hp:18,move:5,range:2,hit:3,dmg:6,fly:true},
-    {icon:"🪽",name:"戦天使ミカエラ",hp:12,move:5,range:1,hit:3,dmg:5,fly:true},
+    {icon:"🪽",name:"戦天使ミカエラ",hp:14,move:5,range:1,hit:3,dmg:5,fly:true},
     {icon:"💙",name:"癒しの天使セラフィナ",hp:9,move:4,range:2,hit:4,dmg:3,fly:true,heal:true},
-    {icon:"🏹",name:"光の射手アリエル",hp:9,move:4,range:3,hit:3,dmg:4,fly:true},
+    {icon:"🏹",name:"光の射手アリエル",hp:9,move:4,range:3,hit:3,dmg:5,fly:true},
     {icon:"✨",name:"熾天使ラファエラ",hp:15,move:5,range:2,hit:3,dmg:5,fly:true},
     {icon:"🛡",name:"門番天使カシエル",hp:17,move:4,range:1,hit:3,dmg:5,fly:true}]},
   demon:{name:"悪魔（魔界の軍団）",units:[
     {icon:"😈",name:"大悪魔セヴェル",hp:19,move:4,range:2,hit:3,dmg:6,fly:true},
     {icon:"👹",name:"悪魔戦士ルチア",hp:14,move:4,range:1,hit:3,dmg:5},
-    {icon:"🦇",name:"小悪魔ノワール",hp:8,move:5,range:2,hit:4,dmg:3,fly:true},
-    {icon:"🔥",name:"炎の呪術師ネヴェ",hp:7,move:3,range:3,hit:4,dmg:5},
+    {icon:"🦇",name:"小悪魔ノワール",hp:10,move:5,range:2,hit:4,dmg:3,fly:true},
+    {icon:"🔥",name:"炎の呪術師ネヴェ",hp:9,move:3,range:3,hit:4,dmg:5},
     {icon:"🔮",name:"魅魔リリス",hp:11,move:4,range:3,hit:3,dmg:4,fly:true},
     {icon:"⚔",name:"魔将ヴェルゼ",hp:18,move:4,range:1,hit:3,dmg:6}]},
   samurai:{name:"サムライ（東の武士団）",duel:true,units:[
