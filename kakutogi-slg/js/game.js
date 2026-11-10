@@ -25,130 +25,10 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.71";
+const GAME_VERSION = "1.74";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
-const CHANGELOG = [
-  {v:"1.71", date:"2026-11-10", items:[
-    "あるある小ネタ『武クラ自虐あるある』を追加（企画書第109節）：『武クラで学んだこと＝技より先に論争の作法』『腕立て伏せ5回できれば上位15%』といった、界隈の自虐系あるある投稿がCLASHで回る話。原帖は未特定のため、特定の誰かの投稿としては書かず、CLASHで回ってくる「あるある投稿」として描いた。笑いの矛先は界隈全体と主人公自身への自虐に置いた",
-  ]},
-  {v:"1.70", date:"2026-11-10", items:[
-    "あるある小ネタ『株上げレクチャー』を追加（企画書第108節）：普段は批判されがちなベテランの実力者が、現役トップ選手に技術レクチャーをする動画で、体格差の中で通用する理屈と教え方を見せ、辛口の観測勢からも『あれは本物だ』と静かに株を上げた、という実クラスタBOTY調査（ほっこり・好感部門）の型。当事者は架空の人物で、実在の人物名・団体名・競技名は出さない。既存の『静かに株を上げる』（交流稽古で受けと間合いが崩れなかった話）と同じ素材の別角度で、こちらは「教える側」の評価が覆る話として描いた",
-    "BOTYの固定候補に『静かに株を上げた男』を追加",
-  ]},
-  {v:"1.69", date:"2026-11-10", items:[
-    "あるある小ネタ『開示の先の話』を追加（企画書第107節）：八卦掌の使い手へ匿名の中傷を続けていた男が、開示請求で身元が割れ、使い手が話し合いのために男の練習場所を訪ねたところ、男のほうから勝負を挑み、挑んだ側が顎の骨を折られた――と語られる語り草。当事者は無名のまま、真偽は作中でも断定せず、中傷の文面は転記せず要約のみ、骨折は結果の一文のみで怪我の詳細は描かない。『中傷した側が悪いのは前提。それでも乗り込みも骨折も行き過ぎで、どっちも得をしていない』という両面の反応を混ぜ、『言葉は現実に返ってくる』という界隈の自戒として描いた",
-    "BOTYの固定候補に『『開示』の先をめぐる大論争』を追加",
-  ]},
-  {v:"1.68", date:"2026-11-10", items:[
-    "自社おすすめ枠の送客先を見直し：セラフィナ製品版とイラストパックを外し、送客先はグッズ「222キャラ工房」・LINEスタンプ・鉄冠戦記の3件になった（企画書第105節）",
-  ]},
-  {v:"1.67", date:"2026-11-10", items:[
-    "あるある小ネタ『九節鞭の語り草』を追加（企画書第104節）：ネットの口論が対面に発展し、『じゃあ死ね！』の一言とともに九節鞭で襲いかかり、倒れた相手をバイクに繋いで引き摺った――と語られる、界隈最古級の語り草。当事者は無名のまま、真偽は作中でも断定せず、引き摺った距離は語り手ごとに伸びていく伝聞の曖昧さとして描いた。笑い話にはせず、『やりすぎだ』『口論を現実に持ち込むな』という界隈の自戒と戒めとして語り継がれる話に置いた",
-    "BOTYの固定候補に『九節鞭伝説の真偽論争』を追加",
-  ]},
-  {v:"1.66", date:"2026-11-10", items:[
-    "流派『二天一流』を追加（全157流派）：宮本武蔵が創始した二刀の剣術。大小二刀と一刀の兵法を伝える古流で、主・流儀にも、後から学ぶ他流派にも選べるようになった",
-  ]},
-  {v:"1.63", date:"2026-11-10", items:[
-    "戦闘演出を全部入りで強化（企画書第100節）：攻撃系統（手技／足技／投げ・組み／寝技・関節／反則）ごとに、エフェクトの色・画面の揺れ方・効果音を変えた。技の軌跡ラインと、命中した瞬間に一瞬止まるヒットストップも追加",
-    "会心の専用演出を追加：看板技・複合技・奥義、「相手を読む」の的中、大ダメージが会心扱いになり、大きな赤い数字と専用の音・強い揺れで表示される（ダメージ計算や判定そのものは従来どおりで、演出だけの変更）",
-    "KOが決まる一撃ではスローモーションが入るようになり、体力が残り少ない側のHPバーは赤く点滅する警告表示になった",
-    "バトルの立ち絵が、攻撃で前に出て、被弾で後ろへのけぞる動きを追加。奥義発動時は背景に金色の光が広がる",
-  ]},
-  {v:"1.62", date:"2026-11-10", items:[
-    "武クラ見守りの話題を型化して反映（企画書第99節）：CLASH論争プールに『和解の提案はアリか論争』を追加。交流会の主催者が、炎上騒動をめぐる人気指導者側の和解・解決提案を『会の根幹に関わる』として受けなかった騒動の型で、当事者は架空の人物、条件の中身と是非は作中でも断定しない",
-    "あるある小ネタを1件追加：交流会の告知文で禁止事項（目潰し・金的）が太字で年々増えていく話。急所技をめぐる騒動の余波で、界隈の規則が厳格化していく空気を描く",
-    "BOTYの固定候補に『和解提案お断り騒動』を追加",
-  ]},
-  {v:"1.61", date:"2026-11-10", items:[
-    "自社おすすめ枠（相互送客）を追加：タイトル画面に6秒ごとに送客先が切り替わるローテーションカード、下部の「おすすめ」ボタンから開く一覧モーダル、章の終わり（エンディング画面）の「関連作品・おすすめ」パネルの3箇所。送客先はセラフィナ製品版・イラストパック・SUZURIグッズ・LINEスタンプ・鉄冠戦記の5件で、全リンクに計測用UTMを付与。プレイ中への割り込み表示はなし",
-  ]},
-  {v:"1.6", date:"2026-11-10", items:[
-    "女性インフルエンサー調査の全反映（企画書第97節）。女性武術系25人＋女性護身術系15人の調査『型』をモチーフにした新規女性キャスト40名（第102〜141名）を追加（全員架空名・-sera設定画つき、debutは第5〜6章に分散）",
-    "新規40名全員に、第1〜4章で顔が見えるカメオを用意。春日ルナと猪狩咲良には交流戦バトルも追加し、女子戦の野次演出（v1.50）の対象に自動で含まれるようにした",
-    "護身術系の連携として、女子の護身術論争（pool_joshi_goshin）に沢村律子・福森ゆかり・高嶺リコの投稿と、沢村律子の勝ち文参加を追加。口説き対象への追加は今回なし",
-  ]},
-  {v:"1.51", date:"2026-11-10", items:[
-    "CLASH論争プールに『女子の護身術はアリか論争』を追加：体格差の前に技術は無力という懐疑、護身＝倒すことではなく距離を取って逃げることという現実的な落としどころ、『女性でも簡単に大男を倒せる』とうたうセミナー宣伝へのツッコミ、防犯ブザーや通報など戦わない手段の評価を巡る論争。既存の『護身最強の武術はあるか論争』（流派の優劣が主題）とは角度を分け、落としどころは『実力のある女性の武術家はちゃんといる。問題は「誰でも簡単」と売る側』という両面性に置き、相沢凛とマリアナ・ドス・サントスが実力者として締める",
-  ]},
-  {v:"1.50", date:"2026-11-10", items:[
-    "女子戦の野次演出を追加：対戦相手が女性キャストの試合で、主人公の攻撃（打撃／組み／寝技）に観客とCLASHの野次が飛ぶようになった。系統ごとのプール＋共通＋反則・ヒートアップ時の強めプール（全35件）。矛先は主人公に向けた武クラ流の笑いで、『相手は実力者だ、舐めるな』系のツッコミも混ぜてある。演出のみで、名声・悪名・注目度などの数値は一切変動しない",
-  ]},
-  {v:"1.49", date:"2026-11-09", items:[
-    "タイトル画面にオープニング絵を追加：主人公を中心に各流派の格闘家たちが躍動する集合イラストを、タイトル画面のキービジュアルとして採用した",
-  ]},
-  {v:"1.48", date:"2026-11-09", items:[
-    "実際の武クラの検証文化の「型」を反映：CLASH論争プールに3件追加（元プロと有名流派の代表による『触れずに倒す』デモを、検証系の書き手が『実績の権威の転用』としてビジネス構造ごと批判する論争／合気系発信者の師事・段位の主張を数年分の過去投稿で検証する『全件検証』の是非を巡る論争／大物の公の実績以外の面まで踏み込む告発レポートの是非を巡る論争。いずれも真偽は作中でも断定しない）",
-    "あるある小ネタを1件追加：海外本部の資格トラブルで除名された指導者たちが別ブランドを立ち上げ、流派が真っ二つに割れる話。時系列の経緯まとめ長文が、界隈の基礎資料になる",
-  ]},
-  {v:"1.47", date:"2026-11-09", items:[
-    "実際の武クラの論争の「型」を反映：CLASH論争プールに2件追加（武器の前提が警棒→竹刀→木刀→鉄パイプと広がっていく『素手対棒はどこまでやれるか』論争と、専門用語の用法ミスを秒で突かれても認めず勝利宣言する『悪魔の証明』論争。主張の食い違いは、作中でも判定しない）",
-    "あるある小ネタを2件追加：論が不利になるたび得物の前提が育っていく様式美『また前提が育った』と、株とゲームが本業の一般アカウントが元プロの復帰戦動画に技術酷評を連投する話",
-    "BOTYの固定候補に『今年の論客名鑑の読み上げ』を追加：元プロが年末、今年相手にした論客たちを一括りで読み上げる風物詩（渾名は全て作中オリジナル）",
-  ]},
-  {v:"1.46", date:"2026-11-09", items:[
-    "あるある小ネタ『伝説の挑戦者の昔話』を追加：『世界王者にも勝てる』と豪語した論客が、元プロのスパー招聘に逃げずに応えて一方的にやられ、結果の投稿を消したことで『強がるが結果を隠す人』の代名詞になった昔話。ただし『逃げずに来た』一点だけは今も界隈に評価される、という両面性を描く",
-    "BOTYの固定候補に『伝説の挑戦者の昔話』を追加",
-  ]},
-  {v:"1.45", date:"2026-11-09", items:[
-    "連鎖イベント『一夏の対面要求騒動』を追加（第2章以降・夏に始まる全6段）: 地方の実践者が『プロは素人に手を出せない』構造を逆手に取って現役王者に対面を迫り、条件提示、物騒な投稿での空気の変化、主催イベントでの土下座、翌日の相手ジム訪問を経て、活動休止に至るまでを描く。主人公は傍観者の位置で、騒動を名声の稼ぎ場にはできない",
-    "BOTYの固定候補に『一夏燃え続けた対面要求騒動』を追加",
-  ]},
-  {v:"1.44", date:"2026-11-09", items:[
-    "実際の武クラの年末話題（BOTY候補）の「型」を反映：CLASH論争プールに4件追加（『刀は突くもの』論争／伝系の明示を巡る多正面論争／往年の達人『贋作』レッテル論争／達人の民間療法への専門職クラスタの反論）",
-    "あるある小ネタを2件追加：当事者の過去投稿を九百件以上も調べ上げた『全数調査』の検証記事で長期化する交流会の急所技騒動と、普段は批判されがちな実力者が現役トップ選手との稽古動画で静かに株を上げる話",
-    "BOTYの固定候補に『年間論争王（無冠の論客）』を追加：大賞は最強の選手ではなく、その年の論争を一番牽引した人に贈られるという、実クラスタの年末の空気を反映",
-  ]},
-  {v:"1.43", date:"2026-11-09", items:[
-    "戦闘演出フルセットを追加：ヒット時の画面シェイクと端フラッシュ、ダメージ数字のポップ表示、HPバーの残像（遅れて減る白バー）、奥義発動時のカットイン（暗転＋設定画＋技名）、決着時の『K.O.！』の溜め演出、バトル実況のタイプライター表示。効果音（打撃・ガード・空振り・ゴング・歓声）もブラウザ生成で追加し、画面下のボタンで音と演出のON／OFFを切り替えられる。演出は表示と音だけで、バトルの計算・勝敗・セーブには影響しない",
-  ]},
-  {v:"1.42", date:"2026-11-09", items:[
-    "「界隈大炎上編」に界隈の決め台詞『目を突くように嘘を吐く』を追記：『目つき』騒動のコメント欄で生まれた言葉遊びが、説明の二転三転する騒動全体を指す合言葉として広がっていく",
-  ]},
-  {v:"1.41", date:"2026-11-09", items:[
-    "連鎖イベント「界隈大炎上編」を追加（第2章以降・週をまたぐ全8段）：人気インフルエンサーの疑惑報道に端を発し、達人グループの内紛、別件の『目つき』騒動、説明の二転三転、映画企画の大ゴケとグループ離散、無関係な配信者の便乗まで、燃え続ける騒動の連鎖を描く。疑惑の当事者は架空の人物で、真偽は作中でも断定しない",
-  ]},
-  {v:"1.4", date:"2026-11-09", items:[
-    "第4章「円熟期」（40〜49歳）を追加：散打の間宮健一率いる道場との対抗戦が主敵ラインとして開幕（第5章へ続く長期戦の第1幕）。赤井道場が開かれ、弟子全員が同じ赤い道着の『赤い軍団』として登場",
-    "第4章の初登場：王麗華（58・陳式太極拳、厳格型の老師）／間宮健一（55・散打）／高村蒼太（19・サバット、若手の星）／呉志強（61・酔拳、寛容型の老師）。カメオで顔見せ済みの達人たちとも直接対面できるようになった",
-    "流派Lv9「指導の高み」とLv10「奥義・皆伝」を完全実装：Lv9で高額セミナーと指導収入が跳ね上がり、Lv10で試合中に一度だけ放てる奥義（純粋度で強化）が解放される。王麗華の口説き固有イベントも追加",
-    "円熟期の体の変化を実装：戦闘時の体力上限はピーク比80%、回復は遅く連戦の代償が重い。代わりに『相手を読む』効果とセミナー・指導の収益効率が全章で最も高い。道場の設備投資・弟子の遠征費・医療ケア費など、円熟期の支出の山も追加",
-  ]},
-  {v:"1.33", date:"2026-11-08", items:[
-    "「試斬動画の大論争」エピソードに、老師の語り草を追記：かつて忍術の使い手と揉めた折にタバコをくわえたまま吐き捨てた『このカッペ野郎！』の一件が、界隈の物真似の定番フレーズになっている",
-  ]},
-  {v:"1.32", date:"2026-11-08", items:[
-    "居合の達人・真井勇作を追加（キャスト総数101名）。飛んでくる小さな弾さえ真剣で斬る記録級の離れ業で知られる超人が、第2章から検証・批評の実力者として登場",
-    "「試斬動画の大論争」エピソードを加筆：批判側に真井が立ち、当事者同士の本気の争いと、それを祭りにしてしまう界隈の温度差を描く",
-  ]},
-  {v:"1.31", date:"2026-11-08", items:[
-    "師匠の絵を流派ごとに差し替え：序章の認定審査に立つ師範と、流派詳細（他流派を学ぶ画面）の師範像が、選んだ流派の系統に合った人物になった（カテゴリ別10種＋相撲・ムエタイ・カポエイラ・忍術・アーマードバトル・シルムの個別6種）",
-  ]},
-  {v:"1.3", date:"2026-11-08", items:[
-    "達人系の発信者20名を追加（キャスト総数100名）。第4〜6章で本格登場し、第1〜3章では映像・噂のカメオで顔見せ。検証コラボのハブ役など固有コラボ2本も追加",
-    "誹謗中傷の裏ルートを追加：バックに組織がいる相手を中傷すると、数週置いて『黒い車の訪問』が来る（謝罪／弁護士／無視で圧力が段階的に変化）",
-    "勝利宣言の代償ルートを追加：論争で言い負かして相手が退場した後に勝利宣言をすると、夜道の襲撃イベントが発生しうる（蓄積した実力と体の状態で結末が変わる）",
-    "エピソードのデッドエンドを追加：主要エピソードにバッドエンド（重い代償を残して年代記は続く）と、一部に真のデッドエンド（DEAD END画面から分岐点へ巻き戻し）を実装。見たデッドエンドはタイトル画面に記録される",
-  ]},
-  {v:"1.2", date:"2026-11-08", items:[
-    "訴えられる経路を追加（CLASHの煽りからの名誉毀損／無断動画の肖像権／傷害の示談交渉）。弁護士費用（相談料・着手金・成功報酬）と、払いきれない分が残る『借金』（月末の分割返済）を実装",
-    "主・流儀の本場への留学ルートを追加（費用は借金でも賄える。借金上限あり）",
-    "訴訟・借金が恋愛に波及する修羅場イベントと、借金帰省でオカンに年金明細を突きつけられる実家イベントを追加",
-    "インフルエンサー系キャストとのコラボ企画（動画配信・合同イベント＋固有コラボ3本）を追加",
-  ]},
-  {v:"1.1", date:"2026-11-08", items:[
-    "実在モデル組が第1章から段階的に登場（カメオ→第2章で絡む→第3章で対面）",
-    "年末イベント『BOTY（武クラ・オブ・ザ・イヤー）』を追加",
-    "武術界隈の変なエピソード（試斬動画の大論争・レスバ十段ほか）と、気の達人・羽黒幻海／真壁信者エカを追加",
-    "エピソードごとに『CLASHに書き込む』投稿と👍反応（いいね）を追加。感想は端末内のCLASHに残り、フォーム送信で全体の人気集計にも参加できます",
-  ]},
-  {v:"1.0", date:"2026-11-07", items:[
-    "第1章 青年期（19〜22歳）／第2章 全盛前夜（23〜29歳）／第3章 全盛期（30〜39歳）を公開",
-    "全157流派・登場人物80名・道場経営と名声（清名／悪名）・口説き・反則と裁判バトルまで実装",
-  ]},
-];
 
 // ---------- 自社おすすめ枠（house ads・企画書第98節／設計正本 seraphina/game/house-ads-design-2026-11-10.md） ----------
 // 外部広告ではなく自社商品への相互送客枠。本作は無料公開版のみのため3枠とも有効。
@@ -368,6 +248,8 @@ function ensureStateCompat(){
   if (!S.styleExp) S.styleExp = {};
   if (S.chapter3Clear == null) S.chapter3Clear = false;
   if (S.chapter4Clear == null) S.chapter4Clear = false;
+  if (S.flags.chinKishiCount == null) S.flags.chinKishiCount = 0; // 第110節: 「チン騎士」擁護カウンタ（旧セーブでは未定義のため初期化）
+  if (!S.flags.chal || typeof S.flags.chal !== "object") S.flags.chal = {}; // 第114節: 挑戦試合の相手別戦績（旧セーブでは未定義のため初期化）
 }
 function fameTotal(){ return S.sei + S.aku;}
 function fameRankIdx(){ const f = fameTotal(); let i = 0; FAME_THRESHOLDS.forEach((t, k) => { if (f >= t) i = k;}); return i;}
@@ -379,6 +261,7 @@ if (!S) return T.nickYoung;
 if (S.record.fouls >= 2) return T.nickFoul;
 if (S.flags.champion) return T.nickChamp;
 if ((S.flags.debt || 0) >= 60000) return "借金の求道者"; // 第74節: 借金が嵩むと界隈が勝手に付けた呼び名が二つ名に割り込む
+if ((S.flags.chinKishiCount || 0) >= 3) return "チン騎士"; // 第110節: 女性を擁護し続けると界隈が付ける渾名が二つ名に割り込む
 if (S.record.works >= 24) return "バイト戦士";
 const b = S.flags.boukanHow;
 if (b === "voice") return "駅前の声";
@@ -1181,6 +1064,7 @@ function sceneAdvance(){
     if (st.courtVerdict3){ UI.queue = civilVerdictLines("video").concat(UI.queue); continue; }
     if (st.legalPay){ UI.queue = settleBillLines(st.legalPay.title || st.legalPay.label, [{label: st.legalPay.label, amount: st.legalPay.amount}]).concat(UI.queue); continue; }
     if (st.markFlag){ S.flags[st.markFlag] = true; S.flags[st.markFlag + "Week"] = S.absWeek; continue; }
+    if (st.chalResult){ applyChallengeResult(st.chalResult); continue; }
     if (st.clashSueIntro){ UI.queue = clashSueIntroLines().concat(UI.queue); continue; }
     if (st.injuryIntro){ UI.queue = injuryIntroLines().concat(UI.queue); continue; }
     if (st.injurySettlePay){ UI.queue = injurySettleLines().concat(UI.queue); continue; }
@@ -1399,6 +1283,7 @@ function renderWeek(){
     ["baito", "バイト（タイミー）", "倉庫／警備／設営。生活費の足しに"],
     ["sns", "SNS「CLASH」", "投稿と論争。名声のもう一つのリング"],
     ["romance", "口説く", fameRankIdx() >= 1 ? "名声ランクで解放中" : "名声ランク「近所で有名」で解放"],
+    ["challenge", "勝負を挑む", "登場済みの武術家・キャストに挑戦する"],
     ["care", "ケア・休養", "疲労と部位ダメージの回復"],
     ["dex", "図鑑・記録", "流派図鑑とキャスト名簿（週は進みません）"],
   ];
@@ -1765,6 +1650,7 @@ function doAction(act){
   if (act === "baito") return renderBaitoPick();
   if (act === "care") return renderCarePick();
   if (act === "romance") return renderRomancePick();
+  if (act === "challenge") return renderChallengePick();
   if (act === "dex") return renderDex();
 }
 // 第78節: コラボ企画の相手・形式の選択画面（実処理は story-cameos.js の startCollab）
@@ -2344,10 +2230,291 @@ function doFinishBattle(win){
   else S.record.winStreak = 0;
   // 第86節: 円熟期は連戦の代償が重い（試合後の疲労増）
   S.fatigue = clamp(S.fatigue + (S.chapter >= 4 ? 18 : 12), 0, 100);
-  const steps = win ? b.winSteps : b.loseSteps;
+  let steps = win ? b.winSteps : b.loseSteps;
+  // 第110節: 野次が飛んだ女子戦（相手は女性キャスト本人）に勝つと、試合後に擁護を投稿する後日談が差し込まれる。
+  // 二つ名「チン騎士」取得後は、後日談そのものが「時々」だけになる（毎試合は差し込まない）
+  if (win && (b.heckleCount || 0) > 0 && ((S.flags.chinKishiCount || 0) < 3 || _rng() < 0.4)){
+    steps = steps.concat(chinKishiBattleSteps());
+  }
   UI.battle = null; UI.screen = "scene";
   UI.queue = steps.concat(UI.queue);
   sceneAdvance();
+}
+
+// ---------- 第110節: 女性を擁護すると「チン騎士」と呼ばれる仕組み ----------
+// 女性の武術家・選手を公の場で擁護するたびに S.flags.chinKishiCount が増え、CLASHでは
+// 揶揄の呼称「チン騎士」で呼ばれるようになる。通算3回で二つ名「チン騎士」が付く（nickname() が参照）。
+// からかいの矛先は主人公だけに向け、女性を貶める表現は入れない。
+function chinKishiReactSteps(){
+  S.flags.chinKishiCount = (S.flags.chinKishiCount || 0) + 1;
+  const n = S.flags.chinKishiCount;
+  if (n === 1){
+    return [
+      {sp:"narr", t:"CLASHのコメント欄に、こんな投稿が並んだ。『お、騎士様のご登場だ』『女性の味方、チン騎士あらわる』――擁護した途端、からかいの渾名が飛んでくる。それがこの界隈の洗礼だった。"},
+      {sp:"narr", t:"悪意というより、半分は儀式のようなものらしい。言われた本人は、苦笑いするしかなかった。"},
+    ];
+  }
+  if (n === 2){
+    return [
+      {sp:"narr", t:"CLASH ―『また騎士様が出動した』『通算2回目。もはや巡回パトロールだ』。擁護のたびに付いてくる「チン騎士」の呼び声が、少しずつ定着し始めていた。"},
+    ];
+  }
+  if (n === 3){
+    return [
+      {sp:"narr", t:"CLASHがざわついた。『これはもう、名乗るしかないだろう』『【速報】ハヤト、チン騎士の称号を獲得』――冗談のつもりで付いた渾名が、気づけば界隈公認の二つ名になっていた。"},
+      {sp:"narr", t:"「チン騎士」――女性の武術家を表立って擁護する者に付く名。からかい半分、敬意半分。少なくとも、黙って見ているだけの者には付かない名前だった。"},
+      {fx:{attention:1}},
+    ];
+  }
+  // 二つ名取得後の反応（呼び出し側で「時々」に絞る）
+  return [
+    {sp:"narr", t:"CLASH ―『チン騎士、今日も出動』『通常営業ですね』。もはや誰も驚かない。それが二つ名というものだった。"},
+  ];
+}
+// 野次の飛んだ女子戦に勝ったあとの後日談: 主人公がCLASHへ擁護を投稿し、界隈の反応が付く
+function chinKishiBattleSteps(){
+  const head = [{sp:"narr", t:"試合後、ハヤトはCLASHに短く投稿した。『野次を飛ばす前に、見てほしい。彼女は最初から最後まで、本気で戦っていた。それ以上でも、それ以下でもない』"}];
+  return head.concat(chinKishiReactSteps());
+}
+
+// ---------- 第114節: 各キャラクターに勝負を挑める「挑戦試合」システム ----------
+// 週の行動「勝負を挑む」から、登場済み（debut章に到達）のキャストのうち実在の武術・格闘技の
+// 流派を持つ者に挑戦できる。第115節で、対象外47名リサーチを受けた A〜C の23名を上書き表で追加した
+// （対象は全117名。D の24名は戦う人物ではないため対象外のまま）。
+// 相手の強さは、流派の基礎値と役割・登場章・年齢から決定的に生成する
+// （乱数は使わない）。報酬は相手の格と自分の実力差でスケールさせ、序盤の相手を終盤に狩り続けて
+// 名声を荒稼ぎできないようにする。同じ相手への再挑戦は4週間のクールダウンを置く。
+// 戦績は S.flags.chal[castId] = {w, l, last, fw} に保持する（fw=初勝利のCLASH反応を出したか）。
+const CHAL_COOLDOWN_WEEKS = 4;
+// style欄が実在流派名ではない者（道場名・総称・身体操法／研究系・武器系・殺陣・独自系・護身講師系）は対象外
+const CHAL_STYLE_EXCLUDE = new Set([
+  "（プレイヤーの流派）", "源田道場", "護身志望", "裏の指導者", "弟子世代",
+  "筋トレ／アクション", "空手系", "空手",
+  "独自の身体操法（武術研究）", "身体操法・古武道研究", "運動科学・身体操法", "身体操法（椅子軸メソッド）",
+  "空手・身体操作（仙骨の鍛錬法）", "ナンバ身体操法", "武道研究", "零距離戦闘術（波の型）",
+  "気功・合気系（独自の気の武術）", "短時間マッチ企画",
+  "居合・試斬（現代居合）", "古武道（剣術・居合）", "古流兵法（抜刀術）", "居合・剣術・杖術", "剣道", "弓道・流鏑馬",
+  "殺陣・護身術", "殺陣・アクション映像",
+  "女性専用護身法", "女性専用護身法・社会福祉", "フェミニスト護身術", "防犯・犯罪予知", "エンタメ護身術",
+  "護身マナー（犯罪学ベース）", "硬式空手・防犯護身術", "古武術アレンジ護身術", "護身武道", "鞭拳空手",
+]);
+// 流派名の表記ゆれ・複合表記を、ロスター（data-styles）の代表流派へ寄せる対応表
+const CHAL_STYLE_ALIAS = {
+  "ロシア武術システマ": "システマ",
+  "合気武道（理合の合気）": "合気道（合気会）",
+  "古流合気柔術": "大東流合気柔術", "古流合気体術": "大東流合気柔術", "合気柔術（古流）": "大東流合気柔術",
+  "古流柔術（当身・殺活法）": "天神真楊流柔術",
+  "古流武術（居合・柔術）": "竹内流", "古流武術（真壁門下）": "竹内流", "古武術（柔術）": "竹内流", "古流総合武術": "竹内流",
+  "古流忍術": "忍術体術（武神館）", "忍術・剣術": "忍術体術（武神館）",
+  "沖縄空手": "沖縄拳法", "沖縄拳法空手": "沖縄拳法", "沖縄空手／総合格闘技": "総合格闘技（MMA）",
+  "中国武術（長拳）・テコンドー": "テコンドー（WT）", "中国武術（武術太極拳・長拳系）": "査拳",
+  "武術太極拳": "楊式太極拳", "中国武術": "北少林拳", "中国武術（沖縄伝来）": "御殿手（うどぅんてぃ）",
+  "伝統派空手": "松濤館流", "フルコンタクト空手": "極真空手", "空手（形）": "糸東流", "空手（組手）": "極真空手",
+  "躰道・整体": "躰道（たいどう）", "クラヴマガ系フィットネス": "クラヴマガ",
+  "柔術（護身プログラム）": "ブラジリアン柔術", "柔道・総合格闘技": "講道館柔道",
+  "総合格闘技・ブラジリアン柔術": "総合格闘技（MMA）", "キックボクシング・ムエタイ": "キックボクシング",
+  "糸東流空手": "糸東流", "柔道": "講道館柔道", "太極拳・カンフーフィットネス": "楊式太極拳",
+};
+// 括弧内表記を落とすと複数候補が残る場合の代表（例: 「合気道」→合気会）
+const CHAL_BASE_REP = { "合気道": "合気道（合気会）", "テコンドー": "テコンドー（WT）" };
+// ---------- 第115節: 挑戦対象の拡張（対象外47名のリサーチを受けて A〜C の23名を追加） ----------
+// 本人決定「B・Cも含めて入れる設計にする」。D（戦う人物ではない24名）は対象外のまま。
+// 既存の判定（ロスター解決・除外セット）は壊さず、個人単位の上書き表を先に解決する形で足す。
+// A: 既存ロスターの流派を個人に割り当てる（文字列単位の別名表では拾えない者）
+const CHAL_CAST_STYLE = {
+  todo: "松濤館流",       // 「空手」→第2章バトル todo_ex で明示された松濤館流
+  akai: "松濤館流",       // 「空手系」→伝統派空手を土台とする正統の空手
+  kurozaki: "総合格闘技（MMA）", // 「裏の指導者」→個人指導者としての実技
+  sawamura: "日本拳法",   // 「硬式空手・防犯護身術」→硬式空手はロスターに無く、防具付き組手の日本拳法で受ける
+  ando: "竹内流",         // 「身体操法・古武道研究」→古流総合（剣・柔・棒）の受け皿。格付けは下で調整
+  shida: "竹内流",        // B・護身術系: 「古武術アレンジ護身術」→土台の古武術
+  // B・武器系: 数値と使える系統は基礎流派から取る（二天一流で剣術を打撃として抽象化した前例に倣う）
+  mai: "関口流（関口新心流）",   // 居合・試斬（現代居合）→居合と柔術の複合
+  kurashina: "竹内流",           // 古武道（剣術・居合）
+  nakazato: "関口流（関口新心流）", // 古流兵法（抜刀術）
+  yukishiro: "竹内流",           // 居合・剣術・杖術
+  sakura: "二天一流",            // 剣道
+  saki: "二天一流",              // 殺陣・護身術
+};
+// B・主人公連動型: 対戦時の流派はプレイヤーの主・流儀になる
+// （源田 巌＝主人公の流派の師範として描かれてきた／早乙女 楓＝主人公の弟子。挑戦側は稽古試合扱いで本筋フラグへ干渉しない）
+const CHAL_LINK_MAIN = new Set(["genda", "saotome"]);
+// B・武器系の面々（一覧や導入文の流派表示は、本人の専門表記のままにする）
+const CHAL_WEAPON_SET = new Set(["mai", "kurashina", "nakazato", "yukishiro", "sakura", "saki", "emma"]);
+// 格付けの個別調整（challengeGrade への加減）
+// 源田は師匠格として+1／真井は記録級の離れ業の実力者として+3／安藤は78歳の身体操法の老師として-2／
+// 倉科は-1（素の式だと最強格に並びすぎる）／志田は地域サークルの講師として-1
+const CHAL_GRADE_BONUS = { genda: 1, mai: 3, ando: -2, kurashina: -1, shida: -1 };
+// C: 専用数値。hp・power は challengeFoePower の共通式に stats と grade を渡して決める（muls は質感の調整）
+const CHAL_CUSTOM_FOE = {
+  emma:    { stats: {strike:2, kick:0, grapple:1, ground:0}, grade: 2 },   // B・武器系（弓道・流鏑馬。ロスターに対応流派が無いため専用数値で受ける）
+  haguro:  { stats: {strike:1, kick:0, grapple:3, ground:1}, grade: 3, hpMul: 1.05, powerMul: 0.75 }, // 気は届かないが、崩しと読みは本物
+  takeru:  { stats: {strike:2, kick:0, grapple:2, ground:1}, grade: 1.5, hpMul: 1.4 },  // 殴られ屋＝耐久寄り
+  bushika: { stats: {strike:4, kick:2, grapple:2, ground:0}, grade: 1.5 },             // 筋トレ／アクション＝筋力・打撃寄り
+  bando:   { stats: {strike:4, kick:1, grapple:1, ground:0}, grade: 2.5 },             // 零距離戦闘術＝間合いゼロの一撃寄り
+  hoshino: { stats: {strike:3, kick:2, grapple:0, ground:0}, grade: 2 },               // 鞭拳空手＝しなる打撃
+  sugiura: { stats: {strike:1, kick:0, grapple:3, ground:2}, grade: 3, powerMul: 0.8 }, // 独自の身体操法＝崩しと読み寄り
+  fujimiya:{ stats: {strike:4, kick:1, grapple:1, ground:0}, grade: 3 },               // 空手・身体操作（仙骨）＝強烈な打撃
+  hirose:  { stats: {strike:1, kick:0, grapple:3, ground:1}, grade: 3, hpMul: 1.2, powerMul: 0.7 }, // 護身武道＝いなす受け
+};
+function challengeStyleFor(c){
+  if (!c || c.id === "hayato") return null;
+  const raw = c.style;
+  if (!raw || raw === "―" || raw.indexOf("―") === 0) return null;
+  // 第115節: 上書き表を、除外セット・通常解決より先に解決する
+  if (CHAL_LINK_MAIN.has(c.id)) return (typeof mainStyle === "function") ? mainStyle() : null;
+  if (CHAL_CAST_STYLE[c.id]){ const ov = styleByName(CHAL_CAST_STYLE[c.id]); if (ov) return ov; }
+  if (CHAL_CUSTOM_FOE[c.id]) return {name: c.style, stats: CHAL_CUSTOM_FOE[c.id].stats, systems: ["strike", "grapple", "ground"]};
+  if (CHAL_STYLE_EXCLUDE.has(raw)) return null;
+  let st = styleByName(raw);
+  if (st) return st;
+  if (CHAL_STYLE_ALIAS[raw]){ st = styleByName(CHAL_STYLE_ALIAS[raw]); if (st) return st; }
+  const base = raw.replace(/（[^）]*）/g, "");
+  const cands = STYLES_DATA.filter(s => s.name.replace(/（[^）]*）/g, "") === base);
+  if (cands.length === 1) return cands[0];
+  if (cands.length > 1 && CHAL_BASE_REP[base]){ st = styleByName(CHAL_BASE_REP[base]); if (st) return st; }
+  return null;
+}
+// 相手の格付け（0〜6）: 役割の格＋経験（年齢）＋登場章の補正。決定的（乱数なし）
+function challengeGrade(c){
+  const role = c.role || "";
+  let g = 0;
+  if (/伝説|宗家/.test(role)) g = 3;
+  else if (/師匠枠|師範|達人枠/.test(role)) g = 2;
+  else if (/王者|女王|チャンピオン|トップファイター|第一人者|重鎮|レジェンド|強豪|名手/.test(role)) g = 1;
+  if (c.age != null && c.age >= 55) g += 1;
+  g += (c.debut - 1) * 0.5;
+  g = Math.min(6, g);
+  if (CHAL_GRADE_BONUS[c.id]) g = Math.max(0, Math.min(6, g + CHAL_GRADE_BONUS[c.id])); // 第115節: 個別調整
+  return g;
+}
+function challengeFoePower(c, st){
+  // 第115節: C（専用数値）は共通式に専用の stats・grade を渡し、質感の倍率を最後にかける
+  const cu = CHAL_CUSTOM_FOE[c.id];
+  if (cu){
+    const cs = cu.stats;
+    const csum = cs.strike + cs.kick + cs.grapple + cs.ground;
+    const cmx = Math.max(cs.strike, cs.kick, cs.grapple, cs.ground);
+    let chp = Math.round(42 + csum * 7 + cmx * 5 + cu.grade * 13);
+    let cpower = Math.round(4.5 + csum * 0.6 + cmx * 0.6 + cu.grade * 1.5);
+    if (c.age != null && c.age >= 65){ cpower = Math.round(cpower * 0.9); chp = Math.round(chp * 1.05); }
+    if (cu.hpMul) chp = Math.round(chp * cu.hpMul);
+    if (cu.powerMul) cpower = Math.max(1, Math.round(cpower * cu.powerMul));
+    return {hp: chp, power: cpower, grade: cu.grade};
+  }
+  const sum = st.stats.strike + st.stats.kick + st.stats.grapple + st.stats.ground;
+  const mx = Math.max(st.stats.strike, st.stats.kick, st.stats.grapple, st.stats.ground);
+  const g = challengeGrade(c);
+  let hp = Math.round(42 + sum * 7 + mx * 5 + g * 13);
+  let power = Math.round(4.5 + sum * 0.6 + mx * 0.6 + g * 1.5);
+  // 円熟の補正（既存の加齢ロジックと同じ方向: 高年齢は火力が少し落ち、代わりに崩れにくい）
+  if (c.age != null && c.age >= 65){ power = Math.round(power * 0.9); hp = Math.round(hp * 1.05); }
+  return {hp, power, grade: g};
+}
+function challengeEScore(c, st){ const f = challengeFoePower(c, st); return f.power * 1.4 + f.hp / 14; }
+function challengePScore(){
+  const lv = styleLv(S.mainStyle);
+  const best = Math.max(S.stats.strike, S.stats.kick, S.stats.grapple, S.stats.ground);
+  return 6 + best * 2.2 + lv * 1.2;
+}
+// 格の表示・報酬判定（師匠・伝説級は、実力差が開いた後半でも最低「互角」として扱う）
+function challengeTier(c, st){
+  const diff = challengeEScore(c, st) - challengePScore();
+  let t = diff >= 5 ? "格上" : diff <= -5 ? "格下" : "互角";
+  if (t === "格下" && challengeGrade(c) >= 4) t = "互角";
+  return t;
+}
+function chalRecordOf(id){
+  ensureStateCompat();
+  return (S.flags.chal && S.flags.chal[id]) || {w:0, l:0, last:0, fw:0};
+}
+function chalCooldownLeft(id){
+  const r = chalRecordOf(id);
+  if (!r.last) return 0;
+  return Math.max(0, CHAL_COOLDOWN_WEEKS - (S.absWeek - r.last));
+}
+function challengeOpponents(){
+  return CAST_DATA
+    .filter(c => c.debut <= S.chapter)
+    .map(c => ({c, st: challengeStyleFor(c)}))
+    .filter(x => x.st)
+    .sort((a, b) => (a.c.debut - b.c.debut) || (challengeGrade(b.c) - challengeGrade(a.c)) || a.c.name.localeCompare(b.c.name, "ja"));
+}
+function applyChallengeResult(r){
+  ensureStateCompat();
+  if (!S.flags.chal || typeof S.flags.chal !== "object") S.flags.chal = {};
+  const rec = S.flags.chal[r.id] || {w:0, l:0, last:0, fw:0};
+  if (r.win){ rec.w++; if (r.first) rec.fw = 1; } else rec.l++;
+  rec.last = S.absWeek;
+  S.flags.chal[r.id] = rec;
+}
+function renderChallengePick(){
+  hud();
+  const list = challengeOpponents();
+  let html = '<div class="weekhead"><h2>勝負を挑む</h2><div class="weeksub">登場済みの武術家（全' + list.length + '名）に挑戦できます。週の行動1回分を使います。同じ相手とは4週間あけてください。「格」は実力と格付けの総合評価で、勝ったときの報酬は格と実力差で決まります</div></div>';
+  html += '<input id="chal-search" type="text" placeholder="名前・流派で検索" style="width:100%;padding:10px;margin-bottom:8px;">';
+  html += '<div class="actions">' + list.map(x => {
+    const c = x.c, rec = chalRecordOf(c.id), cd = chalCooldownLeft(c.id);
+    const ageTx = c.age != null ? c.age + "歳" : "年齢不詳";
+    const recTx = (rec.w || rec.l) ? " ／ 戦績 " + rec.w + "勝" + rec.l + "敗" : " ／ 未対戦";
+    const cdTx = cd > 0 ? " ／ 再戦まであと" + cd + "週" : "";
+    return '<button class="btn act chal-btn" data-chal="' + c.id + '"' + (cd > 0 ? " disabled" : "") + "><b>" + esc(c.name) + "</b><span>" + esc(c.style) + " ／ " + ageTx + " ／ 格：" + challengeTier(c, x.st) + recTx + cdTx + "</span></button>";
+  }).join("") + '<button class="btn ghost" data-back="1">戻る</button></div>';
+  $("main").innerHTML = html;
+  $("main").querySelector("[data-back]").addEventListener("click", renderWeek);
+  const search = $("chal-search");
+  if (search) search.addEventListener("input", e => {
+    const q = e.target.value.trim();
+    $("main").querySelectorAll(".chal-btn").forEach(el => { el.style.display = (!q || el.textContent.includes(q)) ? "" : "none"; });
+  });
+  $("main").querySelectorAll("[data-chal]").forEach(b => b.addEventListener("click", () => startChallenge(b.dataset.chal)));
+}
+// 第115節: 導入文・CLASH反応で使う流派表記（武器系は本人の専門表記、連動型と割り当て型は解決した流派名）
+function chalStyleLabel(c, st){
+  if (CHAL_LINK_MAIN.has(c.id)) return st.name;
+  if (CHAL_WEAPON_SET.has(c.id)) return c.style;
+  if (CHAL_CAST_STYLE[c.id]) return st.name;
+  return c.style;
+}
+function startChallenge(id){
+  const c = CAST_BY_ID[id]; if (!c) return false;
+  const st = challengeStyleFor(c); if (!st) return false;
+  const styleTx = chalStyleLabel(c, st);
+  if (chalCooldownLeft(id) > 0){ toast("同じ相手とは、少し間をあけよう", true); return false; }
+  const foe = challengeFoePower(c, st);
+  const tier = challengeTier(c, st);
+  const rec = chalRecordOf(id);
+  const firstWin = !rec.fw;
+  const rematch = rec.w > 0; // 過去に勝った相手への再戦勝利は報酬減額
+  let rw = tier === "格上" ? {attention:3, sei:2, expMain:8} : tier === "互角" ? {attention:2, sei:1, expMain:5} : {attention:0, sei:0, expMain:2};
+  if (rematch) rw = {attention: Math.floor(rw.attention / 2), sei: Math.floor(rw.sei / 2), expMain: Math.max(1, Math.floor(rw.expMain / 2))};
+  if (firstWin) rw.attention += 1; // 初勝利の話題性（下のCLASH反応とセット）
+  const fxWin = {};
+  if (rw.attention) fxWin.attention = rw.attention;
+  if (rw.sei) fxWin.sei = rw.sei;
+  if (rw.expMain) fxWin.expMain = rw.expMain;
+  BATTLES["chal_" + id] = {
+    title: "挑戦試合 vs " + c.name, enemyName: c.name, enemyStyleName: st.name, img: id,
+    hp: foe.hp, power: foe.power, mode: "match", foul: true,
+    comments: [
+      "実況「挑戦試合――" + c.name + "が受けて立ちました！」",
+      "「" + st.name.replace(/（[^）]*）/g, "") + "の型、崩せるか」",
+      "CLASHの実況欄が、静かに熱を持ち始めている",
+      "観客「名のある相手に挑むのは、それだけで見ものだ」",
+    ],
+  };
+  const winSteps = [{chalResult:{id, win:true, first:firstWin}},
+    {sp:"narr", t: c.name + "との勝負は、ハヤトの勝ちだった。" + (tier === "格上" ? "格上相手の金星――この一勝は、しばらく界隈で語られる。" : tier === "格下" ? "格下相手に、取りこぼしはなかった。" : "互角の相手との真っ向勝負を、制した。")}];
+  if (firstWin) winSteps.push({sp:"narr", t: "CLASH ―『" + c.name + "、" + styleTx + "の実力者に、ハヤトが挑戦試合で勝ったって！？』『名のある相手に自分から挑んで結果を出すのは、本物だ』。挑戦の結果は、界隈の隅々まで届いていた。"});
+  if (Object.keys(fxWin).length) winSteps.push({fx: fxWin});
+  const loseSteps = [{chalResult:{id, win:false, first:false}},
+    {sp:"narr", t: c.name + "との勝負は、ハヤトの敗北だった。だが、名のある相手に自分から挑んだ事実は残る。次に挑むときは、今日の距離感が武器になる。"}];
+  startScene([
+    {img: id},
+    {sp:"narr", t: c.name + "に勝負を挑んだ。相手は" + styleTx + "の使い手" + (c.age != null ? "、" + c.age + "歳" : "") + "。逃げずに受けて立つ構えに、会場の空気が変わった。"},
+    {battle: "chal_" + id, win: winSteps, lose: loseSteps},
+  ], () => endWeek());
+  return true;
 }
 
 // ---------- SNS議論バトル ----------
@@ -2391,7 +2558,9 @@ function startDebate(id){
     }
     if (win){ S.record.debateWins++; applyFx(d.winFx); } else applyFx(d.loseFx);
     UI.screen = "scene";
-    UI.queue = (win ? r.win : r.lose).concat(UI.queue);
+    // 第110節: 女性側を擁護する返し（データ側で defend:true を付けた選択肢）では「チン騎士」の反応が続く
+    const ckSteps = r.defend ? chinKishiReactSteps() : [];
+    UI.queue = (win ? r.win : r.lose).concat(ckSteps, UI.queue);
     sceneAdvance();
   }));
 }
@@ -2451,21 +2620,11 @@ function renderTitle(){
     "<h4>👍したエピソード（" + likeIds.length + "件）</h4>" + likeList +
     "<h4>あなたの投稿（" + posts.length + "件）</h4>" + postList +
     (getDeadEnds().length ? "<h4>見たデッドエンド（" + getDeadEnds().length + "件）</h4><ul class=\"voicelist\">" + getDeadEnds().map(d => "<li>💀 " + esc(d.title) + "</li>").join("") + "</ul>" : "") +
-    '<div class="voicerow"><a class="btn next formlink" href="' + FEEDBACK_FORM_URL + '" target="_blank" rel="noopener">感想・改善要望・ネタを送る（フォーム）</a>' +
-    '<button class="btn" data-auto="changelog">更新履歴</button></div></div>';
+    '<div class="voicerow"><a class="btn next formlink" href="' + FEEDBACK_FORM_URL + '" target="_blank" rel="noopener">感想・改善要望・ネタを送る（フォーム）</a></div></div>';
   $("main").querySelector("[data-auto='new']").addEventListener("click", renderStyleSelect);
   const c = $("main").querySelector("[data-auto='continue']");
   if (c) c.addEventListener("click", () => { if (loadGame()) resumeFromSave(); });
-  $("main").querySelector("[data-auto='changelog']").addEventListener("click", renderChangelog);
   try { initHouseAdTitle(); } catch(e){} // 第98節: 自社おすすめ枠（タイトル画面ローテーション）
-}
-function renderChangelog(){
-  UI.screen = "changelog";
-  $("hud").classList.add("hidden");
-  $("main").innerHTML = '<div class="endcard"><h2>更新履歴</h2>' +
-    CHANGELOG.map(c => "<h3>v" + c.v + "（" + c.date + "）</h3>" + c.items.map(i => '<div class="dexrow">' + esc(i) + "</div>").join("")).join("") +
-    '<div class="navrow"><button class="btn" data-auto="to-title">タイトルへ戻る</button></div></div>';
-  $("main").querySelector("[data-auto='to-title']").addEventListener("click", renderTitle);
 }
 function resumeFromSave(){
   if (S.flags && S.flags.retiredEnding && S.chapter >= 4 && typeof chapter4RetireScreen === "function") chapter4RetireScreen();
@@ -2607,6 +2766,11 @@ window.__gameTest = {
   okanGood: () => startScene(okanHomeGoodSteps(), null, "sp_okan_home_good"),
   collabList: () => (typeof collabPartnerList === "function" ? collabPartnerList() : []),
   startCollab: (id, type) => startCollab(id, type),
+  // 第114節: 挑戦試合システムの検証フック
+  challengeList: () => challengeOpponents().map(x => ({id: x.c.id, name: x.c.name, castStyle: x.c.style, style: x.st.name, grade: challengeGrade(x.c), foe: challengeFoePower(x.c, x.st), tier: challengeTier(x.c, x.st), cd: chalCooldownLeft(x.c.id), rec: chalRecordOf(x.c.id)})),
+  challengeExcluded: () => CAST_DATA.filter(c => c.debut <= S.chapter && !challengeStyleFor(c)).map(c => ({id: c.id, name: c.name, style: c.style})),
+  startChallenge: id => startChallenge(id),
+  chalRecord: () => (S && S.flags && S.flags.chal) || {},
   // 第80〜82節の検証フック
   deadEnds: () => getDeadEnds(),
   rewind: () => rewindNow(),
