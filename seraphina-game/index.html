@@ -88,6 +88,27 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 #btnOpT{background:rgba(255,255,255,.92);color:#333}
 #btnDataT{background:rgba(255,255,255,.92);color:#333}
 #btnShareT{background:#000;color:#fff;border:1px solid rgba(255,255,255,.45)}
+#houseAd{display:none;width:100%;max-width:320px;margin-top:12px;box-sizing:border-box;text-decoration:none;background:rgba(10,18,48,.78);border:1.5px solid #e8c877;border-radius:14px;padding:10px 14px;color:#fff;text-align:left;transition:opacity .45s}
+#houseAd.on{display:block}
+#houseAd.fade{opacity:0}
+#houseAd .ha-tag{display:inline-block;background:linear-gradient(90deg,#ffd76e,#ffb3d9);color:#4a2c00;font-size:10.5px;font-weight:800;border-radius:99px;padding:2px 9px;margin-bottom:5px;letter-spacing:.06em}
+#houseAd .ha-title{display:block;font-size:14.5px;font-weight:800;color:#ffe9a8;line-height:1.35}
+#houseAd .ha-text{display:block;font-size:11.5px;color:#dfe8ff;line-height:1.5;margin-top:2px}
+@media(max-height:860px){#seasonVisual{height:24vh}#title button{margin-top:8px;min-height:42px;padding:9px}#title h1{font-size:22px}#title #seasonBadge{padding:4px 14px}#houseAd{margin-top:9px;padding:8px 12px}}
+@media(max-height:700px){#seasonVisual{height:20vh}#title button{margin-top:6px;min-height:38px;padding:7px}#title h1{font-size:20px}}
+.ha-card{display:block;text-decoration:none;background:rgba(255,255,255,.07);border:1px solid rgba(232,200,119,.55);border-radius:12px;padding:10px 13px;margin-top:9px;color:#fff;text-align:left}
+.ha-card .ha-title{display:block;font-size:14.5px;font-weight:800;color:#ffe9a8;line-height:1.35}
+.ha-card .ha-text{display:block;font-size:12px;color:#dfe8ff;line-height:1.5;margin-top:2px}
+#mHouse{display:none}
+#endingPanel{position:absolute;inset:0;z-index:30;display:none;align-items:center;justify-content:center;background:rgba(5,7,18,.88);padding:18px;box-sizing:border-box}
+#endingPanel.on{display:flex}
+#endingPanel .ep-box{width:100%;max-width:420px;max-height:88%;overflow-y:auto;background:rgba(12,16,38,.97);border:1.5px solid #e8c877;border-radius:16px;padding:20px 18px;text-align:center;box-sizing:border-box}
+#endingPanel h2{color:#ffe9a8;font-size:19px;letter-spacing:.06em}
+#endingPanel .ep-sub{font-size:12.5px;color:#dfe8ff;line-height:1.65;margin-top:6px}
+#btnEndingClose{margin-top:16px;width:100%;padding:13px;border:none;border-radius:99px;background:linear-gradient(90deg,#ffd76e,#ffb3d9);color:#4a2c00;font-size:15px;font-weight:800;cursor:pointer;min-height:48px}
+
+
+
 #ver{margin-top:10px;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.1em}
 .sharebtn{margin-top:8px;background:#000;color:#fff;border:1px solid rgba(255,255,255,.35)}
 .databox{width:100%;min-height:96px;box-sizing:border-box;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.55;margin:2px 0 10px}
@@ -137,6 +158,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="mCollection">図鑑</button>
 <button id="mSound">音設定</button>
 <button id="mData">データ</button>
+<button id="mHouse">おすすめ</button>
 <button id="mAuto">オート</button>
 <button id="mTitle">題名へ</button>
 </div>
@@ -155,7 +177,9 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="btnOpT">オープニングを見る</button>
 <button id="btnDataT">データ引き継ぎ</button>
 <button id="btnShareT">Xで紹介する</button>
-<div id="ver">v1.3</div>
+<div id="ver">v1.4</div>
+<a id="houseAd" href="#" target="_blank" rel="noopener"><span class="ha-tag">おすすめ</span><span class="ha-title"></span><span class="ha-text"></span></a>
+
 <div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、癒し系コメディビジュアルノベルです。<br>序章＋全8章＋最終章／エンディング4種／コレクション図鑑つき。</div>
 </div>
 <div class="modal" id="saveModal"><button class="close" data-close="saveModal">閉じる</button><h2 id="saveTitle">セーブ</h2><div id="slots"></div></div>
@@ -165,6 +189,8 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <div class="modal" id="soundModal"><button class="close" data-close="soundModal">閉じる</button><h2>音の設定</h2><div id="soundBody"></div></div>
 <div class="modal" id="dataModal"><button class="close" data-close="dataModal">閉じる</button><h2>データ引き継ぎ</h2><p class="colnote">セーブデータと図鑑・設定を、別のブラウザや端末へ移せます。書き出したコード（またはファイル）を、移したい先で読み込んでください。読み込むと、そのブラウザの今のデータは上書きされます。</p><p class="colnote"><b>書き出し</b>：コードを作ってコピーするか、ファイルで保存してください。</p><button class="slot" id="btnExportCode">コードを作る</button><textarea id="dataExportText" class="databox" readonly placeholder="ここに引き継ぎコードが表示されます"></textarea><button class="slot" id="btnExportFile">ファイルで保存</button><p class="colnote"><b>読み込み</b>：コードを貼り付けるか、保存したファイルを選んでから「読み込む」を押してください。</p><textarea id="dataImportText" class="databox" placeholder="引き継ぎコードを貼り付け"></textarea><input type="file" id="dataImportFile" class="datafile" accept=".txt,.json"><button class="slot" id="btnImportData">読み込む</button><p class="colnote" id="dataMsg"></p></div>
 <div id="videoModal"><video id="gameVideo" playsinline preload="auto" controls></video><button id="btnVideoSkip">スキップ ▶▶</button></div>
+<div class="modal" id="houseAdModal"><button class="close" data-close="houseAdModal">閉じる</button><h2>おすすめ</h2><div id="houseAdList"></div></div>
+<div id="endingPanel"><div class="ep-box"><h2>おつかれさまでした</h2><p class="ep-sub">最後まで遊んでくれて、ありがとうございました。<br>よかったら、こちらもどうぞ。</p><div id="endingAdList"></div><button id="btnEndingClose">タイトルへ</button></div></div>
 <div id="toast"></div>
 </div>
 <script>
@@ -286,6 +312,7 @@ audioToTitle();
 const t = document.getElementById("title");
 t.style.display = "flex";
 if(finished) toast("おしまい。ありがとうございました");
+try{ if(finished && HOUSE_AD_SLOTS.ending && typeof S !== "undefined" && S && (S.scene === "fin" || S.scene === "e_trial")){ renderHouseAdCards(document.getElementById("endingAdList")); document.getElementById("endingPanel").classList.add("on"); } }catch(e){}
 }
 function toast(msg){
 const el = document.getElementById("toast"); el.textContent = msg; el.style.display="block";
@@ -1196,6 +1223,66 @@ if(document.addEventListener) document.addEventListener("pointerdown", ()=>{ aud
 S = newState();
 setBg("assets/02-florence.webp");
 updateHUD();
+
+/* ===== house ads （自社おすすめ枠。設計: house-ads-design-2026-11-10.md） ===== */
+const HOUSE_AD_SLOTS = {title:true, menu:true, ending:true};
+const HOUSE_AD_EDITION = "trial";
+const HOUSE_ADS = [
+ {title:"\u88fd\u54c1\u7248\uff08\u5168\u7de8\uff09\u767a\u58f2\u4e2d", text:"\u5e8f\u7ae0\uff0b\u51688\u7ae0\uff0b\u6700\u7d42\u7ae0\u30fb\u5168313\u30b7\u30fc\u30f3\u3002\u4f53\u9a13\u7248\u306e\u7d9a\u304d\u306f\u3053\u3061\u3089\uff08BOOTH\u30fb980\u5186\uff09", url:"https://angel222.booth.pm/items/9093919", trialOnly:true},
+ {title:"\u30a4\u30e9\u30b9\u30c8\u30d1\u30c3\u30af \u7b2c1\u301c12\u5f3e", text:"\u30bb\u30e9\u30d5\u30a3\u30ca\u305f\u3061\u306e\u30a4\u30e9\u30b9\u30c8\u96c6\u3002\u5404500\u5186\uff08BOOTH\uff09", url:"https://angel222.booth.pm/"},
+ {title:"\u30b0\u30c3\u30ba\u300c222\u30ad\u30e3\u30e9\u5de5\u623f\u300d", text:"T\u30b7\u30e3\u30c4\u30fb\u30b9\u30c6\u30c3\u30ab\u30fc\u306a\u3069 SUZURI \u3067\u8ca9\u58f2\u4e2d", url:"https://suzuri.jp/222chara"},
+ {title:"LINE\u30b9\u30bf\u30f3\u30d7\u8ca9\u58f2\u4e2d", text:"\u30de\u30fc\u30e2\u30c3\u30c8\u7269\u8a9e \u7b2c1\u8a71\u300e\u304a\u3064\u304b\u3044\u300f\u307b\u304b\uff08222 Chara Kobo\uff09", url:"https://line.me/S/sticker/37862812"},
+ {title:"\u6b66\u8853\u80b2\u6210SLG\uff08\u7121\u6599\uff09", text:"\u7570\u7a2e\u683c\u95d8\u6280\u6226\u306e\u5e74\u4ee3\u8a18\u3002\u540c\u3058\u5de5\u623f\u306e\u30d6\u30e9\u30a6\u30b6\u30b2\u30fc\u30e0", url:"https://tomyree-source.github.io/sites/kakutogi-slg/"},
+ {title:"\u9244\u51a0\u6226\u8a18 -\u7070\u71fc\u306e\u8056\u6226-\uff08\u7121\u6599\uff09", text:"\u76e4\u9762\u30bf\u30af\u30c6\u30a3\u30af\u30b9\u3002\u540c\u3058\u5de5\u623f\u306e\u30d6\u30e9\u30a6\u30b6\u30b2\u30fc\u30e0", url:"https://tomyree-source.github.io/sites/grimdark-tactics/"}
+];
+function houseAdsForEdition(){ return HOUSE_ADS.filter(function(a){ return HOUSE_AD_EDITION === "trial" ? true : !a.trialOnly; }); }
+function houseAdHref(a){ var UTM = "utm_source=game&utm_medium=house-ad&utm_campaign=seraphina-game"; return a.url + (a.url.indexOf("?") >= 0 ? "&" : "?") + UTM; }
+function renderHouseAdCards(wrap){
+  if(!wrap) return;
+  wrap.innerHTML = "";
+  houseAdsForEdition().forEach(function(a){
+    var el = document.createElement("a");
+    el.className = "ha-card"; el.target = "_blank"; el.rel = "noopener"; el.href = houseAdHref(a);
+    var t = document.createElement("span"); t.className = "ha-title"; t.textContent = a.title;
+    var x = document.createElement("span"); x.className = "ha-text"; x.textContent = a.text;
+    el.appendChild(t); el.appendChild(x); wrap.appendChild(el);
+  });
+}
+(function(){
+  try{
+  var el = document.getElementById("houseAd");
+  if(!el || !HOUSE_AD_SLOTS.title) return;
+  var list = houseAdsForEdition();
+  if(!list.length) return;
+  var idx = 0;
+  function apply(){
+    var a = list[idx % list.length];
+    el.href = houseAdHref(a);
+    el.querySelector(".ha-title").textContent = a.title;
+    el.querySelector(".ha-text").textContent = a.text;
+  }
+  apply(); el.classList.add("on");
+  setInterval(function(){
+    var t = document.getElementById("title");
+    if(!t || t.style.display === "none" || list.length < 2) return;
+    el.classList.add("fade");
+    setTimeout(function(){ idx++; apply(); el.classList.remove("fade"); }, 460);
+  }, 6000);
+  }catch(e){ /* おすすめ枠の失敗でゲームを止めない */ }
+})();
+(function(){
+  try{
+    if(HOUSE_AD_SLOTS.menu){
+      var b = document.getElementById("mHouse");
+      if(b){ b.style.display = "block"; b.addEventListener("click", function(){
+        renderHouseAdCards(document.getElementById("houseAdList"));
+        document.getElementById("houseAdModal").style.display = "block";
+      }); }
+    }
+    var c = document.getElementById("btnEndingClose");
+    if(c) c.addEventListener("click", function(){ document.getElementById("endingPanel").classList.remove("on"); });
+  }catch(e){ /* おすすめ枠の失敗でゲームを止めない */ }
+})();
 </script>
 </body>
 </html>
