@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.74";
+const GAME_VERSION = "1.76";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -1038,6 +1038,7 @@ function sceneAdvance(){
     if (st.mimg){ const ms = mainStyle(); UI.portrait = ms ? "master-" + masterArtKey(ms) : null; continue; }
     if (st.ep !== undefined){ UI.episode = st.ep; continue; }
     if (st.fx){ applyFx(st.fx); continue; }
+    if (st.mark !== undefined){ UI.pendingMark = st.mark; continue; }
     if (st.jump){ startSceneById(st.jump); return; }
     if (st.week){ finishScene(); return; }
     if (st.endChapter){ chapterEndScreen(); return; }
@@ -1096,6 +1097,7 @@ function sceneAdvance(){
   finishScene();
 }
 function finishScene(){
+  UI.pendingMark = null; // 第116節: 目印はこのシーンの結果表示までで消費する（次シーンへ持ち越さない）
   saveGame(false);
   if (UI.onSceneDone){ const f = UI.onSceneDone; UI.onSceneDone = null; f(); return; }
   goWeek();
@@ -1114,12 +1116,20 @@ function episodeHtml(){
   if (!UI.episode) return "";
   return '<div class="epimg"><img src="assets/episodes/ep-' + UI.episode + '.webp" alt="" onerror="this.parentNode.style.display=\'none\'"></div>';
 }
+// 第116節: 選択の目印（更新フラッグ）。選択肢や論争の返しを選んだ直後、続きの先頭に
+// 「―― 選択：「（選んだ文）」 ――」の区切りバナーを出す。トーストではなく結果の画面そのものに
+// 残る形にし、どこからが選択の結果か一目で分かるようにする。消費は表示した時点で1回だけ。
+function markHtml(){
+  if (!UI.pendingMark) return "";
+  const t = UI.pendingMark; UI.pendingMark = null;
+  return '<div class="choicemark">―― ' + esc(t) + ' ――</div>';
+}
 function renderSay(st){
   hud();
   const sp = st.sp || "narr";
   const name = speakerName(sp);
   $("main").innerHTML = episodeHtml() + '<div class="scene">' + portraitHtml() +
-    '<div class="dialog">' + (name ? '<div class="spname">' + esc(name) + '</div>' : "") +
+    '<div class="dialog">' + markHtml() + (name ? '<div class="spname">' + esc(name) + '</div>' : "") +
     '<div class="stext">' + esc(fill(st.t)) + '</div>' +
     '<button class="btn next" data-auto="next">次へ</button>' + clashBarHtml() + '<div data-composer></div></div></div>';
   $("main").querySelector(".next").addEventListener("click", sceneAdvance);
@@ -1129,11 +1139,12 @@ function renderChoice(st){
   hud();
   const btns = st.choice.map((c, i) => '<button class="btn choice" data-choice="' + i + '">' + esc(fill(c.label)) + '</button>').join("");
   $("main").innerHTML = episodeHtml() + '<div class="scene">' + portraitHtml() +
-    '<div class="dialog"><div class="stext">――どうする？</div><div class="choices">' + btns + '</div>' + clashBarHtml() + '<div data-composer></div></div></div>';
+    '<div class="dialog">' + markHtml() + '<div class="stext">――どうする？</div><div class="choices">' + btns + '</div>' + clashBarHtml() + '<div data-composer></div></div></div>';
   $("main").querySelectorAll("[data-choice]").forEach(b => b.addEventListener("click", () => {
     const c = st.choice[Number(b.dataset.choice)];
     if (c.fx) applyFx(c.fx);
-    UI.queue = (c.say || []).concat(UI.queue);
+    // 第116節: 選んだ文面を引用した目印を、結果の先頭に差し込む
+    UI.queue = [{mark: "選択：「" + fill(c.label) + "」"}].concat(c.say || [], UI.queue);
     sceneAdvance();
   }));
   bindClashBar();
@@ -1680,6 +1691,7 @@ function renderBaitoPick(){
     ["warehouse", "倉庫ピッキング", "+9,000円。体力は付くが脚に来る"],
     ["security", "警備バイト", "+11,000円。事件の解決で顔が売れることも"],
     ["setup", "大会の設営バイト", "+10,000円。会場の下見と情報が手に入る"],
+    ["harbor", "港湾の砂袋運び", "+12,000円。賃金は良いが重労働。昔の古豪も港で砂袋を担いで体を作ったそうだ"],
   ];
   $("main").innerHTML = '<div class="weekhead"><h2>バイトを選ぶ</h2></div><div class="actions">' +
     jobs.map(j => '<button class="btn act" data-job="' + j[0] + '"><b>' + j[1] + '</b><span>' + j[2] + "</span></button>").join("") +
@@ -1691,6 +1703,8 @@ function renderBaitoPick(){
     if (job === "warehouse"){ S.money += 9000; growStat("endure", 0.2); if (_rng() < 0.3){ S.dmg.leg = clamp(S.dmg.leg + 1, 0, 3); toast("倉庫バイト +9,000円。脚に疲労が溜まった"); } else toast("倉庫バイト +9,000円"); }
     if (job === "security"){ S.money += 11000; if (_rng() < 0.25){ S.sei += 1; S.attention += 1; toast("警備バイト +11,000円。小さな揉め事を収め、感謝された"); } else toast("警備バイト +11,000円"); }
     if (job === "setup"){ S.money += 10000; growStat("read", 0.2); toast("設営バイト +10,000円。会場の動線と控室の様子が頭に入った"); }
+    // 第117節: 港湾の砂袋運び。稼ぎながら鍛える古豪の型。賃金は最高額、疲労は共通分より重く、耐久が伸びる。担ぎすぎると腰に来る
+    if (job === "harbor"){ S.money += 12000; S.fatigue = clamp(S.fatigue + 8, 0, 100); growStat("endure", 0.3); if (_rng() < 0.25){ S.dmg.core = clamp(S.dmg.core + 1, 0, 3); toast("港湾バイト +12,000円。担ぎすぎて腰に来た"); } else toast("港湾バイト +12,000円。砂袋を担いだ分だけ、体が作られた"); }
     afterAction([]);
   }));
 }
@@ -1904,6 +1918,7 @@ function resolveBattleDef(id){
 }
 function startBattle(id, winSteps, loseSteps){
   const def = resolveBattleDef(id);
+  UI.pendingMark = null; // 第116節: 試合画面自体が選択の結果として立つため、持ち越しの目印はここで消す
   UI.screen = "battle";
   const eStyle = def.enemyStyleName ? styleByName(def.enemyStyleName) : mainStyle();
   // 第86節: 円熟期（第4章〜）は体力上限がピーク比80%まで低下する。代わりに読みと奥義が効く
@@ -1941,6 +1956,25 @@ function startBattle(id, winSteps, loseSteps){
   if (window.FX) FX.battleStart(); // 第88節: 開始ゴング（演出のみ）
 }
 function bLog(sp, tx){ UI.battle.log.push({sp, tx}); }
+// 第116節: バトルログ内の区切り行（ターン目印）。ログ配列に残り、遡って読んでも境界が分かる
+function bMark(tx){ UI.battle.log.push({sp: "", tx: tx, mark: true}); }
+// 第116節: ログの目印に使う、行動ボタンの表示名そのままの引用
+function battleActLabel(act){
+  const b = UI.battle;
+  switch (act){
+    case "strike": return "打撃で攻める";
+    case "kick": return "蹴りで攻める";
+    case "grapple": return "組み付く";
+    case "ground": return "寝技に誘う";
+    case "read": return "相手を読む";
+    case "recover": return "息を整える";
+    case "sig": return "看板技：" + sigName();
+    case "ougi": return "奥義：" + mainStyle().name.replace(/（[^）]*）/g, "") + "の奥義";
+    case "combo": return (b && b.comboStyle) ? "複合技：" + mainStyle().name.replace(/（[^）]*）/g, "") + "×" + b.comboStyle.name.replace(/（[^）]*）/g, "") : "複合技";
+    case "foul": return "反則・眼突き";
+    default: return act;
+  }
+}
 function pushComment(){
   const b = UI.battle; if (!b.def.comments || !b.def.comments.length) return;
   bLog("実況", b.def.comments[b.cmtIdx % b.def.comments.length]); b.cmtIdx++;
@@ -2078,7 +2112,7 @@ function renderBattle(){
     '<div class="fighter"><div class="nm">ハヤト（' + esc(mainStyle().name) + " Lv" + lv + '）</div><div class="bar hp"><i class="fx-ghost" data-to="' + pCur + '" style="width:' + pPrev + '%"></i><i class="fx-fill" style="width:' + pCur + '%"></i></div><div class="sub">体力 ' + Math.max(0, b.php) + " ／ 部位：腕" + S.dmg.arm + " 脚" + S.dmg.leg + " 体幹" + S.dmg.core + '</div></div>' +
     '<div class="fighter enemy"><div class="nm">' + esc(def.enemyName) + '</div><div class="bar ehp"><i class="fx-ghost" data-to="' + eCur + '" style="width:' + ePrev + '%"></i><i class="fx-fill" style="width:' + eCur + '%"></i></div><div class="sub">' + esc(def.enemyStyleName || "同流派") + " ／ 耐久 " + Math.max(0, b.ehp) + (b.eStyle ? " ／ 使える攻撃：" + systemsLabel(b.eStyle) : "") + "</div></div>" +
     enemyImg + '</div>' +
-    '<div class="blog">' + b.log.map(l => '<div class="bl"><span>' + esc(l.sp) + "</span>" + esc(fill(l.tx)) + "</div>").join("") + "</div>" +
+    '<div class="blog">' + b.log.map(l => l.mark ? '<div class="bl mark">' + esc(fill(l.tx)) + "</div>" : '<div class="bl"><span>' + esc(l.sp) + "</span>" + esc(fill(l.tx)) + "</div>").join("") + "</div>" +
     '<div class="actions">' + acts.map(a => '<button class="btn act" data-bact="' + a[0] + '"><b>' + a[1] + '</b><span>' + a[2] + "</span></button>").join("") + "</div></div>";
   b.fxPrevP = pCur; b.fxPrevE = eCur;
   const blog = $("main").querySelector(".blog"); if (blog) blog.scrollTop = blog.scrollHeight;
@@ -2091,6 +2125,8 @@ function battleTurn(act){
   // 第73節: 使えない系統の攻撃は実行しない（ボタン非表示の二重ガード）
   if (["strike", "kick", "grapple", "ground"].includes(act) && !playerSystems().includes(act)) return;
   b.turn++;
+  // 第116節: ターンの先頭に、選んだ行動を引用した目印をログへ残す（ターンの境界と選択内容を明示）
+  bMark("―― ターン" + b.turn + "：【" + battleActLabel(act) + "】 ――");
   let dmg = 0;
   let fxKind = "normal", fxMissed = false, fxGuarded = false; // 第88節: 演出フック用（計算には無関係）
   // 第100節A: 系統別演出用（演出のみ・計算には無関係）。看板技・複合技・奥義は主・流儀の最も得意な系統に寄せる
@@ -2527,6 +2563,7 @@ function startDebate(id){
   const d = DEBATES[id];
   // 第49節: 汎用プールの議論は、どの経路で再生されても既出として記録する（イベント内包時の二重発火防止）
   if (typeof DEBATE_POOL !== "undefined" && DEBATE_POOL.some(x => x.id === id)) S.seenEvents["debate:" + id] = S.absWeek;
+  UI.pendingMark = null; // 第116節: 論争画面自体が選択の結果として立つため、持ち越しの目印はここで消す
   UI.screen = "debate"; UI.debate = { def: d, id };
   hud();
   $("main").innerHTML = '<div class="debate"><h2>CLASH ― ' + esc(d.title) + "</h2>" +
@@ -2560,7 +2597,8 @@ function startDebate(id){
     UI.screen = "scene";
     // 第110節: 女性側を擁護する返し（データ側で defend:true を付けた選択肢）では「チン騎士」の反応が続く
     const ckSteps = r.defend ? chinKishiReactSteps() : [];
-    UI.queue = (win ? r.win : r.lose).concat(ckSteps, UI.queue);
+    // 第116節: 選んだ返しを引用した目印を、勝敗どちらの結果でも先頭に差し込む
+    UI.queue = [{mark: "選択：【" + r.attr + "】「" + fill(r.label) + "」"}].concat(win ? r.win : r.lose, ckSteps, UI.queue);
     sceneAdvance();
   }));
 }
