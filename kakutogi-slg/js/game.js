@@ -25,11 +25,16 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.61";
+const GAME_VERSION = "1.62";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.62", date:"2026-11-10", items:[
+    "武クラ見守りの話題を型化して反映（企画書第99節）：CLASH論争プールに『和解の提案はアリか論争』を追加。交流会の主催者が、炎上騒動をめぐる人気指導者側の和解・解決提案を『会の根幹に関わる』として受けなかった騒動の型で、当事者は架空の人物、条件の中身と是非は作中でも断定しない",
+    "あるある小ネタを1件追加：交流会の告知文で禁止事項（目潰し・金的）が太字で年々増えていく話。急所技をめぐる騒動の余波で、界隈の規則が厳格化していく空気を描く",
+    "BOTYの固定候補に『和解提案お断り騒動』を追加",
+  ]},
   {v:"1.61", date:"2026-11-10", items:[
     "自社おすすめ枠（相互送客）を追加：タイトル画面に6秒ごとに送客先が切り替わるローテーションカード、下部の「おすすめ」ボタンから開く一覧モーダル、章の終わり（エンディング画面）の「関連作品・おすすめ」パネルの3箇所。送客先はセラフィナ製品版・イラストパック・SUZURIグッズ・LINEスタンプ・鉄冠戦記の5件で、全リンクに計測用UTMを付与。プレイ中への割り込み表示はなし",
   ]},
@@ -281,6 +286,7 @@ const EPISODE_TAGS = {
   aru_zenchosa:"全数調査の検証記事", aru_keiko:"静かに株を上げる",
   aru_spar:"伝説の挑戦者", aru_bunretsu:"流派の分裂騒動",
   aru_joken:"また前提が育った", aru_kokuhyo:"素人の技術酷評",
+  aru_kinshi:"太字の禁止事項",
   boty:"BOTY",
 };
 function episodeTag(id){
