@@ -202,6 +202,34 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 .modal h2{color:#ffe9a8}
 @media(max-width:480px){#title .subtitle{font-size:13px;gap:9px;white-space:nowrap}#title .subtitle::before,#title .subtitle::after{width:22px}}
 </style>
+
+<style id="ui-b-sample">
+/* ===== UI sample B (2026-11-10): standing-portrait upgrade — CSS only, on top of A ===== */
+
+/* --- 1. Portrait: larger, popping out above the textbox top edge --- */
+#face{width:112px;height:112px;border-radius:20px;margin-top:-34px;position:relative;z-index:2;
+box-shadow:0 0 0 3px rgba(243,200,96,.30),0 0 22px rgba(255,215,110,.55),0 18px 30px rgba(0,0,0,.55),0 6px 14px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.25);
+filter:saturate(1.06) contrast(1.03)}
+
+/* --- 2. Textbox spacing: give the popped portrait room, keep text clear --- */
+#textbox{padding:16px 16px 20px 14px;gap:14px}
+#tcol{padding-top:2px}
+#text{line-height:1.78}
+
+/* --- 3. Scene shade: slightly deeper at the bottom while a conversation is up --- */
+#shade{background:linear-gradient(to bottom,rgba(8,10,24,.25) 0%,rgba(8,10,24,0) 28%,rgba(8,10,24,.16) 54%,rgba(8,10,24,.95) 86%)}
+
+/* --- Responsive: on phones keep the portrait big but protect text width --- */
+@media(max-width:480px){
+#face{width:94px;height:94px;border-radius:18px;margin-top:-26px}
+#textbox{gap:11px;padding:15px 13px 18px 11px}
+#text{font-size:16px}
+}
+@media(max-width:360px){
+#face{width:84px;height:84px;border-radius:16px;margin-top:-22px}
+#textbox{gap:9px}
+}
+</style>
 </head>
 <body>
 <div id="app">
@@ -240,7 +268,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="btnOpT">オープニングを見る</button>
 <button id="btnDataT">データ引き継ぎ</button>
 <button id="btnShareT">Xで紹介する</button>
-<div id="ver">v1.5</div>
+<div id="ver">v1.6</div>
 <a id="houseAd" href="#" target="_blank" rel="noopener"><span class="ha-tag">おすすめ</span><span class="ha-title"></span><span class="ha-text"></span></a>
 
 <div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、癒し系コメディビジュアルノベルです。<br>序章＋全8章＋最終章／エンディング4種／コレクション図鑑つき。</div>
