@@ -139,6 +139,68 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 .itemgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.itemcard{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);border-radius:14px;padding:10px;overflow:hidden}.itemcard img{width:100%;height:92px;object-fit:cover;border-radius:9px;margin-bottom:7px}.itemcard p{font-size:12.5px;line-height:1.6}.itemcard.locked img{filter:grayscale(1) brightness(.28)}.itemname{font-weight:900;font-size:14.5px;line-height:1.4;margin-bottom:5px}.colnote{font-size:13px;line-height:1.65;color:#dfe8ff;margin-bottom:10px}.coltabs{display:flex;gap:7px;margin-bottom:12px}.coltabs button{flex:1;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:10px 5px;font-weight:800;cursor:pointer}.coltabs button.on{background:#ffd76e;color:#442c00;border-color:#ffd76e}
 .cranetrack{position:relative;height:34px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:99px;margin:16px 0;overflow:hidden}.cranezone{position:absolute;top:0;bottom:0;left:42%;width:16%;background:rgba(255,215,110,.55)}.cranemarker{position:absolute;top:3px;bottom:3px;left:0;width:5px;margin-left:-2px;background:#fff;border-radius:99px;box-shadow:0 0 8px #fff}
 @media(max-width:380px){.destgrid,.itemgrid{grid-template-columns:1fr}.sysbtns{grid-template-columns:1fr}}
+</style><style id="ui-a-sample">
+/* ===== UI sample A (2026-11-10): UI / title texture upgrade — override only ===== */
+
+/* --- 1. Title: double gold frame on the screen edge --- */
+#title::after{content:"";position:absolute;inset:9px;border:3px double rgba(232,200,119,.85);border-radius:18px;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,233,168,.35),inset 0 0 34px rgba(232,200,119,.12);z-index:1}
+#title>*{z-index:2}
+
+/* --- 1b. Title text: gold gradient + soft glow --- */
+#title h1{background:linear-gradient(180deg,#fff7d6 5%,#ffe9a8 32%,#f3c860 58%,#fff0bd 82%,#e8b64c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 10px rgba(243,200,96,.45)) drop-shadow(0 3px 16px rgba(0,0,0,.65));letter-spacing:.12em}
+#title .subtitle{display:flex;align-items:center;justify-content:center;gap:14px;color:#ffe9a8}
+#title .subtitle::before,#title .subtitle::after{content:"";flex:none;width:44px;height:1.5px;border-radius:99px}
+#title .subtitle::before{background:linear-gradient(90deg,transparent,#e8c877)}
+#title .subtitle::after{background:linear-gradient(90deg,#e8c877,transparent)}
+#title .subt{color:#f4e7c3}
+
+/* --- 1c. Season visual: gold line + shadow on the lower edge --- */
+#seasonVisual{border-bottom:2px solid #e8c877;box-shadow:0 2px 0 rgba(255,233,168,.45),0 14px 30px rgba(0,0,0,.55),0 22px 44px rgba(11,16,48,.45)}
+
+/* --- 2. Drifting light particles (title only, decorative) --- */
+#title .ui-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+#title .ui-particles span{position:absolute;bottom:-12px;border-radius:50%;background:radial-gradient(circle,#fffbe9 0%,#ffe9a8 38%,rgba(255,215,110,0) 72%);opacity:0;animation:uiFloat linear infinite}
+#title .ui-particles span:nth-child(1){left:7%;width:5px;height:5px;animation-duration:13s;animation-delay:0s}
+#title .ui-particles span:nth-child(2){left:16%;width:3px;height:3px;animation-duration:10s;animation-delay:2.2s;background:radial-gradient(circle,#fff 0%,#ffd9ec 40%,rgba(255,158,203,0) 72%)}
+#title .ui-particles span:nth-child(3){left:26%;width:6px;height:6px;animation-duration:16s;animation-delay:5s}
+#title .ui-particles span:nth-child(4){left:36%;width:3.5px;height:3.5px;animation-duration:11s;animation-delay:1.4s}
+#title .ui-particles span:nth-child(5){left:47%;width:4.5px;height:4.5px;animation-duration:14s;animation-delay:7s;background:radial-gradient(circle,#fff 0%,#bfe3ff 40%,rgba(140,200,255,0) 72%)}
+#title .ui-particles span:nth-child(6){left:56%;width:3px;height:3px;animation-duration:9.5s;animation-delay:3.6s}
+#title .ui-particles span:nth-child(7){left:64%;width:5.5px;height:5.5px;animation-duration:15s;animation-delay:.8s}
+#title .ui-particles span:nth-child(8){left:72%;width:3.5px;height:3.5px;animation-duration:10.5s;animation-delay:6.2s;background:radial-gradient(circle,#fff 0%,#ffd9ec 40%,rgba(255,158,203,0) 72%)}
+#title .ui-particles span:nth-child(9){left:81%;width:4.5px;height:4.5px;animation-duration:12.5s;animation-delay:4.4s}
+#title .ui-particles span:nth-child(10){left:88%;width:3px;height:3px;animation-duration:9s;animation-delay:8s}
+#title .ui-particles span:nth-child(11){left:42%;width:3px;height:3px;animation-duration:12s;animation-delay:9.5s}
+#title .ui-particles span:nth-child(12){left:93%;width:5px;height:5px;animation-duration:14.5s;animation-delay:11s}
+@keyframes uiFloat{0%{transform:translate3d(0,0,0);opacity:0}12%{opacity:.85}55%{opacity:.55}88%{opacity:.7}100%{transform:translate3d(14px,-72vh,0);opacity:0}}
+
+/* --- 3. Buttons: rich primary + glass sub-buttons --- */
+#btnStart{position:relative;overflow:hidden;background:linear-gradient(95deg,#f7b733 0%,#ffd76e 30%,#ff9ecb 78%,#ff7eb9 100%);color:#4a2c00;box-shadow:0 10px 26px rgba(255,158,203,.35),0 4px 12px rgba(0,0,0,.5),inset 0 1.5px 0 rgba(255,255,255,.75),inset 0 -2px 0 rgba(176,110,20,.35)}
+#btnStart::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-18deg);animation:uiSheen 3.8s ease-in-out infinite}
+@keyframes uiSheen{0%,55%{left:-70%}90%,100%{left:130%}}
+#btnLoadT,#btnCollectionT,#btnOpT,#btnDataT{background:linear-gradient(160deg,rgba(255,255,255,.20),rgba(255,255,255,.07));color:#fff;border:1px solid rgba(232,200,119,.75);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);box-shadow:0 6px 18px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.35);text-shadow:0 1px 4px rgba(0,0,0,.6)}
+#btnShareT{background:rgba(0,0,0,.55);border:1px solid rgba(232,200,119,.55);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);box-shadow:0 6px 18px rgba(0,0,0,.42)}
+#seasonBadge{background:linear-gradient(160deg,rgba(16,24,64,.82),rgba(10,18,48,.68));border-color:#f3c860;box-shadow:0 0 14px rgba(243,200,96,.35),inset 0 1px 0 rgba(255,255,255,.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#houseAd{background:linear-gradient(160deg,rgba(16,24,64,.85),rgba(10,18,48,.72));backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 8px 22px rgba(0,0,0,.45)}
+
+/* --- 4. Conversation window: glass + gold accent --- */
+#textbox{background:linear-gradient(165deg,rgba(26,32,66,.88),rgba(12,15,32,.93) 60%,rgba(16,14,38,.94));border:1px solid rgba(232,200,119,.5);box-shadow:inset 0 2px 0 rgba(255,215,110,.9),inset 0 0 0 1px rgba(255,255,255,.05),0 14px 34px rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+#who{display:inline-block;padding:3px 14px 4px;border-radius:99px;background:linear-gradient(90deg,rgba(243,200,96,.32),rgba(255,158,203,.22));border:1px solid rgba(243,200,96,.85);color:#ffe9a8;box-shadow:0 2px 10px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.35);text-shadow:0 1px 3px rgba(0,0,0,.55)}
+#who:empty{display:none}
+#tcol #who{margin-bottom:7px}
+#face{border:2px solid #f3c860;border-radius:18px;box-shadow:0 0 0 3px rgba(243,200,96,.28),0 0 18px rgba(255,215,110,.5),0 4px 14px rgba(0,0,0,.45)}
+#next{color:#ffd76e;text-shadow:0 0 8px rgba(255,215,110,.85),0 1px 3px rgba(0,0,0,.6)}
+
+/* --- 5. HUD / menu / choices --- */
+#barwrap{background:rgba(10,12,28,.55);border:1px solid rgba(232,200,119,.4);box-shadow:inset 0 1px 3px rgba(0,0,0,.6)}
+#bar{background:linear-gradient(90deg,#ffd76e,#ff9ecb),linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 55%);background-blend-mode:overlay;box-shadow:0 0 10px rgba(255,215,110,.85),0 0 20px rgba(255,158,203,.4)}
+#hud .lbl,#hud .num{color:#ffe9a8;text-shadow:0 0 8px rgba(255,215,110,.45),0 1px 3px #000}
+#menu button,#btnMenuToggle{background:linear-gradient(160deg,rgba(24,30,60,.72),rgba(16,20,40,.62));border:1px solid rgba(232,200,119,.6);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);box-shadow:0 5px 14px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.22)}
+#menu button.on{background:linear-gradient(90deg,#ffd76e,#ffca8a);color:#442c00;border-color:#ffe9a8}
+#choices .q{text-align:center;color:#ffe9a8;font-size:14.5px;font-weight:700;text-shadow:0 0 10px rgba(255,215,110,.5),0 2px 6px #000;margin-bottom:2px}
+#choices button{border:1.5px solid rgba(232,200,119,.9);box-shadow:0 8px 22px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.9),0 0 14px rgba(243,200,96,.22)}
+.modal h2{color:#ffe9a8}
+@media(max-width:480px){#title .subtitle{font-size:13px;gap:9px;white-space:nowrap}#title .subtitle::before,#title .subtitle::after{width:22px}}
 </style>
 </head>
 <body>
@@ -165,6 +227,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <div id="textbox"><img id="face" alt=""><div id="tcol"><div id="who"></div><div id="text"></div></div><div id="next">▼</div></div>
 <div id="choices"><div class="q">――どうする？</div></div>
 <div id="title">
+<div class="ui-particles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 <div id="seasonVisual"></div>
 <h1>見習い天使セラフィナ</h1>
 <div class="subtitle">― オタロードに降臨しちゃいました ―</div>
@@ -177,7 +240,7 @@ body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Not
 <button id="btnOpT">オープニングを見る</button>
 <button id="btnDataT">データ引き継ぎ</button>
 <button id="btnShareT">Xで紹介する</button>
-<div id="ver">v1.4</div>
+<div id="ver">v1.5</div>
 <a id="houseAd" href="#" target="_blank" rel="noopener"><span class="ha-tag">おすすめ</span><span class="ha-title"></span><span class="ha-text"></span></a>
 
 <div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、癒し系コメディビジュアルノベルです。<br>序章＋全8章＋最終章／エンディング4種／コレクション図鑑つき。</div>
