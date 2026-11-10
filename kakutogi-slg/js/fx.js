@@ -48,6 +48,17 @@ const FX = (() => {
 #fx-ko .fx-ko-txt{ font-size:3.2em; font-weight:bold; color:#ffd94d; letter-spacing:.14em;
   text-shadow:0 0 24px rgba(201,164,74,.7), 0 4px 10px rgba(0,0,0,.95); }
 #fx-ko.lose .fx-ko-txt{ color:#e8e6df; text-shadow:0 4px 10px rgba(0,0,0,.95); }
+.fx-dmg.crit{ color:#ff6a5e; font-size:2.05em; letter-spacing:.05em; }
+.fx-trail{ position:absolute; height:3px; border-radius:2px; pointer-events:none; }
+#fx-focus{ position:fixed; inset:-12%; pointer-events:none; z-index:940; opacity:0;
+  background:repeating-conic-gradient(from 0deg at 50% 50%, rgba(0,0,0,.34) 0deg 1.1deg, transparent 1.1deg 7deg);
+  -webkit-mask-image:radial-gradient(circle at 50% 50%, transparent 26%, #000 78%);
+  mask-image:radial-gradient(circle at 50% 50%, transparent 26%, #000 78%); }
+.bar.fx-low i.fx-fill{ background:#ff5252; animation:fx-lowblink .55s linear infinite; }
+@keyframes fx-lowblink{ 0%,49%{ opacity:1; } 50%,100%{ opacity:.3; } }
+body.fx-ougi .battle{ background:radial-gradient(ellipse at 50% 22%, rgba(201,164,74,.28), rgba(201,164,74,.05) 55%, transparent 78%); animation:fx-ougipulse 1.3s ease-out; }
+@keyframes fx-ougipulse{ 0%{ filter:brightness(1.22) saturate(1.25); } 100%{ filter:brightness(1) saturate(1); } }
+body.fx-hitstop .battle{ filter:saturate(1.18) contrast(1.06); }
 `;
   let layer = null, flashEl = null;
   function ensureDom(){
@@ -148,6 +159,41 @@ const FX = (() => {
     }
   }
 
+  // ---------- 第100節A: 系統別プロファイル（手技／足技／投げ・組み／寝技・関節／反則） ----------
+  const SYS_FX = {
+    strike:  { rgb: "255,214,110", angle: -32, dir: [1, 0.45] },
+    kick:    { rgb: "140,200,255", angle: -6,  dir: [1, 0.08] },
+    grapple: { rgb: "255,160,90",  angle: 18,  dir: [0.35, 1] },
+    ground:  { rgb: "190,140,255", angle: 52,  dir: [0.55, 0.8] },
+    foul:    { rgb: "255,70,95",   angle: -45, dir: [1, 0.6] },
+    special: { rgb: "255,233,160", angle: -20, dir: [1, 0.35] },
+  };
+  function sysProfile(sys){ return SYS_FX[sys] || SYS_FX.special; }
+  // 系統別の効果音（既存の tone/noise プリミティブで合成。音OFF・テスト時は鳴らさない）
+  function seSys(sys, heavy){
+    log("seSys", sys + (heavy ? ":heavy" : ""));
+    if (!cfg.sound || fast) return;
+    switch (sys){
+      case "strike": noise(0.06, 0.55, "bandpass", 1500, 800); tone(200, 90, "sine", 0.08, 0.55); if (heavy) tone(110, 45, "sine", 0.18, 0.8); break;
+      case "kick": noise(0.14, 0.3, "bandpass", 1100, 300); noise(0.1, 0.6, "lowpass", 700, 180, 0.05); tone(95, 42, "sine", 0.16, 0.8, 0.05); break;
+      case "grapple": noise(0.2, 0.5, "lowpass", 500, 150); noise(0.08, 0.3, "bandpass", 400, 250, 0.02); tone(80, 36, "triangle", 0.24, 0.7, 0.06); break;
+      case "ground": tone(140, 55, "sawtooth", 0.3, 0.22); noise(0.28, 0.3, "lowpass", 350, 120); if (heavy) tone(65, 32, "sine", 0.3, 0.7, 0.05); break;
+      case "foul": tone(620, 590, "square", 0.16, 0.2); tone(466, 440, "square", 0.16, 0.2); noise(0.12, 0.4, "highpass", 2400, 2400); break;
+      default: noise(0.08, 0.5, "bandpass", 1000, 500); tone(150, 60, "sine", 0.12, 0.6); break;
+    }
+  }
+  function seCrit(){
+    log("seSys", "crit");
+    if (!cfg.sound || fast) return;
+    tone(1560, 1560, "triangle", 0.1, 0.3); tone(2340, 2340, "triangle", 0.14, 0.22, 0.03);
+    noise(0.16, 0.75, "lowpass", 900, 200, 0.02); tone(105, 40, "sine", 0.22, 0.9, 0.02);
+  }
+  function seSlowmo(){
+    log("seSys", "slowmo");
+    if (!cfg.sound || fast) return;
+    tone(58, 29, "sine", 0.85, 0.95); noise(0.8, 0.3, "lowpass", 300, 90);
+  }
+
   // ---------- 映像ユーティリティ ----------
   function animate(el, frames, opts){
     if (!el) return;
@@ -165,15 +211,69 @@ const FX = (() => {
       { transform: "translate(0,0)" },
     ], { duration: 250, easing: "ease-out" });
   }
-  function flash(kind){
+  function flash(kind, rgb){
     ensureDom(); if (!flashEl || !cfg.enabled) return;
-    const color = kind === "taken" ? "rgba(190,40,55,.85)" : "rgba(255,240,200,.75)";
+    const color = rgb ? "rgba(" + rgb + ",.9)" : (kind === "taken" ? "rgba(190,40,55,.85)" : "rgba(255,240,200,.75)");
     flashEl.style.background = "radial-gradient(ellipse at center, transparent 52%, " + color + " 135%)";
     log("flash", kind);
     if (flashEl.animate && !fast){
       try { flashEl.animate([{ opacity: 0 }, { opacity: 0.55, offset: 0.18 }, { opacity: 0 }], { duration: 300, easing: "ease-out" }); return; } catch (e) {}
     }
     flashEl.style.opacity = "0"; // フォールバック: 表示しない（進行に影響なし）
+  }
+  // 方向つきシェイク（第100節A: 系統ごとに揺れる方向と間合いを変える）
+  function shakeDir(el, power, sys){
+    if (!el || !cfg.enabled) return;
+    const p = sysProfile(sys), px = Math.max(2, Math.min(12, power));
+    const dx = p.dir[0] * px, dy = p.dir[1] * px;
+    log("shakeDir", sys + ":" + Math.round(px));
+    animate(el, [
+      { transform: "translate(0,0)" },
+      { transform: "translate(" + (-dx) + "px," + (-dy) + "px)" },
+      { transform: "translate(" + (dx * 0.75) + "px," + (dy * 0.75) + "px)" },
+      { transform: "translate(" + (-dx * 0.4) + "px," + (-dy * 0.4) + "px)" },
+      { transform: "translate(0,0)" },
+    ], { duration: sys === "ground" ? 340 : 250, easing: "ease-out" });
+  }
+  // 技の軌跡ライン（第100節A）: 防御側の表示位置に系統色のスワイプ線を一瞬走らせる
+  function trail(targetEl, sys){
+    ensureDom(); log("trail", sys);
+    if (!layer || !targetEl || !cfg.enabled || fast) return;
+    try {
+      const r = targetEl.getBoundingClientRect();
+      if (!r.width && !r.height) return;
+      const p = sysProfile(sys);
+      const mk = (dy, ang, w) => {
+        const el = document.createElement("div");
+        el.className = "fx-trail";
+        el.style.width = w + "px";
+        el.style.left = (r.left + r.width / 2 - w / 2) + "px";
+        el.style.top = (r.top + r.height / 2 + dy) + "px";
+        el.style.background = "linear-gradient(90deg, transparent, rgba(" + p.rgb + ",.95) 50%, transparent)";
+        el.style.boxShadow = "0 0 8px rgba(" + p.rgb + ",.8)";
+        layer.appendChild(el);
+        if (el.animate){
+          el.animate([
+            { transform: "rotate(" + ang + "deg) translateX(-46px)", opacity: 0 },
+            { transform: "rotate(" + ang + "deg) translateX(0)", opacity: 1, offset: 0.3 },
+            { transform: "rotate(" + ang + "deg) translateX(52px)", opacity: 0 },
+          ], { duration: 240, easing: "ease-out" });
+        }
+        setTimeout(() => { try { el.remove(); } catch (e) {} }, 300);
+      };
+      mk(0, p.angle, Math.min(190, Math.max(110, r.width * 0.7)));
+      if (sys === "grapple") mk(14, -p.angle * 0.6, 130); // 投げ・組みは交差する2本線
+    } catch (e) {}
+  }
+  // 大ダメージ専用の画面効果（第100節B）: 集中線で周囲を落とす
+  let focusEl = null;
+  function bigFx(){
+    ensureDom(); log("bigfx");
+    if (!cfg.enabled || fast) return;
+    try {
+      if (!focusEl){ focusEl = document.createElement("div"); focusEl.id = "fx-focus"; document.body.appendChild(focusEl); }
+      if (focusEl.animate) focusEl.animate([{ opacity: 0 }, { opacity: 0.85, offset: 0.25 }, { opacity: 0 }], { duration: 420, easing: "ease-out" });
+    } catch (e) {}
   }
   function popup(targetEl, text, cls){
     ensureDom(); log("popup", text + (cls ? ":" + cls : ""));
@@ -205,27 +305,91 @@ const FX = (() => {
     ensureDom(); log("battleStart");
     se("gong");
   }
+  // ---------- 第100節: 段階演出（衝撃は即時／キャラの動きは描画直後） ----------
+  // battleTurn は同期処理で、終わりに renderBattle がDOMを差し替える。そのため音・光・軌跡・数字は
+  // 呼び出し時点で即時に出し、立ち絵の出・のけぞりは pendingImpacts に積んで applyStage（描画直後）で当てる。
+  let pendingImpacts = []; // {side, sys, big, crit, ratio, hitStop} のキュー（1ターンに自分の攻撃＋敵の反撃の2回分たまる）
+  let slowmoArmed = false;  // 決着の一撃が入った印（battleEnd でスローモーションへ）
+  function hitStopMs(o){
+    if (o.crit || o.kind === "ougi") return 120;
+    if (o.big || o.ratio >= 0.16) return 90;
+    if (o.sys === "grapple" || o.sys === "ground") return 80;
+    return 50;
+  }
   // 自分が敵に与えたヒット。kind: normal|sig|combo|ougi|foul / ratio: 相手最大HP比
+  // sys: 攻撃系統（第100節A） / read: 「読む」の的中 / killing: この一撃で決着（第100節B）
   function playerHit(o){
     ensureDom();
     const enemy = document.querySelector(".fighter.enemy") || document.querySelectorAll(".fighter")[1];
-    const battle = document.querySelector(".battle");
-    if (o.missed){ se("whiff"); popup(enemy, "ミス！", "miss"); return; }
+    const sys = o.sys || (o.kind === "foul" ? "foul" : "strike");
+    if (o.missed){ se("whiff"); trail(enemy, sys); popup(enemy, "ミス！", "miss"); log("syshit", sys + ":miss"); return; }
     const big = o.kind === "sig" || o.kind === "combo" || o.kind === "ougi";
-    se(big || o.ratio >= 0.16 ? "hitHeavy" : "hitLight");
-    popup(enemy, "-" + o.dmg, big ? "big" : "");
-    flash("dealt");
-    shake(enemy, 3 + o.ratio * 34);
-    if (big || o.ratio >= 0.2) shake(battle, 4 + o.ratio * 20);
+    // 会心は新しい判定を作らず、既存の強調条件（看板技・複合技・奥義／読みの的中／大ダメージ）に接続する
+    const crit = !!(o.read || big || o.ratio >= 0.25);
+    log("syshit", sys + (crit ? ":crit" : ""));
+    seSys(sys, big || o.ratio >= 0.16);
+    if (crit) seCrit();
+    popup(enemy, crit ? "会心 -" + o.dmg : "-" + o.dmg, crit ? "big crit" : (big ? "big" : ""));
+    flash("dealt", sysProfile(sys).rgb);
+    trail(enemy, sys);
+    if (big || o.ratio >= 0.2) bigFx();
+    if (o.killing) slowmoArmed = true;
+    const imp = { side: "enemy", sys, big, crit, ratio: o.ratio || 0, hitStop: hitStopMs({ crit, kind: o.kind, big, ratio: o.ratio || 0, sys }) };
+    pendingImpacts.push(imp);
+    log("hitstop", imp.hitStop);
   }
-  // 敵から受けたヒット。guarded: 「読む」で半減した場合はガード音
+  // 敵から受けたヒット。guarded: 「読む」で半減した場合はガード音 / sys: 敵の攻撃系統
   function playerHurt(o){
     ensureDom();
     const me = document.querySelectorAll(".fighter")[0];
+    const sys = o.sys || "strike";
+    log("syshit", sys + ":taken");
     if (o.guarded){ se("guard"); popup(me, "-" + o.dmg + "（読んで半減）", "taken"); }
-    else { se(o.ratio >= 0.16 ? "hitHeavy" : "hurt"); popup(me, "-" + o.dmg, "taken"); }
+    else { seSys(sys, o.ratio >= 0.16); popup(me, "-" + o.dmg, "taken"); }
     flash("taken");
-    shake(me, 3 + o.ratio * 30);
+    trail(me, sys);
+    if (o.ratio >= 0.2) bigFx();
+    if (o.killing) slowmoArmed = true;
+    const imp = { side: "player", sys, big: o.ratio >= 0.2, crit: false, ratio: o.ratio || 0, hitStop: hitStopMs({ crit: false, kind: "normal", big: o.ratio >= 0.2, ratio: o.ratio || 0, sys }) };
+    pendingImpacts.push(imp);
+    log("hitstop", imp.hitStop);
+  }
+  // 描画直後に保留中の衝撃を新しいDOMへ当てる（第100節A/C: ヒットストップ→攻撃側が出て、被弾側がのけぞる）
+  // 1ターンに2回分の衝撃（自分の攻撃＋敵の反撃）がたまるため、キューを順番に再生する
+  function applyStage(){
+    const imps = pendingImpacts; pendingImpacts = [];
+    if (!imps.length || !cfg.enabled || fast) return;
+    try { document.body.classList.add("fx-hitstop"); } catch (e) {}
+    let delay = 0;
+    imps.forEach((imp, idx) => {
+      delay += imp.hitStop;
+      const at = delay, last = idx === imps.length - 1;
+      setTimeout(() => {
+        if (last) try { document.body.classList.remove("fx-hitstop"); } catch (e) {}
+        if (!document.querySelector(".battle")) return; // すでに画面が切り替わっていたら再生しない
+        const me = document.querySelectorAll(".fighter")[0];
+        const enemy = document.querySelector(".fighter.enemy") || document.querySelectorAll(".fighter")[1];
+        const portrait = document.querySelector(".portrait");
+        const battle = document.querySelector(".battle");
+        const dirSign = imp.side === "enemy" ? 1 : -1; // プレイヤーは左、敵は右にいる
+        const atkEls = imp.side === "enemy" ? [me] : [enemy, portrait];
+        const defEls = imp.side === "enemy" ? [enemy, portrait] : [me];
+        log("stage", imp.sys + ":" + imp.side);
+        atkEls.forEach(el => { if (el) animate(el, [
+          { transform: "translateX(0)" },
+          { transform: "translateX(" + (dirSign * 16) + "px)", offset: 0.35 },
+          { transform: "translateX(0)" },
+        ], { duration: 260, easing: "ease-out" }); });
+        defEls.forEach(el => { if (el) animate(el, [
+          { transform: "translateX(0) rotate(0deg)" },
+          { transform: "translateX(" + (dirSign * (imp.crit ? 15 : 10)) + "px) rotate(" + (dirSign * 1.2) + "deg)", offset: 0.3 },
+          { transform: "translateX(0) rotate(0deg)" },
+        ], { duration: imp.crit ? 380 : 300, easing: "ease-out" }); });
+        shakeDir(defEls[0], 3 + imp.ratio * 34, imp.sys);
+        if (imp.big || imp.ratio >= 0.2) shakeDir(battle, 4 + imp.ratio * 20, imp.sys);
+      }, at);
+      delay += 240; // 次の衝撃までの間合い
+    });
   }
   function heal(o){
     const me = document.querySelectorAll(".fighter")[0];
@@ -242,6 +406,9 @@ const FX = (() => {
       el.innerHTML = '<img src="../cast-art/cast-' + o.img + '-sera.webp" alt="">' +
         '<div class="fx-cutin-txt"><div class="fx-cutin-name">' + (o.name || "") + '</div><div class="fx-cutin-tech">' + (o.text || "") + "</div></div>";
       document.body.appendChild(el);
+      document.body.classList.add("fx-ougi"); // 第100節C: 奥義の間はバトル背景に金色の光を広げる
+      log("ougi-bg", o.text);
+      setTimeout(() => { try { document.body.classList.remove("fx-ougi"); } catch (e) {} }, 1400);
       if (el.animate){
         el.animate([{ opacity: 0 }, { opacity: 1, offset: 0.15 }, { opacity: 1, offset: 0.8 }, { opacity: 0 }], { duration: 1300, easing: "ease-out" });
         const img = el.querySelector("img");
@@ -253,30 +420,55 @@ const FX = (() => {
     } catch (e) {}
   }
   // 決着の溜め: 静止→大きく結果表示→少し置いて done()。テスト時は即 done()
+  // 第100節B: 決着の一撃が入っていた場合は、先にスローモーション（画面がゆっくり寄って暗くなる＋低い音）をはさむ
   function battleEnd(win, text, done){
     ensureDom(); log("battleEnd", text);
-    se("gong"); if (win) se("crowd");
-    if (!cfg.enabled || fast){ done(); return; }
-    try {
-      const old = document.getElementById("fx-ko"); if (old) old.remove();
-      const el = document.createElement("div"); el.id = "fx-ko"; if (!win) el.className = "lose";
-      el.innerHTML = '<div class="fx-ko-txt">' + text + "</div>";
-      document.body.appendChild(el);
-      if (el.animate) el.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1, offset: 0.78 }, { opacity: 0 }], { duration: 1000, easing: "ease-out" });
-      const tx = el.querySelector(".fx-ko-txt");
-      if (tx && tx.animate) tx.animate([{ transform: "scale(1.6)", opacity: 0 }, { transform: "scale(1)", opacity: 1 }], { duration: 260, delay: 120, easing: "cubic-bezier(.2,1.6,.4,1)" });
-      setTimeout(() => { try { el.remove(); } catch (e) {} done(); }, 980);
-    } catch (e) { done(); }
+    const slow = slowmoArmed; slowmoArmed = false; pendingImpacts = [];
+    if (!cfg.enabled || fast){ se("gong"); if (win) se("crowd"); done(); return; }
+    const showKo = () => {
+      se("gong"); if (win) se("crowd");
+      try {
+        const old = document.getElementById("fx-ko"); if (old) old.remove();
+        const el = document.createElement("div"); el.id = "fx-ko"; if (!win) el.className = "lose";
+        el.innerHTML = '<div class="fx-ko-txt">' + text + "</div>";
+        document.body.appendChild(el);
+        if (el.animate) el.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1, offset: 0.78 }, { opacity: 0 }], { duration: 1000, easing: "ease-out" });
+        const tx = el.querySelector(".fx-ko-txt");
+        if (tx && tx.animate) tx.animate([{ transform: "scale(1.6)", opacity: 0 }, { transform: "scale(1)", opacity: 1 }], { duration: 260, delay: 120, easing: "cubic-bezier(.2,1.6,.4,1)" });
+        setTimeout(() => { try { el.remove(); } catch (e) {} done(); }, 980);
+      } catch (e) { done(); }
+    };
+    if (slow){
+      log("slowmo", 650); seSlowmo();
+      try {
+        const battle = document.querySelector(".battle");
+        if (battle && battle.animate) battle.animate([
+          { transform: "scale(1)", filter: "brightness(1)" },
+          { transform: "scale(1.045)", filter: "brightness(.72) saturate(1.25)" },
+        ], { duration: 650, easing: "ease-in", fill: "forwards" });
+      } catch (e) {}
+      setTimeout(showKo, 650);
+      return;
+    }
+    showKo();
   }
   // HPバーの残像: renderBattle が data-to（目標%）付きで置いた .fx-ghost を遅れて追随させる
   function applyGhosts(root){
     if (!root) return;
     root.querySelectorAll(".fx-ghost").forEach(g => {
       const to = g.getAttribute("data-to");
+      // 第100節B: 低HP（25%以下）のバーは赤く点滅させる警告表示（演出のみ）
+      const bar = g.closest ? g.closest(".bar") : null;
+      if (bar){
+        const pct = to == null ? 100 : parseFloat(to);
+        const low = cfg.enabled && !isNaN(pct) && pct <= 25;
+        if (bar.classList.contains("fx-low") !== low){ bar.classList.toggle("fx-low", low); log("lowhp", low ? pct : "off"); }
+      }
       if (to == null) return;
       if (!cfg.enabled || fast){ g.style.transition = "none"; g.style.width = to + "%"; return; }
       requestAnimationFrame(() => requestAnimationFrame(() => { g.style.width = to + "%"; }));
     });
+    applyStage(); // 第100節: 保留中の衝撃（出・のけぞり）を新しいDOMへ当てる
   }
   // ---------- タイプライター（バトルログの最新エントリ） ----------
   let typing = null; // {node, full, idx, timer}
@@ -323,7 +515,7 @@ const FX = (() => {
     else ensureDom();
   }
   return {
-    cfg, battleStart, battleEnd, playerHit, playerHurt, heal, cutin, applyGhosts, typeLastLog,
+    cfg, battleStart, battleEnd, playerHit, playerHurt, heal, cutin, applyGhosts, applyStage, typeLastLog, sysFx: SYS_FX,
     se, log, events: () => evLog.slice(),
     setFast: v => { fast = !!v; },
     isFast: () => fast,

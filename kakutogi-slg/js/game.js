@@ -25,11 +25,17 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.62";
+const GAME_VERSION = "1.63";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.63", date:"2026-11-10", items:[
+    "戦闘演出を全部入りで強化（企画書第100節）：攻撃系統（手技／足技／投げ・組み／寝技・関節／反則）ごとに、エフェクトの色・画面の揺れ方・効果音を変えた。技の軌跡ラインと、命中した瞬間に一瞬止まるヒットストップも追加",
+    "会心の専用演出を追加：看板技・複合技・奥義、「相手を読む」の的中、大ダメージが会心扱いになり、大きな赤い数字と専用の音・強い揺れで表示される（ダメージ計算や判定そのものは従来どおりで、演出だけの変更）",
+    "KOが決まる一撃ではスローモーションが入るようになり、体力が残り少ない側のHPバーは赤く点滅する警告表示になった",
+    "バトルの立ち絵が、攻撃で前に出て、被弾で後ろへのけぞる動きを追加。奥義発動時は背景に金色の光が広がる",
+  ]},
   {v:"1.62", date:"2026-11-10", items:[
     "武クラ見守りの話題を型化して反映（企画書第99節）：CLASH論争プールに『和解の提案はアリか論争』を追加。交流会の主催者が、炎上騒動をめぐる人気指導者側の和解・解決提案を『会の根幹に関わる』として受けなかった騒動の型で、当事者は架空の人物、条件の中身と是非は作中でも断定しない",
     "あるある小ネタを1件追加：交流会の告知文で禁止事項（目潰し・金的）が太字で年々増えていく話。急所技をめぐる騒動の余波で、界隈の規則が厳格化していく空気を描く",
@@ -2168,6 +2174,13 @@ function battleTurn(act){
   b.turn++;
   let dmg = 0;
   let fxKind = "normal", fxMissed = false, fxGuarded = false; // 第88節: 演出フック用（計算には無関係）
+  // 第100節A: 系統別演出用（演出のみ・計算には無関係）。看板技・複合技・奥義は主・流儀の最も得意な系統に寄せる
+  let fxSys = {strike:"strike", kick:"kick", grapple:"grapple", ground:"ground", foul:"foul"}[act] || null;
+  if (!fxSys && (act === "sig" || act === "combo" || act === "ougi")){
+    let bv = -1;
+    for (const k of styleSystems(mainStyle())){ const v = S.stats[k] || 0; if (v > bv){ bv = v; fxSys = k; } }
+    if (!fxSys) fxSys = "strike";
+  }
   if (act === "strike"){ dmg = playerPower("strike"); bLog("実況", "突きが距離を刻む！"); }
   else if (act === "kick"){ dmg = playerPower("kick"); bLog("実況", "蹴りが間合いを支配する！"); }
   else if (act === "grapple"){ dmg = playerPower("grapple"); b.control = Math.min(6, b.control + 2); bLog("実況", "組み合った！ 支配が少しずつこちらに傾く"); }
@@ -2210,9 +2223,10 @@ function battleTurn(act){
       }
     }
   }
+  const fxReadHit = dmg > 0 && b.readBonus > 0; // 第100節B: 「読む」のボーナスが乗った一撃＝読みの的中（演出のみ）
   if (dmg > 0){ b.ehp -= dmg; b.dealt += dmg; b.readBonus = 0;
-    if (window.FX) FX.playerHit({dmg, kind: fxKind, ratio: def.hp > 0 ? dmg / def.hp : 0}); // 第88節: 与ダメ演出
-  } else if (fxMissed && window.FX){ FX.playerHit({dmg: 0, kind: fxKind, ratio: 0, missed: true}); } // 第88節: 空振り演出
+    if (window.FX) FX.playerHit({dmg, kind: fxKind, ratio: def.hp > 0 ? dmg / def.hp : 0, sys: fxSys, read: fxReadHit, killing: b.ehp <= 0}); // 第88節＋第100節: 与ダメ演出（系統別・会心・決着）
+  } else if (fxMissed && window.FX){ FX.playerHit({dmg: 0, kind: fxKind, ratio: 0, missed: true, sys: fxSys}); } // 第88節: 空振り演出
   pushComment();
   maybeHeckle(act); // 第95節: 女子戦の野次（女性相手のときだけ・演出のみ）
   // セコンド（源田）: 決勝・ルール交渉で選択した場合に1回
@@ -2256,7 +2270,7 @@ function battleTurn(act){
   }
   if (b.readGuard){ edmg = Math.round(edmg / 2); b.readGuard = false; fxGuarded = true; }
   b.php -= edmg;
-  if (window.FX) FX.playerHurt({dmg: edmg, guarded: fxGuarded, ratio: b.maxPhp > 0 ? edmg / b.maxPhp : 0}); // 第88節: 被ダメ演出
+  if (window.FX) FX.playerHurt({dmg: edmg, guarded: fxGuarded, ratio: b.maxPhp > 0 ? edmg / b.maxPhp : 0, sys: eKind, killing: b.php <= 0}); // 第88節＋第100節: 被ダメ演出（敵の系統別・決着）
   if (_rng() < 0.18){
     const parts = ["leg", "arm", "core"]; const p = parts[rnd(2)];
     S.dmg[p] = clamp(S.dmg[p] + 1, 0, 3);
