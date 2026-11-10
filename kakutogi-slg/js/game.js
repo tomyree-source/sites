@@ -25,11 +25,17 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.49";
+const GAME_VERSION = "1.51";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.51", date:"2026-11-10", items:[
+    "CLASH論争プールに『女子の護身術はアリか論争』を追加：体格差の前に技術は無力という懐疑、護身＝倒すことではなく距離を取って逃げることという現実的な落としどころ、『女性でも簡単に大男を倒せる』とうたうセミナー宣伝へのツッコミ、防犯ブザーや通報など戦わない手段の評価を巡る論争。既存の『護身最強の武術はあるか論争』（流派の優劣が主題）とは角度を分け、落としどころは『実力のある女性の武術家はちゃんといる。問題は「誰でも簡単」と売る側』という両面性に置き、相沢凛とマリアナ・ドス・サントスが実力者として締める",
+  ]},
+  {v:"1.50", date:"2026-11-10", items:[
+    "女子戦の野次演出を追加：対戦相手が女性キャストの試合で、主人公の攻撃（打撃／組み／寝技）に観客とCLASHの野次が飛ぶようになった。系統ごとのプール＋共通＋反則・ヒートアップ時の強めプール（全35件）。矛先は主人公に向けた武クラ流の笑いで、『相手は実力者だ、舐めるな』系のツッコミも混ぜてある。演出のみで、名声・悪名・注目度などの数値は一切変動しない",
+  ]},
   {v:"1.49", date:"2026-11-09", items:[
     "タイトル画面にオープニング絵を追加：主人公を中心に各流派の格闘家たちが躍動する集合イラストを、タイトル画面のキービジュアルとして採用した",
   ]},
@@ -1907,6 +1913,7 @@ function startBattle(id, winSteps, loseSteps){
   const counterHasSig = styleLv(S.mainStyle) >= 5;
   UI.battle = { def, eStyle, php: Math.max(20, maxPhp), maxPhp: Math.max(20, maxPhp), ehp: def.hp, turn: 0, dealt: 0,
     log: [], cmtIdx: 0, foulUsed: false, sigUsed: false, ougiUsed: false, readBonus: 0, control: 0, readGuard: false, secondUsed: false,
+    heckleCount: 0, heckleUsed: [],
     comboStyle, comboUsed: false, counterLevel, counterStreak: streak, counterHasSig,
     blur: 0, eyeHits: 0, eyeTurn: 0, misses: 0,
     finishing: false, fxPrevP: null, fxPrevE: null,
@@ -1930,6 +1937,95 @@ function pushComment(){
   const b = UI.battle; if (!b.def.comments || !b.def.comments.length) return;
   bLog("実況", b.def.comments[b.cmtIdx % b.def.comments.length]); b.cmtIdx++;
 }
+// ---------- 第95節: 女子戦の野次演出 ----------
+// 対戦相手が女性キャストの場合に限り、主人公の攻撃行動に観客／CLASHの野次が飛ぶ。
+// 矛先は主人公に向けた武クラ流の笑いで、相手への侮辱や性的な絡め方はしない。
+// 「相手は実力者だ、舐めるな」系の擁護・ツッコミも混ぜて両面性を持たせる。
+// 演出のみ：名声・悪名・注目度などの数値は一切変動させない。
+const HECKLE_POOLS = {
+  strike: [ // 手技・足技（殴る・蹴る）
+    "女の子相手に本気の突きを入れるな！ ……いや、相手もプロ級だ。手加減の方が失礼か",
+    "蹴りまで使うのか！ ……あ、相手が全部捌いてるわ。野次の出る幕じゃなかった",
+    "おいおい、女子相手に全力かよ。でも相手、笑ってるよ？ 楽しそうだよ？",
+    "紳士じゃない！ ……と野次りたいが、真剣勝負だもんなあ",
+    "手加減したら負ける相手だぞ。やるなら本気でいけ。中途半端な方が失礼だ",
+    "容赦ない一撃！ でも今の受け、見たか。あの子、相当できるぞ",
+    "顔面狙うなー！ ……当たってない。当たらないんだよなあ、実力者は",
+  ],
+  grapple: [ // 投げ・組み（組み付く）
+    "組み付いた！ 女の子に組み付くとは何事かー！（※相手は柔道の猛者です）",
+    "投げた！ 容赦なく投げた！ ……受け身は完璧だった。さすがとしか言えない",
+    "今のはセクハラにならない距離感で頼むぞ……って、ガチの組み合いだったわ",
+    "おい、組み負けてるぞ主人公！ 野次るつもりが応援に変わったわ",
+    "帯を掴む手つきがガチすぎる。恋愛漫画のそれじゃない",
+    "投げっぱなしはダメだろ！ ……あ、ちゃんと受け身を取らせてる。分かってるな",
+    "力比べで押してるけど、技術で返されてるぞ。舐めてたのはどっちだ",
+  ],
+  ground: [ // 寝技・関節
+    "寝技に持ち込んだ！ 女の子相手に寝技とは、けしからん！（※相手は『寝技の壁』と呼ばれる実力者です）",
+    "関節、ガチで狙ってる。……相手も狙ってる。お互い様だった",
+    "密着しすぎだろ！ ……試合だ、試合。分かってるけど野次らずにはいられない",
+    "絞めに入った!? いや、相手のガードが鉄壁すぎて入れない。強い",
+    "寝技の応酬が普通に技術戦で熱い。野次る隙がない",
+    "タップを迫る顔が真剣すぎる。だが相手も真剣だ。いい試合だ",
+    "寝技の展開で一番はしゃいでるの、観客席のお前らだぞ（自戒）",
+  ],
+  common: [ // 共通（看板技・複合技・奥義もここ）
+    "女の子相手に本気出すなー！（※相手は全国級の実力者です）",
+    "この試合、勝っても負けても記事になるやつだ",
+    "CLASH実況欄、野次と応援でカオスになってきた",
+    "相手を女子扱いして手加減したら、その場で投げ飛ばされるタイプだぞ、あの人は",
+    "野次ってる間に形勢が動いてないか？ ほら、やられるぞ",
+    "本気でやるのが一番の敬意。……建前はそう、野次は別腹",
+    "この試合、女子とか男子とかじゃなく、普通にレベルが高い",
+    "相手の実力を知ってる者ほど野次れない法則、今日も発動中",
+  ],
+  strong: [ // 反則時／ヒートアップ時（一段強い野次）
+    "おい、今のは反則だろ！ 女の子相手に眼突きとか、最低だぞ！",
+    "ブーイングが地鳴りみたいだ。やらかしたな、これは燃えるぞ",
+    "CLASHが秒でざわついた。『相手が誰であれ反則は反則』でほぼ一致",
+    "野次の量が3倍になった。……自業自得だ、受け止めろ",
+    "相手陣営からも抗議の声！ 当然だ。クリーンファイトで勝ってこその本物だ",
+    "観客席が完全に相手の味方になった。アウェーの極みだぞ",
+  ],
+};
+// 対戦相手が「女性キャスト本人」かどうか。def.img はポートレート用のキャストIDだが、
+// 弟子の試合（セコンド采配）など img が本人でない場面があるため、相手名に本人の名が
+// 含まれる場合に限る（例：katori_ex の相手は香取本人ではなく香取道場の若手エース）。
+function battleFoeIsFemale(def){
+  if (!def || !def.img || typeof CAST_BY_ID === "undefined") return false;
+  const c = CAST_BY_ID[def.img];
+  if (!c || c.sex !== "F") return false;
+  const norm = s => (s || "").replace(/[\s　・]/g, "");
+  const en = norm(def.enemyName), cn = norm(c.name);
+  if (cn && en.includes(cn)) return true;
+  const first = (c.name.split(/[\s　・]/)[0] || "");
+  return first.length >= 3 && en === norm(first);
+}
+function maybeHeckle(act, force){
+  const b = UI.battle; if (!b) return false;
+  const kindMap = {strike:"strike", kick:"strike", grapple:"grapple", ground:"ground", sig:"common", combo:"common", ougi:"common", foul:"strong"};
+  let pool = kindMap[act]; if (!pool) return false;
+  if (!battleFoeIsFemale(b.def)) return false;
+  const MAX = 4; // 1試合あたりの上限（煩さ対策）
+  if ((b.heckleCount || 0) >= MAX) return false;
+  const first = (b.heckleCount || 0) === 0;
+  // 初回は必ず。以降は確率（反則は必ず一段強い野次になる）
+  if (!force && !first && act !== "foul" && _rng() >= 0.38) return false;
+  // 3回目以降はヒートアップして強めプールに寄ることがある
+  if (act !== "foul" && (b.heckleCount || 0) >= 2 && _rng() < 0.35) pool = "strong";
+  const lines = (HECKLE_POOLS[pool] || []).concat(pool === "common" ? [] : HECKLE_POOLS.common);
+  const fresh = lines.filter(t => !(b.heckleUsed || []).includes(t)); // 同じ文面は1試合で繰り返さない
+  if (!fresh.length) return false;
+  const tx = fresh[Math.floor(_rng() * fresh.length)];
+  b.heckleUsed = (b.heckleUsed || []).concat([tx]);
+  b.heckleCount = (b.heckleCount || 0) + 1;
+  const sp = _rng() < 0.5 ? "観客" : "CLASH";
+  bLog(sp, tx);
+  window.__lastHeckle = {battleId: b.def.id, act, pool, sp, tx, count: b.heckleCount};
+  return true;
+}
+window.__forceHeckle = act => maybeHeckle(act, true); // 検証用フック（通常プレイでは使わない）
 function playerPower(kind){
   const lv = styleLv(S.mainStyle);
   const base = {strike: S.stats.strike, kick: S.stats.kick, grapple: S.stats.grapple, ground: S.stats.ground}[kind];
@@ -2035,6 +2131,7 @@ function battleTurn(act){
     if (window.FX) FX.playerHit({dmg, kind: fxKind, ratio: def.hp > 0 ? dmg / def.hp : 0}); // 第88節: 与ダメ演出
   } else if (fxMissed && window.FX){ FX.playerHit({dmg: 0, kind: fxKind, ratio: 0, missed: true}); } // 第88節: 空振り演出
   pushComment();
+  maybeHeckle(act); // 第95節: 女子戦の野次（女性相手のときだけ・演出のみ）
   // セコンド（源田）: 決勝・ルール交渉で選択した場合に1回
   if (!b.secondUsed && S.flags.ruleFx === "second" && def.id === "fin_rin" && b.php < b.maxPhp * 0.4 && b.ehp > 0){
     b.secondUsed = true; b.php = Math.min(b.maxPhp, b.php + 15);
