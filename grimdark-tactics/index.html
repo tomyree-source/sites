@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄冠戦記 -灰燼の聖戦- 見本v32｜オープニングを追加。</title>
+<title>鉄冠戦記 -灰燼の聖戦- 見本v33｜自社おすすめ枠を追加。</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;background:#141210;color:#e8ddc8;font-family:"Hiragino Mincho ProN",serif;padding:12px}
@@ -181,13 +181,26 @@ img.uimg{transition:transform .15s ease}
 @keyframes opPulse32{0%,100%{box-shadow:0 0 0 rgba(255,217,138,0)}50%{box-shadow:0 0 22px rgba(255,217,138,.35)}}
 #opSkip32{position:absolute;top:14px;right:14px;background:rgba(20,15,8,.66);color:#cbb27f;border:1px solid #6d5836;border-radius:8px;padding:6px 12px;font-size:12.5px;cursor:pointer;z-index:3}
 #opHint32{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#8d7c58;font-size:12px;letter-spacing:.2em}
+
+/* ===== v33 house ads ===== */
+.houseAd33{display:block;margin:12px auto 2px;max-width:560px;text-decoration:none;background:linear-gradient(180deg,rgba(38,29,17,.94),rgba(20,15,8,.94));border:1px solid #a68d5f;border-radius:10px;padding:10px 14px 9px;box-shadow:0 6px 18px rgba(0,0,0,.45);transition:opacity .38s ease}
+.houseAd33.fade33{opacity:0}
+.haHead33{display:flex;gap:8px;align-items:center;margin-bottom:3px}
+.haLabel33{background:#a68d5f;color:#171208;font-size:10.5px;font-weight:700;border-radius:4px;padding:1px 7px;letter-spacing:.15em}
+.haTag33{color:#cbb27f;font-size:11.5px;letter-spacing:.1em}
+.haTitle33{display:block;color:#ffd98a;font-size:15.5px;font-weight:700;line-height:1.45}
+.haSub33{display:block;color:#cfc2a2;font-size:12.5px;line-height:1.5;margin-top:1px}
+.haDots33{display:flex;gap:5px;margin-top:7px}
+.haDots33 i{width:6px;height:6px;border-radius:50%;background:#5d4c2c;display:block}
+.haDots33 i.on{background:#ffd98a}
+#battleResults .houseAd33{margin-top:10px}
 </style>
 </head>
 <body>
 <div id="op32"><img id="opBg32" alt=""><div id="opShade32"></div><div id="opAsh32"></div><button id="opSkip32">スキップ ≫</button><div id="opInner32"><div id="opTitle32"><div id="opOrn32">⚔</div><div id="opMain32">鉄冠戦記</div><div id="opSub32">- 灰燼の聖戦 -</div><div id="opRule32"></div></div><div id="opText32"></div><div id="opCount32"></div><div id="opFinal32"><button id="opStartBtn32">物語を始める</button></div></div><div id="opHint32">タップで進む</div></div>
 <div id="wrap">
   <h1>⚔ 鉄冠戦記 -灰燼の聖戦-</h1>
-  <div class="sub">見本v32｜オープニングを追加しました。起動時に、タイトル演出と物語の導入ナレーション（灰の雨と王冠の欠片をめぐる物語）が流れます。タップで文章を送れて、スキップも可能です。勢力選択の「オープニングを見る」からいつでも再生できます。</div>
+  <div class="sub">見本v33｜自社おすすめ枠を追加しました。勢力選択画面と戦果画面に、関連ゲーム・グッズ・スタンプへの「おすすめ」カードが6秒ごとに切り替わって表示されます（戦闘中には出ません）。</div>
 
   <div id="setup">
     <button class="sndBtn" style="float:right;padding:6px 10px;font-size:12px">音：ON</button>
@@ -211,7 +224,7 @@ img.uimg{transition:transform .15s ease}
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ 自由対戦</div>
       難易度は やさしい／ふつう／つよい（敵の強さとAIが変わります）。編成はポイント制で、予算（50／70／90pt）の中で名簿から出撃させる駒を選びます。相手も同じ予算で自動編成されます。勝利条件は「殲滅」か「拠点確保」です。拠点確保は、中央の遺跡を囲む金色の4マスをラウンド終了時に多く占めていた側が1点、3点先取で勝ちです。ラウンド上限は12で、到達した場合は拠点点数→残存数→残り体力の順で判定します。
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ ストーリーと育成</div>
-      騎士団の小隊で全6戦を戦います。戦うと経験値が入り、レベルが上がるとHPや攻撃が伸び、固有スキルも開きます。勲章の収集もあります。記録はこの端末に自動保存されます（「育成データを消す」でリセット）。第2戦を勝つと見習い騎士レオンが加入し、第3戦では古代ゴーレムが目覚めて両軍を襲います。ラウンド上限は15で、時間切れは敗北です。章の前後には顔絵つきの会話シーンがあり、第2戦・第4戦・第5戦の勝利後には進路の選択（分岐）が出ます。選択は次の戦いの展開や最終戦の結末を変えます。自由対戦でも、どの勢力でも自軍ユニットが経験値を得て育ちます（設定の「育成反映」で切り替え可能）。攻撃前には戦闘予測（与えるダメージ・命中率・撃破可否・相手の反撃とその危険度）が出ます。設定で戦闘速度（ふつう／はやい／超高速）とBGMのON/OFFを切り替えられます。戦闘中の「オート」をONにすると、自軍も自動で行動します（もう一度押すと止まります。速度設定と組み合わせると観戦も高速で進みます）。起動時にはオープニング（物語の導入）が流れます。タップで文章を送り、右上の「スキップ」ですぐに始められます。「オープニングを見る」ボタンからいつでも見直せます。
+      騎士団の小隊で全6戦を戦います。戦うと経験値が入り、レベルが上がるとHPや攻撃が伸び、固有スキルも開きます。勲章の収集もあります。記録はこの端末に自動保存されます（「育成データを消す」でリセット）。第2戦を勝つと見習い騎士レオンが加入し、第3戦では古代ゴーレムが目覚めて両軍を襲います。ラウンド上限は15で、時間切れは敗北です。章の前後には顔絵つきの会話シーンがあり、第2戦・第4戦・第5戦の勝利後には進路の選択（分岐）が出ます。選択は次の戦いの展開や最終戦の結末を変えます。自由対戦でも、どの勢力でも自軍ユニットが経験値を得て育ちます（設定の「育成反映」で切り替え可能）。攻撃前には戦闘予測（与えるダメージ・命中率・撃破可否・相手の反撃とその危険度）が出ます。設定で戦闘速度（ふつう／はやい／超高速）とBGMのON/OFFを切り替えられます。戦闘中の「オート」をONにすると、自軍も自動で行動します（もう一度押すと止まります。速度設定と組み合わせると観戦も高速で進みます）。起動時にはオープニング（物語の導入）が流れます。勢力選択画面と戦果画面には、関連作品やグッズの「おすすめ」カードが順に切り替わって表示されます（戦闘中には出ません）。タップで文章を送り、右上の「スキップ」ですぐに始められます。「オープニングを見る」ボタンからいつでも見直せます。
       <div style="color:#ffd98a;font-weight:700;margin-top:8px">■ その他</div>
       音のON／OFF、盤面の表示倍率（全体／拡大／特大）が切り替えられます。拡大時は盤面をスクロールできます。
     </div>
@@ -240,6 +253,7 @@ img.uimg{transition:transform .15s ease}
       <div class="artBox"><div class="artCap" id="efCap"></div><img id="efImg" alt="相手の勢力のイラスト"></div>
     </div>
     <div id="roster"></div>
+    <div id="houseAdSetup33"></div>
   </div>
 
   <div id="game" class="hidden">
@@ -412,7 +426,7 @@ function showResults(win, deployed){ const box=$("battleResults"); if(!box) retu
   if(gameMode==="story"&&win&&CHAPTERS[storyChapter-1].outro){ window._outro29=CHAPTERS[storyChapter-1].outro; }
   html+=deployed.map(u=>{ const r=recOf(u.name); const gain=battleXP[u.id]||0; const before=lvOf(r.xp-gain), after=lvOf(r.xp);
     return "<div>"+u.name+"：経験値 +"+gain+"（Lv"+before+(after>before?" → <span class='up'>Lv"+after+" に上がった！</span>":"")+"）"+((battleMedals[u.id]||[]).length?" 勲章獲得："+battleMedals[u.id].join("・"):"")+"</div>"; }).join("");
-  html+="<div style='margin-top:6px'><button id='resClose'>閉じる</button>"+(gameMode==="story"?" <button id='resBack'>章選択に戻る</button>":"")+"</div>";
+  html+=houseAdHTML33("res"); html+="<div style='margin-top:6px'><button id='resClose'>閉じる</button>"+(gameMode==="story"?" <button id='resBack'>章選択に戻る</button>":"")+"</div>";
   box.innerHTML=html; box.classList.remove("hidden");
   $("resClose").onclick=()=>box.classList.add("hidden");
   const rb=$("resBack"); if(rb) rb.onclick=()=>{ box.classList.add("hidden"); $("backBtn").click(); setTimeout(()=>{ const ms=$("modeStory"); if(ms) ms.click(); },50); }; }
@@ -1109,6 +1123,48 @@ function opStart32(){
   opStart32();
 })();
 
+// ===== v33: 自社おすすめ枠（相互送客） =====
+// 見本（セラフィナ側で本人承認済み）の仕組みを鉄冠戦記へ適用。
+// 勢力選択画面と戦果画面に1枠ずつ。6秒ごとに送客先がフェードで切り替わる。
+// 戦闘中・会話中には出さない。初期化は try/catch で隔離し、枠の不具合で本体を止めない。
+const HOUSE_AD_UTM33="?utm_source=game&utm_medium=house-ad&utm_campaign=tekkan-senki";
+const HOUSE_ADS33=[
+ {tag:"ゲーム製品版", title:"セラフィナ製品版（全編）発売中", sub:"天使見習いの物語。製品版はBOOTHで販売中です", url:"https://angel222.booth.pm/items/9093919"},
+ {tag:"イラストパック", title:"セラフィナ イラストパック 第1〜12弾", sub:"BOOTHで販売中。描き下ろしイラスト集です", url:"https://angel222.booth.pm/"},
+ {tag:"グッズ", title:"222キャラ工房（SUZURI）", sub:"Tシャツや雑貨などのキャラグッズはこちら", url:"https://suzuri.jp/222chara"},
+ {tag:"LINEスタンプ", title:"LINEスタンプ販売中", sub:"毎日使える猫スタンプなど、販売中です", url:"https://line.me/S/sticker/37862812"},
+ {tag:"無料ゲーム", title:"武術育成SLG（無料）", sub:"同じ制作者の武術育成シミュレーション。ブラウザで遊べます", url:"https://tomyree-source.github.io/sites/kakutogi-slg/"},
+ {tag:"無料ゲーム", title:"セラフィナ体験版（無料）", sub:"天使見習いの物語、体験版はブラウザで遊べます", url:"https://tomyree-source.github.io/sites/seraphina-game/"}
+];
+let houseAdIdx33=0, houseAdTimer33=null;
+function houseAdHTML33(cls){
+  const a=HOUSE_ADS33[0];
+  return '<a class="houseAd33 '+(cls||"")+'" href="'+a.url+HOUSE_AD_UTM33+'" target="_blank" rel="noopener">'
+    +'<span class="haHead33"><span class="haLabel33">おすすめ</span><span class="haTag33">'+a.tag+'</span></span>'
+    +'<span class="haTitle33">'+a.title+'</span>'
+    +'<span class="haSub33">'+a.sub+'</span>'
+    +'<span class="haDots33">'+HOUSE_ADS33.map((_,i)=>'<i class="'+(i===0?"on":"")+'"></i>').join("")+'</span></a>';
+}
+function houseAdRender33(){
+  const a=HOUSE_ADS33[houseAdIdx33];
+  document.querySelectorAll(".houseAd33").forEach(el=>{
+    el.href=a.url+HOUSE_AD_UTM33;
+    el.querySelector(".haTag33").textContent=a.tag;
+    el.querySelector(".haTitle33").textContent=a.title;
+    el.querySelector(".haSub33").textContent=a.sub;
+    el.querySelectorAll(".haDots33 i").forEach((d,i)=>d.classList.toggle("on", i===houseAdIdx33));
+  });
+}
+function houseAdTick33(){
+  document.querySelectorAll(".houseAd33").forEach(el=>el.classList.add("fade33"));
+  setTimeout(()=>{ houseAdIdx33=(houseAdIdx33+1)%HOUSE_ADS33.length; houseAdRender33();
+    document.querySelectorAll(".houseAd33").forEach(el=>el.classList.remove("fade33")); },380);
+}
+try{
+  if(!houseAdTimer33){ houseAdTimer33=setInterval(()=>{ try{ houseAdTick33(); }catch(e){} },6000); }
+}catch(e){}
+
+try{ const _hs=document.getElementById("houseAdSetup33"); if(_hs) _hs.innerHTML=houseAdHTML33("setup"); }catch(e){}
 fillOptions(); resetPicks(); setupInfo();
 </script>
 </body>
