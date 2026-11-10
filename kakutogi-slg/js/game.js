@@ -25,11 +25,14 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.6";
+const GAME_VERSION = "1.61";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
 const CHANGELOG = [
+  {v:"1.61", date:"2026-11-10", items:[
+    "自社おすすめ枠（相互送客）を追加：タイトル画面に6秒ごとに送客先が切り替わるローテーションカード、下部の「おすすめ」ボタンから開く一覧モーダル、章の終わり（エンディング画面）の「関連作品・おすすめ」パネルの3箇所。送客先はセラフィナ製品版・イラストパック・SUZURIグッズ・LINEスタンプ・鉄冠戦記の5件で、全リンクに計測用UTMを付与。プレイ中への割り込み表示はなし",
+  ]},
   {v:"1.6", date:"2026-11-10", items:[
     "女性インフルエンサー調査の全反映（企画書第97節）。女性武術系25人＋女性護身術系15人の調査『型』をモチーフにした新規女性キャスト40名（第102〜141名）を追加（全員架空名・-sera設定画つき、debutは第5〜6章に分散）",
     "新規40名全員に、第1〜4章で顔が見えるカメオを用意。春日ルナと猪狩咲良には交流戦バトルも追加し、女子戦の野次演出（v1.50）の対象に自動で含まれるようにした",
@@ -114,6 +117,75 @@ const CHANGELOG = [
     "全156流派・登場人物80名・道場経営と名声（清名／悪名）・口説き・反則と裁判バトルまで実装",
   ]},
 ];
+
+// ---------- 自社おすすめ枠（house ads・企画書第98節／設計正本 seraphina/game/house-ads-design-2026-11-10.md） ----------
+// 外部広告ではなく自社商品への相互送客枠。本作は無料公開版のみのため3枠とも有効。
+// 枠の不具合でゲーム本体を止めないよう、呼び出し側は全て try/catch で隔離し、外部スクリプトは使わず静的リンクのみ。
+const HOUSE_AD_SLOTS = { title: true, menu: true, ending: true };
+const HOUSE_ADS = [
+  { title: "見習い天使セラフィナ 製品版（全編）発売中", sub: "BOOTHで販売中／天使見習いの物語・全編", url: "https://angel222.booth.pm/items/9093919" },
+  { title: "イラストパック 第1〜12弾", sub: "セラフィナたちのイラスト集（BOOTH）", url: "https://angel222.booth.pm/" },
+  { title: "グッズ「222キャラ工房」", sub: "SUZURIでグッズ販売中", url: "https://suzuri.jp/222chara" },
+  { title: "LINEスタンプ販売中", sub: "毎日使えるスタンプ各種（LINEストア）", url: "https://line.me/S/sticker/37862812" },
+  { title: "鉄冠戦記 -灰燼の聖戦-", sub: "無料で遊べる盤面タクティクス", url: "https://tomyree-source.github.io/sites/grimdark-tactics/" },
+];
+function houseAdUrl(u){ return u + (u.includes("?") ? "&" : "?") + "utm_source=game&utm_medium=house-ad&utm_campaign=kakutogi-slg"; }
+function houseAdItemsHTML(){
+  return HOUSE_ADS.map(it => '<a class="ha-item" href="' + houseAdUrl(it.url) + '" target="_blank" rel="noopener"><span class="ha-item-title">' + esc(it.title) + '</span><span class="ha-item-sub">' + esc(it.sub) + "</span></a>").join("");
+}
+// タイトル画面ローテーションカード（6秒ごと切替え＋フェード、カード全体がリンク）
+let __houseAdTimer = null;
+let __houseAdIdx = 0;
+function houseAdPaint(){
+  const a = document.getElementById("housead-card");
+  if (!a){ if (__houseAdTimer){ clearInterval(__houseAdTimer); __houseAdTimer = null; } return; }
+  const item = HOUSE_ADS[__houseAdIdx % HOUSE_ADS.length];
+  a.href = houseAdUrl(item.url);
+  const t = a.querySelector(".ha-title"); if (t) t.textContent = item.title;
+  const s = a.querySelector(".ha-sub"); if (s) s.textContent = item.sub;
+  const dots = a.parentElement && a.parentElement.querySelector(".ha-dots");
+  if (dots) dots.innerHTML = HOUSE_ADS.map((_, i) => '<span class="' + (i === __houseAdIdx % HOUSE_ADS.length ? "on" : "") + '">●</span>').join("");
+}
+function initHouseAdTitle(){
+  if (!HOUSE_AD_SLOTS.title) return;
+  const slot = document.getElementById("housead-title");
+  if (!slot) return;
+  slot.innerHTML = '<div class="housead-wrap"><a class="housead" id="housead-card" href="#" target="_blank" rel="noopener"><span class="ha-tag">おすすめ</span><span class="ha-body"><span class="ha-title"></span><span class="ha-sub"></span></span><span class="ha-arrow">›</span></a><div class="ha-dots"></div></div>';
+  __houseAdIdx = 0;
+  houseAdPaint();
+  if (__houseAdTimer) clearInterval(__houseAdTimer);
+  __houseAdTimer = setInterval(() => {
+    const a = document.getElementById("housead-card");
+    if (!a){ clearInterval(__houseAdTimer); __houseAdTimer = null; return; }
+    a.style.opacity = "0";
+    setTimeout(() => { __houseAdIdx = (__houseAdIdx + 1) % HOUSE_ADS.length; houseAdPaint(); const b = document.getElementById("housead-card"); if (b) b.style.opacity = "1"; }, 360);
+  }, 6000);
+}
+// メニュー「おすすめ」モーダル
+function openHouseAdModal(){
+  try {
+    if (!HOUSE_AD_SLOTS.menu) return;
+    closeHouseAdModal();
+    const ov = document.createElement("div");
+    ov.className = "ha-overlay"; ov.id = "housead-overlay";
+    ov.innerHTML = '<div class="ha-modal"><h3>おすすめ</h3><p class="ha-note">同じ作り手の作品とグッズです。気になるものがあればどうぞ。</p>' + houseAdItemsHTML() + '<div class="navrow"><button class="btn" id="housead-close">閉じる</button></div></div>';
+    document.body.appendChild(ov);
+    ov.addEventListener("click", e => { if (e.target === ov) closeHouseAdModal(); });
+    ov.querySelector("#housead-close").addEventListener("click", closeHouseAdModal);
+  } catch(e){}
+}
+function closeHouseAdModal(){ const ov = document.getElementById("housead-overlay"); if (ov) ov.remove(); }
+// エンディング後パネル（章終了・引退EDの .endcard 末尾へ「関連作品・おすすめ」を追加）
+function appendHouseAdEnding(){
+  if (!HOUSE_AD_SLOTS.ending) return;
+  const mainEl = document.getElementById("main");
+  const card = mainEl && mainEl.querySelector(".endcard");
+  if (!card || card.querySelector(".housead-panel")) return;
+  const d = document.createElement("div");
+  d.className = "housead-panel";
+  d.innerHTML = "<h3>関連作品・おすすめ</h3>" + houseAdItemsHTML();
+  card.appendChild(d);
+}
 function getLikes(){
   try { const d = JSON.parse(localStorage.getItem(LIKES_KEY) || "{}"); return (d && typeof d === "object" && !Array.isArray(d)) ? d : {}; }
   catch(e){ return {}; }
@@ -2299,6 +2371,7 @@ function chapterEndScreen(){
     '<button class="btn" data-auto="to-title">タイトルへ戻る</button></div>';
   saveGame(false);
   $("main").querySelector("[data-auto='to-title']").addEventListener("click", renderTitle);
+  try { appendHouseAdEnding(); } catch(e){} // 第98節: 自社おすすめ枠（エンディング後パネル）
   const ch2btn = $("main").querySelector("[data-auto='to-ch2']");
   if (ch2btn) ch2btn.addEventListener("click", () => startChapter2());
 }
@@ -2319,7 +2392,7 @@ function renderTitle(){
     '<button class="btn next" data-auto="new">はじめから</button>' +
     (hasSave() ? '<button class="btn" data-auto="continue">つづきから</button>' : "") +
     '<p class="note">第1章：青年期（19〜22歳）／第2章：全盛前夜（23〜29歳）／第3章：全盛期（30〜39歳）／第4章：円熟期（40〜49歳）</p>' +
-    '<p class="ver">ver ' + GAME_VERSION + "</p></div>" +
+    '<p class="ver">ver ' + GAME_VERSION + '</p><div id="housead-title"></div></div>' +
     '<div class="voice"><h3>あなたのCLASH投稿</h3>' +
     '<p class="voicenote">エピソードごとの感想は、作中SNS「CLASH」への書き込みとして、この端末に残ります。人気投票とコメントはフォームで集計し、次回バージョンアップに反映します。面白かったエピソードには👍、改善要望やネタはCLASH投稿から「開発にも送る」で届きます。</p>' +
     "<h4>👍したエピソード（" + likeIds.length + "件）</h4>" + likeList +
@@ -2331,6 +2404,7 @@ function renderTitle(){
   const c = $("main").querySelector("[data-auto='continue']");
   if (c) c.addEventListener("click", () => { if (loadGame()) resumeFromSave(); });
   $("main").querySelector("[data-auto='changelog']").addEventListener("click", renderChangelog);
+  try { initHouseAdTitle(); } catch(e){} // 第98節: 自社おすすめ枠（タイトル画面ローテーション）
 }
 function renderChangelog(){
   UI.screen = "changelog";
@@ -2392,6 +2466,7 @@ function renderDex(){
 $("btn-save").addEventListener("click", () => { if (S) saveGame(true); });
 $("btn-load").addEventListener("click", () => { if (loadGame()){ toast("ロードしました"); resumeFromSave(); } else toast("セーブデータがありません", true); });
 $("btn-title").addEventListener("click", renderTitle);
+try { const hb = $("btn-housead"); if (hb) hb.addEventListener("click", openHouseAdModal); } catch(e){} // 第98節: おすすめモーダル
 if (new URLSearchParams(location.search).has("autotest")) { /* game.js 末尾の自動テストが処理 */ }
 renderTitle();
 
@@ -2430,6 +2505,19 @@ if (typeof CAMEO_EVENTS !== "undefined"){
   CAMEO_EVENTS.forEach(e => { if (Array.isArray(e.chapters) && e.chapters.includes(3) && !e.chapters.includes(4)) e.chapters.push(4); });
 }
 
+// ---------- 第98節: 第2章以降の終了画面へ自社おすすめ枠（エンディング後パネル）を追加（story側は変更しないため、ここでラップする） ----------
+[["chapter2EndScreen", () => typeof chapter2EndScreen === "function"],
+ ["chapter3EndScreen", () => typeof chapter3EndScreen === "function"],
+ ["retireEndScreen", () => typeof retireEndScreen === "function"],
+ ["chapter4EndScreen", () => typeof chapter4EndScreen === "function"],
+ ["chapter4RetireScreen", () => typeof chapter4RetireScreen === "function"]].forEach(([name]) => {
+  try {
+    const orig = window[name];
+    if (typeof orig !== "function") return;
+    window[name] = function(){ orig(); try { appendHouseAdEnding(); } catch(e){} };
+  } catch(e){}
+});
+
 // ---------- 検証フック（QC用：対策メタ／新規イベント／同伴イベントの発火を実測するための内部状態の公開） ----------
 window.__gameTest = {
   state: () => S,
@@ -2440,6 +2528,11 @@ window.__gameTest = {
   startSceneById: id => startSceneById(id),
   eventLog: () => window.__eventLog || [],
   version: () => GAME_VERSION,
+  houseAds: () => HOUSE_ADS.map(it => ({ title: it.title, url: houseAdUrl(it.url) })),
+  houseAdSlots: () => HOUSE_AD_SLOTS,
+  houseAdIdx: () => __houseAdIdx,
+  openHouseAds: () => openHouseAdModal(),
+  appendHouseAdEnding: () => appendHouseAdEnding(),
   playerSystems: () => playerSystems(),
   styleSystems: name => styleSystems(styleByName(name)),
   systemsLabel: name => systemsLabel(styleByName(name)),
