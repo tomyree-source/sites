@@ -230,6 +230,46 @@ filter:saturate(1.06) contrast(1.03)}
 #textbox{gap:9px}
 }
 </style>
+<style id="ui-c-sample">
+/* ===== UI sample C (2026-11-10): performance upgrade — chapter cards, light transition, smoother crossfade. Additions only. ===== */
+
+/* --- 3. Smoother scene crossfade: lengthen the existing #bg opacity transition (the fade itself is driven by the C script's overlay layers) --- */
+#bg{transition:opacity .8s ease}
+
+/* --- Crossfade overlay layers (inserted by the C script to mirror #bgBack / #bg) --- */
+.uic-fade{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center 45%;pointer-events:none;opacity:0}
+#uicBgBackFade{object-fit:cover;filter:blur(16px) brightness(.5);transform:scale(1.12)}
+
+/* --- 2. Light transition: a soft gold glow + a sweeping band of light, under 1 second --- */
+#uicFlash{position:absolute;inset:0;z-index:12;pointer-events:none;opacity:0;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,rgba(255,215,110,.30),rgba(255,215,110,0) 62%)}
+#uicFlash::before{content:"";position:absolute;top:-12%;bottom:-12%;left:-34%;width:32%;background:linear-gradient(100deg,rgba(255,215,110,0),rgba(255,233,168,.55),rgba(255,158,203,.34),rgba(255,215,110,0));transform:skewX(-14deg)}
+#uicFlash.on{animation:uicFlashA .85s ease-out forwards}
+#uicFlash.on::before{animation:uicSweep .85s ease-out forwards}
+@keyframes uicFlashA{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+@keyframes uicSweep{0%{transform:translateX(0) skewX(-14deg)}100%{transform:translateX(440%) skewX(-14deg)}}
+
+/* --- 2b. A few drifting motes of light that ride along with the sweep --- */
+#uicParticles{position:absolute;inset:0;z-index:13;pointer-events:none}
+#uicParticles i{position:absolute;width:6px;height:6px;border-radius:50%;background:radial-gradient(circle,#fff6d8 0%,#ffd76e 55%,rgba(255,215,110,0) 78%);opacity:0}
+#uicParticles.on i{animation:uicMote .9s ease-out forwards}
+@keyframes uicMote{0%{opacity:0;transform:translateY(10px) scale(.6)}22%{opacity:.95}100%{opacity:0;transform:translateY(-48px) scale(1.05)}}
+
+/* --- 1. Chapter title card: floats in at the centre, gold frame, tap to skip --- */
+#uicChapterCard{position:absolute;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(5,7,18,.38);padding:20px;box-sizing:border-box}
+#uicChapterCard.on{display:flex}
+#uicChapterCard .uic-card{width:100%;max-width:400px;background:linear-gradient(165deg,rgba(18,22,48,.97),rgba(10,13,30,.97));border:1.5px solid #e8c877;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.6),0 0 0 4px rgba(232,200,119,.14);text-align:center;opacity:0}
+#uicChapterCard.on .uic-card{animation:uicCardIn .5s ease-out forwards}
+#uicChapterCard.out .uic-card{animation:uicCardOut .45s ease-in forwards}
+#uicChapterCard .uic-card img{width:100%;height:230px;object-fit:cover;object-position:center 20%;display:block;border-bottom:1.5px solid #e8c877}
+#uicChapterCard .uic-card-body{padding:16px 18px 18px}
+#uicChapterCard .uic-card-label{font-size:11px;letter-spacing:.34em;color:#bcd0ff;margin-bottom:6px}
+#uicChapterCard .uic-card-body h2{font-size:21px;letter-spacing:.05em;line-height:1.45;background:linear-gradient(90deg,#ffe9a8,#ffd76e 45%,#ffb3d9);-webkit-background-clip:text;background-clip:text;color:transparent}
+#uicChapterCard .uic-card-body p{margin-top:8px;font-size:12.5px;line-height:1.7;color:#dfe8ff}
+#uicChapterCard .uic-card-skip{margin-top:12px;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.12em}
+@keyframes uicCardIn{0%{opacity:0;transform:translateY(14px) scale(.965)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes uicCardOut{0%{opacity:1}100%{opacity:0;transform:translateY(-8px) scale(.985)}}
+@media(max-height:700px){#uicChapterCard .uic-card img{height:130px}}
+</style>
 </head>
 <body>
 <div id="app">
@@ -268,7 +308,7 @@ filter:saturate(1.06) contrast(1.03)}
 <button id="btnOpT">オープニングを見る</button>
 <button id="btnDataT">データ引き継ぎ</button>
 <button id="btnShareT">Xで紹介する</button>
-<div id="ver">v1.6</div>
+<div id="ver">v1.7</div>
 <a id="houseAd" href="#" target="_blank" rel="noopener"><span class="ha-tag">おすすめ</span><span class="ha-title"></span><span class="ha-text"></span></a>
 
 <div class="note">見習い天使セラフィナの、500年ぶりの大阪。<br>タップで読み進める、癒し系コメディビジュアルノベルです。<br>序章＋全8章＋最終章／エンディング4種／コレクション図鑑つき。</div>
@@ -1373,6 +1413,127 @@ function renderHouseAdCards(wrap){
     var c = document.getElementById("btnEndingClose");
     if(c) c.addEventListener("click", function(){ document.getElementById("endingPanel").classList.remove("on"); });
   }catch(e){ /* おすすめ枠の失敗でゲームを止めない */ }
+})();
+</script>
+<div id="uicFlash"></div>
+<div id="uicParticles"></div>
+<div id="uicChapterCard"><div class="uic-card"><img id="uicCardImg" alt=""><div class="uic-card-body"><div class="uic-card-label">CHAPTER</div><h2 id="uicCardName"></h2><p id="uicCardDesc"></p><div class="uic-card-skip">― タップでとばす ―</div></div></div></div>
+<script id="ui-c-sample-js">
+/* ===== UI sample C (2026-11-10): performance upgrade — additions only.
+   The existing script, scenario data and save format are untouched.
+   This block only WRAPS existing functions (setBg / showScene / normalizeState)
+   and never changes their results: progression, saves and numbers behave as before. ===== */
+(function(){
+"use strict";
+function $(id){ return document.getElementById(id); }
+var app = $("app"), bg = $("bg"), back = $("bgBack"), shade = $("shade");
+if(!app || !bg || !back || typeof showScene !== "function" || typeof setBg !== "function") return;
+
+/* ---------- crossfade layers (mirror #bgBack and #bg, inserted next to them) ---------- */
+var backFade = document.createElement("img");
+backFade.id = "uicBgBackFade"; backFade.className = "uic-fade"; backFade.alt = "";
+bg.parentNode.insertBefore(backFade, bg);
+var frontFade = document.createElement("img");
+frontFade.id = "uicBgFade"; frontFade.className = "uic-fade"; frontFade.alt = "";
+if(shade) bg.parentNode.insertBefore(frontFade, shade); else bg.parentNode.appendChild(frontFade);
+var fadeTimer = null;
+
+function inGame(){
+  var t = $("title");
+  return !!(t && t.style.display === "none");
+}
+
+/* ---------- light motes (fixed gentle positions, no randomness) ---------- */
+var motes = $("uicParticles");
+var MOTE_POS = [[22,58],[38,66],[55,52],[68,63],[80,55],[47,72],[62,76]];
+if(motes){
+  MOTE_POS.forEach(function(p, i){
+    var s = document.createElement("i");
+    s.style.left = p[0] + "%"; s.style.top = p[1] + "%";
+    s.style.animationDelay = (i * 70) + "ms";
+    if(i % 3 === 2){ s.style.width = "4px"; s.style.height = "4px"; }
+    if(i % 3 === 1){ s.style.width = "8px"; s.style.height = "8px"; }
+    motes.appendChild(s);
+  });
+}
+var flashEl = $("uicFlash");
+function flash(){
+  [flashEl, motes].forEach(function(el){
+    if(!el) return;
+    el.classList.remove("on"); void el.offsetWidth; el.classList.add("on");
+  });
+}
+
+/* ---------- wrap setBg: crossfade + light transition when the scene picture really changes ---------- */
+var origSetBg = setBg;
+setBg = function(src){
+  var old = bg.getAttribute("src");
+  var changed = !!(old && src && old !== src);
+  origSetBg(src);
+  if(changed && inGame()){
+    [backFade, frontFade].forEach(function(el){
+      el.src = old; el.style.transition = "none"; el.style.opacity = "1";
+    });
+    void frontFade.offsetWidth;
+    [backFade, frontFade].forEach(function(el){
+      el.style.transition = "opacity .8s ease"; el.style.opacity = "0";
+    });
+    clearTimeout(fadeTimer);
+    fadeTimer = setTimeout(function(){ backFade.removeAttribute("src"); frontFade.removeAttribute("src"); }, 950);
+    flash();
+  }
+};
+
+/* ---------- chapter title card ---------- */
+var card = $("uicChapterCard"), cardImg = $("uicCardImg"), cardName = $("uicCardName"), cardDesc = $("uicCardDesc");
+var lastChapter = null, justLoaded = false, cardTimer = null, cardVisible = false;
+function chapterIdFor(sid){
+  var c = null;
+  try{ c = chapterForScene(sid); }catch(e){}
+  if(!c && sid === "hook0") c = "prologue"; /* the cold-open hook belongs to the prologue */
+  return c;
+}
+function hideCard(){
+  if(!cardVisible) return;
+  cardVisible = false;
+  clearTimeout(cardTimer);
+  card.classList.add("out");
+  setTimeout(function(){ card.classList.remove("on"); card.classList.remove("out"); }, 460);
+}
+if(card) card.addEventListener("pointerdown", function(e){ e.stopPropagation(); hideCard(); });
+function showCard(def){
+  if(!def || !card) return;
+  cardImg.src = assetSrc(def.img);
+  cardName.textContent = def.name;
+  cardDesc.textContent = def.desc || "";
+  card.classList.remove("out"); card.classList.add("on");
+  cardVisible = true;
+  clearTimeout(cardTimer);
+  cardTimer = setTimeout(hideCard, 2400);
+}
+
+/* ---------- a save/load entry must not pop the card (same rule as the v1.2 scene videos) ---------- */
+if(typeof normalizeState === "function"){
+  var origNormalize = normalizeState;
+  normalizeState = function(d){ justLoaded = true; return origNormalize(d); };
+}
+
+/* ---------- wrap showScene: watch for chapter changes on natural progression only ---------- */
+var origShowScene = showScene;
+showScene = function(){
+  origShowScene();
+  try{
+    var sid = (typeof S !== "undefined" && S) ? S.scene : null;
+    var ch = chapterIdFor(sid);
+    if(justLoaded){ justLoaded = false; lastChapter = ch; return; }
+    if(ch && ch !== lastChapter){
+      lastChapter = ch;
+      var def = null;
+      if(typeof CHAPTER_DEFS !== "undefined") def = CHAPTER_DEFS.find(function(c){ return c.id === ch; });
+      if(def) showCard(def);
+    }
+  }catch(e){}
+};
 })();
 </script>
 </body>
