@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.91";
+const GAME_VERSION = "1.92";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -264,6 +264,8 @@ const T = mainTerms();
 if (!S) return T.nickYoung;
 if (S.record.fouls >= 2) return T.nickFoul;
 if (S.flags.champion) return T.nickChamp;
+if (S.flags.nightFlightDone && !S.flags.nightFlightFound) return "夜逃げ師範"; // 第132節: 夜逃げで借金を踏み倒すと付く呼び名（発覚後に表へ出れば外れる）
+if (S.flags.compDefaultDone) return "踏み倒しの達人"; // 第132節: 判決・示談の賠償金を踏み倒し切ると付く呼び名
 if ((S.flags.debt || 0) >= 60000) return "借金の求道者"; // 第74節: 借金が嵩むと界隈が勝手に付けた呼び名が二つ名に割り込む
 if ((S.flags.chinKishiCount || 0) >= 3) return "チン騎士"; // 第110節: 女性を擁護し続けると界隈が付ける渾名が二つ名に割り込む
 if (S.record.works >= 24) return "バイト戦士";
@@ -444,38 +446,38 @@ function courtVerdictLines(){
   S.flags.courtDone = true; S.flags.courtWeek = S.absWeek;
   if (S.partner && !S.flags.partnerCrisisDone) S.flags.partnerCrisisPending = S.absWeek; // 第76節: 訴訟が恋愛に波及する火種
   if (attr === "謝罪"){
-    if (win){ S.flags.courtResult = "settle"; return settleBillLines("和解の支払い",
+    if (win){ S.flags.courtResult = "settle"; return damagesBillLines("和解の支払い",
       [{label:"賠償金", amount:60000},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
       [{sp:"narr", t:"判決の前に、和解が成立した。門脇も最後は小さく頭を下げた。「……リングでは、また別だ」"},
        {sp:"narr", t:"高い授業料だった。だが、逃げずに畳んだ姿勢は、界隈にも静かに伝わった。"},
-       {fx:{sei:1, attention:1}}]);}
-    S.flags.courtResult = "settle_hard"; return settleBillLines("和解の支払い",
+       {fx:{sei:1, attention:1}}], "門脇修");}
+    S.flags.courtResult = "settle_hard"; return damagesBillLines("和解の支払い",
       [{label:"賠償金", amount:120000},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
       [{sp:"narr", t:"和解は成立した。ただし条件は重く、謝罪文の文面も、相手方と一語ずつ調整する苦い作業になった。"},
        {sp:"narr", t:"「匿名でも、言葉は金で償うことになる」――霧島沙耶のコラムが、静かに締めくくった。"},
-       {fx:{aku:1, attention:2}}]);}
+       {fx:{aku:1, attention:2}}], "門脇修");}
   if (attr === "弁護"){
-    if (win){ S.flags.courtResult = "settle"; return settleBillLines("和解の支払い",
+    if (win){ S.flags.courtResult = "settle"; return damagesBillLines("和解の支払い",
       [{label:"賠償金", amount:70000},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
       [{sp:"narr", t:"加納弁護士の交渉で、和解が成立した。感情の応酬にならなかった分、傷は浅く済んだ。"},
        {sp:"narr", t:"「戦う場所を選ぶのも、実力のうちです」加納の言葉が、妙に残った。"},
-       {fx:{fatigue:-5}}]);}
-    S.flags.courtResult = "lose"; return settleBillLines("敗訴の支払い",
+       {fx:{fatigue:-5}}], "門脇修");}
+    S.flags.courtResult = "lose"; return damagesBillLines("敗訴の支払い",
       [{label:"賠償金", amount:150000},{label:"弁護士・着手金", amount:F.retainer}],
       [{sp:"narr", t:"判決は敗訴。賠償金の支払いが命じられた。プロに任せても、書き込みの悪質さは覆らなかった。"},
        {sp:"narr", t:"法廷を出ると、記者たちのフラッシュが待っていた。"},
-       {fx:{aku:1, attention:2}}]);}
+       {fx:{aku:1, attention:2}}], "門脇修");}
   // 証拠／正論で争った場合
   if (win){ S.flags.courtResult = "win"; return settleBillLines("勝訴しても、費用はかかる",
     [{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.winFee}],
     [{sp:"narr", t:"勝訴。書き込みの一部は、正当な批評の範囲と認められた。"},
      {sp:"narr", t:"だが、勝ったことと、匿名で悪口を書いた事実は、別の話だった。CLASHの反応も半々で、「勝訴＝正義」と言ってくれる者はいなかった。"},
      {fx:{attention:3, sei:-1, aku:1}}]);}
-  S.flags.courtResult = "lose"; return settleBillLines("敗訴の支払い",
+  S.flags.courtResult = "lose"; return damagesBillLines("敗訴の支払い",
     [{label:"賠償金", amount:180000},{label:"弁護士・着手金", amount:F.retainer}],
     [{sp:"narr", t:"敗訴。賠償金に、謝罪投稿の掲載まで命じられた。争う姿勢そのものが心証を悪くした、とも報じられた。"},
      {sp:"narr", t:"謝罪投稿のコメント欄は、しばらく荒れたままだった。"},
-     {fx:{aku:2, attention:3}}]);}
+     {fx:{aku:2, attention:3}}], "門脇修");}
 // 道場への乗り込み（第47節）の導入。裁判の結末（勝訴／敗訴）で、押しかける側の顔ぶれが変わる
 function raidIntroLines(){
   if (S.flags.courtResult === "win"){
@@ -533,6 +535,211 @@ function monthlyDebtPayment(show){
   if (S.flags.debt <= 0){ S.flags.debt = 0; if (show) toast("借金を完済した！ 肩の荷が一つ下りた"); }
   return inst;
 }
+// ---------- 踏み倒しルート（第132節） ----------
+// 借金の踏み倒し（月末に自分から選ぶ）と、判決・示談の賠償金の踏み倒し（催告→強制執行の連鎖）。
+// 第82節の「夜逃げデッドエンド」は"返済実績のないまま残高150万円超"の強制終了で、こちらはその手前で
+// 自分から選ぶ踏み倒し。代償（悪名・信用・弟子・活動制限）を払えば、年代記は終わらずに続く。
+const DEBT_DEFAULT_THRESHOLD = 1000000; // 借金残高がこの額以上あると、月末に踏み倒しの選択肢が出る
+const HIDE_WEEKS = 8;                   // 夜逃げ後の潜伏期間（週）。この間、挑戦・セミナー・コラボ・指導ができない
+const BANKRUPTCY_FEE = 50000;           // 自己破産の申立費用（弁護士費用として払う。足りない分は法テラスの立替）
+const BANKRUPTCY_LOCK_WEEKS = 52;       // 自己破産後に新規借入・借金留学が封鎖される期間（週）
+const DEFAULT_REVIVE_RATE = 0.5;        // 夜逃げの発覚後に返済再開を選ぶと、踏み倒し額の半分が借金として戻る
+function inHiding(){ return !!(S && S.flags.nightFlightDone && !S.flags.nightFlightFound && S.flags.hideUntil && S.absWeek < S.flags.hideUntil); }
+function debtDefaultEligible(){
+  if (!S || debtOf() < DEBT_DEFAULT_THRESHOLD) return false;
+  if (S.flags.nightFlightDone || S.flags.bankruptcyDone) return false; // 踏み倒し系の切り札は一度きり
+  return true;
+}
+// 月末の提示シーン。選んだ結果はシーン内の特殊ステップ（nightFlight／bankruptcy）が処理し、
+// その後 endWeek 側の monthSettle（通常返済・精算）が続く
+function debtDefaultOfferSteps(){
+  const debt = debtOf();
+  const inst = Math.min(debt, Math.max(10000, Math.ceil(debt / 5)));
+  return [
+    {sp:"narr", t:"月末の夜。通帳と請求書と、借金の残高通知が、机の上に並んでいる。残高は" + debt.toLocaleString() + "円。今月の返済" + inst.toLocaleString() + "円を払っても、坂道はまだ長い。"},
+    {sp:"me", t:"（……返すか。それとも――踏み倒すか。武道家のすることではない。だが、選択肢としては、確かに存在する）"},
+    {choice:[
+      {label:"今月も返済を続ける", say:[{sp:"narr", t:"判を押すように、いつもの返済手続きをした。重いが、これは自分の借りた金だ。"}]},
+      {label:"夜逃げする（借金を踏み倒す）", say:[{nightFlight:{}}]},
+      {label:"自己破産を申し立てる（合法的に踏み倒す）", say:[{bankruptcy:{}}]},
+    ]},
+  ];
+}
+// 夜逃げの実処理： 借金（＋賠償踏み倒しの連鎖から合流した場合はその額も）を帳消しにし、
+// 弟子の離散（信頼70以上の生徒だけが「待つ」と言い残して残る＝対抗戦の流出下限と同じ信頼の線引き）、
+// 道場の閉鎖、悪名+4・注目+2、潜伏期間の設定までを行う
+function nightFlightLines(cfg){
+  cfg = cfg || {};
+  let compExtra = 0;
+  if (cfg.fromComp && S.flags.compStage){
+    compExtra = S.flags.compAmount || 0;
+    S.flags.compStage = ""; S.flags.compDone = true; S.flags.compDefaultDone = true; S.flags.compResult = "flight";
+  }
+  const forgiven = debtOf() + compExtra;
+  S.flags.debt = 0;
+  S.flags.nightFlightDone = true; S.flags.nightFlightWeek = S.absWeek;
+  S.flags.nightFlightAmount = forgiven;
+  S.flags.hideUntil = S.absWeek + HIDE_WEEKS;
+  const stayers = S.students.filter(s => (s.trust || 50) >= 70);
+  const leavers = S.students.filter(s => (s.trust || 50) < 70);
+  S.students = stayers;
+  if (S.chapter >= 2) S.flags.dojoClosed = true;
+  const lines = [
+    {sp:"narr", t:"深夜。荷物を小さなバッグ一つに詰めた。踏み倒した額は、合わせて" + forgiven.toLocaleString() + "円。借金は、帳簿の上では――消えた。"},
+  ];
+  if (leavers.length) lines.push({sp:"narr", t:"生徒" + leavers.length + "名には、置き手紙一枚だけが残された。「申し訳ない」の一行で、師弟の縁は切れた。"});
+  if (stayers.length) lines.push({sp:"narr", t:"だが、信頼の厚かった" + stayers.length + "名だけは違った。「先生が戻るまで、待ってます」――その言葉だけが、夜の駅までついてきた。"});
+  if (S.chapter >= 2) lines.push({sp:"narr", t:"道場には「しばらく休みます」の貼り紙。誰もいない畳に、請求書だけが届き続ける。"});
+  lines.push({sp:"narr", t:"CLASHでは数日で噂が立った。「あの師範、夜逃げしたらしい」。悪名は、実力よりも速く走る。"});
+  lines.push({sp:"me", t:"（" + HIDE_WEEKS + "週間は、表に出られない。大会も、挑戦も、セミナーもなし。……静かに、息を潜めるしかない）"});
+  lines.push({fx:{aku:4, attention:2}});
+  return lines;
+}
+// 夜逃げの発覚シーン（潜伏期間が明けた週の頭）。開き直れば踏み倒しは確定し、
+// 頭を下げれば踏み倒し額の半分が借金として戻り、返済再開の道が開ける
+function nightFlightFoundSteps(){
+  const amt = S.flags.nightFlightAmount || 0;
+  const revive = Math.ceil(amt * DEFAULT_REVIVE_RATE);
+  return [
+    {sp:"narr", t:"潜伏から" + HIDE_WEEKS + "週間。出稽古の帰り、スマホが震えた。CLASHに、自分の後ろ姿の写真が上がっている。「この後ろ姿、例の夜逃げ師範じゃない？」"},
+    {sp:"narr", t:"居場所は、割れた。隠れ続ける意味は、もうない。残るのは、どう出ていくかだけだ。踏み倒した額は" + amt.toLocaleString() + "円。半分の" + revive.toLocaleString() + "円でも返す覚悟があるなら、道は開ける。"},
+    {choice:[
+      {label:"開き直る（踏み倒したものは踏み倒した）", say:[
+        {sp:"narr", t:"CLASHに投稿した。「探すな、と言ったはずだ」。炎上は一晩で広がり、悪名は決定的になった。だが、借金は戻ってこない。それが、選んだ道だった。"},
+        {fx:{flags:{nightFlightFound:"brazen", dojoClosed:false}, aku:2, attention:2}},
+      ]},
+      {label:"頭を下げて、返済を再開する", say:[
+        {sp:"narr", t:"金融屋の事務所で、深く頭を下げた。「……半分に負けてやる。その代わり、二度と消えるな」。新しい返済の約束が、机の上で交わされた。"},
+        {nightFlightRepay:{amount:revive}},
+        {fx:{flags:{nightFlightFound:"repay", dojoClosed:false}, sei:2}},
+      ]},
+    ]},
+  ];
+}
+// 自己破産の実処理： 申立費用を払い、借金は免責。換価処分（所持金の半分・生活費2万円は残す）を経て、
+// 52週間は新規借入・借金留学が封鎖される。夜逃げより悪名の代償は小さい
+function bankruptcyLines(){
+  const forgiven = debtOf();
+  const feePay = Math.min(Math.max(0, S.money), BANKRUPTCY_FEE);
+  S.money -= feePay;
+  S.flags.debt = 0;
+  S.flags.bankruptcyDone = true; S.flags.bankruptcyWeek = S.absWeek;
+  S.flags.noLoanUntil = S.absWeek + BANKRUPTCY_LOCK_WEEKS;
+  let seized = 0;
+  if (S.money > 20000){ seized = Math.floor((S.money - 20000) / 2); S.money -= seized; }
+  const lines = [
+    {sp:"narr", t:"加納弁護士の事務所。自己破産の申立書に、判を押した。申立費用" + BANKRUPTCY_FEE.toLocaleString() + "円のうち、手持ちから" + feePay.toLocaleString() + "円を払った" + (feePay < BANKRUPTCY_FEE ? "（残りは法テラスの立替制度に回された）" : "") + "。"},
+    {sp:"narr", t:"裁判所の免責決定で、借金" + forgiven.toLocaleString() + "円は法的に消えた。夜逃げとは違う。だが、軽い話でもなかった。"},
+  ];
+  if (seized > 0) lines.push({sp:"narr", t:"換価処分として、道場の備品と所持金の一部が差し押さえられた（" + seized.toLocaleString() + "円分）。残されたのは、最低限の生活費と、畳と、自分の体だけだった。"});
+  lines.push({sp:"narr", t:"当分、新しい借金はできない。金融屋の扉は、どこも固く閉ざされている。地道に稼いで、信用を取り戻すしかない。"});
+  lines.push({sp:"narr", t:"CLASHでは『自己破産したらしい』と囁かれた。夜逃げほどの騒ぎではない。だが、刺さる目線は確かにあった。"});
+  lines.push({fx:{aku:1, attention:1}});
+  return lines;
+}
+// 判決・示談で「賠償金／示談金」を含む支払いを、払う／踏み倒すの選択つきで提示する（第132節）。
+// 内訳のうち賠償・示談の部分だけが踏み倒しの対象で、弁護士費用はどちらの道でも自分の費用として残る。
+// 連鎖（催告→強制執行）が進行中のときは、二重に踏み倒しを提示せず従来どおり即時精算する
+function damagesBillLines(title, parts, tail, creditorName){
+  const dmg = parts.find(p => p.label.indexOf("賠償金") === 0 || p.label.indexOf("示談金") === 0);
+  const chainActive = S.flags.compStage === "demand" || S.flags.compStage === "ignored";
+  if (!dmg || chainActive) return settleBillLines(title, parts, tail);
+  const fees = parts.filter(p => p !== dmg);
+  const total = parts.reduce((a, p) => a + p.amount, 0);
+  const detail = parts.filter(p => p.amount > 0).map(p => p.label + p.amount.toLocaleString() + "円").join("＋");
+  return [
+    {sp:"narr", t:"【" + title + "】" + detail + " ＝ 合計" + total.toLocaleString() + "円。支払いが、確定した。"},
+    {sp:"me", t:"（……払うのが、正道だ。だが――" + dmg.label + "の" + dmg.amount.toLocaleString() + "円だけは、払わないという道も、あるにはある）"},
+    {choice:[
+      {label:"支払う", say:[{payBill:{title:title, parts:parts}}].concat(tail || [])},
+      {label:"払わない（" + dmg.label + "を踏み倒す）", say:[{compDefault:{amount:dmg.amount, label:dmg.label, fees:fees, creditor:creditorName || "相手方"}}]},
+    ]},
+  ];
+}
+// 賠償踏み倒しの開始： 弁護士費用だけを精算し、賠償金は未払いのまま連鎖（compStage="demand"）を立てる
+function compDefaultStartLines(cfg){
+  const lines = [];
+  const feeTotal = (cfg.fees || []).reduce((a, p) => a + p.amount, 0);
+  if (feeTotal > 0){
+    const res = chargeLegal(feeTotal);
+    lines.push({sp:"narr", t:"自分の弁護士への費用" + feeTotal.toLocaleString() + "円だけは払った（手持ちから" + res.paid.toLocaleString() + "円" + (res.debted > 0 ? "、残り" + res.debted.toLocaleString() + "円は借金に回った" : "") + "）。だが、" + cfg.label + cfg.amount.toLocaleString() + "円は――払わなかった。"});
+  } else {
+    lines.push({sp:"narr", t:cfg.label + cfg.amount.toLocaleString() + "円は――払わなかった。"});
+  }
+  S.flags.compStage = "demand"; S.flags.compAmount = cfg.amount; S.flags.compLabel = cfg.label;
+  S.flags.compCreditor = cfg.creditor || "相手方"; S.flags.compWeek = S.absWeek;
+  S.flags.compGrudgeName = S.flags.compCreditor; // 第132節: 踏み倒した相手との因縁
+  const castHit = Object.values(CAST_BY_ID || {}).find(c => c.name === S.flags.compCreditor || c.name.replace(/\s/g, "") === String(S.flags.compCreditor).replace(/\s/g, ""));
+  if (castHit) S.flags.compGrudgeCast = castHit.id;
+  if (S.partner && !S.flags.partnerCrisisDone && !S.flags.partnerCrisisPending) S.flags.partnerCrisisPending = S.absWeek; // 第76節の修羅場にも接続
+  lines.push({sp:"narr", t:"支払期日が過ぎた。相手方の代理人からは、まだ何も届いていない。だが、催告は時間の問題だった。"});
+  lines.push({sp:"narr", t:"CLASHでは早くも『あの件、払ってないらしい』という投稿が回り始めた。「判決を踏み倒す男」――その呼び名が、静かに広がっていく。"});
+  lines.push({fx:{aku:1, attention:1}});
+  return lines;
+}
+// 催告シーン（踏み倒しの2週間後）。ここで払えば「遅れて払った」で連鎖は終わる
+function compDemandSteps(){
+  const amt = S.flags.compAmount || 0;
+  const cred = S.flags.compCreditor || "相手方";
+  return [
+    {sp:"narr", t:"郵便受けに、" + cred + "側の代理人からの催告書が届いた。「" + (S.flags.compLabel || "賠償金") + amt.toLocaleString() + "円を、直ちに支払われたい。応じない場合は、強制執行の申立てを行う」"},
+    {sp:"me", t:"（……ここで払えば、まだ「遅れた」で済む。無視すれば、その先は――差し押さえだ）"},
+    {choice:[
+      {label:"今から払う", say:[{compPayLate:{}}]},
+      {label:"無視する", say:[
+        {sp:"narr", t:"催告書は、引き出しの奥にしまった。何も起きない夜が、何日か続いた。それが嵐の前だということは、薄々分かっていた。"},
+        {compIgnore:{}},
+        {fx:{aku:1}},
+      ]},
+    ]},
+  ];
+}
+function compPayLateLines(){
+  const amt = S.flags.compAmount || 0;
+  const res = chargeLegal(amt);
+  S.flags.compStage = ""; S.flags.compDone = true; S.flags.compResult = "paid_late";
+  return [
+    {sp:"narr", t:"遅れて、" + (S.flags.compLabel || "賠償金") + amt.toLocaleString() + "円を支払った（手持ちから" + res.paid.toLocaleString() + "円" + (res.debted > 0 ? "、残り" + res.debted.toLocaleString() + "円は借金に回った" : "") + "）。相手方も、矛を収めた。"},
+    {sp:"narr", t:"CLASHでは『結局払ったらしい』とだけ回った。炎上はしなかった。だが「踏み倒しかけた」という色は、しばらく消えそうにない。"},
+    {fx:{attention:1}},
+  ];
+}
+// 強制執行シーン（催告を無視して3週間後）。差し押さえを受け入れるか、道場を捨てて夜逃げへ合流するか
+function compExecutionSteps(){
+  const amt = S.flags.compAmount || 0;
+  const cred = S.flags.compCreditor || "相手方";
+  return [
+    {sp:"narr", t:"朝の稽古前。執行官と" + cred + "側の代理人が、道場の入口に立っていた。強制執行――差し押さえの執行だ。"},
+    {sp:"narr", t:"対象は" + (S.flags.compLabel || "賠償金") + amt.toLocaleString() + "円。逃げるなら、今しかない。だが、逃げた先にあるのは、あの夜逃げの日々だ。"},
+    {choice:[
+      {label:"差し押さえを受け入れる", say:[{compExecute:{}}]},
+      {label:"道場を捨てて夜逃げする", say:[{nightFlight:{fromComp:true}}]},
+    ]},
+  ];
+}
+function compExecuteLines(){
+  const amt = S.flags.compAmount || 0;
+  const lines = [];
+  let seized = Math.min(Math.max(0, S.money), amt); S.money -= seized;
+  let rest = amt - seized;
+  if (seized > 0) lines.push({sp:"narr", t:"預金と手持ちから、" + seized.toLocaleString() + "円が差し押さえられた。"});
+  if (rest > 0 && S.chapter >= 2){
+    const gear = Math.min(30000, rest); rest -= gear; seized += gear;
+    lines.push({sp:"narr", t:"足りない分は、道場の備品――ミット、サンドバッグ、防具一式が運び出された（" + gear.toLocaleString() + "円分）。稽古場が、がらんと広くなった。"});
+  }
+  S.flags.compStage = ""; S.flags.compDone = true;
+  if (rest > 0){
+    S.flags.compResult = "uncollectible"; S.flags.compDefaultDone = true;
+    lines.push({sp:"narr", t:"それでも" + rest.toLocaleString() + "円が足りない。執行官は小さく首を振った。「……無いところからは、取れないんですよ」"});
+    lines.push({sp:"narr", t:"残額は回収不能として処理された。だが、その日のうちにCLASHは燃えた。「判決を踏み倒し切った男」。勝ったのではない。ただ、取られなかっただけだ。"});
+    lines.push({fx:{aku:3, attention:3}});
+  } else {
+    S.flags.compResult = "seized";
+    lines.push({sp:"narr", t:"全額が回収され、執行は終わった。だがCLASHでは『差し押さえられた師範』と囃され、踏み倒そうとした事実だけが、名前と一緒に残った。"});
+    lines.push({fx:{aku:2, attention:2}});
+  }
+  return lines;
+}
 // 民事の結末変換（第74節： court_case2=CLASH名誉毀損／court_case3=無断動画の肖像権）。方針（attr）と勝敗から和解／勝訴／敗訴と金額を決める
 function civilVerdictLines(kind){
   const d = S.flags.lastDebate || {};
@@ -545,24 +752,25 @@ function civilVerdictLines(kind){
   S.flags[flagDone] = true; S.flags[flagRes + "Week"] = S.absWeek;
   if (S.partner && !S.flags.partnerCrisisDone) S.flags.partnerCrisisPending = S.absWeek;
   let result, lines;
-  if (attr === "謝罪" && win){ result = "settle"; lines = settleBillLines("和解の支払い",
+  const creditor = kind === "clash" ? (S.flags.lastAoriOpp || "論争の相手") : "動画の投稿者"; // 第132節: 踏み倒した場合の相手方
+  if (attr === "謝罪" && win){ result = "settle"; lines = damagesBillLines("和解の支払い",
     [{label:"賠償金", amount:DMG.settle},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
-    [{sp:"narr", t:"判決の前に、和解が成立した。投稿の削除と謝罪文の掲載、そして賠償。相手側も、最後は矛を収めた。"}, {fx:{sei:1, attention:1}}]);
-  } else if (attr === "謝罪"){ result = "settle_hard"; lines = settleBillLines("和解の支払い",
+    [{sp:"narr", t:"判決の前に、和解が成立した。投稿の削除と謝罪文の掲載、そして賠償。相手側も、最後は矛を収めた。"}, {fx:{sei:1, attention:1}}], creditor);
+  } else if (attr === "謝罪"){ result = "settle_hard"; lines = damagesBillLines("和解の支払い",
     [{label:"賠償金", amount:DMG.settleHard},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
-    [{sp:"narr", t:"和解は成立したが、条件は重かった。謝罪の文面は相手方と一語ずつ調整し、賠償も膨らんだ。"}, {fx:{aku:1, attention:2}}]);
-  } else if (attr === "弁護" && win){ result = "settle"; lines = settleBillLines("和解の支払い",
+    [{sp:"narr", t:"和解は成立したが、条件は重かった。謝罪の文面は相手方と一語ずつ調整し、賠償も膨らんだ。"}, {fx:{aku:1, attention:2}}], creditor);
+  } else if (attr === "弁護" && win){ result = "settle"; lines = damagesBillLines("和解の支払い",
     [{label:"賠償金", amount:DMG.counsel},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
-    [{sp:"narr", t:"加納弁護士の交渉で、和解が成立した。法廷で争い切る前に畳めた分、傷は浅く済んだ。"}, {fx:{fatigue:-5}}]);
-  } else if (attr === "弁護"){ result = "lose"; lines = settleBillLines("敗訴の支払い",
+    [{sp:"narr", t:"加納弁護士の交渉で、和解が成立した。法廷で争い切る前に畳めた分、傷は浅く済んだ。"}, {fx:{fatigue:-5}}], creditor);
+  } else if (attr === "弁護"){ result = "lose"; lines = damagesBillLines("敗訴の支払い",
     [{label:"賠償金", amount:DMG.lose},{label:"弁護士・着手金", amount:F.retainer}],
-    [{sp:"narr", t:"判決は敗訴。賠償金の支払いが命じられた。言葉の応酬の代償は、法廷でも安くはなかった。"}, {fx:{aku:1, attention:2}}]);
+    [{sp:"narr", t:"判決は敗訴。賠償金の支払いが命じられた。言葉の応酬の代償は、法廷でも安くはなかった。"}, {fx:{aku:1, attention:2}}], creditor);
   } else if (win){ result = "win"; lines = settleBillLines("勝訴しても、費用はかかる",
     [{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.winFee}],
     [{sp:"narr", t:"勝訴。こちらの主張が、おおむね認められた。"}, {sp:"narr", t:"だがCLASHの反応は複雑だった。「勝った」と「正しかった」は、界隈では別の話として扱われる。"}, {fx:{attention:2}}]);
-  } else { result = "lose"; lines = settleBillLines("敗訴の支払い",
+  } else { result = "lose"; lines = damagesBillLines("敗訴の支払い",
     [{label:"賠償金", amount:DMG.lose + 30000},{label:"弁護士・着手金", amount:F.retainer}],
-    [{sp:"narr", t:"敗訴。賠償金の支払いが命じられた。争う姿勢そのものが心証を悪くした、とも報じられた。"}, {fx:{aku:2, attention:3}}]);
+    [{sp:"narr", t:"敗訴。賠償金の支払いが命じられた。争う姿勢そのものが心証を悪くした、とも報じられた。"}, {fx:{aku:2, attention:3}}], creditor);
   }
   S.flags[flagRes] = result;
   return lines;
@@ -610,10 +818,10 @@ function injurySettleLines(){
   const parts = [{label:"示談金（治療費・慰謝料を含む）", amount:injurySettleAmount()}];
   if (S.flags.injuryLawyer){ parts.push({label:"弁護士・着手金", amount:LEGAL_FEES.retainer}); S.flags.injuryRetainerPaid = true; }
   S.flags.injuryDone = true; S.flags.injuryResult = "settled";
-  return settleBillLines("示談の支払い", parts, [
+  return damagesBillLines("示談の支払い", parts, [
     {sp:"narr", t:"示談書に署名した。相手側は被害届を取り下げ、事件は不起訴で終わる。リングの外の決着は、地味で、重くて、そして高かった。"},
     {fx:{attention:1}},
-  ]);
+  ], "被害者側");
 }
 function injuryFineLines(){
   let fine = 80000;
@@ -864,6 +1072,13 @@ function abroadPayLines(mode){
     ];
     return null;
   }
+  if (S.flags.noLoanUntil && S.absWeek < S.flags.noLoanUntil){
+    UI.queue = [
+      {sp:"narr", t:"借入の相談をしたが、自己破産の免責から日が浅く、どの金融屋にも首を横に振られた。「信用を取り戻すには、時間が要るんですよ」"},
+      {sp:"narr", t:"今回は見送る。地道に稼いで、力を付けてから、また考えよう。"},
+    ];
+    return null;
+  }
   if (debtOf() >= ABROAD_LOAN_CAP){
     UI.queue = [
       {sp:"narr", t:"借入の相談をしたが、現在の借金残高では新規の借入は断られた。「まず返してから、出直してこい」――冷たいが、正しい言葉だった。"},
@@ -1079,6 +1294,14 @@ function sceneAdvance(){
     if (st.partnerExposed){ UI.queue = partnerExposedSteps().concat(UI.queue); continue; }
     if (st.partnerRecover){ UI.queue = partnerRecoverSteps().concat(UI.queue); continue; }
     if (st.abroadPay){ const lines = abroadPayLines(st.abroadPay); if (lines) UI.queue = lines.concat(UI.queue); continue; }
+    if (st.payBill){ UI.queue = settleBillLines(st.payBill.title, st.payBill.parts, []).concat(UI.queue); continue; }
+    if (st.compDefault){ UI.queue = compDefaultStartLines(st.compDefault).concat(UI.queue); continue; }
+    if (st.compPayLate){ UI.queue = compPayLateLines().concat(UI.queue); continue; }
+    if (st.compIgnore){ S.flags.compStage = "ignored"; S.flags.compIgnoreWeek = S.absWeek; continue; }
+    if (st.compExecute){ UI.queue = compExecuteLines().concat(UI.queue); continue; }
+    if (st.nightFlight){ UI.queue = nightFlightLines(st.nightFlight).concat(UI.queue); continue; }
+    if (st.bankruptcy){ UI.queue = bankruptcyLines().concat(UI.queue); continue; }
+    if (st.nightFlightRepay){ addDebt(st.nightFlightRepay.amount || 0); continue; }
     if (st.abroadGo){ UI.queue = abroadGoLines().concat(UI.queue); continue; }
     if (st.nightAttack){ UI.queue = nightAttackSteps().concat(UI.queue); continue; }
     if (st.deadEnd){ UI.queue = []; showDeadEnd(st.deadEnd); return; }
@@ -1266,6 +1489,20 @@ function goWeek(){
     ], null, null); // 巻き戻し先は週頭のスナップショット（renderWeek）を使うため likeId は付けない
     return;
   }
+  // 第132節: 賠償金踏み倒しの連鎖（催告は踏み倒しの2週間後、強制執行は無視の3週間後）
+  if (S.flags.compStage === "demand" && S.absWeek >= (S.flags.compWeek || 0) + 2){
+    startScene(compDemandSteps(), null, "comp_demand");
+    return;
+  }
+  if (S.flags.compStage === "ignored" && S.absWeek >= (S.flags.compIgnoreWeek || 0) + 3){
+    startScene(compExecutionSteps(), null, "comp_execution");
+    return;
+  }
+  // 第132節: 夜逃げの発覚（潜伏期間が明けた週の頭で提示する）
+  if (S.flags.nightFlightDone && !S.flags.nightFlightFound && S.absWeek >= (S.flags.hideUntil || 0)){
+    startScene(nightFlightFoundSteps(), null, "night_flight_found");
+    return;
+  }
   // 第75節: 本場留学の提示（第2章以降・主・流儀Lv5以上・一度だけ大きく。見送れば+2Lvで再提示）
   if (typeof abroadEligible === "function" && abroadEligible()){
     S.flags.abroadOfferLv = styleLv(S.mainStyle);
@@ -1306,7 +1543,7 @@ function renderWeek(){
   if (S.chapter >= 2 && typeof collabPartnerList === "function" && collabPartnerList().length)
     acts.splice(8, 0, ["collab", "コラボ企画", "動画配信・合同イベント（相手を選ぶ）"]);
   $("main").innerHTML = '<div class="weekhead"><h2>' + weekLabel() + '</h2>' +
-    '<div class="weeksub">二つ名：' + esc(nickname()) + "　／　純粋度：" + purity() + "%" + (debtOf() > 0 ? "　／　借金：" + debtOf().toLocaleString() + "円（月末に分割返済）" : "") + "</div>" +
+    '<div class="weeksub">二つ名：' + esc(nickname()) + "　／　純粋度：" + purity() + "%" + (debtOf() > 0 ? "　／　借金：" + debtOf().toLocaleString() + "円（月末に分割返済）" : "") + (inHiding() ? "　／　潜伏中（あと" + Math.max(0, (S.flags.hideUntil || 0) - S.absWeek) + "週・表舞台の活動不可）" : "") + "</div>" +
     '<div class="stext" style="color:var(--sub);font-size:.92em;">' + esc(WEEK_FLAVOR[S.absWeek % WEEK_FLAVOR.length]) + "</div></div>" +
     '<div class="actions">' + acts.map(a => '<button class="btn act" data-act="' + a[0] + '"><b>' + a[1] + '</b><span>' + esc(a[2]) + '</span></button>').join("") + "</div>";
   $("main").querySelectorAll("[data-act]").forEach(b => b.addEventListener("click", () => doAction(b.dataset.act)));
@@ -1414,7 +1651,9 @@ function pickEndWeekEvent(){
       chainEv = CHAIN_EVENTS.find(e => e.id === "sp_partner_crisis");
     else if (S.flags.partnerHid && S.partner && !S.seenEvents["sp_partner_exposed"] && S.absWeek >= (S.flags.partnerHidWeek || 0) + 2 && _rng() < 0.6)
       chainEv = CHAIN_EVENTS.find(e => e.id === "sp_partner_exposed");
-    else if (S.flags.partnerStrained && S.partner && debtOf() <= 0 && !S.seenEvents["sp_partner_recover"] && _rng() < 0.7)
+    // 第132節: 踏み倒しで消えた借金は「返し切った」ことにならないため、回復イベントの対象から外す
+    // （夜逃げ後に頭を下げて返済を再開し、その残りを払い切った場合だけは回復が開ける）
+    else if (S.flags.partnerStrained && S.partner && debtOf() <= 0 && !S.flags.bankruptcyDone && !(S.flags.nightFlightDone && S.flags.nightFlightFound !== "repay") && !S.seenEvents["sp_partner_recover"] && _rng() < 0.7)
       chainEv = CHAIN_EVENTS.find(e => e.id === "sp_partner_recover");
     // 第80節: バックの存在（中傷→数週置いて訪問→無視で圧力が段階的に上がる）
     else if (S.flags.backedInsult && !S.seenEvents["sp_back_visit1"] && S.absWeek >= (S.flags.backedInsultWeek || 0) + 2 && _rng() < 0.6)
@@ -1541,8 +1780,8 @@ function endWeek(){
     if (S.absWeek % 4 === 0){
       const tuition = S.students.length * TUITION;
       if (tuition > 0){ S.money += tuition; toast("月謝 +" + tuition.toLocaleString() + "円（生徒" + S.students.length + "人）"); }
-      // 第2章以降は道場賃料と生徒の用具代が加わる（支出の山）
-      const dojoRent = S.chapter >= 2 ? 48000 : 0;
+      // 第2章以降は道場賃料と生徒の用具代が加わる（支出の山）。第132節: 夜逃げで道場を閉めている間は賃料も止まる
+      const dojoRent = (S.chapter >= 2 && !S.flags.dojoClosed) ? 48000 : 0;
       const gearCost = S.chapter >= 2 ? S.students.length * 1500 : 0;
       const onoCost = (S.chapter >= 2 && S.flags.onoPlan) ? 12000 : 0;
       // 第86節: 第4章からは円熟期の支出の山（設備投資・遠征育成費・医療ケア費）が上乗せされる
@@ -1550,20 +1789,32 @@ function endWeek(){
       const bills = MONTHLY_BILLS + dojoRent + gearCost + onoCost + ch4Cost.total;
       S.money -= bills;
       toast("月末の請求書 -" + bills.toLocaleString() + "円（家賃・生活費" + (S.chapter >= 2 ? "・道場賃料・用具代" + (onoCost ? "・食の契約" : "") : "") + (S.chapter >= 4 ? "・設備・遠征・ケア費" : "") + "）", S.money < 0);
-      // 第74節: 借金の分割返済（残高の1/5・最低1万円）。借金がある間はCLASHで噂が立つ
-      monthlyDebtPayment(true);
-      if (debtOf() > 0 && _rng() < 0.35) toast("CLASHで『借金残高" + debtOf().toLocaleString() + "円の男、今月の返済は済んだのか』と噂になっている", true);
-      // 第82節: 借金が150万円を超えたら「夜逃げ」の真のデッドエンドへ（次の週の頭で発火させる）
-      if (debtOf() > 1500000 && !S.flags.debtDeadEndOnce){ S.flags.debtDeadEndOnce = true; S.flags.debtDeadEndPending = true; }
-      if (onoCost) S.fatigue = clamp(S.fatigue - 10, 0, 100); // 大野の定食で回復が良い
-      if (S.money < 0) toast("所持金が底をついた……バイトで凌ぐしかない", true);
-      if (S.money < -30000 && !S.flags.tamuraHelp){
-        S.flags.tamuraHelp = true; S.money += 20000;
-        toast("田村が立て替えてくれた +20,000円「大会で返せよ」");
-      }
-      // 生徒の成長
-      for (const stu of S.students){ if (_rng() < 0.3) stu.skill = Math.min(10, stu.skill + 1); }
+      // 月末精算の後段（返済・デッドエンド判定・生徒の成長）。第132節の踏み倒し提示を挟むため分離した
+      const monthSettle = () => {
+        // 第74節: 借金の分割返済（残高の1/5・最低1万円）。借金がある間はCLASHで噂が立つ
+        monthlyDebtPayment(true);
+        if (debtOf() > 0 && _rng() < 0.35) toast("CLASHで『借金残高" + debtOf().toLocaleString() + "円の男、今月の返済は済んだのか』と噂になっている", true);
+        // 第82節: 借金が150万円を超えたら「夜逃げ」の真のデッドエンドへ（次の週の頭で発火させる）
+        if (debtOf() > 1500000 && !S.flags.debtDeadEndOnce){ S.flags.debtDeadEndOnce = true; S.flags.debtDeadEndPending = true; }
+        if (onoCost) S.fatigue = clamp(S.fatigue - 10, 0, 100); // 大野の定食で回復が良い
+        if (S.money < 0) toast("所持金が底をついた……バイトで凌ぐしかない", true);
+        if (S.money < -30000 && !S.flags.tamuraHelp){
+          S.flags.tamuraHelp = true; S.money += 20000;
+          toast("田村が立て替えてくれた +20,000円「大会で返せよ」");
+        }
+        // 生徒の成長
+        for (const stu of S.students){ if (_rng() < 0.3) stu.skill = Math.min(10, stu.skill + 1); }
+        afterMonth();
+      };
+      // 第132節: 借金が嵩んだ月末は、通常返済の前に「踏み倒す」選択肢を提示する（選ばなければ通常返済へ）
+      if (debtDefaultEligible()){ startScene(debtDefaultOfferSteps(), monthSettle, "debt_default"); return; }
+      monthSettle();
+      return;
     }
+    afterMonth();
+  };
+  // 月末処理の後段（セミナーのクールダウン・部位回復・週送り）。月末でない週もここを通る
+  const afterMonth = () => {
     if (S.seminarCd > 0) S.seminarCd--;
     // 部位ダメージの自然回復（4週ごと。第4章からは回復が鈍り、4割の月は回復しない＝円熟期の遅さ）
     if (S.absWeek % 4 === 0 && (S.chapter < 4 || _rng() < 0.6)){ for (const p of ["leg","arm","core","head"]){ if (S.dmg[p] > 0){ S.dmg[p]--; break; } } }
@@ -1580,6 +1831,10 @@ function endWeek(){
 function growStat(k, v){ S.stats[k] = Math.round((S.stats[k] + v) * 10) / 10; }
 function doAction(act){
   const notes = [];
+  // 第132節: 夜逃げの潜伏中は表舞台の活動ができない（挑戦・セミナー・コラボ・道場指導）
+  if (inHiding() && (act === "challenge" || act === "seminar" || act === "collab" || act === "teach")){
+    toast("潜伏中だ。表舞台に出る活動はできない（あと" + Math.max(0, (S.flags.hideUntil || 0) - S.absWeek) + "週）", true); return;
+  }
   if (act === "train_main"){
     const before = styleLv(S.mainStyle);
     S.fatigue = clamp(S.fatigue + 18, 0, 100);
