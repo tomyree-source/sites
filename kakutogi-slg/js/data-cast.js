@@ -167,7 +167,7 @@ const CAST_DATA = [
   {id:"nagase", name:"永瀬 晴人", age:51, sex:"M", style:"ムエタイ", role:"元プロのムエタイ選手／出張トレーナー・解説枠の直言家", debut:1},
   {id:"tamaki", name:"玉置 修", age:45, sex:"M", style:"システマ", role:"民俗武術研究会を主宰するシステマ指導者／伝聞と観察の語り部枠", debut:2},
   // 追加キャスト第148名（企画書第128節・cast.md末尾が正本）。合気道系発信者のオマージュ（架空名・呼び名は一捻り。実在の団体名・流派の固有名は出さない。経歴主張をめぐる告発系の話は持ち込まない）。口説き対象外（prefなし）
-  {id:"beppu", name:"別府 ティナ", age:44, sex:"F", style:"合気道", role:"合気道の発信者／深夜の『飯テロ』投稿で知られる交流会の常連", debut:3},
+  {id:"beppu", name:"別府 哲也", age:44, sex:"M", style:"合気道", role:"合気道の発信者／作務衣がトレードマークの交流会の常連。実家暮らしで「稼ぎはオカンの年金より少ない」と自虐する。深夜の『飯テロ』投稿でも有名", debut:3},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;
