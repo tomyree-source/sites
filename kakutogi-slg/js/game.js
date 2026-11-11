@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.90";
+const GAME_VERSION = "1.91";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -194,6 +194,8 @@ const EPISODE_TAGS = {
   aru_kinshi:"太字の禁止事項", aru_ben:"九節鞭の語り草", aru_kaiji:"開示の先の話", aru_kabuage:"株上げレクチャー", aru_jigyaku:"腕立て上位15%", aru_jissen:"実戦的の勘違い", aru_hamon:"一寸パンチの除名騒動", aru_kokoro:"心の稽古をする人たち",
   cam_beppu:"動かない攻防",
   aru_suteaka:"武器論争、手続き合戦へ", aru_kokuhatsu:"告発連投と証拠",
+  aru_kagen:"加減されていた成功体験", aru_tonfa:"トンファーは使いづらい", aru_ritsuzen:"立禅の表紙",
+  aru_katagaki:"肩書は盛らない", aru_katahina:"型は実戦の雛形か", aru_metsukiron:"騒動には触れません",
   boty:"BOTY",
 };
 function episodeTag(id){
@@ -2396,6 +2398,7 @@ const CHAL_CAST_STYLE = {
   akai: "松濤館流",       // 「空手系」→伝統派空手を土台とする正統の空手
   kurozaki: "総合格闘技（MMA）", // 「裏の指導者」→個人指導者としての実技
   sawamura: "日本拳法",   // 「硬式空手・防犯護身術」→硬式空手はロスターに無く、防具付き組手の日本拳法で受ける
+  kawauchi: "極真空手",   // 第131節: 「空手・護身術」→フルコンタクト空手の選手歴（大会優勝・全日本3位）を土台に受ける
   ando: "竹内流",         // 「身体操法・古武道研究」→古流総合（剣・柔・棒）の受け皿。格付けは下で調整
   shida: "竹内流",        // B・護身術系: 「古武術アレンジ護身術」→土台の古武術
   // B・武器系: 数値と使える系統は基礎流派から取る（二天一流で剣術を打撃として抽象化した前例に倣う）
