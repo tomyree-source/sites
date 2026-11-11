@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.81";
+const GAME_VERSION = "1.82";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -1837,6 +1837,35 @@ function trainSub(st, route, mentor){
   afterAction(notes);
 }
 // ---------- 口説き ----------
+// 第123節: 段階制（0 出会い／1 親しくなる／2 誘う・デート／3 深まる／4 告白・交際／5 結婚圏）。
+// 発火閾値は従来どおり（ev1=好感25／デート=40／ev2=55／告白=80）で、段階はその位置づけと表示のための定義。
+function romanceStageOf(id){
+  const af = S.affection[id] || 0;
+  const done = (S.romanceEv && S.romanceEv[id]) || {};
+  if (S.partner === id) return af >= 100 ? {stage:5, label:"結婚圏", next:null} : {stage:4, label:"交際中", next:null};
+  if (af >= 80) return {stage:4, label:"告白の時", next:null};
+  if (done.ev2 || af >= 55) return {stage:3, label:"深まる", next:"好感80で告白"};
+  if (done.date || af >= 40){ const R = ROMANCE[id]; return (R && R.dateSpots) ? {stage:2, label:"デートを重ねる", next:"好感55で深まる"} : {stage:2, label:"特別な相手", next:"好感55で深まる"}; }
+  if (done.ev1 || af >= 25){ const R = ROMANCE[id]; return {stage:1, label:"親しくなる", next:(R && R.dateSpots) ? "好感40でデート" : "好感55で深まる"}; }
+  return {stage:0, label:"出会い", next:"好感25で親しくなる"};
+}
+function seasonKeyOf(){
+  const yw = ((S.absWeek - 1) % WEEKS_PER_YEAR) + 1;
+  const month = Math.ceil(yw / 4);
+  if (month >= 3 && month <= 5) return "spring";
+  if (month >= 6 && month <= 8) return "summer";
+  if (month >= 9 && month <= 11) return "autumn";
+  return "winter";
+}
+// 第123節: デートイベントの組み立て。ROMANCE の dateIntro＋dateSpots（固定枠）＋dateSeason（季節枠）＋dateOutro から作る
+function romanceDateSteps(id, R){
+  const spots = (R.dateSpots || []).slice();
+  const ss = R.dateSeason && R.dateSeason[seasonKeyOf()];
+  if (ss) spots.push(ss);
+  const steps = [{ep: id + "-date"}].concat(R.dateIntro || []);
+  if (spots.length) steps.push({choice: spots.map(sp => ({label: sp.label, fx: sp.good ? {affection: {[id]: 4}} : null, say: sp.say || []}))});
+  return steps.concat(R.dateOutro || []);
+}
 function prefMatch(c){
   if (c.id === "shiraishi" && S.flags && (S.flags.dopeUsed || 0) > 0) return false; // 白石遥：ドーピング使用は決定的な減点（設計書3.2）
   if (c.pref === "sei") return S.sei >= S.aku;
@@ -1858,7 +1887,8 @@ function renderRomancePick(){
   html += '<div class="actions">' + women.map(c => {
     const af = S.affection[c.id] || 0;
     const locked = fameRankIdx() < 1;
-    return '<button class="btn act" data-rom="' + c.id + '"' + (locked ? " disabled" : "") + "><b>" + c.name + "</b><span>好感度 " + af + " ／ " + prefHint(c) + (S.partner === c.id ? " ／ 交際中" : "") + "</span></button>";
+    const stg = romanceStageOf(c.id);
+    return '<button class="btn act" data-rom="' + c.id + '"' + (locked ? " disabled" : "") + "><b>" + c.name + "</b><span>好感度 " + af + " ／ " + prefHint(c) + " ／ 段階：" + stg.label + (stg.next ? "（次：" + stg.next + "）" : "") + (S.partner === c.id ? " ／ 交際中" : "") + "</span></button>";
   }).join("") + '<button class="btn ghost" data-back="1">戻る</button></div>';
   $("main").innerHTML = html;
   $("main").querySelector("[data-back]").addEventListener("click", renderWeek);
@@ -1883,6 +1913,8 @@ function doRomance(id){
     startScene(steps, () => { if (ok){ S.partner = id; toast(c.name + " と交際することになった"); } endWeek(); });
     return;
   }
+  // 第123節: 段階2「誘う（デート）」。ev1済み・好感40以上で1回だけ発火し、ev2（段階3）より先に置く
+  if (af >= 40 && done.ev1 && !done.date && R.dateSpots){ done.date = true; S.romanceEv[id] = done; startScene(head.concat(romanceDateSteps(id, R)), () => { applyFx({affection:{[id]:10}}); endWeek(); }); return; }
   if (af >= 55 && done.ev1 && !done.ev2){ done.ev2 = true; S.romanceEv[id] = done; startScene(head.concat(R.ev2), () => { applyFx({affection:{[id]:8}}); endWeek(); }); return; }
   if (af >= 25 && !done.ev1){ done.ev1 = true; S.romanceEv[id] = done; startScene(head.concat(R.ev1), () => { applyFx({affection:{[id]:8}}); endWeek(); }); return; }
   // 通常の口説き
@@ -2843,6 +2875,10 @@ window.__gameTest = {
     return true;
   },
   startChapter3: () => { if (typeof startChapter3 === "function") startChapter3(); },
+  // 第123節: 口説き段階制の検証フック
+  doRomance: id => doRomance(id),
+  romanceStage: id => romanceStageOf(id),
+  romancePick: () => renderRomancePick(),
   startChapter4: () => { if (typeof startChapter4 === "function") startChapter4(); },
   ch4Costs: () => ch4MonthlyCosts(),
   lastOugi: () => window.__lastOugi || null,
