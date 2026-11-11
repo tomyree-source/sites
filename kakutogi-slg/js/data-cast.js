@@ -1,4 +1,4 @@
-// キャストデータ（正本：~/workspace/new-game/cast.md 全147名）
+// キャストデータ（正本：~/workspace/new-game/cast.md 全148名）
 // 全員架空の成人。img は ~/workspace/new-game/cast-art/cast-<id>-sera.webp に対応。
 // pref（口説きの好み条件）: "sei"=清名型 / "aku"=悪名型 / "power"=実力型
 const CAST_DATA = [
@@ -166,6 +166,8 @@ const CAST_DATA = [
   {id:"tsukikage", name:"月影の騎士", age:38, sex:"M", style:"総合格闘技（MMA）", role:"『現役王者にも勝てる』と豪語した論客ペルソナ／伝説の挑戦者", debut:1},
   {id:"nagase", name:"永瀬 晴人", age:51, sex:"M", style:"ムエタイ", role:"元プロのムエタイ選手／出張トレーナー・解説枠の直言家", debut:1},
   {id:"tamaki", name:"玉置 修", age:45, sex:"M", style:"システマ", role:"民俗武術研究会を主宰するシステマ指導者／伝聞と観察の語り部枠", debut:2},
+  // 追加キャスト第148名（企画書第128節・cast.md末尾が正本）。合気道系発信者のオマージュ（架空名・呼び名は一捻り。実在の団体名・流派の固有名は出さない。経歴主張をめぐる告発系の話は持ち込まない）。口説き対象外（prefなし）
+  {id:"beppu", name:"別府 ティナ", age:44, sex:"F", style:"合気道", role:"合気道の発信者／深夜の『飯テロ』投稿で知られる交流会の常連", debut:3},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;
