@@ -1,4 +1,4 @@
-// キャストデータ（正本：~/workspace/new-game/cast.md 全141名）
+// キャストデータ（正本：~/workspace/new-game/cast.md 全147名）
 // 全員架空の成人。img は ~/workspace/new-game/cast-art/cast-<id>-sera.webp に対応。
 // pref（口説きの好み条件）: "sei"=清名型 / "aku"=悪名型 / "power"=実力型
 const CAST_DATA = [
@@ -158,6 +158,14 @@ const CAST_DATA = [
   {id:"berk", name:"ベルク・アイドゥン", age:36, sex:"F", style:"詠春拳", role:"女性創始伝承×在日バイリンガル講師枠", debut:6},
   {id:"eva", name:"エヴァ・ソレン", age:39, sex:"F", style:"ブラジリアン柔術（女性護身プログラム）", role:"元プロレスラー→護身プログラム主任講師（海外）枠", debut:6},
   {id:"cecilia", name:"セシリア・マルケス", age:30, sex:"F", style:"柔術（護身プログラム）", role:"ショート動画量産・オンライン講座販売型（海外）枠", debut:5},
+  // 追加キャスト第142〜147名（企画書第122節・cast.md末尾が正本）。v1.80で「モデルなし保留」だった主要人物のオマージュ
+  // （架空名・言動の特徴は本人の公開発信から型として取り込み、顔は特定個人に寄せない）。全員口説き対象外（prefなし）
+  {id:"sawada", name:"沢田 健司", age:49, sex:"M", style:"総合格闘技（MMA）", role:"総合格闘技ジム主宰／元プロ・解説でも知られる毒舌の重鎮", debut:2},
+  {id:"jongho", name:"イ・ジョンホ", age:56, sex:"M", style:"テコンドー（ITF）", role:"交流会主催のテコンドー師範／『場の掟』を守る主催者枠", debut:2},
+  {id:"shirogane", name:"白銀 洸太", age:41, sex:"M", style:"ペンチャック・シラット", role:"地方で道場と交流イベントを主宰するシラットの実践者／対面要求騒動の当事者", debut:2},
+  {id:"tsukikage", name:"月影の騎士", age:38, sex:"M", style:"総合格闘技（MMA）", role:"『現役王者にも勝てる』と豪語した論客ペルソナ／伝説の挑戦者", debut:1},
+  {id:"nagase", name:"永瀬 晴人", age:51, sex:"M", style:"ムエタイ", role:"元プロのムエタイ選手／出張トレーナー・解説枠の直言家", debut:1},
+  {id:"tamaki", name:"玉置 修", age:45, sex:"M", style:"システマ", role:"民俗武術研究会を主宰するシステマ指導者／伝聞と観察の語り部枠", debut:2},
 ];
 const CAST_BY_ID = {};
 for (const c of CAST_DATA) CAST_BY_ID[c.id] = c;
