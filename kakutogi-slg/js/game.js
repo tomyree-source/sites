@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.93";
+const GAME_VERSION = "1.94";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -197,6 +197,7 @@ const EPISODE_TAGS = {
   aru_kagen:"加減されていた成功体験", aru_tonfa:"トンファーは使いづらい", aru_ritsuzen:"立禅の表紙",
   aru_katagaki:"肩書は盛らない", aru_katahina:"型は実戦の雛形か", aru_metsukiron:"騒動には触れません",
   aru_sennin:"達人には専任の批判者がいる",
+  aru_bd_audition:"選考は無制限ラウンド", aru_bd_keireki:"喧嘩無敗、全員無敗", cam_bd_scandal:"看板の飛び火",
   boty:"BOTY",
 };
 function episodeTag(id){
