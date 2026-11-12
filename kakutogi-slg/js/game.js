@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.95";
+const GAME_VERSION = "1.96";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -233,7 +233,7 @@ mainStyle: null, styleLv: {}, styleExp: {},
 expMainTotal: 0, expTotal: 0,
 dmg: {arm:0, leg:0, core:0, head:0},
 students: [], met: [], affection: {}, romanceEv: {}, partner: null,
-flags: {}, record: {fouls:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0},
+flags: {}, record: {fouls:0, anki:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0},
 seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {}, seenEvents: {},
 chapter1Clear: false, chapter2Clear: false, chapter3Clear: false, chapter4Clear: false, startedAt: Date.now(),
 };
@@ -244,6 +244,7 @@ function ensureStateCompat(){
   if (!S.record || typeof S.record !== "object") S.record = {fouls:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0};
   if (S.record.winStreak == null) S.record.winStreak = 0;
   if (S.record.bestWinStreak == null) S.record.bestWinStreak = S.record.winStreak || 0;
+  if (S.record.anki == null) S.record.anki = 0; // 第136節: 暗器の使用回数（v1.95以前のセーブでは未定義のため初期化）
   if (!S.seenEvents || typeof S.seenEvents !== "object") S.seenEvents = {};
   if (!S.beatsDone || typeof S.beatsDone !== "object") S.beatsDone = {};
   if (!Array.isArray(S.students)) S.students = [];
@@ -2194,6 +2195,55 @@ function doRomance(id){
   });
 }
 
+// ---------- 第136節: 流派相性（小補正）と暗器（悪名+40の切り札） ----------
+// Xでのプレイヤー提案（2026-11-12）を受けて本人が「両方とも実装する」と決定した2案。
+// 【相性】主・流儀と相手流派の stats／dist から「型の噛み合い」を決定的に判定する。
+// 3つの関係（各±8点）を両側で数え、差分を -15%〜+15% に clamp して自分の与ダメージへ掛ける。
+// 乱数は使わないので、同じ組み合わせでは常に同じ相性になる（相手側から見れば符号が逆になる）。
+// 基準は主・流儀のみ（習得流派の合算にすると混合ルートだけが相性を操作できてしまうため。
+// 相性は「看板の流派同士の噛み合い」として読むのが自然、という設計判断。第136節に記録）。
+function styleAffinity(my, foe){
+  if (!my || !foe) return {pct: 0, label: "互角", reason: "型の情報がなく、相性は互角"};
+  const G = s => (s.stats.grapple || 0) + (s.stats.ground || 0); // 組み・寝技の厚さ
+  const rules = [
+    { test: (x, y) => G(x) >= 3 && G(y) <= 1 && ((y.stats.strike || 0) + (y.stats.kick || 0)) >= 2,
+      reason: "組み・寝技が厚い型は、打撃一辺倒の型を崩しやすい" },
+    { test: (x, y) => (x.stats.kick || 0) >= 2 && x.dist.includes("遠") && (y.stats.kick || 0) === 0 && !y.dist.includes("遠") && !y.dist.includes("中"),
+      reason: "蹴りと間合いが厚い型は、接近手段の薄い近距離一辺倒の型に距離で有利" },
+    { test: (x, y) => (x.stats.strike || 0) >= 3 && x.dist.includes("中") && (y.stats.strike || 0) === 0 && (y.stats.kick || 0) === 0 && G(y) >= 2,
+      reason: "重い打撃を中距離から放てる型は、組み一辺倒の型が組む前に当てられる" },
+  ];
+  let myPts = 0, foePts = 0; const myReasons = [], foeReasons = [];
+  for (const r of rules){
+    if (r.test(my, foe)){ myPts += 8; myReasons.push(r.reason); }
+    if (r.test(foe, my)){ foePts += 8; foeReasons.push(r.reason); }
+  }
+  const pct = clamp(myPts - foePts, -15, 15);
+  if (pct >= 5) return {pct, label: "有利", reason: myReasons[0] || "型の噛み合いがこちらに寄っている"};
+  if (pct <= -5) return {pct, label: "不利", reason: foeReasons[0] || "型の噛み合いが相手に寄っている"};
+  if (myPts > 0 && foePts > 0) return {pct: 0, label: "互角", reason: "互いに攻め筋が噛み合っており、相性は互角"};
+  return {pct: 0, label: "互角", reason: "型の噛み合いに大きな偏りはなく、相性は互角"};
+}
+// 【暗器】隠し武器・暗器の伝統が理屈として通る流派（ロスターの実在名から選定。根拠は第136節）。
+// 対象流派を Lv7（複合技解放の段）以上まで磨いた習得流派が1つでもあれば解放される
+// （主・流儀に限らない。暗器は「持ち込む切り札」であり、どの流派で戦っていても使える代物、
+//  という設計判断。第136節に記録）。1試合1回・使えば即勝利だが、悪名+40が必ず付く。
+const ANKI_STYLE_IDS = [21, 23, 45, 52, 54, 64, 87, 114, 132, 153];
+function ankiStyle(){
+  if (!S) return null;
+  let best = null;
+  const ids = new Set();
+  if (S.mainStyle != null) ids.add(S.mainStyle);
+  for (const id in (S.styleLv || {})) ids.add(Number(id));
+  for (const id of ids){
+    if (!ANKI_STYLE_IDS.includes(id)) continue;
+    if (styleLv(id) < 7) continue;
+    const st = styleById(id);
+    if (st && (!best || styleLv(id) > styleLv(best.id))) best = st;
+  }
+  return best;
+}
+
 // ---------- バトル ----------
 function resolveBattleDef(id){
   const def = Object.assign({}, BATTLES[id]);
@@ -2227,15 +2277,21 @@ function startBattle(id, winSteps, loseSteps){
   const streak = S.record.winStreak || 0;
   const counterLevel = streak >= 5 ? 2 : streak >= 3 ? 1 : 0;
   const counterHasSig = styleLv(S.mainStyle) >= 5;
+  // 第136節: 流派相性（主・流儀 vs 相手流派、決定的）と暗器の解放状態を試合開始時に固定する
+  const affinity = styleAffinity(mainStyle(), eStyle);
+  const ankiSt = ankiStyle();
   UI.battle = { def, eStyle, php: Math.max(20, maxPhp), maxPhp: Math.max(20, maxPhp), ehp: def.hp, turn: 0, dealt: 0,
     log: [], cmtIdx: 0, foulUsed: false, sigUsed: false, ougiUsed: false, readBonus: 0, control: 0, readGuard: false, secondUsed: false,
+    affinity, ankiStyle: ankiSt, ankiUsed: false, ankiHit: false,
     heckleCount: 0, heckleUsed: [],
     comboStyle, comboUsed: false, counterLevel, counterStreak: streak, counterHasSig,
     blur: 0, eyeHits: 0, eyeTurn: 0, misses: 0,
     finishing: false, fxPrevP: null, fxPrevE: null,
     winSteps, loseSteps };
   window.__lastCounter = {level: counterLevel, streak: streak, battleId: def.id, hasSig: counterHasSig};
+  window.__lastAffinity = {battleId: def.id, pct: affinity.pct, label: affinity.label, reason: affinity.reason, myStyle: mainStyle() ? mainStyle().name : null, foeStyle: eStyle ? eStyle.name : null, ankiStyle: ankiSt ? ankiSt.name : null}; // 第136節: 検証用
   bLog("実況", def.title + "――開始！");
+  bLog("相性", "【相性：" + affinity.label + (affinity.pct ? "（自分の攻撃 " + (affinity.pct > 0 ? "+" : "") + affinity.pct + "%）" : "") + "】" + affinity.reason); // 第136節
   if (def.eyeThrust){
     bLog("メツキング", "証明する、と言った。ゴーグル越しでも構わない――本気で、目を突く");
     bLog("実況", "メツキングの二指が、静かに目線の高さへ上がった。本当に、目を狙う構えだ");
@@ -2265,6 +2321,7 @@ function battleActLabel(act){
     case "ougi": return "奥義：" + mainStyle().name.replace(/（[^）]*）/g, "") + "の奥義";
     case "combo": return (b && b.comboStyle) ? "複合技：" + mainStyle().name.replace(/（[^）]*）/g, "") + "×" + b.comboStyle.name.replace(/（[^）]*）/g, "") : "複合技";
     case "foul": return "反則・眼突き";
+    case "anki": return "暗器";
     default: return act;
   }
 }
@@ -2339,7 +2396,7 @@ function battleFoeIsFemale(def){
 }
 function maybeHeckle(act, force){
   const b = UI.battle; if (!b) return false;
-  const kindMap = {strike:"strike", kick:"strike", grapple:"grapple", ground:"ground", sig:"common", combo:"common", ougi:"common", foul:"strong"};
+  const kindMap = {strike:"strike", kick:"strike", grapple:"grapple", ground:"ground", sig:"common", combo:"common", ougi:"common", foul:"strong", anki:"strong"};
   let pool = kindMap[act]; if (!pool) return false;
   if (!battleFoeIsFemale(b.def)) return false;
   const MAX = 4; // 1試合あたりの上限（煩さ対策）
@@ -2395,13 +2452,17 @@ function renderBattle(){
   if (lv >= 10 && !b.ougiUsed) acts.push(["ougi", "奥義：" + mainStyle().name.replace(/（[^）]*）/g, "") + "の奥義", "皆伝の証。1試合に1回（純粋度" + purity() + "%で強化）"]);
   if (b.comboStyle && !b.comboUsed) acts.push(["combo", "複合技：" + mainStyle().name.replace(/（[^）]*）/g, "") + "×" + b.comboStyle.name.replace(/（[^）]*）/g, ""), "主・流儀Lv7＋副・流儀Lv5で解放。1試合に1回"]);
   if (def.foul && !b.foulUsed) acts.push(["foul", "反則・眼突き", "勝てるが、評判を落とす諸刃"]);
+  // 第136節: 暗器（対象流派Lv7以上の習得がある時だけ・審査戦では出さない。1試合1回）
+  if (b.ankiStyle && !b.ankiUsed && def.mode !== "exam") acts.push(["anki", "暗器", b.ankiStyle.name.replace(/（[^）]*）/g, "") + "に伝わる隠し武器。勝ちは確実だが、悪名+40の切り札"]);
   const enemyImg = def.img ? '<div class="portrait"><img src="../cast-art/cast-' + def.img + '-sera.webp" alt=""></div>' : "";
+  const aff = b.affinity || {pct: 0, label: "互角", reason: ""}; // 第136節: 相性表示
+  const affinityBanner = '<div class="weeksub"' + (aff.pct > 0 ? ' style="color:var(--sei);"' : aff.pct < 0 ? ' style="color:var(--aku);"' : "") + '>【相性：' + aff.label + (aff.pct ? "（自分の攻撃 " + (aff.pct > 0 ? "+" : "") + aff.pct + "%）" : "") + "】" + esc(aff.reason) + "</div>";
   const counterBanner = b.counterLevel > 0 ? '<div class="weeksub" style="color:var(--aku);">【研究・対策】相手陣営があなたの主・流儀／看板技を研究済み（対策レベル' + b.counterLevel + "／" + b.counterStreak + '連勝中）。看板技は威力が下がる。ただし複合技や新しい流派の技は研究が追いついていない。</div>' : "";
   const blurBanner = b.blur > 0 ? '<div class="weeksub" style="color:var(--aku);">【視界不良】ゴーグルが霞んで狙いが定まらない（あと' + b.blur + '手）。「相手を読む」「組み付く（手を捌く）」で視界を立て直せる</div>' : "";
   // 第88節: HPバーは残像バー（.fx-ghost=前回表示値）＋本体バー（.fx-fill=現在値）の2層にする。演出のみで計算には無関係
   const pCur = clamp(b.php / b.maxPhp * 100, 0, 100), eCur = clamp(b.ehp / def.hp * 100, 0, 100);
   const pPrev = b.fxPrevP == null ? pCur : b.fxPrevP, ePrev = b.fxPrevE == null ? eCur : b.fxPrevE;
-  $("main").innerHTML = '<div class="battle">' + counterBanner + blurBanner + '<div class="vs">' +
+  $("main").innerHTML = '<div class="battle">' + counterBanner + blurBanner + affinityBanner + '<div class="vs">' +
     '<div class="fighter"><div class="nm">ハヤト（' + esc(mainStyle().name) + " Lv" + lv + '）</div><div class="bar hp"><i class="fx-ghost" data-to="' + pCur + '" style="width:' + pPrev + '%"></i><i class="fx-fill" style="width:' + pCur + '%"></i></div><div class="sub">体力 ' + Math.max(0, b.php) + " ／ 部位：腕" + S.dmg.arm + " 脚" + S.dmg.leg + " 体幹" + S.dmg.core + '</div></div>' +
     '<div class="fighter enemy"><div class="nm">' + esc(def.enemyName) + '</div><div class="bar ehp"><i class="fx-ghost" data-to="' + eCur + '" style="width:' + ePrev + '%"></i><i class="fx-fill" style="width:' + eCur + '%"></i></div><div class="sub">' + esc(def.enemyStyleName || "同流派") + " ／ 耐久 " + Math.max(0, b.ehp) + (b.eStyle ? " ／ 使える攻撃：" + systemsLabel(b.eStyle) : "") + "</div></div>" +
     enemyImg + '</div>' +
@@ -2423,7 +2484,7 @@ function battleTurn(act){
   let dmg = 0;
   let fxKind = "normal", fxMissed = false, fxGuarded = false; // 第88節: 演出フック用（計算には無関係）
   // 第100節A: 系統別演出用（演出のみ・計算には無関係）。看板技・複合技・奥義は主・流儀の最も得意な系統に寄せる
-  let fxSys = {strike:"strike", kick:"kick", grapple:"grapple", ground:"ground", foul:"foul"}[act] || null;
+  let fxSys = {strike:"strike", kick:"kick", grapple:"grapple", ground:"ground", foul:"foul", anki:"foul"}[act] || null;
   if (!fxSys && (act === "sig" || act === "combo" || act === "ougi")){
     let bv = -1;
     for (const k of styleSystems(mainStyle())){ const v = S.stats[k] || 0; if (v > bv){ bv = v; fxSys = k; } }
@@ -2458,13 +2519,23 @@ function battleTurn(act){
       else if (_rng() < 0.35){ applyFx({aku:1, attention:1}); bLog("実況", "映像がCLASHに切り抜かれた。「あれは反則だ」と拡散が始まっている"); }
     }
   }
+  else if (act === "anki" && b.ankiStyle && !b.ankiUsed && def.mode !== "exam"){ // 第136節: 暗器（1試合1回・即決着・悪名+40）
+    b.ankiUsed = true; b.ankiHit = true; fxKind = "foul";
+    S.record.anki = (S.record.anki || 0) + 1;
+    dmg = Math.max(1, b.ehp); // 相手の残り体力をちょうど削り切る＝戦闘不能として決着させる（死亡とは扱わない）
+    bLog("実況", "袖口の内側で、小さく何かが光った――次の瞬間、" + def.enemyName + "は声もなく崩れ落ちた");
+    bLog("観客", "……今、何かしたか？ 会場がざわつき、CLASHの実況欄が一斉に騒ぎ始めた");
+    applyFx({aku:40, attention:3}); // 本人の明示指定：悪名+40（名声ランク上限35を超えて最高ランクになるのは意図どおり）
+    toast("暗器が決定的にバレた。悪名+40", true);
+    bLog("判定", "レフェリーが駆け寄り、相手は戦闘不能と判断された。勝ちは勝ちだが、向けられる視線は冷たかった");
+  }
   // メツキング戦（第51節）: 視界デバフ（blur）。霞んだ視界では攻撃が逸れやすい（蹴りは間合いが遠い分だけ軽減）。
   // 「相手を読む」「組み付く（相手の手を捌く）」は視界の立て直しになりデバフを解除する。看板技・複合技は体の覚えた動きなので逸れない
   if (b.blur > 0){
     if (act === "read" || act === "grapple"){ b.blur = 0; bLog("実況", "顔を逸らし、相手の手を捌く――視界が晴れてきた！"); }
     else {
       b.blur--;
-      if (dmg > 0 && act !== "sig" && act !== "combo" && act !== "ougi" && _rng() < (act === "kick" ? 0.25 : 0.4)){
+      if (dmg > 0 && act !== "sig" && act !== "combo" && act !== "ougi" && act !== "anki" && _rng() < (act === "kick" ? 0.25 : 0.4)){
         dmg = 0; fxMissed = true; b.misses++;
         bLog("実況", "視界が霞んで、攻撃が逸れた！");
         if (window.__lastEyeThrust) window.__lastEyeThrust.misses = b.misses;
@@ -2472,6 +2543,13 @@ function battleTurn(act){
     }
   }
   const fxReadHit = dmg > 0 && b.readBonus > 0; // 第100節B: 「読む」のボーナスが乗った一撃＝読みの的中（演出のみ）
+  // 第136節: 流派相性の小補正を、通常攻撃・看板技・複合技・奥義の与ダメージへ実際に掛ける
+  // （反則と暗器は型の噛み合いとは無関係なので対象外）
+  if (dmg > 0 && b.affinity && b.affinity.pct && act !== "foul" && act !== "anki"){
+    const rawDmg = dmg;
+    dmg = Math.max(1, Math.round(dmg * (1 + b.affinity.pct / 100)));
+    window.__lastAffinityHit = {battleId: def.id, act, pct: b.affinity.pct, before: rawDmg, after: dmg};
+  }
   if (dmg > 0){ b.ehp -= dmg; b.dealt += dmg; b.readBonus = 0;
     if (window.FX) FX.playerHit({dmg, kind: fxKind, ratio: def.hp > 0 ? dmg / def.hp : 0, sys: fxSys, read: fxReadHit, killing: b.ehp <= 0}); // 第88節＋第100節: 与ダメ演出（系統別・会心・決着）
   } else if (fxMissed && window.FX){ FX.playerHit({dmg: 0, kind: fxKind, ratio: 0, missed: true, sys: fxSys}); } // 第88節: 空振り演出
@@ -2552,7 +2630,8 @@ function doFinishBattle(win){
   ensureStateCompat();
   S.record.matches++;
   // 第74節: 反則で勝った試合では、相手が重い怪我を負うことがある（傷害ルートの火種。1周1回）
-  if (win && b.foulUsed && !S.flags.injuryDone && !S.flags.injurySource && _rng() < 0.5){
+  // 第136節: 暗器で勝った試合も、相手が重傷で病院行きになる点で同種として同じ経路に乗せる
+  if (win && (b.foulUsed || b.ankiHit) && !S.flags.injuryDone && !S.flags.injurySource && _rng() < 0.5){
     S.flags.injurySource = "match"; S.flags.injuryBaseWeek = S.absWeek;
   }
   if (win){ S.record.wins++; S.record.winStreak = (S.record.winStreak || 0) + 1; S.record.bestWinStreak = Math.max(S.record.bestWinStreak || 0, S.record.winStreak); }
@@ -2918,7 +2997,7 @@ function chapterEndScreen(){
   UI.screen = "end"; S.chapter1Clear = true; hud();
   const r = S.record;
   $("main").innerHTML = '<div class="endcard"><h2>第1章 青年期 ―完―</h2>' +
-    '<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 反則 " + r.fouls + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝</div>" +
+    '<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝</div>" +
     '<div class="stext">名声 ' + fameTotal() + "（" + fameRank() + "）／ 清名" + S.sei + "・悪名" + S.aku + " ／ 道場生 " + S.students.length + "人 ／ " + (mainStyle() ? mainStyle().name : "") + " Lv" + styleLv(S.mainStyle) + " ／ 純粋度 " + purity() + "%" + (S.partner ? " ／ 想い人：" + CAST_BY_ID[S.partner].name : "") + "</div>" +
     '<div class="stext">【第2章予告】全盛前夜（23〜29歳）。本戦への挑戦、道場の独立、新しい世代の強者たち、そして師匠たちの門。</div>' +
     (typeof startChapter2 === "function" ? '<button class="btn next" data-auto="to-ch2">第2章へ進む（23歳〜）</button>' : "") +
@@ -3078,6 +3157,8 @@ window.__gameTest = {
   openHouseAds: () => openHouseAdModal(),
   appendHouseAdEnding: () => appendHouseAdEnding(),
   playerSystems: () => playerSystems(),
+  affinity: (myId, foeId) => styleAffinity(styleById(myId), styleById(foeId)), // 第136節: 相性の純関数検証用
+  ankiStyle: () => ankiStyle(), // 第136節: 暗器の解放判定の検証用
   styleSystems: name => styleSystems(styleByName(name)),
   systemsLabel: name => systemsLabel(styleByName(name)),
   battleTurn: act => battleTurn(act),
