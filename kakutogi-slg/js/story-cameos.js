@@ -190,6 +190,9 @@ const BOTY_FIXED_CANDS = [
   {label:"彼女の浮気が発覚した師範", blurb:"目撃談はCLASHを駆け巡り、決着は話し合いと因縁試合に持ち越された。恋の試合に、判定はなかった"},
   {label:"二股が鉢合わせた師範", blurb:"デートの現場で二人の彼女が鉢合わせ。逃げ場のないリングサイドで、今年いちばん静かな修羅場が起きた"},
   {label:"探偵を雇って見破った男", blurb:"疑惑の答えを、金で買った男。報告書の一枚が、その後の全部を決めた。年末の界隈で、静かに語り草になった"},
+  // 第139節: 裏ルートの噂レベルの現象型の固定候補（個人名は出さない。噂として語られる構造のほうを主題にする）
+  {label:"素顔不明の用心棒がいる店", blurb:"繁華街のクラブに、素顔不明の凄腕の用心棒がいるらしい、という噂。今年の武クラを静かに賑わせた。名は出ない。だが、荒れるはずの夜ほど、その店は不思議と静かだった"},
+  {label:"地下の無敗の男", blurb:"公式のリングには一度も上がらず、地下の賭け試合だけで無敗を続ける男がいる、という噂。実在を疑う声も多いが、地下を知る者ほど、その話になると口が重くなる"},
 ];
 function botyPlayCandidates(yearIdx){
   const w0 = yearIdx * 48 + 1, w1 = (yearIdx + 1) * 48;
@@ -255,6 +258,10 @@ function botyPlayCandidates(yearIdx){
   if (inYear(S.flags.lifeNtrWeek)) out.push({kind:"laugh", label:"彼女を寝取られた師範", blurb:"放置した時間の分だけ、請求は重かった。因縁試合にも届かなかった、静かな大敗北"});
   if (inYear(S.flags.lifeAffairWeek) && !inYear(S.flags.lifeNtrWeek)) out.push({kind:"laugh", label:"彼女の浮気が発覚した師範", blurb:"目撃談はCLASHを駆け巡り、決着は話し合いとリングに持ち越された。恋の試合に判定はなかった"});
   if (inYear(S.flags.lifeFutamataWeek)) out.push({kind:"laugh", label:"二股が鉢合わせた師範", blurb:"デートの現場で二人の彼女が鉢合わせ。逃げ場のないリングサイドで、今年いちばん静かな修羅場が起きた"});
+  // 第139節: 裏ルートの実績候補（地下の王者の到達を、その年の噂として拾う）
+  if (inYear(S.flags.uraUgKingWeek)) out.push({kind:"aruaru", label:"地下格闘技の王者（噂）", blurb:"賭け試合の地下で連勝を重ね、「王者」と呼ばれた男の噂。公式の記録には残らないが、地下を知る者の間では年末まで語られた"});
+  // 第140節: 短時間マッチ興行の実績候補（優勝した年に拾う）
+  if (inYear(S.flags.shortChampWeek)) out.push({kind:"hero", label:"短時間マッチで優勝", blurb:"椎名駆の短時間マッチ興行で、1分勝負を制して優勝した。「1分の王者」の二つ名と決勝の切り抜き動画が、今年の武クラを沸かせた"});
   // 重複ラベルを除く
   const uniq = []; const used = {};
   for (const c of out){ if (!used[c.label]){ used[c.label] = true; uniq.push(c); } }

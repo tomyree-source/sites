@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.98";
+const GAME_VERSION = "1.99";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -199,7 +199,7 @@ const EPISODE_TAGS = {
   aru_katagaki:"肩書は盛らない", aru_katahina:"型は実戦の雛形か", aru_metsukiron:"騒動には触れません",
   aru_sennin:"達人には専任の批判者がいる",
   aru_bd_audition:"選考は無制限ラウンド", aru_bd_keireki:"喧嘩無敗、全員無敗", cam_bd_scandal:"看板の飛び火",
-  boty:"BOTY", tenkaichi:"天下一武道会",
+  boty:"BOTY", tenkaichi:"天下一武道会", short_match:"短時間マッチ興行",
 };
 function episodeTag(id){
   if (!id) return "武クラ";
@@ -220,6 +220,7 @@ function isLikeableId(id){
   if (!id) return false;
   if (id === "boty") return true;
   if (id === "tenkaichi") return true; // 第137節: 天下一武道会もCLASHバーの対象にする
+  if (id === "short_match") return true; // 第140節: 短時間マッチ興行もCLASHバーの対象にする
   if (/^cam1_/.test(id)) return true;
   return allEventPools().some(p => p.some(e => e.id === id));
 }
@@ -236,6 +237,8 @@ expMainTotal: 0, expTotal: 0,
 dmg: {arm:0, leg:0, core:0, head:0},
 students: [], met: [], affection: {}, romanceEv: {}, partner: null,
 life: {partners: [], spouse: null, per: {}, children: 0, support: [], futamataRisk: 0, futamataCount: 0, titles: {}, lastAccWeek: 0, lastKidWeek: 0},
+ura: {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0},
+short: {entries: 0, wins: 0, titles: 0, years: {}, auditionDone: false, lastOfferWeek: -9, lastDeclineWeek: -99},
 flags: {}, record: {fouls:0, anki:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0, tenkaIn:0, tenkaTitles:0},
 seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {}, seenEvents: {},
 chapter1Clear: false, chapter2Clear: false, chapter3Clear: false, chapter4Clear: false, startedAt: Date.now(),
@@ -273,6 +276,17 @@ function ensureStateCompat(){
   if (S.life.children == null) S.life.children = 0;
   if (S.partner && !S.life.partners.includes(S.partner)) S.life.partners.push(S.partner);
   if (!S.partner && S.life.partners.length) S.partner = S.life.partners[0];
+  // 第139節: 裏ルートの状態（v1.98以前のセーブでは未定義のため初期化）
+  if (!S.ura || typeof S.ura !== "object") S.ura = {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0};
+  if (!S.ura.entryDone || typeof S.ura.entryDone !== "object") S.ura.entryDone = {};
+  if (!S.ura.declined || typeof S.ura.declined !== "object") S.ura.declined = {};
+  if (!S.ura.jobsDone || typeof S.ura.jobsDone !== "object") S.ura.jobsDone = {};
+  if (!S.ura.titles || typeof S.ura.titles !== "object") S.ura.titles = {};
+  if (S.ura.rank == null) S.ura.rank = 0;
+  if (S.ura.heat == null) S.ura.heat = 0;
+  // 第140節: 短時間マッチ興行の状態（同上）
+  if (!S.short || typeof S.short !== "object") S.short = {entries: 0, wins: 0, titles: 0, years: {}, auditionDone: false, lastOfferWeek: -9, lastDeclineWeek: -99};
+  if (!S.short.years || typeof S.short.years !== "object") S.short.years = {};
 }
 function fameTotal(){ return S.sei + S.aku;}
 function fameRankIdx(){ const f = fameTotal(); let i = 0; FAME_THRESHOLDS.forEach((t, k) => { if (f >= t) i = k;}); return i;}
@@ -298,6 +312,16 @@ if (S.life && S.life.titles){
   if (LT.detective) return "見破り師範";
   if (LT.father) return "子持ち師範";
 }
+// 第139節: 裏ルートの結末・到達で付く二つ名（逮捕には呼び名を付けない）
+if (S.ura && S.ura.titles){
+  const UT = S.ura.titles;
+  if (UT.ashi) return "足を洗った男";
+  if (UT.ugKing) return "地下の王者";
+  if (UT.rankTop) return "裏の顔役";
+  if (UT.bouncer) return "夜の用心棒";
+}
+// 第140節: 短時間マッチ興行の優勝で付く二つ名
+if (S.flags.shortKing) return "1分の王者";
 if (S.record.works >= 24) return "バイト戦士";
 const b = S.flags.boukanHow;
 if (b === "voice") return "駅前の声";
@@ -2024,6 +2048,21 @@ function sceneAdvance(){
     if (st.mimg){ const ms = mainStyle(); UI.portrait = ms ? "master-" + masterArtKey(ms) : null; continue; }
     if (st.ep !== undefined){ UI.episode = st.ep; continue; }
     if (st.fx){ applyFx(st.fx); continue; }
+    if (st.uraFx){ uraApplyFx(st.uraFx); continue; } // 第139節: 裏ルートの内部値（裏格・熱・連勝など）の増減
+    if (st.uraSet){ Object.assign(uraEnsure(), st.uraSet); continue; } // 第139節: 裏ルートの状態を直接書き換える（隠し通す等）
+    if (st.uraPartnerLeave){ const pid = (S.life && S.life.partners[0]) || S.partner; if (pid) UI.queue = uraPartnerLeaveLines(pid).concat(UI.queue); continue; } // 第139節: 彼女が去る実処理（選択が選ばれた時点で実行）
+    if (st.uraWarLoseCheck){ UI.queue = uraWarLoseLines().concat(UI.queue); continue; } // 第139節: 抗争に敗れた際の重傷判定（バッドエンド分岐）
+    if (st.shortEnter){ const SH = S.short; const yi = S.age - 19; SH.entries = (SH.entries || 0) + 1; SH.years[yi] = ((SH.years && SH.years[yi]) || 0) + 1; continue; } // 第140節: 短時間マッチ出場の記録
+    if (st.shortWin){ S.short.wins = (S.short.wins || 0) + 1; continue; } // 第140節: 短時間マッチの勝利数
+    if (st.shortChamp){ S.short.wins = (S.short.wins || 0) + 1; S.short.titles = (S.short.titles || 0) + 1; S.flags.shortKing = true; S.flags.shortChampWeek = S.absWeek; continue; } // 第140節: 短時間マッチ優勝の記録とBOTY連携フラグ
+    if (st.shortAudition){ S.short.auditionDone = true; continue; } // 第140節: 選考会イベントは初回のみ
+    if (st.uraQuitPay){ UI.queue = uraQuitPayLines().concat(UI.queue); continue; } // 第139節: ケジメ金の支払い判定（足りなければ失敗分岐）
+    if (st.uraQuitBoss){ UI.queue = uraQuitBossLines().concat(UI.queue); continue; } // 第139節: 足を洗う承認判定
+    if (st.uraBadEnd){ UI.queue = []; showUraBadEnd(st.uraBadEnd); return; } // 第139節: 裏ルートのバッドエンド（真のデッドエンドには数えない）
+    if (st.shortAccident){ // 第140節: 短時間マッチの事故（小リスク）
+      if (_rng() < 0.12){ const parts = ["leg", "arm", "core"]; const p = parts[rnd(2)]; S.dmg[p] = clamp(S.dmg[p] + 1, 0, 3); UI.queue = [{sp:"narr", t:"だが、短時間の全力は事故と隣り合わせだった。接触の拍子に" + ({leg:"脚", arm:"腕", core:"体幹"})[p] + "を痛めた（部位ダメージ+1）。"}].concat(UI.queue); }
+      continue;
+    }
     if (st.mark !== undefined){ UI.pendingMark = st.mark; continue; }
     if (st.jump){ startSceneById(st.jump); return; }
     if (st.week){ finishScene(); return; }
@@ -2035,7 +2074,7 @@ function sceneAdvance(){
     if (st.ch3skip){ __ch3Skip(); return; }
     if (st.warWinK){ dojoWarResultKatori(true); continue; }
     if (st.warLoseK){ dojoWarResultKatori(false); continue; }
-    if (st.endChapter4){ chapter4EndScreen(); return; }
+    if (st.endChapter4){ if (typeof uraChapter4EndCheck === "function" && uraChapter4EndCheck()) return; chapter4EndScreen(); return; } // 第139節: 裏EDの特別シーンを先に挟む
     if (st.endChapter4retire){ chapter4RetireScreen(); return; }
     if (st.ch4skip){ __ch4Skip(); return; }
     if (st.warWinM){ dojoWarResultMamiya(true); continue; }
@@ -2279,6 +2318,10 @@ function goWeek(){
   }
   // 第138節: 彼女ライフイベント（火種の蓄積と発火。浮気・NTR・不倫・子供・托卵・二股の修羅場）
   if (typeof tryLifeEvents === "function" && tryLifeEvents()) return;
+  // 第139節: 裏ルート（入口の誘い・逮捕・彼女への露見・道場の噂・抗争の週頭判定）
+  if (typeof tryUraEvents === "function" && tryUraEvents()) return;
+  // 第140節: 短時間マッチ興行の出場オファー（椎名駆の企画。年1〜2回）
+  if (typeof tryShortOffer === "function" && tryShortOffer()) return;
   // 第75節: 本場留学の提示（第2章以降・主・流儀Lv5以上・一度だけ大きく。見送れば+2Lvで再提示）
   if (typeof abroadEligible === "function" && abroadEligible()){
     S.flags.abroadOfferLv = styleLv(S.mainStyle);
@@ -2318,8 +2361,11 @@ function renderWeek(){
   // 第78節: コラボ企画（第2章以降・インフルエンサー系と出会っている場合のみ）
   if (S.chapter >= 2 && typeof collabPartnerList === "function" && collabPartnerList().length)
     acts.splice(8, 0, ["collab", "コラボ企画", "動画配信・合同イベント（相手を選ぶ）"]);
+  // 第139節: 裏ルートに入っている間は「裏の仕事」が週の行動に加わる（足を洗ったら消える）
+  if (S.ura && S.ura.active && !S.ura.quit)
+    acts.splice(8, 0, ["ura", "裏の仕事", "裏格：" + uraRankName() + "（" + (S.ura.rank || 0) + "）／バウンサー・地下格闘技・揉め事の仕事"]);
   $("main").innerHTML = '<div class="weekhead"><h2>' + weekLabel() + '</h2>' +
-    '<div class="weeksub">二つ名：' + esc(nickname()) + "　／　純粋度：" + purity() + "%" + (debtOf() > 0 ? "　／　借金：" + debtOf().toLocaleString() + "円（月末に分割返済）" : "") + (inHiding() ? "　／　潜伏中（あと" + Math.max(0, (S.flags.hideUntil || 0) - S.absWeek) + "週・表舞台の活動不可）" : "") + "</div>" +
+    '<div class="weeksub">二つ名：' + esc(nickname()) + "　／　純粋度：" + purity() + "%" + (debtOf() > 0 ? "　／　借金：" + debtOf().toLocaleString() + "円（月末に分割返済）" : "") + (inHiding() ? "　／　潜伏中（あと" + Math.max(0, (S.flags.hideUntil || 0) - S.absWeek) + "週・表舞台の活動不可）" : "") + (typeof inJail === "function" && inJail() ? "　／　勾留中（あと" + Math.max(0, (S.ura.jailUntil || 0) - S.absWeek) + "週・表舞台の活動不可）" : "") + (S.ura && S.ura.active && !S.ura.quit ? "　／　裏格：" + uraRankName() + "（" + (S.ura.rank || 0) + "）" : "") + (S.ura && S.ura.quit ? "　／　裏からは足を洗った" : "") + "</div>" +
     '<div class="stext" style="color:var(--sub);font-size:.92em;">' + esc(WEEK_FLAVOR[S.absWeek % WEEK_FLAVOR.length]) + "</div></div>" +
     '<div class="actions">' + acts.map(a => '<button class="btn act" data-act="' + a[0] + '"><b>' + a[1] + '</b><span>' + esc(a[2]) + '</span></button>').join("") + "</div>";
   $("main").querySelectorAll("[data-act]").forEach(b => b.addEventListener("click", () => doAction(b.dataset.act)));
@@ -2616,6 +2662,11 @@ function doAction(act){
   if (inHiding() && (act === "challenge" || act === "seminar" || act === "collab" || act === "teach")){
     toast("潜伏中だ。表舞台に出る活動はできない（あと" + Math.max(0, (S.flags.hideUntil || 0) - S.absWeek) + "週）", true); return;
   }
+  // 第139節: 逮捕・勾留中も潜伏に準じて表舞台の活動と裏の仕事ができない
+  if (typeof inJail === "function" && inJail() && (act === "challenge" || act === "seminar" || act === "collab" || act === "teach" || act === "ura")){
+    toast("勾留中だ。表舞台にも裏にも出られない（あと" + Math.max(0, (S.ura.jailUntil || 0) - S.absWeek) + "週）", true); return;
+  }
+  if (act === "ura") return renderUraPick();
   if (act === "train_main"){
     const before = styleLv(S.mainStyle);
     S.fatigue = clamp(S.fatigue + 18, 0, 100);
@@ -3066,6 +3117,7 @@ function startBattle(id, winSteps, loseSteps){
     heckleCount: 0, heckleUsed: [],
     comboStyle, comboUsed: false, counterLevel, counterStreak: streak, counterHasSig,
     blur: 0, eyeHits: 0, eyeTurn: 0, misses: 0,
+    firstHitTurn: null, foeFirstHitTurn: null, // 第140節: 短時間マッチの判定材料
     finishing: false, fxPrevP: null, fxPrevE: null,
     winSteps, loseSteps };
   window.__lastCounter = {level: counterLevel, streak: streak, battleId: def.id, hasSig: counterHasSig};
@@ -3312,10 +3364,15 @@ function battleTurn(act){
     S.record.anki = (S.record.anki || 0) + 1;
     dmg = Math.max(1, b.ehp); // 相手の残り体力をちょうど削り切る＝戦闘不能として決着させる（死亡とは扱わない）
     bLog("実況", "袖口の内側で、小さく何かが光った――次の瞬間、" + def.enemyName + "は声もなく崩れ落ちた");
-    bLog("観客", "……今、何かしたか？ 会場がざわつき、CLASHの実況欄が一斉に騒ぎ始めた");
-    applyFx({aku:40, attention:3}); // 本人の明示指定：悪名+40（名声ランク上限35を超えて最高ランクになるのは意図どおり）
-    toast("暗器が決定的にバレた。悪名+40", true);
-    bLog("判定", "レフェリーが駆け寄り、相手は戦闘不能と判断された。勝ちは勝ちだが、向けられる視線は冷たかった");
+    if (def.mode === "ug"){ // 第139節: 地下格闘技では暗器は「通常装備」。悪名は増えない代わりに、場の空気が凍る
+      bLog("観客", "……見たか、今の。ざわつきはすぐに、静まり返った。地下では、それが礼儀であり、恐怖だった");
+      bLog("判定", "レフェリー役の男が無言でこちらを指さした。勝ち。地下のルールでは、反則ではない");
+    } else {
+      bLog("観客", "……今、何かしたか？ 会場がざわつき、CLASHの実況欄が一斉に騒ぎ始めた");
+      applyFx({aku:40, attention:3}); // 本人の明示指定：悪名+40（名声ランク上限35を超えて最高ランクになるのは意図どおり）
+      toast("暗器が決定的にバレた。悪名+40", true);
+      bLog("判定", "レフェリーが駆け寄り、相手は戦闘不能と判断された。勝ちは勝ちだが、向けられる視線は冷たかった");
+    }
   }
   // メツキング戦（第51節）: 視界デバフ（blur）。霞んだ視界では攻撃が逸れやすい（蹴りは間合いが遠い分だけ軽減）。
   // 「相手を読む」「組み付く（相手の手を捌く）」は視界の立て直しになりデバフを解除する。看板技・複合技は体の覚えた動きなので逸れない
@@ -3339,6 +3396,7 @@ function battleTurn(act){
     window.__lastAffinityHit = {battleId: def.id, act, pct: b.affinity.pct, before: rawDmg, after: dmg};
   }
   if (dmg > 0){ b.ehp -= dmg; b.dealt += dmg; b.readBonus = 0;
+    if (b.firstHitTurn == null) b.firstHitTurn = b.turn; // 第140節: 短時間マッチの判定材料（先に当てた者）
     if (window.FX) FX.playerHit({dmg, kind: fxKind, ratio: def.hp > 0 ? dmg / def.hp : 0, sys: fxSys, read: fxReadHit, killing: b.ehp <= 0}); // 第88節＋第100節: 与ダメ演出（系統別・会心・決着）
   } else if (fxMissed && window.FX){ FX.playerHit({dmg: 0, kind: fxKind, ratio: 0, missed: true, sys: fxSys}); } // 第88節: 空振り演出
   pushComment();
@@ -3350,6 +3408,8 @@ function battleTurn(act){
   }
   if (b.ehp <= 0) return finishBattle(true);
   if (def.mode === "exam" && b.turn >= (def.turnLimit || 6)) return finishBattle(b.dealt >= 25);
+  // 第140節: 短時間マッチ（1分）はターン上限で判定に持ち込む。与えた攻勢と被弾、先に当てたかどうかで決める
+  if (def.mode === "short1" && b.turn >= (def.turnLimit || 3)) return finishBattle(shortJudgeWin());
   // 敵の反撃（第73節：敵も自分の流派が使える系統でしか反撃できない。
   // その流派の得意な系統ほど選ばれやすく、威力の上乗せもその系統の能力値から取る）
   const eKinds = styleSystems(b.eStyle);
@@ -3384,6 +3444,7 @@ function battleTurn(act){
   }
   if (b.readGuard){ edmg = Math.round(edmg / 2); b.readGuard = false; fxGuarded = true; }
   b.php -= edmg;
+  if (edmg > 0 && b.foeFirstHitTurn == null) b.foeFirstHitTurn = b.turn; // 第140節: 短時間マッチの判定材料
   if (window.FX) FX.playerHurt({dmg: edmg, guarded: fxGuarded, ratio: b.maxPhp > 0 ? edmg / b.maxPhp : 0, sys: eKind, killing: b.php <= 0}); // 第88節＋第100節: 被ダメ演出（敵の系統別・決着）
   if (_rng() < 0.18){
     const parts = ["leg", "arm", "core"]; const p = parts[rnd(2)];
@@ -4048,6 +4109,7 @@ function renderTitle(){
   try { initHouseAdTitle(); } catch(e){} // 第98節: 自社おすすめ枠（タイトル画面ローテーション）
 }
 function resumeFromSave(){
+  if (S.flags && S.flags.uraBadEnd && typeof showUraBadEnd === "function"){ showUraBadEnd(S.flags.uraBadEnd); return; } // 第139節: 裏ルートのバッドエンド画面を再表示
   if (S.flags && S.flags.retiredEnding && S.chapter >= 4 && typeof chapter4RetireScreen === "function") chapter4RetireScreen();
   else if (S.flags && S.flags.retiredEnding && typeof retireEndScreen === "function") retireEndScreen();
   else if (S.chapter4Clear && typeof chapter4EndScreen === "function") chapter4EndScreen();
@@ -4151,6 +4213,763 @@ if (typeof CAMEO_EVENTS !== "undefined"){
   } catch(e){}
 });
 
+// ================= 第139節: 裏ルート（裏社会で上り詰める完全な一本の軸） =================
+// 本人の2026-11-13決定「裏ルートでバウンサー、ヤクザ、半グレ、地下格闘技など裏社会で上り詰めるルート作成」
+// → 親担当の設計案に対し、本人が「完全な裏ルートを作る（入口から頂点・裏ED・足洗いまで一本の軸）」を選択。
+// 表の名声とは別の「裏格」ゲージを持ち、入口は複数（全て断れる）。組・集団・店は全て架空の名称。
+// 犯罪の手口の指南になる描写はせず、出来事と結果だけで描く。怪我は既存作の範囲を超えない。
+const URA_RANK_TIERS = [
+  {at:0, name:"バウンサー"},
+  {at:10, name:"揉め事屋"},
+  {at:25, name:"若手"},
+  {at:45, name:"顔役"},
+  {at:70, name:"幹部候補"},
+];
+const URA_HEAT_ARREST = 18;      // 警察の「目を付けられる」内部値がこの値以上で逮捕イベントの抽選が走る
+const URA_JAIL_WEEKS = [3, 6];   // 逮捕1回目=3週間／2回目=6週間の活動停止（3回目はバッドエンド）
+function uraEnsure(){ ensureStateCompat(); return S.ura; }
+function uraTierIdx(){
+  const U = uraEnsure(); let i = 0;
+  URA_RANK_TIERS.forEach((t, k) => { if ((U.rank || 0) >= t.at) i = k; });
+  if (S.chapter <= 4) i = Math.min(i, 3); // 第4章到達可能な上限は「顔役」クラスに留める（幹部候補の先は第5章フック）
+  return i;
+}
+function uraRankName(){ return URA_RANK_TIERS[uraTierIdx()].name; }
+function inJail(){ return !!(S && S.ura && S.ura.jailUntil && S.absWeek < S.ura.jailUntil); }
+function uraTotalDmg(){ let d = 0; for (const k in (S.dmg || {})) d += S.dmg[k] || 0; return d; }
+// {uraFx:{...}} ステップの実処理（選択肢や勝敗分岐の中から、実行時点で裏の内部値を動かす）
+function uraApplyFx(u){
+  if (!u) return;
+  const U = uraEnsure();
+  if (u.rank){
+    const before = uraTierIdx();
+    U.rank = Math.max(0, (U.rank || 0) + u.rank);
+    const after = uraTierIdx();
+    if (after > before){
+      toast("裏の格が上がった――「" + uraRankName() + "」と呼ばれるようになった");
+      if (after >= 3) U.titles.rankTop = true;
+    }
+    if ((U.rank || 0) >= 70) S.flags.uraTopReady = true; // 第5章フック: 幹部候補の器が育っている
+  }
+  if (u.heat) U.heat = Math.max(0, (U.heat || 0) + u.heat);
+  if (u.shift){ U.bouncerShifts = (U.bouncerShifts || 0) + 1; if (U.bouncerShifts >= 5) U.titles.bouncer = true; }
+  if (u.ugWin){
+    U.ugFights = (U.ugFights || 0) + 1; U.ugWins = (U.ugWins || 0) + 1; U.ugStreak = (U.ugStreak || 0) + 1;
+    if (U.ugStreak > (U.ugBest || 0)){ U.ugBest = U.ugStreak; }
+    if ((U.ugBest || 0) >= 3 && !U.titles.ugKing){ U.titles.ugKing = true; S.flags.uraUgKingWeek = S.absWeek; toast("地下で「王者」と呼ばれるようになった"); }
+  }
+  if (u.ugLose){
+    U.ugFights = (U.ugFights || 0) + 1; U.ugStreak = 0;
+    if (_rng() < 0.3){ const parts = ["leg", "arm", "core"]; const p = parts[rnd(2)]; S.dmg[p] = clamp(S.dmg[p] + 1, 0, 3); toast("地下の試合で" + ({leg:"脚", arm:"腕", core:"体幹"})[p] + "を痛めた", true); }
+  }
+  if (u.jobDone){ U.jobsDone[u.jobDone] = true; U.jobsCount = (U.jobsCount || 0) + 1; }
+  U.lastActWeek = S.absWeek;
+}
+// 章末記録への並記（裏格・足洗い・逮捕歴・地下の連勝。浮気等の家庭の履歴と同じく、出すのは事実の範囲まで）
+function uraRecordText(){
+  if (!S || !S.ura) return "";
+  let t = "";
+  if (S.ura.quit) t += " ／ 足を洗った（裏格は" + uraRankName() + "まで）";
+  else if (S.ura.active) t += " ／ 裏格：" + uraRankName();
+  if (S.flags.arrestRecord) t += " ／ 逮捕歴";
+  if ((S.ura.ugBest || 0) > 0) t += " ／ 地下" + S.ura.ugBest + "連勝";
+  return t;
+}
+// ---------- 第139節: バッドエンド（真のデッドエンドには数えない。既存の引退エンディングと同じ「早期終了画面」の扱い） ----------
+const URA_BADENDS = {
+  arrest: {title:"裏ルート ― 逮捕", text:"三度目の逮捕に、執行猶予は付かなかった。実刑。表のリングも、道場の畳も、塀の向こうからは遠かった。裏で上り詰めるはずだった階段は、鉄の扉の前で終わった。――裏の世界で学んだことがあるとすれば、「熱が溜まったら、息を潜める」という、最後まで守れなかった鉄則だった。"},
+  injury: {title:"裏ルート ― 重傷引退", text:"抗争の夜に負った傷は、武術家としての体を静かに終わらせた。診断書の文字は冷たく、源田の見舞いの花だけが病室に残った。裏の階段を上る代償は、表の人生そのものだった。――引退。だが、生きて畳を降りることはできた。それだけが、残った救いだった。"},
+};
+function showUraBadEnd(kind){
+  const def = URA_BADENDS[kind] || URA_BADENDS.arrest;
+  S.flags.uraBadEnd = kind;
+  UI.screen = "end"; UI.battle = null; hud();
+  const r = S.record;
+  $("main").innerHTML = '<div class="endcard"><p class="de-kicker">BAD END</p><h2>' + esc(def.title) + '</h2>' +
+    '<div class="stext">' + esc(def.text) + '</div>' +
+    '<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 名声 " + fameTotal() + "（清名" + S.sei + "・悪名" + S.aku + "）／ 裏格：" + uraRankName() + "（" + (S.ura.rank || 0) + "）／ 地下格闘技 " + (S.ura.ugWins || 0) + "勝（最高" + (S.ura.ugBest || 0) + "連勝）／ 逮捕 " + (S.ura.arrests || 0) + "回" + lifeRecordText() + "</div>" +
+    '<button class="btn next" data-auto="to-title">タイトルへ戻る</button></div>';
+  saveGame(false);
+  $("main").querySelector("[data-auto='to-title']").addEventListener("click", renderTitle);
+}
+// ---------- 第139節: 入口（複数・全て断れる。断れば通常ルートのまま。入る処理は {uraSet:{active:true}} で実行時点に効かせる） ----------
+function uraEntryClubSteps(){
+  const U = uraEnsure(); U.entryDone.club = true;
+  return [
+    {sp:"narr", t:"稽古の帰り、繁華街のクラブ『ルナ・ノワール』の前で声をかけられた。経営者の霧島という男。裏の顔も持つ、と界隈で噂のある人物だった。"},
+    {sp:"霧島", t:"あんたの試合、見たよ。……うちの店、荒い客が多くてね。用心棒を探してるんだ。表の稼ぎより、ずっと色は付ける。どうだい、一晩だけでも"},
+    {sp:"me", t:"（悪名が先に歩いているからこそ、来た話だ。裏の世界への、最初の扉だった）"},
+    {choice:[
+      {label:"用心棒を引き受ける（裏ルートに入る）", say:[
+        {uraSet:{active:true}},
+        {sp:"霧島", t:"話が早くて助かる。……歓迎するよ。ただし、一つだけ。うちに関わったことは、表じゃ言わない。それが作法だ"},
+        {sp:"narr", t:"――こうして、表の顔と裏の顔を持つ生活が始まった。"},
+      ]},
+      {label:"丁重に断る", say:[
+        {uraSet:{declined:{club:true}}},
+        {sp:"霧島", t:"そうかい。……無理にとは言わない。気が変わったら、店はいつでも開いてる"},
+        {sp:"narr", t:"裏の誘いを断った。表の道を、まっすぐ歩く。"},
+      ]},
+    ]},
+  ];
+}
+function uraEntryHideSteps(){
+  const U = uraEnsure(); U.entryDone.hide = true;
+  return [
+    {sp:"narr", t:"潜伏先の小さな飲み屋。カウンターの隣に座った男が、グラスを傾けながら言った。「あんた、訳ありだね。……訳ありの人間を匿う代わりに、腕を使わせる店がある。興味あるかい」"},
+    {sp:"me", t:"（潜伏中の身に、裏の誘い。食いつけば、当面の居場所と金は手に入る。だが、足を踏み入れることにもなる）"},
+    {choice:[
+      {label:"話に乗る（裏ルートに入る）", say:[
+        {uraSet:{active:true}},
+        {sp:"narr", t:"男の紹介で、裏の仕事の口が開いた。潜伏の影が、そのまま裏への入口になった。"},
+      ]},
+      {label:"関わらない", say:[
+        {uraSet:{declined:{hide:true}}},
+        {sp:"narr", t:"相手にせず、店を出た。潜伏は潜伏。裏にまで手を伸ばすことはしない。"},
+      ]},
+    ]},
+  ];
+}
+function uraEntryDebtSteps(){
+  const U = uraEnsure(); U.entryDone.debt = true;
+  return [
+    {sp:"narr", t:"借金の取り立てに来た男――カネモトが、帰り際にふと言った。「先生、返済に困ってる顔だ。……金は、体で返す方法もある。うちの仕事を手伝えば、返済はだいぶ楽になる」"},
+    {sp:"カネモト", t:"無理にとは言わない。ただ、腕の立つ人間は、どっちの世界でも値打ちがある。それだけの話だ"},
+    {choice:[
+      {label:"働き口を引き受ける（裏ルートに入る）", say:[
+        {uraSet:{active:true}},
+        {sp:"narr", t:"借金の坂道の途中で、裏への脇道が開いた。返すために入る世界は、返す以上のものを要求するかもしれない。"},
+      ]},
+      {label:"借りた金は、正道で返す", say:[
+        {uraSet:{declined:{debt:true}}},
+        {sp:"カネモト", t:"……立派なもんだ。じゃあ、来月の返済、待ってるよ"},
+      ]},
+    ]},
+  ];
+}
+function uraEntryUgSteps(){
+  const U = uraEnsure(); U.entryDone.ug = true;
+  BATTLES["ura_trial"] = {title:"地下格闘技・顔見せの一戦", enemyName:"鉄仮面のジン", enemyStyleName:"総合格闘技（MMA）", hp:105 + S.chapter * 10, power:10 + S.chapter, mode:"ug", foul:true,
+    comments:["実況なし。地下では、静かな方が怖い","「新入りか。どこまで持つかね」","鉄仮面の奥の目が、値踏みしている"]};
+  return [
+    {sp:"narr", t:"稽古の帰り、見知らぬ男から封筒を渡された。中身は、住所だけが書かれた紙。――地下格闘技。賭けと裏の名声だけが通貨の、もう一つのリングだった。"},
+    {sp:"narr", t:"倉庫の地下。静まり返った観客の前で、鉄仮面の男が待っていた。「客として来たのか、選手として来たのか。……決めるのは、一戦の後だ」"},
+    {battle:"ura_trial", win:[
+      {sp:"鉄仮面のジン", t:"……悪くない。いや、良い。地下はあんたみたいなのを待ってた。選手として、名を置いていくか？"},
+      {choice:[
+        {label:"地下に名を置く（裏ルートに入る）", say:[
+          {uraSet:{active:true}},
+          {sp:"narr", t:"地下の名簿に、自分の名が書き加えられた。表の名声とは別物の、もう一つの階段が始まる。"},
+        ]},
+        {label:"今日は客で帰る", say:[
+          {uraSet:{declined:{ug:true}}},
+          {sp:"鉄仮面のジン", t:"そうか。……だが、一度勝った味は忘れられないさ。また来るよ、あんたは"},
+        ]},
+      ]},
+    ], lose:[
+      {sp:"鉄仮面のジン", t:"まだ早い。……だが、目つきは悪くなかった。表で揉まれて、出直してこい"},
+      {sp:"narr", t:"地下への入口は、今日は開かなかった。別の扉が開く日が来るかもしれない。"},
+    ]},
+  ];
+}
+// ---------- 第139節: 彼女への露見・道場の噂 ----------
+function uraPartnerLeaveLines(pid){
+  // 関係の解消そのものは v1.98 の正規処理 lifeBreakupApply に委譲する（配偶者の慰謝料=借金20万円・好感・再告白クールダウン等も既存仕様どおり）
+  const c = CAST_BY_ID[pid];
+  const lines = [{sp:"narr", t:(c ? c.name : "彼女") + "は、静かに荷物をまとめた。裏の世界と、自分の日常は、同じ家には置けなかった。"}];
+  return lines.concat(lifeBreakupApply(pid, {}));
+}
+function uraExposureSteps(){
+  const U = uraEnsure(); U.exposedDone = true;
+  const pid = (S.life && S.life.partners[0]) || S.partner;
+  const c = CAST_BY_ID[pid]; if (!c) return [{sp:"narr", t:"裏の噂が、身近なところまで届き始めていた。"}];
+  const aff = S.affection[pid] || 0;
+  const fxAff = {}; fxAff[pid] = -15;
+  const honestSay = aff >= 70 ? [
+    {sp:pid, t:"……隠されるより、ずっとまし。でも、約束して。私の日常に、あっちの世界の影を持ち込まないで"},
+    {fx:{affection:fxAff}},
+    {sp:"narr", t:"関係は続いた。だが、裏の仕事の話は、二人の間で静かに封をされた話題になった。"},
+  ] : [
+    {sp:pid, t:"……裏の世界の人だったんだ。私、そういう人とは、一緒にいられない"},
+    {uraPartnerLeave:true},
+  ];
+  return [
+    {sp:"narr", t:"帰宅すると、" + c.name + "がスマホの画面を見せてきた。CLASHの噂投稿――「あの師範、夜はクラブの用心棒らしい」という一文と、後ろ姿の写真が付いていた。"},
+    {img:pid},
+    {sp:pid, t:"これ……本当のこと、話して。裏の仕事って、何のこと？"},
+    {choice:[
+      {label:"正直に話す", say:honestSay},
+      {label:"知人の店の手伝いだ、と隠し通す", say:[
+        {uraSet:{hiddenFromPartner:true}},
+        {sp:"narr", t:"その場は収まった。だが、嘘は火種になる。決定的な証拠を掴まれた時、今度こそ言い逃れはできない。"},
+      ]},
+    ]},
+  ];
+}
+function uraExposureHardSteps(){
+  const U = uraEnsure(); U.exposedHardDone = true; U.hiddenFromPartner = false;
+  const pid = (S.life && S.life.partners[0]) || S.partner;
+  const c = CAST_BY_ID[pid]; if (!c) return [{sp:"narr", t:"裏の噂は、もう噂の域を出ていた。"}];
+  const aff = S.affection[pid] || 0;
+  const stay = S.life && S.life.spouse === pid && aff >= 90;
+  const fxAff = {}; fxAff[pid] = -30;
+  const apologySay = stay ? [
+    {sp:pid, t:"……二度目はないから。今度こそ、本当に終わりだから"},
+    {fx:{affection:fxAff}},
+    {sp:"narr", t:"関係は、かろうじて続いた。だが、裏の仕事への視線は、これまでとは比べものにならないほど重くなった。"},
+  ] : [
+    {sp:pid, t:"前にも聞いた。『知人の店の手伝い』って。……もう、信じる材料がない"},
+    {uraPartnerLeave:true},
+  ];
+  return [
+    {sp:"narr", t:"決定的だった。地下格闘技の会場で撮られた写真が、" + c.name + "の手元に届いていた。隠し通す余地は、もうなかった。"},
+    {img:pid},
+    {sp:pid, t:"ねえ。……今度は、本当のことを聞かせて"},
+    {choice:[
+      {label:"全部話して、謝る", say:apologySay},
+      {label:"開き直る", say:[
+        {fx:{aku:2}},
+        {sp:pid, t:"……そう。分かった。じゃあ、私は私の世界に帰る"},
+        {uraPartnerLeave:true},
+      ]},
+    ]},
+  ];
+}
+function uraRumorSteps(){
+  const U = uraEnsure(); U.rumorDone = true;
+  const low = S.students.filter(s => (s.trust || 50) < 60);
+  const leaveN = Math.ceil(low.length / 2);
+  const leaving = low.slice(0, leaveN);
+  if (leaving.length) S.students = S.students.filter(s => !leaving.includes(s));
+  const steps = [
+    {sp:"narr", t:"CLASHに、こんな投稿が流れた。「あの道場の師範、夜は繁華街のクラブで用心棒してるってマジ？」「裏と付き合いがある道場らしい」――噂は、事実かどうかより先に広がる。"},
+  ];
+  if (leaving.length) steps.push({sp:"narr", t:"数日後、生徒" + leaving.length + "名が辞めていった。「親に止められて……」が、決まって添えられる理由だった。信頼の厚い生徒だけが、畳に残った。"});
+  else steps.push({sp:"narr", t:"生徒たちは、誰も辞めなかった。信頼が、噂より先に積み上がっていた。"});
+  steps.push({fx:{sei:-1, attention:1}});
+  return steps;
+}
+// ---------- 第139節: 抗争イベント ----------
+function uraWarLoseLines(){
+  if (uraTotalDmg() >= 5){
+    return [
+      {sp:"narr", t:"積み上がった傷が、限界を超えた。視界が暗くなり、膝が落ちる。――この夜の代償は、武術家としての体そのものだった。"},
+      {uraBadEnd:"injury"},
+    ];
+  }
+  return [
+    {fx:{dmg:{core:1, arm:1}}},
+    {sp:"narr", t:"何とか、その場は切り抜けた。だが体には重い傷が残り、裏の格も大きく削がれた。"},
+    {uraFx:{rank:-3}},
+  ];
+}
+function uraWarSteps(n){
+  const U = uraEnsure();
+  if (n === 1) U.warDone = true; else U.war2Done = true;
+  const bid = "ura_war" + n;
+  BATTLES[bid] = {title:"抗争 ― 夜鷹会との衝突", enemyName: n === 1 ? "夜鷹会の頭目・鷹野" : "夜鷹会の若頭・鷹野の弟", enemyStyleName:"極真空手", hp: 125 + S.chapter * 15 + (n - 1) * 25, power: 12 + S.chapter + (n - 1) * 2, mode:"ug", foul:true,
+    comments:["地下駐車場に、エンジン音だけが響く","「話し合いで済む相手じゃねえ」","両陣営の若い衆が、壁際に並んで見ている"]};
+  const winMoney = n === 1 ? 20000 : 50000;
+  return [
+    {sp:"narr", t: n === 1
+      ? "縄張りを巡る火種が、ついに燃え上がった。繁華街の裏手を仕切る半グレ集団『夜鷹会』が、霧島の店の前に人を並べた。――抗争だった。"
+      : "夜鷹会との因縁は、まだ終わっていなかった。今度は向こうの若頭が、地下格闘技の会場そのものを狙ってきた。"},
+    {sp:"霧島", t:"すまない、巻き込んだ。……だが、あんたがいてくれれば、話の持って行きようがある"},
+    {choice:[
+      {label:"話し合いで収める（落とし前 30,000円）", say:[
+        {fx:{money:-30000}},
+        {uraFx:{rank:2, heat:1}},
+        {sp:"narr", t:"落とし前を付け、互いの若い衆を引かせた。拳ではなく、金と格で収めた抗争だった。裏の世界では、それもまた実力の内だった。"},
+      ]},
+      {label:"迎え撃つ", say:[
+        {battle:bid, win:[
+          {uraFx:{rank:6, heat:6}},
+          {fx:{money:winMoney}},
+          {sp:"narr", t:"決着は、一対一の勝負で付いた。夜鷹会の頭目は深く頭を下げ、縄張りの線引きは書き直された。裏の格が、大きく上がった夜だった。"},
+        ], lose:[
+          {uraWarLoseCheck:true},
+        ]},
+      ]},
+    ]},
+  ];
+}
+// ---------- 第139節: 逮捕イベント ----------
+function uraArrestSteps(){
+  const U = uraEnsure();
+  U.arrests = (U.arrests || 0) + 1;
+  const n = U.arrests;
+  U.heat = 0;
+  if (n >= 3){
+    return [
+      {sp:"narr", t:"三度目の、警察の訪問だった。今度は任意同行ではなかった。裏の仕事の蓄積――バウンサーの小競り合い、地下の試合、抗争の夜。全部に、静かに目が付いていた。"},
+      {sp:"narr", t:"「何度も、同じ顔を見るね」刑事の言葉に、返す言葉はなかった。"},
+      {uraBadEnd:"arrest"},
+    ];
+  }
+  const weeks = URA_JAIL_WEEKS[n - 1] || 6;
+  U.jailUntil = S.absWeek + weeks;
+  S.flags.arrestRecord = true;
+  S.flags.arrestWeek = S.absWeek;
+  return [
+    {sp:"narr", t:"道場に、刑事が二人来た。地下格闘技の会場への一斉の立ち入りで、名簿に自分の名があったという。「任意で、同行してもらえますか」"},
+    {sp:"narr", t:"取り調べと勾留で、" + weeks + "週間が消えた。釈放された時、表の世界は少しだけ先へ進んでいて、道場の生徒の顔にも、戸惑いが混じっていた。"},
+    {fx:{sei: n === 1 ? -3 : -5, aku: n === 1 ? 1 : 2, attention:2}},
+    {sp:"me", t:"（" + weeks + "週間は、表舞台の活動ができない。……裏の熱の代償は、こうやって払うことになる）"},
+  ];
+}
+// ---------- 第139節: 週頭の判定（逮捕>露見>噂>抗争>入口。週に最大1件） ----------
+function tryUraEvents(forceKind){
+  if (!S || !S.flags || S.flags.retiredEnding || S.flags.uraBadEnd) return false;
+  const U = uraEnsure();
+  // 「熱」の自然減衰: 裏の活動を2週間以上取らなければ、週ごとに少しずつ冷める
+  if (U.active && !U.quit && U.lastAccWeek !== S.absWeek){
+    U.lastAccWeek = S.absWeek;
+    if (S.absWeek - (U.lastActWeek || 0) >= 2 && (U.heat || 0) > 0) U.heat = Math.max(0, U.heat - 2);
+  }
+  if (forceKind) return uraForceEvent(forceKind);
+  if (inJail()) return false;
+  if (U.active && !U.quit){
+    // 逮捕: 熱が溜まり切ると抽選が走る
+    if ((U.heat || 0) >= URA_HEAT_ARREST && _rng() < 0.30){ startScene(uraArrestSteps(), null, null); return true; }
+    // 彼女への決定的な露見（隠し通した後）
+    const pid = (S.life && S.life.partners[0]) || S.partner;
+    if (U.hiddenFromPartner && !U.exposedHardDone && (U.heat || 0) >= 14 && pid){ startScene(uraExposureHardSteps(), null, null); return true; }
+    // 彼女への露見（最初の噂）
+    if (!U.exposedDone && (U.heat || 0) >= 8 && pid && _rng() < 0.25){ startScene(uraExposureSteps(), null, null); return true; }
+    // 道場の噂（弟子離脱）
+    if (!U.rumorDone && (U.heat || 0) >= 5 && S.students.length >= 2 && _rng() < 0.3){ startScene(uraRumorSteps(), null, null); return true; }
+    // 抗争
+    if (!U.war2Done && U.warDone && uraTierIdx() >= 3 && _rng() < 0.15){ startScene(uraWarSteps(2), null, null); return true; }
+    if (!U.warDone && uraTierIdx() >= 2 && _rng() < 0.20){ startScene(uraWarSteps(1), null, null); return true; }
+    return false;
+  }
+  if (U.active || U.quit) return false;
+  // 入口（潜伏中の入口だけは潜伏中でも開く。それ以外は通常の週に）
+  if (inHiding() && !U.entryDone.hide){ startScene(uraEntryHideSteps(), null, null); return true; }
+  if (inHiding()) return false;
+  if (S.chapter >= 2 && !U.entryDone.club && (S.aku || 0) >= 8){ startScene(uraEntryClubSteps(), null, null); return true; }
+  if (S.chapter >= 2 && !U.entryDone.debt && debtOf() >= 100000){ startScene(uraEntryDebtSteps(), null, null); return true; }
+  if (S.chapter >= 2 && !U.entryDone.ug && ((S.attention || 0) >= 10 || (S.aku || 0) >= 5)){ startScene(uraEntryUgSteps(), null, null); return true; }
+  return false;
+}
+// ---------- 第139節: 活動（週の行動「裏の仕事」） ----------
+function renderUraPick(){
+  hud();
+  const U = uraEnsure(); const tier = uraTierIdx();
+  const pay = 10000 + tier * 5000;
+  const jobs = URA_JOBS.filter(j => tier >= j.minTier && !U.jobsDone[j.id]);
+  let html = '<div class="weekhead"><h2>裏の仕事</h2><div class="weeksub">裏格：<b>' + esc(uraRankName()) + '</b>（' + (U.rank || 0) + '）／ 警察の目：' + ((U.heat || 0) >= URA_HEAT_ARREST ? "危険域" : (U.heat || 0) >= 10 ? "要注意" : (U.heat || 0) >= 4 ? "やや目立っている" : "静か") + '／ 地下戦績：' + (U.ugWins || 0) + "勝（最高" + (U.ugBest || 0) + '連勝）／ 揉め事解決：' + (U.jobsCount || 0) + '件。週の行動1回分を使います</div></div>';
+  html += '<div class="actions">';
+  html += '<button class="btn act" data-ura="bouncer"><b>クラブの用心棒（バウンサー勤務）</b><span>給与 ' + pay.toLocaleString() + '円。酔客や半グレとの小競り合いが起きることも。疲労が溜まる</span></button>';
+  html += '<button class="btn act" data-ura="ug"><b>地下格闘技に出る</b><span>出場料 10,000円＋勝利金。反則・暗器が通常装備の世界。連勝で「地下の王者」へ。怪我と警察のリスクあり</span></button>';
+  if (jobs.length) html += jobs.map(j => '<button class="btn act" data-urajob="' + j.id + '"><b>揉め事の仕事：' + esc(j.name) + '</b><span>' + esc(j.desc) + '</span></button>').join("");
+  else html += '<button class="btn act" disabled><b>揉め事の仕事</b><span>今は回ってくる仕事がない（裏格が上がると新しい仕事が来る）</span></button>';
+  if ((U.rank || 0) >= 25) html += '<button class="btn act" data-ura="quit"><b>足を洗う相談</b><span>ケジメ金 ' + uraKejime().toLocaleString() + '円＋最後の仕事＋ボスの承認が必要。簡単には抜けられない</span></button>';
+  html += '<button class="btn ghost" data-back="1">戻る</button></div>';
+  $("main").innerHTML = html;
+  $("main").querySelector("[data-back]").addEventListener("click", renderWeek);
+  $("main").querySelectorAll("[data-ura]").forEach(b => b.addEventListener("click", () => {
+    const a = b.dataset.ura;
+    if (a === "bouncer") uraBouncerShift();
+    else if (a === "ug") uraStartUgFight();
+    else if (a === "quit") startScene(uraQuitSteps(), () => endWeek(), null);
+  }));
+  $("main").querySelectorAll("[data-urajob]").forEach(b => b.addEventListener("click", () => {
+    const j = URA_JOBS.find(x => x.id === b.dataset.urajob);
+    if (j) startScene(j.steps(), () => endWeek(), null);
+  }));
+}
+function uraBouncerShift(){
+  const U = uraEnsure(); const tier = uraTierIdx();
+  const pay = 10000 + tier * 5000;
+  U.lastActWeek = S.absWeek;
+  S.fatigue = clamp(S.fatigue + 16, 0, 100);
+  if (_rng() < 0.30){
+    BATTLES["ura_bouncer"] = {title:"クラブの小競り合い", enemyName:"絡んできた半グレ", enemyStyleName:"キックボクシング", hp: 85 + S.chapter * 10, power: 9 + S.chapter, mode:"match", foul:true,
+      comments:["「店の前で騒ぐなっつーの！」","霧島が腕組みして見ている。評価が決まる場面だ","他の客がスマホを構えた。表沙汰は避けたい"]};
+    startScene([
+      {sp:"narr", t:"その夜、店の前で半グレの若い衆が客に絡み始めた。霧島の目が、こちらを見た。――仕事の時間だった。"},
+      {battle:"ura_bouncer", win:[
+        {uraFx:{rank:2, heat:2, shift:true}},
+        {fx:{money: pay + 5000}},
+        {sp:"霧島", t:"見事なもんだ。騒ぎを大きくせずに収めるのが一番難しい。……ボーナスだ、受け取ってくれ"},
+        {sp:"narr", t:"給与 " + (pay + 5000).toLocaleString() + "円を受け取った。裏の評判も、少し上がった気がした。"},
+      ], lose:[
+        {uraFx:{heat:1, shift:true}},
+        {fx:{money: Math.floor(pay / 2)}},
+        {sp:"narr", t:"乱闘は収まったが、店の備品を壊してしまった。給与は半額。裏の世界でも、結果が全てだった。"},
+      ]},
+    ], () => endWeek(), null);
+    return;
+  }
+  startScene([
+    {sp:"narr", t:"その夜は、大きな騒ぎはなかった。入口に立ち、酔客の喧嘩を二度ほど言葉で収めて、シフトを終えた。"},
+    {fx:{money: pay}},
+    {uraFx:{rank:1, heat:1, shift:true}},
+    {sp:"霧島", t:"静かな夜が一番の稼ぎだ。……また頼むよ"},
+    {sp:"narr", t:"給与 " + pay.toLocaleString() + "円を受け取った。"},
+  ], () => endWeek(), null);
+}
+const URA_UG_FOES = [
+  {name:"鉄仮面のジン", style:"総合格闘技（MMA）"},
+  {name:"喧嘩屋サブロウ", style:"極真空手"},
+  {name:"無敗のタコス", style:"ボクシング"},
+  {name:"氷のミツル", style:"講道館柔道"},
+  {name:"笑うゴリマッチョ", style:"レスリング（フリースタイル）"},
+  {name:"沈黙のケンジ", style:"キックボクシング"},
+  {name:"二代目タイガー", style:"ムエタイ"},
+  {name:"骨法のユウ", style:"ブラジリアン柔術"},
+];
+function uraStartUgFight(){
+  const U = uraEnsure(); const tier = uraTierIdx();
+  const f = URA_UG_FOES[((U.ugFights || 0) + (S.absWeek % 3)) % URA_UG_FOES.length];
+  const hp = 105 + S.chapter * 12 + tier * 8 + (U.ugStreak || 0) * 6;
+  const power = 10 + S.chapter + tier + Math.min(4, U.ugStreak || 0);
+  const purse = 30000 + tier * 10000 + (U.ugStreak || 0) * 5000;
+  BATTLES["ura_ug"] = {title:"地下格闘技 vs " + f.name, enemyName: f.name, enemyStyleName: f.style, hp, power, mode:"ug", foul:true,
+    comments:["地下の金網に、静かな熱気","「賭け金は、もう動かない」","反則も暗器も、ここでは日常だ"]};
+  U.lastActWeek = S.absWeek;
+  startScene([
+    {sp:"narr", t:"地下の会場。出場料の 10,000円を先に受け取り、金網の中へ。今夜の相手は「" + f.name + "」。"},
+    {fx:{money:10000}},
+    {battle:"ura_ug", win:[
+      {uraFx:{ugWin:true, rank:3, heat:3}},
+      {fx:{money: purse, attention:1}},
+      {sp:"narr", t:"勝利金 " + purse.toLocaleString() + "円。地下の連勝は " + ((U.ugStreak || 0) + 1) + " に伸びた。観客席のざわめきが、名前を呼び始めている。"},
+    ], lose:[
+      {uraFx:{ugLose:true, heat:2}},
+      {sp:"narr", t:"敗北。出場料のみで、連勝は途切れた。地下の階段は、一段降りればまた上るしかない。"},
+    ]},
+  ], () => endWeek(), null);
+}
+// ---------- 第139節: 揉め事の解決（短編イベント群・最低4本） ----------
+const URA_JOBS = [
+  { id:"collect", name:"取り立てへの同行", minTier:0, desc:"報酬 15,000円。返済を渋る店主のところへ同行する。話で済むか、力を見せるか",
+    steps(){ return [
+      {sp:"narr", t:"霧島からの仕事。金を貸した先の店主が、返済を先延ばしにし続けているという。「殴る仕事じゃない。隣に立って、話を前に進める仕事だ」"},
+      {sp:"店主", t:"ま、待ってくれ。今月は本当に厳しくて……"},
+      {choice:[
+        {label:"話で収める（分割返済の約束を取り付ける）", say:[
+          {uraFx:{rank:1, heat:1, jobDone:"collect"}},
+          {fx:{money:15000, sei:1}},
+          {sp:"narr", t:"月々の返済計画を書面にし、店主と握手を交わした。裏の仕事の中では、一番表に近い終わり方だった。報酬 15,000円。"},
+        ]},
+        {label:"力を見せる（無言で佇み、圧をかける）", say:[
+          {uraFx:{rank:3, heat:2, jobDone:"collect"}},
+          {fx:{money:15000, aku:1}},
+          {sp:"narr", t:"一言も発さずに立ち続けた。店主は震える手で、金庫から返済分を出した。――裏の格は上がったが、この収め方は体に残る。報酬 15,000円。"},
+        ]},
+        {label:"金で収める（自分の金で一部を肩代わりする）", say:[
+          {uraFx:{rank:2, heat:1, jobDone:"collect"}},
+          {fx:{money:-5000}},
+          {sp:"narr", t:"差額の一部を自分で埋め、その場を収めた。実入りは減ったが、霧島は「あんたらしいな」と笑った。裏での信用は、案外こういうところで貯まる。"},
+        ]},
+      ]},
+    ]; } },
+  { id:"escort", name:"要人の護衛", minTier:1, desc:"報酬 25,000円。裏の顔役の移動を護衛する。目立つ真似は禁物",
+    steps(){
+      BATTLES["ura_escort"] = {title:"護衛の小競り合い", enemyName:"並走車の男", enemyStyleName:"ボクシング", hp: 90 + S.chapter * 10, power: 9 + S.chapter, mode:"match", foul:true, comments:["「オヤジには、指一本触れさせない」","路地裏の、短い決着だった"]};
+      return [
+      {sp:"narr", t:"裏の顔役――通称「オヤジ」の護衛。表に出せない移動の間、影のように付く仕事だった。道中、別の集団の車が、わざとらしく並走してきた。"},
+      {choice:[
+        {label:"話で収める（窓を開け、退くよう促す）", say:[
+          {uraFx:{rank:2, heat:1, jobDone:"escort"}},
+          {fx:{money:25000}},
+          {sp:"narr", t:"目と目が合う、静かな数秒。先に目を逸らしたのは向こうだった。車は離れ、護衛は無事に終わった。報酬 25,000円。"},
+        ]},
+        {label:"力を見せる（先に降りて、道を開ける）", say:[
+          {battle:"ura_escort", win:[
+            {uraFx:{rank:4, heat:3, jobDone:"escort"}},
+            {fx:{money:25000, aku:1}},
+            {sp:"narr", t:"短い決着。オヤジは車の窓から、静かに頷いた。「あんたは、使いどころのある男だ」。報酬 25,000円。"},
+          ], lose:[
+            {uraFx:{rank:1, heat:2, jobDone:"escort"}},
+            {fx:{money:12000}},
+            {sp:"narr", t:"何とかオヤジを逃がしたが、仕事としては失敗だった。報酬は半額。裏の評判は、こういう夜に削れる。"},
+          ]},
+        ]},
+        {label:"金で収める（通行料を払って通す）", say:[
+          {uraFx:{rank:2, heat:1, jobDone:"escort"}},
+          {fx:{money:10000}},
+          {sp:"narr", t:"「通行料だ」と封筒を渡すと、車はあっさり退いた。25,000円の報酬から15,000円を差し引いた残りが手元に残った。血を見ない金は、裏では立派な解決だった。"},
+        ]},
+      ]},
+    ]; } },
+  { id:"mediate", name:"店同士の仲裁", minTier:2, desc:"報酬 30,000円。繁華街の二軒の店の縄張り争いを仲裁する",
+    steps(){
+      BATTLES["ura_mediate"] = {title:"仲裁の組手", enemyName:"両店の用心棒コンビ", enemyStyleName:"レスリング（フリースタイル）", hp: 110 + S.chapter * 10, power: 11 + S.chapter, mode:"match", foul:true, comments:["組手と言う名の、力比べ","見ている両店主の顔色が変わっていく"]};
+      return [
+      {sp:"narr", t:"繁華街のキャバクラ二軒が、客引きの範囲で揉めに揉めている。霧島いわく「あんたの名前で、テーブルに着ければ勝ちだ」。"},
+      {choice:[
+        {label:"話で収める（双方の言い分を聞き、線引きを提案する）", say:[
+          {uraFx:{rank:3, heat:1, jobDone:"mediate"}},
+          {fx:{money:30000, sei:1}},
+          {sp:"narr", t:"通りの真ん中で線を引き、引き合いの時間を決めた。双方が「あんたの顔を立てる」と頷く。仲裁は、裏格の正しい使い方だった。報酬 30,000円。"},
+        ]},
+        {label:"力を見せる（両店の用心棒と組手を演じる）", say:[
+          {battle:"ura_mediate", win:[
+            {uraFx:{rank:5, heat:2, jobDone:"mediate"}},
+            {fx:{money:30000, aku:1}},
+            {sp:"narr", t:"両店の用心棒を制し、立ったまま締めた。力の序列がはっきりした夜ほど、話し合いが早く進むことはなかった。報酬 30,000円。"},
+          ], lose:[
+            {uraFx:{rank:1, heat:2, jobDone:"mediate"}},
+            {fx:{money:15000}},
+            {sp:"narr", t:"力を見せるはずが、逆に実力を見せつけられた。仲裁は長引き、報酬は半額になった。"},
+          ]},
+        ]},
+        {label:"金で収める（両店に和解金を持たせる）", say:[
+          {uraFx:{rank:2, heat:1, jobDone:"mediate"}},
+          {fx:{money:-10000}},
+          {sp:"narr", t:"報酬の30,000円に自分の40,000円を足し、両店への和解金を仕立てた。懐は痛んだが、二軒の店が「あの人に世話になった」と言う関係は残った。"},
+        ]},
+      ]},
+    ]; } },
+  { id:"pursue", name:"地下の賞金回収", minTier:3, desc:"報酬 40,000円。地下格闘技の賞金を持ち逃げした胴元を追う",
+    steps(){
+      BATTLES["ura_pursue"] = {title:"倉庫の決着", enemyName:"胴元の用心棒", enemyStyleName:"ムエタイ", hp: 120 + S.chapter * 12, power: 12 + S.chapter, mode:"ug", foul:true, comments:["倉庫に、鉄の扉の閉まる音","「金は、渡さない」"]};
+      return [
+      {sp:"narr", t:"地下格闘技の大きな一戦の後、胴元が賞金を持って消えた。霧島の顔に、珍しく焦りがあった。「選手への払いは、地下の信用そのものだ。頼めるか」"},
+      {sp:"narr", t:"胴元は港湾の倉庫にいた。隣には、腕自慢の用心棒が一人。"},
+      {choice:[
+        {label:"話で収める（信用の話をして、返金させる）", say:[
+          {uraFx:{rank:4, heat:2, jobDone:"pursue"}},
+          {fx:{money:40000, sei:1}},
+          {sp:"narr", t:"「今日逃げたら、あんたは一生、地下の土俵に上がれない」。胴元は観念して金庫を開けた。選手全員への払いが済み、自分の取り分 40,000円が残った。"},
+        ]},
+        {label:"力を見せる（用心棒と決着を付ける）", say:[
+          {battle:"ura_pursue", win:[
+            {uraFx:{rank:6, heat:4, jobDone:"pursue"}},
+            {fx:{money:40000, aku:1}},
+            {sp:"narr", t:"用心棒を下し、賞金を取り戻した。地下の選手たちの間で、「困ったら、あの人のところへ」という噂が広まった。報酬 40,000円。"},
+          ], lose:[
+            {uraFx:{rank:2, heat:3, jobDone:"pursue"}},
+            {fx:{money:20000}},
+            {sp:"narr", t:"決着は付かず、胴元は半分だけを置いて逃げた。取り戻した分から、自分の取り分 20,000円を受け取った。"},
+          ]},
+        ]},
+        {label:"金で収める（不足分を立て替えて選手に払う）", say:[
+          {uraFx:{rank:3, heat:1, jobDone:"pursue"}},
+          {fx:{money:0}},
+          {sp:"narr", t:"報酬の40,000円をそのまま選手への払いに回し、不足は自分の貯えから足した。懐は空になったが、地下での「あの人は信用できる」という評判は、金より長く残るものだった。"},
+        ]},
+      ]},
+    ]; } },
+];
+// ---------- 第139節: 足を洗う（出口） ----------
+function uraKejime(){ return 50000 + (uraEnsure().rank || 0) * 1000; }
+function uraQuitSteps(){
+  const kejime = uraKejime();
+  return [
+    {sp:"narr", t:"足を洗いたい。その決意を、霧島に切り出した。裏格が上がった者ほど、抜けるには作法がいる――ケジメ金と、最後の仕事、そしてボスの承認だった。"},
+    {sp:"霧島", t:"ケジメ金は " + kejime.toLocaleString() + "円。それと、最後に一つだけ仕事を頼む。……それで、けじめは付く。ただし、ボスが首を縦に振るかどうかは、保証しない"},
+    {choice:[
+      {label:"ケジメ金を払い、最後の仕事を受ける", say:[ {uraQuitPay:true} ]},
+      {label:"まだ、その時ではない", say:[
+        {sp:"霧島", t:"だろうな。……あんたの格じゃ、簡単には抜けられない。それが、裏の作法だ"},
+      ]},
+    ]},
+  ];
+}
+function uraQuitPayLines(){
+  const U = uraEnsure(); const kejime = uraKejime();
+  if (S.money < kejime){
+    return [
+      {sp:"霧島", t:"金が足りないようだね。……裏を抜ける金も稼げないうちは、抜ける資格がないってことさ"},
+      {sp:"narr", t:"足を洗う話は、いったん流れた。ケジメ金 " + kejime.toLocaleString() + "円を用意してから、出直すしかない。"},
+    ];
+  }
+  S.money -= kejime; U.quitPaid = kejime;
+  BATTLES["ura_lastjob"] = {title:"最後の仕事 ― 仲裁の場", enemyName:"仲裁を壊しに来た男", enemyStyleName:"キックボクシング", hp: 115 + S.chapter * 12, power: 12 + S.chapter, mode:"match", foul:true,
+    comments:["この一戦が、裏での最後の仕事になる","「けじめは、自分で付けるもんだ」"]};
+  return [
+    {sp:"narr", t:"ケジメ金 " + kejime.toLocaleString() + "円を渡した。最後の仕事は、店同士の仲裁の場を守ること。――だが、その場に、仲裁を壊しに来た男が現れた。"},
+    {battle:"ura_lastjob", win:[ {uraQuitBoss:true} ], lose:[
+      {sp:"narr", t:"体を張って、その場だけは守り切った。傷だらけのまま、ボスの前に立つ。"},
+      {uraQuitBoss:true},
+    ]},
+  ];
+}
+function uraQuitBossLines(){
+  const U = uraEnsure();
+  const ok = (U.rank || 0) >= 35 || (U.titles && U.titles.ugKing);
+  if (!ok){
+    const refund = U.quitPaid || 0; S.money += refund; U.quitPaid = 0;
+    return [
+      {sp:"ボス", t:"……まだ早い。あんたの格は、抜けるには中途半端だ。ケジメ金は返しておく。もっと裏で名を上げてから、出直してこい"},
+      {sp:"narr", t:"承認は得られなかった。金は戻ったが、足はまだ裏の世界の中にあった。（承認の目安：裏格35以上、または地下の王者の実績）"},
+    ];
+  }
+  U.quit = true; U.quitWeek = S.absWeek; U.heat = 0; U.titles.ashi = true; U.quitPaid = 0;
+  S.flags.uraQuitWeek = S.absWeek;
+  return [
+    {sp:"ボス", t:"――よし。あんたのけじめ、受け取った。今日から、あんたは表の人間だ。裏のことは、こちらからも口外しない"},
+    {fx:{sei:2}},
+    {sp:"narr", t:"裏の世界に、静かに別れを告げた。稼いだ金も、背負った熱も、全部が過去になった。二つ名は――「足を洗った男」。表の道場で、もう一度、まっすぐ歩き始める。"},
+  ];
+}
+// ---------- 第139節: 裏ED（第4章末）と終端チェック ----------
+function uraTopSteps(){
+  const U = uraEnsure();
+  S.flags.uraTopEnding = true; S.flags.uraTopWeek = S.absWeek;
+  return [
+    {sp:"narr", t:"地下の会場。金網の向こうで、観客全員が立っていた。今夜の一戦に勝てば、地下格闘技の頂点に立つ――表の天下一武道会とは別の、もう一つの頂点だった。"},
+    {sp:"narr", t:"決着の瞬間、地下に自分の名が轟いた。霧島が、オヤジが、そして夜鷹会の鷹野までが、静かに頭を下げた。裏の顔役として、この街の夜に立つ資格を、手に入れた。"},
+    {sp:"narr", t:"だが、階段はまだ上に続いていた。オヤジの引退が近づき、裏の頂点の椅子が、静かに空き始めている。第5章――裏の頂点を巡る物語は、まだ終わらない。（裏ルート継続フラグ：uraTopEnding）"},
+    {endChapter4:true},
+  ];
+}
+function uraChapter4EndCheck(){
+  const U = uraEnsure();
+  if (!U.active || U.quit || U.edDone) return false;
+  if (uraTierIdx() >= 3 && (U.rank || 0) >= 60 && ((U.ugBest || 0) >= 3 || (U.jobsCount || 0) >= 6)){
+    U.edDone = true;
+    startScene(uraTopSteps(), null, null);
+    return true;
+  }
+  return false;
+}
+// ---------- 第139節: 強制発火（検証用） ----------
+function uraForceEvent(kind){
+  ensureStateCompat();
+  switch (kind){
+    case "entry_club": startScene(uraEntryClubSteps(), null, null); return true;
+    case "entry_hide": startScene(uraEntryHideSteps(), null, null); return true;
+    case "entry_debt": startScene(uraEntryDebtSteps(), null, null); return true;
+    case "entry_ug": startScene(uraEntryUgSteps(), null, null); return true;
+    case "rumor": startScene(uraRumorSteps(), null, null); return true;
+    case "exposure": startScene(uraExposureSteps(), null, null); return true;
+    case "exposure_hard": startScene(uraExposureHardSteps(), null, null); return true;
+    case "war1": startScene(uraWarSteps(1), null, null); return true;
+    case "war2": startScene(uraWarSteps(2), null, null); return true;
+    case "arrest": startScene(uraArrestSteps(), null, null); return true;
+    case "quit": startScene(uraQuitSteps(), null, null); return true;
+    case "ed": startScene(uraTopSteps(), null, null); return true;
+    case "bouncer": uraBouncerShift(); return true;
+    case "ug": uraStartUgFight(); return true;
+  }
+  return false;
+}
+// ================= 第140節: 短時間マッチ興行（椎名駆の企画・出場できる1分マッチ） =================
+// 本人の2026-11-13追加決定。第93節（v1.94）の椎名駆「短時間マッチ企画」エピソードを土台に、
+// プレイヤーが実際に出場して戦える興行イベントとして実装。実在の大会名・団体名・選手名は出さない。
+// 形式: 1分マッチ＝既存バトルの mode:"short1"（turnLimit 3ターン＝約1分の攻防）。
+// 時間切れは判定: 与ダメージ − 被ダメージ×0.8 ＋ 先手ボーナス（先に当てていれば +6）> 0 で勝ち。
+function shortJudgeWin(){
+  const b = UI.battle; if (!b) return false;
+  const taken = Math.max(0, (b.maxPhp || 100) - b.php);
+  let score = (b.dealt || 0) - Math.round(taken * 0.8);
+  let firstBonus = 0;
+  if (b.firstHitTurn != null && (b.foeFirstHitTurn == null || b.firstHitTurn < b.foeFirstHitTurn)) firstBonus = 6;
+  score += firstBonus;
+  window.__lastShortJudge = {battle: b.def && b.def.id, dealt: b.dealt || 0, taken, firstHitTurn: b.firstHitTurn, foeFirstHitTurn: b.foeFirstHitTurn, firstBonus, score};
+  return score > 0;
+}
+function shortSfFoe(){
+  if (S.met.includes("minato") && CAST_BY_ID["minato"]){
+    return {name:"椎名湊", style:"総合格闘技（MMA）", hp: 90 + S.chapter * 12, power: 11 + S.chapter};
+  }
+  return {name:"喧嘩屋リュウジ", style:"キックボクシング", hp: 90 + S.chapter * 12, power: 11 + S.chapter};
+}
+function shortOfferSteps(){
+  return [
+    {sp:"narr", t:"椎名駆から連絡が来た。「例の短時間マッチ企画、今度は興行として打つ。出場しないか？ 1分一本勝負。客の入りは上々だ」"},
+    {img:"shiina"},
+    {sp:"shiina", t:"ルールは単純。倒すか、攻め勝つか。時間切れなら判定で、先に当てた方と攻勢が評価される。負けても出場料は出す。……どうする？"},
+    {choice:[
+      {label:"出場する", say:[ {shortEnter:true} ].concat(shortEventSteps())},
+      {label:"今回は見送る", say:[
+        {sp:"shiina", t:"そうか。興行は定期的に打つ。また声をかけるよ"},
+        {sp:"narr", t:"短時間マッチの誘いを見送った。（年2回までの定期興行。また機会はある）"},
+      ]},
+    ]},
+  ];
+}
+function shortEventSteps(){
+  const finFoe = {name:"喧嘩無敗のゴウダ", style:"ボクシング", hp: 100 + S.chapter * 14, power: 12 + S.chapter};
+  const sf = shortSfFoe();
+  BATTLES["short_sf"] = {title:"短時間マッチ 準決勝", enemyName: sf.name, enemyStyleName: sf.style, hp: sf.hp, power: sf.power, mode:"short1", turnLimit:3, foul:false,
+    comments:["「1分勝負！ 先に当てた方が流れを掴む！」","客席の熱が一気に上がる。短い試合ほど、濃い"]};
+  BATTLES["short_fin"] = {title:"短時間マッチ 決勝", enemyName: finFoe.name, enemyStyleName: finFoe.style, hp: finFoe.hp, power: finFoe.power, mode:"short1", turnLimit:3, foul:false,
+    comments:["「決勝！ 相手は“喧嘩無敗”を名乗る男！」","経歴は盛られている気もするが、拳は本物だ"]};
+  const steps = [];
+  steps.push({fx:{money:15000}}); // 出場料（勝敗に関わらず支払われる）
+  // 前日会見・煽り合い
+  steps.push({sp:"narr", t:"前日の記者会見。短時間マッチ興行の出場者が並び、CLASHでは早くも煽り合いが始まっていた。「格闘技の看板で喧嘩自慢がどこまで通用するか」――実況スレッドは、試合前から熱い。"});
+  steps.push({sp:"ゴウダ", t:"俺は喧嘩、無敗だ。道場のチャンピオン様が、路上の現実にどこまでついてこれるか、楽しみだな"});
+  steps.push({sp:"me", t:"（経歴は半分盛りだろう。だが、この煽りが客を呼ぶのも事実。――1分間、全部出し切るだけだ）"});
+  // 選考会の乱闘寸前イベント（初回のみ本編、2回目以降は短縮）
+  if (!S.short.auditionDone){
+    steps.push({shortAudition:true});
+    steps.push({sp:"narr", t:"会場の控室前では、選考会組の若い出場者同士が胸ぐらを掴み合っていた。乱闘寸前。スタッフが蒼くなっている。"});
+    steps.push({choice:[
+      {label:"間に入って止める", say:[
+        {fx:{sei:1}},
+        {sp:"narr", t:"二人の間に体を入れ、静かに言った。「やり合うなら、1分のリングの上でやれ」。場は収まり、CLASHでは「師範、選考会の乱闘を止める」の切り抜きが回った。"},
+      ]},
+      {label:"静観する", say:[
+        {sp:"narr", t:"スタッフが何とか収めた。興行の空気は、こういう熱も含めて出来上がっているらしい。"},
+      ]},
+      {label:"煽る（「やるなら今じゃない。客の前でやれ」）", say:[
+        {fx:{aku:1, attention:1}},
+        {sp:"narr", t:"火に油のひと言で、二人は逆に冷静になった。この煽りも、CLASHで少しバズった。"},
+      ]},
+    ]});
+  } else {
+    steps.push({sp:"narr", t:"顔なじみになった会場。選考会組の若い連中が、今日も控室前でいがみ合っている。興行の空気は、相変わらず熱かった。"});
+  }
+  // 準決勝 → 決勝
+  steps.push({sp:"narr", t:"――興行当日。1分マッチのゴングは短く、濃い。まずは準決勝。"});
+  steps.push({battle:"short_sf", win:[
+    {shortWin:true},
+    {fx:{money:10000}},
+    {shortAccident:true},
+    {sp:"narr", t:"準決勝を制した。勝利ボーナス 10,000円。残るは決勝――「喧嘩無敗」を名乗る、あの男だ。"},
+    {battle:"short_fin", win:[
+      {shortChamp:true},
+      {fx:{money:40000, attention:4}},
+      {sp:"narr", t:"決勝、制覇。ゴウダは膝をつき、笑って言った。「……喧嘩と試合は、別物だったな」。優勝賞金 40,000円。CLASHのタイムラインが、切り抜き動画で埋まった。――二つ名は「1分の王者」。（短時間マッチ優勝）"},
+    ], lose:[
+      {fx:{attention:2}},
+      {sp:"narr", t:"決勝で敗れた。だが1分マッチの決勝まで進んだ事実は、注目を集めた。出場料と準決勝の勝利ボーナスは手元に残った。"},
+    ]},
+  ], lose:[
+    {fx:{attention:1}},
+    {shortAccident:true},
+    {sp:"narr", t:"準決勝で散った。1分は短い。一瞬の遅れが、そのまま結果になる。出場料 15,000円だけは、敗者にもきちんと払われた。"},
+  ]});
+  // 裏ルート加入中: 地下との対比イベント
+  if (S.ura && S.ura.active && !S.ura.quit && !S.flags.shortUraDone){
+    steps.push({fx:{flags:{shortUraDone:true}}});
+    steps.push({sp:"narr", t:"興行の帰り際、客席の最後尾に鉄仮面のジンが立っていた。「表の1分は、派手でいい。……だが地下の1分は、人生が懸かってる。あんたは、両方の味を知ってる珍しい男だ」"});
+  }
+  return steps;
+}
+function tryShortOffer(force){
+  if (!S || !S.flags || S.flags.retiredEnding || S.flags.uraBadEnd) return false;
+  if (S.chapter < 2) return false;
+  if (!S.met.includes("shiina")) return false;
+  if ((S.attention || 0) < 8) return false;
+  if (inHiding() || inJail()) return false;
+  const SH = S.short; const yearIdx = S.age - 19;
+  const cnt = (SH.years && SH.years[yearIdx]) || 0;
+  if (cnt >= 2) return false;
+  if (!force){
+    if (S.absWeek - (SH.lastDeclineWeek || -99) < 4) return false;
+    const woy = ((S.absWeek - 1) % WEEKS_PER_YEAR) + 1;
+    if (cnt === 0 && (woy < 6 || woy > 30)) return false;
+    if (cnt === 1 && (woy < 30 || woy > 46)) return false;
+    if (_rng() >= 0.25) return false;
+  }
+  SH.lastOfferWeek = S.absWeek;
+  startScene(shortOfferSteps(), null, "short_match");
+  return true;
+}
+function shortForceEvent(kind){
+  ensureStateCompat();
+  if (kind === "offer") return tryShortOffer(true);
+  if (kind === "event"){ startScene(shortOfferSteps(), null, "short_match"); return true; }
+  return false;
+}
 // ---------- 検証フック（QC用：対策メタ／新規イベント／同伴イベントの発火を実測するための内部状態の公開） ----------
 window.__gameTest = {
   state: () => S,
@@ -4211,6 +5030,19 @@ window.__gameTest = {
   nicknameNow: () => nickname(),
   botyFixedCount: () => (typeof BOTY_FIXED_CANDS !== "undefined" ? BOTY_FIXED_CANDS.length : -1),
   botyPlay: y => botyPlayCandidates(y),
+  // 第139節: 裏ルートの検証フック
+  ura: () => S.ura,
+  short: () => S.short,
+  uraTier: () => uraTierIdx(),
+  uraRankName: () => uraRankName(),
+  uraSet: patch => { Object.assign(uraEnsure(), patch || {}); return S.ura; },
+  uraForce: kind => uraForceEvent(kind),
+  uraHook: () => tryUraEvents(),
+  inJail: () => inJail(),
+  uraKejime: () => uraKejime(),
+  // 第140節: 短時間マッチ興行の検証フック
+  shortForce: kind => shortForceEvent(kind),
+  shortJudge: () => window.__lastShortJudge || null,
   // 第80〜82節の検証フック
   deadEnds: () => getDeadEnds(),
   rewind: () => rewindNow(),

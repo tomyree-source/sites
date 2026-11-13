@@ -32,7 +32,7 @@ const r = S.record;
 const ow = oldWounds(); const owNames = {arm:"腕", leg:"脚", core:"体幹", head:"頭"};
 const owList = Object.keys(ow).filter(p => ow[p] > 0).map(p => owNames[p]).join("・");
 $("main").innerHTML = '<div class="endcard"><h2>第4章 円熟期 ―完―（現役続行）</h2>' +
-'<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝（最高" + (r.bestWinStreak || 0) + "連勝）／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝 ／ 大会優勝 " + r.cups + "回 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回" + lifeRecordText() + "</div>" +
+'<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝（最高" + (r.bestWinStreak || 0) + "連勝）／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝 ／ 大会優勝 " + r.cups + "回 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回" + lifeRecordText() + (typeof uraRecordText === "function" ? uraRecordText() : "") + "</div>" +
 '<div class="stext">名声 ' + fameTotal() + "（" + fameRank() + "）／ 清名" + S.sei + "・悪名" + S.aku + " ／ 道場生 " + S.students.length + "人 ／ " + (mainStyle()? mainStyle().name: "") + " Lv" + styleLv(S.mainStyle) + " ／ 純粋度 " + purity() + "%" + (S.partner? " ／ 想い人：" + CAST_BY_ID[S.partner].name: "") + (owList? " ／ 古傷：" + owList: "") + "</div>" +
 '<div class="stext">師範期（50〜59歳）。間宮健一との対抗戦は、決着の舞台を50代へ移す。同世代の最後のライバル、源田巌の世代との別れと代替わり、そして新しい弟子の入門が待っている。</div>' +
 '<button class="btn next" data-auto="to-title">タイトルへ戻る</button></div>';
@@ -44,7 +44,7 @@ UI.screen = "end"; S.flags.retiredEnding = true; S.chapter = 4; hud();
 const r = S.record;
 const color = S.sei > S.aku + 5? "清名に彩られた": S.aku > S.sei + 5? "悪名と共に語られる": "清濁を併せ呑んだ";
 $("main").innerHTML = '<div class="endcard"><h2>早期エンディング ― 引退（' + S.age + '歳）</h2>' +
-'<div class="stext">' + color + '現役生活に、ここで幕を下ろした。記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 大会優勝 " + r.cups + "回 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回" + lifeRecordText() + "。</div>" +
+'<div class="stext">' + color + '現役生活に、ここで幕を下ろした。記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 大会優勝 " + r.cups + "回 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回" + lifeRecordText() + (typeof uraRecordText === "function" ? uraRecordText() : "") + "。</div>" +
 '<div class="stext">名声 ' + fameTotal() + "（" + fameRank() + "）／ 清名" + S.sei + "・悪名" + S.aku + " ／ 道場生 " + S.students.length + "人 ／ " + (mainStyle()? mainStyle().name: "") + " Lv" + styleLv(S.mainStyle) + " ／ 純粋度 " + purity() + "%" + (S.partner? " ／ 共に歩む人：" + CAST_BY_ID[S.partner].name: "") + "</div>" +
 '<div class="stext">円熟の10年は、衰えと深みが同時に進んだ歳月だった。引退は終わりではない。道場は残り、生徒たちはそれぞれの道を歩み続ける。' + (S.partner? CAST_BY_ID[S.partner].name + "と共に過ごす穏やかな日々と、時折顔を出す道場の笑い声。": "時折道場に顔を出し、若い世代の背中を押す日々。") + 'CLASHでは今も、時々あなたの名前が「円熟の師」として語られている。</div>' +
 '<button class="btn next" data-auto="to-title">タイトルへ戻る</button></div>';
