@@ -19,7 +19,7 @@ function chapter2EndScreen(){
 UI.screen = "end"; S.chapter2Clear = true; S.chapter = 2; hud();
 const r = S.record;
 $("main").innerHTML = '<div class="endcard"><h2>第2章 全盛前夜 ―完―</h2>' +
-'<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝 ／ 大会優勝 " + r.cups + "回 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回</div>" +
+'<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝 ／ 大会優勝 " + r.cups + "回 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回" + lifeRecordText() + "</div>" +
 '<div class="stext">名声 ' + fameTotal() + "（" + fameRank() + "）／ 清名" + S.sei + "・悪名" + S.aku + " ／ 道場生 " + S.students.length + "人 ／ " + (mainStyle()? mainStyle().name: "") + " Lv" + styleLv(S.mainStyle) + " ／ 純粋度 " + purity() + "%" + (S.partner? " ／ 想い人：" + CAST_BY_ID[S.partner].name: "") + "</div>" +
 '<div class="stext">全盛期（30〜39歳）。体のピークと古傷の始まり、ドーピングの誘惑、弟子世代の入門、そして章末から「引退」も選べるようになる。このセーブデータは第3章へ引き継げます（次回制作）。</div>' +
 '<button class="btn next" data-auto="to-title">タイトルへ戻る</button></div>';

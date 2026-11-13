@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.97";
+const GAME_VERSION = "1.98";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -235,6 +235,7 @@ mainStyle: null, styleLv: {}, styleExp: {},
 expMainTotal: 0, expTotal: 0,
 dmg: {arm:0, leg:0, core:0, head:0},
 students: [], met: [], affection: {}, romanceEv: {}, partner: null,
+life: {partners: [], spouse: null, per: {}, children: 0, support: [], futamataRisk: 0, futamataCount: 0, titles: {}, lastAccWeek: 0, lastKidWeek: 0},
 flags: {}, record: {fouls:0, anki:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0, tenkaIn:0, tenkaTitles:0},
 seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {}, seenEvents: {},
 chapter1Clear: false, chapter2Clear: false, chapter3Clear: false, chapter4Clear: false, startedAt: Date.now(),
@@ -263,6 +264,15 @@ function ensureStateCompat(){
   if (S.chapter4Clear == null) S.chapter4Clear = false;
   if (S.flags.chinKishiCount == null) S.flags.chinKishiCount = 0; // 第110節: 「チン騎士」擁護カウンタ（旧セーブでは未定義のため初期化）
   if (!S.flags.chal || typeof S.flags.chal !== "object") S.flags.chal = {}; // 第114節: 挑戦試合の相手別戦績（旧セーブでは未定義のため初期化）
+  // 第138節: 彼女ライフイベントの状態（v1.97以前のセーブでは未定義のため初期化し、既存の交際相手を引き継ぐ）
+  if (!S.life || typeof S.life !== "object") S.life = {partners: [], spouse: null, per: {}, children: 0, support: [], futamataRisk: 0, futamataCount: 0, titles: {}, lastAccWeek: 0, lastKidWeek: 0};
+  if (!Array.isArray(S.life.partners)) S.life.partners = [];
+  if (!S.life.per || typeof S.life.per !== "object") S.life.per = {};
+  if (!Array.isArray(S.life.support)) S.life.support = [];
+  if (!S.life.titles || typeof S.life.titles !== "object") S.life.titles = {};
+  if (S.life.children == null) S.life.children = 0;
+  if (S.partner && !S.life.partners.includes(S.partner)) S.life.partners.push(S.partner);
+  if (!S.partner && S.life.partners.length) S.partner = S.life.partners[0];
 }
 function fameTotal(){ return S.sei + S.aku;}
 function fameRankIdx(){ const f = fameTotal(); let i = 0; FAME_THRESHOLDS.forEach((t, k) => { if (f >= t) i = k;}); return i;}
@@ -277,6 +287,17 @@ if (S.flags.nightFlightDone && !S.flags.nightFlightFound) return "夜逃げ師�
 if (S.flags.compDefaultDone) return "踏み倒しの達人"; // 第132節: 判決・示談の賠償金を踏み倒し切ると付く呼び名
 if ((S.flags.debt || 0) >= 60000) return "借金の求道者"; // 第74節: 借金が嵩むと界隈が勝手に付けた呼び名が二つ名に割り込む
 if ((S.flags.chinKishiCount || 0) >= 3) return "チン騎士"; // 第110節: 女性を擁護し続けると界隈が付ける渾名が二つ名に割り込む
+// 第138節: 彼女ライフイベントの結末で付く二つ名（托卵の「育て続ける」だけは笑いの名前にしない）
+if (S.life && S.life.titles){
+  const LT = S.life.titles;
+  if (LT.takuranRaise) return "すべてを引き受けた父";
+  if (LT.ntr) return "寝取られ師範";
+  if (LT.futamataBrazen) return "二刀流";
+  if (LT.futamata) return "二股師範";
+  if (LT.reclaim) return "奪還の達人";
+  if (LT.detective) return "見破り師範";
+  if (LT.father) return "子持ち師範";
+}
 if (S.record.works >= 24) return "バイト戦士";
 const b = S.flags.boukanHow;
 if (b === "voice") return "駅前の声";
@@ -859,7 +880,7 @@ function partnerSeverity(){
 function partnerCrisisSteps(){
   const pid = S.partner; const c = pid ? CAST_BY_ID[pid] : null;
   if (!c) return [{sp:"narr", t:"（交際相手がいないため、この騒動は誰の耳にも入らなかった）"}];
-  S.flags.partnerMarried = (S.chapter >= 3 && (S.affection[pid] || 0) >= 90) ? true : !!S.flags.partnerMarried;
+  S.flags.partnerMarried = ((S.chapter >= 3 && (S.affection[pid] || 0) >= 90) || (S.life && S.life.spouse === pid)) ? true : !!S.flags.partnerMarried; // 第138節: 結婚状態は即「結婚扱い」
   const foundOut = (S.flags.courtResult === "lose" || S.flags.injuryResult === "fine") ? "報道とCLASHの投稿で" : "自分の口から話す前に、共通の知人づてに";
   return [
     {sp:"narr", t:"訴訟と借金のことは、隠し通せるものではなかった。" + foundOut + "、" + c.name + "の耳に入った。その夜、二人の間に重い沈黙が落ちた。"},
@@ -951,6 +972,7 @@ function partnerBreakupLines(reasonLines){
   lines.push({fx:{attention:1, aku:1}});
   S.flags.partnerBrokeWeek = S.absWeek;
   S.partner = null;
+  if (S.life && Array.isArray(S.life.partners)){ S.life.partners = S.life.partners.filter(x => x !== pid); if (S.life.spouse === pid) S.life.spouse = null; if (S.life.partners.length) S.partner = S.life.partners[0]; } // 第138節: 複数交際の状態と同期
   if (pid){
     S.affection[pid] = 40;
     S.romanceEv = S.romanceEv || {};
@@ -1001,6 +1023,742 @@ function partnerRecoverSteps(){
     {sp:"narr", t:"冷えた関係に、静かに温度が戻った。訴訟の記憶は消えない。だが「返し切った男」という事実は、それより長く残る。"},
     {fx:{affection:{[pid]:15}, sei:1}},
   ];
+}
+
+// ---------- 第138節: 彼女ライフイベント（フルセット）＋二股システム＋称号反映 ----------
+// 本人の2026-11-13決定「彼女の出来る、出来ない、浮気、NTR、不倫、托卵などのライフイベントを
+// 組み込む（フルセット）」「称号としても反映させる」「二股なども出来る様に」を受けて実装する。
+// 設計と数値根拠は企画書第138節に記録。
+// S.life = { partners:[交際中の全ID（S.partner は先頭＝本命として同期）], spouse:結婚相手ID,
+// per:{ id -> {since,lastTouch,risk,peak,affPeak,suspicionDone,affair:{real,rival,married,claimDone},
+// affairStage,ntrWeek,childEventDone,noChildDone,kids,kidsBornWeek,kidsSecret,kidsSecretKnown,takuranPrompted}},
+// children:子の総数, support:[{id,until}], futamataRisk, futamataCount, titles:{}, lastAccWeek, lastKidWeek}
+// 会わない週の継続・潜伏・悪名・好感の低下で per.risk が蓄積し、好感のピーク（peak）は別に残す。
+// 疑惑の発火条件は risk>=10（週次25%）。真偽は発火時点の火種で決まる隠し状態： risk>=16 なら「本当」、
+// 未満なら「誤解」。こまめに会っていれば risk は下がり、疑惑自体が起きにくい。
+// 探偵費用50,000円＝浮気調査の実勢（数十万円）ではゲーム経済（大会賞金5〜12万円）に
+// 重すぎるため、弁護士着手金30,000円と同オーダーの上限として設定。検査費用30,000円＝不妊の
+// 初診〜基本検査の実勢（数万円）と作中の物価感（着手金30,000円）に合わせた。養育費は月20,000円
+// （養育費算定の下限帯）×子が成人するまで（18年）。不倫慰謝料300,000円＝既存の賠償レンジ
+// （6万〜18万円）より重く、実勢（数十万〜）の下限かつ作中で支払い可能な上限。結婚後の別れの
+// 慰謝料200,000円は既存の partnerBreakupLines の値をそのまま使う。
+// 全年齢。性的な行為の描写は一切なし。出来事・感情・選択で描く。托卵は笑いにせず、
+// CLASHのネタにもBOTY候補にも入れない。不妊・検査は原因を断定せず、医療の誤情報を書かない。
+const LIFE_DETECTIVE_FEE = 50000;
+const LIFE_EXAM_FEE = 30000;
+const LIFE_SUPPORT_MONTHLY = 20000;
+const LIFE_ADULTERY_CLAIM = 300000;
+const LIFE_RISK_CAP = 30;
+const LIFE_RISK_SUSPICION = 10; // 浮気疑惑が発火する火種
+const LIFE_RISK_REAL = 16; // これ以上なら疑惑は「本当」になる
+const LIFE_TAKURAN_PEAK = 18; // 托卵の隠しフラグが立ちうる火種ピーク
+const LIFE_TAKURAN_RATE = 0.25; // 上記を満たした誕生時の判定確率
+const LIFE_FUTAMATA_FIRE = 12; // 二股修羅場が発火する火種
+function lifeHash(str){ let h = 0; const s = String(str); for (let i = 0; i < s.length; i++){ h = (h * 31 + s.charCodeAt(i)) >>> 0;} return h;}
+function lifeEnsure(){
+if (!S) return null;
+if (!S.life || typeof S.life!== "object") S.life = {partners: [], spouse: null, per: {}, children: 0, support: [], futamataRisk: 0, futamataCount: 0, titles: {}, lastAccWeek: 0, lastKidWeek: 0};
+const L = S.life;
+if (!Array.isArray(L.partners)) L.partners = [];
+if (!L.per || typeof L.per!== "object") L.per = {};
+if (!Array.isArray(L.support)) L.support = [];
+if (!L.titles || typeof L.titles!== "object") L.titles = {};
+if (L.children == null) L.children = 0;
+if (S.partner &&!L.partners.includes(S.partner)) L.partners.push(S.partner);
+if (!S.partner && L.partners.length) S.partner = L.partners[0];
+return L;
+}
+function lifePerInit(id){
+const L = lifeEnsure(); if (!L) return {};
+if (!L.per[id] || typeof L.per[id]!== "object") L.per[id] = {since: S.absWeek, lastTouch: S.absWeek, risk: 0, peak: 0, affPeak: S.affection[id] || 0, suspicionDone: false, affair: null, affairStage: "", ntrWeek: 0, childEventDone: false, noChildDone: false, kids: 0, kidsBornWeek: 0, kidsSecret: false, kidsSecretKnown: "", takuranPrompted: false};
+return L.per[id];
+}
+function lifeIsPartner(id){
+if (!S ||!id) return false;
+if (S.partner === id) return true;
+const L = S.life;
+return!!(L && Array.isArray(L.partners) && L.partners.includes(id));
+}
+function lifeTouchPartner(id){
+// doRomance の入口で呼ぶ： 交際相手との関わりは「会った」記録になり火種が冷める。
+// 交際中に別の女性を口説く／二人目以降とデートする行為は、二股の火種になる
+if (!S ||!id) return;
+const L = lifeEnsure(); if (!L ||!L.partners.length) return;
+if (lifeIsPartner(id)){
+const p = lifePerInit(id); p.lastTouch = S.absWeek;
+if (L.partners.length >= 2) L.futamataRisk = Math.min(LIFE_RISK_CAP, (L.futamataRisk || 0) + 2);
+} else {
+L.futamataRisk = Math.min(LIFE_RISK_CAP, (L.futamataRisk || 0) + 1);
+}
+}
+function lifeAddPartner(id){
+const L = lifeEnsure(); if (!L) return;
+const p = lifePerInit(id);
+p.since = S.absWeek; p.lastTouch = S.absWeek; p.affPeak = S.affection[id] || 0;
+if (!L.partners.includes(id)) L.partners.push(id);
+if (!S.partner) S.partner = id;
+if (L.partners.length >= 2) L.twoTiming = true; // 二股状態（内部）
+}
+function lifeBreakupApply(pid, opts){
+// 関係の解消を状態へ反映し、締めの行を返す。opts: {alimony:false で慰謝料なし, silent:true でfxなし}
+opts = opts || {};
+const L = lifeEnsure(); const c = CAST_BY_ID[pid];
+const wasSpouse =!!(L && L.spouse === pid);
+const lines = [];
+if (wasSpouse){
+if (opts.alimony === false){
+lines.push({sp:"narr", t:"話し合いの末、籍を抜いた。慰謝料の話は、互いに持ち出さなかった。紙の上の関係は終わった。だが、過ごした年月まで消えるわけではなかった。"});
+} else {
+addDebt(200000);
+lines.push({sp:"narr", t:"話し合いは、離婚という結論に至った。慰謝料20万円は、新しい借金として残った（借金残高" + debtOf().toLocaleString() + "円）。法廷の外の敗北は、法廷の中より重かった。"});
+}
+L.spouse = null; S.flags.partnerMarried = false;
+} else if (!opts.silent){
+lines.push({sp:"narr", t:"二人の関係は、ここで終わった。リングで負けるより、ずっと静かで、ずっと痛い敗北だった。"});
+}
+if (L){ L.partners = L.partners.filter(x => x!== pid);}
+if (S.partner === pid) S.partner = (L && L.partners.length)? L.partners[0]: null;
+S.flags.partnerBrokeWeek = S.absWeek;
+if (pid){
+S.affection[pid] = 40;
+S.romanceEv = S.romanceEv || {};
+const done = S.romanceEv[pid] || {};
+done.confessed = false; done.confessWaitUntil = S.absWeek + 12;
+S.romanceEv[pid] = done;
+const p = L && L.per[pid];
+if (p){ p.affairStage = ""; p.affair = null; p.risk = 0;}
+}
+if (c &&!opts.silent) lines.push({sp:"narr", t: c.name + "との日々は、終わった。"});
+return lines;
+}
+function lifeRivalFor(pid){
+// 浮気の相手役： 登場済み（met）の男性キャストを優先し、格付け順＋決定的な回転で選ぶ（乱数は使わない）
+const cands = CAST_DATA.filter(c => c.sex === "M" && c.id!== "hayato" && c.id!== "genda" && c.debut <= S.chapter && challengeStyleFor(c));
+if (!cands.length) return null;
+const met = cands.filter(c => S.met.includes(c.id));
+const pool = met.length? met: cands;
+const sorted = pool.slice().sort((a, b) => (challengeGrade(b) - challengeGrade(a)) || a.name.localeCompare(b.name, "ja"));
+const p = (S.life && S.life.per[pid]) || {};
+const idx = lifeHash(pid + ":" + (p.since || 0)) % sorted.length;
+return sorted[idx];
+}
+function lifeRivalMarried(rival, pid){
+// 相手役が既婚者かどうかは決定論的に決める（32歳以上の中から半数）
+if (!rival || rival.age == null || rival.age < 32) return false;
+return (lifeHash(pid + ":m:" + rival.id) % 2) === 0;
+}
+function lifeAccumulate(){
+// 週に1回だけ（goWeek の再入でも二重に数えない）。火種の蓄積と鎮火
+const L = lifeEnsure(); if (!L) return;
+if (L.lastAccWeek === S.absWeek) return;
+const elapsed = Math.max(1, S.absWeek - (L.lastAccWeek || S.absWeek));
+L.lastAccWeek = S.absWeek;
+for (const pid of L.partners.slice()){
+const p = L.per[pid]; if (!p) continue;
+const noTouch = S.absWeek - (p.lastTouch || p.since || S.absWeek);
+let d = 0;
+if (noTouch >= 3) d += (noTouch >= 6? 2: 1); // 会わない週の継続
+if (typeof inHiding === "function" && inHiding()) d += 2; // 潜伏中は連絡も取れない
+if (S.aku >= 5) d += 1; else if (S.aku >= 3 && _rng() < 0.3) d += 1; // 悪名の高い男の不在は疑われる
+p.affPeak = Math.max(p.affPeak || 0, S.affection[pid] || 0);
+if ((S.affection[pid] || 0) <= (p.affPeak || 0) - 25 && (p.affPeak || 0) > 0) d += 1; // 好感の大きな低下
+if (d > 0){ p.risk = Math.min(LIFE_RISK_CAP, (p.risk || 0) + d * elapsed); p.peak = Math.max(p.peak || 0, p.risk);}
+else if (noTouch <= 1){ p.risk = Math.max(0, (p.risk || 0) - 2);} // 会えば火種は冷める
+// 許した後の再燃判定のためにも peak は保持する
+p.peak = Math.max(p.peak || 0, p.risk || 0);
+}
+if (L.partners.length >= 2){
+let d = 1;
+if (S.attention >= 20) d += 1; // 目立つ男は目撃も多い
+L.futamataRisk = Math.min(LIFE_RISK_CAP, (L.futamataRisk || 0) + d * elapsed);
+} else if ((L.futamataRisk || 0) > 0){
+L.futamataRisk = Math.max(0, L.futamataRisk - elapsed);
+}
+}
+// ---------- 浮気疑惑 → 発覚 → NTR／不倫 ----------
+function lifeSuspicionSteps(pid){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+p.suspicionDone = true; p.suspicionWeek = S.absWeek;
+const real = (p.risk || 0) >= LIFE_RISK_REAL;
+const rival = real? lifeRivalFor(pid): null;
+p.affair = {real: real, rival: rival? rival.id: null, married: rival? lifeRivalMarried(rival, pid): false, claimDone: false};
+p.affairStage = "suspected";
+return [
+{sp:"narr", t:"最近、" + c.name + "の様子がおかしい。"},
+{img: pid},
+{sp:"narr", t:"帰りが遅い日が増えた。スマホの画面を、こちらに見せない角度で伏せる。笑顔は前と同じだ。だが、その笑顔の向こうに、こちらの知らない時間が増えている気がした。"},
+{sp:"me", t:"（気のせいかもしれない。だが、武道で鍛えた勘は、こういう時ほど静かに鳴る）"},
+{choice:[
+{label:"問い詰める", say:[{lifeDo:{k:"sus_ask", pid:pid}}]},
+{label:"信じる（何も聞かない）", say:[{lifeDo:{k:"sus_trust", pid:pid}}]},
+{label:"探偵を雇う（" + LIFE_DETECTIVE_FEE.toLocaleString() + "円）", say:[{lifeDo:{k:"sus_detective", pid:pid}}]},
+{label:"様子を見る", say:[{lifeDo:{k:"sus_watch", pid:pid}}]},
+]},
+];
+}
+function lifeFakeResolveLines(pid, via){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+p.affairStage = ""; p.affair = null; p.risk = 2;
+if (via === "detective") return [
+{sp:"narr", t:"数日後、探偵事務所から報告書が届いた。――『対象の行動に、不審な点は認められませんでした』。添えられた写真は、職場の送別会の準備に走り回る彼女の姿ばかりだった。"},
+{sp:"narr", t:"幹事を押しつけられて、帰りが遅くなっていただけだった。スマホを伏せていたのは、送別会のサプライズの段取りを隠すため。――勘は、外れた。"},
+{sp:"me", t:"（……疑った自分が、少しだけ情けなかった。だが、確かめたこと自体は、間違いじゃなかったはずだ）"},
+{fx:{affection:{[pid]:-2}}},
+];
+if (via === "trust") return [
+{sp:"narr", t:"何も聞かなかった。聞かないと、決めた。"},
+{sp:"narr", t:"数日後、彼女が笑って種明かしをした。職場の送別会の幹事を押しつけられ、サプライズの準備で帰りが遅くなっていたのだという。スマホを伏せていたのも、その段取りを隠すためだった。"},
+{sp: pid, t:"心配、かけた？ ……ごめんね。でも、詮索しないでいてくれたの、気づいてたよ"},
+{sp:"narr", t:"信じるという選択は、疑うよりずっと体力がいる。だが、この日は報われた。"},
+{fx:{affection:{[pid]:3}}},
+];
+if (via === "watch") return [
+{sp:"narr", t:"様子を見ることにした。数週間が過ぎ、彼女の帰りは元に戻った。職場の送別会が終わったのだという。"},
+{sp:"narr", t:"結局、あれは繁忙期の顔だったらしい。勘は、外れた。――外れて、よかった。"},
+{fx:{affection:{[pid]:1}}},
+];
+return [
+{sp:"narr", t:"意を決して、問い詰めた。彼女はきょとんとして、それから小さく笑った。"},
+{img: pid},
+{sp: pid, t:"……ああ、そのこと。ごめん、言いそびれてた。職場の送別会の幹事、押しつけられちゃって。サプライズだから、あなたにも内緒にしてたの"},
+{sp:"narr", t:"スマホを伏せていた理由も、帰りの遅さも、全部つながった。疑惑は、霧のように晴れた。"},
+{sp:"me", t:"（疑った時間の分だけ、少しだけ気まずい。だが、聞いてよかった）"},
+{fx:{affection:{[pid]:-3}}},
+];
+}
+function lifeRevealSteps(pid){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+const rival = (p.affair && p.affair.rival)? CAST_BY_ID[p.affair.rival]: null;
+const rname = rival? rival.name: "ある男";
+p.affairStage = "known";
+S.flags.lifeAffairWeek = S.absWeek;
+return [
+{sp:"narr", t:"勘は、間違っていなかった。"},
+{img: pid},
+{sp:"narr", t: c.name + "には、別の男がいた。相手は、" + rname + "。界隈の、知った顔だった。"},
+{sp:"narr", t:"目撃談はCLASHにも流れ始めていた。『あの師範の彼女、最近は別の男と一緒らしい』――恋の話は、試合より速く広まる。"},
+{fx:{attention:2, aku:1}},
+{sp: pid, t:"……ごめんなさい。聞かれたら、否定できない。……私が、弱かった"},
+{sp:"me", t:"（怒りより先に、静かな疲労が来た。――どうするかは、自分で決める）"},
+{choice:[
+{label:"許す（関係を続ける）", say:[{lifeDo:{k:"reveal_forgive", pid:pid}}]},
+{label:"別れる", say:[{lifeDo:{k:"reveal_break", pid:pid}}]},
+{label: rname + "と因縁試合で決着をつける", say:[{lifeDo:{k:"reveal_duel", pid:pid}}]},
+]},
+];
+}
+function lifeClaimLines(pid){
+// 不倫バリアント： 相手役が既婚者だった場合、その配偶者から慰謝料請求が来る。
+// 既存の賠償金基盤（damagesBillLines： 払う／踏み倒す→催告→強制執行）に接続し、
+// 踏み倒しの開始は第76節の修羅場（partnerCrisisPending）にも接続される
+const p = lifePerInit(pid);
+if (!p.affair ||!p.affair.married || p.affair.claimDone) return [];
+const rival = CAST_BY_ID[p.affair.rival];
+if (!rival) return [];
+p.affair.claimDone = true;
+return [
+{sp:"narr", t:"――数日後、もう一つの請求書が届いた。"},
+{sp:"narr", t: rival.name + "には、妻がいた。彼女との関係は、向こうの家庭では「不倫」だった。その妻の代理人弁護士から、慰謝料の請求が届いたのだ。"},
+].concat(damagesBillLines("慰謝料の請求", [
+{label:"賠償金（不倫慰謝料）", amount: LIFE_ADULTERY_CLAIM},
+{label:"弁護士・着手金", amount: LEGAL_FEES.retainer},
+], [
+{sp:"narr", t:"請求は、彼女ではなく自分の方に来た。奪った側にも、奪われた側にも、請求書は平等に届く。――恋の決算は、いつも金だった。"},
+], rival.name + "の妻"));
+}
+function lifeRevealForgiveLines(pid){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+p.affairStage = "forgiven"; p.risk = 4;
+const lines = [
+{sp:"narr", t:"長い話し合いになった。彼女は相手ときっぱり切れることを約束し、スマホをこちらに向けて置くようになった。"},
+{sp: pid, t:"……信じてもらえるまで、時間がかかるのは分かってる。それでも、隣にいさせて"},
+{sp:"narr", t:"許すことは、忘れることではない。傷は残る。だが、二人はもう一度、同じ方向を向いて歩き出すことにした。"},
+{fx:{affection:{[pid]:-10}}},
+];
+return lines.concat(lifeClaimLines(pid));
+}
+function lifeRevealBreakLines(pid){
+const lines = [
+{sp:"narr", t:"言葉は、短かった。「もう、終わりにしよう」。彼女は泣いて、頷いた。止める言葉は、どちらからも出なかった。"},
+];
+return lines.concat(lifeClaimLines(pid), lifeBreakupApply(pid, {reason:"affair", alimony:false}));
+}
+function lifeDuelSteps(pid){
+const p = lifePerInit(pid);
+const rival = (p.affair && p.affair.rival)? CAST_BY_ID[p.affair.rival]: null;
+if (!rival) return lifeRevealBreakLines(pid);
+const st = challengeStyleFor(rival);
+if (!st) return lifeRevealBreakLines(pid);
+const foe = challengeFoePower(rival, st);
+BATTLES["life_duel"] = {
+title: "因縁試合 vs " + rival.name, enemyName: rival.name, enemyStyleName: st.name, img: rival.id,
+hp: foe.hp, power: foe.power, mode: "match", foul: true,
+comments: [
+"実況「因縁試合――理由は誰も口にしないが、全員が知っている」",
+"「恋の決着を、リングでつける時代になった」",
+"CLASHの実況欄が、普段の何倍もの速度で流れている",
+"観客「……これは、試合じゃない。喧嘩の、最後の形だ」",
+],
+};
+return [
+{img: rival.id},
+{sp:"narr", t: rival.name + "に、正式に勝負を申し込んだ。理由は言わなかった。だが界隈は、理由を百通りも補完していた。"},
+{sp:"me", t:"（勝てば、彼女を取り戻す資格が戻る。負ければ――潔く、身を引く）"},
+{battle: "life_duel", win: [{lifeDo:{k:"duel_end", pid:pid, win:true}}], lose: [{lifeDo:{k:"duel_end", pid:pid, win:false}}]},
+];
+}
+function lifeDuelEndLines(pid, win){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+const rival = (p.affair && p.affair.rival)? CAST_BY_ID[p.affair.rival]: null;
+const rname = rival? rival.name: "相手";
+if (win){
+p.affairStage = ""; p.affair = null; p.risk = 0;
+S.life.titles.reclaim = true; // 称号： 奪還系
+const lines = [
+{sp:"narr", t: rname + "との因縁試合は、ハヤトの勝ちだった。試合後、相手は小さく頭を下げ、リングを降りた。二度と、彼女の前に姿を見せることはなくなった。"},
+{img: pid},
+{sp: pid, t:"……勝って、取り戻しに来てくれたんだ。……ごめんなさい。そして、ありがとう"},
+{sp:"narr", t:"彼女は戻ってきた。一度壊れた形が元通りになるわけではない。だが、戦って取り戻したという事実は、二人の間に新しい形を作った。"},
+{fx:{affection:{[pid]:-5}, sei:1, attention:2}},
+];
+return lines.concat(lifeClaimLines(pid));
+}
+const lines = [
+{sp:"narr", t: rname + "との因縁試合は、ハヤトの敗北だった。リングを降りる背中に、かける言葉はなかった。"},
+{sp:"narr", t:"後日、彼女からの短い連絡が来た。『あの人のところに行きます』――負けた男に、止める資格はなかった。"},
+];
+return lines.concat(lifeClaimLines(pid), lifeNtrLossApply(pid));
+}
+function lifeNtrLossApply(pid){
+// 彼女を失う結末の共通処理（NTR称号・BOTY実績フラグ・関係の解消）
+const L = lifeEnsure();
+L.titles.ntr = true; // 称号： 寝取られ系
+S.flags.lifeNtrWeek = S.absWeek;
+return [{fx:{attention:2, aku:1}}].concat(lifeBreakupApply(pid, {reason:"ntr", alimony:false, silent:true}));
+}
+function lifeNtrSteps(pid){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+const rival = (p.affair && p.affair.rival)? CAST_BY_ID[p.affair.rival]: null;
+const rname = rival? rival.name: "あの男";
+p.affairStage = "gone";
+const steps = [
+{sp:"narr", t:"連絡が、途絶えた。"},
+{img: pid},
+{sp:"narr", t: c.name + "の荷物は、いつの間にか減っていた。置き手紙が一枚。『ごめんなさい。もう、戻れません』――相手は、" + rname + "だった。"},
+{sp:"narr", t:"CLASHは、とっくに知っていた。『師範、寝取られたらしい』『手を出す方も出す方だが、放置した方も放置した方』――正論は、いつも一番痛い場所を突く。"},
+];
+return steps.concat(lifeClaimLines(pid), lifeNtrLossApply(pid));
+}
+// ---------- 子供（出来る／出来ない） ----------
+function lifeBirthApply(pid){
+// 誕生の状態反映。托卵の隠しフラグは「火種が高かった時期がある場合にのみ」低確率で立つ
+const L = lifeEnsure(); const p = lifePerInit(pid);
+p.kids = (p.kids || 0) + 1;
+L.children = (L.children || 0) + 1;
+p.kidsBornWeek = S.absWeek; L.lastKidWeek = S.absWeek;
+L.titles.father = true; // 称号： 父親系
+if (!p.kidsSecret &&!p.kidsSecretKnown && (p.peak || 0) >= LIFE_TAKURAN_PEAK && _rng() < LIFE_TAKURAN_RATE){
+p.kidsSecret = true;
+}
+return p;
+}
+function lifeBirthLines(pid){
+const c = CAST_BY_ID[pid];
+return [
+{sp:"narr", t:"月日は流れ、出産の報せが届いた。分娩室の外で聞いた産声は、稽古場のどんな歓声より、小さくて、大きかった。"},
+{img: pid},
+{sp: pid, t:"……見て。ちっちゃい手。……ねえ、私たち、本当に親になったんだね"},
+{sp:"narr", t: c.name + "との間に、子が生まれた。稽古の予定表に、『家族』という新しい行が増えた。"},
+];
+}
+function lifeChildSteps(pid){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+p.childEventDone = true;
+return [
+{sp:"narr", t:"稽古の後、" + c.name + "が改まって切り出した。"},
+{img: pid},
+{sp: pid, t:"……あのね。病院で、確認してきたの。……子供が、できたみたい"},
+{sp:"me", t:"（頭の中で、稽古の予定表と、人生の予定表が、静かに入れ替わった）"},
+{choice:[
+{label:"結婚しよう、と伝える", say:[{lifeDo:{k:"child_marry", pid:pid}}]},
+{label:"結婚はせず、認知して一緒に育てる", say:[{lifeDo:{k:"child_recognize", pid:pid}}]},
+{label:"別れる（彼女に一人で育ててもらう）", say:[{lifeDo:{k:"child_break", pid:pid}}]},
+]},
+];
+}
+function lifeChildMarryLines(pid){
+const L = lifeEnsure(); const c = CAST_BY_ID[pid];
+L.spouse = pid; S.flags.partnerMarried = true;
+lifeBirthApply(pid);
+const lines = [
+{sp:"narr", t:"籍を入れた。式は挙げなかった。区役所の窓口で書類を出し、帰りに二人で回転寿司を食べた。それが、自分たちらしい結婚だった。"},
+{sp: pid, t:"……ねえ、名字が同じになったね。……なんか、くすぐったい"},
+];
+return lines.concat(lifeBirthLines(pid), [{fx:{affection:{[pid]:5}, sei:1}}]);
+}
+function lifeChildRecognizeLines(pid){
+const c = CAST_BY_ID[pid];
+lifeBirthApply(pid);
+const lines = [
+{sp:"narr", t:"籍は入れなかった。だが、子は認知し、育てる場所と時間は二人で用意した。形より先に、責任の置き場所を決めた。"},
+{sp: pid, t:"結婚の形は、人それぞれでいいと思う。……大事なのは、この子が大きくなった時、胸を張れるかどうか、だよね"},
+];
+return lines.concat(lifeBirthLines(pid), [{fx:{affection:{[pid]:3}}}]);
+}
+function lifeChildBreakLines(pid){
+const L = lifeEnsure(); const c = CAST_BY_ID[pid];
+const p = lifePerInit(pid);
+p.kids = (p.kids || 0) + 1; L.children = (L.children || 0) + 1; p.kidsBornWeek = S.absWeek; L.lastKidWeek = S.absWeek;
+L.titles.father = true;
+L.support.push({id: pid, until: S.absWeek + 48 * 18}); // 養育費： 子が成人するまで
+const lines = [
+{sp:"narr", t:"答えは、別れだった。彼女は静かに頷き、『分かった。育てるのは私。でも、養育費はお願い』と言った。"},
+{sp:"narr", t:"養育費は月" + LIFE_SUPPORT_MONTHLY.toLocaleString() + "円、子が成人するまで送り続ける約束をした。会わない子の成長は、振込の記録の中だけで知ることになる。"},
+{fx:{aku:1, attention:1}},
+];
+return lines.concat(lifeBreakupApply(pid, {reason:"child", alimony:false, silent:true}));
+}
+function lifeSecondChildSteps(pid){
+const c = CAST_BY_ID[pid];
+lifeBirthApply(pid);
+return [
+{sp:"narr", t: c.name + "から、二人目の子の報せが届いた。"},
+{img: pid},
+{sp: pid, t:"……また、賑やかになるね。稽古場と保育園、両方送り迎えよろしくね"},
+{sp:"narr", t:"家族が、また一人増えた。"},
+{fx:{affection:{[pid]:3}}},
+];
+}
+function lifeNoChildSteps(pid){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+p.noChildDone = true;
+const married = (lifeEnsure().spouse === pid);
+return [
+{sp:"narr", t: (married? "結婚": "交際") + "から、静かな月日が流れた。子を授かる気配は、なかった。"},
+{img: pid},
+{sp:"narr", t:"周りからは『お子さんは？』と聞かれることも増えた。そのたびに笑って流す二人の間で、その話題だけが、少しずつ重くなっていった。"},
+{sp: pid, t:"……ねえ。私たちのこと、これからどうしていこうか"},
+{choice:[
+{label:"二人で検査に行く（" + LIFE_EXAM_FEE.toLocaleString() + "円）", say:[
+{payBill:{title:"二人での検査費用", parts:[{label:"検査費用", amount: LIFE_EXAM_FEE}]}},
+{sp:"narr", t:"病院で、二人そろって検査を受けた。結果を聞く席で、医師は慎重に言葉を選んだ。"},
+{sp:"narr", t:"「原因は、どちらか一方と決めつけられるものではありません。今の検査で分かることには限りがありますし、授かるかどうかは、数字だけでは言い切れないんです」"},
+{sp:"narr", t:"答えは、出なかった。だが、二人で同じ椅子に座って聞いたという事実が、帰り道の二人を少しだけ軽くした。"},
+{sp: pid, t:"……一人で抱えてたら、潰れてたと思う。一緒に来てくれて、ありがとう"},
+{fx:{affection:{[pid]:3}}},
+]},
+{label:"このまま、二人の生活を楽しむ", say:[
+{sp:"narr", t:"話し合って、決めた。授かるかどうかを、人生の合否にしない。二人の時間を、二人で味わい尽くす。"},
+{sp: pid, t:"……うん。私たちには、私たちの形があるよね。……旅行の計画、立てちゃおうか"},
+{sp:"narr", t:"結論は、静かで、穏やかだった。稽古の後の帰り道が、少しだけ明るくなった気がした。"},
+{fx:{affection:{[pid]:5}}},
+]},
+{label:"養子・里親について調べる", say:[
+{sp:"narr", t:"児童相談所の里親制度の説明会に、二人で申し込んだ。血のつながりだけが家族の形ではないことを、制度の側からも確かめたかった。"},
+{sp:"narr", t:"手続きも、審査も、時間もかかる。結論は急がない。だが『迎える』という選択肢が、二人の未来の棚に一つ増えた。"},
+{fx:{affection:{[pid]:3}, sei:1}},
+]},
+]},
+];
+}
+// ---------- 托卵（最重イベント。笑いにしない。BOTY候補にも入れない） ----------
+function lifeTakuranSteps(pid){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+p.takuranPrompted = true;
+return [
+{sp:"narr", t:"子の学校行事で、血液型の話になった。何気ない会話の途中で、ふと、辻褄の合わない数字が頭に引っかかった。"},
+{img: pid},
+{sp:"narr", t:"その夜、眠れなかった。子の寝顔は、昨日と同じだ。家族の時間も、昨日と同じだ。――同じでないのは、自分の頭の中の、小さな棘だけだった。"},
+{sp:"me", t:"（確かめることは、できる。だが、確かめた先の景色は、二度と元に戻らないかもしれない）"},
+{choice:[
+{label:"検査で確かめる", say:[{lifeDo:{k:"takuran_test", pid:pid}}]},
+{label:"調べない（このまま家族でいる）", say:[{lifeDo:{k:"takuran_never", pid:pid}}]},
+]},
+];
+}
+function lifeTakuranTestLines(pid){
+const p = lifePerInit(pid);
+p.kidsSecretKnown = "tested";
+return [
+{sp:"narr", t:"民間の検査機関に、検体を送った。結果が届くまでの時間、子の寝顔を見るたびに、祈るような気持ちになった。"},
+{sp:"narr", t:"結果は――『親子関係は、認められませんでした』。"},
+{sp:"me", t:"（……分かっていた。薄々は。だが、紙の上の文字は、勘より重かった）"},
+{sp:"narr", t:"子は、今日も『パパ』と呼んで駆けてくる。その声の意味を決めるのは、検査結果ではなく、これからの自分の選択だった。"},
+{choice:[
+{label:"それでも、自分の子として育て続ける", say:[{lifeDo:{k:"takuran_raise", pid:pid}}]},
+{label:"彼女を問い詰める", say:[{lifeDo:{k:"takuran_confront", pid:pid}}]},
+{label:"距離を置く", say:[{lifeDo:{k:"takuran_apart", pid:pid}}]},
+]},
+];
+}
+function lifeTakuranRaiseLines(pid){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+p.kidsSecretKnown = "raised";
+S.life.titles.takuranRaise = true; // 称号： 器の大きさを表す真面目な二つ名
+return [
+{sp:"narr", t:"結果の紙は、封筒に戻して、引き出しの奥にしまった。"},
+{sp:"narr", t:"血の証明書より、育てた年月の方が重い。初めて歩いた日も、熱を出して夜通し看た日も、全部本当だった。その事実は、検査結果では消えなかった。"},
+{sp:"me", t:"（この子は、俺の子だ。それは、もう決めたことだ）"},
+{sp:"narr", t:"彼女には、何も言わなかった。言うべき言葉が見つからなかった、というのが正直なところだった。だが家族の時間は、静かに続いていった。"},
+{fx:{affection:{[pid]:-5}, sei:2}},
+];
+}
+function lifeTakuranConfrontLines(pid){
+const p = lifePerInit(pid); const c = CAST_BY_ID[pid];
+p.kidsSecretKnown = "confronted";
+const lines = [
+{sp:"narr", t:"結果の紙を、彼女の前に置いた。長い沈黙の後、彼女は小さく震えながら、認めた。"},
+{img: pid},
+{sp: pid, t:"……あの頃、あなたと距離があった時期に……一度だけ、過ちがあったの。……誰にも、言えなかった"},
+{sp:"narr", t:"怒鳴ることは、しなかった。ただ、同じ家で暮らすことは、もうできなかった。子の親権は彼女に。慰謝料も養育費も、互いに請求しないことで話はついた。"},
+{sp:"narr", t:"子と会う日は、月に一度、残された。その日だけは、いつも通りの『パパ』でいることにした。"},
+];
+return lines.concat(lifeBreakupApply(pid, {reason:"takuran", alimony:false, silent:true}));
+}
+function lifeTakuranApartLines(pid){
+const p = lifePerInit(pid);
+p.kidsSecretKnown = "apart";
+const lines = [
+{sp:"narr", t:"問い詰めることは、しなかった。ただ、『少し、距離を置きたい』とだけ伝えた。彼女は何も聞かず、頷いた。察していたのかもしれない。"},
+{sp:"narr", t:"別居が始まった。子と会う日は残されたが、家族の形は、静かに変わっていった。答えの出ない問いは、胸の奥にしまったままになった。"},
+];
+return lines.concat(lifeBreakupApply(pid, {reason:"takuran", alimony:false, silent:true}));
+}
+// ---------- 二股の修羅場 ----------
+function lifeFutamataSteps(){
+const L = lifeEnsure();
+const ids = L.partners.slice();
+const a = CAST_BY_ID[ids[0]], b = ids[1]? CAST_BY_ID[ids[1]]: null;
+L.futamataRisk = 0;
+const steps = [
+{sp:"narr", t:"その日、デートの待ち合わせ場所で、二人の彼女が鉢合わせた。CLASHの目撃投稿が先だったのか、偶然だったのかは、もうどうでもよかった。"},
+{img: ids[0]},
+{sp: ids[0], t:"……ねえ、この人、誰？"},
+];
+if (b) steps.push({sp: ids[1], t:"それ、私の台詞なんだけど"});
+steps.push({sp:"me", t:"（逃げ場のないリングは、人生でここが一番狭かった）"});
+steps.push({choice:[
+{label:"謝る", say:[{lifeDo:{k:"futa_apologize"}}]},
+{label:"一人を選ぶ", say:[{lifeDo:{k:"futa_choose_prompt"}}]},
+{label:"開き直る", say:[{lifeDo:{k:"futa_brazen"}}]},
+]});
+return steps;
+}
+function lifeFutamataPartnerLine(pid, stays){
+const c = CAST_BY_ID[pid];
+if (stays) return [
+{sp: pid, t:"……最低。最低だけど……私の気持ちは、嘘じゃないから。……次に同じことをしたら、その時は本当に終わりだから"},
+{sp:"narr", t: c.name + "は、残った。だが、信頼は地の底まで落ちた。取り戻すには、長い時間が要る。"},
+];
+return [
+{sp: pid, t:"……そっか。私、二番目だったんだ。……さようなら。もう、連絡してこないで"},
+];
+}
+function lifeFutaApologizeLines(){
+const L = lifeEnsure();
+L.titles.futamata = true; // 称号： 二股系
+S.flags.lifeFutamataWeek = S.absWeek;
+const lines = [{sp:"narr", t:"土下座に近い姿勢で、謝った。言い訳は、しなかった。――裁くのは、二人だった。"}];
+let stayed = 0;
+for (const pid of L.partners.slice()){
+const stays = (S.affection[pid] || 0) >= 70;
+lines.push(...lifeFutamataPartnerLine(pid, stays));
+if (stays){ lines.push({fx:{affection:{[pid]:-15}}}); stayed++;}
+else lines.push(...lifeBreakupApply(pid, {reason:"futa", silent:true}));
+}
+if (!stayed) lines.push({sp:"narr", t:"二人は、連れ立って去っていった。残されたのは、静かな部屋と、今年一番の敗北感だった。"});
+lines.push({fx:{attention:2, aku:1}});
+return lines;
+}
+function lifeFutaChoosePromptLines(){
+const L = lifeEnsure();
+return [{choice: L.partners.map(pid => ({label: CAST_BY_ID[pid].name + "を選ぶ", say: [{lifeDo:{k:"futa_choose", keep:pid}}]}))}];
+}
+function lifeFutaChooseLines(keep){
+const L = lifeEnsure();
+L.titles.futamata = true;
+S.flags.lifeFutamataWeek = S.absWeek;
+const kc = CAST_BY_ID[keep];
+const lines = [
+{sp:"narr", t:"選んだ。――" + kc.name + "を。"},
+{sp: keep, t:"……私を選ぶなら、もう二度と、こういう真似はしないで。……約束、できる？"},
+{fx:{affection:{[keep]:-10}}},
+];
+for (const pid of L.partners.slice()){
+if (pid === keep) continue;
+lines.push({sp: pid, t:"……そっか。……分かった。私、身を引くね"});
+lines.push(...lifeBreakupApply(pid, {reason:"futa", silent:true}));
+}
+lines.push({fx:{attention:2, aku:1}});
+return lines;
+}
+function lifeFutaBrazenLines(){
+const L = lifeEnsure();
+L.titles.futamataBrazen = true; // 称号： 開き直りの悪名系
+L.titles.futamata = true;
+S.flags.lifeFutamataWeek = S.absWeek;
+const lines = [
+{sp:"me", t:"悪いとは思ってない。二人とも、大事なんだ"},
+{sp:"narr", t:"開き直った。その場の空気は、凍った。"},
+];
+let stayed = 0;
+for (const pid of L.partners.slice()){
+const c = CAST_BY_ID[pid];
+const stays = c && c.pref === "aku" && (S.affection[pid] || 0) >= 80; // 型破りを面白がる相手だけが残る
+if (stays){ lines.push({sp: pid, t:"……ふふ。開き直る男、嫌いじゃないよ。……まあ、私は残ってあげる"}); lines.push({fx:{affection:{[pid]:-8}}}); stayed++;}
+else { lines.push({sp: pid, t:"……開き直るんだ。……もう、何も言うことない"}); lines.push(...lifeBreakupApply(pid, {reason:"futa", silent:true}));}
+}
+if (!stayed) lines.push({sp:"narr", t:"二人は去った。CLASHでは『二股を開き直った師範』と、しばらく笑い者になった。"});
+lines.push({fx:{aku:3, attention:2}});
+return lines;
+}
+// ---------- ディスパッチ（sceneAdvance の {lifeDo} から呼ばれる） ----------
+function lifeDispatch(cfg){
+if (!cfg ||!cfg.k) return [];
+const pid = cfg.pid;
+switch (cfg.k){
+case "sus_ask": {
+const p = lifePerInit(pid);
+return (p.affair && p.affair.real)? lifeRevealSteps(pid): lifeFakeResolveLines(pid, "ask");
+}
+case "sus_trust": {
+const p = lifePerInit(pid);
+if (p.affair && p.affair.real){ p.affairStage = "ignored"; p.ntrWeek = S.absWeek + 4 + (lifeHash(pid) % 3); return [
+{sp:"narr", t:"何も聞かなかった。聞かないと、決めた。"},
+{sp:"narr", t:"彼女は、いつも通りの笑顔だった。――だが、武道で鍛えた勘だけが、静かに鳴り止まなかった。"},
+];}
+return lifeFakeResolveLines(pid, "trust");
+}
+case "sus_detective": {
+const p = lifePerInit(pid);
+const head = [{payBill:{title:"探偵への調査費用", parts:[{label:"調査費用", amount: LIFE_DETECTIVE_FEE}]}}];
+if (p.affair && p.affair.real){
+S.life.titles.detective = true; // 称号： 調査系
+return head.concat([
+{sp:"narr", t:"数日後、探偵事務所から報告書が届いた。封を開ける手が、少しだけ震えた。"},
+{sp:"narr", t:"写真が、数枚。――彼女と、男が、二人で店に入っていく姿。勘は、証拠に変わった。"},
+], lifeRevealSteps(pid));
+}
+return head.concat(lifeFakeResolveLines(pid, "detective"));
+}
+case "sus_watch": {
+const p = lifePerInit(pid);
+if (p.affair && p.affair.real){ p.affairStage = "ignored"; p.ntrWeek = S.absWeek + 3 + (lifeHash(pid) % 3); return [
+{sp:"narr", t:"様子を見ることにした。何も起きない日々が、一番の証拠になるはずだった。"},
+{sp:"narr", t:"――だが、一週間経っても、二週間経っても、勘だけが鳴り止まなかった。"},
+];}
+return lifeFakeResolveLines(pid, "watch");
+}
+case "reveal_forgive": return lifeRevealForgiveLines(pid);
+case "reveal_break": return lifeRevealBreakLines(pid);
+case "reveal_duel": return lifeDuelSteps(pid);
+case "duel_end": return lifeDuelEndLines(pid,!!cfg.win);
+case "child_marry": return lifeChildMarryLines(pid);
+case "child_recognize": return lifeChildRecognizeLines(pid);
+case "child_break": return lifeChildBreakLines(pid);
+case "takuran_test": return lifeTakuranTestLines(pid);
+case "takuran_never": {
+const p = lifePerInit(pid); p.kidsSecretKnown = "never";
+return [
+{sp:"narr", t:"調べない、と決めた。数字の違和感は、胸の奥にしまった。"},
+{sp:"narr", t:"子は今日も『パパ』と呼ぶ。その声に、昨日と何も変わりはない。――知らないということも、一つの決断だった。"},
+{fx:{sei:1}},
+];
+}
+case "takuran_raise": return lifeTakuranRaiseLines(pid);
+case "takuran_confront": return lifeTakuranConfrontLines(pid);
+case "takuran_apart": return lifeTakuranApartLines(pid);
+case "futa_apologize": return lifeFutaApologizeLines();
+case "futa_choose_prompt": return lifeFutaChoosePromptLines();
+case "futa_choose": return lifeFutaChooseLines(cfg.keep);
+case "futa_brazen": return lifeFutaBrazenLines();
+}
+return [];
+}
+// ---------- 週頭フック ----------
+function tryLifeEvents(){
+if (!S ||!S.flags) return false;
+lifeEnsure(); lifeAccumulate();
+if (S.flags.retiredEnding) return false;
+if (typeof inHiding === "function" && inHiding()) return false;
+const L = S.life;
+// 1. NTR発展（様子見・信じる で放置した場合／許した後に火種が再燃した場合）
+for (const pid of L.partners.slice()){
+const p = L.per[pid]; if (!p ||!p.affair ||!p.affair.real) continue;
+if (p.affairStage === "ignored" && S.absWeek >= (p.ntrWeek || Infinity)){ startScene(lifeNtrSteps(pid), null, null); return true;}
+if (p.affairStage === "forgiven" && (p.risk || 0) >= 14){ startScene(lifeNtrSteps(pid), null, null); return true;}
+}
+// 2. 托卵の発覚機会（誕生から約2年後）
+for (const pid of L.partners.slice()){
+const p = L.per[pid]; if (!p) continue;
+if (p.kidsSecret &&!p.kidsSecretKnown &&!p.takuranPrompted && S.absWeek >= (p.kidsBornWeek || 0) + 96 && _rng() < 0.3){ startScene(lifeTakuranSteps(pid), null, null); return true;}
+}
+// 3. 二股の修羅場
+if (L.partners.length >= 2 && (L.futamataRisk || 0) >= LIFE_FUTAMATA_FIRE && _rng() < 0.35){ startScene(lifeFutamataSteps(), null, null); return true;}
+// 4. 浮気疑惑（火種が最も大きい交際相手）
+let suspPid = null, suspRisk = -1;
+for (const pid of L.partners){ const p = L.per[pid]; if (p &&!p.suspicionDone && (p.risk || 0) >= LIFE_RISK_SUSPICION && (p.risk || 0) > suspRisk){ suspPid = pid; suspRisk = p.risk;}}
+if (suspPid && _rng() < 0.25){ startScene(lifeSuspicionSteps(suspPid), null, null); return true;}
+// 5. 子供が出来た（好感が高く交際が深い相手、または結婚相手）
+for (const pid of L.partners.slice()){
+const p = L.per[pid]; if (!p || p.childEventDone) continue;
+const together = S.absWeek - (p.since || S.absWeek);
+const elig = (L.spouse === pid) || (((S.affection[pid] || 0) >= 85) && together >= 20);
+if (elig && _rng() < 0.06){ startScene(lifeChildSteps(pid), null, null); return true;}
+}
+// 5b. 二人目以降の子（短い経過のみ。総数3人まで）
+if ((L.children || 0) >= 1 && (L.children || 0) < 3){
+for (const pid of L.partners.slice()){
+const p = L.per[pid]; if (!p ||!(p.kids > 0)) continue;
+if (S.absWeek - (L.lastKidWeek || 0) >= 60 && _rng() < 0.03){ startScene(lifeSecondChildSteps(pid), null, null); return true;}
+}
+}
+// 6. 子供が出来ない（結婚後、または交際が長期に及んだ相手。子がまだいない場合）
+for (const pid of L.partners.slice()){
+const p = L.per[pid]; if (!p || p.noChildDone || (L.children || 0) > 0 || (p.kids || 0) > 0) continue;
+const together = S.absWeek - (p.since || S.absWeek);
+if ((L.spouse === pid || together >= 78) && _rng() < 0.05){ startScene(lifeNoChildSteps(pid), null, null); return true;}
+}
+return false;
+}
+// 章末記録への並記（家庭の事実まで： 子の人数と結婚状態のみ。浮気・托卵の履歴は出さない）
+function lifeRecordText(){
+if (!S ||!S.life) return "";
+let t = "";
+if ((S.life.children || 0) > 0) t += " ／ 子 " + S.life.children + "人";
+if (S.life.spouse && CAST_BY_ID[S.life.spouse]) t += " ／ 既婚";
+return t;
+}
+function lifePartnerText(){
+if (!S) return "";
+const L = S.life;
+if (L && Array.isArray(L.partners) && L.partners.length){
+return " ／ 想い人：" + L.partners.map(id => (CAST_BY_ID[id]? CAST_BY_ID[id].name: id) + (L.spouse === id? "（妻）": "")).join("・");
+}
+return (S.partner && CAST_BY_ID[S.partner])? " ／ 想い人：" + CAST_BY_ID[S.partner].name: "";
+}
+// 検証用： 強制発火（kind: suspicion_real/suspicion_fake/child/nochild/takuran/futamata/ntr）
+function lifeForceEvent(kind){
+const L = lifeEnsure(); if (!L ||!L.partners.length) return false;
+const pid = L.partners[0];
+const p = lifePerInit(pid);
+if (kind === "suspicion_real"){ p.risk = 20; p.peak = Math.max(p.peak || 0, 20); p.suspicionDone = false; startScene(lifeSuspicionSteps(pid), null, null); return true;}
+if (kind === "suspicion_fake"){ p.risk = 12; p.suspicionDone = false; startScene(lifeSuspicionSteps(pid), null, null); return true;}
+if (kind === "child"){ startScene(lifeChildSteps(pid), null, null); return true;}
+if (kind === "nochild"){ startScene(lifeNoChildSteps(pid), null, null); return true;}
+if (kind === "takuran"){
+if (!(p.kids > 0)){ p.kids = 1; L.children = Math.max(L.children || 0, 1);}
+p.kidsSecret = true; p.kidsSecretKnown = ""; p.takuranPrompted = false; p.kidsBornWeek = S.absWeek - 100;
+startScene(lifeTakuranSteps(pid), null, null); return true;
+}
+if (kind === "futamata"){ if (L.partners.length < 2) return false; startScene(lifeFutamataSteps(), null, null); return true;}
+if (kind === "ntr"){
+const rival = lifeRivalFor(pid);
+p.affair = {real: true, rival: rival? rival.id: null, married: false, claimDone: false};
+p.affairStage = "ignored";
+startScene(lifeNtrSteps(pid), null, null); return true;
+}
+return false;
 }
 // ---------- 本場留学ルート（第75節：借金で資金調達） ----------
 const ABROAD_LOAN_CAP = 300000; // 借金残高がこの額以上あると新規の借入は断られる
@@ -1302,6 +2060,7 @@ function sceneAdvance(){
     if (st.partnerReact){ UI.queue = partnerReactLines(st.partnerReact).concat(UI.queue); continue; }
     if (st.partnerExposed){ UI.queue = partnerExposedSteps().concat(UI.queue); continue; }
     if (st.partnerRecover){ UI.queue = partnerRecoverSteps().concat(UI.queue); continue; }
+    if (st.lifeDo){ UI.queue = lifeDispatch(st.lifeDo).concat(UI.queue); continue; } // 第138節: 彼女ライフイベントの分岐解決
     if (st.abroadPay){ const lines = abroadPayLines(st.abroadPay); if (lines) UI.queue = lines.concat(UI.queue); continue; }
     if (st.payBill){ UI.queue = settleBillLines(st.payBill.title, st.payBill.parts, []).concat(UI.queue); continue; }
     if (st.compDefault){ UI.queue = compDefaultStartLines(st.compDefault).concat(UI.queue); continue; }
@@ -1518,6 +2277,8 @@ function goWeek(){
     startScene(nightFlightFoundSteps(), null, "night_flight_found");
     return;
   }
+  // 第138節: 彼女ライフイベント（火種の蓄積と発火。浮気・NTR・不倫・子供・托卵・二股の修羅場）
+  if (typeof tryLifeEvents === "function" && tryLifeEvents()) return;
   // 第75節: 本場留学の提示（第2章以降・主・流儀Lv5以上・一度だけ大きく。見送れば+2Lvで再提示）
   if (typeof abroadEligible === "function" && abroadEligible()){
     S.flags.abroadOfferLv = styleLv(S.mainStyle);
@@ -1806,6 +2567,11 @@ function endWeek(){
       toast("月末の請求書 -" + bills.toLocaleString() + "円（家賃・生活費" + (S.chapter >= 2 ? "・道場賃料・用具代" + (onoCost ? "・食の契約" : "") : "") + (S.chapter >= 4 ? "・設備・遠征・ケア費" : "") + "）", S.money < 0);
       // 月末精算の後段（返済・デッドエンド判定・生徒の成長）。第132節の踏み倒し提示を挟むため分離した
       const monthSettle = () => {
+        // 第138節: 養育費（別れた相手との子。月20,000円×人数、子が成人するまで送り続ける）
+        if (S.life && Array.isArray(S.life.support)){
+          const actSup = S.life.support.filter(su => S.absWeek < su.until);
+          if (actSup.length){ const supPay = actSup.length * LIFE_SUPPORT_MONTHLY; S.money -= supPay; toast("養育費 -" + supPay.toLocaleString() + "円（" + actSup.length + "人分）", S.money < 0); }
+        }
         // 第74節: 借金の分割返済（残高の1/5・最低1万円）。借金がある間はCLASHで噂が立つ
         monthlyDebtPayment(true);
         if (debtOf() > 0 && _rng() < 0.35) toast("CLASHで『借金残高" + debtOf().toLocaleString() + "円の男、今月の返済は済んだのか』と噂になっている", true);
@@ -2116,7 +2882,8 @@ function trainSub(st, route, mentor){
 function romanceStageOf(id){
   const af = S.affection[id] || 0;
   const done = (S.romanceEv && S.romanceEv[id]) || {};
-  if (S.partner === id) return af >= 100 ? {stage:5, label:"結婚圏", next:null} : {stage:4, label:"交際中", next:null};
+  if (S.life && S.life.spouse === id) return {stage:5, label:"結婚", next:null}; // 第138節: 段階5の最小実装（結婚状態）
+  if (lifeIsPartner(id)) return af >= 100 ? {stage:5, label:"結婚圏", next:null} : {stage:4, label:"交際中", next:null}; // 第138節: 交際は複数同時にありうる
   if (af >= 80) return {stage:4, label:"告白の時", next:null};
   if (done.ev2 || af >= 55) return {stage:3, label:"深まる", next:"好感80で告白"};
   if (done.date || af >= 40){ const R = ROMANCE[id]; return (R && R.dateSpots) ? {stage:2, label:"デートを重ねる", next:"好感55で深まる"} : {stage:2, label:"特別な相手", next:"好感55で深まる"}; }
@@ -2162,7 +2929,7 @@ function renderRomancePick(){
     const af = S.affection[c.id] || 0;
     const locked = fameRankIdx() < 1;
     const stg = romanceStageOf(c.id);
-    return '<button class="btn act" data-rom="' + c.id + '"' + (locked ? " disabled" : "") + "><b>" + c.name + "</b><span>好感度 " + af + " ／ " + prefHint(c) + " ／ 段階：" + stg.label + (stg.next ? "（次：" + stg.next + "）" : "") + (S.partner === c.id ? " ／ 交際中" : "") + "</span></button>";
+    return '<button class="btn act" data-rom="' + c.id + '"' + (locked ? " disabled" : "") + "><b>" + c.name + "</b><span>好感度 " + af + " ／ " + prefHint(c) + " ／ 段階：" + stg.label + (stg.next ? "（次：" + stg.next + "）" : "") + ((S.life && S.life.spouse === c.id) ? " ／ 結婚" : lifeIsPartner(c.id) ? " ／ 交際中" : "") + "</span></button>";
   }).join("") + '<button class="btn ghost" data-back="1">戻る</button></div>';
   $("main").innerHTML = html;
   $("main").querySelector("[data-back]").addEventListener("click", renderWeek);
@@ -2170,12 +2937,13 @@ function renderRomancePick(){
 }
 function doRomance(id){
   const c = CAST_BY_ID[id], R = ROMANCE[id];
+  if (typeof lifeTouchPartner === "function") lifeTouchPartner(id); // 第138節: 関わりの記録と二股の火種
   const af = S.affection[id] || 0;
   S.romanceEv = S.romanceEv || {};
   const done = S.romanceEv[id] || {};
   const head = [{img: id}];
   // 告白（好感度80・未交際。失敗時は時間を置いて再挑戦できる）
-  if (af >= 80 && !S.partner && !done.confessed && (done.confessWaitUntil || 0) <= S.absWeek){
+  if (af >= 80 && !lifeIsPartner(id) && !done.confessed && (done.confessWaitUntil || 0) <= S.absWeek){ // 第138節: 交際相手がいても別の相手に告白できる（二股）
     const ok = prefMatch(c);
     if (ok) done.confessed = true; else done.confessWaitUntil = S.absWeek + 6;
     S.romanceEv[id] = done;
@@ -2184,7 +2952,7 @@ function doRomance(id){
       {sp:"me", t: c.name + "さん。俺と、付き合ってください"},
     ].concat(ok ? R.confessOk : R.confessNg));
     if (ok){ steps.push({fx:{flags:{}}}); }
-    startScene(steps, () => { if (ok){ S.partner = id; toast(c.name + " と交際することになった"); } endWeek(); });
+    startScene(steps, () => { if (ok){ lifeAddPartner(id); toast(c.name + " と交際することになった" + (S.life.partners.length >= 2 ? "（……二人目だ）" : "")); } endWeek(); }); // 第138節
     return;
   }
   // 第123節: 段階2「誘う（デート）」。ev1済み・好感40以上で1回だけ発火し、ev2（段階3）より先に置く
@@ -3239,8 +4007,8 @@ function chapterEndScreen(){
   UI.screen = "end"; S.chapter1Clear = true; hud();
   const r = S.record;
   $("main").innerHTML = '<div class="endcard"><h2>第1章 青年期 ―完―</h2>' +
-    '<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回</div>" +
-    '<div class="stext">名声 ' + fameTotal() + "（" + fameRank() + "）／ 清名" + S.sei + "・悪名" + S.aku + " ／ 道場生 " + S.students.length + "人 ／ " + (mainStyle() ? mainStyle().name : "") + " Lv" + styleLv(S.mainStyle) + " ／ 純粋度 " + purity() + "%" + (S.partner ? " ／ 想い人：" + CAST_BY_ID[S.partner].name : "") + "</div>" +
+    '<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回" + lifeRecordText() + "</div>" +
+    '<div class="stext">名声 ' + fameTotal() + "（" + fameRank() + "）／ 清名" + S.sei + "・悪名" + S.aku + " ／ 道場生 " + S.students.length + "人 ／ " + (mainStyle() ? mainStyle().name : "") + " Lv" + styleLv(S.mainStyle) + " ／ 純粋度 " + purity() + "%" + lifePartnerText() + "</div>" +
     '<div class="stext">【第2章予告】全盛前夜（23〜29歳）。本戦への挑戦、道場の独立、新しい世代の強者たち、そして師匠たちの門。</div>' +
     (typeof startChapter2 === "function" ? '<button class="btn next" data-auto="to-ch2">第2章へ進む（23歳〜）</button>' : "") +
     '<button class="btn" data-auto="to-title">タイトルへ戻る</button></div>';
@@ -3432,6 +4200,17 @@ window.__gameTest = {
   tenkaRuntime: () => (typeof TENKA_RT !== "undefined" && TENKA_RT) ? {year: TENKA_RT.year, carryPhp: TENKA_RT.carryPhp, carryFrom: TENKA_RT.carryFrom || null, lastApplied: TENKA_RT.lastApplied || null, qfNpc: TENKA_RT.qfNpc.map(f => f.name), sfNpc: TENKA_RT.sfNpc.name} : null,
   tenkaPrize: () => tenkaPrize(),
   tenkaLast: () => window.__tenkaLast || null,
+  // 第138節: 彼女ライフイベントの検証フック
+  life: () => S.life,
+  lifePer: id => (S.life && S.life.per[id]) || null,
+  lifeSetPer: (id, patch) => { const p = lifePerInit(id); Object.assign(p, patch || {}); return p; },
+  lifeSetupPartner: (id, opts) => { opts = opts || {}; ensureStateCompat(); if (!S.met.includes(id)) S.met.push(id); S.affection[id] = (opts.aff != null ? opts.aff : 95); lifeAddPartner(id); const p = lifePerInit(id); if (opts.sinceAgo != null){ p.since = S.absWeek - opts.sinceAgo; } if (opts.touchAgo != null){ p.lastTouch = S.absWeek - opts.touchAgo; } if (opts.risk != null){ p.risk = opts.risk; p.peak = Math.max(p.peak || 0, opts.risk); } if (opts.spouse){ S.life.spouse = id; S.flags.partnerMarried = true; } return p; },
+  lifeForce: kind => lifeForceEvent(kind),
+  lifeHook: () => tryLifeEvents(),
+  lifeAccumulate: () => lifeAccumulate(),
+  nicknameNow: () => nickname(),
+  botyFixedCount: () => (typeof BOTY_FIXED_CANDS !== "undefined" ? BOTY_FIXED_CANDS.length : -1),
+  botyPlay: y => botyPlayCandidates(y),
   // 第80〜82節の検証フック
   deadEnds: () => getDeadEnds(),
   rewind: () => rewindNow(),

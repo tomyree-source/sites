@@ -186,6 +186,10 @@ const BOTY_FIXED_CANDS = [
   {label:"選考は無制限ラウンド", blurb:"本戦は1分しかないのに、出場者選考の煽り合いと乱闘はいつも無制限。『試合より選考が面白い』が、今年もタイムラインの結論だった"},
   {label:"喧嘩無敗、全員無敗", blurb:"応募シートの経歴欄に並ぶ、検証できない無敗伝説の数々。一方で身元確認の誓約書は、年々分厚くなっていく。祭りの華と、祭りの門の重さは、同時に育った"},
   {label:"看板の飛び火", blurb:"何年も前に出場を止められていた元出場者の逮捕報道が、『あの企画の元出場者』の見出しで大会全体を揺らした。まだ容疑の段階。だが請求書は、真面目にやってきた現役の全員に回った"},
+  // 第138節: 彼女ライフイベントの現象型の固定候補（浮気・NTR・二股のみ。托卵は入れない）
+  {label:"彼女の浮気が発覚した師範", blurb:"目撃談はCLASHを駆け巡り、決着は話し合いと因縁試合に持ち越された。恋の試合に、判定はなかった"},
+  {label:"二股が鉢合わせた師範", blurb:"デートの現場で二人の彼女が鉢合わせ。逃げ場のないリングサイドで、今年いちばん静かな修羅場が起きた"},
+  {label:"探偵を雇って見破った男", blurb:"疑惑の答えを、金で買った男。報告書の一枚が、その後の全部を決めた。年末の界隈で、静かに語り草になった"},
 ];
 function botyPlayCandidates(yearIdx){
   const w0 = yearIdx * 48 + 1, w1 = (yearIdx + 1) * 48;
@@ -247,6 +251,10 @@ function botyPlayCandidates(yearIdx){
   if (tk && tk.entered && tk.result === "優勝") out.push({kind:"hero", label:"天下一武道会で優勝", blurb:"年末の8人制ワンナイトトーナメントを、ダメージを持ち越しながら一夜で勝ち抜いた。文句なしの年末の大仕事"});
   else if (tk && tk.entered && tk.result === "準優勝") out.push({kind:"hero", label:"天下一武道会で準優勝", blurb:"決勝で力尽きたが、一夜で準決勝を勝ち上がった足跡は、界隈に残った"});
   else if (tk && tk.champion) out.push({kind:"aruaru", label:"天下一武道会は" + tk.champion + "が優勝", blurb:"年末の8人制ワンナイトトーナメントは、今年も流派の看板を懸けた一夜だった"});
+  // 第138節: 彼女ライフイベントの実績候補（NTR／浮気発覚／二股の修羅場のみ。托卵は入れない）
+  if (inYear(S.flags.lifeNtrWeek)) out.push({kind:"laugh", label:"彼女を寝取られた師範", blurb:"放置した時間の分だけ、請求は重かった。因縁試合にも届かなかった、静かな大敗北"});
+  if (inYear(S.flags.lifeAffairWeek) && !inYear(S.flags.lifeNtrWeek)) out.push({kind:"laugh", label:"彼女の浮気が発覚した師範", blurb:"目撃談はCLASHを駆け巡り、決着は話し合いとリングに持ち越された。恋の試合に判定はなかった"});
+  if (inYear(S.flags.lifeFutamataWeek)) out.push({kind:"laugh", label:"二股が鉢合わせた師範", blurb:"デートの現場で二人の彼女が鉢合わせ。逃げ場のないリングサイドで、今年いちばん静かな修羅場が起きた"});
   // 重複ラベルを除く
   const uniq = []; const used = {};
   for (const c of out){ if (!used[c.label]){ used[c.label] = true; uniq.push(c); } }
