@@ -1792,8 +1792,8 @@ function collabKitajimaSteps(){
         {sp:"narr", t:"北嶋の進行は見事だった。検証の条件を一つずつ言語化し、視聴者の疑問を先回りして潰していく。「検証は、疑う側への敬意でもあるんです」。進行の腕も、技のうちだった。"},
       ]},
     ]},
-    {sp:"narr", t:"配信は穏やかに、しかし大きく伸びた。収益は80,000円。北嶋は最後に言った。「また集まりましょう。界隈は、戦うだけの場所じゃない」"},
-    {fx:{attention:5, money:80000}},
+    {sp:"narr", t:"配信は穏やかに、しかし大きく伸びた。収益は100,000円。北嶋は最後に言った。「また集まりましょう。界隈は、戦うだけの場所じゃない」"},
+    {fx:{attention:5, money:100000}},
   ];
 }
 
@@ -1871,27 +1871,27 @@ function genericCollabSteps(p, type){
   if (type === "video"){
     steps.push({sp:"narr", t:c.name + "とのコラボ動画を撮った。対談と公開組手、そして例の論争テーマへの本音トークまで、密度の濃い一本になった。"});
     if (p.kind === "big"){
-      const yen = Math.round((90000 + _rng() * 60000) / 1000) * 1000;
+      const yen = Math.round((150000 + _rng() * 150000) / 1000) * 1000;
       steps.push({sp:"narr", t:"公開直後から数字が跳ねた。切り抜きも次々に作られ、道場の名前が界隈の外にまで届いた。配信収益は" + yen.toLocaleString() + "円。ただしコメント欄には「商業に寄りすぎでは」の声も混ざり、清名には小さな傷がついた。"});
       steps.push({fx:{attention:6, sei:-1, money:yen}});
     } else if (p.kind === "aku"){
       if (_rng() < 0.5){
-        steps.push({sp:"narr", t:"これがバズった。際どい掛け合いが切り抜かれて独り歩きし、再生数は跳ね上がった。配信収益は100,000円。注目も悪名も、両方ついてきた。"});
-        steps.push({fx:{attention:7, aku:1, money:100000}});
+        steps.push({sp:"narr", t:"これがバズった。際どい掛け合いが切り抜かれて独り歩きし、再生数は跳ね上がった。配信収益は200,000円。注目も悪名も、両方ついてきた。"});
+        steps.push({fx:{attention:7, aku:1, money:200000}});
       } else {
-        steps.push({sp:"narr", t:"炎上した。挑発的な一言が文脈ごと切り取られ、批判が殺到した。配信収益は40,000円止まり。だが名前だけは、確実に広まった。"});
-        steps.push({fx:{attention:5, aku:2, money:40000}});
+        steps.push({sp:"narr", t:"炎上した。挑発的な一言が文脈ごと切り取られ、批判が殺到した。配信収益は80,000円止まり。だが名前だけは、確実に広まった。"});
+        steps.push({fx:{attention:5, aku:2, money:80000}});
       }
     } else {
-      steps.push({sp:"narr", t:"穏やかに、だが着実に数字が伸びた。配信収益は30,000円。そして数日後、視聴者だったという若者が、道場の体験に現れた。"});
-      steps.push({fx:{attention:3, money:30000}});
+      steps.push({sp:"narr", t:"穏やかに、だが着実に数字が伸びた。配信収益は50,000円。そして数日後、視聴者だったという若者が、道場の体験に現れた。"});
+      steps.push({fx:{attention:3, money:50000}});
       if (_rng() < 0.3) steps.push({fx:{joinStudent:1}});
     }
   } else {
     const fame = (S.sei || 0) + (S.aku || 0);
     const base = 8 + fame + (p.kind === "big" ? 15 : p.kind === "aku" ? 10 : 6);
     const n = Math.max(3, Math.round(base * (0.8 + _rng() * 0.4)));
-    const yen = n * 3000;
+    const yen = n * 5000;
     steps.push({sp:"narr", t:c.name + "との合同イベント。セミナーとエキシビションマッチの二部構成で、参加者は" + n + "人。参加費収入は" + yen.toLocaleString() + "円になった。"});
     steps.push({fx:{attention: p.kind === "big" ? 3 : 2, money: yen}});
     if (p.kind === "aku" && _rng() < 0.25){
@@ -1958,17 +1958,17 @@ function collabShiinaSteps(){
         {sp:"narr", t:"契約書にサインした。出演料150,000円。ただし企画が用意した「刺客」は、思った以上に本気の若手だった。カメラの前で、真剣勝負が始まる。"},
         {battle:"collab_match",
           win:[
-            {fx:{money:150000, sei:-1, attention:6}},
+            {fx:{money:300000, sei:-1, attention:6}},
             {sp:"narr", t:"配信は大盛況だった。だが帰り道、ふと思った。今日の試合は、自分の物語だったのか、それとも企画の物語だったのか、と。"},
           ],
           lose:[
-            {fx:{money:75000, aku:2, attention:4}},
+            {fx:{money:100000, aku:2, attention:4}},
             {sp:"narr", t:"一方的に倒された。切り抜きは「格の違い」と題して拡散し、企画側もその後の連絡を静かに減らした。出演料は半額。――このエピソードは、最悪の形で閉じた。だが、年代記は続いていく。"},
           ]},
       ]},
       {label:"条件交渉する（安全面と編集権を要求）", say:[
-        {sp:"narr", t:"「出演はする。ただしメディカルチェックの徹底と、発言の切り取り方には条件を付けさせてほしい」。椎名駆は少し笑って、頷いた。「交渉できる奴は、リングでも強いんだよな」。条件付きで出演が決まり、出演料は100,000円に落ち着いた。"},
-        {fx:{money:100000, attention:5}},
+        {sp:"narr", t:"「出演はする。ただしメディカルチェックの徹底と、発言の切り取り方には条件を付けさせてほしい」。椎名駆は少し笑って、頷いた。「交渉できる奴は、リングでも強いんだよな」。条件付きで出演が決まり、出演料は300,000円に落ち着いた。"},
+        {fx:{money:300000, attention:5}},
       ]},
       {label:"断る（自分のリングは自分で作る）", fx:{sei:1}, say:[
         {sp:"narr", t:"丁重に断った。椎名駆は「残念。でも、その断り方は好きだよ」とだけ言った。数字の近道を蹴った分、自分の道場の看板は少しだけ重くなった気がした。"},

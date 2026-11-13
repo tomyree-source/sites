@@ -57,13 +57,13 @@ function __ch4Skip(){
 const months = 7;
 const ow = oldWounds();
 const owCount = Object.keys(ow).filter(p => ow[p] > 0).length;
-const tuitionIn = S.students.length * 8000 * months;
-const gear = S.students.length * 1500 * months; // 生徒の用具代
-const expedition = S.students.length * 1200 * months; // 弟子の遠征・育成費（第4章〜）
-const equip = 30000 * months; // 道場の設備投資・維持（第4章〜）
-const careCost = (10000 + owCount * 3000) * months; // 医療・ケア費（第4章〜。古傷が多いほど重い）
-const onoCost = S.flags.onoPlan? 12000 * months: 0;
-const bills = (52000 + 48000) * months + gear + expedition + equip + careCost + onoCost;
+const tuitionIn = S.students.length * 10000 * months;
+const gear = S.students.length * 2500 * months; // 生徒の用具代
+const expedition = S.students.length * 3000 * months; // 弟子の遠征・育成費（第4章〜）
+const equip = 50000 * months; // 道場の設備投資・維持（第4章〜）
+const careCost = (30000 + owCount * 8000) * months; // 医療・ケア費（第4章〜。古傷が多いほど重い）
+const onoCost = S.flags.onoPlan? 30000 * months: 0;
+const bills = (120000 + 100000) * months + gear + expedition + equip + careCost + onoCost;
 const net = tuitionIn - bills;
 S.money += net;
 const notes = [];
@@ -74,8 +74,8 @@ if (S.partner === id) S.affection[id] = clamp(S.affection[id] + 2, 0, 100);
 else if (S.affection[id] > 0) S.affection[id] = clamp(S.affection[id] - 3, 0, 100);
 }
 if (S.money < -30000 &&!S.flags.tamuraHelp){
-S.flags.tamuraHelp = true; S.money += 20000;
-notes.push("田村が立て替えてくれた +20,000円");
+S.flags.tamuraHelp = true; S.money += 50000;
+notes.push("田村が立て替えてくれた +50,000円");
 }
 // 40代の体：重い部位ダメージは古傷として残り、通常のダメージは経過で回復する
 const newly = crystallizeOldWounds();
@@ -118,7 +118,7 @@ S.students.push({id:cand.id, name:cand.name, style:cand.style, trust:cand.trust,
 toast("移籍入門：" + cand.name + "（" + cand.note + "）");
 moved++;
 }
-if (moved === 0){ toast("移籍希望者はいたが、定員いっぱいで受け入れられなかった（賞金 +30,000円）"); S.money += 30000;}
+if (moved === 0){ toast("移籍希望者はいたが、定員いっぱいで受け入れられなかった（賞金 +100,000円）"); S.money += 100000;}
 else toast("間宮道場から " + moved + "名が移ってきた！");
 } else {
 // 負け：信頼の低い生徒から流れる。ただし最大3割まで、最低2名は残る（設計書2.5。第2〜3章と同じ流儀）
@@ -246,10 +246,10 @@ steps: [
 {sp:"akai", t:"さあ、締めは師範同士だ。……魅せ合おうぜ、看板さん"},
 {battle:"akai_dojo_b", win:[
 {sp:"akai", t:"ははっ、負けた！ だが聞けよこの歓声。赤い軍団の船出に、あんたの胸を借りられた。それで十分だ"},
-{fx:{sei:3, attention:4, money:60000}},
+{fx:{sei:3, attention:4, money:150000}},
 ], lose:[
 {sp:"akai", t:"勝ったぜ、看板さん。……でもな、今日の主役は軍団の船出だ。あんたが来てくれたから、物語になったんだ"},
-{fx:{sei:1, attention:4, money:40000}},
+{fx:{sei:1, attention:4, money:80000}},
 ]},
 {week:true},
 ],
@@ -263,7 +263,7 @@ steps: [
 {img:"shiraishi"},
 {sp:"shiraishi", t:"データにも出ています。体力の天井は下がり、回復には時間がかかる。でも、読みの精度は今が一番いい。……体の使い方そのものを、変える時期です"},
 {choice:[
-{label:"回復計画を白石・白鳥と本格的に組む（医療・ケア費が増える）", fx:{money:-30000, stat:{endure:0.3}, affection:{shiraishi:3, shiratori:3}}, say:[{sp:"narr", t:"ケアを『経費』ではなく『投資』として組み込んだ。円熟期の体は、管理で戦う。"}]},
+{label:"回復計画を白石・白鳥と本格的に組む（医療・ケア費が増える）", fx:{money:-100000, stat:{endure:0.3}, affection:{shiraishi:3, shiratori:3}}, say:[{sp:"narr", t:"ケアを『経費』ではなく『投資』として組み込んだ。円熟期の体は、管理で戦う。"}]},
 {label:"今までどおりの感覚で押し切る", fx:{fatigue:10}, say:[{sp:"narr", t:"若さの感覚のまま押し切った。体は正直に、悲鳴の準備を始めている。"}]},
 ]},
 {week:true},
@@ -387,9 +387,9 @@ title: "弟子たちの遠征",
 steps: [
 {sp:"narr", t:"生徒たちが、遠方の大会への遠征を希望した。交通費、宿泊費、帯同の費用――円熟期の道場は、弟子の挑戦にも金がかかる。"},
 {choice:[
-{label:"遠征費を道場で持つ（支出の山）", fx:{money:-60000, studentTrust:8, sei:1}, say:[{sp:"narr", t:"「師匠が背中を押してくれた」。その一言が、道場の結束を強くした。"}]},
+{label:"遠征費を道場で持つ（支出の山）", fx:{money:-150000, studentTrust:8, sei:1}, say:[{sp:"narr", t:"「師匠が背中を押してくれた」。その一言が、道場の結束を強くした。"}]},
 {label:"各自の負担にする", fx:{studentTrust:-4}, say:[{sp:"narr", t:"現実的な判断だった。だが、若い挑戦の芽を摘んだ気が、少しだけ残った。"}]},
-{label:"スポンサー探しに動く", fx:{attention:2, money:-20000, studentTrust:4}, say:[{sp:"narr", t:"九条沙織の伝手で一部は賄えた。顔の広さも、師範の資産だった。"}]},
+{label:"スポンサー探しに動く", fx:{attention:2, money:-50000, studentTrust:4}, say:[{sp:"narr", t:"九条沙織の伝手で一部は賄えた。顔の広さも、師範の資産だった。"}]},
 ]},
 {week:true},
 ],
@@ -475,7 +475,7 @@ steps: [
 {battle:"mamiya_ace2", win:[
 {sp:"mamiya", t:"……二度も退けたか。潔く約束は果たす。だが、師範対決では別だぞ"},
 {warWinM:true},
-{fx:{sei:3, attention:4, money:50000}},
+{fx:{sei:3, attention:4, money:150000}},
 ], lose:[
 {sp:"mamiya", t:"興行の熱の中で負けると、響きも大きい。……それでも、逃げなかったことは認めよう"},
 {warLoseM:true},
@@ -491,7 +491,7 @@ steps: [
 {img:"shiraishi"},
 {sp:"shiraishi", t:"正直に言います。連戦の代償は、もう若い頃のようには消えません。……でも、やり方次第で、まだ長く戦えます"},
 {choice:[
-{label:"高額な専門ケアを契約する（医療費の山）", fx:{money:-80000, stat:{endure:0.4}, affection:{shiraishi:4}}, say:[{sp:"narr", t:"専門ケアの契約は重い出費だった。だが、40代の戦いは『管理』がそのまま武器になる。"}]},
+{label:"高額な専門ケアを契約する（医療費の山）", fx:{money:-200000, stat:{endure:0.4}, affection:{shiraishi:4}}, say:[{sp:"narr", t:"専門ケアの契約は重い出費だった。だが、40代の戦いは『管理』がそのまま武器になる。"}]},
 {label:"白鳥のケアと自己管理で回す", fx:{affection:{shiratori:3}, fatigue:6}, say:[{sp:"narr", t:"白鳥恵の手を借りながら、自分の体と付き合う道を選んだ。安くはないが、破綻もしない。"}]},
 {label:"痛み止めで誤魔化して連戦を続ける", fx:{fatigue:14, aku:1}, say:[{sp:"narr", t:"誤魔化しは効いた。だが、体への借金は利子つきで返ってくる。"}]},
 ]},
@@ -503,8 +503,8 @@ title: "道場の設備投資",
 steps: [
 {sp:"narr", t:"道場のマットと器具が、限界を迎えていた。生徒の安全と、道場の格。その両方を天秤にかける、大物の出費の判断が来た。"},
 {choice:[
-{label:"全面的に更新する（設備投資の山）", fx:{money:-150000, studentTrust:6, sei:2, flags:{ch4Equip:true}}, say:[{sp:"narr", t:"新しいマットの匂いと、生徒たちの目の輝き。『円熟の道場』の看板に、実が伴ってきた。"}]},
-{label:"危険な部分だけ部分更新する", fx:{money:-50000, studentTrust:2}, say:[{sp:"narr", t:"堅実な更新だった。派手さはないが、道場は回り続ける。"}]},
+{label:"全面的に更新する（設備投資の山）", fx:{money:-500000, studentTrust:6, sei:2, flags:{ch4Equip:true}}, say:[{sp:"narr", t:"新しいマットの匂いと、生徒たちの目の輝き。『円熟の道場』の看板に、実が伴ってきた。"}]},
+{label:"危険な部分だけ部分更新する", fx:{money:-150000, studentTrust:2}, say:[{sp:"narr", t:"堅実な更新だった。派手さはないが、道場は回り続ける。"}]},
 {label:"まだ使う。金は他に回す", fx:{studentTrust:-3, fatigue:4}, say:[{sp:"narr", t:"器具の悲鳴を聞き流した。……いつか、安全の問題として返ってくるかもしれない。"}]},
 ]},
 {week:true},
@@ -520,10 +520,10 @@ steps: [
 {sp:"otowa", t:"皆さん、45歳ですよ、45歳！ 体の天井が下がった男が、読みと経験だけでどこまで行けるのか。……これが、円熟の戦いです！"},
 {battle:"cup45_b", win:[
 {sp:"narr", t:"接戦を制した。勝ち方そのものが、若い世代への教材になっていた。"},
-{fx:{sei:4, attention:4, money:120000, record:{cups:1}}},
+{fx:{sei:4, attention:4, money:300000, record:{cups:1}}},
 ], lose:[
 {sp:"narr", t:"敗れた。だが、45歳の挑戦そのものが会場の記憶に残った。若い選手たちが、静かに頭を下げていた。"},
-{fx:{sei:2, attention:4, money:40000}},
+{fx:{sei:2, attention:4, money:100000}},
 ]},
 {week:true},
 ],
@@ -581,10 +581,10 @@ steps: [
 {battle:"mamiya_duel", win:[
 {sp:"mamiya", t:"……完敗だ。円熟の読みとは、こういうことか。だが聞け、看板さん。決着は、まだついていない"},
 {sp:"mamiya", t:"50代で、もう一度競おう。その時こそ、本当の決着だ。……長生きしろよ、お互いに"},
-{fx:{sei:5, attention:5, money:100000}},
+{fx:{sei:5, attention:5, money:300000}},
 ], lose:[
 {sp:"mamiya", t:"師範対決は、私のものだ。……だが、あんたの目はまだ先を見ている。50代で、決着をつけ直そう"},
-{fx:{sei:2, attention:4, money:50000}},
+{fx:{sei:2, attention:4, money:150000}},
 ]},
 {sp:"narr", t:"間宮ラインの第1幕は、ここで幕を閉じた。だが二人の競いは、50代の舞台へ持ち越された。"},
 {week:true},
@@ -622,8 +622,8 @@ steps: [
 {img:"kirishima"},
 {sp:"kirishima", t:"大げさな演出はしません。回復に時間のかかる朝も、老師に頭を下げる昼も、全部が記事の価値です"},
 {choice:[
-{label:"全てをさらけ出して撮らせる", fx:{attention:5, sei:2, money:50000}, say:[{sp:"narr", t:"正直な密着は、『40代のリアル』として大きな反響を呼んだ。"}]},
-{label:"稽古の場面だけに絞る", fx:{attention:2, money:20000}, say:[{sp:"narr", t:"締めるべきところは締めた。それでも、円熟の空気は十分に伝わった。"}]},
+{label:"全てをさらけ出して撮らせる", fx:{attention:5, sei:2, money:100000}, say:[{sp:"narr", t:"正直な密着は、『40代のリアル』として大きな反響を呼んだ。"}]},
+{label:"稽古の場面だけに絞る", fx:{attention:2, money:50000}, say:[{sp:"narr", t:"締めるべきところは締めた。それでも、円熟の空気は十分に伝わった。"}]},
 ]},
 {week:true},
 ],
@@ -666,7 +666,7 @@ steps: [
 {sp:"shiratori", t:"出場間隔の管理も、戦術のうちです。『出られる』と『戦える』は、もう同じじゃありません"},
 {choice:[
 {label:"出場ペースを落として質を取る", fx:{attention:-1, stat:{read:0.3}, sei:1}, say:[{sp:"narr", t:"数は減った。だが、一戦ごとの重みは増した。円熟の戦い方への、静かな転換だった。"}]},
-{label:"頼まれる限り出続ける", fx:{fatigue:16, money:60000, attention:2}, say:[{sp:"narr", t:"興行の期待に応え続けた。金と注目は入ったが、体への請求書も確実に積み上がった。"}]},
+{label:"頼まれる限り出続ける", fx:{fatigue:16, money:150000, attention:2}, say:[{sp:"narr", t:"興行の期待に応え続けた。金と注目は入ったが、体への請求書も確実に積み上がった。"}]},
 ]},
 {week:true},
 ],
@@ -726,8 +726,8 @@ steps: [
 {img:"ono"},
 {sp:"ono", t:"設備だの遠征だの、40代の道場は金がかかるねえ。……でも、あんたの数字には『人への投資』が多い。それは、悪くない使い方だよ"},
 {choice:[
-{label:"体の管理を優先した食の契約を続ける", fx:{money:-24000, stat:{endure:0.3}, affection:{ono:3}}, say:[{sp:"narr", t:"食への投資は、回復の土台になった。円熟の体は、食で戦う。"}]},
-{label:"倹約して現状維持にする", fx:{money:10000}, say:[{sp:"narr", t:"締めるべきところは締めた。道場の懐事情も、円熟の知恵のうちだった。"}]},
+{label:"体の管理を優先した食の契約を続ける", fx:{money:-60000, stat:{endure:0.3}, affection:{ono:3}}, say:[{sp:"narr", t:"食への投資は、回復の土台になった。円熟の体は、食で戦う。"}]},
+{label:"倹約して現状維持にする", fx:{money:30000}, say:[{sp:"narr", t:"締めるべきところは締めた。道場の懐事情も、円熟の知恵のうちだった。"}]},
 ]},
 {week:true},
 ],
@@ -808,12 +808,12 @@ steps: [
 {battle:"fin4_final", win:[
 {sp:"narr", t:"判定の瞬間、会場が総立ちになった。グランド本戦、優勝。円熟期の集大成は、頂点で締めくくられた。"},
 {sp:"iwaki", t:"……完敗だ。あんたの円熟は、本物だったよ"},
-{fx:{sei:6, attention:5, money:250000, flags:{grandChampion4:true}, record:{cups:1, finWins:1}}},
+{fx:{sei:6, attention:5, money:1000000, flags:{grandChampion4:true}, record:{cups:1, finWins:1}}},
 {jump:"ch4_finale_end"},
 ], lose:[
 {sp:"narr", t:"あと一歩、届かなかった。優勝は岩城。それでも、決勝のリングに立った40代の全ては、誰にも消せない。"},
 {sp:"iwaki", t:"いい戦いだった。……あんたとの決勝は、私の自慢だ"},
-{fx:{sei:4, attention:4, money:100000}},
+{fx:{sei:4, attention:4, money:300000}},
 {jump:"ch4_finale_end"},
 ]},
 ],
@@ -865,15 +865,15 @@ const CH4_WEEK_EVENTS = [
   {id:"ch4_ev_media_textbook", category:"media", weight:2, chapters:[4], minFameRank:2, steps:[
     {sp:"narr", t:"出版社から、『40代からの体の使い方』という教則本への監修依頼が来た。円熟の知恵を、本にする仕事だった。"},
     {choice:[
-      {label:"監修を引き受ける", fx:{attention:3, sei:2, money:40000}, say:[{sp:"narr", t:"正直な体の記録は、同世代の読者に深く刺さった。監修料も入った。"}]},
+      {label:"監修を引き受ける", fx:{attention:3, sei:2, money:100000}, say:[{sp:"narr", t:"正直な体の記録は、同世代の読者に深く刺さった。監修料も入った。"}]},
       {label:"今は戦いに集中すると断る", fx:{expMain:4}, say:[{sp:"narr", t:"静かに断り、稽古に戻った。"}]},
     ]},
   ]},
   {id:"ch4_ev_baito_coach", category:"baito", weight:2, chapters:[4], steps:[
     {sp:"narr", t:"警備バイトの現場で、若い警備員たちから体の使い方の相談を受けた。現場でも『先生』と呼ばれる歳になった。"},
     {choice:[
-      {label:"休憩時間に簡単な護身の型を教える", fx:{money:6000, stat:{teach:0.3}, sei:1, record:{works:1}}, say:[{sp:"narr", t:"佐竹が笑った。「あんたは、どこへ行っても指導者だな」"}]},
-      {label:"警備の仕事に集中する", fx:{money:11000, record:{works:1}}, say:[{sp:"narr", t:"黙々とこなして手当を稼いだ。教える時間は、道場のために取っておく週もある。"}]},
+      {label:"休憩時間に簡単な護身の型を教える", fx:{money:10000, stat:{teach:0.3}, sei:1, record:{works:1}}, say:[{sp:"narr", t:"佐竹が笑った。「あんたは、どこへ行っても指導者だな」"}]},
+      {label:"警備の仕事に集中する", fx:{money:38000, record:{works:1}}, say:[{sp:"narr", t:"黙々とこなして手当を稼いだ。教える時間は、道場のために取っておく週もある。"}]},
     ]},
   ]},
   {id:"ch4_ev_dojo_leak", category:"dojo", weight:2, chapters:[4], steps:[
@@ -886,7 +886,7 @@ const CH4_WEEK_EVENTS = [
   {id:"ch4_ev_seminar_far", category:"media", weight:2, chapters:[4], minFameRank:3, steps:[
     {sp:"narr", t:"遠方の町から、高額セミナーの招聘が来た。『あの先生に習いたい』という声が、年齢とともに遠くへ届くようになっていた。"},
     {choice:[
-      {label:"招聘を受けて遠征セミナーを行う", fx:{money:90000, fatigue:10, sei:2, attention:2, record:{seminars:1}}, say:[{sp:"narr", t:"満員の会場と、遠方からの生徒の熱。指導の高みは、確かに実を結んでいた。"}]},
+      {label:"招聘を受けて遠征セミナーを行う", fx:{money:200000, fatigue:10, sei:2, attention:2, record:{seminars:1}}, say:[{sp:"narr", t:"満員の会場と、遠方からの生徒の熱。指導の高みは、確かに実を結んでいた。"}]},
       {label:"体の負担を考えて断る", fx:{sei:1}, say:[{sp:"narr", t:"丁重に断った。円熟期は、引き受ける仕事の選び方も戦術だった。"}]},
     ]},
   ]},
@@ -910,7 +910,7 @@ const CH4_STUDENT_DRAMA = [
   {id:"ch4_stu_injury_care", weight:2, chapters:[4], minStudents:1, steps:[
     {sp:"narr", t:"生徒の一人が怪我をした。自分の古傷の経験が、そのまま若い世代への助言になった。"},
     {choice:[
-      {label:"ケアの専門家につなぎ、復帰まで伴走する", fx:{studentTrust:8, money:-15000, sei:1}, say:[{sp:"narr", t:"「先生がいてくれてよかった」。円熟の師の値打ちは、こういう場面に出る。"}]},
+      {label:"ケアの専門家につなぎ、復帰まで伴走する", fx:{studentTrust:8, money:-30000, sei:1}, say:[{sp:"narr", t:"「先生がいてくれてよかった」。円熟の師の値打ちは、こういう場面に出る。"}]},
       {label:"「怪我も稽古のうちだ」と突き放す", fx:{studentTrust:-4, aku:1}, say:[{sp:"narr", t:"若い頃の自分の言葉を、そのまま返してしまった。……少し、後悔が残った。"}]},
     ]},
   ]},

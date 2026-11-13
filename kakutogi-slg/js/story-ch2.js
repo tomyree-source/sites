@@ -31,10 +31,10 @@ $("main").querySelector("[data-auto='to-title']").addEventListener("click", rend
 // その年の残り28週（7か月分）を、月謝・請求書・賃料・用具代まで一括精算して翌年へ進む
 function __ch2Skip(){
 const months = 7;
-const tuitionIn = S.students.length * 8000 * months;
-const gear = S.students.length * 1500 * months;
-const onoCost = S.flags.onoPlan? 12000 * months: 0;
-const bills = (52000 + 48000) * months + gear + onoCost;
+const tuitionIn = S.students.length * 10000 * months;
+const gear = S.students.length * 2500 * months;
+const onoCost = S.flags.onoPlan? 30000 * months: 0;
+const bills = (120000 + 100000) * months + gear + onoCost;
 const net = tuitionIn - bills;
 S.money += net;
 // 経過期間の小さな変化
@@ -46,8 +46,8 @@ if (S.partner === id) S.affection[id] = clamp(S.affection[id] + 2, 0, 100);
 else if (S.affection[id] > 0) S.affection[id] = clamp(S.affection[id] - 3, 0, 100);
 }
 if (S.money < -30000 &&!S.flags.tamuraHelp){
-S.flags.tamuraHelp = true; S.money += 20000;
-notes.push("田村が立て替えてくれた +20,000円");
+S.flags.tamuraHelp = true; S.money += 50000;
+notes.push("田村が立て替えてくれた +50,000円");
 }
 S.absWeek += 29; // 残り28週を飛ばし、翌年の第1週に着地する
 S.age = 19 + Math.floor((S.absWeek - 1) / 48);
@@ -84,8 +84,8 @@ S.students.push({id:cand.id, name:cand.name, style:cand.style, trust:cand.trust,
 toast("移籍入門：" + cand.name + "（" + cand.note + "）");
 moved++;
 }
-if (moved === 0) toast("移籍希望者はいたが、定員いっぱいで受け入れられなかった（賞金 +30,000円）");
-if (moved === 0) S.money += 30000;
+if (moved === 0) toast("移籍希望者はいたが、定員いっぱいで受け入れられなかった（賞金 +100,000円）");
+if (moved === 0) S.money += 100000;
 else toast("黒潮道場から " + moved + "名が移ってきた！");
 } else {
 // 負け：信頼の低い生徒から流れる。ただし最大3割まで、最低2名は残る（設計書2.5）
@@ -129,14 +129,14 @@ steps: [
 {choice:[
 {label:"貯金をはたいて、専用の道場を借りる", say:[
 {sp:"narr", t:"不動産屋の契約書に判を押した。礼金・保証金・初月の賃料で、貯金が大きく目減りする。だが、畳の匂いのするこの空間は、間違いなく「自分の城」だった。"},
-{fx:{money:-150000, flags:{dojoOwn:true}},},
+{fx:{money:-500000, flags:{dojoOwn:true}},},
 ]},
 {label:"身の丈に合った小さな物件から始める", say:[
 {sp:"narr", t:"駅から少し離れた、小さな物件に決めた。出費は抑えたが、それでも看板を上げる重みは同じだった。"},
-{fx:{money:-110000, flags:{dojoOwn:true}},},
+{fx:{money:-150000, flags:{dojoOwn:true}},},
 ]},
 ]},
-{sp:"narr", t:"道場賃料（月48,000円）と生徒の用具代（月1,500円／人）が、月末の請求書に加わるようになった。収入と支出の綱引きが、本当の戦いになる。"},
+{sp:"narr", t:"道場賃料（月100,000円）と生徒の用具代（月2,500円／人）が、月末の請求書に加わるようになった。収入と支出の綱引きが、本当の戦いになる。"},
 {sp:"narr", t:"23歳。看板を上げた男の、全盛前夜が始まる。"},
 {week:true},
 ],
@@ -151,7 +151,7 @@ steps: [
 {sp:"ono", t:"あんた、顔色が悪いよ。勝ちたきゃ、まず食いな。筋肉は畳の上じゃなく、台所で作られるんだから"},
 {sp:"ono", t:"うちはね、選手の月契約やってるの。安くはないけど、体の回復が段違いになるよ。……どうする？"},
 {choice:[
-{label:"月契約する（月12,000円・回復が良くなる）", fx:{flags:{onoPlan:true}, affection:{ono:8}}, say:[
+{label:"月契約する（月30,000円・回復が良くなる）", fx:{flags:{onoPlan:true}, affection:{ono:8}}, say:[
 {sp:"ono", t:"毎度あり。あんたの体は、私が台所から支えてあげる。……あと、残しちゃ駄目だよ"},
 {sp:"narr", t:"その日から、稽古終わりの定食が何よりの楽しみになった。"},
 ]},
@@ -300,8 +300,8 @@ steps: [
 {sp:"narr", t:"隣町に「黒潮道場」という新興の道場ができた。師範の黒潮鉄心は元・重量級の選手で、拡大路線を取る野心家だった。ある日、挑戦状が届いた。"},
 {sp:"narr", t:"「代表戦をやろう。ただし、ただの試合じゃつまらない。――賭けよう。勝った方が、負けた方の生徒を貰う」"},
 {sp:"me", t:"（生徒を賭けるなんて、正道のやり方じゃない。だが、断れば「逃げた」とCLASHで燃える。……そして、勝てば黒潮の門下生がこちらに来る）"},
-{fx:{money:-20000},},
-{sp:"narr", t:"遠征費と会場費で20,000円が飛んだ。看板同士の戦いに、無料のものはない。"},
+{fx:{money:-50000},},
+{sp:"narr", t:"遠征費と会場費で50,000円が飛んだ。看板同士の戦いに、無料のものはない。"},
 {choice:[
 {label:"賭けを受ける（勝てば相手の生徒を獲得、負ければ生徒が流れる）", say:[
 {sp:"narr", t:"代表戦。相手のエースは、番長格の室井豪。"},
@@ -341,7 +341,7 @@ steps: [
 {fx:{meet:["miura"]},},
 {sp:"miura", t:"力でねじ伏せるのではなく、力の流れを変える。それが護身の心です。……ハヤトさん、今日は本当にありがとうございました"},
 {sp:"miura", t:"あなたの道場と、私のセミナー。目指す場所は、きっと同じです"},
-{fx:{sei:2, money:30000, affection:{miura:6}},},
+{fx:{sei:2, money:50000, affection:{miura:6}},},
 {sp:"narr", t:"セミナー後、参加者の数名が「もっと習いたい」と声をかけてきた。"},
 {fx:{joinStudent:true},},
 {week:true},
@@ -437,8 +437,8 @@ title: "道場対抗戦 ― 再戦の賭け",
 steps: [
 {sp:"narr", t:"黒潮道場との因縁は続いていた。門下生の数で並ばれつつある今、黒潮鉄心から再び果たし状が届いた。"},
 {sp:"narr", t:"「今度は、うちの室井が本気で行く。賭けは前回と同じでいいな？」"},
-{fx:{money:-25000},},
-{sp:"narr", t:"遠征費と会場費で25,000円が出ていった。"},
+{fx:{money:-50000},},
+{sp:"narr", t:"遠征費と会場費で50,000円が出ていった。"},
 {choice:[
 {label:"賭けを受ける", say:[
 {battle:"war2_ace", win:[
@@ -483,10 +483,10 @@ steps: [
 {sp:"raio", t:"戦いはショーでもある。客の心を掴めない者は、リングでは生き残れない。……見せてもらおうか、君の「魅せる力」を"},
 {battle:"raio_show", win:[
 {sp:"raio", t:"素晴らしい！ 技術も、華もある。君はリングの真ん中が似合う男だ"},
-{fx:{sei:1, attention:4, money:60000, affection:{}, record:{finWins:1}},},
+{fx:{sei:1, attention:4, money:150000, affection:{}, record:{finWins:1}},},
 ], lose:[
 {sp:"raio", t:"技術は悪くない。だが、魅せる意識がもう一歩だ。……また来よう、その時は本気でな"},
-{fx:{attention:3, money:30000},},
+{fx:{attention:3, money:50000},},
 ]},
 {week:true},
 ],
@@ -507,8 +507,8 @@ steps: [
 {sp:"narr", t:"黒潮道場との三度目の対決。今度は黒潮鉄心本人が、代表戦の畳に立つと言ってきた。"},
 {img:null},
 {sp:"narr", t:"「若い看板同士の争いは、もう終わりにしよう。……師範同士で決める。賭けは、今までで一番大きく行く」"},
-{fx:{money:-30000},},
-{sp:"narr", t:"会場費と遠征費で30,000円が出ていった。"},
+{fx:{money:-50000},},
+{sp:"narr", t:"会場費と遠征費で50,000円が出ていった。"},
 {choice:[
 {label:"賭けを受ける（師範同士の代表戦）", say:[
 {battle:"war3_ace", win:[
@@ -549,10 +549,10 @@ steps: [
 {img:"kujo"},
 {sp:"kujo", t:"本戦よ。カードは準々決勝から。相手は勝ち上がってきた者たちばかり。……それと、出場には参加費と遠征費がかかるわ。大きな舞台は、タダじゃないの"},
 {choice:[
-{label:"参加費・遠征費 80,000円を払う", fx:{money:-80000}, say:[
+{label:"参加費・遠征費 100,000円を払う", fx:{money:-100000}, say:[
 {sp:"kujo", t:"いい顔になったわね。29歳、武道家として一番脂の乗る年。……全部、置いてきなさい"},
 ]},
-{label:"道場の積立から捻出する（注目を集めて補う）", fx:{money:-50000, attention:2}, say:[
+{label:"道場の積立から捻出する（注目を集めて補う）", fx:{money:-60000, attention:2}, say:[
 {sp:"kujo", t:"クラウドファンディング的な集め方ね。……まあ、あなたの物語には、応援してくれる人がもう沢山いるものね"},
 ]},
 ]},
@@ -605,12 +605,12 @@ steps: [
 {battle:"honsen_final", win:[
 {sp:"narr", t:"判定の瞬間、会場が総立ちになった。本戦、優勝。鬼塚は畳の上で笑い、力強く手を差し伸べた。"},
 {sp:"onizuka", t:"……見事だ。お前の20代は、本物だった。30代はな、ここからが本当の戦いだぞ"},
-{fx:{sei:6, attention:5, money:200000, flags:{honsenChampion:true}, record:{cups:1, finWins:1}},},
+{fx:{sei:6, attention:5, money:500000, flags:{honsenChampion:true}, record:{cups:1, finWins:1}},},
 {jump:"ch2_end"},
 ], lose:[
 {sp:"narr", t:"あと一歩、届かなかった。優勝は鬼塚。それでも、本戦の決勝に立った男の名前は、格闘技界に刻まれた。"},
 {sp:"onizuka", t:"悪くなかった。……だが、頂点は一つだけだ。30代で、また来い"},
-{fx:{sei:4, attention:4, money:80000, record:{finWins:0}},},
+{fx:{sei:4, attention:4, money:200000, record:{finWins:0}},},
 {jump:"ch2_end"},
 ]},
 ],
@@ -1445,10 +1445,10 @@ steps: [
 {label:"予約した高級イタリアンで食べる", fx:{douhan:2, money:-18000, flags:{douhanPlace:"italian"}}, say:[
 {sp:"narr", t:"静かな個室と丁寧な料理。ユイは「ちゃんと用意してくれたんだ」と嬉しそうだった。財布は大きく軽くなったが、評価は確実に上がった。"},
 ]},
-{label:"大野千鶴の定食屋で腹ごしらえする", fx:{douhan:1, money:-3000, sei:1, flags:{douhanPlace:"ono"}}, say:[
+{label:"大野千鶴の定食屋で腹ごしらえする", fx:{douhan:1, money:-2000, sei:1, flags:{douhanPlace:"ono"}}, say:[
 {sp:"narr", t:"千鶴の定食は、味も量も間違いがなかった。ユイは「同伴前に定食屋って初めて。でも、こういうの嫌いじゃない」と笑った。"},
 ]},
-{label:"焼肉で景気よくいく", fx:{douhan:1, money:-9000, fatigue:5, flags:{douhanPlace:"yakiniku"}}, say:[
+{label:"焼肉で景気よくいく", fx:{douhan:1, money:-12000, fatigue:5, flags:{douhanPlace:"yakiniku"}}, say:[
 {sp:"narr", t:"煙と笑い声の焼肉は、場の力で盛り上がった。出勤前に匂いが付くことだけ、ユイに軽く突っ込まれた。"},
 ]},
 ]},

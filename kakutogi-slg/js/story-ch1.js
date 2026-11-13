@@ -251,7 +251,7 @@ Object.assign(STORY_CH1, {
       {fx:{meet:["otowa"]}, },
       {battle:"cup1", win:[
         {sp:"otowa", t:"決まったァー！ 無名の{who}がやってくれました！ これは「無名」で検索する時代が終わる音ですよ、視聴者の皆さん！"},
-        {fx:{sei:2, attention:3, money:30000, record:{cups:1}}, },
+        {fx:{sei:2, attention:3, money:50000, record:{cups:1}}, },
       ], lose:[
         {sp:"otowa", t:"ああーっと、ここで敗退！ ですが皆さん見ましたか、今の入り方。負けてなお爪痕を残す選手は、次が怖いんです"},
         {fx:{sei:1, attention:2, money:10000}, },
@@ -305,10 +305,10 @@ Object.assign(STORY_CH1, {
       {sp:"narr", t:"年の締めくくりの地域大会。実況ブースには音羽響の声、レフェリーは三好涼子。顔ぶれが「いつもの」になってきた。"},
       {battle:"yearcup", win:[
         {sp:"otowa", t:"優勝ー！ {nickname}、今年最後のリングで最高の締めくくりです！"},
-        {fx:{sei:3, attention:2, money:50000, record:{cups:1}}, },
+        {fx:{sei:3, attention:2, money:100000, record:{cups:1}}, },
       ], lose:[
         {sp:"narr", t:"決勝で敗れた。だが、観客の拍手は去年よりずっと大きい。積み上げてきたものは、確かにある。"},
-        {fx:{sei:2, attention:1, money:20000}, },
+        {fx:{sei:2, attention:1, money:30000}, },
       ]},
       {week:true},
     ],
@@ -397,13 +397,13 @@ Object.assign(STORY_CH1, {
         {sp:"narr", t:"判定の瞬間、会場が沸いた。地域予選、優勝。凛は畳の上で天井を見上げ、それから笑って手を差し伸べてきた。"},
         {img:"aizawa"},
         {sp:"aizawa", t:"完敗。……ねえ、次は本戦でやろう。私、ここで終わる気はないから"},
-        {fx:{sei:5, attention:4, money:120000, flags:{champion:true}, record:{finWins:1}}, },
+        {fx:{sei:5, attention:4, money:300000, flags:{champion:true}, record:{finWins:1}}, },
         {jump:"finale5"},
       ], lose:[
         {sp:"narr", t:"あと一歩が、届かなかった。優勝は凛。それでも、会場の拍手と実況の声は、この敗北を「物語の途中」だと言っていた。"},
         {img:"aizawa"},
         {sp:"aizawa", t:"勝った。でも分かってる、今日はたまたま私の日だっただけ。……本戦で、またやろう。約束ね"},
-        {fx:{sei:3, attention:3, money:50000, record:{finWins:0}}, },
+        {fx:{sei:3, attention:3, money:100000, record:{finWins:0}}, },
         {jump:"finale5"},
       ]},
     ],
@@ -2620,7 +2620,7 @@ Object.assign(STORY_CH1, {
       {sp:"narr", t:"月末。家賃の値上げ通知と、大会の参加費、道場の備品代が重なった。通帳の残高が、静かに減っていく。"},
       {sp:"me", t:"（強くなるための金と、生きるための金は、同じ財布から出ていく。当たり前のことが、20歳の身には重い）"},
       {choice:[
-        {label:"バイトを増やして乗り切る", fx:{money:15000, fatigue:15, record:{works:1}}, say:[
+        {label:"バイトを増やして乗り切る", fx:{money:30000, fatigue:15, record:{works:1}}, say:[
           {sp:"narr", t:"倉庫のシフトを増やした。疲れは溜まるが、請求書は待ってくれない。これもまた、戦いの形だった。"},
         ]},
         {label:"源田師範に相談する", fx:{sei:1}, say:[
@@ -2628,7 +2628,7 @@ Object.assign(STORY_CH1, {
           {sp:"genda", t:"金の相談は、恥じゃない。……道場の備品はワシと折半にしよう。その代わり、指導の日を一日増やせ"},
           {sp:"narr", t:"情けではなく、対等な取引としての助け舟。それが、この師範の優しさだった。"},
         ]},
-        {label:"セミナーの回数を増やして稼ぐ", fx:{money:8000, fatigue:10}, say:[
+        {label:"セミナーの回数を増やして稼ぐ", fx:{money:15000, fatigue:10}, say:[
           {sp:"narr", t:"急ごしらえの追加セミナーは小規模だったが、来てくれた人の熱は本物だった。"},
         ]},
       ]},
@@ -2739,7 +2739,7 @@ const WEEK_EVENTS_V2 = [
   {id:"v2_dj_gear", category:"dojo", weight:2, chapters:[1,2], minStudents:1, steps:[
     {sp:"narr", t:"稽古中、長く使ったミットが裂けた。備品の買い替えは、道場の悩みの種だ。"},
     {choice:[
-      {label:"新しい道具を買う（8,000円）", fx:{money:-8000, sei:1}, say:[{sp:"narr", t:"新しいミットの感触に、生徒たちの声が弾んだ。道具への投資は、信頼への投資だった。"}]},
+      {label:"新しい道具を買う（30,000円）", fx:{money:-30000, sei:1}, say:[{sp:"narr", t:"新しいミットの感触に、生徒たちの声が弾んだ。道具への投資は、信頼への投資だった。"}]},
       {label:"生徒と一緒に修理して使う", fx:{fatigue:5, stat:{teach:0.3}}, say:[{sp:"narr", t:"修理の時間は、道具を大切にする心を教える時間になった。"}]},
       {label:"当面は古いままで凌ぐ", fx:{fatigue:3}, say:[{sp:"narr", t:"やり繰りは大事だが、生徒の目が少し曇った気がした。"}]},
     ]},
@@ -2770,29 +2770,29 @@ const WEEK_EVENTS_V2 = [
   {id:"v2_sns_collab", category:"sns", weight:2, chapters:[1,2], minFameRank:1, steps:[
     {sp:"narr", t:"他流派のインフルエンサーから、コラボ動画の打診が来た。数字は確実だが、相手は煽り芸で知られる人物だ。"},
     {choice:[
-      {label:"コラボを受ける", fx:{attention:3, money:15000, fatigue:8}, say:[{sp:"narr", t:"撮影は騒がしかったが、届く層は確かに広がった。出演料も入った。"}]},
+      {label:"コラボを受ける", fx:{attention:3, money:30000, fatigue:8}, say:[{sp:"narr", t:"撮影は騒がしかったが、届く層は確かに広がった。出演料も入った。"}]},
       {label:"自分の流派の芯がぶれると断る", fx:{sei:1}, say:[{sp:"narr", t:"断る決断に、「芯がある」と評価する声が付いた。"}]},
     ]},
   ]},
   {id:"v2_ba_rookie", category:"baito", weight:2, chapters:[1,2], steps:[
     {sp:"narr", t:"倉庫バイトの日。現場リーダーの田村から、新人の教育係を頼まれた。"},
     {choice:[
-      {label:"丁寧に教える", fx:{money:3000, stat:{teach:0.4}, record:{works:1}}, say:[{sp:"narr", t:"教える手際の良さに、田村が頷いた。「あんた、指導者だな」。バイト代に色が付いた。"}]},
-      {label:"自分の作業に集中する", fx:{money:6000, fatigue:8, record:{works:1}}, say:[{sp:"narr", t:"黙々とこなして歩合を稼いだ。新人は少し寂しそうだったが、金は金だ。"}]},
+      {label:"丁寧に教える", fx:{money:5000, stat:{teach:0.4}, record:{works:1}}, say:[{sp:"narr", t:"教える手際の良さに、田村が頷いた。「あんた、指導者だな」。バイト代に色が付いた。"}]},
+      {label:"自分の作業に集中する", fx:{money:10000, fatigue:8, record:{works:1}}, say:[{sp:"narr", t:"黙々とこなして歩合を稼いだ。新人は少し寂しそうだったが、金は金だ。"}]},
     ]},
   ]},
   {id:"v2_ba_guard", category:"baito", weight:2, chapters:[1,2], steps:[
     {sp:"narr", t:"イベント警備のバイト中、控室エリアで他流派の選手と鉢合わせた。休憩時間、自然と技術談義になった。"},
     {choice:[
       {label:"相手の流派の話を深く聞く", fx:{stat:{read:0.4}, attention:1}, say:[{sp:"narr", t:"警備員と選手、立場を越えた情報交換は、次の試合の読みに生きるはずだ。"}]},
-      {label:"職務に集中し、距離を保つ", fx:{money:4000, sei:1, record:{works:1}}, say:[{sp:"narr", t:"真面目な警備ぶりが運営の目に留まり、次回の指名も約束された。"}]},
+      {label:"職務に集中し、距離を保つ", fx:{money:8000, sei:1, record:{works:1}}, say:[{sp:"narr", t:"真面目な警備ぶりが運営の目に留まり、次回の指名も約束された。"}]},
     ]},
   ]},
   {id:"v2_ba_setup", category:"baito", weight:2, chapters:[1,2], steps:[
     {sp:"narr", t:"大会設営のバイト中、リングの部材が足りないトラブルが発生した。開始時刻が迫っている。"},
     {choice:[
-      {label:"残って手伝い、開催に間に合わせる", fx:{money:5000, sei:1, fatigue:10, record:{works:1}}, say:[{sp:"narr", t:"機転と体力でトラブルを収め、運営から感謝と上乗せのバイト代を受け取った。"}]},
-      {label:"定時で上がる", fx:{money:2000, record:{works:1}}, say:[{sp:"narr", t:"契約は契約だ。だが、ざわつく会場を背に帰る足は、少し重かった。"}]},
+      {label:"残って手伝い、開催に間に合わせる", fx:{money:10000, sei:1, fatigue:10, record:{works:1}}, say:[{sp:"narr", t:"機転と体力でトラブルを収め、運営から感謝と上乗せのバイト代を受け取った。"}]},
+      {label:"定時で上がる", fx:{money:5000, record:{works:1}}, say:[{sp:"narr", t:"契約は契約だ。だが、ざわつく会場を背に帰る足は、少し重かった。"}]},
     ]},
   ]},
   {id:"v2_md_paper", category:"media", weight:2, chapters:[1,2], minFameRank:1, steps:[
@@ -2805,15 +2805,15 @@ const WEEK_EVENTS_V2 = [
   {id:"v2_md_radio", category:"media", weight:2, chapters:[1,2], steps:[
     {sp:"narr", t:"地元ラジオ局から、深夜番組へのゲスト出演の打診が来た。出演料はわずかだが、声だけの勝負だ。"},
     {choice:[
-      {label:"出演する", fx:{attention:2, money:10000, fatigue:6}, say:[{sp:"narr", t:"武術への思いを語った放送は、意外なほど反響があった。声の届く範囲は、想像より広い。"}]},
+      {label:"出演する", fx:{attention:2, money:30000, fatigue:6}, say:[{sp:"narr", t:"武術への思いを語った放送は、意外なほど反響があった。声の届く範囲は、想像より広い。"}]},
       {label:"話題作りが過ぎると断る", fx:{sei:1}, say:[{sp:"narr", t:"静かに断った。リングの外の戦いは、選んで戦うものだ。"}]},
     ]},
   ]},
   {id:"v2_md_stream", category:"media", weight:2, chapters:[2], minFameRank:1, steps:[
     {sp:"narr", t:"人気配信番組からゲスト出演のオファーが来た。第2章の看板には、メディアの目も集まり始めている。"},
     {choice:[
-      {label:"真面目に武術の魅力を語る", fx:{attention:3, sei:1, money:15000}, say:[{sp:"narr", t:"真摯な語りが「ギャップが良い」と評判になり、出演料も入った。"}]},
-      {label:"他流派への宣戦布告で盛り上げる", fx:{attention:4, aku:2, money:20000}, say:[{sp:"narr", t:"番組は大いに盛り上がった。だが、言葉の火種は、後で必ず自分に返ってくる。"}]},
+      {label:"真面目に武術の魅力を語る", fx:{attention:3, sei:1, money:50000}, say:[{sp:"narr", t:"真摯な語りが「ギャップが良い」と評判になり、出演料も入った。"}]},
+      {label:"他流派への宣戦布告で盛り上げる", fx:{attention:4, aku:2, money:50000}, say:[{sp:"narr", t:"番組は大いに盛り上がった。だが、言葉の火種は、後で必ず自分に返ってくる。"}]},
       {label:"出演を断る", fx:{fatigue:-5}, say:[{sp:"narr", t:"静かな週を選んだ。話題より、積み上げだ。"}]},
     ]},
   ]},
@@ -2838,7 +2838,7 @@ const STUDENT_DRAMA_EVENTS = [
   {id:"stu_tournament", weight:2, chapters:[1,2], minStudents:2, steps:[
     {sp:"narr", t:"生徒の一人が、アマチュア大会への出場を申し出てきた。目には、不安と期待が半分ずつある。"},
     {choice:[
-      {label:"出場を後押しし、参加費を補助する（5,000円）", fx:{money:-5000, studentTrust:8, studentSkill:1, sei:1}, say:[{sp:"narr", t:"生徒の背中が、少しだけ大きくなった気がした。弟子の試合は、師の試合でもある。"}]},
+      {label:"出場を後押しし、参加費を補助する（10,000円）", fx:{money:-10000, studentTrust:8, studentSkill:1, sei:1}, say:[{sp:"narr", t:"生徒の背中が、少しだけ大きくなった気がした。弟子の試合は、師の試合でもある。"}]},
       {label:"「まだ早い」と止める", fx:{studentTrust:-4}, say:[{sp:"narr", t:"生徒は頷いたが、目には不満が残った。止める判断にも、責任が伴う。"}]},
     ]},
   ]},
@@ -2877,7 +2877,7 @@ const SEASONAL_EVENTS = [
   {id:"se_gw", window:[17,20], chapters:[2], steps:[
     {sp:"narr", t:"大型連休。体験入門の問い合わせが一気に増えた。自分の道場を持ったからこそ受ける、春の波だ。"},
     {choice:[
-      {label:"連休返上で体験会を開く", fx:{money:20000, joinStudent:true, fatigue:12}, say:[{sp:"narr", t:"忙しい連休になったが、道場の空気は確実に厚くなった（定員に空きがあれば新入門）。"}]},
+      {label:"連休返上で体験会を開く", fx:{money:30000, joinStudent:true, fatigue:12}, say:[{sp:"narr", t:"忙しい連休になったが、道場の空気は確実に厚くなった（定員に空きがあれば新入門）。"}]},
       {label:"体を休めることを優先する", fx:{fatigue:-20}, say:[{sp:"narr", t:"波を逃す代わりに、体を整えた。本戦の年は、まだ長い。"}]},
     ]},
   ]},
@@ -2899,7 +2899,7 @@ const SEASONAL_EVENTS = [
     {sp:"narr", t:"秋祭り。商店街の神輿の担ぎ手に、道場の面々が声をかけられた。"},
     {choice:[
       {label:"神輿を担いで地域に混ざる", fx:{sei:2, attention:1, fatigue:8}, say:[{sp:"narr", t:"祭りの熱の中で、道場の名前が地域に溶けていった。信用は、こういう日に貯まる。"}]},
-      {label:"出店の警備を手伝う", fx:{money:8000, sei:1, record:{works:1}}, say:[{sp:"narr", t:"祭りの裏方の働きも、地域への立派な貢献だった。"}]},
+      {label:"出店の警備を手伝う", fx:{money:15000, sei:1, record:{works:1}}, say:[{sp:"narr", t:"祭りの裏方の働きも、地域への立派な貢献だった。"}]},
     ]},
   ]},
   {id:"se_yearend", window:[45,48], chapters:[1], steps:[

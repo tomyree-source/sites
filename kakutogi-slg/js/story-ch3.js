@@ -70,10 +70,10 @@ $("main").querySelector("[data-auto='to-title']").addEventListener("click", rend
 // ---------- 年次スキップ精算（代表シーズン方式・第2章と同方式） ----------
 function __ch3Skip(){
 const months = 7;
-const tuitionIn = S.students.length * 8000 * months;
-const gear = S.students.length * 1500 * months;
-const onoCost = S.flags.onoPlan? 12000 * months: 0;
-const bills = (52000 + 48000) * months + gear + onoCost;
+const tuitionIn = S.students.length * 10000 * months;
+const gear = S.students.length * 2500 * months;
+const onoCost = S.flags.onoPlan? 30000 * months: 0;
+const bills = (120000 + 100000) * months + gear + onoCost;
 const net = tuitionIn - bills;
 S.money += net;
 const notes = [];
@@ -84,8 +84,8 @@ if (S.partner === id) S.affection[id] = clamp(S.affection[id] + 2, 0, 100);
 else if (S.affection[id] > 0) S.affection[id] = clamp(S.affection[id] - 3, 0, 100);
 }
 if (S.money < -30000 &&!S.flags.tamuraHelp){
-S.flags.tamuraHelp = true; S.money += 20000;
-notes.push("田村が立て替えてくれた +20,000円");
+S.flags.tamuraHelp = true; S.money += 50000;
+notes.push("田村が立て替えてくれた +50,000円");
 }
 // 30代の体：重い部位ダメージは古傷として残り、通常のダメージは経過で回復する
 const newly = crystallizeOldWounds();
@@ -129,7 +129,7 @@ S.students.push({id:cand.id, name:cand.name, style:cand.style, trust:cand.trust,
 toast("移籍入門：" + cand.name + "（" + cand.note + "）");
 moved++;
 }
-if (moved === 0){ toast("移籍希望者はいたが、定員いっぱいで受け入れられなかった（賞金 +30,000円）"); S.money += 30000;}
+if (moved === 0){ toast("移籍希望者はいたが、定員いっぱいで受け入れられなかった（賞金 +100,000円）"); S.money += 100000;}
 else toast("香取道場から " + moved + "名が移ってきた！");
 } else {
 // 負け：信頼の低い生徒から流れる。ただし最大3割まで、最低2名は残る（設計書2.5。第2章と同じ流儀）
@@ -198,7 +198,7 @@ steps: [
 {sp:"satake", t:"あんたが噂の看板か。……俺は佐竹。自衛隊あがりで、今は警備の現場を仕切ってる"},
 {sp:"satake", t:"リングの戦いと、現場の実戦は違う。距離感と、終わらせ方だ。今度、暇な時に教えてやる"},
 {sp:"narr", t:"佐竹の言葉は短いが、現場の人間の重みがあった。警備バイトの口も、彼経由で太くなりそうだ。"},
-{fx:{sei:1, money:11000, record:{works:1}}},
+{fx:{sei:1, money:20000, record:{works:1}}},
 {week:true},
 ],
 },
@@ -289,10 +289,10 @@ steps: [
 {sp:"gunnar", t:"私の鎧は、並の打撃では揺るがない。だが、戦士の礼はする。……全力で来い、日本の看板"},
 {battle:"gunnar_b", win:[
 {sp:"gunnar", t:"……鎧の内側まで響いた。見事なものだ。持久と視界、弱点をよく見ていた"},
-{fx:{sei:3, attention:3, money:80000, record:{finWins:1}}},
+{fx:{sei:3, attention:3, money:200000, record:{finWins:1}}},
 ], lose:[
 {sp:"gunnar", t:"重さは、正義だ。……だが、お前の読みは悪くなかった。次は鎧なしでも戦おう"},
-{fx:{sei:1, attention:2, money:30000}},
+{fx:{sei:1, attention:2, money:50000}},
 ]},
 {week:true},
 ],
@@ -331,10 +331,10 @@ steps: [
 {sp:"narr", t:"会見の後、二人の対戦カードが正式に決まった。"},
 {battle:"akai_battle", win:[
 {sp:"akai", t:"ははっ、負けた！ だが見ろよ、この会場の盛り上がり。……あんたとは、いい物語が作れそうだ。また戦おうぜ、看板さん"},
-{fx:{sei:2, attention:4, money:60000, record:{finWins:1}}},
+{fx:{sei:2, attention:4, money:150000, record:{finWins:1}}},
 ], lose:[
 {sp:"akai", t:"俺の勝ちだな。でもよ、あんたの正統派の圧、痺れたぜ。……次はあんたが勝つ番かもしれねえ。それが物語ってもんだ"},
-{fx:{attention:4, money:30000}},
+{fx:{attention:4, money:50000}},
 ]},
 {week:true},
 ],
@@ -348,10 +348,10 @@ steps: [
 {sp:"raijin", t:"若いの、戦いは強いだけじゃ残らねえ。客の心に爪痕を残すんだ。……今日は、その授業料はタダにしといてやる"},
 {battle:"raijin_show", win:[
 {sp:"raijin", t:"はっはっは、やるじゃねえか。技術も華もある。……だが、マイクはまだまだだな。今度、教えてやる"},
-{fx:{sei:1, attention:4, money:70000, record:{finWins:1}}},
+{fx:{sei:1, attention:4, money:200000, record:{finWins:1}}},
 ], lose:[
 {sp:"raijin", t:"力は認める。だが、最後に客が覚えているのは「物語」だ。……負けても物語は作れる。それを忘れるな"},
-{fx:{attention:3, money:40000}},
+{fx:{attention:3, money:80000}},
 ]},
 {week:true},
 ],
@@ -366,8 +366,8 @@ steps: [
 {sp:"narr", t:"香取冴子から、正式な果たし状が届いた。「代表戦をやろう。今回は賭けありだ。勝った方が、負けた方の生徒を貰う。――あんたが本戦で見せた看板の値打ち、試させてもらう」"},
 {img:"katori"},
 {sp:"katori", t:"断るなら断ればいい。だが、看板ってのはね、賭けて守るもんなんだよ"},
-{fx:{money:-25000}},
-{sp:"narr", t:"遠征費と会場費で25,000円が出ていった。"},
+{fx:{money:-50000}},
+{sp:"narr", t:"遠征費と会場費で50,000円が出ていった。"},
 {choice:[
 {label:"賭けを受ける（勝てば相手の生徒が移籍、負ければ生徒が流れる）", say:[
 {sp:"narr", t:"代表戦。香取道場のエースは、若手の長谷川蓮。師範譲りの近距離の圧が襲う。"},
@@ -461,7 +461,7 @@ steps: [
 {sp:"narr", t:"香取道場との三度目の対決。今度は冴子本人が代表戦の畳に立つ。「賭けは前回と同じ。師範同士で決めよう」"},
 {img:"katori"},
 {sp:"katori", t:"八極拳の貼山靠、若い看板に受け止められるかい？ ……行くよ、ハヤト"},
-{fx:{money:-30000}},
+{fx:{money:-50000}},
 {choice:[
 {label:"賭けを受ける（師範対決）", say:[
 {battle:"katori_duel", win:[
@@ -603,10 +603,10 @@ steps: [
 {sp:"gunnar", t:"鎧の内側まで響かせた男と、素手で戦ってみたかった。……行くぞ"},
 {battle:"gunnar_b2", win:[
 {sp:"gunnar", t:"……素手でも強い。認めよう、お前は本物の戦士だ"},
-{fx:{sei:3, attention:2, money:60000, record:{finWins:1}}},
+{fx:{sei:3, attention:2, money:150000, record:{finWins:1}}},
 ], lose:[
 {sp:"gunnar", t:"重さは、鎧がなくても正義だ。……だが、いい試合だった"},
-{fx:{sei:1, money:30000}},
+{fx:{sei:1, money:50000}},
 ]},
 {week:true},
 ],
@@ -620,10 +620,10 @@ steps: [
 {battle:"street2", win:[
 {sp:"satake", t:"……見事な収め方だ。あんたの距離感、現場でも通用する"},
 {sp:"narr", t:"騒ぎは怪我人もなく収まった。警備会社からの評価も上がり、現場の信頼が厚くなった。"},
-{fx:{sei:2, attention:1, money:15000, record:{streetWins:1, works:1}}},
+{fx:{sei:2, attention:1, money:30000, record:{streetWins:1, works:1}}},
 ], lose:[
 {sp:"satake", t:"怪我は軽い。……現場は結果が全てじゃない。誰も死ななきゃ、それでいい"},
-{fx:{sei:1, money:11000, record:{works:1}, dmg:{arm:1}}},
+{fx:{sei:1, money:20000, record:{works:1}, dmg:{arm:1}}},
 ]},
 {week:true},
 ],
@@ -653,10 +653,10 @@ steps: [
 {sp:"akai", t:"聞いてるか、未来の弟子たちよ。……いつか開く俺の道場じゃ、弟子は全員この赤い道着だ。今日の熱を見て『着たい』と思った奴、待ってるぜ"},
 {battle:"akai_rematch", win:[
 {sp:"akai", t:"っはは、また負けたか！ でもよ、満足そうな客の顔を見ろ。俺たち、いい仕事したよな"},
-{fx:{sei:2, attention:5, money:90000, record:{finWins:1}}},
+{fx:{sei:2, attention:5, money:250000, record:{finWins:1}}},
 ], lose:[
 {sp:"akai", t:"俺の物語が勝ったな。……だが、あんたの正統がなきゃ、この熱は生まれなかった。礼を言うぜ"},
-{fx:{attention:5, money:50000}},
+{fx:{attention:5, money:100000}},
 ]},
 {week:true},
 ],
@@ -667,7 +667,7 @@ steps: [
 {sp:"narr", t:"香取冴子から、最後の果たし状が届いた。「弟子の取り合いも、これで最後にしよう。賭けは最大。師範同士、全力で決める」"},
 {img:"katori"},
 {sp:"katori", t:"あんたとの争いは、悪くなかった。うちの門下も、あんたの門下も、競い合って強くなった。……だからこそ、最後は綺麗に決めようじゃないか"},
-{fx:{money:-30000}},
+{fx:{money:-50000}},
 {choice:[
 {label:"賭けを受ける（最終決着）", say:[
 {battle:"katori_final", win:[
@@ -711,10 +711,10 @@ steps: [
 {img:"kujo"},
 {sp:"kujo", t:"出場の準備には、参加費も体も要るわ。残りの数年は、全部この大会への助走。……あなたの30代の答えを、リングで見せてちょうだい"},
 {choice:[
-{label:"参加費・遠征費 100,000円を払い、出場を決める", fx:{money:-100000, flags:{grandEntry:true}}, say:[
+{label:"参加費・遠征費 150,000円を払い、出場を決める", fx:{money:-150000, flags:{grandEntry:true}}, say:[
 {sp:"kujo", t:"いい目ね。その目があれば、きっと届く。……準備を怠らないで"},
 ]},
-{label:"道場の積立と応援で捻出する", fx:{money:-60000, attention:2, flags:{grandEntry:true}}, say:[
+{label:"道場の積立と応援で捻出する", fx:{money:-80000, attention:2, flags:{grandEntry:true}}, say:[
 {sp:"kujo", t:"あなたの物語には、応援してくれる人が大勢いる。それも実力のうちよ"},
 ]},
 ]},
@@ -808,10 +808,10 @@ steps: [
 {sp:"akai", t:"看板さん、俺たちの物語も三戦目だ。……勝っても負けても、客が泣ける試合をしようぜ。それが、プロってもんだろ"},
 {battle:"akai_final", win:[
 {sp:"akai", t:"ははっ、三連敗か！ でもよ、不思議と悔しくねえ。あんたとの試合は、いつも満員だ。……また戦おうぜ。何歳になってもな"},
-{fx:{sei:3, attention:5, money:100000, record:{finWins:1}}},
+{fx:{sei:3, attention:5, money:300000, record:{finWins:1}}},
 ], lose:[
 {sp:"akai", t:"ようやく一矢報いたぜ。……だが、あんたの正統あっての俺だ。次も、物語の続きを書こう"},
-{fx:{attention:5, money:60000}},
+{fx:{attention:5, money:100000}},
 ]},
 {week:true},
 ],
@@ -968,12 +968,12 @@ steps: [
 {battle:"fin3_final", win:[
 {sp:"narr", t:"判定の瞬間、会場が総立ちになった。グランド本戦、優勝。30代の集大成は、頂点で締めくくられた。"},
 {sp:"katori", t:"……完敗だ。あんたの全盛期は、間違いなく本物だったよ"},
-{fx:{sei:6, attention:5, money:250000, flags:{grandChampion:true}, record:{cups:1, finWins:1}}},
+{fx:{sei:6, attention:5, money:1000000, flags:{grandChampion:true}, record:{cups:1, finWins:1}}},
 {jump:"ch3_finale_end"},
 ], lose:[
 {sp:"narr", t:"あと一歩、届かなかった。優勝は香取。それでも、決勝のリングに立った30代の全ては、誰にも消せない。"},
 {sp:"katori", t:"いい戦いだった。……あんたとの決勝は、私の自慢だよ"},
-{fx:{sei:4, attention:4, money:100000}},
+{fx:{sei:4, attention:4, money:300000}},
 {jump:"ch3_finale_end"},
 ]},
 ],
@@ -1340,14 +1340,14 @@ const CH3_WEEK_EVENTS = [
   {id:"ch3_ev_dojo_rent", category:"dojo", weight:2, chapters:[3], steps:[
     {sp:"narr", t:"大家から、道場物件の契約更新の話が来た。家賃の小幅な値上げが提示されている。"},
     {choice:[
-      {label:"値上げを受け入れ、長く借りる契約にする", fx:{money:-30000, sei:1, studentTrust:4}, say:[{sp:"narr", t:"安定した拠点は、生徒の安心にもつながった。"}]},
+      {label:"値上げを受け入れ、長く借りる契約にする", fx:{money:-100000, sei:1, studentTrust:4}, say:[{sp:"narr", t:"安定した拠点は、生徒の安心にもつながった。"}]},
       {label:"交渉して据え置きを目指す", fx:{attention:1}, say:[{sp:"narr", t:"粘り強い交渉の末、据え置きで決着した。戦いはリングの外にもある。"}]},
     ]},
   ]},
   {id:"ch3_ev_sns_document", category:"sns", weight:2, chapters:[3], minFameRank:2, steps:[
     {sp:"narr", t:"霧島沙耶の紹介で、密着ドキュメンタリー番組の打診が来た。「全盛期の体と生活」を追う企画だという。"},
     {choice:[
-      {label:"取材を受ける", fx:{attention:4, fatigue:8, money:30000}, say:[{sp:"narr", t:"体のケアまで含めた密着は、「全盛期のリアル」として好評だった。出演料も入った。"}]},
+      {label:"取材を受ける", fx:{attention:4, fatigue:8, money:50000}, say:[{sp:"narr", t:"体のケアまで含めた密着は、「全盛期のリアル」として好評だった。出演料も入った。"}]},
       {label:"今は大会準備に集中したいと断る", fx:{expMain:4, sei:1}, say:[{sp:"narr", t:"丁重に断った。話題より仕上がり、と決めた週だった。"}]},
     ]},
   ]},
@@ -1362,14 +1362,14 @@ const CH3_WEEK_EVENTS = [
   {id:"ch3_ev_baito_rookie", category:"baito", weight:2, chapters:[3], steps:[
     {sp:"narr", t:"警備バイトの現場で、佐竹から新人の教育係を頼まれた。現場の世代交代も進んでいる。"},
     {choice:[
-      {label:"丁寧に教えて、現場を任せられる人材に育てる", fx:{money:6000, stat:{teach:0.4}, sei:1, record:{works:1}}, say:[{sp:"narr", t:"佐竹が小さく頷いた。「あんたは、どこでも指導者だな」"}]},
-      {label:"自分の担当範囲に集中する", fx:{money:9000, fatigue:6, record:{works:1}}, say:[{sp:"narr", t:"黙々とこなして手当を稼いだ。教える時間は、道場のために取っておく週もある。"}]},
+      {label:"丁寧に教えて、現場を任せられる人材に育てる", fx:{money:10000, stat:{teach:0.4}, sei:1, record:{works:1}}, say:[{sp:"narr", t:"佐竹が小さく頷いた。「あんたは、どこでも指導者だな」"}]},
+      {label:"自分の担当範囲に集中する", fx:{money:15000, fatigue:6, record:{works:1}}, say:[{sp:"narr", t:"黙々とこなして手当を稼いだ。教える時間は、道場のために取っておく週もある。"}]},
     ]},
   ]},
   {id:"ch3_ev_media_book", category:"media", weight:2, chapters:[3], minFameRank:2, steps:[
     {sp:"narr", t:"出版社から、格闘家の体の管理をテーマにした本への寄稿依頼が来た。白石遥との対談形式だという。"},
     {choice:[
-      {label:"寄稿を引き受ける", fx:{attention:3, sei:2, money:20000, affection:{shiraishi:3}}, say:[{sp:"narr", t:"正直な体の記録は、同業者の共感を呼んだ。原稿料も入った。"}]},
+      {label:"寄稿を引き受ける", fx:{attention:3, sei:2, money:30000, affection:{shiraishi:3}}, say:[{sp:"narr", t:"正直な体の記録は、同業者の共感を呼んだ。原稿料も入った。"}]},
       {label:"今は選手としての発信に絞ると断る", fx:{expMain:3}, say:[{sp:"narr", t:"静かに断り、稽古に戻った。"}]},
     ]},
   ]},

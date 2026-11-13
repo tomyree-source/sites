@@ -18,14 +18,14 @@ const SAVE_KEY = "kakutogi_production_save_v1";
 const FAME_RANKS = ["無名", "近所で有名", "配信で話題", "流派の顔", "最強論争の中心"];
 const FAME_THRESHOLDS = [0, 5, 12, 22, 35];
 const STUDENT_CAP = [3, 6, 10, 16, 24];
-const MONTHLY_BILLS = 52000; // 家賃32,000＋生活費20,000
-const TUITION = 8000; // 生徒1人の月謝
+const MONTHLY_BILLS = 120000; // 家賃45,000＋生活費75,000（第142節: 案A実勢化）
+const TUITION = 10000; // 生徒1人の月謝（第142節: 実勢化）
 const WEEKS_PER_YEAR = 48;
 
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "2.00";
+const GAME_VERSION = "2.01";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -237,7 +237,7 @@ expMainTotal: 0, expTotal: 0,
 dmg: {arm:0, leg:0, core:0, head:0},
 students: [], met: [], affection: {}, romanceEv: {}, partner: null,
 life: {partners: [], spouse: null, per: {}, children: 0, support: [], futamataRisk: 0, futamataCount: 0, titles: {}, lastAccWeek: 0, lastKidWeek: 0},
-ura: {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0, shoulderPunch: false, shoulderPunchWeek: 0, shoulderPunchArrestNo: 0, shoulderRearrestDueWeek: 0, shoulderRearrestDone: false, shoulderRearrestWeek: 0, shoulderSettled: false, shoulderRestrained: false, shoulderDecisionDone: false, shoulderJuniorTrust: 50, shoulderRearrestPostponeWeek: 0},
+ura: {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0, shoulderPunch: false, shoulderPunchWeek: 0, shoulderPunchArrestNo: 0, shoulderRearrestDueWeek: 0, shoulderRearrestDone: false, shoulderRearrestWeek: 0, shoulderSettled: false, shoulderRestrained: false, shoulderDecisionDone: false, shoulderJuniorTrust: 50, shoulderRearrestPostponeWeek: 0, darkOffers: 0, darkAccepts: 0, darkCdUntil: 0},
 short: {entries: 0, wins: 0, titles: 0, years: {}, auditionDone: false, lastOfferWeek: -9, lastDeclineWeek: -99},
 flags: {}, record: {fouls:0, anki:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0, tenkaIn:0, tenkaTitles:0},
 seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {}, seenEvents: {},
@@ -277,13 +277,17 @@ function ensureStateCompat(){
   if (S.partner && !S.life.partners.includes(S.partner)) S.life.partners.push(S.partner);
   if (!S.partner && S.life.partners.length) S.partner = S.life.partners[0];
   // 第139節: 裏ルートの状態（v1.98以前のセーブでは未定義のため初期化）
-  if (!S.ura || typeof S.ura !== "object") S.ura = {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0, shoulderPunch: false, shoulderPunchWeek: 0, shoulderPunchArrestNo: 0, shoulderRearrestDueWeek: 0, shoulderRearrestDone: false, shoulderRearrestWeek: 0, shoulderSettled: false, shoulderRestrained: false, shoulderDecisionDone: false, shoulderJuniorTrust: 50, shoulderRearrestPostponeWeek: 0};
+  if (!S.ura || typeof S.ura !== "object") S.ura = {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0, shoulderPunch: false, shoulderPunchWeek: 0, shoulderPunchArrestNo: 0, shoulderRearrestDueWeek: 0, shoulderRearrestDone: false, shoulderRearrestWeek: 0, shoulderSettled: false, shoulderRestrained: false, shoulderDecisionDone: false, shoulderJuniorTrust: 50, shoulderRearrestPostponeWeek: 0, darkOffers: 0, darkAccepts: 0, darkCdUntil: 0};
   if (!S.ura.entryDone || typeof S.ura.entryDone !== "object") S.ura.entryDone = {};
   if (!S.ura.declined || typeof S.ura.declined !== "object") S.ura.declined = {};
   if (!S.ura.jobsDone || typeof S.ura.jobsDone !== "object") S.ura.jobsDone = {};
   if (!S.ura.titles || typeof S.ura.titles !== "object") S.ura.titles = {};
   if (S.ura.rank == null) S.ura.rank = 0;
   if (S.ura.heat == null) S.ura.heat = 0;
+  // 第142節（追記）: 借金連動の闇バイトの誘いの状態
+  if (S.ura.darkOffers == null) S.ura.darkOffers = 0;
+  if (S.ura.darkAccepts == null) S.ura.darkAccepts = 0;
+  if (S.ura.darkCdUntil == null) S.ura.darkCdUntil = 0;
   // 第141節: 肩パン→再逮捕の状態（v1.99以前のセーブでは未定義のため初期化）
   if (S.ura.shoulderPunch == null) S.ura.shoulderPunch = false;
   if (S.ura.shoulderPunchWeek == null) S.ura.shoulderPunchWeek = 0;
@@ -323,6 +327,8 @@ if (S.life && S.life.titles){
   if (LT.reclaim) return "奪還の達人";
   if (LT.detective) return "見破り師範";
   if (LT.father) return "子持ち師範";
+  if (LT.gfEarn) return "彼女の稼ぎで立った男"; // 第142節（追記2）: 笑いの名前にしない重い二つ名
+  if (LT.gfEarnStopped) return "引き返した男"; // 第142節（追記2）: 途中で止めた側
 }
 // 第139節: 裏ルートの結末・到達で付く二つ名（逮捕には呼び名を付けない）
 if (S.ura && S.ura.titles){
@@ -513,23 +519,23 @@ function courtVerdictLines(){
   if (S.partner && !S.flags.partnerCrisisDone) S.flags.partnerCrisisPending = S.absWeek; // 第76節: 訴訟が恋愛に波及する火種
   if (attr === "謝罪"){
     if (win){ S.flags.courtResult = "settle"; return damagesBillLines("和解の支払い",
-      [{label:"賠償金", amount:60000},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
+      [{label:"賠償金", amount:500000},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
       [{sp:"narr", t:"判決の前に、和解が成立した。門脇も最後は小さく頭を下げた。「……リングでは、また別だ」"},
        {sp:"narr", t:"高い授業料だった。だが、逃げずに畳んだ姿勢は、界隈にも静かに伝わった。"},
        {fx:{sei:1, attention:1}}], "門脇修");}
     S.flags.courtResult = "settle_hard"; return damagesBillLines("和解の支払い",
-      [{label:"賠償金", amount:120000},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
+      [{label:"賠償金", amount:800000},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
       [{sp:"narr", t:"和解は成立した。ただし条件は重く、謝罪文の文面も、相手方と一語ずつ調整する苦い作業になった。"},
        {sp:"narr", t:"「匿名でも、言葉は金で償うことになる」――霧島沙耶のコラムが、静かに締めくくった。"},
        {fx:{aku:1, attention:2}}], "門脇修");}
   if (attr === "弁護"){
     if (win){ S.flags.courtResult = "settle"; return damagesBillLines("和解の支払い",
-      [{label:"賠償金", amount:70000},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
+      [{label:"賠償金", amount:600000},{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.settleFee}],
       [{sp:"narr", t:"加納弁護士の交渉で、和解が成立した。感情の応酬にならなかった分、傷は浅く済んだ。"},
        {sp:"narr", t:"「戦う場所を選ぶのも、実力のうちです」加納の言葉が、妙に残った。"},
        {fx:{fatigue:-5}}], "門脇修");}
     S.flags.courtResult = "lose"; return damagesBillLines("敗訴の支払い",
-      [{label:"賠償金", amount:150000},{label:"弁護士・着手金", amount:F.retainer}],
+      [{label:"賠償金", amount:1000000},{label:"弁護士・着手金", amount:F.retainer}],
       [{sp:"narr", t:"判決は敗訴。賠償金の支払いが命じられた。プロに任せても、書き込みの悪質さは覆らなかった。"},
        {sp:"narr", t:"法廷を出ると、記者たちのフラッシュが待っていた。"},
        {fx:{aku:1, attention:2}}], "門脇修");}
@@ -540,7 +546,7 @@ function courtVerdictLines(){
      {sp:"narr", t:"だが、勝ったことと、匿名で悪口を書いた事実は、別の話だった。CLASHの反応も半々で、「勝訴＝正義」と言ってくれる者はいなかった。"},
      {fx:{attention:3, sei:-1, aku:1}}]);}
   S.flags.courtResult = "lose"; return damagesBillLines("敗訴の支払い",
-    [{label:"賠償金", amount:180000},{label:"弁護士・着手金", amount:F.retainer}],
+    [{label:"賠償金", amount:1200000},{label:"弁護士・着手金", amount:F.retainer}],
     [{sp:"narr", t:"敗訴。賠償金に、謝罪投稿の掲載まで命じられた。争う姿勢そのものが心証を悪くした、とも報じられた。"},
      {sp:"narr", t:"謝罪投稿のコメント欄は、しばらく荒れたままだった。"},
      {fx:{aku:2, attention:3}}], "門脇修");}
@@ -559,9 +565,9 @@ function raidIntroLines(){
 }
 // ---------- 借金と弁護士費用（第74節） ----------
 // 賠償金・示談金・弁護士費用は chargeLegal で払う： 手持ちで払い、足りない分は「借金」として残り、
-// 月末の精算（endWeek）で残高の1/5（最低1万円）ずつ分割返済される。借金がある間の演出は
+// 月末の精算（endWeek）で残高の1/5（最低3万円）ずつ分割返済される。借金がある間の演出は
 // 二つ名（借金の求道者）・CLASHの噂・第76節（恋愛への波及）・第77節（実家のオカン）と共通。
-const LEGAL_FEES = {consult:10000, retainer:30000, settleFee:20000, winFee:30000};
+const LEGAL_FEES = {consult:10000, retainer:200000, settleFee:160000, winFee:240000}; // 第142節: 実勢化（着手金は請求額の約1割が相場）
 function debtOf(){ return (S && S.flags && S.flags.debt) || 0; }
 function addDebt(amount){
   if (amount <= 0) return;
@@ -593,7 +599,7 @@ function settleBillLines(title, parts, tail){
 function monthlyDebtPayment(show){
   const debt = debtOf();
   if (debt <= 0) return 0;
-  const inst = Math.min(debt, Math.max(10000, Math.ceil(debt / 5)));
+  const inst = Math.min(debt, Math.max(30000, Math.ceil(debt / 5)));
   S.money -= inst;
   S.flags.debt = debt - inst;
   S.flags.debtPaidTotal = (S.flags.debtPaidTotal || 0) + inst;
@@ -603,11 +609,11 @@ function monthlyDebtPayment(show){
 }
 // ---------- 踏み倒しルート（第132節） ----------
 // 借金の踏み倒し（月末に自分から選ぶ）と、判決・示談の賠償金の踏み倒し（催告→強制執行の連鎖）。
-// 第82節の「夜逃げデッドエンド」は"返済実績のないまま残高150万円超"の強制終了で、こちらはその手前で
+// 第82節の「夜逃げデッドエンド」は"返済実績のないまま残高300万円超"の強制終了で、こちらはその手前で
 // 自分から選ぶ踏み倒し。代償（悪名・信用・弟子・活動制限）を払えば、年代記は終わらずに続く。
 const DEBT_DEFAULT_THRESHOLD = 1000000; // 借金残高がこの額以上あると、月末に踏み倒しの選択肢が出る
 const HIDE_WEEKS = 8;                   // 夜逃げ後の潜伏期間（週）。この間、挑戦・セミナー・コラボ・指導ができない
-const BANKRUPTCY_FEE = 50000;           // 自己破産の申立費用（弁護士費用として払う。足りない分は法テラスの立替）
+const BANKRUPTCY_FEE = 200000;           // 自己破産の申立費用（弁護士費用として払う。足りない分は法テラスの立替）
 const BANKRUPTCY_LOCK_WEEKS = 52;       // 自己破産後に新規借入・借金留学が封鎖される期間（週）
 const DEFAULT_REVIVE_RATE = 0.5;        // 夜逃げの発覚後に返済再開を選ぶと、踏み倒し額の半分が借金として戻る
 function inHiding(){ return !!(S && S.flags.nightFlightDone && !S.flags.nightFlightFound && S.flags.hideUntil && S.absWeek < S.flags.hideUntil); }
@@ -620,7 +626,7 @@ function debtDefaultEligible(){
 // その後 endWeek 側の monthSettle（通常返済・精算）が続く
 function debtDefaultOfferSteps(){
   const debt = debtOf();
-  const inst = Math.min(debt, Math.max(10000, Math.ceil(debt / 5)));
+  const inst = Math.min(debt, Math.max(30000, Math.ceil(debt / 5)));
   return [
     {sp:"narr", t:"月末の夜。通帳と請求書と、借金の残高通知が、机の上に並んでいる。残高は" + debt.toLocaleString() + "円。今月の返済" + inst.toLocaleString() + "円を払っても、坂道はまだ長い。"},
     {sp:"me", t:"（……返すか。それとも――踏み倒すか。武道家のすることではない。だが、選択肢としては、確かに存在する）"},
@@ -812,7 +818,7 @@ function civilVerdictLines(kind){
   const attr = d.attr || "弁護";
   const win = !!d.win;
   const F = LEGAL_FEES;
-  const DMG = kind === "clash" ? {settle:40000, settleHard:80000, counsel:50000, lose:120000} : {settle:30000, settleHard:60000, counsel:40000, lose:110000};
+  const DMG = kind === "clash" ? {settle:300000, settleHard:500000, counsel:400000, lose:800000} : {settle:200000, settleHard:400000, counsel:300000, lose:600000}; // 第142節: 実勢化
   const flagDone = kind === "clash" ? "clashCourtDone" : "videoCourtDone";
   const flagRes = kind === "clash" ? "clashCourtResult" : "videoCourtResult";
   S.flags[flagDone] = true; S.flags[flagRes + "Week"] = S.absWeek;
@@ -835,7 +841,7 @@ function civilVerdictLines(kind){
     [{label:"弁護士・着手金", amount:F.retainer},{label:"成功報酬", amount:F.winFee}],
     [{sp:"narr", t:"勝訴。こちらの主張が、おおむね認められた。"}, {sp:"narr", t:"だがCLASHの反応は複雑だった。「勝った」と「正しかった」は、界隈では別の話として扱われる。"}, {fx:{attention:2}}]);
   } else { result = "lose"; lines = damagesBillLines("敗訴の支払い",
-    [{label:"賠償金", amount:DMG.lose + 30000},{label:"弁護士・着手金", amount:F.retainer}],
+    [{label:"賠償金", amount:DMG.lose + 100000},{label:"弁護士・着手金", amount:F.retainer}],
     [{sp:"narr", t:"敗訴。賠償金の支払いが命じられた。争う姿勢そのものが心証を悪くした、とも報じられた。"}, {fx:{aku:2, attention:3}}], creditor);
   }
   S.flags[flagRes] = result;
@@ -852,7 +858,7 @@ function clashSueIntroLines(){
   ];
 }
 // 傷害ルート（第74節・刑事の側）。火種は3系統： boukan=暴漢への過剰防衛／raid=乗り込み組手で怪我／match=試合で重い怪我
-const INJURY_SETTLE_BASE = {boukan:80000, raid:120000, match:150000};
+const INJURY_SETTLE_BASE = {boukan:800000, raid:1200000, match:1500000}; // 第142節: 実勢化（骨折級の示談は治療費＋慰謝料で80万〜）
 function injurySource(){ return S.flags.injurySource || "match"; }
 function injurySourceReady(){
   if (!S || S.flags.injuryDone || S.flags.injurySource) return !!S.flags.injurySource;
@@ -890,9 +896,9 @@ function injurySettleLines(){
   ], "被害者側");
 }
 function injuryFineLines(){
-  let fine = 80000;
-  if (S.flags.injuryLawyer) fine = 50000;
-  if (S.flags.injuryAttitude === "silent") fine = 120000;
+  let fine = 300000;
+  if (S.flags.injuryLawyer) fine = 200000;
+  if (S.flags.injuryAttitude === "silent") fine = 500000;
   const parts = [{label:"略式命令の罰金", amount:fine}];
   if (S.flags.injuryLawyer && !S.flags.injuryRetainerPaid) parts.push({label:"弁護士・着手金", amount:LEGAL_FEES.retainer});
   S.flags.injuryDone = true; S.flags.injuryResult = "fine";
@@ -1000,8 +1006,8 @@ function partnerBreakupLines(reasonLines){
   const married = !!S.flags.partnerMarried;
   const lines = (reasonLines || []).slice();
   if (married){
-    addDebt(200000);
-    lines.push({sp:"narr", t:"話し合いは、離婚という結論に至った。慰謝料20万円は、新しい借金として残った（借金残高" + debtOf().toLocaleString() + "円）。法廷の外の敗北は、法廷の中より重かった。"});
+    addDebt(1000000);
+    lines.push({sp:"narr", t:"話し合いは、離婚という結論に至った。慰謝料100万円は、新しい借金として残った（借金残高" + debtOf().toLocaleString() + "円）。法廷の外の敗北は、法廷の中より重かった。"});
   } else {
     lines.push({sp:"narr", t:"二人の関係は、ここで終わった。リングで負けるより、ずっと静かで、ずっと痛い敗北だった。"});
   }
@@ -1072,18 +1078,16 @@ function partnerRecoverSteps(){
 // 会わない週の継続・潜伏・悪名・好感の低下で per.risk が蓄積し、好感のピーク（peak）は別に残す。
 // 疑惑の発火条件は risk>=10（週次25%）。真偽は発火時点の火種で決まる隠し状態： risk>=16 なら「本当」、
 // 未満なら「誤解」。こまめに会っていれば risk は下がり、疑惑自体が起きにくい。
-// 探偵費用50,000円＝浮気調査の実勢（数十万円）ではゲーム経済（大会賞金5〜12万円）に
-// 重すぎるため、弁護士着手金30,000円と同オーダーの上限として設定。検査費用30,000円＝不妊の
-// 初診〜基本検査の実勢（数万円）と作中の物価感（着手金30,000円）に合わせた。養育費は月20,000円
-// （養育費算定の下限帯）×子が成人するまで（18年）。不倫慰謝料300,000円＝既存の賠償レンジ
-// （6万〜18万円）より重く、実勢（数十万〜）の下限かつ作中で支払い可能な上限。結婚後の別れの
-// 慰謝料200,000円は既存の partnerBreakupLines の値をそのまま使う。
+// 金額は第142節（2026-11-13・案Aフルリアル）で実勢化済み：探偵費用500,000円＝浮気調査の
+// 実勢（50万〜100万円）。検査費用50,000円＝不妊の初診〜基本検査の実勢（数万円〜10万円）。
+// 養育費は月30,000円（養育費算定表の中下限帯）×子が成人するまで（18年）。不倫慰謝料
+// 1,500,000円＝実勢相場（100万〜300万円）の中央。結婚後の別れの慰謝料1,000,000円も実勢化。
 // 全年齢。性的な行為の描写は一切なし。出来事・感情・選択で描く。托卵は笑いにせず、
 // CLASHのネタにもBOTY候補にも入れない。不妊・検査は原因を断定せず、医療の誤情報を書かない。
-const LIFE_DETECTIVE_FEE = 50000;
-const LIFE_EXAM_FEE = 30000;
-const LIFE_SUPPORT_MONTHLY = 20000;
-const LIFE_ADULTERY_CLAIM = 300000;
+const LIFE_DETECTIVE_FEE = 500000;
+const LIFE_EXAM_FEE = 50000;
+const LIFE_SUPPORT_MONTHLY = 30000;
+const LIFE_ADULTERY_CLAIM = 1500000;
 const LIFE_RISK_CAP = 30;
 const LIFE_RISK_SUSPICION = 10; // 浮気疑惑が発火する火種
 const LIFE_RISK_REAL = 16; // これ以上なら疑惑は「本当」になる
@@ -1106,7 +1110,7 @@ return L;
 }
 function lifePerInit(id){
 const L = lifeEnsure(); if (!L) return {};
-if (!L.per[id] || typeof L.per[id]!== "object") L.per[id] = {since: S.absWeek, lastTouch: S.absWeek, risk: 0, peak: 0, affPeak: S.affection[id] || 0, suspicionDone: false, affair: null, affairStage: "", ntrWeek: 0, childEventDone: false, noChildDone: false, kids: 0, kidsBornWeek: 0, kidsSecret: false, kidsSecretKnown: "", takuranPrompted: false};
+if (!L.per[id] || typeof L.per[id]!== "object") L.per[id] = {since: S.absWeek, lastTouch: S.absWeek, risk: 0, peak: 0, affPeak: S.affection[id] || 0, suspicionDone: false, affair: null, affairStage: "", ntrWeek: 0, childEventDone: false, noChildDone: false, kids: 0, kidsBornWeek: 0, kidsSecret: false, kidsSecretKnown: "", takuranPrompted: false, earnKind: "", earnUntil: 0, earnTotal: 0, earnWeeks: 0, earnExposed: false, earnStopped: false, lastAskWeek: -99};
 return L.per[id];
 }
 function lifeIsPartner(id){
@@ -1145,8 +1149,8 @@ if (wasSpouse){
 if (opts.alimony === false){
 lines.push({sp:"narr", t:"話し合いの末、籍を抜いた。慰謝料の話は、互いに持ち出さなかった。紙の上の関係は終わった。だが、過ごした年月まで消えるわけではなかった。"});
 } else {
-addDebt(200000);
-lines.push({sp:"narr", t:"話し合いは、離婚という結論に至った。慰謝料20万円は、新しい借金として残った（借金残高" + debtOf().toLocaleString() + "円）。法廷の外の敗北は、法廷の中より重かった。"});
+addDebt(1000000);
+lines.push({sp:"narr", t:"話し合いは、離婚という結論に至った。慰謝料100万円は、新しい借金として残った（借金残高" + debtOf().toLocaleString() + "円）。法廷の外の敗北は、法廷の中より重かった。"});
 }
 L.spouse = null; S.flags.partnerMarried = false;
 } else if (!opts.silent){
@@ -1712,6 +1716,177 @@ case "futa_brazen": return lifeFutaBrazenLines();
 return [];
 }
 // ---------- 週頭フック ----------
+// ---------- 第142節（追記2）: 彼女に稼ぎを頼む ----------
+// 発生: 交際中（life.partners に相手がいる）＋借金300,000円以上（闇バイト誘いと同じ借金段階の
+// 土俵）。提示は週頭フック tryGfAsk（「金の工面」）。借金ゼロ・彼女なしでは一切出ない。
+// 表現は全年齢（行為の描写なし。お金・感情・選択と結果で描く）。
+// 金額の根拠（実勢）: 水商売＝キャバクラ/ガールズバーの時給2,000〜5,000円×週4日で月16万円側
+// ＝週40,000円／風俗＝月収30万〜60万円と語られる帯の中下限＝週90,000円（月36万円）／
+// AV＝出演料の一回性（数十万〜100万円超の幅）から一括800,000円＋その後の指名・続編で週50,000円×8週。
+// 承諾率: 基礎（水0.70/風0.45/AV0.30）に、好感70以上 +0.15・40未満 -0.25、pref（悪名型 +0.15／
+// 清名型 -0.15／実力型 ±0）、交際48週以上 +0.10 を補正。拒否は好感 -12/-18/-25、好感が25未満に
+// 落ちれば即別れ（lifeBreakupApply に委譲。既婚なら慰謝料は既存仕様）。
+// 承諾後の週次: 収入が入り、好感 -1〜-2/週・火種 +1〜+2/週が積み上がる。4週ごとに「もうやめて
+// いい」と止める見直しを提示。発覚（週 水1%/風3%/AV6%）で悪名・注目+、信頼の薄い生徒が離脱。
+// 章末記録には並記しない（v1.98の方針: センシティブな履歴は記録に出さない）。
+const GF_EARN_MIN_DEBT = 300000;
+const GF_ASK_COOLDOWN = 6;
+const GF_EARN = {
+mizu: {label:"水商売", weekly:40000, lump:0, weeks:0, affWeek:-1, riskWeek:1, expose:0.01, refuseAff:-12, acceptBase:0.70},
+fuzoku: {label:"風俗", weekly:90000, lump:0, weeks:0, affWeek:-2, riskWeek:2, expose:0.03, refuseAff:-18, acceptBase:0.45},
+av: {label:"AV出演", weekly:50000, lump:800000, weeks:8, affWeek:-2, riskWeek:2, expose:0.06, refuseAff:-25, acceptBase:0.30},
+};
+function gfAskPid(){
+const L = lifeEnsure(); if (!L) return null;
+return L.partners[0] || S.partner || null;
+}
+function gfAskEligible(){
+if (!S ||!S.flags || S.flags.retiredEnding || S.flags.uraBadEnd) return false;
+if (typeof inJail === "function" && inJail()) return false;
+const pid = gfAskPid(); if (!pid) return false;
+if (debtOf() < GF_EARN_MIN_DEBT) return false;
+const p = lifePerInit(pid);
+if (p.earnKind) return false;
+if (S.absWeek - (p.lastAskWeek || -99) < GF_ASK_COOLDOWN) return false;
+return true;
+}
+function tryGfAsk(){
+if (!gfAskEligible()) return false;
+startScene(gfAskSteps(gfAskPid()), null, null);
+return true;
+}
+function gfAskSteps(pid){
+const c = CAST_BY_ID[pid];
+const name = c? c.name: "彼女";
+return [
+{sp:"narr", t:"借金は" + debtOf().toLocaleString() + "円。返済の計算を何度しても、答えは変わらなかった。――" + name + "の顔が浮かぶ。言ってはいけない言葉ほど、喉の近くまで来ていた。"},
+{sp:"me", t:"（……言えば、楽になる。言えば、何かが終わる。それでも、言わなければ、この借金は終わらない）"},
+{choice:[
+{label:"水商売で働いてくれないかと頼む（収入は中）", say:[{gfAskResolve:{pid: pid, kind: "mizu"}}]},
+{label:"風俗で働いてくれないかと頼む（収入は大）", say:[{gfAskResolve:{pid: pid, kind: "fuzoku"}}]},
+{label:"AVに出てくれないかと頼む（収入は特大・一回性の大金）", say:[{gfAskResolve:{pid: pid, kind: "av"}}]},
+{label:"やっぱり、何でもないと言う", say:[
+{sp:"narr", t:"「……何でもない。顔が見たかっただけだ」。嘘の笑顔で誤魔化すと、" + name + "は不思議そうに、それでも嬉しそうに笑った。今夜の借金は、自分の背中に残った。"},
+]},
+]},
+];
+}
+function gfAskResolveLines(pid, kind){
+const c = CAST_BY_ID[pid]; const name = c? c.name: "彼女";
+const p = lifePerInit(pid); const def = GF_EARN[kind];
+p.lastAskWeek = S.absWeek;
+let prob = def.acceptBase;
+const aff = S.affection[pid] || 0;
+if (aff >= 70) prob += 0.15; else if (aff < 40) prob -= 0.25;
+if (c && c.pref === "aku") prob += 0.15;
+if (c && c.pref === "sei") prob -= 0.15;
+if (S.absWeek - (p.since || S.absWeek) >= 48) prob += 0.10;
+const forced = S.flags.gfForceResult;
+const accept = forced? forced === "accept": _rng() < Math.max(0.05, Math.min(0.95, prob));
+if (forced) delete S.flags.gfForceResult;
+const lines = [];
+if (!accept){
+S.affection[pid] = clamp(aff + def.refuseAff, 0, 100);
+p.risk = Math.min(LIFE_RISK_CAP, (p.risk || 0) + 6);
+lines.push({sp:"narr", t:"言葉にした瞬間、空気が変わった。「……私に、それを頼むの」。" + name + "の声は、怒りよりも、静かな落胆で震えていた。"});
+if ((S.affection[pid] || 0) < 25){
+lines.push({sp:"narr", t:"「ごめん。もう、無理だと思う」。荷物は少なく、別れは短かった。"});
+lines.push.apply(lines, lifeBreakupApply(pid, {}));
+} else {
+lines.push({sp:"narr", t:"その夜、二人の間には、言葉にできない距離が残った。借金は減らず、失いかけたものの重さだけが増えた。"});
+}
+return lines;
+}
+p.earnKind = kind; p.earnWeeks = 0; p.earnTotal = 0; p.earnExposed = false;
+p.earnUntil = def.weeks? S.absWeek + def.weeks: 0;
+if (kind === "mizu") lines.push({sp:"narr", t:"長い沈黙のあと、" + name + "は小さく頷いた。「……わかった。お店の仕事なら、私にもできる。でも約束して。借金が終わったら、私は辞める」"});
+if (kind === "fuzoku") lines.push({sp:"narr", t:"「……あなたの借金のためだけに、やる」。" + name + "は、目を伏せたまま言った。「それ以外の意味は、持たせないで」"});
+if (kind === "av") lines.push({sp:"narr", t:"「一度だけだよ。一度で終わらせる」。" + name + "の声は震えていた。「……条件は、向こうと詰める。でも、残るものは残る。それでも、やる」"});
+if (def.lump){
+p.earnTotal += def.lump;
+lines.push({fx:{money: def.lump}});
+lines.push({sp:"narr", t:"数日後、" + def.lump.toLocaleString() + "円が振り込まれた。借金の桁が一つ減った。――その事実の重さは、金額より、ずっと静かに効いた。"});
+} else {
+lines.push({sp:"narr", t:"その週から、" + name + "は夜の街へ出るようになった。帰りは遅く、笑顔は少しずつ減っていった。"});
+}
+return lines;
+}
+function gfEarnStopLines(pid){
+const c = CAST_BY_ID[pid]; const name = c? c.name: "彼女";
+const L = lifeEnsure(); const p = lifePerInit(pid);
+p.earnKind = ""; p.earnUntil = 0; p.earnStopped = true;
+S.affection[pid] = clamp((S.affection[pid] || 0) + 5, 0, 100);
+p.risk = Math.max(0, (p.risk || 0) - 4);
+if ((p.earnTotal || 0) >= 300000 && L) L.titles.gfEarnStopped = true; // 称号: 引き返した男
+return [
+{sp:"narr", t:"「もう、いいんだ。ありがとう。ここからは、俺が返す」。" + name + "はしばらく黙って、それから小さく笑った。「……うん。待ってた、その言葉」"},
+{sp:"narr", t:"夜の仕事は終わった。借金の残りは自分の背中に戻ったが、二人の間の空気は、少しだけ軽くなった。"},
+];
+}
+function gfEarnExposureSteps(pid){
+const c = CAST_BY_ID[pid]; const name = c? c.name: "彼女";
+const p = lifePerInit(pid); const kind = p.earnKind || "mizu";
+p.earnKind = ""; p.earnUntil = 0; p.earnExposed = true;
+S.affection[pid] = clamp((S.affection[pid] || 0) - (kind === "mizu"? 5: 8), 0, 100);
+const low = S.students.filter(st => (st.trust || 50) < 60);
+const leaving = low.slice(0, Math.ceil(low.length / 2));
+if (leaving.length) S.students = S.students.filter(st =>!leaving.includes(st));
+const steps = [
+{sp:"narr", t:"CLASHに、書き込みがあった。「あの道場の師範の彼女、夜の店で働いているらしい」「稼ぎは師範の借金のためだとか」――真偽を確かめる者などいない。噂は、事実より速く走った。"},
+{sp:"narr", t:name + "は、その週で仕事を辞めた。「……もう、表を向いて歩けない」。声に、責める色はなかった。それが、余計に重かった。"},
+];
+if (leaving.length) steps.push({sp:"narr", t:"数日後、生徒" + leaving.length + "名が辞めていった。理由は、誰も口にしなかった。"});
+steps.push({fx:{aku: kind === "av"? 3: 2, attention: 3}});
+return steps;
+}
+function gfEarnCollapseSteps(pid){
+const c = CAST_BY_ID[pid]; const name = c? c.name: "彼女";
+const p = lifePerInit(pid);
+p.earnKind = ""; p.earnUntil = 0;
+const steps = [
+{sp:"narr", t:"帰りの遅い日が続いていた。ある夜、" + name + "は玄関で立ち尽くしていた。「……ごめん。もう無理」。声は震えていた。様子は、限界だった。"},
+{sp:"narr", t:"止めなかったのは、自分だ。その事実から、目を逸らすことはできなかった。"},
+];
+steps.push.apply(steps, lifeBreakupApply(pid, {}));
+return steps;
+}
+function gfEarnReviewSteps(pid){
+const c = CAST_BY_ID[pid]; const name = c? c.name: "彼女";
+const p = lifePerInit(pid);
+return [
+{sp:"narr", t:name + "の稼ぎは、これまで" + (p.earnTotal || 0).toLocaleString() + "円。借金は少しずつ減ってきた。だが、帰りの遅い日、彼女の目の下の隈は、少しずつ濃くなっている。"},
+{choice:[
+{label:"このまま続けてもらう", say:[{sp:"narr", t:"言葉にはしなかった。しなかった、という選択もまた、選択だった。"}]},
+{label:"「もうやめていい」と言う", say:[{gfEarnStop: pid}]},
+]},
+];
+}
+function gfEarnEndSteps(pid){
+const c = CAST_BY_ID[pid]; const name = c? c.name: "彼女";
+const p = lifePerInit(pid);
+p.earnKind = ""; p.earnUntil = 0;
+return [
+{sp:"narr", t:"約束の期間は終わった。" + name + "は、夜の仕事から足を洗った。稼ぎの総額は" + (p.earnTotal || 0).toLocaleString() + "円。借金は減った。だが、その間のことは、二人の間では、あまり口に上らなくなった。"},
+];
+}
+function gfEarnWeekly(){
+const L = lifeEnsure(); if (!L) return false;
+if (L.gfLastWeek === S.absWeek) return false;
+L.gfLastWeek = S.absWeek;
+for (const pid of L.partners.slice()){
+const p = L.per[pid]; if (!p ||!p.earnKind) continue;
+const def = GF_EARN[p.earnKind]; if (!def){ p.earnKind = ""; continue;}
+if (p.earnUntil && S.absWeek > p.earnUntil){ startScene(gfEarnEndSteps(pid), null, null); return true;}
+S.money += def.weekly; p.earnTotal = (p.earnTotal || 0) + def.weekly; p.earnWeeks = (p.earnWeeks || 0) + 1;
+S.affection[pid] = clamp((S.affection[pid] || 0) + def.affWeek, 0, 100);
+p.risk = Math.min(LIFE_RISK_CAP, (p.risk || 0) + def.riskWeek);
+if (p.earnTotal >= 1000000 &&!L.titles.gfEarn) L.titles.gfEarn = true; // 称号: 彼女の稼ぎで立った男
+if (_rng() < def.expose){ startScene(gfEarnExposureSteps(pid), null, null); return true;}
+if ((S.affection[pid] || 0) <= 20){ startScene(gfEarnCollapseSteps(pid), null, null); return true;}
+if (p.earnWeeks % 4 === 0){ startScene(gfEarnReviewSteps(pid), null, null); return true;}
+}
+return false;
+}
 function tryLifeEvents(){
 if (!S ||!S.flags) return false;
 lifeEnsure(); lifeAccumulate();
@@ -1797,10 +1972,10 @@ startScene(lifeNtrSteps(pid), null, null); return true;
 return false;
 }
 // ---------- 本場留学ルート（第75節：借金で資金調達） ----------
-const ABROAD_LOAN_CAP = 300000; // 借金残高がこの額以上あると新規の借入は断られる
+const ABROAD_LOAN_CAP = 1000000; // 借金残高がこの額以上あると新規の借入は断られる
 function abroadDest(){
   const st = mainStyle(); const name = st ? st.name : ""; const cat = st ? st.cat : "";
-  const D = (place, zone) => ({place, zone, cost: zone === "domestic" ? 300000 : zone === "asia" ? 500000 : 700000});
+  const D = (place, zone) => ({place, zone, cost: zone === "domestic" ? 450000 : zone === "asia" ? 700000 : 1200000});
   if (/ムエタイ|ムエボーラン|ムエラオ/.test(name)) return D("タイ・バンコクの名門ジム", "asia");
   if (/レスウェイ/.test(name)) return D("ミャンマー・ヤンゴンのジム", "asia");
   if (/プラダル/.test(name)) return D("カンボジア・プノンペンのジム", "asia");
@@ -1850,9 +2025,9 @@ function skipWeeksAbroad(n){
     if ((S.absWeek - 1) % WEEKS_PER_YEAR === 0) S.age++;
     if (S.absWeek % 4 === 0){
       const tuition = S.students.length * TUITION; if (tuition > 0) S.money += tuition;
-      const dojoRent = S.chapter >= 2 ? 48000 : 0;
-      const gearCost = S.chapter >= 2 ? S.students.length * 1500 : 0;
-      const onoCost = (S.chapter >= 2 && S.flags.onoPlan) ? 12000 : 0;
+      const dojoRent = S.chapter >= 2 ? 100000 : 0;
+      const gearCost = S.chapter >= 2 ? S.students.length * 2500 : 0;
+      const onoCost = (S.chapter >= 2 && S.flags.onoPlan) ? 30000 : 0;
       const ch4Cost = ch4MonthlyCosts();
       S.money -= (MONTHLY_BILLS + dojoRent + gearCost + onoCost + ch4Cost.total);
       monthlyDebtPayment(false);
@@ -2008,7 +2183,7 @@ function nightAttackSteps(){
   ] : sc >= 5 ? [
     {sp:"narr", t:"刃をかわしきれなかった。腕に熱い線が走る。それでも足は動いた。距離を取り、叫びながら近くのコンビニへ転がり込んだ。男は追ってこなかった。"},
     {sp:"narr", t:"病院で腕を縫った。命に別状はない。防犯カメラの映像から、男は翌日逮捕された。アカウントを消して消えたはずの、" + opp + "だった。"},
-    {fx:{dmg:{arm:2}, money:-30000, attention:3, flags:{attackResult:"injured"}}},
+    {fx:{dmg:{arm:2}, money:-80000, attention:3, flags:{attackResult:"injured"}}},
   ] : [
     {sp:"narr", t:"体が、動かなかった。古傷の疼きと疲労が、反応を半拍遅らせた。刃が、深く入った――。"},
     {deadEnd:{id:"de_night_attack", title:"夜道の襲撃", cause:"引き金は、勝利宣言の投稿と、蓄積した怪我と疲労だった。実力の蓄積が足りないまま刃物に向かった世界線は、ここで終わる"}},
@@ -2020,7 +2195,7 @@ function nightAttackSteps(){
   ] : [
     {sp:"narr", t:"走った。だが古傷の脚がもつれ、路地で転倒した。背中に刃が掠り、血が滲んだ。それでも這って大通りまで出たところで、通行人に助けられた。"},
     {sp:"narr", t:"病院送りになった。男は後日、防犯カメラの映像から逮捕された。アカウントを消して消えたはずの、" + opp + "だった。"},
-    {fx:{dmg:{leg:2}, money:-20000, fatigue:20, attention:3, flags:{attackResult:"injured"}}},
+    {fx:{dmg:{leg:2}, money:-50000, fatigue:20, attention:3, flags:{attackResult:"injured"}}},
   ];
   const shoutSay = [
     {sp:"narr", t:"腹の底から叫んだ。「人が襲われてる！ 警察！」。窓が開き、誰かが叫び返し、犬が吠えた。男は舌打ちして、闇に走り去った。"},
@@ -2062,6 +2237,10 @@ function sceneAdvance(){
     if (st.fx){ applyFx(st.fx); continue; }
     if (st.uraFx){ uraApplyFx(st.uraFx); continue; } // 第139節: 裏ルートの内部値（裏格・熱・連勝など）の増減
     if (st.uraSet){ Object.assign(uraEnsure(), st.uraSet); continue; } // 第139節: 裏ルートの状態を直接書き換える（隠し通す等）
+    if (st.darkAccept){ UI.queue = darkBaitoAcceptLines().concat(UI.queue); continue; } // 第142節（追記）: 闇バイトを受けた結果（即金・熱・裏への接続）
+    if (st.darkDecline){ const U = uraEnsure(); U.darkCdUntil = S.absWeek + darkBaitoCooldown(); continue; } // 第142節（追記）: 断れば数週間は来ない
+    if (st.gfAskResolve){ UI.queue = gfAskResolveLines(st.gfAskResolve.pid, st.gfAskResolve.kind).concat(UI.queue); continue; } // 第142節（追記2）: 彼女に頼んだ結果（承諾/拒否の解決）
+    if (st.gfEarnStop){ UI.queue = gfEarnStopLines(st.gfEarnStop).concat(UI.queue); continue; } // 第142節（追記2）: 「もうやめていい」の実処理
     if (st.uraPartnerLeave){ const pid = (S.life && S.life.partners[0]) || S.partner; if (pid) UI.queue = uraPartnerLeaveLines(pid).concat(UI.queue); continue; } // 第139節: 彼女が去る実処理（選択が選ばれた時点で実行）
     if (st.uraWarLoseCheck){ UI.queue = uraWarLoseLines().concat(UI.queue); continue; } // 第139節: 抗争に敗れた際の重傷判定（バッドエンド分岐）
     if (st.uraShoulderRearrest){ UI.queue = uraShoulderRearrestLines().concat(UI.queue); continue; } // 第141節: 肩パンの別件逮捕を、現在の逮捕回数に応じて解決する
@@ -2309,9 +2488,9 @@ function goWeek(){
   if (S.flags.debtDeadEndPending){
     S.flags.debtDeadEndPending = false;
     startScene([
-      {sp:"narr", t:"借金の残高は、150万円を超えた。督促の電話は日に何度も鳴り、道場の家賃も、生徒の月謝も、もうどこにも逃げ場がなかった。"},
+      {sp:"narr", t:"借金の残高は、300万円を超えた。督促の電話は日に何度も鳴り、道場の家賃も、生徒の月謝も、もうどこにも逃げ場がなかった。"},
       {sp:"narr", t:"深夜。荷物を小さなバッグ一つに詰め、電気の消えた道場を振り返った。「……夜逃げ屋の真似事まで、武道家がすることか」"},
-      {deadEnd:{id:"de_debt", title:"借金 ― 夜逃げ", cause:"引き金は、積み上がった借金だった。賠償・示談・留学――一つ一つの選択は小さくても、返済の実績がないまま残高が150万円を超えた世界線は、ここで終わる"}},
+      {deadEnd:{id:"de_debt", title:"借金 ― 夜逃げ", cause:"引き金は、積み上がった借金だった。賠償・示談・留学――一つ一つの選択は小さくても、返済の実績がないまま残高が300万円を超えた世界線は、ここで終わる"}},
     ], null, null); // 巻き戻し先は週頭のスナップショット（renderWeek）を使うため likeId は付けない
     return;
   }
@@ -2331,10 +2510,14 @@ function goWeek(){
   }
   // 第138節: 彼女ライフイベント（火種の蓄積と発火。浮気・NTR・不倫・子供・托卵・二股の修羅場）
   if (typeof tryLifeEvents === "function" && tryLifeEvents()) return;
+  // 第142節（追記2）: 彼女の稼ぎの週次処理（収入・好感と火種の蓄積・発覚・見直し）
+  if (typeof gfEarnWeekly === "function" && gfEarnWeekly()) return;
   // 第139節: 裏ルート（入口の誘い・逮捕・彼女への露見・道場の噂・抗争の週頭判定）
   if (typeof tryUraEvents === "function" && tryUraEvents()) return;
   // 第140節: 短時間マッチ興行の出場オファー（椎名駆の企画。年1〜2回）
   if (typeof tryShortOffer === "function" && tryShortOffer()) return;
+  // 第142節（追記2）: 借金がある程度あり交際中なら「金の工面」として彼女に頼む提示が出る
+  if (typeof tryGfAsk === "function" && tryGfAsk()) return;
   // 第75節: 本場留学の提示（第2章以降・主・流儀Lv5以上・一度だけ大きく。見送れば+2Lvで再提示）
   if (typeof abroadEligible === "function" && abroadEligible()){
     S.flags.abroadOfferLv = styleLv(S.mainStyle);
@@ -2343,7 +2526,17 @@ function goWeek(){
     return;
   }
   const allBeats = BEATS.concat(typeof BEATS_CH2 !== "undefined" ? BEATS_CH2 : [], typeof BEATS_CH3 !== "undefined" ? BEATS_CH3 : [], typeof BEATS_CH4 !== "undefined" ? BEATS_CH4 : []);
-  const beat = allBeats.find(b => b.week === S.absWeek && !S.beatsDone[b.week + ":" + b.id]);
+  let beat = allBeats.find(b => b.week === S.absWeek && !S.beatsDone[b.week + ":" + b.id]);
+  if (!beat){
+    // 第142節: 週単位のジャンプ（年次スキップ・勾留など）で固定ビートの週を跨ぐと、そのビートが
+    // 永遠に発火せず章が進まなくなる取りこぼしが実測された（二天一流ルートで第2章の本戦を跨ぎ、
+    // 第3章の最終ビートだけが発火して自動テストが停止）。現在の章の範囲内で最も古い未消化ビートを
+    // 遅れて発火させる（章を跨いだ救済はしない）。
+    const chStart = S.chapter <= 1 ? 1 : 49 + (S.chapter - 2) * 480;
+    const chEnd = S.chapter <= 1 ? 48 : chStart + 479;
+    const overdue = allBeats.filter(b => b.week < S.absWeek && b.week >= chStart && b.week <= chEnd && !S.beatsDone[b.week + ":" + b.id]).sort((a, b) => a.week - b.week);
+    beat = overdue[0] || null;
+  }
   if (beat){ S.beatsDone[beat.week + ":" + beat.id] = true; startSceneById(beat.id); return; }
   renderWeek();
 }
@@ -2603,9 +2796,9 @@ function ch4MonthlyCosts(){
   if (!S || S.chapter < 4) return {equip:0, expedition:0, care:0, total:0};
   const ow = (S.flags && S.flags.oldWounds) || {};
   const owCount = Object.keys(ow).filter(p => ow[p] > 0).length;
-  const equip = 30000;
-  const expedition = S.students.length * 1200;
-  const care = 10000 + owCount * 3000;
+  const equip = 50000;
+  const expedition = S.students.length * 3000;
+  const care = 30000 + owCount * 8000;
   return {equip, expedition, care, total: equip + expedition + care};
 }
 function endWeek(){
@@ -2616,9 +2809,9 @@ function endWeek(){
       const tuition = S.students.length * TUITION;
       if (tuition > 0){ S.money += tuition; toast("月謝 +" + tuition.toLocaleString() + "円（生徒" + S.students.length + "人）"); }
       // 第2章以降は道場賃料と生徒の用具代が加わる（支出の山）。第132節: 夜逃げで道場を閉めている間は賃料も止まる
-      const dojoRent = (S.chapter >= 2 && !S.flags.dojoClosed) ? 48000 : 0;
-      const gearCost = S.chapter >= 2 ? S.students.length * 1500 : 0;
-      const onoCost = (S.chapter >= 2 && S.flags.onoPlan) ? 12000 : 0;
+      const dojoRent = (S.chapter >= 2 && !S.flags.dojoClosed) ? 100000 : 0;
+      const gearCost = S.chapter >= 2 ? S.students.length * 2500 : 0;
+      const onoCost = (S.chapter >= 2 && S.flags.onoPlan) ? 30000 : 0;
       // 第86節: 第4章からは円熟期の支出の山（設備投資・遠征育成費・医療ケア費）が上乗せされる
       const ch4Cost = ch4MonthlyCosts();
       const bills = MONTHLY_BILLS + dojoRent + gearCost + onoCost + ch4Cost.total;
@@ -2626,21 +2819,21 @@ function endWeek(){
       toast("月末の請求書 -" + bills.toLocaleString() + "円（家賃・生活費" + (S.chapter >= 2 ? "・道場賃料・用具代" + (onoCost ? "・食の契約" : "") : "") + (S.chapter >= 4 ? "・設備・遠征・ケア費" : "") + "）", S.money < 0);
       // 月末精算の後段（返済・デッドエンド判定・生徒の成長）。第132節の踏み倒し提示を挟むため分離した
       const monthSettle = () => {
-        // 第138節: 養育費（別れた相手との子。月20,000円×人数、子が成人するまで送り続ける）
+        // 第138節: 養育費（別れた相手との子。月30,000円×人数、子が成人するまで送り続ける。第142節で実勢化）
         if (S.life && Array.isArray(S.life.support)){
           const actSup = S.life.support.filter(su => S.absWeek < su.until);
           if (actSup.length){ const supPay = actSup.length * LIFE_SUPPORT_MONTHLY; S.money -= supPay; toast("養育費 -" + supPay.toLocaleString() + "円（" + actSup.length + "人分）", S.money < 0); }
         }
-        // 第74節: 借金の分割返済（残高の1/5・最低1万円）。借金がある間はCLASHで噂が立つ
+        // 第74節: 借金の分割返済（残高の1/5・最低3万円）。借金がある間はCLASHで噂が立つ
         monthlyDebtPayment(true);
         if (debtOf() > 0 && _rng() < 0.35) toast("CLASHで『借金残高" + debtOf().toLocaleString() + "円の男、今月の返済は済んだのか』と噂になっている", true);
-        // 第82節: 借金が150万円を超えたら「夜逃げ」の真のデッドエンドへ（次の週の頭で発火させる）
-        if (debtOf() > 1500000 && !S.flags.debtDeadEndOnce){ S.flags.debtDeadEndOnce = true; S.flags.debtDeadEndPending = true; }
+        // 第82節: 借金が300万円を超えたら「夜逃げ」の真のデッドエンドへ（次の週の頭で発火させる）
+        if (debtOf() > 3000000 && !S.flags.debtDeadEndOnce){ S.flags.debtDeadEndOnce = true; S.flags.debtDeadEndPending = true; }
         if (onoCost) S.fatigue = clamp(S.fatigue - 10, 0, 100); // 大野の定食で回復が良い
         if (S.money < 0) toast("所持金が底をついた……バイトで凌ぐしかない", true);
         if (S.money < -30000 && !S.flags.tamuraHelp){
-          S.flags.tamuraHelp = true; S.money += 20000;
-          toast("田村が立て替えてくれた +20,000円「大会で返せよ」");
+          S.flags.tamuraHelp = true; S.money += 50000;
+          toast("田村が立て替えてくれた +50,000円「大会で返せよ」");
         }
         // 生徒の成長
         for (const stu of S.students){ if (_rng() < 0.3) stu.skill = Math.min(10, stu.skill + 1); }
@@ -2706,7 +2899,7 @@ function doAction(act){
     afterAction(notes); return;
   }
   if (act === "teach"){
-    let base = S.students.length > 0 ? 6000 + S.students.length * 1500 : 5000;
+    let base = S.students.length > 0 ? 10000 + S.students.length * 2500 : 8000;
     // 第86節: Lv9「指導の高み」では師範代行・高額指導が可能になり、指導収入が跳ね上がる
     const lv9teach = styleLv(S.mainStyle) >= 9;
     if (lv9teach) base = Math.round(base * 1.5);
@@ -2725,8 +2918,8 @@ function doAction(act){
     let guests = Math.min(40, Math.max(0, Math.round((2 + S.attention * 0.8 + fameTotal() * 0.5 + S.stats.teach * 0.7) * randf(0.7, 1.3) * (S.flags.abroadDone ? 1.3 : 1) * (S.chapter >= 4 ? 1.2 : 1) * (mainLv >= 9 ? 1.3 : 1))));
     // 第86節: 第4章からはセミナー会場費がかかる（支出の山）
     let venueFee = 0;
-    if (S.chapter >= 4){ venueFee = 12000; S.money -= venueFee; }
-    const unitPrice = mainLv >= 10 ? 5000 : mainLv >= 9 ? 4000 : 3000;
+    if (S.chapter >= 4){ venueFee = 30000; S.money -= venueFee; }
+    const unitPrice = mainLv >= 10 ? 10000 : mainLv >= 9 ? 8000 : 5000;
     const income = guests * unitPrice;
     S.money += income;
     if (guests >= 10){ S.sei += 1; toast("セミナーは盛況だった！"); }
@@ -2792,10 +2985,10 @@ function renderCollabPick(){
 function renderBaitoPick(){
   hud();
   const jobs = [
-    ["warehouse", "倉庫ピッキング", "+9,000円。体力は付くが脚に来る"],
-    ["security", "警備バイト", "+11,000円。事件の解決で顔が売れることも"],
-    ["setup", "大会の設営バイト", "+10,000円。会場の下見と情報が手に入る"],
-    ["harbor", "港湾の砂袋運び", "+12,000円。賃金は良いが重労働。昔の古豪も港で砂袋を担いで体を作ったそうだ"],
+    ["warehouse", "倉庫ピッキング", "+34,000円。体力は付くが脚に来る"],
+    ["security", "警備バイト", "+38,000円。事件の解決で顔が売れることも"],
+    ["setup", "大会の設営バイト", "+36,000円。会場の下見と情報が手に入る"],
+    ["harbor", "港湾の砂袋運び", "+45,000円。賃金は良いが重労働。昔の古豪も港で砂袋を担いで体を作ったそうだ"],
   ];
   $("main").innerHTML = '<div class="weekhead"><h2>バイトを選ぶ</h2></div><div class="actions">' +
     jobs.map(j => '<button class="btn act" data-job="' + j[0] + '"><b>' + j[1] + '</b><span>' + j[2] + "</span></button>").join("") +
@@ -2804,11 +2997,11 @@ function renderBaitoPick(){
   $("main").querySelectorAll("[data-job]").forEach(b => b.addEventListener("click", () => {
     const job = b.dataset.job; S.record.works++;
     S.fatigue = clamp(S.fatigue + 20, 0, 100);
-    if (job === "warehouse"){ S.money += 9000; growStat("endure", 0.2); if (_rng() < 0.3){ S.dmg.leg = clamp(S.dmg.leg + 1, 0, 3); toast("倉庫バイト +9,000円。脚に疲労が溜まった"); } else toast("倉庫バイト +9,000円"); }
-    if (job === "security"){ S.money += 11000; if (_rng() < 0.25){ S.sei += 1; S.attention += 1; toast("警備バイト +11,000円。小さな揉め事を収め、感謝された"); } else toast("警備バイト +11,000円"); }
-    if (job === "setup"){ S.money += 10000; growStat("read", 0.2); toast("設営バイト +10,000円。会場の動線と控室の様子が頭に入った"); }
+    if (job === "warehouse"){ S.money += 34000; growStat("endure", 0.2); if (_rng() < 0.3){ S.dmg.leg = clamp(S.dmg.leg + 1, 0, 3); toast("倉庫バイト +34,000円。脚に疲労が溜まった"); } else toast("倉庫バイト +34,000円"); }
+    if (job === "security"){ S.money += 38000; if (_rng() < 0.25){ S.sei += 1; S.attention += 1; toast("警備バイト +38,000円。小さな揉め事を収め、感謝された"); } else toast("警備バイト +38,000円"); }
+    if (job === "setup"){ S.money += 36000; growStat("read", 0.2); toast("設営バイト +36,000円。会場の動線と控室の様子が頭に入った"); }
     // 第117節: 港湾の砂袋運び。稼ぎながら鍛える古豪の型。賃金は最高額、疲労は共通分より重く、耐久が伸びる。担ぎすぎると腰に来る
-    if (job === "harbor"){ S.money += 12000; S.fatigue = clamp(S.fatigue + 8, 0, 100); growStat("endure", 0.3); if (_rng() < 0.25){ S.dmg.core = clamp(S.dmg.core + 1, 0, 3); toast("港湾バイト +12,000円。担ぎすぎて腰に来た"); } else toast("港湾バイト +12,000円。砂袋を担いだ分だけ、体が作られた"); }
+    if (job === "harbor"){ S.money += 45000; S.fatigue = clamp(S.fatigue + 8, 0, 100); growStat("endure", 0.3); if (_rng() < 0.25){ S.dmg.core = clamp(S.dmg.core + 1, 0, 3); toast("港湾バイト +45,000円。担ぎすぎて腰に来た"); } else toast("港湾バイト +45,000円。砂袋を担いだ分だけ、体が作られた"); }
     afterAction([]);
   }));
 }
@@ -2816,7 +3009,7 @@ function renderCarePick(){
   hud();
   $("main").innerHTML = '<div class="weekhead"><h2>ケア・休養</h2></div><div class="actions">' +
     '<button class="btn act" data-care="rest"><b>しっかり休養</b><span>疲労を大きく回復</span></button>' +
-    '<button class="btn act" data-care="care"><b>ケア（治療）</b><span>' + (S.flags.carePro ? "白鳥恵の治療。部位ダメージも回復（3,000円）" : "セルフケア。部位ダメージを少し回復") + "</span></button>" +
+    '<button class="btn act" data-care="care"><b>ケア（治療）</b><span>' + (S.flags.carePro ? "白鳥恵の治療。部位ダメージも回復（8,000円）" : "セルフケア。部位ダメージを少し回復") + "</span></button>" +
     '<button class="btn ghost" data-back="1">戻る</button></div>';
   $("main").querySelector("[data-back]").addEventListener("click", renderWeek);
   $("main").querySelectorAll("[data-care]").forEach(b => b.addEventListener("click", () => {
@@ -2824,7 +3017,7 @@ function renderCarePick(){
     else {
       S.fatigue = clamp(S.fatigue - (S.chapter >= 4 ? 22 : 30), 0, 100);
       let heal = S.flags.carePro ? 2 : 1;
-      if (S.flags.carePro){ if (S.money >= 3000){ S.money -= 3000; } else { heal = 1; toast("治療費が足りず、簡易ケアになった", true); } }
+      if (S.flags.carePro){ if (S.money >= 8000){ S.money -= 8000; } else { heal = 1; toast("治療費が足りず、簡易ケアになった", true); } }
       for (const p of ["leg","arm","core","head"]){ while (heal > 0 && S.dmg[p] > 0){ S.dmg[p]--; heal--; } }
       toast("ケアを受けた。体が軽い");
     }
@@ -2933,7 +3126,7 @@ function trainSub(st, route, mentor){
       gainStyleExp(st.id, 12, notes);
       if (!S.met.includes(mentor.id)) S.met.push(mentor.id);
     }
-  } else if (route === "seminar"){ gainStyleExp(st.id, 7, notes); S.money = Math.max(0, S.money - 5000); toast("セミナー受講 -5,000円"); }
+  } else if (route === "seminar"){ gainStyleExp(st.id, 7, notes); S.money = Math.max(0, S.money - 10000); toast("セミナー受講 -10,000円"); }
   else { gainStyleExp(st.id, 4, notes); }
   // 第73節: 新しい流派を身につけると、使える攻撃系統が広がることがある
   const sysGained = playerSystems().filter(k => !sysBefore.includes(k));
@@ -3025,7 +3218,7 @@ function doRomance(id){
   if (af >= 25 && !done.ev1){ done.ev1 = true; S.romanceEv[id] = done; startScene(head.concat(R.ev1), () => { applyFx({affection:{[id]:8}}); endWeek(); }); return; }
   // 通常の口説き
   S.fatigue = clamp(S.fatigue + 4, 0, 100);
-  S.money = Math.max(0, S.money - 1500);
+  S.money = Math.max(0, S.money - 3000);
   const lines = R.flirt[rnd(R.flirt.length - 1)];
   const gain = prefMatch(c) ? 8 : 5;
   startScene(head.concat(lines), () => {
@@ -3812,9 +4005,8 @@ function startChallenge(id){
 // 足りない分は交流会の常連などの無名の汎用選手で埋める（未登場キャストは出さない）。
 // 案内場面で 出場／見送り（観戦）を選べる。資格の門前払いは付けない。
 // 見送った年はNPCだけで優勝者が決まり、CLASHの話題になるだけにする。
-// 優勝賞金は 30,000円＋20,000円×章番号（第1章5万円＝年次大会 cup_year の優勝賞金と
-// 同額、第4章11万円でも章末決勝の12万円を超えない。根拠は企画書第137節）。
-// 準優勝は半額、ベスト4は1/4、1回戦敗退は出場賞5,000円。清名・注目は優勝 +3/+3 を頭に段階付け。
+// 優勝賞金は 第142節で実勢化： 500,000円＋500,000円×章番号（第1章100万円〜第4章250万円。大型GPの賞金水準に合わせた）。
+// 準優勝は半額、ベスト4は1/4、1回戦敗退は出場賞50,000円。清名・注目は優勝 +3/+3 を頭に段階付け。
 // 反則・暗器は既存ルールのまま（代償も既存どおり。傷害ルートの火種も doFinishBattle の既存経路）。
 // S.record.tenkaIn（出場回数）／tenkaTitles（優勝回数）と、S.flags.tenkaYears[年] に
 // その年の結果を保存し、年明けのBOTYが実績候補として拾う（固定候補40件は不変）。
@@ -3831,7 +4023,7 @@ const TENKA_FILLERS = [
 {name:"無所属の総合家・葛西", styleName:"総合格闘技（MMA）", age:30},
 ];
 function tenkaYearIdx(){ return Math.floor((S.absWeek - 1) / WEEKS_PER_YEAR);}
-function tenkaPrize(){ return 30000 + 20000 * (S.chapter || 1);}
+function tenkaPrize(){ return 500000 + 500000 * (S.chapter || 1);} // 第142節: 実勢化（大型GPの優勝賞金）
 function tenkaFoeObj(c, st){
 const f = challengeFoePower(c, st);
 return {id: c.id || null, name: c.name, styleName: st.name, st: st, hp: f.hp, power: f.power, score: f.power * 1.4 + f.hp / 14, img: c.id || null};
@@ -3963,7 +4155,7 @@ const prize = tenkaPrize();
 if (rank === 1) return {money: prize, sei: 3, attention: 3, label: "優勝"};
 if (rank === 2) return {money: Math.floor(prize / 2), sei: 1, attention: 2, label: "準優勝"};
 if (rank === 4) return {money: Math.floor(prize / 4), sei: 1, attention: 1, label: "ベスト4"};
-return {money: 5000, sei: 0, attention: 1, label: "1回戦敗退"};
+return {money: 50000, sei: 0, attention: 1, label: "1回戦敗退"};
 }
 function tenkaFinishSteps(rank, champion){
 ensureStateCompat();
@@ -4483,15 +4675,15 @@ function uraWarSteps(n){
   const bid = "ura_war" + n;
   BATTLES[bid] = {title:"抗争 ― 夜鷹会との衝突", enemyName: n === 1 ? "夜鷹会の頭目・鷹野" : "夜鷹会の若頭・鷹野の弟", enemyStyleName:"極真空手", hp: 125 + S.chapter * 15 + (n - 1) * 25, power: 12 + S.chapter + (n - 1) * 2, mode:"ug", foul:true,
     comments:["地下駐車場に、エンジン音だけが響く","「話し合いで済む相手じゃねえ」","両陣営の若い衆が、壁際に並んで見ている"]};
-  const winMoney = n === 1 ? 20000 : 50000;
+  const winMoney = n === 1 ? 100000 : 200000;
   return [
     {sp:"narr", t: n === 1
       ? "縄張りを巡る火種が、ついに燃え上がった。繁華街の裏手を仕切る半グレ集団『夜鷹会』が、霧島の店の前に人を並べた。――抗争だった。"
       : "夜鷹会との因縁は、まだ終わっていなかった。今度は向こうの若頭が、地下格闘技の会場そのものを狙ってきた。"},
     {sp:"霧島", t:"すまない、巻き込んだ。……だが、あんたがいてくれれば、話の持って行きようがある"},
     {choice:[
-      {label:"話し合いで収める（落とし前 30,000円）", say:[
-        {fx:{money:-30000}},
+      {label:"話し合いで収める（落とし前 200,000円）", say:[
+        {fx:{money:-200000}},
         {uraFx:{rank:2, heat:1}},
         {sp:"narr", t:"落とし前を付け、互いの若い衆を引かせた。拳ではなく、金と格で収めた抗争だった。裏の世界では、それもまた実力の内だった。"},
       ]},
@@ -4558,7 +4750,7 @@ function uraArrestSteps(){
   return steps;
 }
 // ---------- 第141節: 肩パンの別件逮捕 ----------
-const URA_SHOULDER_SETTLEMENT = 80000; // 肩パン示談金: 既存の和解賠償金60,000円より少し重く、重い賠償レンジには届かない額
+const URA_SHOULDER_SETTLEMENT = 300000; // 肩パン示談金（第142節: 実勢化。暴行示談の相場10万〜50万円の中央）
 function uraHasFixedBeatThisWeek(){
   if (!S || !S.beatsDone) return false;
   const lists = [];
@@ -4576,7 +4768,7 @@ function uraShoulderRearrestSteps(){
     {sp:"弁護士", t:"先生、ここが大事です。肩への一発でも、相手が被害を訴えれば、前の事件とは別の暴行事件として扱われます。『たかが肩パン』という言い訳は、記録の前では通りません"},
     {sp:"me", t:"（あの場の笑顔が、頭をよぎった。……軽い一発のつもりでも、した側の理屈で軽くなるわけじゃなかった）"},
     {choice:[
-      {label:"後輩に謝罪し、示談金80,000円で被害届を取り下げてもらう", say:[
+      {label:"後輩に謝罪し、示談金300,000円で被害届を取り下げてもらう", say:[
         {payBill:{title:"肩パン騒動の示談", parts:[{label:"示談金", amount:URA_SHOULDER_SETTLEMENT}]}},
         {uraSet:{shoulderSettled:true}},
         {sp:"後輩", t:"……最初から、そうやって謝ってくれればよかったんすよ。届けは、下げます"},
@@ -4653,6 +4845,8 @@ function tryUraEvents(forceKind){
     // 抗争
     if (!U.war2Done && U.warDone && uraTierIdx() >= 3 && _rng() < 0.15){ startScene(uraWarSteps(2), null, null); return true; }
     if (!U.warDone && uraTierIdx() >= 2 && _rng() < 0.20){ startScene(uraWarSteps(1), null, null); return true; }
+    // 第142節（追記）: 借金連動の闇バイトの誘い（裏の活動中でも、借金があればスマホに来る）
+    if (darkBaitoReady() && _rng() < darkBaitoChance()){ startScene(darkBaitoOfferSteps(), null, null); return true; }
     return false;
   }
   if (U.active || U.quit) return false;
@@ -4662,18 +4856,90 @@ function tryUraEvents(forceKind){
   if (S.chapter >= 2 && !U.entryDone.club && (S.aku || 0) >= 8){ startScene(uraEntryClubSteps(), null, null); return true; }
   if (S.chapter >= 2 && !U.entryDone.debt && debtOf() >= 100000){ startScene(uraEntryDebtSteps(), null, null); return true; }
   if (S.chapter >= 2 && !U.entryDone.ug && ((S.attention || 0) >= 10 || (S.aku || 0) >= 5)){ startScene(uraEntryUgSteps(), null, null); return true; }
+  // 第142節（追記）: 借金連動の闇バイトの誘い（入口系の後。借金の「体で返す」働き口＝入口debt は
+  // この抽選より先に判定されるため、高額帯ではそちらが優先的に出る）
+  if (darkBaitoReady() && _rng() < darkBaitoChance()){ startScene(darkBaitoOfferSteps(), null, null); return true; }
   return false;
+}
+// ---------- 第142節（追記）: 借金連動の闇バイトの誘い ----------
+// 借金残高の段階で発生確率が上がる（週頭フック tryUraEvents の中で抽選。週に最大1件の原則は維持）。
+// 段階は v2.01 の金額体系に合わせた: 30万円〜 = 週8%（たまに）／80万円〜 = 週20%（頻繁）／
+// 150万円〜 = 週35%（しつこい。取り立ての圧の描写つき）。危険域の下限150万円は、夜逃げ
+// デッドエンド閾値（300万円超）の半分に置いた。受ける＝即金100,000〜150,000円＋熱+6＋悪名+2。
+// 即金の根拠: 闇バイト募集でうたわれる一回性の報酬は数万〜15万円級で、まともな日雇い日給
+// （1万〜1.5万円）の約10倍という「怪しさ」の水準に合わせた。犯罪の手口の指南描写はしない。
+// 裏ルート未加入なら、受けた時点で裏へ接続する（入口 debt と同じ先。entryDone.debt も立て、
+// カネモトの働き口と二重に出ないようにする）。借金の「体で返す」働き口（入口 debt）は、この
+// 抽選より先に判定されるため、高額帯ではそちらが優先的に出る（統合）。断れば数週間は来ない。
+const DARK_BAITO_PAY_MIN = 100000, DARK_BAITO_PAY_SPREAD = 50000, DARK_BAITO_HEAT = 6;
+function darkBaitoTier(){
+const d = debtOf();
+if (d >= 1500000) return 3;
+if (d >= 800000) return 2;
+if (d >= 300000) return 1;
+return 0;
+}
+function darkBaitoChance(){ const t = darkBaitoTier(); return t === 3? 0.35: t === 2? 0.20: t === 1? 0.08: 0;}
+function darkBaitoCooldown(){ return darkBaitoTier() >= 3? 2: 3;}
+function darkBaitoReady(){
+const U = uraEnsure();
+if (U.quit) return false; // 足を洗った人間には来ない
+if (darkBaitoTier() < 1) return false;
+if (S.absWeek < (U.darkCdUntil || 0)) return false;
+return true;
+}
+function darkBaitoOfferSteps(){
+const U = uraEnsure(); U.darkOffers = (U.darkOffers || 0) + 1;
+const tier = darkBaitoTier();
+const msgs = [
+"即日現金100,000円〜。荷物を運ぶだけの簡単なお仕事です。身分証の写真だけ送ってください",
+"高額日払い。経験不問。車を出すだけでOK。詳しい仕事内容は、会ってからお話しします",
+"一回で100,000円以上。短時間で終わります。質問は少なめでお願いします",
+];
+const msg = msgs[Math.floor(_rng() * msgs.length)];
+const steps = [
+{sp:"narr", t:"稽古の合間、スマホが震えた。知らないアカウントからのDMだった。「" + msg + "」"},
+{sp:"narr", t:"ニュースで見る「闇バイト」の募集文、そのものだった。受け子だの出し子だの、逮捕される側の言葉は、画面の中には書かれていない。普通のバイトではありえない金額だけが、暗い画面で光っていた。"},
+];
+if (tier >= 3) steps.push({sp:"narr", t:"借金の督促が日に何度も鳴る週だった。この文面が、まるで残高を知っているかのようなタイミングで届くこと自体、背筋が冷えた。"});
+else if (tier === 2) steps.push({sp:"narr", t:"返済の予定表と、スマホの画面を、しばらく見比べた。"});
+steps.push({choice:[
+{label:"受ける（即金・警察の熱+" + DARK_BAITO_HEAT + "・悪名+2）", say:[
+{darkAccept:true},
+]},
+{label:"断る（借金が減らない限り、また来る）", say:[
+{darkDecline:true},
+{sp:"narr", t:"画面を消した。金は遠のいたが、今夜の眠りは守られた気がした。……借金が残る限り、この誘いはまた形を変えて来るだろう。"},
+]},
+]});
+return steps;
+}
+function darkBaitoAcceptLines(){
+const U = uraEnsure();
+const pay = DARK_BAITO_PAY_MIN + Math.floor(_rng() * (DARK_BAITO_PAY_SPREAD + 1));
+U.darkAccepts = (U.darkAccepts || 0) + 1;
+U.darkCdUntil = S.absWeek + darkBaitoCooldown();
+const joined =!U.active &&!U.quit;
+if (joined){ U.active = true; U.entryDone = Object.assign({}, U.entryDone, {dark: true, debt: true});}
+const lines = [
+{sp:"narr", t:"仕事は、拍子抜けするほど短く終わった。何を運んだのかは、最後まで知らされなかった。知らない方がいいのだと、相手の目が言っていた。"},
+{fx:{money: pay, aku: 2}},
+{uraFx:{heat: DARK_BAITO_HEAT, rank: 2}},
+{sp:"narr", t:"封筒の中身は" + pay.toLocaleString() + "円。帰り道、ずっと誰かに見られている気がした。警察の「熱」は、こうして静かに積み上がっていく。"},
+];
+if (joined) lines.push({sp:"narr", t:"この夜から、表の顔と裏の顔、二つの顔で生きることになった。借金が、裏への扉を開けた。"});
+return lines;
 }
 // ---------- 第139節: 活動（週の行動「裏の仕事」） ----------
 function renderUraPick(){
   hud();
   const U = uraEnsure(); const tier = uraTierIdx();
-  const pay = 10000 + tier * 5000;
+  const pay = 20000 + tier * 5000;
   const jobs = URA_JOBS.filter(j => tier >= j.minTier && !U.jobsDone[j.id]);
   let html = '<div class="weekhead"><h2>裏の仕事</h2><div class="weeksub">裏格：<b>' + esc(uraRankName()) + '</b>（' + (U.rank || 0) + '）／ 警察の目：' + ((U.heat || 0) >= URA_HEAT_ARREST ? "危険域" : (U.heat || 0) >= 10 ? "要注意" : (U.heat || 0) >= 4 ? "やや目立っている" : "静か") + '／ 地下戦績：' + (U.ugWins || 0) + "勝（最高" + (U.ugBest || 0) + '連勝）／ 揉め事解決：' + (U.jobsCount || 0) + '件。週の行動1回分を使います</div></div>';
   html += '<div class="actions">';
   html += '<button class="btn act" data-ura="bouncer"><b>クラブの用心棒（バウンサー勤務）</b><span>給与 ' + pay.toLocaleString() + '円。酔客や半グレとの小競り合いが起きることも。疲労が溜まる</span></button>';
-  html += '<button class="btn act" data-ura="ug"><b>地下格闘技に出る</b><span>出場料 10,000円＋勝利金。反則・暗器が通常装備の世界。連勝で「地下の王者」へ。怪我と警察のリスクあり</span></button>';
+  html += '<button class="btn act" data-ura="ug"><b>地下格闘技に出る</b><span>出場料 30,000円＋勝利金。反則・暗器が通常装備の世界。連勝で「地下の王者」へ。怪我と警察のリスクあり</span></button>';
   if (jobs.length) html += jobs.map(j => '<button class="btn act" data-urajob="' + j.id + '"><b>揉め事の仕事：' + esc(j.name) + '</b><span>' + esc(j.desc) + '</span></button>').join("");
   else html += '<button class="btn act" disabled><b>揉め事の仕事</b><span>今は回ってくる仕事がない（裏格が上がると新しい仕事が来る）</span></button>';
   if ((U.rank || 0) >= 25) html += '<button class="btn act" data-ura="quit"><b>足を洗う相談</b><span>ケジメ金 ' + uraKejime().toLocaleString() + '円＋最後の仕事＋ボスの承認が必要。簡単には抜けられない</span></button>';
@@ -4693,7 +4959,7 @@ function renderUraPick(){
 }
 function uraBouncerShift(){
   const U = uraEnsure(); const tier = uraTierIdx();
-  const pay = 10000 + tier * 5000;
+  const pay = 20000 + tier * 5000;
   U.lastActWeek = S.absWeek;
   S.fatigue = clamp(S.fatigue + 16, 0, 100);
   if (_rng() < 0.30){
@@ -4703,9 +4969,9 @@ function uraBouncerShift(){
       {sp:"narr", t:"その夜、店の前で半グレの若い衆が客に絡み始めた。霧島の目が、こちらを見た。――仕事の時間だった。"},
       {battle:"ura_bouncer", win:[
         {uraFx:{rank:2, heat:2, shift:true}},
-        {fx:{money: pay + 5000}},
+        {fx:{money: pay + 10000}},
         {sp:"霧島", t:"見事なもんだ。騒ぎを大きくせずに収めるのが一番難しい。……ボーナスだ、受け取ってくれ"},
-        {sp:"narr", t:"給与 " + (pay + 5000).toLocaleString() + "円を受け取った。裏の評判も、少し上がった気がした。"},
+        {sp:"narr", t:"給与 " + (pay + 10000).toLocaleString() + "円を受け取った。裏の評判も、少し上がった気がした。"},
       ], lose:[
         {uraFx:{heat:1, shift:true}},
         {fx:{money: Math.floor(pay / 2)}},
@@ -4737,13 +5003,13 @@ function uraStartUgFight(){
   const f = URA_UG_FOES[((U.ugFights || 0) + (S.absWeek % 3)) % URA_UG_FOES.length];
   const hp = 105 + S.chapter * 12 + tier * 8 + (U.ugStreak || 0) * 6;
   const power = 10 + S.chapter + tier + Math.min(4, U.ugStreak || 0);
-  const purse = 30000 + tier * 10000 + (U.ugStreak || 0) * 5000;
+  const purse = 100000 + tier * 30000 + (U.ugStreak || 0) * 10000;
   BATTLES["ura_ug"] = {title:"地下格闘技 vs " + f.name, enemyName: f.name, enemyStyleName: f.style, hp, power, mode:"ug", foul:true,
     comments:["地下の金網に、静かな熱気","「賭け金は、もう動かない」","反則も暗器も、ここでは日常だ"]};
   U.lastActWeek = S.absWeek;
   startScene([
-    {sp:"narr", t:"地下の会場。出場料の 10,000円を先に受け取り、金網の中へ。今夜の相手は「" + f.name + "」。"},
-    {fx:{money:10000}},
+    {sp:"narr", t:"地下の会場。出場料の 30,000円を先に受け取り、金網の中へ。今夜の相手は「" + f.name + "」。"},
+    {fx:{money:30000}},
     {battle:"ura_ug", win:[
       {uraFx:{ugWin:true, rank:3, heat:3}},
       {fx:{money: purse, attention:1}},
@@ -4756,29 +5022,29 @@ function uraStartUgFight(){
 }
 // ---------- 第139節: 揉め事の解決（短編イベント群・最低4本） ----------
 const URA_JOBS = [
-  { id:"collect", name:"取り立てへの同行", minTier:0, desc:"報酬 15,000円。返済を渋る店主のところへ同行する。話で済むか、力を見せるか",
+  { id:"collect", name:"取り立てへの同行", minTier:0, desc:"報酬 50,000円。返済を渋る店主のところへ同行する。話で済むか、力を見せるか",
     steps(){ return [
       {sp:"narr", t:"霧島からの仕事。金を貸した先の店主が、返済を先延ばしにし続けているという。「殴る仕事じゃない。隣に立って、話を前に進める仕事だ」"},
       {sp:"店主", t:"ま、待ってくれ。今月は本当に厳しくて……"},
       {choice:[
         {label:"話で収める（分割返済の約束を取り付ける）", say:[
           {uraFx:{rank:1, heat:1, jobDone:"collect"}},
-          {fx:{money:15000, sei:1}},
-          {sp:"narr", t:"月々の返済計画を書面にし、店主と握手を交わした。裏の仕事の中では、一番表に近い終わり方だった。報酬 15,000円。"},
+          {fx:{money:50000, sei:1}},
+          {sp:"narr", t:"月々の返済計画を書面にし、店主と握手を交わした。裏の仕事の中では、一番表に近い終わり方だった。報酬 50,000円。"},
         ]},
         {label:"力を見せる（無言で佇み、圧をかける）", say:[
           {uraFx:{rank:3, heat:2, jobDone:"collect"}},
-          {fx:{money:15000, aku:1}},
-          {sp:"narr", t:"一言も発さずに立ち続けた。店主は震える手で、金庫から返済分を出した。――裏の格は上がったが、この収め方は体に残る。報酬 15,000円。"},
+          {fx:{money:50000, aku:1}},
+          {sp:"narr", t:"一言も発さずに立ち続けた。店主は震える手で、金庫から返済分を出した。――裏の格は上がったが、この収め方は体に残る。報酬 50,000円。"},
         ]},
         {label:"金で収める（自分の金で一部を肩代わりする）", say:[
           {uraFx:{rank:2, heat:1, jobDone:"collect"}},
-          {fx:{money:-5000}},
+          {fx:{money:-10000}},
           {sp:"narr", t:"差額の一部を自分で埋め、その場を収めた。実入りは減ったが、霧島は「あんたらしいな」と笑った。裏での信用は、案外こういうところで貯まる。"},
         ]},
       ]},
     ]; } },
-  { id:"escort", name:"要人の護衛", minTier:1, desc:"報酬 25,000円。裏の顔役の移動を護衛する。目立つ真似は禁物",
+  { id:"escort", name:"要人の護衛", minTier:1, desc:"報酬 100,000円。裏の顔役の移動を護衛する。目立つ真似は禁物",
     steps(){
       BATTLES["ura_escort"] = {title:"護衛の小競り合い", enemyName:"並走車の男", enemyStyleName:"ボクシング", hp: 90 + S.chapter * 10, power: 9 + S.chapter, mode:"match", foul:true, comments:["「オヤジには、指一本触れさせない」","路地裏の、短い決着だった"]};
       return [
@@ -4786,28 +5052,28 @@ const URA_JOBS = [
       {choice:[
         {label:"話で収める（窓を開け、退くよう促す）", say:[
           {uraFx:{rank:2, heat:1, jobDone:"escort"}},
-          {fx:{money:25000}},
-          {sp:"narr", t:"目と目が合う、静かな数秒。先に目を逸らしたのは向こうだった。車は離れ、護衛は無事に終わった。報酬 25,000円。"},
+          {fx:{money:100000}},
+          {sp:"narr", t:"目と目が合う、静かな数秒。先に目を逸らしたのは向こうだった。車は離れ、護衛は無事に終わった。報酬 100,000円。"},
         ]},
         {label:"力を見せる（先に降りて、道を開ける）", say:[
           {battle:"ura_escort", win:[
             {uraFx:{rank:4, heat:3, jobDone:"escort"}},
-            {fx:{money:25000, aku:1}},
-            {sp:"narr", t:"短い決着。オヤジは車の窓から、静かに頷いた。「あんたは、使いどころのある男だ」。報酬 25,000円。"},
+            {fx:{money:100000, aku:1}},
+            {sp:"narr", t:"短い決着。オヤジは車の窓から、静かに頷いた。「あんたは、使いどころのある男だ」。報酬 100,000円。"},
           ], lose:[
             {uraFx:{rank:1, heat:2, jobDone:"escort"}},
-            {fx:{money:12000}},
+            {fx:{money:50000}},
             {sp:"narr", t:"何とかオヤジを逃がしたが、仕事としては失敗だった。報酬は半額。裏の評判は、こういう夜に削れる。"},
           ]},
         ]},
         {label:"金で収める（通行料を払って通す）", say:[
           {uraFx:{rank:2, heat:1, jobDone:"escort"}},
-          {fx:{money:10000}},
-          {sp:"narr", t:"「通行料だ」と封筒を渡すと、車はあっさり退いた。25,000円の報酬から15,000円を差し引いた残りが手元に残った。血を見ない金は、裏では立派な解決だった。"},
+          {fx:{money:40000}},
+          {sp:"narr", t:"「通行料だ」と封筒を渡すと、車はあっさり退いた。100,000円の報酬から60,000円を差し引いた残りが手元に残った。血を見ない金は、裏では立派な解決だった。"},
         ]},
       ]},
     ]; } },
-  { id:"mediate", name:"店同士の仲裁", minTier:2, desc:"報酬 30,000円。繁華街の二軒の店の縄張り争いを仲裁する",
+  { id:"mediate", name:"店同士の仲裁", minTier:2, desc:"報酬 100,000円。繁華街の二軒の店の縄張り争いを仲裁する",
     steps(){
       BATTLES["ura_mediate"] = {title:"仲裁の組手", enemyName:"両店の用心棒コンビ", enemyStyleName:"レスリング（フリースタイル）", hp: 110 + S.chapter * 10, power: 11 + S.chapter, mode:"match", foul:true, comments:["組手と言う名の、力比べ","見ている両店主の顔色が変わっていく"]};
       return [
@@ -4815,28 +5081,28 @@ const URA_JOBS = [
       {choice:[
         {label:"話で収める（双方の言い分を聞き、線引きを提案する）", say:[
           {uraFx:{rank:3, heat:1, jobDone:"mediate"}},
-          {fx:{money:30000, sei:1}},
-          {sp:"narr", t:"通りの真ん中で線を引き、引き合いの時間を決めた。双方が「あんたの顔を立てる」と頷く。仲裁は、裏格の正しい使い方だった。報酬 30,000円。"},
+          {fx:{money:100000, sei:1}},
+          {sp:"narr", t:"通りの真ん中で線を引き、引き合いの時間を決めた。双方が「あんたの顔を立てる」と頷く。仲裁は、裏格の正しい使い方だった。報酬 100,000円。"},
         ]},
         {label:"力を見せる（両店の用心棒と組手を演じる）", say:[
           {battle:"ura_mediate", win:[
             {uraFx:{rank:5, heat:2, jobDone:"mediate"}},
-            {fx:{money:30000, aku:1}},
-            {sp:"narr", t:"両店の用心棒を制し、立ったまま締めた。力の序列がはっきりした夜ほど、話し合いが早く進むことはなかった。報酬 30,000円。"},
+            {fx:{money:100000, aku:1}},
+            {sp:"narr", t:"両店の用心棒を制し、立ったまま締めた。力の序列がはっきりした夜ほど、話し合いが早く進むことはなかった。報酬 100,000円。"},
           ], lose:[
             {uraFx:{rank:1, heat:2, jobDone:"mediate"}},
-            {fx:{money:15000}},
+            {fx:{money:50000}},
             {sp:"narr", t:"力を見せるはずが、逆に実力を見せつけられた。仲裁は長引き、報酬は半額になった。"},
           ]},
         ]},
         {label:"金で収める（両店に和解金を持たせる）", say:[
           {uraFx:{rank:2, heat:1, jobDone:"mediate"}},
-          {fx:{money:-10000}},
-          {sp:"narr", t:"報酬の30,000円に自分の40,000円を足し、両店への和解金を仕立てた。懐は痛んだが、二軒の店が「あの人に世話になった」と言う関係は残った。"},
+          {fx:{money:-50000}},
+          {sp:"narr", t:"報酬の100,000円に自分の150,000円を足し、両店への和解金を仕立てた。懐は痛んだが、二軒の店が「あの人に世話になった」と言う関係は残った。"},
         ]},
       ]},
     ]; } },
-  { id:"pursue", name:"地下の賞金回収", minTier:3, desc:"報酬 40,000円。地下格闘技の賞金を持ち逃げした胴元を追う",
+  { id:"pursue", name:"地下の賞金回収", minTier:3, desc:"報酬 150,000円。地下格闘技の賞金を持ち逃げした胴元を追う",
     steps(){
       BATTLES["ura_pursue"] = {title:"倉庫の決着", enemyName:"胴元の用心棒", enemyStyleName:"ムエタイ", hp: 120 + S.chapter * 12, power: 12 + S.chapter, mode:"ug", foul:true, comments:["倉庫に、鉄の扉の閉まる音","「金は、渡さない」"]};
       return [
@@ -4845,30 +5111,30 @@ const URA_JOBS = [
       {choice:[
         {label:"話で収める（信用の話をして、返金させる）", say:[
           {uraFx:{rank:4, heat:2, jobDone:"pursue"}},
-          {fx:{money:40000, sei:1}},
-          {sp:"narr", t:"「今日逃げたら、あんたは一生、地下の土俵に上がれない」。胴元は観念して金庫を開けた。選手全員への払いが済み、自分の取り分 40,000円が残った。"},
+          {fx:{money:150000, sei:1}},
+          {sp:"narr", t:"「今日逃げたら、あんたは一生、地下の土俵に上がれない」。胴元は観念して金庫を開けた。選手全員への払いが済み、自分の取り分 150,000円が残った。"},
         ]},
         {label:"力を見せる（用心棒と決着を付ける）", say:[
           {battle:"ura_pursue", win:[
             {uraFx:{rank:6, heat:4, jobDone:"pursue"}},
-            {fx:{money:40000, aku:1}},
-            {sp:"narr", t:"用心棒を下し、賞金を取り戻した。地下の選手たちの間で、「困ったら、あの人のところへ」という噂が広まった。報酬 40,000円。"},
+            {fx:{money:150000, aku:1}},
+            {sp:"narr", t:"用心棒を下し、賞金を取り戻した。地下の選手たちの間で、「困ったら、あの人のところへ」という噂が広まった。報酬 150,000円。"},
           ], lose:[
             {uraFx:{rank:2, heat:3, jobDone:"pursue"}},
-            {fx:{money:20000}},
-            {sp:"narr", t:"決着は付かず、胴元は半分だけを置いて逃げた。取り戻した分から、自分の取り分 20,000円を受け取った。"},
+            {fx:{money:75000}},
+            {sp:"narr", t:"決着は付かず、胴元は半分だけを置いて逃げた。取り戻した分から、自分の取り分 75,000円を受け取った。"},
           ]},
         ]},
         {label:"金で収める（不足分を立て替えて選手に払う）", say:[
           {uraFx:{rank:3, heat:1, jobDone:"pursue"}},
-          {fx:{money:0}},
-          {sp:"narr", t:"報酬の40,000円をそのまま選手への払いに回し、不足は自分の貯えから足した。懐は空になったが、地下での「あの人は信用できる」という評判は、金より長く残るものだった。"},
+          {fx:{money:-50000}},
+          {sp:"narr", t:"報酬の150,000円をそのまま選手への払いに回し、不足分5万円は自分の貯えから足した。懐は痛んだが、地下での「あの人は信用できる」という評判は、金より長く残るものだった。"},
         ]},
       ]},
     ]; } },
 ];
 // ---------- 第139節: 足を洗う（出口） ----------
-function uraKejime(){ return 50000 + (uraEnsure().rank || 0) * 1000; }
+function uraKejime(){ return 300000 + (uraEnsure().rank || 0) * 5000; } // 第142節: 実勢化
 function uraQuitSteps(){
   const kejime = uraKejime();
   return [
@@ -4948,6 +5214,7 @@ function uraForceEvent(kind){
     case "entry_hide": startScene(uraEntryHideSteps(), null, null); return true;
     case "entry_debt": startScene(uraEntryDebtSteps(), null, null); return true;
     case "entry_ug": startScene(uraEntryUgSteps(), null, null); return true;
+    case "dark": startScene(darkBaitoOfferSteps(), null, null); return true; // 第142節（追記）
     case "rumor": startScene(uraRumorSteps(), null, null); return true;
     case "exposure": startScene(uraExposureSteps(), null, null); return true;
     case "exposure_hard": startScene(uraExposureHardSteps(), null, null); return true;
@@ -5005,7 +5272,7 @@ function shortEventSteps(){
   BATTLES["short_fin"] = {title:"短時間マッチ 決勝", enemyName: finFoe.name, enemyStyleName: finFoe.style, hp: finFoe.hp, power: finFoe.power, mode:"short1", turnLimit:3, foul:false,
     comments:["「決勝！ 相手は“喧嘩無敗”を名乗る男！」","経歴は盛られている気もするが、拳は本物だ"]};
   const steps = [];
-  steps.push({fx:{money:15000}}); // 出場料（勝敗に関わらず支払われる）
+  steps.push({fx:{money:100000}}); // 出場料（勝敗に関わらず支払われる）
   // 前日会見・煽り合い
   steps.push({sp:"narr", t:"前日の記者会見。短時間マッチ興行の出場者が並び、CLASHでは早くも煽り合いが始まっていた。「格闘技の看板で喧嘩自慢がどこまで通用するか」――実況スレッドは、試合前から熱い。"});
   steps.push({sp:"ゴウダ", t:"俺は喧嘩、無敗だ。道場のチャンピオン様が、路上の現実にどこまでついてこれるか、楽しみだな"});
@@ -5034,13 +5301,13 @@ function shortEventSteps(){
   steps.push({sp:"narr", t:"――興行当日。1分マッチのゴングは短く、濃い。まずは準決勝。"});
   steps.push({battle:"short_sf", win:[
     {shortWin:true},
-    {fx:{money:10000}},
+    {fx:{money:50000}},
     {shortAccident:true},
-    {sp:"narr", t:"準決勝を制した。勝利ボーナス 10,000円。残るは決勝――「喧嘩無敗」を名乗る、あの男だ。"},
+    {sp:"narr", t:"準決勝を制した。勝利ボーナス 50,000円。残るは決勝――「喧嘩無敗」を名乗る、あの男だ。"},
     {battle:"short_fin", win:[
       {shortChamp:true},
-      {fx:{money:40000, attention:4}},
-      {sp:"narr", t:"決勝、制覇。ゴウダは膝をつき、笑って言った。「……喧嘩と試合は、別物だったな」。優勝賞金 40,000円。CLASHのタイムラインが、切り抜き動画で埋まった。――二つ名は「1分の王者」。（短時間マッチ優勝）"},
+      {fx:{money:300000, attention:4}},
+      {sp:"narr", t:"決勝、制覇。ゴウダは膝をつき、笑って言った。「……喧嘩と試合は、別物だったな」。優勝賞金 300,000円。CLASHのタイムラインが、切り抜き動画で埋まった。――二つ名は「1分の王者」。（短時間マッチ優勝）"},
     ], lose:[
       {fx:{attention:2}},
       {sp:"narr", t:"決勝で敗れた。だが1分マッチの決勝まで進んだ事実は、注目を集めた。出場料と準決勝の勝利ボーナスは手元に残った。"},
@@ -5048,7 +5315,7 @@ function shortEventSteps(){
   ], lose:[
     {fx:{attention:1}},
     {shortAccident:true},
-    {sp:"narr", t:"準決勝で散った。1分は短い。一瞬の遅れが、そのまま結果になる。出場料 15,000円だけは、敗者にもきちんと払われた。"},
+    {sp:"narr", t:"準決勝で散った。1分は短い。一瞬の遅れが、そのまま結果になる。出場料 100,000円だけは、敗者にもきちんと払われた。"},
   ]});
   // 裏ルート加入中: 地下との対比イベント
   if (S.ura && S.ura.active && !S.ura.quit && !S.flags.shortUraDone){
@@ -5196,6 +5463,15 @@ window.__gameTest = {
   romanceStage: id => romanceStageOf(id),
   romancePick: () => renderRomancePick(),
   startChapter4: () => { if (typeof startChapter4 === "function") startChapter4(); },
+  darkTier: () => darkBaitoTier(),
+  darkChance: () => darkBaitoChance(),
+  darkReady: () => darkBaitoReady(),
+  darkForce: () => { startScene(darkBaitoOfferSteps(), null, null); return true; },
+  darkState: () => { const U = uraEnsure(); return {offers: U.darkOffers || 0, accepts: U.darkAccepts || 0, cdUntil: U.darkCdUntil || 0, active: !!U.active, heat: U.heat || 0}; },
+  gfEligible: () => gfAskEligible(),
+  gfForceAsk: (result) => { const pid = gfAskPid(); if (!pid) return false; if (result) S.flags.gfForceResult = result; startScene(gfAskSteps(pid), null, null); return true; },
+  gfState: () => { const L = lifeEnsure(); const out = {}; if (L) for (const pid of L.partners){ const p = L.per[pid] || {}; out[pid] = {earnKind: p.earnKind || "", earnTotal: p.earnTotal || 0, earnWeeks: p.earnWeeks || 0, earnExposed: !!p.earnExposed, earnStopped: !!p.earnStopped, affection: S.affection[pid] || 0, risk: p.risk || 0}; } return out; },
+  gfForceExposure: () => { const pid = gfAskPid(); if (!pid) return false; startScene(gfEarnExposureSteps(pid), null, null); return true; },
   ch4Costs: () => ch4MonthlyCosts(),
   lastOugi: () => window.__lastOugi || null,
   pools: () => ({ v2: (typeof WEEK_EVENTS_V2 !== "undefined" ? WEEK_EVENTS_V2 : []).map(e => ({id:e.id, category:e.category})), student: (typeof STUDENT_DRAMA_EVENTS !== "undefined" ? STUDENT_DRAMA_EVENTS : []).map(e => e.id), seasonal: (typeof SEASONAL_EVENTS !== "undefined" ? SEASONAL_EVENTS : []).map(e => e.id),
