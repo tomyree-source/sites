@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.99";
+const GAME_VERSION = "2.00";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -237,7 +237,7 @@ expMainTotal: 0, expTotal: 0,
 dmg: {arm:0, leg:0, core:0, head:0},
 students: [], met: [], affection: {}, romanceEv: {}, partner: null,
 life: {partners: [], spouse: null, per: {}, children: 0, support: [], futamataRisk: 0, futamataCount: 0, titles: {}, lastAccWeek: 0, lastKidWeek: 0},
-ura: {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0},
+ura: {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0, shoulderPunch: false, shoulderPunchWeek: 0, shoulderPunchArrestNo: 0, shoulderRearrestDueWeek: 0, shoulderRearrestDone: false, shoulderRearrestWeek: 0, shoulderSettled: false, shoulderRestrained: false, shoulderDecisionDone: false, shoulderJuniorTrust: 50, shoulderRearrestPostponeWeek: 0},
 short: {entries: 0, wins: 0, titles: 0, years: {}, auditionDone: false, lastOfferWeek: -9, lastDeclineWeek: -99},
 flags: {}, record: {fouls:0, anki:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0, tenkaIn:0, tenkaTitles:0},
 seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {}, seenEvents: {},
@@ -277,13 +277,25 @@ function ensureStateCompat(){
   if (S.partner && !S.life.partners.includes(S.partner)) S.life.partners.push(S.partner);
   if (!S.partner && S.life.partners.length) S.partner = S.life.partners[0];
   // 第139節: 裏ルートの状態（v1.98以前のセーブでは未定義のため初期化）
-  if (!S.ura || typeof S.ura !== "object") S.ura = {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0};
+  if (!S.ura || typeof S.ura !== "object") S.ura = {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0, shoulderPunch: false, shoulderPunchWeek: 0, shoulderPunchArrestNo: 0, shoulderRearrestDueWeek: 0, shoulderRearrestDone: false, shoulderRearrestWeek: 0, shoulderSettled: false, shoulderRestrained: false, shoulderDecisionDone: false, shoulderJuniorTrust: 50, shoulderRearrestPostponeWeek: 0};
   if (!S.ura.entryDone || typeof S.ura.entryDone !== "object") S.ura.entryDone = {};
   if (!S.ura.declined || typeof S.ura.declined !== "object") S.ura.declined = {};
   if (!S.ura.jobsDone || typeof S.ura.jobsDone !== "object") S.ura.jobsDone = {};
   if (!S.ura.titles || typeof S.ura.titles !== "object") S.ura.titles = {};
   if (S.ura.rank == null) S.ura.rank = 0;
   if (S.ura.heat == null) S.ura.heat = 0;
+  // 第141節: 肩パン→再逮捕の状態（v1.99以前のセーブでは未定義のため初期化）
+  if (S.ura.shoulderPunch == null) S.ura.shoulderPunch = false;
+  if (S.ura.shoulderPunchWeek == null) S.ura.shoulderPunchWeek = 0;
+  if (S.ura.shoulderPunchArrestNo == null) S.ura.shoulderPunchArrestNo = 0;
+  if (S.ura.shoulderRearrestDueWeek == null) S.ura.shoulderRearrestDueWeek = 0;
+  if (S.ura.shoulderRearrestDone == null) S.ura.shoulderRearrestDone = false;
+  if (S.ura.shoulderRearrestWeek == null) S.ura.shoulderRearrestWeek = 0;
+  if (S.ura.shoulderSettled == null) S.ura.shoulderSettled = false;
+  if (S.ura.shoulderRestrained == null) S.ura.shoulderRestrained = false;
+  if (S.ura.shoulderDecisionDone == null) S.ura.shoulderDecisionDone = false;
+  if (S.ura.shoulderJuniorTrust == null) S.ura.shoulderJuniorTrust = 50;
+  if (S.ura.shoulderRearrestPostponeWeek == null) S.ura.shoulderRearrestPostponeWeek = 0;
   // 第140節: 短時間マッチ興行の状態（同上）
   if (!S.short || typeof S.short !== "object") S.short = {entries: 0, wins: 0, titles: 0, years: {}, auditionDone: false, lastOfferWeek: -9, lastDeclineWeek: -99};
   if (!S.short.years || typeof S.short.years !== "object") S.short.years = {};
@@ -2052,6 +2064,7 @@ function sceneAdvance(){
     if (st.uraSet){ Object.assign(uraEnsure(), st.uraSet); continue; } // 第139節: 裏ルートの状態を直接書き換える（隠し通す等）
     if (st.uraPartnerLeave){ const pid = (S.life && S.life.partners[0]) || S.partner; if (pid) UI.queue = uraPartnerLeaveLines(pid).concat(UI.queue); continue; } // 第139節: 彼女が去る実処理（選択が選ばれた時点で実行）
     if (st.uraWarLoseCheck){ UI.queue = uraWarLoseLines().concat(UI.queue); continue; } // 第139節: 抗争に敗れた際の重傷判定（バッドエンド分岐）
+    if (st.uraShoulderRearrest){ UI.queue = uraShoulderRearrestLines().concat(UI.queue); continue; } // 第141節: 肩パンの別件逮捕を、現在の逮捕回数に応じて解決する
     if (st.shortEnter){ const SH = S.short; const yi = S.age - 19; SH.entries = (SH.entries || 0) + 1; SH.years[yi] = ((SH.years && SH.years[yi]) || 0) + 1; continue; } // 第140節: 短時間マッチ出場の記録
     if (st.shortWin){ S.short.wins = (S.short.wins || 0) + 1; continue; } // 第140節: 短時間マッチの勝利数
     if (st.shortChamp){ S.short.wins = (S.short.wins || 0) + 1; S.short.titles = (S.short.titles || 0) + 1; S.flags.shortKing = true; S.flags.shortChampWeek = S.absWeek; continue; } // 第140節: 短時間マッチ優勝の記録とBOTY連携フラグ
@@ -4272,6 +4285,7 @@ function uraRecordText(){
   if (S.ura.quit) t += " ／ 足を洗った（裏格は" + uraRankName() + "まで）";
   else if (S.ura.active) t += " ／ 裏格：" + uraRankName();
   if (S.flags.arrestRecord) t += " ／ 逮捕歴";
+  if (S.ura.shoulderRearrestDone) t += " ／ 再逮捕（肩パン）";
   if ((S.ura.ugBest || 0) > 0) t += " ／ 地下" + S.ura.ugBest + "連勝";
   return t;
 }
@@ -4510,11 +4524,97 @@ function uraArrestSteps(){
   U.jailUntil = S.absWeek + weeks;
   S.flags.arrestRecord = true;
   S.flags.arrestWeek = S.absWeek;
-  return [
+  const steps = [
     {sp:"narr", t:"道場に、刑事が二人来た。地下格闘技の会場への一斉の立ち入りで、名簿に自分の名があったという。「任意で、同行してもらえますか」"},
     {sp:"narr", t:"取り調べと勾留で、" + weeks + "週間が消えた。釈放された時、表の世界は少しだけ先へ進んでいて、道場の生徒の顔にも、戸惑いが混じっていた。"},
     {fx:{sei: n === 1 ? -3 : -5, aku: n === 1 ? 1 : 2, attention:2}},
-    {sp:"me", t:"（" + weeks + "週間は、表舞台の活動ができない。……裏の熱の代償は、こうやって払うことになる）"},
+  ];
+  // 第141節: 釈放時の出迎え。肩パンを選ぶかどうかは、人生で一度だけ提示する。
+  if (!U.shoulderDecisionDone){
+    const juniorTrustAfter = Math.max(0, (U.shoulderJuniorTrust == null ? 50 : U.shoulderJuniorTrust) - 15);
+    const juniorTrustEndure = Math.min(100, (U.shoulderJuniorTrust == null ? 50 : U.shoulderJuniorTrust) + 5);
+    steps.push(
+      {sp:"narr", t:"釈放の日、迎えに来ていたのは、近所の道場に通う後輩の若手だった。心配して来たはずなのに、緊張をほぐそうとしたのか、余計な一言が口を突いた。"},
+      {sp:"後輩", t:"お勤め、ご苦労さまでした。……でも、その顔。もう、表の人間じゃなくないですか"},
+      {sp:"me", t:"（後輩は笑っている。悪気はないのだろう。だが、勾留の疲れと苛立ちが、腹の底で小さく燃えた）"},
+      {choice:[
+        {label:"後輩に肩パンする", say:[
+          {uraSet:{shoulderPunch:true, shoulderPunchWeek:S.absWeek, shoulderPunchArrestNo:n, shoulderRearrestDueWeek:(U.jailUntil || S.absWeek) + 3, shoulderDecisionDone:true, shoulderJuniorTrust:juniorTrustAfter}},
+          {sp:"narr", t:"軽く肩を叩いたつもりだった。だが、疲れた体は加減を間違えた。鈍い音がして、後輩は一歩よろけた。"},
+          {sp:"後輩", t:"いっ……て。はは、大丈夫っす。冗談なのに、本気出すなんて、相変わらずですね"},
+          {sp:"narr", t:"後輩は笑って肩を回し、その場は笑いで終わった。――少なくとも、その場は。"},
+        ]},
+        {label:"堪える（頭を下げる）", say:[
+          {uraSet:{shoulderDecisionDone:true, shoulderRestrained:true, shoulderJuniorTrust:juniorTrustEndure}},
+          {sp:"narr", t:"拳ではなく、頭が先に下がった。「……迎えに来てくれて、ありがとう。今日は、一人で帰る」"},
+          {sp:"後輩", t:"あ……すみません。調子に乗りました"},
+          {fx:{sei:1}},
+          {sp:"narr", t:"何も起きなかった。それが、釈放の日に選べた一番ましな結果だった。"},
+        ]},
+      ]},
+    );
+  }
+  steps.push({sp:"me", t:"（" + weeks + "週間は、表舞台の活動ができない。……裏の熱の代償は、こうやって払うことになる）"});
+  return steps;
+}
+// ---------- 第141節: 肩パンの別件逮捕 ----------
+const URA_SHOULDER_SETTLEMENT = 80000; // 肩パン示談金: 既存の和解賠償金60,000円より少し重く、重い賠償レンジには届かない額
+function uraHasFixedBeatThisWeek(){
+  if (!S || !S.beatsDone) return false;
+  const lists = [];
+  if (typeof BEATS !== "undefined") lists.push(...BEATS);
+  if (typeof BEATS_CH2 !== "undefined") lists.push(...BEATS_CH2);
+  if (typeof BEATS_CH3 !== "undefined") lists.push(...BEATS_CH3);
+  if (typeof BEATS_CH4 !== "undefined") lists.push(...BEATS_CH4);
+  return lists.some(b => b.week === S.absWeek && !S.beatsDone[b.week + ":" + b.id]);
+}
+function uraShoulderRearrestSteps(){
+  const U = uraEnsure();
+  return [
+    {sp:"narr", t:"釈放から数週間後、道場に再び刑事が来た。今度は、前の地下格闘技の件ではなかった。"},
+    {sp:"刑事", t:"釈放の日、迎えに来ていた後輩の方から被害届が出ています。肩を殴られた、という内容です。その場では笑って帰ったそうですが、後になって、やはり届けを出すことにしたそうです"},
+    {sp:"弁護士", t:"先生、ここが大事です。肩への一発でも、相手が被害を訴えれば、前の事件とは別の暴行事件として扱われます。『たかが肩パン』という言い訳は、記録の前では通りません"},
+    {sp:"me", t:"（あの場の笑顔が、頭をよぎった。……軽い一発のつもりでも、した側の理屈で軽くなるわけじゃなかった）"},
+    {choice:[
+      {label:"後輩に謝罪し、示談金80,000円で被害届を取り下げてもらう", say:[
+        {payBill:{title:"肩パン騒動の示談", parts:[{label:"示談金", amount:URA_SHOULDER_SETTLEMENT}]}},
+        {uraSet:{shoulderSettled:true}},
+        {sp:"後輩", t:"……最初から、そうやって謝ってくれればよかったんすよ。届けは、下げます"},
+        {sp:"narr", t:"謝罪と示談の成立が警察にも伝わり、勾留までは至らず、書類上の手続きだけで済んだ。逮捕回数には数えられなかったが、安い代償ではなかった。"},
+        {fx:{attention:1}},
+      ]},
+      {label:"示談せず、警察の判断を受ける", say:[
+        {uraShoulderRearrest:true},
+      ]},
+    ]},
+  ];
+}
+function uraShoulderRearrestLines(){
+  const U = uraEnsure();
+  if (U.shoulderRearrestDone) return [];
+  U.shoulderRearrestDone = true;
+  U.shoulderRearrestWeek = S.absWeek;
+  U.arrests = (U.arrests || 0) + 1;
+  const n = U.arrests;
+  U.heat = 0;
+  S.flags.arrestRecord = true;
+  S.flags.arrestWeek = S.absWeek;
+  if (n >= 3){
+    return [
+      {sp:"narr", t:"肩パンの一件は、別件として逮捕に至った。これが三度目だった。刑事は短く言った。「今回は、戻ってくるまで、だいぶかかりますよ」"},
+      {sp:"narr", t:"CLASHでは『肩パンで再逮捕』という言葉だけが、事情よりも先に走った。"},
+      {fx:{attention:1, aku:1}},
+      {uraBadEnd:"arrest"},
+    ];
+  }
+  const weeks = URA_JAIL_WEEKS[n - 1] || 6;
+  U.jailUntil = S.absWeek + weeks;
+  return [
+    {sp:"narr", t:"示談はせず、警察の判断を受けた。肩パンの一件で、再び逮捕された。逮捕は、これで" + n + "回目だった。"},
+    {sp:"narr", t:"勾留は" + weeks + "週間。短い釈放期間の記憶が、鉄の扉の向こうで遠くなった。"},
+    {sp:"narr", t:"CLASHでは『肩パンで再逮捕』という噂が流れた。笑い話のように消費される言葉の裏で、失った週だけが静かに積み上がった。"},
+    {fx:{attention:1, aku:1}},
+    {sp:"me", t:"（たかが肩パン、ではなかった。……相手が被害を訴えた時点で、別の一件になっていた）"},
   ];
 }
 // ---------- 第139節: 週頭の判定（逮捕>露見>噂>抗争>入口。週に最大1件） ----------
@@ -4528,6 +4628,18 @@ function tryUraEvents(forceKind){
   }
   if (forceKind) return uraForceEvent(forceKind);
   if (inJail()) return false;
+  // 第141節: 肩パンの別件逮捕は、裏を抜けた後でも釈放から数週間後に遅れて来る。
+  // 章の固定ビートがある週は、その週の出来事を優先して翌週へずらす。
+  if (U.shoulderPunch && !U.shoulderSettled && !U.shoulderRearrestDone && (U.shoulderRearrestDueWeek || 0) > 0 && S.absWeek >= (U.shoulderRearrestDueWeek || 0)){
+    if (uraHasFixedBeatThisWeek()){
+      if (U.shoulderRearrestPostponeWeek !== S.absWeek){
+        U.shoulderRearrestPostponeWeek = S.absWeek;
+        U.shoulderRearrestDueWeek = S.absWeek + 1;
+      }
+      return false;
+    }
+    startScene(uraShoulderRearrestSteps(), null, null); return true;
+  }
   if (U.active && !U.quit){
     // 逮捕: 熱が溜まり切ると抽選が走る
     if ((U.heat || 0) >= URA_HEAT_ARREST && _rng() < 0.30){ startScene(uraArrestSteps(), null, null); return true; }
@@ -4842,6 +4954,7 @@ function uraForceEvent(kind){
     case "war1": startScene(uraWarSteps(1), null, null); return true;
     case "war2": startScene(uraWarSteps(2), null, null); return true;
     case "arrest": startScene(uraArrestSteps(), null, null); return true;
+    case "shoulder_rearrest": startScene(uraShoulderRearrestSteps(), null, null); return true;
     case "quit": startScene(uraQuitSteps(), null, null); return true;
     case "ed": startScene(uraTopSteps(), null, null); return true;
     case "bouncer": uraBouncerShift(); return true;
@@ -5037,6 +5150,7 @@ window.__gameTest = {
   uraRankName: () => uraRankName(),
   uraSet: patch => { Object.assign(uraEnsure(), patch || {}); return S.ura; },
   uraForce: kind => uraForceEvent(kind),
+  uraRecord: () => uraRecordText(),
   uraHook: () => tryUraEvents(),
   inJail: () => inJail(),
   uraKejime: () => uraKejime(),
