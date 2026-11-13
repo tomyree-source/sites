@@ -47,7 +47,7 @@ const r = S.record;
 const ow = oldWounds(); const owNames = {arm:"腕", leg:"脚", core:"体幹", head:"頭"};
 const owList = Object.keys(ow).filter(p => ow[p] > 0).map(p => owNames[p]).join("・");
 $("main").innerHTML = '<div class="endcard"><h2>第3章 全盛期 ―完―（現役続行）</h2>' +
-'<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝（最高" + (r.bestWinStreak || 0) + "連勝）／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝 ／ 大会優勝 " + r.cups + "回</div>" +
+'<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝（最高" + (r.bestWinStreak || 0) + "連勝）／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝 ／ 大会優勝 " + r.cups + "回 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回</div>" +
 '<div class="stext">名声 ' + fameTotal() + "（" + fameRank() + "）／ 清名" + S.sei + "・悪名" + S.aku + " ／ 道場生 " + S.students.length + "人 ／ " + (mainStyle()? mainStyle().name: "") + " Lv" + styleLv(S.mainStyle) + " ／ 純粋度 " + purity() + "%" + (S.partner? " ／ 想い人：" + CAST_BY_ID[S.partner].name: "") + (owList? " ／ 古傷：" + owList: "") + "</div>" +
 '<div class="stext">円熟期（40〜49歳）。散打の間宮健一率いる道場が、本格的な対抗戦の主敵として立ちはだかる。老師たちの高Lv帯の指導、若手の星の追い上げ、そして「衰え」と「深み」の同時進行が始まる。</div>' +
 '<button class="btn next" data-auto="to-title">タイトルへ戻る</button></div>';
@@ -59,7 +59,7 @@ UI.screen = "end"; S.flags.retiredEnding = true; S.chapter = 3; hud();
 const r = S.record;
 const color = S.sei > S.aku + 5? "清名に彩られた": S.aku > S.sei + 5? "悪名と共に語られる": "清濁を併せ呑んだ";
 $("main").innerHTML = '<div class="endcard"><h2>早期エンディング ― 引退（' + S.age + '歳）</h2>' +
-'<div class="stext">' + color + '現役生活に、ここで幕を下ろした。記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 大会優勝 " + r.cups + "回 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回。</div>" +
+'<div class="stext">' + color + '現役生活に、ここで幕を下ろした。記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 大会優勝 " + r.cups + "回 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回。</div>" +
 '<div class="stext">名声 ' + fameTotal() + "（" + fameRank() + "）／ 清名" + S.sei + "・悪名" + S.aku + " ／ 道場生 " + S.students.length + "人 ／ " + (mainStyle()? mainStyle().name: "") + " Lv" + styleLv(S.mainStyle) + " ／ 純粋度 " + purity() + "%" + (S.partner? " ／ 共に歩む人：" + CAST_BY_ID[S.partner].name: "") + "</div>" +
 '<div class="stext">引退は終わりではない。道場は残り、生徒たちはそれぞれの道を歩み続ける。' + (S.partner? CAST_BY_ID[S.partner].name + "と共に過ごす穏やかな日々と、時折顔を出す道場の笑い声。": "時折道場に顔を出し、若い世代の背中を押す日々。") + 'CLASHでは今も、時々あなたの名前が「全盛期の男」として語られている。</div>' +
 '<button class="btn next" data-auto="to-title">タイトルへ戻る</button></div>';

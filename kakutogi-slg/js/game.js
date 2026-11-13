@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "1.96";
+const GAME_VERSION = "1.97";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -144,6 +144,7 @@ function firstStepText(steps){
 function episodeLabel(id){
   if (!id) return "エピソード";
   if (id === "boty") return "BOTY（武クラ・オブ・ザ・イヤー）年末発表";
+  if (id === "tenkaichi") return "天下一武道会（年末の8人制ワンナイトトーナメント）";
   if (id.indexOf("ep:") === 0){
     const c = (typeof CAST_BY_ID !== "undefined") && CAST_BY_ID[id.slice(3)];
     return c ? c.name + "のエピソード場面" : "エピソード場面";
@@ -198,7 +199,7 @@ const EPISODE_TAGS = {
   aru_katagaki:"肩書は盛らない", aru_katahina:"型は実戦の雛形か", aru_metsukiron:"騒動には触れません",
   aru_sennin:"達人には専任の批判者がいる",
   aru_bd_audition:"選考は無制限ラウンド", aru_bd_keireki:"喧嘩無敗、全員無敗", cam_bd_scandal:"看板の飛び火",
-  boty:"BOTY",
+  boty:"BOTY", tenkaichi:"天下一武道会",
 };
 function episodeTag(id){
   if (!id) return "武クラ";
@@ -218,6 +219,7 @@ function episodeTag(id){
 function isLikeableId(id){
   if (!id) return false;
   if (id === "boty") return true;
+  if (id === "tenkaichi") return true; // 第137節: 天下一武道会もCLASHバーの対象にする
   if (/^cam1_/.test(id)) return true;
   return allEventPools().some(p => p.some(e => e.id === id));
 }
@@ -233,7 +235,7 @@ mainStyle: null, styleLv: {}, styleExp: {},
 expMainTotal: 0, expTotal: 0,
 dmg: {arm:0, leg:0, core:0, head:0},
 students: [], met: [], affection: {}, romanceEv: {}, partner: null,
-flags: {}, record: {fouls:0, anki:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0},
+flags: {}, record: {fouls:0, anki:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0, tenkaIn:0, tenkaTitles:0},
 seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {}, seenEvents: {},
 chapter1Clear: false, chapter2Clear: false, chapter3Clear: false, chapter4Clear: false, startedAt: Date.now(),
 };
@@ -245,6 +247,10 @@ function ensureStateCompat(){
   if (S.record.winStreak == null) S.record.winStreak = 0;
   if (S.record.bestWinStreak == null) S.record.bestWinStreak = S.record.winStreak || 0;
   if (S.record.anki == null) S.record.anki = 0; // 第136節: 暗器の使用回数（v1.95以前のセーブでは未定義のため初期化）
+  if (S.record.tenkaIn == null) S.record.tenkaIn = 0; // 第137節: 天下一武道会の出場回数（v1.96以前のセーブでは未定義のため初期化）
+  if (S.record.tenkaTitles == null) S.record.tenkaTitles = 0; // 第137節: 天下一武道会の優勝回数
+  if (!S.flags.tenkaDone || typeof S.flags.tenkaDone !== "object") S.flags.tenkaDone = {}; // 第137節: 年度別の開催済み管理
+  if (!S.flags.tenkaYears || typeof S.flags.tenkaYears !== "object") S.flags.tenkaYears = {}; // 第137節: 年度別の大会結果（BOTY連携が読む）
   if (!S.seenEvents || typeof S.seenEvents !== "object") S.seenEvents = {};
   if (!S.beatsDone || typeof S.beatsDone !== "object") S.beatsDone = {};
   if (!Array.isArray(S.students)) S.students = [];
@@ -1306,6 +1312,10 @@ function sceneAdvance(){
     if (st.bankruptcy){ UI.queue = bankruptcyLines().concat(UI.queue); continue; }
     if (st.nightFlightRepay){ addDebt(st.nightFlightRepay.amount || 0); continue; }
     if (st.abroadGo){ UI.queue = abroadGoLines().concat(UI.queue); continue; }
+    if (st.tenkaEnter){ if (inHiding()){ UI.queue = tenkaWatchSteps(true).concat(UI.queue); continue; } S.record.tenkaIn = (S.record.tenkaIn || 0) + 1; UI.queue = []; startTenkaRound(0); return; } // 第137節
+    if (st.tenkaWatch){ UI.queue = tenkaWatchSteps(false).concat(UI.queue); continue; } // 第137節
+    if (st.tenkaWin !== undefined){ UI.queue = []; tenkaAfterWin(st.tenkaWin); return; } // 第137節
+    if (st.tenkaLose !== undefined){ UI.queue = tenkaAfterLoseSteps(st.tenkaLose).concat(UI.queue); continue; } // 第137節
     if (st.nightAttack){ UI.queue = nightAttackSteps().concat(UI.queue); continue; }
     if (st.deadEnd){ UI.queue = []; showDeadEnd(st.deadEnd); return; }
     if (st.raidIntro){ UI.queue = raidIntroLines().concat(UI.queue); continue; }
@@ -1482,6 +1492,8 @@ function goWeek(){
   UI.screen = "week"; UI.portrait = null; UI.episode = null;
   // 年末イベント BOTY（武クラ・オブ・ザ・イヤー／第68節）: 年が明けた直後の週に、前の年の発表を1回だけ挟む
   if (typeof tryBotyScene === "function" && tryBotyScene()) return;
+  // 第137節: 天下一武道会（年末の年次フック。BOTYは年明け発表のため、順序は 大会（年末）→ BOTY（年明け）になる）
+  if (typeof tryTenkaichi === "function" && tryTenkaichi()) return;
   // 第82節: 借金の夜逃げデッドエンド（月末精算で条件を満たしていた場合、週の頭で提示する）
   if (S.flags.debtDeadEndPending){
     S.flags.debtDeadEndPending = false;
@@ -2301,6 +2313,14 @@ function startBattle(id, winSteps, loseSteps){
       (counterHasSig ? sigName() + "への対策が用意されている（看板技の威力が下がる）。" : "看板技は未解放のため、主・流儀の代表的な型への対策が用意されている（通常攻撃が少し読まれやすい）。") +
       "ただし、複合技や新しい流派の技は研究が追いついていない。");
   }
+  // 第137節: 天下一武道会の連戦では、体力を持ち越す（インターバルの小回復のみ。前の試合の終了時HP＋最大HPの15%が上限）
+  if (def.id && def.id.indexOf("tenka_") === 0 && typeof TENKA_RT !== "undefined" && TENKA_RT && TENKA_RT.carryPhp != null){
+    const heal = Math.round(UI.battle.maxPhp * 0.15);
+    const fromPhp = TENKA_RT.carryPhp;
+    UI.battle.php = Math.min(UI.battle.maxPhp, fromPhp + heal);
+    TENKA_RT.lastApplied = {from: fromPhp, heal: heal, start: UI.battle.php, max: UI.battle.maxPhp};
+    bLog("実況", "ワンナイトトーナメントの連戦――体力は前の試合から持ち越しだ。インターバルの小回復のみで、リングに戻る（" + fromPhp + " → " + UI.battle.php + "）");
+  }
   renderBattle();
   if (window.FX) FX.battleStart(); // 第88節: 開始ゴング（演出のみ）
 }
@@ -2621,6 +2641,8 @@ function finishBattle(win){
   const b = UI.battle;
   if (!b || b.finishing) return;
   b.finishing = true;
+  // 第137節: 天下一武道会の試合では、決着時点の残り体力を次の試合へ持ち越すために記録する
+  if (b.def && b.def.id && b.def.id.indexOf("tenka_") === 0 && typeof TENKA_RT !== "undefined" && TENKA_RT){ TENKA_RT.carryPhp = Math.max(0, b.php); TENKA_RT.carryFrom = {defId: b.def.id, php: Math.max(0, b.php), maxPhp: b.maxPhp}; }
   const koText = win ? (b.ehp <= 0 ? "K.O.！" : "判定勝ち！") : "敗北";
   if (window.FX) FX.battleEnd(win, koText, () => doFinishBattle(win));
   else doFinishBattle(win);
@@ -2926,6 +2948,226 @@ function startChallenge(id){
   return true;
 }
 
+// ---------- 第137節: 天下一武道会（年末の8人制ワンナイトトーナメント・毎年定期） ----------
+// 本人の2026-11-13の決定「年末にかつての大規模グランプリ形式のトーナメントをやろう
+// →名称と方式は「天下一武道会で毎年定期」」を受けて実装する年末の年中行事。
+// 往年のワンナイト・グランプリの型（8人制・一夜で準々決勝→準決勝→決勝）を、作中の
+// 架空大会「天下一武道会」として毎年1回、年末に開く。実在の団体名・商標は作中に出さない。
+// goWeek の週頭判定（BOTYの直後）。BOTYは「年が明けた直後の週」に前年分を
+// 発表するため、順序は 天下一武道会（年末・年内最後）→ BOTY（年明け）になる。
+// 発火窓は年内の第44週以降。第1〜4章の代表シーズン方式では年末の週をプレイしない年が
+// あるため、その年の年次スキップ（yearskip ビート）の週も「その年の最後の週」として扱い、
+// 大会を先に開いてからスキップへ進む（ビート自体は壊れない）。章の固定ビートと競合する
+// 週は従来側を優先し、ビート終了後の同じ週の再判定で大会を開く（後ろへずらす安全策）。
+// 年を跨いでしまった年は BOTY と同じ流儀で "skip" として記録し、翌年へ持ち越さない。
+// 主人公＋NPC 7名の8人制。主人公の試合は既存バトルエンジンで連続実施し、
+// 試合間の回復は「前の試合の終了時HP＋最大HPの15%」まで（startBattle の持ち越し処理）。
+// 試合後の疲労加算（doFinishBattle の +12／第4章 +18）と部位ダメージもそのまま残るため、
+// 「削り合いの持ち越し」が大会の核になる。NPC同士は挑戦システムのスコアで簡易判定し、
+// 結果は回戦ごとの場面でトーナメント表として表示する。
+// 登場済み（S.met）のキャストから、挑戦システムの流派解決（challengeStyleFor）
+// で戦える者を、格付け順の回転＋流派の重複回避で決定論的に8名分選ぶ（乱数は選出に使わない）。
+// 足りない分は交流会の常連などの無名の汎用選手で埋める（未登場キャストは出さない）。
+// 案内場面で 出場／見送り（観戦）を選べる。資格の門前払いは付けない。
+// 見送った年はNPCだけで優勝者が決まり、CLASHの話題になるだけにする。
+// 優勝賞金は 30,000円＋20,000円×章番号（第1章5万円＝年次大会 cup_year の優勝賞金と
+// 同額、第4章11万円でも章末決勝の12万円を超えない。根拠は企画書第137節）。
+// 準優勝は半額、ベスト4は1/4、1回戦敗退は出場賞5,000円。清名・注目は優勝 +3/+3 を頭に段階付け。
+// 反則・暗器は既存ルールのまま（代償も既存どおり。傷害ルートの火種も doFinishBattle の既存経路）。
+// S.record.tenkaIn（出場回数）／tenkaTitles（優勝回数）と、S.flags.tenkaYears[年] に
+// その年の結果を保存し、年明けのBOTYが実績候補として拾う（固定候補40件は不変）。
+let TENKA_RT = null; // 大会進行中の一時状態（セーブ対象外。結果だけを flags/record へ残す）
+// 汎用の出場者（キャストではない無名の選手。流派はロスターの実在名で受ける）
+const TENKA_FILLERS = [
+{name:"交流会の古参・大木", styleName:"講道館柔道", age:41},
+{name:"地域大会の常連・沢村", styleName:"極真空手", age:35},
+{name:"ジムの番頭・ロペス", styleName:"ボクシング", age:38},
+{name:"遠征組の蹴り屋・サマン", styleName:"ムエタイ", age:29},
+{name:"寝技サークルの主・宇野", styleName:"ブラジリアン柔術", age:33},
+{name:"アマレス出身・岩田", styleName:"レスリング（フリースタイル）", age:31},
+{name:"学生王者の兄・尹", styleName:"テコンドー（WT）", age:27},
+{name:"無所属の総合家・葛西", styleName:"総合格闘技（MMA）", age:30},
+];
+function tenkaYearIdx(){ return Math.floor((S.absWeek - 1) / WEEKS_PER_YEAR);}
+function tenkaPrize(){ return 30000 + 20000 * (S.chapter || 1);}
+function tenkaFoeObj(c, st){
+const f = challengeFoePower(c, st);
+return {id: c.id || null, name: c.name, styleName: st.name, st: st, hp: f.hp, power: f.power, score: f.power * 1.4 + f.hp / 14, img: c.id || null};
+}
+function tenkaBuildField(yearIdx){
+const met = CAST_DATA.filter(c => c.id!== "hayato" && S.met.includes(c.id))
+.map(c => ({c: c, st: challengeStyleFor(c)})).filter(x => x.st);
+met.sort((a, b) => (challengeGrade(b.c) - challengeGrade(a.c)) || a.c.name.localeCompare(b.c.name, "ja"));
+const rot = met.length? (yearIdx * 3) % met.length: 0;
+const ordered = met.slice(rot).concat(met.slice(0, rot));
+const picked = [], usedStyles = {};
+for (const x of ordered){ if (picked.length >= 8) break; if (!usedStyles[x.st.name]){ usedStyles[x.st.name] = true; picked.push(x);}}
+for (const x of ordered){ if (picked.length >= 8) break; if (!picked.includes(x)) picked.push(x);}
+const foes = picked.map(x => tenkaFoeObj(x.c, x.st));
+let fi = yearIdx % TENKA_FILLERS.length, guard = 0;
+while (foes.length < 8 && guard++ < 40){
+const fd = TENKA_FILLERS[fi % TENKA_FILLERS.length]; fi++;
+if (foes.some(f => f.name === fd.name)) continue;
+const st = styleByName(fd.styleName); if (!st) continue;
+foes.push(tenkaFoeObj({id: null, name: fd.name, age: fd.age, debut: 2, role: "強豪"}, st));
+}
+return foes;
+}
+// NPC同士の簡易判定（年と試合番号から決定的にシードする。スコアに最大±15%の揺らぎ）
+function tenkaSim(a, b, seed){
+const rng = mulberry32(seed);
+const sa = a.score * (0.85 + rng() * 0.3), sb = b.score * (0.85 + rng() * 0.3);
+return sa >= sb? a: b;
+}
+function tenkaSeedBase(){ return 91000 + (TENKA_RT? TENKA_RT.year: 0) * 1000;}
+function tenkaQfText(){
+const F = TENKA_RT.field, W = TENKA_RT.qfNpc;
+return "" + F[1].name + " vs " + F[2].name + " → " + W[0].name + "の勝ち ／ " +
+F[3].name + " vs " + F[4].name + " → " + W[1].name + "の勝ち ／ " +
+F[5].name + " vs " + F[6].name + " → " + W[2].name + "の勝ち";
+}
+function tryTenkaichi(){
+if (!S ||!S.flags) return false;
+ensureStateCompat();
+const yearIdx = tenkaYearIdx();
+for (let y = 0; y < yearIdx; y++){ if (!S.flags.tenkaDone[y]) S.flags.tenkaDone[y] = "skip";}
+if (S.flags.tenkaDone[yearIdx]) return false;
+if (S.flags.retiredEnding) return false;
+const yw = ((S.absWeek - 1) % WEEKS_PER_YEAR) + 1;
+const allBeats = BEATS.concat(typeof BEATS_CH2!== "undefined"? BEATS_CH2: [], typeof BEATS_CH3!== "undefined"? BEATS_CH3: [], typeof BEATS_CH4!== "undefined"? BEATS_CH4: []);
+const beat = allBeats.find(b => b.week === S.absWeek &&!S.beatsDone[b.week + ":" + b.id]);
+const isSkipBeat =!!(beat && /yearskip/.test(beat.id));
+if (yw < 44 &&!isSkipBeat) return false;
+if (beat &&!isSkipBeat) return false; // 固定ビート優先（ビート終了後、同じ週の goWeek 再判定で大会が開く）
+S.flags.tenkaDone[yearIdx] = "open";
+const field = tenkaBuildField(yearIdx);
+TENKA_RT = {year: yearIdx, field: field, carryPhp: null, carryFrom: null, lastApplied: null};
+const sb = tenkaSeedBase();
+TENKA_RT.qfNpc = [
+tenkaSim(field[1], field[2], sb + 11),
+tenkaSim(field[3], field[4], sb + 12),
+tenkaSim(field[5], field[6], sb + 13),
+];
+TENKA_RT.sfNpc = tenkaSim(TENKA_RT.qfNpc[1], TENKA_RT.qfNpc[2], sb + 14);
+const F = field;
+const steps = [
+{sp:"narr", t:"――年末。今年も、あの大会の季節が来た。流派の看板を懸けた8人制ワンナイトトーナメント『天下一武道会』。準々決勝から決勝までを一夜で戦い抜く、一年の締めくくりの祭りだ。"},
+{img:"otowa"},
+{sp:"otowa", t:"実況は音羽響！ 年末恒例、天下一武道会の出場者が出揃いました！ 今年の顔ぶれは、こちら！"},
+{sp:"narr", t:"ハヤト（{style}）／" + F.map(f => f.name + "（" + f.styleName + "）").join("／")},
+{sp:"narr", t:"ハヤト vs " + F[0].name + " ／ " + F[1].name + " vs " + F[2].name + " ／ " + F[3].name + " vs " + F[4].name + " ／ " + F[5].name + " vs " + F[6].name + "（" + F[7].name + "はリザーブとして待機）"},
+{sp:"narr", t:"この大会の流儀は一つ。勝っても体力はほとんど戻らない。受けたダメージも疲労も、次の試合へそのまま持ち越す。――だからこそ、一夜を勝ち抜いた者の名は、年末の界隈に刻まれる。"},
+];
+if (inHiding()){
+steps.push({sp:"narr", t:"だが今の自分は潜伏中だ。表舞台のリングには立てない。今年は観戦に回るしかない。"});
+steps.push({choice:[{label:"見送る（観戦する）", say:[{tenkaWatch:1}]}]});
+} else {
+steps.push({choice:[
+{label:"出場する（一夜で3試合。ダメージは持ち越し）", say:[{tenkaEnter:1}]},
+{label:"見送る（観戦する）", say:[{tenkaWatch:1}]},
+]});
+}
+if (typeof logEventFire === "function") logEventFire("tenkaichi", {id:"tenkaichi_" + yearIdx});
+startScene(steps, null, "tenkaichi");
+return true;
+}
+function startTenkaRound(r){
+const T = TENKA_RT;
+if (!T){ goWeek(); return;}
+const foe = r === 0? T.field[0]: r === 1? T.qfNpc[0]: T.sfNpc;
+const rn = ["準々決勝", "準決勝", "決勝"][r];
+BATTLES["tenka_r" + r] = {
+title: "天下一武道会 " + rn, enemyName: foe.name, enemyStyleName: foe.styleName, img: foe.img || undefined,
+hp: foe.hp, power: foe.power, mode: "match", foul: true,
+comments: [
+"実況「天下一武道会 " + rn + "――" + foe.name + "がリングに上がりました！」",
+"「ワンナイトの連戦、体力の残り方が勝負を分ける」",
+"CLASHの実況欄が、年末の祭りに沸いている",
+"観客「看板同士のぶつかり合いだ。目が離せない」",
+],
+};
+const steps = [];
+if (r === 0){
+steps.push({sp:"narr", t:"ゴングが鳴る。まずは準々決勝――相手は" + foe.name + "（" + foe.styleName + "）。ここで削られすぎると、準決勝が待っている。"});
+} else if (r === 1){
+steps.push({sp:"narr", t: tenkaQfText()});
+steps.push({sp:"narr", t:"準決勝の相手は" + foe.name + "（" + foe.styleName + "）。向こうは準々決勝を勝ち上がったばかり。互いに、体力は削れたままだ。"});
+} else {
+steps.push({sp:"narr", t:"もう一方の山は、" + T.sfNpc.name + "が勝ち上がった。決勝の相手はこの男（この選手）で決まりだ。"});
+steps.push({sp:"narr", t:"決勝――相手は" + foe.name + "（" + foe.styleName + "）。一夜の最後。残っている全部を、ここに置いていく。"});
+}
+if (foe.img) steps.push({img: foe.img});
+steps.push({battle: "tenka_r" + r, win: [{tenkaWin: r}], lose: [{tenkaLose: r}]});
+startScene(steps, null, "tenkaichi");
+}
+function tenkaAfterWin(r){
+if (r < 2){ startTenkaRound(r + 1); return;}
+startScene(tenkaFinishSteps(1, "ハヤト"), null, "tenkaichi");
+}
+function tenkaChampionAfterLoss(r){
+const T = TENKA_RT, F = T.field, sb = tenkaSeedBase();
+if (r === 0){ const sf1 = tenkaSim(F[0], T.qfNpc[0], sb + 15); return tenkaSim(sf1, T.sfNpc, sb + 16).name;}
+if (r === 1) return tenkaSim(T.qfNpc[0], T.sfNpc, sb + 16).name;
+return T.sfNpc.name;
+}
+function tenkaAfterLoseSteps(r){
+const rank = r === 0? 8: r === 1? 4: 2;
+const champ = tenkaChampionAfterLoss(r);
+const head = [{sp:"narr", t:"天下一武道会は、ここで終わった。だが一夜のリングに立った事実は残る。このあと大会は進み、優勝は" + champ + "の手に渡った。"}];
+return head.concat(tenkaFinishSteps(rank, champ));
+}
+function tenkaAward(rank){
+const prize = tenkaPrize();
+if (rank === 1) return {money: prize, sei: 3, attention: 3, label: "優勝"};
+if (rank === 2) return {money: Math.floor(prize / 2), sei: 1, attention: 2, label: "準優勝"};
+if (rank === 4) return {money: Math.floor(prize / 4), sei: 1, attention: 1, label: "ベスト4"};
+return {money: 5000, sei: 0, attention: 1, label: "1回戦敗退"};
+}
+function tenkaFinishSteps(rank, champion){
+ensureStateCompat();
+const T = TENKA_RT;
+const year = T? T.year: tenkaYearIdx();
+const aw = tenkaAward(rank);
+S.flags.tenkaYears[year] = {result: aw.label, champion: champion, entered: true, age: S.age};
+if (rank === 1) S.record.tenkaTitles = (S.record.tenkaTitles || 0) + 1;
+if (!S.flags.tenkaBestRank || rank < S.flags.tenkaBestRank) S.flags.tenkaBestRank = rank;
+window.__tenkaLast = {year: year, rank: rank, label: aw.label, champion: champion, prize: aw.money};
+const fx = {money: aw.money, attention: aw.attention};
+if (aw.sei) fx.sei = aw.sei;
+const steps = [
+{img:"otowa"},
+{sp:"otowa", t:"天下一武道会、閉幕です！ 今年の優勝は――" + (rank === 1? "ハヤト！ 一夜で3試合、ダメージを持ち越しながらの完全制覇です！": champion + "！ 一夜の頂点に立ったのは、この選手でした！")},
+{sp:"narr", t:"表彰式。トロフィーが渡され、会場の拍手がリングを包んだ。CLASHでは早くも『年末の風物詩』『来年は誰が取る』の投稿で溢れている。"},
+];
+if (rank === 1) steps.push({sp:"narr", t:"賞金" + aw.money.toLocaleString() + "円。削り合いの果てに立った一夜の頂点は、道場の看板を年末に大きくした。"});
+else if (rank === 2) steps.push({sp:"narr", t:"賞金" + aw.money.toLocaleString() + "円。あと一歩だった。だが決勝のリングに立った者の名は、界隈に残る。"});
+else if (rank === 4) steps.push({sp:"narr", t:"賞金" + aw.money.toLocaleString() + "円。準決勝の壁は厚かった。削られた体で、来年また挑む理由ができた。"});
+else steps.push({sp:"narr", t:"出場賞" + aw.money.toLocaleString() + "円。ワンナイトの厳しさは、立ってみて初めて分かる。"});
+steps.push({fx: fx});
+steps.push({sp:"narr", t:"こうして年末の祭りは終わった。――年が明ければ、界隈の一年を総括するBOTYの発表が待っている。今年の天下一武道会も、きっと候補に挙がるだろう。"});
+return steps;
+}
+function tenkaWatchSteps(hidden){
+ensureStateCompat();
+const T = TENKA_RT;
+if (!T) return [{sp:"narr", t:"天下一武道会は、今年も年末の話題をさらっていった。"}];
+const F = T.field, sb = tenkaSeedBase();
+const qf = [tenkaSim(F[0], F[1], sb + 21), tenkaSim(F[2], F[3], sb + 22), tenkaSim(F[4], F[5], sb + 23), tenkaSim(F[6], F[7], sb + 24)];
+const sf = [tenkaSim(qf[0], qf[1], sb + 25), tenkaSim(qf[2], qf[3], sb + 26)];
+const champ = tenkaSim(sf[0], sf[1], sb + 27);
+S.flags.tenkaYears[T.year] = {result: "観戦", champion: champ.name, entered: false, age: S.age};
+window.__tenkaLast = {year: T.year, rank: 0, label: "観戦", champion: champ.name, prize: 0};
+return [
+{sp:"narr", t:(hidden? "潜伏中の身では、会場の隅から見ることしかできない。それでも、年末の祭りの熱は届いた。": "今年は観戦に回った。客席から見るワンナイトトーナメントは、リングの上とは違う景色だった。")},
+{sp:"narr", t:"" + F[0].name + " vs " + F[1].name + " → " + qf[0].name + " ／ " + F[2].name + " vs " + F[3].name + " → " + qf[1].name + " ／ " + F[4].name + " vs " + F[5].name + " → " + qf[2].name + " ／ " + F[6].name + " vs " + F[7].name + " → " + qf[3].name},
+{sp:"narr", t:"" + qf[0].name + " vs " + qf[1].name + " → " + sf[0].name + " ／ " + qf[2].name + " vs " + qf[3].name + " → " + sf[1].name + "。削り合いの果てに、決勝の顔ぶれが決まった。"},
+{img:"otowa"},
+{sp:"otowa", t:"天下一武道会、優勝は――" + champ.name + "！ 一夜で3試合を勝ち抜いた、今年の頂点です！"},
+{sp:"narr", t:"CLASHは優勝者の話題で持ちきりになった。『来年はハヤトも出るのか』という投稿も、ちらほら見える。"},
+{fx:{attention:1}},
+];
+}
+
 // ---------- SNS議論バトル ----------
 // 第44節: 汎用ネタプール（story-ch1.js の DEBATE_POOL）のうち、まだ見ていないネタの一覧
 function unseenPoolDebates(){
@@ -2997,7 +3239,7 @@ function chapterEndScreen(){
   UI.screen = "end"; S.chapter1Clear = true; hud();
   const r = S.record;
   $("main").innerHTML = '<div class="endcard"><h2>第1章 青年期 ―完―</h2>' +
-    '<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝</div>" +
+    '<div class="stext">記録：試合 ' + r.matches + "戦 " + r.wins + "勝 ／ 反則 " + r.fouls + "回 ／ 暗器 " + (r.anki || 0) + "回 ／ バイト " + r.works + "回 ／ セミナー " + r.seminars + "回 ／ 論争 " + r.debateWins + "勝 ／ 天下一武道会 優勝" + (r.tenkaTitles || 0) + "回・出場" + (r.tenkaIn || 0) + "回</div>" +
     '<div class="stext">名声 ' + fameTotal() + "（" + fameRank() + "）／ 清名" + S.sei + "・悪名" + S.aku + " ／ 道場生 " + S.students.length + "人 ／ " + (mainStyle() ? mainStyle().name : "") + " Lv" + styleLv(S.mainStyle) + " ／ 純粋度 " + purity() + "%" + (S.partner ? " ／ 想い人：" + CAST_BY_ID[S.partner].name : "") + "</div>" +
     '<div class="stext">【第2章予告】全盛前夜（23〜29歳）。本戦への挑戦、道場の独立、新しい世代の強者たち、そして師匠たちの門。</div>' +
     (typeof startChapter2 === "function" ? '<button class="btn next" data-auto="to-ch2">第2章へ進む（23歳〜）</button>' : "") +
@@ -3184,6 +3426,12 @@ window.__gameTest = {
   challengeExcluded: () => CAST_DATA.filter(c => c.debut <= S.chapter && !challengeStyleFor(c)).map(c => ({id: c.id, name: c.name, style: c.style})),
   startChallenge: id => startChallenge(id),
   chalRecord: () => (S && S.flags && S.flags.chal) || {},
+  // 第137節: 天下一武道会の検証フック
+  tenkaDue: () => tryTenkaichi(),
+  tenkaField: () => (typeof TENKA_RT !== "undefined" && TENKA_RT) ? TENKA_RT.field.map(f => ({name: f.name, style: f.styleName, hp: f.hp, power: f.power, img: f.img})) : null,
+  tenkaRuntime: () => (typeof TENKA_RT !== "undefined" && TENKA_RT) ? {year: TENKA_RT.year, carryPhp: TENKA_RT.carryPhp, carryFrom: TENKA_RT.carryFrom || null, lastApplied: TENKA_RT.lastApplied || null, qfNpc: TENKA_RT.qfNpc.map(f => f.name), sfNpc: TENKA_RT.sfNpc.name} : null,
+  tenkaPrize: () => tenkaPrize(),
+  tenkaLast: () => window.__tenkaLast || null,
   // 第80〜82節の検証フック
   deadEnds: () => getDeadEnds(),
   rewind: () => rewindNow(),

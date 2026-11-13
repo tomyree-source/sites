@@ -242,6 +242,11 @@ function botyPlayCandidates(yearIdx){
   if (S.flags.courtDone && inYear(S.flags.courtWeek)) out.push({kind:"laugh", label:"裁判バトル", blurb:"法廷でも戦った一年。結果より、そこに至る流れが全部ネタになった"});
   // 第76節: その年に交際が終わっていたら、笑われ役の候補に入る
   if (inYear(S.flags.partnerBrokeWeek)) out.push({kind:"laugh", label:"訴訟と借金で彼女に逃げられた男", blurb:"法廷の決着より、関係の決着の方が重かった。界隈の誰もが、そっと同情した"});
+  // 第137節: 天下一武道会の結果を、その年の実績候補として拾う（固定候補の総数は変えない）
+  const tk = (S.flags.tenkaYears || {})[yearIdx];
+  if (tk && tk.entered && tk.result === "優勝") out.push({kind:"hero", label:"天下一武道会で優勝", blurb:"年末の8人制ワンナイトトーナメントを、ダメージを持ち越しながら一夜で勝ち抜いた。文句なしの年末の大仕事"});
+  else if (tk && tk.entered && tk.result === "準優勝") out.push({kind:"hero", label:"天下一武道会で準優勝", blurb:"決勝で力尽きたが、一夜で準決勝を勝ち上がった足跡は、界隈に残った"});
+  else if (tk && tk.champion) out.push({kind:"aruaru", label:"天下一武道会は" + tk.champion + "が優勝", blurb:"年末の8人制ワンナイトトーナメントは、今年も流派の看板を懸けた一夜だった"});
   // 重複ラベルを除く
   const uniq = []; const used = {};
   for (const c of out){ if (!used[c.label]){ used[c.label] = true; uniq.push(c); } }
