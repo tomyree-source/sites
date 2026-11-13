@@ -12,6 +12,14 @@
 <meta property="og:image" content="https://tomyree-source.github.io/sites/tsukiakari/eyecatch/5c13b7410f.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://tomyree-source.github.io/sites/tsukiakari/eyecatch/5c13b7410f.webp">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0V6GQSZV7F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0V6GQSZV7F');
+</script>
 <style>
   :root{
     --bg:#f4f2ec;
@@ -356,6 +364,8 @@
   article.reading details[open ] summary::after{content:" −"}
   article.reading .body p{font-size:.93rem;color:var(--ink-soft)}
   article.reading .body p strong{color:var(--ink)}
+  article.reading .eyecatch{margin:0 0 14px;border-radius:10px;overflow:hidden;line-height:0}
+  article.reading .eyecatch img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
   .en-note{
     display:none;font-size:.85rem;background:var(--surface-2);border-radius:8px;padding:10px 14px;color:var(--ink-soft);
   }
