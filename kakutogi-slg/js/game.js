@@ -25,7 +25,7 @@ const WEEKS_PER_YEAR = 48;
 // ---------- プレイヤーの声（第72節）: バージョン管理・CLASH投稿・いいね ----------
 // 受け皿は2層: (1)ゲーム内CLASH投稿といいね（👍反応）は端末内 localStorage に保存
 // (2)全体の集計（人気投票・コメント）は Googleフォーム。投稿パネルの「開発にも送る」から送る
-const GAME_VERSION = "2.01";
+const GAME_VERSION = "2.02";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdlIsptOWafNjikDixHtq6LTfnVsxE-XQMdapOLRBf5poeuYQ/viewform";
 const LIKES_KEY = "kakutogi_likes_v1";
 const POSTS_KEY = "kakutogi_posts_v1";
@@ -239,6 +239,7 @@ students: [], met: [], affection: {}, romanceEv: {}, partner: null,
 life: {partners: [], spouse: null, per: {}, children: 0, support: [], futamataRisk: 0, futamataCount: 0, titles: {}, lastAccWeek: 0, lastKidWeek: 0},
 ura: {active: false, quit: false, rank: 0, heat: 0, arrests: 0, jailUntil: 0, entryDone: {}, declined: {}, ugWins: 0, ugFights: 0, ugStreak: 0, ugBest: 0, bouncerShifts: 0, jobsDone: {}, jobsCount: 0, warDone: false, war2Done: false, rumorDone: false, exposedDone: false, hiddenFromPartner: false, exposedHardDone: false, titles: {}, lastActWeek: -9, lastAccWeek: 0, edDone: false, quitWeek: 0, shoulderPunch: false, shoulderPunchWeek: 0, shoulderPunchArrestNo: 0, shoulderRearrestDueWeek: 0, shoulderRearrestDone: false, shoulderRearrestWeek: 0, shoulderSettled: false, shoulderRestrained: false, shoulderDecisionDone: false, shoulderJuniorTrust: 50, shoulderRearrestPostponeWeek: 0, darkOffers: 0, darkAccepts: 0, darkCdUntil: 0},
 short: {entries: 0, wins: 0, titles: 0, years: {}, auditionDone: false, lastOfferWeek: -9, lastDeclineWeek: -99},
+medit: {naikou: 0, hensa: 0, sessions: 0, streak: 0, lastWeek: -9, lastDecayWeek: -9, guided: 0, solo: 0, firedStage: 0, peakStage: 0, restUntil: 0, recovered: 0, titles: {}},
 flags: {}, record: {fouls:0, anki:0, works:0, matches:0, wins:0, cups:0, debates:0, debateWins:0, streetWins:0, finWins:0, seminars:0, winStreak:0, bestWinStreak:0, tenkaIn:0, tenkaTitles:0},
 seminarCd: 0, lastRandomWeek: -9, poolUsed: [], beatsDone: {}, seenEvents: {},
 chapter1Clear: false, chapter2Clear: false, chapter3Clear: false, chapter4Clear: false, startedAt: Date.now(),
@@ -303,6 +304,15 @@ function ensureStateCompat(){
   // 第140節: 短時間マッチ興行の状態（同上）
   if (!S.short || typeof S.short !== "object") S.short = {entries: 0, wins: 0, titles: 0, years: {}, auditionDone: false, lastOfferWeek: -9, lastDeclineWeek: -99};
   if (!S.short.years || typeof S.short.years !== "object") S.short.years = {};
+  // 第143節: 瞑想・立禅＋偏差の状態（v2.01以前のセーブでは未定義のため初期化）
+  if (!S.medit || typeof S.medit !== "object") S.medit = {naikou: 0, hensa: 0, sessions: 0, streak: 0, lastWeek: -9, lastDecayWeek: -9, guided: 0, solo: 0, firedStage: 0, peakStage: 0, restUntil: 0, recovered: 0, titles: {}};
+  if (!S.medit.titles || typeof S.medit.titles !== "object") S.medit.titles = {};
+  if (S.medit.naikou == null) S.medit.naikou = 0;
+  if (S.medit.hensa == null) S.medit.hensa = 0;
+  if (S.medit.firedStage == null) S.medit.firedStage = 0;
+  if (S.medit.peakStage == null) S.medit.peakStage = 0;
+  if (S.medit.restUntil == null) S.medit.restUntil = 0;
+  if (S.medit.recovered == null) S.medit.recovered = 0;
 }
 function fameTotal(){ return S.sei + S.aku;}
 function fameRankIdx(){ const f = fameTotal(); let i = 0; FAME_THRESHOLDS.forEach((t, k) => { if (f >= t) i = k;}); return i;}
@@ -340,6 +350,13 @@ if (S.ura && S.ura.titles){
 }
 // 第140節: 短時間マッチ興行の優勝で付く二つ名
 if (S.flags.shortKing) return "1分の王者";
+// 第143節: 瞑想・立禅＋偏差の二つ名（優先順は 回復＞発症＞到達）
+if (S.medit && S.medit.titles){
+  const MT = S.medit.titles;
+  if (MT.returned) return "戻ってきた求道者";
+  if (MT.souka) return "走火の人";
+  if (MT.seeker) return "求道者";
+}
 if (S.record.works >= 24) return "バイト戦士";
 const b = S.flags.boukanHow;
 if (b === "voice") return "駅前の声";
@@ -1715,6 +1732,216 @@ case "futa_brazen": return lifeFutaBrazenLines();
 }
 return [];
 }
+// ---------- 第143節: 瞑想・立禅＋偏差システム ----------
+// 本人の指示「瞑想や立禅をやると強くなるけど、偏差でおかしくなるのを入れたい」→
+// フル実装（偏差ゲージ＋段階発症＋回復ルート＋称号）を本人が選択（2026-11-14）。
+// 内功（naikou）は静の蓄積：バトルの「読む」のボーナスと「息を整える」の回復に効く。
+// 偏差（hensa）はやりすぎの代償：独学・連続実施・疲労時の無理・深追いで溜まり、
+// 休む週・指導・回復ルートで減る。段階は 20=軽度／45=中度／75=重度。重度はデッドエンドにしない。
+function meditEnsure(){
+  if (!S) return null;
+  if (!S.medit || typeof S.medit !== "object") S.medit = {naikou: 0, hensa: 0, sessions: 0, streak: 0, lastWeek: -9, lastDecayWeek: -9, guided: 0, solo: 0, firedStage: 0, peakStage: 0, restUntil: 0, recovered: 0, titles: {}};
+  const M = S.medit;
+  if (!M.titles || typeof M.titles !== "object") M.titles = {};
+  if (M.naikou == null) M.naikou = 0;
+  if (M.hensa == null) M.hensa = 0;
+  if (M.firedStage == null) M.firedStage = 0;
+  if (M.peakStage == null) M.peakStage = 0;
+  if (M.restUntil == null) M.restUntil = 0;
+  if (M.recovered == null) M.recovered = 0;
+  return M;
+}
+function isNaikouStyle(st){
+  if (!st) return false;
+  return st.cat === "中国武術" || st.terms === "chinese";
+}
+function meditStageOf(hensa){
+  const h = hensa == null ? (meditEnsure() || {}).hensa || 0 : hensa;
+  return h >= 75 ? 3 : h >= 45 ? 2 : h >= 20 ? 1 : 0;
+}
+function meditStage(){ const M = meditEnsure(); return M ? meditStageOf(M.hensa) : 0; }
+function meditReadBonus(){ const M = meditEnsure(); return M ? Math.floor((M.naikou || 0) / 20) : 0; }
+function meditResting(){ const M = meditEnsure(); return !!M && S.absWeek < (M.restUntil || 0); }
+function meditRecordText(){
+  if (!S || !S.medit) return "";
+  let t = "";
+  if ((S.medit.naikou || 0) >= 50) t += " ／ 内功 到達";
+  if ((S.medit.recovered || 0) > 0) t += " ／ 偏差から回復";
+  return t;
+}
+// 週アクションの実処理（mode: guided=師匠の指導／solo=独学・我流／light=瞑想だけ軽く）
+function meditSession(mode){
+  const M = meditEnsure(); if (!M) return;
+  ensureStateCompat();
+  const st = mainStyle();
+  const naikouStyle = isNaikouStyle(st);
+  M.streak = (M.lastWeek === S.absWeek - 1) ? (M.streak || 0) + 1 : 1;
+  const fatBefore = S.fatigue;
+  let gain = mode === "light" ? 2 : 6;
+  if (naikouStyle) gain = Math.round(gain * 1.6);
+  M.naikou = clamp((M.naikou || 0) + gain, 0, 100);
+  M.sessions = (M.sessions || 0) + 1;
+  let risk = 0;
+  if (mode === "guided"){
+    M.guided = (M.guided || 0) + 1;
+    risk = (M.streak >= 3 ? 1 : 0) + (fatBefore >= 70 ? 1 : 0);
+    M.hensa = clamp((M.hensa || 0) - 2, 0, 100); // 指導下では整え直しも入る
+    S.fatigue = clamp(S.fatigue - 4, 0, 100);
+    growStat("read", 0.2);
+    toast("源田の見守りの下で、静かに立った。内功 +" + gain + (naikouStyle ? "（" + st.name + " の静の蓄積が効いた）" : ""));
+  } else if (mode === "solo"){
+    M.solo = (M.solo || 0) + 1;
+    risk = 4 + (M.streak >= 3 ? 3 : 0) + (fatBefore >= 70 ? 4 : 0) + ((M.naikou || 0) >= 50 ? 3 : 0);
+    S.fatigue = clamp(S.fatigue + 2, 0, 100);
+    growStat("read", 0.2);
+    toast("一人で、我流のまま深く立った。内功 +" + gain + "。静けさの底に、少しだけ熱がある");
+  } else {
+    S.fatigue = clamp(S.fatigue - 10, 0, 100);
+    M.hensa = clamp((M.hensa || 0) - 4, 0, 100);
+    growStat("read", 0.1);
+    toast("瞑想だけを軽く。呼吸が整い、疲労が抜けた。内功 +" + gain);
+  }
+  if (risk > 0) M.hensa = clamp((M.hensa || 0) + risk, 0, 100);
+  M.lastWeek = S.absWeek;
+  if ((M.naikou || 0) >= 50 && !M.titles.seeker){ M.titles.seeker = true; toast("二つ名が付いた：「求道者」"); }
+  afterAction([]);
+}
+function renderMeditPick(){
+  const M = meditEnsure(); hud();
+  const st = mainStyle();
+  const stage = meditStage();
+  const stageLabel = ["なし", "軽度（感覚過敏・不眠）", "中度（様子がおかしい）", "重度（稽古どころではない）"][stage];
+  let html = '<div class="weekhead"><h2>瞑想・立禅</h2>' +
+    '<div class="weeksub">内功：' + (M.naikou || 0) + "　／　偏差：" + (M.hensa || 0) + "（段階：" + stageLabel + "）" +
+    (isNaikouStyle(st) ? "　／　主・流儀 " + st.name + " は内功系（伸びが大きい）" : "") +
+    (meditResting() ? "　／　静養中（あと" + Math.max(0, (M.restUntil || 0) - S.absWeek) + "週）" : "") + "</div>" +
+    '<div class="stext" style="color:var(--sub);font-size:.92em;">静の稽古は強さになる。だが、深追いは禁物だ。偏差が溜まると、感覚が過敏になり、やがて様子がおかしくなっていく。</div></div><div class="actions">';
+  if (!meditResting()){
+    html += '<button class="btn act" data-med="guided"><b>師匠の指導で立つ</b><span>源田の見守りの下で立禅・瞑想。偏差リスク最小</span></button>' +
+      '<button class="btn act" data-med="solo"><b>独学・我流で深く立つ</b><span>伸びは同じ。だが偏差が溜まりやすい</span></button>';
+  }
+  html += '<button class="btn act" data-med="light"><b>瞑想だけ軽く</b><span>疲労回復が主。偏差も少し下がる</span></button>';
+  if (stage >= 2) html += '<button class="btn act" data-med="consult"><b>様子のおかしさを相談する</b><span>回復ルート：休養／師匠／仲間・彼女／医療機関</span></button>';
+  html += '<button class="btn ghost" data-back="1">戻る</button></div>';
+  $("main").innerHTML = html;
+  $("main").querySelector("[data-back]").addEventListener("click", renderWeek);
+  $("main").querySelectorAll("[data-med]").forEach(b => b.addEventListener("click", () => {
+    const m = b.dataset.med;
+    if (m === "consult"){ startScene(meditConsultSteps(), null, null); return; }
+    meditSession(m);
+  }));
+}
+// ---------- 段階発症イベント ----------
+function meditPartnerName(){
+  const pid = (S.life && S.life.partners && S.life.partners[0]) || S.partner;
+  const c = pid && CAST_BY_ID[pid];
+  return c ? c.name : null;
+}
+function meditStage1Steps(){
+  return [
+    {sp:"narr", t:"最近、気の感覚が鋭すぎる。稽古場の空気の粒まで見える気がして、夜は逆に眠れない。集中しようとすると、頭の芯がジリジリと熱を持つ。"},
+    {sp:"me", t:"（効いている証拠だ、と思いたい。だが、これは――少し、やりすぎの側の感覚だ）"},
+    {sp:"narr", t:"偏差・軽度。静の稽古の熱が、体に残り始めている。ペースを落とすか、指導の下に戻るか。深追いすれば、この先は別人の話になる。"},
+  ];
+}
+function meditStage2Steps(){
+  const pn = meditPartnerName();
+  const steps = [
+    {sp:"narr", t:"気づけば、稽古中に独り言が増えていた。「気の流れが見える」「背後の殺気を感じる」――CLASHにも、そんな投稿を続けていた。"},
+    {sp:"narr", t:"界隈はざわついた。『また始まった』と笑う声。だが同じくらい、『あの人、最近ちょっと心配だ』『無理してないか』という声も、静かに増えていた。"},
+    {sp:"narr", t:"新垣翔太が投稿した。『心の稽古は尊い。だが、心だけが先に行き過ぎたら、体と生活が置いていかれる。それもまた、稽古の外だ』。北嶋憲吾も『整えるための静けさと、逃げるための静けさは違う』と静かに書いた。"},
+    {sp:"narr", t:"杉浦玄道の言葉は辛口だった。『民間療法めいた自己流の深追いが一番危ない。おかしいと思ったら、まず休め。次に、人に診てもらえ』。笑いはなく、本気の警鐘だった。"},
+  ];
+  if (pn) steps.push({sp:"narr", t: pn + "が、稽古場の隅で言った。「最近、目が少し怖いよ。……無理、してない？」。弟子たちも、同じ顔をしていた。"});
+  else if (S.students.length) steps.push({sp:"narr", t:"弟子の一人が、稽古の後に言った。「先生、最近……少し、怖いです」。笑いごとでは、なくなっていた。"});
+  steps.push({sp:"narr", t:"偏差・中度。二つ名は――「走火の人」。ここから先は、笑い話の領域ではない。相談するか、休むか。今ならまだ、自分の足で戻れる。"});
+  return steps;
+}
+function meditStage3Steps(){
+  return [
+    {sp:"narr", t:"眠れない夜が続き、立っていても座っていても、頭の中の熱が引かない。稽古着に着替える手が止まり、鏡の中の自分の目が、別人のように見えた。"},
+    {sp:"narr", t:"偏差・重度。稽古どころではない。ここで必要なのは根性ではなく、戻るための手続きだ。"},
+    {choice:[
+      {label:"しっかり休養する（数週間の静養）", say:[{meditRecover:"rest"}]},
+      {label:"師匠・源田に相談する", say:[{meditRecover:"master"}]},
+      {label:"仲間・彼女に介入してもらう", say:[{meditRecover:"friend"}]},
+      {label:"医療機関に相談する", say:[{meditRecover:"clinic"}]},
+    ]},
+  ];
+}
+function meditConsultSteps(){
+  return [
+    {sp:"narr", t:"自分の様子のおかしさを、自覚できているうちに。人に言うのは格好悪い。だが、言えなくなる前に言うのが、武道家の分別というものだった。"},
+    {choice:[
+      {label:"しっかり休養する（数週間の静養）", say:[{meditRecover:"rest"}]},
+      {label:"師匠・源田に相談する", say:[{meditRecover:"master"}]},
+      {label:"仲間・彼女に介入してもらう", say:[{meditRecover:"friend"}]},
+      {label:"医療機関に相談する", say:[{meditRecover:"clinic"}]},
+    ]},
+  ];
+}
+// 回復ルートの実処理（選ばれた時点で実行され、結果の行を返す。gfAskResolve と同じ方式）
+function meditRecoverLines(method){
+  const M = meditEnsure(); if (!M) return [];
+  const wasSevere = meditStage() >= 3;
+  const lines = [];
+  let drop = 0;
+  if (method === "rest"){
+    drop = 35; M.restUntil = Math.max(M.restUntil || 0, S.absWeek + 3);
+    lines.push({sp:"narr", t:"稽古を止め、眠り、食べて、ただ休んだ。最初の数日は落ち着かなかったが、頭の熱は、少しずつ引いていった。（静養：しばらく稽古・試合系の行動はできない）"});
+  } else if (method === "master"){
+    drop = 45;
+    lines.push({sp:"narr", t:"源田は、黙って茶を出した。「一人で深追いするな。静の稽古はな、誰かに見てもらうから稽古になる。……俺も若い頃、似た目に遭った」。師匠の手で、立ち方と呼吸を一から直された。"});
+  } else if (method === "friend"){
+    drop = 40;
+    const pn = meditPartnerName();
+    if (pn) lines.push({sp:"narr", t: pn + "が、強引に日常へ引き戻した。飯を作り、散歩に連れ出し、稽古の話を禁止した。「あんたは一人で抱えすぎる」。その普通の日々が、一番の薬になった。"});
+    else lines.push({sp:"narr", t:"仲間たちが、強引に日常へ引き戻した。飯に誘い、馬鹿話をし、稽古の話をさせなかった。「一人で抱えるな」。普通の日々が、一番の薬になった。"});
+  } else if (method === "clinic"){
+    drop = 50;
+    const cost = 30000;
+    if (S.money >= cost){ S.money -= cost; lines.push({sp:"narr", t:"医療機関に相談した（-30,000円）。睡眠と自律神経の乱れとして、休養と生活リズムの立て直しを指導された。特別な力の話は、そこではされなかった。それでよかった。"}); }
+    else lines.push({sp:"narr", t:"医療機関に相談した。睡眠と自律神経の乱れとして、休養と生活リズムの立て直しを指導された。特別な力の話は、そこではされなかった。それでよかった。"});
+  }
+  M.hensa = clamp((M.hensa || 0) - drop, 0, 100);
+  if (wasSevere){
+    M.naikou = Math.round((M.naikou || 0) * 0.7); // 回復しても内功は7割残る
+    M.recovered = (M.recovered || 0) + 1;
+    if (!M.titles.returned){ M.titles.returned = true; lines.push({sp:"narr", t:"二つ名は――「戻ってきた求道者」。消えたのではなく、戻ってきた。それが、この界隈の静かな敬意だった。"}); }
+  }
+  M.firedStage = meditStage();
+  lines.push({sp:"narr", t:"学んだことがある。静の稽古は、一人で深追いしない。指導の下で、節度を持ってやる。――強さの坂は、戻り方を知っている者だけが、また登れる。"});
+  return lines;
+}
+// 検証用： 段階を強制発火
+function meditForceEvent(stage){
+  const M = meditEnsure(); if (!M) return false;
+  if (stage === 1){ M.hensa = Math.max(M.hensa || 0, 20); M.firedStage = 1; M.peakStage = Math.max(M.peakStage || 0, 1); startScene(meditStage1Steps(), null, null); return true; }
+  if (stage === 2){ M.hensa = Math.max(M.hensa || 0, 45); M.firedStage = 2; M.peakStage = Math.max(M.peakStage || 0, 2); M.titles.souka = true; startScene(meditStage2Steps(), null, null); return true; }
+  if (stage === 3){ M.hensa = Math.max(M.hensa || 0, 75); M.firedStage = 3; M.peakStage = 3; startScene(meditStage3Steps(), null, null); return true; }
+  return false;
+}
+// 週頭フック：減衰→段階判定
+function tryMeditEvents(){
+  if (!S || !S.flags || S.flags.retiredEnding || S.flags.uraBadEnd) return false;
+  const M = meditEnsure(); if (!M || !(M.sessions > 0)) return false;
+  if (typeof inJail === "function" && inJail()) return false;
+  if (M.lastDecayWeek !== S.absWeek){
+    M.lastDecayWeek = S.absWeek;
+    if ((M.lastWeek || -9) <= S.absWeek - 2){ M.hensa = clamp((M.hensa || 0) - 4, 0, 100); M.streak = 0; }
+  }
+  if (meditResting()) return false;
+  const stage = meditStage();
+  if (stage > (M.peakStage || 0)) M.peakStage = stage;
+  if (stage >= 2) M.titles.souka = M.titles.souka || stage >= 2;
+  if (stage > (M.firedStage || 0)){
+    M.firedStage = stage;
+    if (stage === 1){ startScene(meditStage1Steps(), null, null); return true; }
+    if (stage === 2){ startScene(meditStage2Steps(), null, null); return true; }
+    if (stage === 3){ startScene(meditStage3Steps(), null, null); return true; }
+  }
+  return false;
+}
 // ---------- 週頭フック ----------
 // ---------- 第142節（追記2）: 彼女に稼ぎを頼む ----------
 // 発生: 交際中（life.partners に相手がいる）＋借金300,000円以上（闇バイト誘いと同じ借金段階の
@@ -1938,6 +2165,7 @@ if (!S ||!S.life) return "";
 let t = "";
 if ((S.life.children || 0) > 0) t += " ／ 子 " + S.life.children + "人";
 if (S.life.spouse && CAST_BY_ID[S.life.spouse]) t += " ／ 既婚";
+if (typeof meditRecordText === "function") t += meditRecordText(); // 第143節: 並記は最小限
 return t;
 }
 function lifePartnerText(){
@@ -2240,6 +2468,8 @@ function sceneAdvance(){
     if (st.darkAccept){ UI.queue = darkBaitoAcceptLines().concat(UI.queue); continue; } // 第142節（追記）: 闇バイトを受けた結果（即金・熱・裏への接続）
     if (st.darkDecline){ const U = uraEnsure(); U.darkCdUntil = S.absWeek + darkBaitoCooldown(); continue; } // 第142節（追記）: 断れば数週間は来ない
     if (st.gfAskResolve){ UI.queue = gfAskResolveLines(st.gfAskResolve.pid, st.gfAskResolve.kind).concat(UI.queue); continue; } // 第142節（追記2）: 彼女に頼んだ結果（承諾/拒否の解決）
+    if (st.meditRecover){ UI.queue = meditRecoverLines(st.meditRecover).concat(UI.queue); continue; } // 第143節: 偏差の回復ルート（休養/師匠/仲間・彼女/医療機関）
+    if (st.meditFx){ const M = meditEnsure(); if (M){ if (st.meditFx.naikou) M.naikou = clamp((M.naikou || 0) + st.meditFx.naikou, 0, 100); if (st.meditFx.hensa) M.hensa = clamp((M.hensa || 0) + st.meditFx.hensa, 0, 100); if ((M.naikou || 0) >= 50 && !M.titles.seeker) M.titles.seeker = true; } continue; } // 第143節: 内功・偏差の直接増減（8時間スワイショウ等）
     if (st.gfEarnStop){ UI.queue = gfEarnStopLines(st.gfEarnStop).concat(UI.queue); continue; } // 第142節（追記2）: 「もうやめていい」の実処理
     if (st.uraPartnerLeave){ const pid = (S.life && S.life.partners[0]) || S.partner; if (pid) UI.queue = uraPartnerLeaveLines(pid).concat(UI.queue); continue; } // 第139節: 彼女が去る実処理（選択が選ばれた時点で実行）
     if (st.uraWarLoseCheck){ UI.queue = uraWarLoseLines().concat(UI.queue); continue; } // 第139節: 抗争に敗れた際の重傷判定（バッドエンド分岐）
@@ -2518,6 +2748,8 @@ function goWeek(){
   if (typeof tryShortOffer === "function" && tryShortOffer()) return;
   // 第142節（追記2）: 借金がある程度あり交際中なら「金の工面」として彼女に頼む提示が出る
   if (typeof tryGfAsk === "function" && tryGfAsk()) return;
+  // 第143節: 瞑想・立禅の偏差（段階発症の週頭判定）
+  if (typeof tryMeditEvents === "function" && tryMeditEvents()) return;
   // 第75節: 本場留学の提示（第2章以降・主・流儀Lv5以上・一度だけ大きく。見送れば+2Lvで再提示）
   if (typeof abroadEligible === "function" && abroadEligible()){
     S.flags.abroadOfferLv = styleLv(S.mainStyle);
@@ -2561,6 +2793,7 @@ function renderWeek(){
     ["sns", "SNS「CLASH」", "投稿と論争。名声のもう一つのリング"],
     ["romance", "口説く", fameRankIdx() >= 1 ? "名声ランクで解放中" : "名声ランク「近所で有名」で解放"],
     ["challenge", "勝負を挑む", "登場済みの武術家・キャストに挑戦する"],
+    ["medit", "瞑想・立禅", "内功を蓄える静の稽古（やりすぎは偏差のもと）"],
     ["care", "ケア・休養", "疲労と部位ダメージの回復"],
     ["dex", "図鑑・記録", "流派図鑑とキャスト名簿（週は進みません）"],
   ];
@@ -2571,7 +2804,7 @@ function renderWeek(){
   if (S.ura && S.ura.active && !S.ura.quit)
     acts.splice(8, 0, ["ura", "裏の仕事", "裏格：" + uraRankName() + "（" + (S.ura.rank || 0) + "）／バウンサー・地下格闘技・揉め事の仕事"]);
   $("main").innerHTML = '<div class="weekhead"><h2>' + weekLabel() + '</h2>' +
-    '<div class="weeksub">二つ名：' + esc(nickname()) + "　／　純粋度：" + purity() + "%" + (debtOf() > 0 ? "　／　借金：" + debtOf().toLocaleString() + "円（月末に分割返済）" : "") + (inHiding() ? "　／　潜伏中（あと" + Math.max(0, (S.flags.hideUntil || 0) - S.absWeek) + "週・表舞台の活動不可）" : "") + (typeof inJail === "function" && inJail() ? "　／　勾留中（あと" + Math.max(0, (S.ura.jailUntil || 0) - S.absWeek) + "週・表舞台の活動不可）" : "") + (S.ura && S.ura.active && !S.ura.quit ? "　／　裏格：" + uraRankName() + "（" + (S.ura.rank || 0) + "）" : "") + (S.ura && S.ura.quit ? "　／　裏からは足を洗った" : "") + "</div>" +
+    '<div class="weeksub">二つ名：' + esc(nickname()) + "　／　純粋度：" + purity() + "%" + (debtOf() > 0 ? "　／　借金：" + debtOf().toLocaleString() + "円（月末に分割返済）" : "") + (inHiding() ? "　／　潜伏中（あと" + Math.max(0, (S.flags.hideUntil || 0) - S.absWeek) + "週・表舞台の活動不可）" : "") + (typeof inJail === "function" && inJail() ? "　／　勾留中（あと" + Math.max(0, (S.ura.jailUntil || 0) - S.absWeek) + "週・表舞台の活動不可）" : "") + (S.ura && S.ura.active && !S.ura.quit ? "　／　裏格：" + uraRankName() + "（" + (S.ura.rank || 0) + "）" : "") + (S.ura && S.ura.quit ? "　／　裏からは足を洗った" : "") + (S.medit && (S.medit.sessions || 0) > 0 ? "　／　内功：" + (S.medit.naikou || 0) + ((S.medit.hensa || 0) >= 20 ? "・偏差" + ["", "軽度", "中度", "重度"][meditStageOf(S.medit.hensa)] : "") : "") + "</div>" +
     '<div class="stext" style="color:var(--sub);font-size:.92em;">' + esc(WEEK_FLAVOR[S.absWeek % WEEK_FLAVOR.length]) + "</div></div>" +
     '<div class="actions">' + acts.map(a => '<button class="btn act" data-act="' + a[0] + '"><b>' + a[1] + '</b><span>' + esc(a[2]) + '</span></button>').join("") + "</div>";
   $("main").querySelectorAll("[data-act]").forEach(b => b.addEventListener("click", () => doAction(b.dataset.act)));
@@ -2873,6 +3106,11 @@ function doAction(act){
     toast("勾留中だ。表舞台にも裏にも出られない（あと" + Math.max(0, (S.ura.jailUntil || 0) - S.absWeek) + "週）", true); return;
   }
   if (act === "ura") return renderUraPick();
+  // 第143節: 静養中は稽古・試合系の行動ができない（デッドエンドにはしない回復期間）
+  if (typeof meditResting === "function" && meditResting() && (act === "train_main" || act === "train_sub" || act === "basics" || act === "challenge")){
+    toast("静養中だ。稽古と試合は体が戻るまで休む（あと" + Math.max(0, ((S.medit && S.medit.restUntil) || 0) - S.absWeek) + "週）", true); return;
+  }
+  if (act === "medit") return renderMeditPick();
   if (act === "train_main"){
     const before = styleLv(S.mainStyle);
     S.fatigue = clamp(S.fatigue + 18, 0, 100);
@@ -3541,7 +3779,9 @@ function battleTurn(act){
   else if (act === "grapple"){ dmg = playerPower("grapple"); b.control = Math.min(6, b.control + 2); bLog("実況", "組み合った！ 支配が少しずつこちらに傾く"); }
   else if (act === "ground"){ dmg = playerPower("ground"); bLog("実況", "寝技の展開！ 極めを狙う"); }
   else if (act === "read"){ // 第86節: 円熟期は「読み」の効きが最大級になる（体力の低下を読みで補う設計）
-    b.readBonus = Math.round((4 + Math.round(S.stats.read)) * (S.chapter >= 4 ? 1.5 : 1)); b.readGuard = true; bLog("実況", "相手の癖を読む……次の手が冴える！" + (S.chapter >= 4 ? " 円熟の読みが、若さの速さを上回る" : "")); }
+    const naikouBonus = (typeof meditReadBonus === "function") ? meditReadBonus() : 0;
+    const hensaDebuff = (typeof meditStage === "function" && meditStage() >= 1) ? 3 : 0; // 第143節: 軽度以上の偏差は読みを鈍らせる
+    b.readBonus = Math.max(0, Math.round((4 + Math.round(S.stats.read)) * (S.chapter >= 4 ? 1.5 : 1)) + naikouBonus - hensaDebuff); b.readGuard = true; bLog("実況", "相手の癖を読む……次の手が冴える！" + (S.chapter >= 4 ? " 円熟の読みが、若さの速さを上回る" : "") + (naikouBonus > 0 ? " 内功の静けさが、読みを深くする（+" + naikouBonus + "）" : "") + (hensaDebuff > 0 ? " だが頭の熱が、読みを少し鈍らせた" : "")); }
   else if (act === "ougi" && styleLv(S.mainStyle) >= 10 && !b.ougiUsed){ // 第86節: 奥義・皆伝（Lv10）。純粋度が高いと強化される
     const ougiBase = Math.max(...styleSystems(mainStyle()).map(k => S.stats[k]));
     dmg = 22 + ougiBase * 4 + rnd(4);
@@ -3550,7 +3790,7 @@ function battleTurn(act){
     fxKind = "ougi";
     if (window.FX) FX.cutin({img: "hayato", name: "ハヤト", text: mainStyle().name.replace(/（[^）]*）/g, "") + " 奥義"}); // 第88節: 奥義カットイン
     bLog("実況", "奥義――" + mainStyle().name.replace(/（[^）]*）/g, "") + "を極めた者にだけ許される一手が、静かに放たれた！"); }
-  else if (act === "recover"){ const fxHealBefore = b.php; b.php = Math.min(b.maxPhp, b.php + 9); if (window.FX && b.php > fxHealBefore) FX.heal({amount: b.php - fxHealBefore}); bLog("実況", "息を整え、軸を立て直す"); }
+  else if (act === "recover"){ const fxHealBefore = b.php; const naikouHeal = (S.medit && (S.medit.naikou || 0) >= 40) ? 2 : 0; b.php = Math.min(b.maxPhp, b.php + 9 + naikouHeal); if (window.FX && b.php > fxHealBefore) FX.heal({amount: b.php - fxHealBefore}); bLog("実況", "息を整え、軸を立て直す" + (naikouHeal > 0 ? "。内功の蓄積が、息の戻りを助けた" : "")); }
   else if (act === "sig"){ // 第73節: 看板技は主・流儀が使える系統の中から構成される（威力もその系統の能力で決まる）
     const sigBase = Math.max(...styleSystems(mainStyle()).map(k => S.stats[k]));
     dmg = 13 + sigBase * 3 + rnd(4); b.sigUsed = true; fxKind = "sig"; bLog("実況", sigName() + "――会場の空気が変わった！");
@@ -5463,6 +5703,15 @@ window.__gameTest = {
   romanceStage: id => romanceStageOf(id),
   romancePick: () => renderRomancePick(),
   startChapter4: () => { if (typeof startChapter4 === "function") startChapter4(); },
+  // 第143節: 瞑想・立禅＋偏差の検証フック
+  medit: () => S.medit,
+  meditSet: patch => { const M = meditEnsure(); Object.assign(M, patch || {}); return M; },
+  meditSession: mode => meditSession(mode),
+  meditStageNow: () => meditStage(),
+  meditHook: () => tryMeditEvents(),
+  meditForce: stage => meditForceEvent(stage),
+  meditRecord: () => meditRecordText(),
+  isNaikouStyle: name => { const st = STYLES_DATA.find(s => s.name === name); return st ? isNaikouStyle(st) : null; },
   darkTier: () => darkBaitoTier(),
   darkChance: () => darkBaitoChance(),
   darkReady: () => darkBaitoReady(),
