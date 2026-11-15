@@ -22,6 +22,21 @@
 <meta property="og:image" content="https://tomyree-source.github.io/sites/seraphina-official/assets/cards/p1-08-gacha-night.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "セラフィナ ガチャ（無料・全382種）｜セラフィナ公式サイト",
+  "description": "見習い天使セラフィナの無料ガチャ。イラストパック第1弾〜第12弾とサービスシーン編のカード全382種が対象。1日3回まで、引いたカードはコレクション図鑑に登録されます。",
+  "url": "https://tomyree-source.github.io/sites/seraphina-official/gacha/",
+  "inLanguage": "ja",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "セラフィナ公式サイト",
+    "url": "https://tomyree-source.github.io/sites/seraphina-official/"
+  }
+}
+</script>
 </head>
 <body>
 <header class="site">
@@ -88,7 +103,7 @@ var pool=[]; CARDS.forEach(function(c){var w=c.rarity===2?1:(c.rarity===1?4:12);
 var c=pool[Math.floor(Math.random()*pool.length)];
 s.used++; s.collection[c.id]=(s.collection[c.id]||0)+1; save();
 var slug=PACK_SLUG[c.pack];
-res.innerHTML='<img src="../'+c.img+'" alt="">'
+res.innerHTML='<img src="../'+c.img+'" alt="'+c.name+'（'+c.packLabel+'）">'
  +'<p style="margin:6px 0 0;color:var(--gold);font-weight:700">'+RARITY_LABEL[c.rarity]+'</p>'
  +'<h3 style="margin:2px 0">'+c.name+'</h3>'
  +'<p style="margin:0 0 4px;color:var(--sub);font-size:14px">'+c.packLabel+'</p>'
