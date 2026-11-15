@@ -3847,7 +3847,7 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
           var gear = LANG === "en" ? b.gearEn : b.gearJa;
           var desc = LANG === "en" ? b.descEn : b.descJa;
           h += '<article class="kb-card ' + (earned ? "earned" : "locked") + '">' +
-            '<img src="' + b.img + '" alt="' + (LANG === "en" ? "Illustration of Komakichi for the “" + esc(name) + "” badge (" + esc(gear) + ")" : "バッジ「" + esc(name) + "」のこま吉（" + esc(gear) + "）のイラスト") + '" loading="lazy" />' +
+            `<img src="${b.img}" alt="${LANG === "en" ? "Illustration of Komakichi for the “" + esc(name) + "” badge (" + esc(gear) + ")" : "バッジ「" + esc(name) + "」のこま吉（" + esc(gear) + "）のイラスト"}" loading="lazy" />` +
             '<h3 class="kb-name">' + esc(name) + "</h3>" +
             '<p class="kb-gear">' + esc(gear) + "</p>" +
             '<p class="kb-need">' + (LANG === "en" ? "Earned at " + b.need + (b.need === 1 ? " castle" : " castles") : b.need + "城チェックで獲得") + "</p>" +
@@ -3865,7 +3865,7 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
         return null;
       }
       function castleCardHTML(c) {
-        return '<a class="castle-card" href="#/castles/' + c.no + '">' + '<figure class="card-thumb"><img src="' + castleImg(c.no) + '" alt="' + esc(c.name) + L('の姿を描いたカラーイラスト', ' — color illustration') + '" loading="lazy" /><figcaption>' + (LANG === "en" ? "Illustration (an image of " + esc(c.name) + ")" : "イラスト（" + esc(c.name) + "のイメージ）") + "</figcaption></figure>" +
+        return '<a class="castle-card" href="#/castles/' + c.no + '">' + '<figure class="card-thumb">' + `<img src="${castleImg(c.no)}" alt="${esc(c.name)}${L('の姿を描いたカラーイラスト', ' — color illustration')}" loading="lazy" />` + '<figcaption>' + (LANG === "en" ? "Illustration (an image of " + esc(c.name) + ")" : "イラスト（" + esc(c.name) + "のイメージ）") + "</figcaption></figure>" +
           '<span class="c-no">No.' + c.no + " ／ " + esc(regionLabel(c.region)) + "</span>" +
           "<h3>" + esc(c.name) + "</h3>" +
           '<p class="c-place">' + esc(c.pref) + esc(c.place) + "｜" + esc(c.type) + "</p>" +
@@ -3966,7 +3966,7 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
           "<tr><th>" + L("築城年代", "Built") + "</th><td>" + esc(c.era) + "</td></tr>" +
           "<tr><th>" + L("城の形式", "Castle type") + "</th><td>" + esc(c.type) + "</td></tr>" +
           "<tr><th>" + L("天守の現状", "Keep today") + "</th><td>" + esc(c.tenshu) + "</td></tr></tbody></table>";
-        var cex2 = CASTLE_EXTRA[String(c.no)]; html += '<figure class="spot-illust"><img src="' + castleImg(c.no) + '" alt="' + esc(c.name) + L('の姿を描いたカラーイラスト', ' — color illustration') + '" loading="lazy" /><figcaption>' + (LANG === "en" ? "* Illustration (an image of " + esc(c.name) + " — not a photograph)." : "※ イラストです（" + esc(c.name) + "の姿のイメージ。実物の写真ではありません）。") + "</figcaption></figure>"; html += "<p>" + esc(c.desc) + "</p>"; if (cex2 && cex2.desc2) { html += "<p>" + esc(cex2.desc2) + "</p>"; } else { html += "<p>" + (LANG === "en" ? "What to look for on site: “" + esc(c.point) + "”. For the Castle Certification, learn this castle's type (“" + esc(c.type) + "”), the state of its keep (“" + esc(c.tenshu) + "”), its location and its founder as a set — that makes comparing the 100 castles much easier." : "現地で見る手がかりは、「" + esc(c.point) + "」です。お城検定では、城の形式「" + esc(c.type) + "」と天守の現状「" + esc(c.tenshu) + "」、所在地・築城者をセットで整理しておくと、100名城同士の違いが比べやすくなります。") + "</p>"; }
+        var cex2 = CASTLE_EXTRA[String(c.no)]; html += '<figure class="spot-illust">' + `<img src="${castleImg(c.no)}" alt="${esc(c.name)}${L('の姿を描いたカラーイラスト', ' — color illustration')}" loading="lazy" />` + '<figcaption>' + (LANG === "en" ? "* Illustration (an image of " + esc(c.name) + " — not a photograph)." : "※ イラストです（" + esc(c.name) + "の姿のイメージ。実物の写真ではありません）。") + "</figcaption></figure>"; html += "<p>" + esc(c.desc) + "</p>"; if (cex2 && cex2.desc2) { html += "<p>" + esc(cex2.desc2) + "</p>"; } else { html += "<p>" + (LANG === "en" ? "What to look for on site: “" + esc(c.point) + "”. For the Castle Certification, learn this castle's type (“" + esc(c.type) + "”), the state of its keep (“" + esc(c.tenshu) + "”), its location and its founder as a set — that makes comparing the 100 castles much easier." : "現地で見る手がかりは、「" + esc(c.point) + "」です。お城検定では、城の形式「" + esc(c.type) + "」と天守の現状「" + esc(c.tenshu) + "」、所在地・築城者をセットで整理しておくと、100名城同士の違いが比べやすくなります。") + "</p>"; }
         html += '<div class="points" style="margin-top:6px"><h3>' + L("見どころ・検定ポイント", "Highlights & exam points") + "</h3><ul><li>" + esc(c.point) + "</li><li>" + (LANG === "en" ? "Type: “" + esc(c.type) + "”; keep today: “" + esc(c.tenshu) + "”. Review together with Chapter 4 of the textbook, “Walking the Famous Castles”." : "形式は「" + esc(c.type) + "」、天守の現状は「" + esc(c.tenshu) + "」。教科書第4章「名城を歩く」とあわせて押さえておきましょう。") + "</li></ul></div>";
         var prods = c.productIds.map(productById).filter(function (p) { return !!p; });
         if (prods.length > 0) {
@@ -4031,14 +4031,14 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
         return null;
       }
       function spotCardHTML(conf, s) {
-        var sex = (conf.base === "onsen" ? ONSEN_EXTRA : SAKE_EXTRA)[String(s.no)]; return '<a class="castle-card" href="#/' + conf.base + "/" + s.no + '">' + (sex ? '<figure class="card-thumb"><img src="' + esc(sex.img) + '" alt="' + esc(s.name) + L('の風景を描いたカラーイラスト', ' — color illustration') + '" loading="lazy" /><figcaption>' + (LANG === "en" ? "Illustration (scenery of " + esc(s.name) + ")" : "イラスト（" + esc(s.name) + "の風景イメージ）") + "</figcaption></figure>" : "") +
+        var sex = (conf.base === "onsen" ? ONSEN_EXTRA : SAKE_EXTRA)[String(s.no)]; return '<a class="castle-card" href="#/' + conf.base + "/" + s.no + '">' + (sex ? '<figure class="card-thumb">' + `<img src="${esc(sex.img)}" alt="${esc(s.name)}${L('の風景を描いたカラーイラスト', ' — color illustration')}" loading="lazy" />` + '<figcaption>' + (LANG === "en" ? "Illustration (scenery of " + esc(s.name) + ")" : "イラスト（" + esc(s.name) + "の風景イメージ）") + "</figcaption></figure>" : "") +
           '<span class="c-no">No.' + s.no + " ／ " + esc(regionLabel(s.region)) + "</span>" +
           "<h3>" + esc(s.name) + "</h3>" +
           '<p class="c-place">' + conf.cardSub(s) + "</p>" +
           '<p class="c-tenshu">' + conf.cardLine(s) + "</p>" +
           '<span class="c-more">' + esc(spotText(conf, "moreLabel")) + "</span></a>";
       }
-      function sakeSelectionHTML() { var html = '<section class="block" aria-labelledby="sake-selection-h"><h2 id="sake-selection-h" style="font-size:clamp(20px,3.6vw,25px)">' + L("全国の地酒セレクション", "Sake Selection from Across Japan") + ' <span class="en">SAKE SELECTION</span></h2>' + '<figure class="spot-illust"><img src="assets/ill-sake-selection.svg" alt="' + L("酒蔵と田んぼの風景を描いたカラーイラスト", "Color illustration of a sake brewery and rice fields") + '" loading="lazy" /><figcaption>' + L("※ イラストです（酒どころの風景イメージ。実物の写真ではありません）。", "* Illustration (an image of a sake-brewing region — not a photograph).") + '</figcaption></figure>' + '<p class="block-lead">' + L("地域を越えて地酒を比べたい方へ、全国区の飲み比べセットや酒器、日本酒の入門書をまとめました。いずれもAmazon.co.jpで実在を確認できた商品です。", "For comparing sake across regions: nationwide tasting sets, sake ware, and introductions to sake — all verified to exist on Amazon.co.jp.") + '<span class="tag pr">PR</span> ' + L("リンクはAmazonアソシエイト・リンクです。Amazonアソシエイトとして、当サイトは適格販売により収入を得ています。", "Links are Amazon Associates links. As an Amazon Associate, this site earns from qualifying purchases.") + '</p>' + '<div class="note-box" style="margin-bottom:18px"><p style="margin:0"><strong>' + L("お酒は20歳になってから。", "You must be 20 or older to drink alcohol in Japan.") + "</strong>" + L("20歳未満の飲酒は法律で禁止されています。酒器・書籍以外の商品はお酒です。価格は変動するため、リンク先でご確認ください。", "Drinking under the age of 20 is prohibited by law. Products other than sake ware and books are alcoholic beverages. Prices change, so please check the product page.") + '</p></div>' + '<div class="shop-grid">'; SAKE_SELECTION_IDS.forEach(function (id) { var p = productById(id); if (p) html += castleProductCardHTML(p); }); html += "</div>" + '<p class="associate-line">' + esc(affD()) + L(" 商品画像はイメージです（実際の表紙・パッケージとは異なります）。", " Product images are illustrative (actual covers and packaging differ).") + "</p></section>"; return html; }
+      function sakeSelectionHTML() { var html = '<section class="block" aria-labelledby="sake-selection-h"><h2 id="sake-selection-h" style="font-size:clamp(20px,3.6vw,25px)">' + L("全国の地酒セレクション", "Sake Selection from Across Japan") + ' <span class="en">SAKE SELECTION</span></h2>' + '<figure class="spot-illust">' + `<img src="assets/ill-sake-selection.svg" alt="${L("酒蔵と田んぼの風景を描いたカラーイラスト", "Color illustration of a sake brewery and rice fields")}" loading="lazy" />` + '<figcaption>' + L("※ イラストです（酒どころの風景イメージ。実物の写真ではありません）。", "* Illustration (an image of a sake-brewing region — not a photograph).") + '</figcaption></figure>' + '<p class="block-lead">' + L("地域を越えて地酒を比べたい方へ、全国区の飲み比べセットや酒器、日本酒の入門書をまとめました。いずれもAmazon.co.jpで実在を確認できた商品です。", "For comparing sake across regions: nationwide tasting sets, sake ware, and introductions to sake — all verified to exist on Amazon.co.jp.") + '<span class="tag pr">PR</span> ' + L("リンクはAmazonアソシエイト・リンクです。Amazonアソシエイトとして、当サイトは適格販売により収入を得ています。", "Links are Amazon Associates links. As an Amazon Associate, this site earns from qualifying purchases.") + '</p>' + '<div class="note-box" style="margin-bottom:18px"><p style="margin:0"><strong>' + L("お酒は20歳になってから。", "You must be 20 or older to drink alcohol in Japan.") + "</strong>" + L("20歳未満の飲酒は法律で禁止されています。酒器・書籍以外の商品はお酒です。価格は変動するため、リンク先でご確認ください。", "Drinking under the age of 20 is prohibited by law. Products other than sake ware and books are alcoholic beverages. Prices change, so please check the product page.") + '</p></div>' + '<div class="shop-grid">'; SAKE_SELECTION_IDS.forEach(function (id) { var p = productById(id); if (p) html += castleProductCardHTML(p); }); html += "</div>" + '<p class="associate-line">' + esc(affD()) + L(" 商品画像はイメージです（実際の表紙・パッケージとは異なります）。", " Product images are illustrative (actual covers and packaging differ).") + "</p></section>"; return html; }
  function renderSpots(kind, no) {
         var conf = SPOT_CONF[kind];
         var stage = $(conf.stageSel);
@@ -4107,7 +4107,7 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
           html += "<tr><th>" + esc(rowLabel(r[0])) + "</th><td>" + esc(r[1]) + "</td></tr>";
         });
         html += "</tbody></table>";
-        var sex2 = (conf.base === "onsen" ? ONSEN_EXTRA : SAKE_EXTRA)[String(s.no)]; if (sex2) { html += '<figure class="spot-illust"><img src="' + esc(sex2.img) + '" alt="' + esc(s.name) + L('の風景を描いたカラーイラスト', ' — color illustration') + '" loading="lazy" /><figcaption>' + (LANG === "en" ? "* Illustration (scenery of " + esc(s.name) + " — not a photograph or an actual product label)." : "※ イラストです（" + esc(s.name) + "の風景イメージ。実物の写真・実在の銘柄ラベルではありません）。") + "</figcaption></figure>"; } html += "<p>" + esc(s.desc) + "</p>"; if (sex2) html += "<p>" + esc(sex2.desc2) + "</p>";
+        var sex2 = (conf.base === "onsen" ? ONSEN_EXTRA : SAKE_EXTRA)[String(s.no)]; if (sex2) { html += '<figure class="spot-illust">' + `<img src="${esc(sex2.img)}" alt="${esc(s.name)}${L('の風景を描いたカラーイラスト', ' — color illustration')}" loading="lazy" />` + '<figcaption>' + (LANG === "en" ? "* Illustration (scenery of " + esc(s.name) + " — not a photograph or an actual product label)." : "※ イラストです（" + esc(s.name) + "の風景イメージ。実物の写真・実在の銘柄ラベルではありません）。") + "</figcaption></figure>"; } html += "<p>" + esc(s.desc) + "</p>"; if (sex2) html += "<p>" + esc(sex2.desc2) + "</p>";
         html += '<div class="points" style="margin-top:6px"><h3>' + L("見どころ・検定ポイント", "Highlights & exam points") + "</h3><ul><li>" + esc(s.point) + "</li><li>" + esc(spotText(conf, "extraPoint")) + "</li></ul></div>";
         var prodIds = s.productIds.slice(); if (conf.base === "sake" && SAKE_MORE_PRODUCTS[String(s.no)]) { SAKE_MORE_PRODUCTS[String(s.no)].forEach(function (id) { if (prodIds.indexOf(id) < 0) prodIds.push(id); }); } var prods = prodIds.map(productById).filter(function (p) { return !!p; });
         if (prods.length > 0) {
@@ -4346,7 +4346,7 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
           var html = '<div class="post-list">';
           BUJUTSU_ARTICLES.forEach(function (a, i) {
             html += '<article class="post-card"><div class="post-meta"><span class="tag">' + L("城と武術", "Castles & Martial Arts") + " " + (i + 1) + '</span><span>' + esc(a.sub) + '</span></div>' +
-              '<figure class="bujutsu-thumb" style="margin:10px 0 0"><img src="' + esc(a.img) + '" alt="' + esc(a.title) + L('のイメージを描いたカラーイラスト', ' — color illustration') + '" loading="lazy" /><figcaption>' + (LANG === "en" ? "Illustration (an image for “" + esc(a.title) + "”)" : "イラスト（" + esc(a.title) + "のイメージ）") + "</figcaption></figure>" +
+              '<figure class="bujutsu-thumb" style="margin:10px 0 0">' + `<img src="${esc(a.img)}" alt="${esc(a.title)}${L('のイメージを描いたカラーイラスト', ' — color illustration')}" loading="lazy" />` + '<figcaption>' + (LANG === "en" ? "Illustration (an image for “" + esc(a.title) + "”)" : "イラスト（" + esc(a.title) + "のイメージ）") + "</figcaption></figure>" +
               '<h3><a href="#/bujutsu/' + a.slug + '">' + esc(a.title) + "</a></h3>" +
               "<p>" + esc(a.lead) + "</p></article>";
           });
@@ -4364,7 +4364,7 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
         html += '<article class="post" style="margin-top:14px">';
         html += '<div class="post-meta"><span class="tag">' + L("城と武術", "Castles & Martial Arts") + "</span><span>" + esc(a.sub) + "</span></div>";
         html += '<h2 class="font-display">' + esc(a.title) + "</h2>";
-        html += '<figure class="spot-illust"><img src="' + esc(a.img) + '" alt="' + esc(a.title) + L('のイメージを描いたカラーイラスト', ' — color illustration') + '" loading="lazy" /><figcaption>' + (LANG === "en" ? "* Illustration (an image for “" + esc(a.title) + "” — not a photograph or a real person)." : "※ イラストです（" + esc(a.title) + "のイメージ。実物の写真・実在の人物ではありません）。") + "</figcaption></figure>";
+        html += '<figure class="spot-illust">' + `<img src="${esc(a.img)}" alt="${esc(a.title)}${L('のイメージを描いたカラーイラスト', ' — color illustration')}" loading="lazy" />` + '<figcaption>' + (LANG === "en" ? "* Illustration (an image for “" + esc(a.title) + "” — not a photograph or a real person)." : "※ イラストです（" + esc(a.title) + "のイメージ。実物の写真・実在の人物ではありません）。") + "</figcaption></figure>";
         html += '<p style="font-weight:700;color:var(--ink-soft)">' + esc(a.lead) + "</p>";
         a.body.forEach(function (para) { html += "<p>" + esc(para) + "</p>"; });
         html += '<div class="points" style="margin-top:6px"><h3>' + L("関連する日本100名城", "Related castles from the 100 Famous Castles") + '</h3><p style="font-size:14.5px;margin:0 0 8px">' + esc(a.castleNote) + "</p><ul>";
@@ -4599,7 +4599,7 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
       }
       function warlordCardHTML(w) {
         return '<a class="wl-card" href="#/warlords/' + w.id + '">' +
-          (w.img ? '<span class="wl-portrait"><img src="' + w.img + '" alt="' + esc(w.name) + L("の肖像イラスト", " portrait illustration") + '" loading="lazy"></span>' : "") +
+          (w.img ? '<span class="wl-portrait">' + `<img src="${w.img}" alt="${esc(w.name)}${L("の肖像イラスト", " portrait illustration")}" loading="lazy">` + '</span>' : "") +
           '<span class="wl-house">' + esc(w.house) + "／" + esc(regionLabel(w.region)) + (w.deep ? '　<span class="tag deep-badge">' + L("ディープ紹介", "Deep profile") + "</span>" : "") + "</span>" +
           "<h3>" + esc(w.name) + "</h3>" +
           '<p class="wl-meta">' + esc(w.years) + "｜" + esc(eraLabel(w.era)) + "</p>" +
@@ -4675,7 +4675,7 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
           "<tr><th>" + L("大名家", "House") + "</th><td>" + esc(w.house) + "</td></tr>" +
           "<tr><th>" + L("主な地域", "Main region") + "</th><td>" + esc(regionLabel(w.region)) + "</td></tr>" +
           "<tr><th>" + L("時代", "Era") + "</th><td>" + esc(eraLabel(w.era)) + "</td></tr></tbody></table>";
-        if (w.img) html += '<figure class="wl-hero"><img src="' + w.img + '" alt="' + esc(w.name) + L("の肖像イラスト", " portrait illustration") + '"><figcaption>' + L("肖像イラスト（水墨マンガ調／人物像のイメージです）", "Portrait illustration (ink-manga style; an artistic impression)") + "</figcaption></figure>";
+        if (w.img) html += '<figure class="wl-hero">' + `<img src="${w.img}" alt="${esc(w.name)}${L("の肖像イラスト", " portrait illustration")}">` + '<figcaption>' + L("肖像イラスト（水墨マンガ調／人物像のイメージです）", "Portrait illustration (ink-manga style; an artistic impression)") + "</figcaption></figure>";
         if (w.deep) {
           html += '<h3 class="font-display" style="font-size:19px;margin:26px 0 6px">' + L("生涯", "Life") + "</h3><p>" + esc(w.life) + "</p>";
           html += '<h3 class="font-display" style="font-size:19px;margin:26px 0 6px">' + L("主な合戦と用兵", "Battles & tactics") + "</h3><p>" + esc(w.battles) + "</p>";
