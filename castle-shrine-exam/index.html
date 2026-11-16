@@ -745,19 +745,23 @@
       .goods-banner h2 .goods-new { font-family: "Noto Sans JP", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; background: var(--accent); color: #fff; border-radius: 999px; padding: 2px 10px; }
       .goods-banner p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
       .goods-banner .goods-shop-note { font-size: 12.5px; color: var(--dim); margin-top: 6px; }
-      .goods-chars { display: flex; gap: 14px; margin-top: 14px; flex-wrap: wrap; }
-      .goods-char { display: flex; align-items: center; gap: 9px; }
-      .goods-char img { width: 44px; height: 44px; border-radius: 50%; object-fit: contain; object-position: center; padding: 2px; border: 1.5px solid var(--gold); background: #efe8d8; display: block; }
-      .goods-char span { font-size: 13.5px; font-weight: 700; color: var(--ink); }
-      .goods-items { list-style: none; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px dashed var(--line); display: flex; flex-wrap: wrap; gap: 8px 22px; }
-      .goods-items li { font-size: 13.5px; color: var(--ink-soft); }
-      .goods-items li strong { color: var(--ink); }
-      .goods-items li .goods-price { font-weight: 700; color: var(--ink); white-space: nowrap; }
-      .goods-cta { margin-top: 16px; }
-      .goods-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 999px; background: var(--gold); color: #fff; text-decoration: none; font-weight: 700; font-size: 14.5px; line-height: 1.2; }
-      .goods-btn:hover { filter: brightness(1.08); }
-      .goods-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-      @media (prefers-color-scheme: dark) { .goods-btn { color: #17140f; } }
+      .goods-chars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 20px; margin-top: 14px; }
+      @media (max-width: 640px) { .goods-chars { grid-template-columns: 1fr; } }
+      .goods-char { display: flex; flex-direction: column; min-width: 0; }
+      .goods-char-head { display: flex; align-items: center; gap: 9px; }
+      .goods-char-head img { width: 44px; height: 44px; border-radius: 50%; object-fit: contain; object-position: center; padding: 2px; border: 1.5px solid var(--gold); background: #efe8d8; display: block; }
+      .goods-char-head span { font-size: 13.5px; font-weight: 700; color: var(--ink); }
+      .goods-char-items { list-style: none; margin: 10px 0 0; padding: 10px 0 0; border-top: 1px dashed var(--line); display: grid; gap: 7px; }
+      .goods-char-items a { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; font-size: 13.5px; color: var(--indigo); text-decoration: none; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); }
+      .goods-char-items a:hover { border-color: var(--gold); text-decoration: underline; }
+      .goods-char-items a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+      .goods-char-items .goods-item-name { font-weight: 700; color: var(--ink); }
+      .goods-char-items .goods-price { font-weight: 700; color: var(--ink); white-space: nowrap; }
+      .goods-char-items .goods-tax { font-size: 12px; color: var(--dim); }
+      .goods-char-items .goods-arrow { margin-left: auto; color: var(--gold); font-weight: 700; }
+      .goods-shop-all { margin-top: 16px; font-size: 13px; }
+      .goods-shop-all a { color: var(--indigo); font-weight: 700; }
+      .goods-shop-all a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 
       /* ---------- new arrivals corner ---------- */
       .new-corner {
@@ -1387,18 +1391,32 @@ brandsafe_js_async('//ad-verification.a8.net/ad', '_site=4171&_article=2315&_lin
           <p>こま吉・ソラタ・ひまりの公式キャラクターグッズが、SUZURI「222キャラ工房」で買えます。旅のお供や日常使いにどうぞ。</p>
           <p class="goods-shop-note">222キャラ工房は、日本の旅検定・アロマと休息の手帖・星と暦の手帖・セラフィナの公式キャラクターグッズのお店です。</p>
           <div class="goods-chars" aria-label="グッズのキャラクター">
-            <div class="goods-char"><img src="assets/char-komakichi.webp" alt="狛犬の子 こま吉" loading="lazy" /><span>こま吉</span></div>
-            <div class="goods-char"><img src="assets/char-sorata.webp" alt="ソラタ" loading="lazy" /><span>ソラタ</span></div>
-            <div class="goods-char"><img src="assets/char-himari.webp" alt="ひまり" loading="lazy" /><span>ひまり</span></div>
+            <div class="goods-char">
+              <div class="goods-char-head"><img src="assets/char-komakichi.webp" alt="狛犬の子 こま吉" loading="lazy" /><span>こま吉</span></div>
+              <ul class="goods-char-items">
+                <li><a href="https://suzuri.jp/222chara/21261120/sticker/m/white" target="_blank" rel="noopener"><span class="goods-item-name">ステッカー</span> <span class="goods-price">842円</span><span class="goods-tax">（税込）</span> <span class="goods-arrow" aria-hidden="true">→</span></a></li>
+                <li><a href="https://suzuri.jp/222chara/21261367/mug/m/white" target="_blank" rel="noopener"><span class="goods-item-name">マグカップ</span> <span class="goods-price">2,706円</span><span class="goods-tax">（税込）</span> <span class="goods-arrow" aria-hidden="true">→</span></a></li>
+                <li><a href="https://suzuri.jp/222chara/21261235/t-shirt/s/white" target="_blank" rel="noopener"><span class="goods-item-name">Tシャツ</span> <span class="goods-price">4,191円</span><span class="goods-tax">（税込）</span> <span class="goods-arrow" aria-hidden="true">→</span></a></li>
+              </ul>
+            </div>
+            <div class="goods-char">
+              <div class="goods-char-head"><img src="assets/char-sorata.webp" alt="ソラタ" loading="lazy" /><span>ソラタ</span></div>
+              <ul class="goods-char-items">
+                <li><a href="https://suzuri.jp/222chara/21261439/sticker/m/white" target="_blank" rel="noopener"><span class="goods-item-name">ステッカー</span> <span class="goods-price">842円</span><span class="goods-tax">（税込）</span> <span class="goods-arrow" aria-hidden="true">→</span></a></li>
+                <li><a href="https://suzuri.jp/222chara/21261444/mug/m/white" target="_blank" rel="noopener"><span class="goods-item-name">マグカップ</span> <span class="goods-price">2,706円</span><span class="goods-tax">（税込）</span> <span class="goods-arrow" aria-hidden="true">→</span></a></li>
+                <li><a href="https://suzuri.jp/222chara/21261459/t-shirt/s/white" target="_blank" rel="noopener"><span class="goods-item-name">Tシャツ</span> <span class="goods-price">4,191円</span><span class="goods-tax">（税込）</span> <span class="goods-arrow" aria-hidden="true">→</span></a></li>
+              </ul>
+            </div>
+            <div class="goods-char">
+              <div class="goods-char-head"><img src="assets/char-himari.webp" alt="ひまり" loading="lazy" /><span>ひまり</span></div>
+              <ul class="goods-char-items">
+                <li><a href="https://suzuri.jp/222chara/21261466/sticker/m/white" target="_blank" rel="noopener"><span class="goods-item-name">ステッカー</span> <span class="goods-price">842円</span><span class="goods-tax">（税込）</span> <span class="goods-arrow" aria-hidden="true">→</span></a></li>
+                <li><a href="https://suzuri.jp/222chara/21261475/mug/m/white" target="_blank" rel="noopener"><span class="goods-item-name">マグカップ</span> <span class="goods-price">2,706円</span><span class="goods-tax">（税込）</span> <span class="goods-arrow" aria-hidden="true">→</span></a></li>
+                <li><a href="https://suzuri.jp/222chara/21261482/t-shirt/s/white" target="_blank" rel="noopener"><span class="goods-item-name">Tシャツ</span> <span class="goods-price">4,191円</span><span class="goods-tax">（税込）</span> <span class="goods-arrow" aria-hidden="true">→</span></a></li>
+              </ul>
+            </div>
           </div>
-          <ul class="goods-items">
-            <li><strong>ステッカー</strong> <span class="goods-price">842円</span>（税込）</li>
-            <li><strong>マグカップ</strong> <span class="goods-price">2,706円</span>（税込）</li>
-            <li><strong>Tシャツ</strong> <span class="goods-price">4,191円</span>（税込）</li>
-          </ul>
-          <div class="goods-cta">
-            <a class="goods-btn" href="https://suzuri.jp/222chara" target="_blank" rel="noopener">SUZURI「222キャラ工房」を見る →</a>
-          </div>
+          <p class="goods-shop-all"><a href="https://suzuri.jp/222chara" target="_blank" rel="noopener">SUZURI「222キャラ工房」のショップ全体を見る →</a></p>
         </section>
         <nav aria-label="フッターメニュー">
           <ul>
@@ -5020,6 +5038,14 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
         "城攻めと野戦、流派の誕生、甲冑と武器、忍び、江戸の道場文化、そして武術の目で城を読む視点。城と武術の関わりをたどる全6本の読み物です。史実として確認できる内容を中心に書き、伝承として語られる話は、その旨を添えて紹介します。各記事の末尾から、関連する日本100名城の解説ページへ進めます。": "Sieges and field battles, the birth of the schools, armor and weapons, shinobi, the dojo culture of Edo, and reading castles through a martial artist's eyes — six essays on how castles and martial arts intertwine. They center on what can be confirmed as historical fact, and tales that survive as tradition are marked as such. Each article ends with links to related castles in the 100 Famous Castles.",
         "戦国武将の名鑑です。名前で検索したり、時代・大名家・地域で絞り込んだりできます。「ディープ紹介」の武将は、生涯・主な合戦と用兵・居城と関連城・武芸や武器のエピソード・人物像まで掘り下げ、関連作品（Amazonアソシエイト・リンク）も紹介しています。史実と伝承は分けて記します。59人には水墨マンガ調の肖像イラストを付けました。": "A directory of Sengoku warlords. Search by name, or filter by era, house, and region. Warlords with “deep profiles” are explored in depth — life, major battles and tactics, castles, episodes of martial arts and weapons, and character — with related works (Amazon Associates links) also introduced. Fact and tradition are kept separate. Portrait illustrations in an ink-manga style are included for 59 of them.",
         "公式SNSで最新情報を受け取る": "Get the latest updates on our official SNS",
+        "ステッカー": "Sticker",
+        "マグカップ": "Mug",
+        "Tシャツ": "T-shirt",
+        "842円": "¥842",
+        "2,706円": "¥2,706",
+        "4,191円": "¥4,191",
+        "（税込）": "(tax incl.)",
+        "SUZURI「222キャラ工房」のショップ全体を見る →": "See the whole SUZURI “222 Chara Kobo” shop →",
         "城・神社のニュース、イベント情報、武将名鑑の更新、1問クイズなどを、InstagramとThreadsでお届けしています。": "Castle and shrine news, event information, warlord directory updates, one-question quizzes and more, on Instagram and Threads.",
         "Instagramでフォロー": "Follow on Instagram",
         "Threadsでフォロー": "Follow on Threads",
