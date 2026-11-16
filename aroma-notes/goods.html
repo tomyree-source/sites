@@ -878,6 +878,11 @@
       .goods-items { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
       .goods-items li { background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 4px 14px; font-size: 0.86rem; color: var(--ink); }
       .goods-items li strong { color: var(--moss-deep); }
+      .goods-char { margin-top: 14px; }
+      .goods-char-name { font-weight: 700; color: var(--moss-deep); font-size: 0.95rem; font-family: "Shippori Mincho", serif; }
+      .goods-char .goods-items { margin-top: 6px; }
+      .goods-items li a { color: inherit; text-decoration: none; display: block; }
+      .goods-items li:hover { border-color: var(--moss-deep); }
       .goods-note { margin-top: 10px !important; font-size: 0.8rem !important; color: var(--ink-faint) !important; }
       .goods-actions { min-width: 220px; }
       @media (max-width: 720px) { .goods-actions { min-width: 0; } }
@@ -1284,11 +1289,9 @@
             <div>
               <h3 data-i18n="goods_h3">公式キャラクターグッズ販売中</h3>
               <p data-i18n="goods_p">子猫のポプリ、セージ、ハルのグッズを、SUZURIのショップ「222キャラ工房」で販売しています。学びの合間のお供に、日常で使える3アイテムをご用意しました。</p>
-              <ul class="goods-items">
-                <li><span data-i18n="goods_item1">ステッカー</span> <strong>842円</strong><span data-i18n="goods_tax">（税込）</span></li>
-                <li><span data-i18n="goods_item2">マグカップ</span> <strong>2,706円</strong><span data-i18n="goods_tax">（税込）</span></li>
-                <li><span data-i18n="goods_item3">Tシャツ</span> <strong>4,191円</strong><span data-i18n="goods_tax">（税込）</span></li>
-              </ul>
+              <div class="goods-char"><span class="goods-char-name">ポプリ</span><ul class="goods-items"><li><a href="https://suzuri.jp/222chara/21261308/sticker/m/white" target="_blank" rel="noopener noreferrer" aria-label="ポプリのステッカーの商品ページを開く（SUZURI・外部サイト）">ステッカー <strong>842円</strong>（税込）</a></li><li><a href="https://suzuri.jp/222chara/21261331/mug/m/white" target="_blank" rel="noopener noreferrer" aria-label="ポプリのマグカップの商品ページを開く（SUZURI・外部サイト）">マグカップ <strong>2,706円</strong>（税込）</a></li><li><a href="https://suzuri.jp/222chara/21261338/t-shirt/s/white" target="_blank" rel="noopener noreferrer" aria-label="ポプリのTシャツの商品ページを開く（SUZURI・外部サイト）">Tシャツ <strong>4,191円</strong>（税込）</a></li></ul></div>
+              <div class="goods-char"><span class="goods-char-name">セージ</span><ul class="goods-items"><li><a href="https://suzuri.jp/222chara/21261490/sticker/m/white" target="_blank" rel="noopener noreferrer" aria-label="セージのステッカーの商品ページを開く（SUZURI・外部サイト）">ステッカー <strong>842円</strong>（税込）</a></li><li><a href="https://suzuri.jp/222chara/21261493/mug/m/white" target="_blank" rel="noopener noreferrer" aria-label="セージのマグカップの商品ページを開く（SUZURI・外部サイト）">マグカップ <strong>2,706円</strong>（税込）</a></li><li><a href="https://suzuri.jp/222chara/21261498/t-shirt/s/white" target="_blank" rel="noopener noreferrer" aria-label="セージのTシャツの商品ページを開く（SUZURI・外部サイト）">Tシャツ <strong>4,191円</strong>（税込）</a></li></ul></div>
+              <div class="goods-char"><span class="goods-char-name">ハル</span><ul class="goods-items"><li><a href="https://suzuri.jp/222chara/21261503/sticker/m/white" target="_blank" rel="noopener noreferrer" aria-label="ハルのステッカーの商品ページを開く（SUZURI・外部サイト）">ステッカー <strong>842円</strong>（税込）</a></li><li><a href="https://suzuri.jp/222chara/21261510/mug/m/white" target="_blank" rel="noopener noreferrer" aria-label="ハルのマグカップの商品ページを開く（SUZURI・外部サイト）">マグカップ <strong>2,706円</strong>（税込）</a></li><li><a href="https://suzuri.jp/222chara/21261516/t-shirt/s/white" target="_blank" rel="noopener noreferrer" aria-label="ハルのTシャツの商品ページを開く（SUZURI・外部サイト）">Tシャツ <strong>4,191円</strong>（税込）</a></li></ul></div>
               <p class="goods-note" data-i18n="goods_note">価格はポプリ・セージ・ハルの全デザイン共通です。販売・発送はSUZURIが行います。</p>
             </div>
             <div class="goods-actions">
