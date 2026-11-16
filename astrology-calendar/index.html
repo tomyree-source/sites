@@ -311,6 +311,20 @@ footer .footer-sns a svg{width:16px;height:16px}
 .goods-cta{display:inline-flex;align-items:center;min-height:48px;padding:10px 24px;background:var(--navy);color:#f3ecd9;text-decoration:none;font-weight:700;font-size:.95rem;border-radius:999px;border:1.5px solid var(--navy)}
 .goods-cta:hover{background:var(--navy2)}
 .goods-cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.goods-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px}
+.goods-group{border:1px solid var(--line);border-radius:12px;padding:12px 12px 13px;background:var(--bg)}
+.goods-char{margin:0 0 9px;font-family:"Shippori Mincho B1",serif;font-size:1.05rem;font-weight:800;line-height:1.4}
+.goods-group .goods-items{display:flex;flex-direction:column;flex-wrap:nowrap;gap:6px;margin:0}
+.goods-group .goods-items li{border:none;border-radius:0;padding:0;background:transparent}
+.goods-link{display:block;border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-size:.88rem;background:var(--paper);color:var(--ink);text-decoration:none;line-height:1.6}
+.goods-link::after{content:" ↗";color:var(--gold);font-weight:700}
+.goods-link:hover{background:var(--gold-soft);border-color:var(--gold)}
+.goods-link:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.goods-shop-top{margin:12px 0 0 !important;font-size:.86rem !important}
+.goods-shop-top a{color:var(--navy2);font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--gold);text-decoration-thickness:1.5px}
+.goods-shop-top a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media(prefers-color-scheme:dark){.goods-shop-top a{color:#aebaf0}}
+@media(max-width:820px){.goods-groups{grid-template-columns:1fr}}
 @media(max-width:560px){.goods-panel{flex-direction:column;align-items:flex-start;gap:14px;padding:20px}.goods-panel img.char{width:96px}}
 .reading-intro{font-size:.95rem;margin:0 0 18px;max-width:62em}
 .reading-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -2271,12 +2285,33 @@ footer .footer-sns a svg{width:16px;height:16px}
     <div class="goods-body">
       <h3>公式キャラクターグッズ販売中</h3>
       <p>フクロウの「ほしみ」と、周辺キャラクターのミラ・アストルのデザインが、SUZURIの公式ショップ「222キャラ工房」でグッズになりました。毎日の星読みのお供にどうぞ。</p>
-      <ul class="goods-items">
-        <li>ステッカー <b>842円</b>（税込）</li>
-        <li>マグカップ <b>2,706円</b>（税込）</li>
-        <li>Tシャツ <b>4,191円</b>（税込）</li>
-      </ul>
-      <a class="goods-cta" href="https://suzuri.jp/222chara" target="_blank" rel="noopener">SUZURI「222キャラ工房」で見る →</a>
+      <div class="goods-groups">
+        <div class="goods-group">
+          <h4 class="goods-char">ほしみ</h4>
+          <ul class="goods-items">
+            <li><a class="goods-link" href="https://suzuri.jp/222chara/21261368/sticker/m/white" target="_blank" rel="noopener">ステッカー <b>842円</b>（税込）</a></li>
+            <li><a class="goods-link" href="https://suzuri.jp/222chara/21261373/mug/m/white" target="_blank" rel="noopener">マグカップ <b>2,706円</b>（税込）</a></li>
+            <li><a class="goods-link" href="https://suzuri.jp/222chara/21261381/t-shirt/s/white" target="_blank" rel="noopener">Tシャツ <b>4,191円</b>（税込）</a></li>
+          </ul>
+        </div>
+        <div class="goods-group">
+          <h4 class="goods-char">ミラ</h4>
+          <ul class="goods-items">
+            <li><a class="goods-link" href="https://suzuri.jp/222chara/21261521/sticker/m/white" target="_blank" rel="noopener">ステッカー <b>842円</b>（税込）</a></li>
+            <li><a class="goods-link" href="https://suzuri.jp/222chara/21261531/mug/m/white" target="_blank" rel="noopener">マグカップ <b>2,706円</b>（税込）</a></li>
+            <li><a class="goods-link" href="https://suzuri.jp/222chara/21261538/t-shirt/s/white" target="_blank" rel="noopener">Tシャツ <b>4,191円</b>（税込）</a></li>
+          </ul>
+        </div>
+        <div class="goods-group">
+          <h4 class="goods-char">アストル</h4>
+          <ul class="goods-items">
+            <li><a class="goods-link" href="https://suzuri.jp/222chara/21261546/sticker/m/white" target="_blank" rel="noopener">ステッカー <b>842円</b>（税込）</a></li>
+            <li><a class="goods-link" href="https://suzuri.jp/222chara/21261554/mug/m/white" target="_blank" rel="noopener">マグカップ <b>2,706円</b>（税込）</a></li>
+            <li><a class="goods-link" href="https://suzuri.jp/222chara/21261560/t-shirt/s/white" target="_blank" rel="noopener">Tシャツ <b>4,191円</b>（税込）</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="goods-shop-top"><a href="https://suzuri.jp/222chara" target="_blank" rel="noopener">ほかのグッズはショップトップで見る →</a></p>
       <p class="note" style="margin-top:12px">販売中のデザインは ほしみ・ミラ・アストル の3種です。価格・在庫・サイズなどの詳細は、SUZURIのショップページでご確認ください。</p>
     </div>
   </div>
@@ -3127,6 +3162,8 @@ var EN_MAP={
 'フクロウの「ほしみ」と、周辺キャラクターのミラ・アストルのデザインが、SUZURIの公式ショップ「222キャラ工房」でグッズになりました。毎日の星読みのお供にどうぞ。':'Designs of Hoshimi the owl and the supporting characters Mira and Astor are now available as goods at the official SUZURI shop “222 Chara Kōbō.” A little companion for your daily star reading.',
 'ステッカー':'Sticker','マグカップ':'Mug','Tシャツ':'T-shirt','842円':'¥842','2,706円':'¥2,706','4,191円':'¥4,191','（税込）':'(tax incl.)',
 'SUZURI「222キャラ工房」で見る →':'Shop at SUZURI “222 Chara Kōbō” →',
+'ほしみ':'Hoshimi','ミラ':'Mira','アストル':'Astor',
+'ほかのグッズはショップトップで見る →':'See more goods on the shop top page →',
 '販売中のデザインは ほしみ・ミラ・アストル の3種です。価格・在庫・サイズなどの詳細は、SUZURIのショップページでご確認ください。':'Three designs are on sale: Hoshimi, Mira and Astor. Please check the SUZURI shop page for prices, stock, sizes and other details.',
 '有料鑑定（ココナラで受付中）':'Paid Readings (Now Booking on Coconala)',
 '毎日の運勢の深掘りとして、あなたの出生図（ネイタルチャート）に絞った個別鑑定を、ココナラで受け付けています。惑星位置は天文計算ソフト Swiss Ephemeris の実計算に基づき、鑑定文は計算結果をもとに AI が作成し、星と暦の手帖がお届けします。購入・決済・やり取りはすべてココナラ上で行います。':'As a deeper dive into your daily horoscope, we offer personal readings focused on your own birth chart (natal chart) through Coconala. Planetary positions are based on real calculations with the Swiss Ephemeris, and each reading text is created by AI from those calculation results and delivered by Hoshi to Koyomi. Purchases, payment and messages are all handled on Coconala.',
