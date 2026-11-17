@@ -17,18 +17,30 @@
 <style>
 body{margin:0;background:#f5f1e6;color:#333;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8}
 .wrap{max-width:760px;margin:0 auto;background:#fffdf7;padding:0 20px 40px}
+.note{background:#7a1f2b;color:#fff;text-align:center;padding:8px;font-size:13px}
 h1{font-size:24px;color:#1e4d3b;text-align:center;margin:24px 0 4px}
 .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px}
 img.main{width:100%;height:auto;display:block;border-radius:6px}
 .campaign{background:#1e4d3b;color:#fff;border-radius:8px;padding:14px 18px;margin:18px 0;text-align:center}
 .campaign .price{font-size:20px;font-weight:bold}.gold{color:#e8c97a}
 h2{font-size:19px;color:#1e4d3b;border-left:6px solid #7a1f2b;padding-left:10px;margin:34px 0 10px}
+h3{font-size:16px;color:#1e4d3b;margin:22px 0 6px}
 .btn{display:block;text-align:center;background:#1e4d3b;color:#fff;text-decoration:none;border-radius:30px;padding:12px;margin:14px auto;max-width:420px;font-weight:bold}
 .btn.line{background:#06c755}.btn.sub{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b}
 table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #ccc;padding:8px;text-align:center}th{background:#eef4ee}
 ul.links{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 ul.links li a{display:block;background:#eef4ee;border-radius:6px;padding:8px 10px;color:#1e4d3b;text-decoration:none;font-size:14px}
 ul.care{padding-left:22px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 28px;position:relative;border-bottom:1px dotted #ccc}
+ul.check li:before{content:"✓";position:absolute;left:4px;color:#7a1f2b;font-weight:bold}
+ol.steps{padding-left:22px}
+.step{background:#eef4ee;border-radius:8px;padding:12px 16px;margin:10px 0}
+.step .st{font-weight:bold;color:#7a1f2b}
+.faq{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:10px 0}
+.faq .q{font-weight:bold;color:#1e4d3b;margin:0 0 4px}
+.faq .a{margin:0}
+.profile{background:#eef4ee;border-radius:8px;padding:14px 18px;margin:14px 0}
 .small{font-size:13px;color:#666}
 .lead{font-size:17px;color:#1e4d3b;font-weight:bold;text-align:center;margin:16px 0}
 footer{border-top:2px solid #1e4d3b;margin-top:36px;padding-top:14px;font-size:14px;color:#555;text-align:center}
@@ -77,6 +89,51 @@ footer a{color:#1e4d3b}
         "url": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/"
       },
       "mainEntityOfPage": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/hip-up.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "初めてでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで骨盤の状態や気になる部位をうかがい、無理のない内容から始めます。施術の前後で立ち姿を鏡で確認しながら「お尻の位置が上がった感じがする」「姿勢が伸びた」といった感覚の違いを一緒に確かめますので、初めての方も安心してご利用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "施術は痛いですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "強さは、ご希望をうかがいながら調整します。お尻の奥の筋肉は圧を感じやすい部位ですが、お身体の状態に合わせた圧で丁寧に進めます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コースはどう選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。ヒップアップのケアで骨盤まわりからお尻、腰、太ももまでゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "場所と予約方法を教えてください。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "男性も受けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -92,32 +149,108 @@ body{padding-bottom:84px}
 <div class="wrap">
 <h1>ヒップアップ・垂れ尻</h1>
 <p class="sub">美容整体ステラ・ポラリス東三国｜大阪市淀川区東三国・東三国駅徒歩5分・女性向け</p>
-<img class="main" src="../assets/stella-posture.jpg" alt="ヒップアップ・垂れ尻のイメージイラスト">
+<img class="main" src="../assets/stella-posture.jpg" alt="お尻と骨盤のラインをイメージしたイラスト">
 <p class="lead">骨盤底筋と大臀筋。骨盤を立てて上がるお尻を作る整体</p>
+<p>お尻の形は、骨盤の傾きとお尻の筋肉（大臀筋など）の使い方で印象が変わります。座りっぱなしの生活が続くとお尻の筋肉が使いにくくなり、骨盤が後ろに倒れた姿勢では、お尻が下がって平たく見えやすくなると言われています。骨盤の底にある骨盤底筋も、姿勢を支える大切な筋肉群です。年齢とともに後ろ姿のラインが気になり始めた方に多いお悩みです。このページでは、お尻が下がって見える仕組みと、お尻の位置が高く見える姿勢を目指す当サロンでのケア、ご自宅でできるセルフケアをご案内します。まずは下のチェックで、ご自身の状態を確かめてみてください。</p>
+<a class="btn" href="https://coubic.com/stella-polaris">ご予約はこちら（Coubic）</a>
 
-<h2>そのお悩みについて</h2>
-<p>お尻の形は、骨盤の傾きとお尻の筋肉（大臀筋など）の使い方で印象が変わります。座りっぱなしの生活が続くとお尻の筋肉が使いにくくなり、骨盤が後ろに倒れた姿勢では、お尻が下がって平たく見えやすくなると言われています。骨盤の底にある骨盤底筋も、姿勢を支える大切な筋肉群です。年齢とともに後ろ姿のラインが気になり始めた方に多いお悩みです。</p>
+<h2>こんなお悩みありませんか</h2>
+<ul class="check">
+<li>後ろ姿を見て、お尻が下がって平たくなった気がする</li>
+<li>お尻と太ももの境目が、ぼんやりしてきた</li>
+<li>パンツを履いたとき、後ろ姿のラインが気になる</li>
+<li>長時間座る仕事で、お尻が潰れたような感覚がある</li>
+<li>骨盤が後ろに倒れた姿勢になっている気がする</li>
+<li>歩くとき、お尻の筋肉を使っている感じがしない</li>
+<li>年齢とともに、後ろ姿の印象が変わってきたと感じる</li>
+</ul>
+<p>当てはまる項目が多いほど、お尻の筋肉の使いにくさと骨盤の傾きが、後ろ姿の印象に影響している目安とされています。お尻の形は、筋肉と骨盤という土台の状態が表れる場所です。次のセルフチェックで、今の骨盤の傾きの傾向を確かめてみましょう。</p>
+
+<h2>簡単セルフチェック（壁立ちチェック）</h2>
+<p>壁を使った、骨盤の傾きと姿勢の傾向を知るための簡単な方法です。</p>
+<ol class="steps">
+<li>壁に背を向けて立ち、かかと・お尻・背中・後頭部を壁につけます。</li>
+<li>横から見た姿勢を意識しながら、お尻の位置と骨盤の傾き具合を確認します。</li>
+<li>お尻が壁から離れやすい、腰が丸まって骨盤が後ろに倒れる感じがする場合は、お尻の筋肉が使いにくい状態の目安と言われています。</li>
+</ol>
+<p class="small">※これは診断ではありません。ご自身の状態の傾向を知る目安としてお使いください。</p>
+
+<h2>ヒップアップ・垂れ尻の原因と仕組み</h2>
+<h3>お尻の筋肉の使いにくさ</h3>
+<p>お尻の大きな筋肉である大臀筋は、歩く・立つ・階段を上るといった動きで働く、体の中でも大きな筋肉です。ところが、座りっぱなしの生活が続くと、この筋肉は使う機会が減り、働きが鈍りやすくなります。筋肉が使いにくい状態では、お尻は下がって平たく見えやすくなると言われています。図1のように、お尻の印象は筋肉の状態と骨盤の傾きの組み合わせで決まっていきます。</p>
+<img class="main" src="../assets/diagram-hip-up.png" alt="ヒップアップの仕組み図解：お尻が下がった姿勢と、お尻の位置が高い姿勢の比較">
+<p class="small">図1　お尻が下がって見える姿勢で起こりやすい変化と、お尻の位置が高く見える姿勢のイメージ。姿勢の状態には個人差があります。</p>
+<h3>骨盤の後ろ倒れ（後傾）</h3>
+<p>骨盤が後ろに倒れた姿勢では、お尻は下向きになり、位置が低く見えがちです。椅子に浅く座って背中を丸める姿勢が続くと、この後傾のクセがつきやすくなります。反対に、骨盤を立てた姿勢では、お尻は自然と上向きのラインに見え、後ろ姿全体が引き上がった印象になります。骨盤の傾きは、お尻の見え方を左右する土台です。</p>
+<h3>骨盤底筋と姿勢の支え</h3>
+<p>骨盤の底にある骨盤底筋は、内臓を下から支え、姿勢の安定にも関わる筋肉群です。この筋肉群の働きが弱くなると、骨盤まわりの安定感が下がり、姿勢の崩れにもつながると言われています。お尻のケアを考えるときは、表面の筋肉だけでなく、骨盤を支える土台全体を見ることが大切です。</p>
+<h3>後ろ姿の印象と年齢感</h3>
+<p>後ろ姿は自分では見えない分、写真や試着のときに変化に気づくことが多い場所です。お尻の位置が下がって見えると、全体のシルエットも重く見えがちです。反対に、お尻の位置が高く見える姿勢は、若々しく軽やかな後ろ姿の印象につながります。筋肉の使い方と骨盤の傾きという土台を整えることで、後ろ姿の印象は変えていけます。</p>
+
+<h2>セルフケアで足りる場合・サロンケアが向く場合</h2>
+<p>お尻の筋肉を使う感覚があり、簡単な体操を続ける余裕がある場合は、まずご自宅でのセルフケアを続けて様子を見る方法があります。一方で、お尻や腰まわりが自分ではゆるめにくい、お尻の筋肉を使う感覚がつかみにくい、後ろ姿の印象を本格的に整えたいという場合は、サロンでのケアが向いている目安になります。サロンでは、骨盤の傾きを確認し、お尻や腰、太ももの筋肉をゆるめたうえで、トレーナーの視点からお尻を使う感覚もご案内することで、施術後に「お尻の位置が上がった感じがする」と感じやすい状態を目指します。どちらが正解というものではなく、今の状態に合わせて選ぶことが大切です。</p>
 
 <h2>当サロンでのケア</h2>
-<p>当サロンでは、まず骨盤の傾きを確認し、お尻や腰、太ももの筋肉をオイルマッサージともみほぐしで丁寧にゆるめます。美容整体で骨盤を立てた姿勢を整え、トレーナーの視点から、お尻の筋肉を使う感覚をつかむための簡単なご案内も行います。施術後は立ち姿を鏡で確認し、後ろ姿のラインの印象や、歩くときのお尻の使いやすさの体感を目指します。</p>
-<p class="small">施術は、施術歴30年・鍼灸師の平賀建人が担当します。美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせます。</p>
+<p>当サロンのヒップアップケアは、「骨盤を立て、お尻の筋肉が使える状態」を目指す組み立てです。骨盤の傾きを確認しながら、部位と目的に合わせて3つの手技を組み合わせます。</p>
+<p><strong>美容整体</strong>：骨盤を立てた姿勢を整え、お尻の位置が高く見える土台をつくることを目的に進めます。<br>
+<strong>アロマオイルマッサージ</strong>：お尻や腰、太ももの筋肉をオイルで丁寧にゆるめ、巡りが流れやすい状態を目指します。香りに包まれるリラックス感の高いケアです。<br>
+<strong>もみほぐし</strong>：お尻の奥の固まりやすい筋肉をほぐし、あわせてトレーナーの視点から、お尻の筋肉を使う感覚をつかむための簡単なご案内も行います。</p>
+<p>ケアを通して目指すのは、こんな変化です。</p>
+<ul class="care">
+<li>お尻の位置が上がって見える、引き上がった後ろ姿の印象へ</li>
+<li>お尻と太ももの境目が感じられるラインへ</li>
+<li>骨盤が立って、姿勢全体がまっすぐに見える印象へ</li>
+<li>歩くときのお尻の使いやすさが感じられる体感へ</li>
+<li>パンツスタイルの後ろ姿が、すっきり見える仕上がりへ</li>
+</ul>
+<p>施術後は立ち姿を鏡で確認し、後ろ姿のラインの印象や、歩くときのお尻の使いやすさの体感を一緒に確かめます。トレーナーの視点から、ご自宅で続けやすいお尻の体操もご案内しますので、日々のケアにもつなげていただけます。</p>
+<img class="main" src="../assets/stella-oil.jpg" alt="アロマオイルマッサージでお尻まわりをケアするイメージイラスト">
+
+<h2>施術の流れ</h2>
+<div class="step"><span class="st">STEP1 受付・カウンセリング</span><br>ご来店後、気になる部位やお悩み、ご希望の強さなどをうかがいます。完全個室のため、周りを気にせずお話しいただけます。</div>
+<div class="step"><span class="st">STEP2 お身体の状態確認</span><br>骨盤の傾きやお尻・腰まわりの状態、姿勢などを一緒に確認し、その日の状態に合わせた施術の進め方をご案内します。</div>
+<div class="step"><span class="st">STEP3 施術</span><br>美容整体を中心に、ご希望に応じてアロマオイルマッサージ、もみほぐしを組み合わせて進めます。強さは途中でも調整できます。</div>
+<div class="step"><span class="st">STEP4 終わりのご案内</span><br>施術後の状態を確認し、ご自宅で続けやすいセルフケアのポイントをお伝えします。次回の目安についても、ご希望があればご案内します。</div>
+
+<h2>料金</h2>
+<table>
+<tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
+<tr><td>80分</td><td>―</td><td>3,000円</td></tr>
+<tr><td>100分</td><td>10,000円</td><td>4,000円</td></tr>
+<tr><td>120分</td><td>―</td><td>5,000円</td></tr>
+</table>
+<p class="small">クリスマスキャンペーンは12月25日まで、ご新規様もリピーターの方も対象です。施術内容は当日の状態とご希望に合わせて組み立てます。</p>
 
 <h2>ご自宅でできるセルフケア</h2>
 <ul class="care">
-<li>仰向けで膝を立て、お尻を持ち上げるブリッジ運動をゆっくり10回行う</li>
-<li>階段では一段ずつ、お尻の筋肉を意識して上る</li>
-<li>座りっぱなしを避け、1時間に一度は立って歩く</li>
+<li>ヒップリフト：仰向けで膝を立て、お尻を持ち上げて5秒キープします。10回を1セットとして、朝晩に行うのが目安です。お尻の筋肉を使う感覚を意識してください。</li>
+<li>お尻のストレッチ：椅子に座って片足を反対の膝に乗せ、体を前に倒します。左右それぞれ20〜30秒、1日1〜2回が目安です。</li>
+<li>骨盤を立てる座り方：椅子に座るときは、お尻の骨（坐骨）で座る意識を持ち、背もたれに寄りかかりすぎないようにします。</li>
+<li>階段の活用：階段を上るときは、お尻の筋肉を意識して一段ずつ上ります。日常の動きの中でお尻を使う機会を増やす工夫です。</li>
 </ul>
-
-<h2>受診の目安</h2>
-<p>股関節の痛みや脚のしびれを伴う場合は、医療機関への受診をおすすめします。</p>
-
 <p style="font-weight:bold;color:#1e4d3b;margin:26px 0 4px">ご自宅でのケアに：セルフケア資料ライブラリ（無料）</p>
 <p>このお悩みに合わせたセルフケアの考え方を、無料の資料ライブラリでご紹介しています。<br>
 <a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="color:#1e4d3b">セルフケア資料ライブラリを開く →</a></p>
 
+<h2>受診の目安</h2>
+<p>股関節の痛みや脚のしびれを伴う場合は、施術の前に医療機関への受診をおすすめします。また、腰の強い痛みがある場合も、医療機関でご相談ください。</p>
+
+<h2>よくある質問</h2>
+<div class="faq"><p class="q">Q. 初めてでも大丈夫ですか？</p><p class="a">はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで骨盤の状態や気になる部位をうかがい、無理のない内容から始めます。施術の前後で立ち姿を鏡で確認しながら「お尻の位置が上がった感じがする」「姿勢が伸びた」といった感覚の違いを一緒に確かめますので、初めての方も安心してご利用いただけます。</p></div>
+<div class="faq"><p class="q">Q. 施術は痛いですか？</p><p class="a">強さは、ご希望をうかがいながら調整します。お尻の奥の筋肉は圧を感じやすい部位ですが、お身体の状態に合わせた圧で丁寧に進めます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。</p></div>
+<div class="faq"><p class="q">Q. コースはどう選べばいいですか？</p><p class="a">80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。ヒップアップのケアで骨盤まわりからお尻、腰、太ももまでゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。</p></div>
+<div class="faq"><p class="q">Q. 場所と予約方法を教えてください。</p><p class="a">大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。</p></div>
+<div class="faq"><p class="q">Q. 男性も受けられますか？</p><p class="a">当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。</p></div>
+
+<h2>施術者について</h2>
+<div class="profile">
+<p style="margin:0 0 6px"><strong>平賀建人</strong>（施術歴30年）</p>
+<p style="margin:0">鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナーの資格を持ち、美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせて施術します。このページの内容は、施術者の知識と経験をもとに作成しています。</p>
+</div>
+<img class="main" src="../assets/stella-hero.jpg" alt="ステラ・ポラリス東三国のサロンの雰囲気を描いたイラスト">
+
 <h2>料金・ご予約</h2>
-<div class="campaign">🎄 クリスマスキャンペーン 🎄<br>ご新規様もリピーターの方も 12/25まで<br>
+<div class="campaign">クリスマスキャンペーン<br>ご新規様もリピーターの方も 12/25まで<br>
 <span class="price">80分 <span class="gold">3,000円</span>／100分 <span class="gold">4,000円</span>／120分 <span class="gold">5,000円</span></span><br>
 <span class="small" style="color:#ddd">通常価格は100分10,000円です。施術内容はご希望に合わせて組み立てます。</span></div>
 <a class="btn" href="https://coubic.com/stella-polaris">予約サイト（Coubic）はこちら</a>
@@ -127,11 +260,11 @@ body{padding-bottom:84px}
 
 <h2>関連するお悩み</h2>
 <ul class="links">
-<li><a href="o-kyaku.html">O脚・X脚の改善</a></li>
-<li><a href="ashi-mukumi.html">脚のむくみ・冷え</a></li>
-<li><a href="futomomo.html">太ももの外側の張り</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/o-kyaku.html">O脚・X脚の改善</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/ashi-mukumi.html">脚のむくみ・冷え</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/futomomo.html">太ももの外側の張り</a></li>
 </ul>
-<a class="btn sub" href="../index.html">トップページへ戻る</a>
+<a class="btn sub" href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/">トップページへ戻る</a>
 
 <footer>
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>

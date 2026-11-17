@@ -17,18 +17,30 @@
 <style>
 body{margin:0;background:#f5f1e6;color:#333;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8}
 .wrap{max-width:760px;margin:0 auto;background:#fffdf7;padding:0 20px 40px}
+.note{background:#7a1f2b;color:#fff;text-align:center;padding:8px;font-size:13px}
 h1{font-size:24px;color:#1e4d3b;text-align:center;margin:24px 0 4px}
 .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px}
 img.main{width:100%;height:auto;display:block;border-radius:6px}
 .campaign{background:#1e4d3b;color:#fff;border-radius:8px;padding:14px 18px;margin:18px 0;text-align:center}
 .campaign .price{font-size:20px;font-weight:bold}.gold{color:#e8c97a}
 h2{font-size:19px;color:#1e4d3b;border-left:6px solid #7a1f2b;padding-left:10px;margin:34px 0 10px}
+h3{font-size:16px;color:#1e4d3b;margin:22px 0 6px}
 .btn{display:block;text-align:center;background:#1e4d3b;color:#fff;text-decoration:none;border-radius:30px;padding:12px;margin:14px auto;max-width:420px;font-weight:bold}
 .btn.line{background:#06c755}.btn.sub{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b}
 table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #ccc;padding:8px;text-align:center}th{background:#eef4ee}
 ul.links{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 ul.links li a{display:block;background:#eef4ee;border-radius:6px;padding:8px 10px;color:#1e4d3b;text-decoration:none;font-size:14px}
 ul.care{padding-left:22px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 28px;position:relative;border-bottom:1px dotted #ccc}
+ul.check li:before{content:"✓";position:absolute;left:4px;color:#7a1f2b;font-weight:bold}
+ol.steps{padding-left:22px}
+.step{background:#eef4ee;border-radius:8px;padding:12px 16px;margin:10px 0}
+.step .st{font-weight:bold;color:#7a1f2b}
+.faq{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:10px 0}
+.faq .q{font-weight:bold;color:#1e4d3b;margin:0 0 4px}
+.faq .a{margin:0}
+.profile{background:#eef4ee;border-radius:8px;padding:14px 18px;margin:14px 0}
 .small{font-size:13px;color:#666}
 .lead{font-size:17px;color:#1e4d3b;font-weight:bold;text-align:center;margin:16px 0}
 footer{border-top:2px solid #1e4d3b;margin-top:36px;padding-top:14px;font-size:14px;color:#555;text-align:center}
@@ -77,6 +89,51 @@ footer a{color:#1e4d3b}
         "url": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/"
       },
       "mainEntityOfPage": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/kao-mukumi.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "初めてでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで気になる部位やご予定をうかがい、無理のない内容から始めます。施術の前後で鏡を一緒に確認しながら「顔が軽くなった」「目元がぱっちりした」といった感覚の違いを確かめますので、初めての方も安心してご利用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "施術は痛いですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "強さは、ご希望をうかがいながら調整します。顔まわりはやさしい圧を基本に、頭皮は心地よい圧で丁寧にほぐしていきます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コースはどう選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。顔のむくみのケアで頭まわりから顔、首、デコルテ、肩までゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "場所と予約方法を教えてください。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "男性も受けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -92,32 +149,108 @@ body{padding-bottom:84px}
 <div class="wrap">
 <h1>顔のむくみ・たるみ</h1>
 <p class="sub">美容整体ステラ・ポラリス東三国｜大阪市淀川区東三国・東三国駅徒歩5分・女性向け</p>
-<img class="main" src="../assets/stella-hero.jpg" alt="顔のむくみ・たるみのイメージイラスト">
+<img class="main" src="../assets/stella-hero.jpg" alt="顔まわりをケアするイメージイラスト">
 <p class="lead">ドライヘッドスパ×美容整体。頭蓋骨から引き上げるケア</p>
+<p>朝起きたときの顔のむくみは、水分や老廃物の巡りが滞ることで起こりやすいと言われています。塩分の多い食事や睡眠不足、冷えなどが重なると、顔全体が重たく、ぼんやりした印象になりがちです。また、頭皮の硬さや表情筋のこわばりも、フェイスラインのもたつき感と関係します。年齢とともに変化する肌のハリ感とあわせて、顔まわり全体のケアを望まれる方が多いお悩みです。このページでは、顔のむくみ・たるみの背景にある仕組みと、顔まわりが軽くすっきり見える状態を目指す当サロンでのケア、ご自宅でできるセルフケアをご案内します。まずは下のチェックで、ご自身の状態を確かめてみてください。</p>
+<a class="btn" href="https://coubic.com/stella-polaris">ご予約はこちら（Coubic）</a>
 
-<h2>そのお悩みについて</h2>
-<p>朝起きたときの顔のむくみは、水分や老廃物の巡りが滞ることで起こりやすいと言われています。塩分の多い食事や睡眠不足、冷えなどが重なると、顔全体が重たく、ぼんやりした印象になりがちです。また、頭皮の硬さや表情筋のこわばりも、フェイスラインのもたつき感と関係します。年齢とともに変化する肌のハリ感とあわせて、顔まわり全体のケアを望まれる方が多いお悩みです。</p>
+<h2>こんなお悩みありませんか</h2>
+<ul class="check">
+<li>朝起きると顔がむくんで、目が開きにくい</li>
+<li>夕方になると、フェイスラインがもたついて見える</li>
+<li>頭皮が硬く、指で動かしにくい感じがする</li>
+<li>塩分の多い食事の翌日は、顔の重さがとくに気になる</li>
+<li>年齢とともに、頬の位置が下がってきた気がする</li>
+<li>大切な予定の前に、顔をすっきり見せたいと思う</li>
+<li>首や肩のコリと一緒に、顔まで重く感じることがある</li>
+</ul>
+<p>当てはまる項目が多いほど、顔まわりの巡りの滞りや頭皮の硬さが、むくみ・たるみの印象に関係している目安とされています。顔は体の中でも巡りの変化が表れやすい場所です。次のセルフチェックで、今の頭皮と顔の状態の傾向を確かめてみましょう。</p>
+
+<h2>簡単セルフチェック（頭皮の動きチェック）</h2>
+<p>指の感覚でできる、頭皮の状態の傾向を知るための簡単な方法です。</p>
+<ol class="steps">
+<li>両手の指の腹を頭皮に当て、頭頂部・側頭部・後頭部をそれぞれ小さく円を描くように動かします。</li>
+<li>頭皮が頭蓋骨の上で滑るように動くか、部位によって動きに差がないかを確認します。</li>
+<li>動きにくい部位がある、頭皮が張った感じがする場合は、頭皮のこわばりが顔のむくみ感にも関係している目安と言われています。</li>
+</ol>
+<p class="small">※これは診断ではありません。ご自身の状態の傾向を知る目安としてお使いください。</p>
+
+<h2>顔のむくみ・たるみの原因と仕組み</h2>
+<h3>水分と巡りの滞り</h3>
+<p>顔のむくみは、余分な水分や老廃物が巡りきらずに滞ることで起こりやすいと言われています。寝ている間は体を動かさないため、朝はとくに顔に水分が集まりやすく、目元や頬が重く見えがちです。塩分の多い食事や水分バランスの乱れ、冷えなどが重なると、巡りはさらに滞りやすくなります。図1のように、顔のむくみは顔だけでなく、出口となる首やデコルテの巡りともつながっています。</p>
+<img class="main" src="../assets/diagram-kao-mukumi.png" alt="顔のむくみ・たるみの仕組み図解：巡りが滞った状態と、巡りが流れる状態の比較">
+<p class="small">図1　顔のむくみで起こりやすい変化と、顔まわりがすっきりした状態のイメージ。顔の状態には個人差があります。</p>
+<h3>頭皮の硬さと表情筋のこわばり</h3>
+<p>頭皮と顔の皮膚は一枚でつながっています。頭皮が硬くこわばると、顔の皮膚を引き上げる力も働きにくくなり、フェイスラインのもたつき感につながることがあります。また、表情筋は使わない部分ほどこわばりやすく、巡りの滞りとあわせて、顔全体が下がって見える印象の背景になると考えられています。頭まわりをほぐすことは、顔の印象を考えるうえでも大切なポイントです。</p>
+<h3>首・デコルテとのつながり</h3>
+<p>顔から流れていく巡りの出口は、首や鎖骨まわりにあります。首や肩が緊張して巡りが滞ると、顔のむくみも抜けにくくなると言われています。顔だけをケアしても戻りやすいと感じる方は、この出口の詰まりが関係している場合があります。顔・頭・首・デコルテを一続きでケアすることが、すっきり感への近道になります。</p>
+<h3>生活習慣との関わり</h3>
+<p>塩分の多い食事、睡眠不足、お酒、冷え、長時間のうつむき姿勢――こうした生活習慣の積み重ねは、顔のむくみ・たるみの印象を強めやすい要素です。年齢とともに肌のハリ感が変化していく中でも、日々の習慣と巡りのケアを見直すことで、顔まわりが軽く、すっきり見える状態は目指していけます。大切な予定の前のケアだけでなく、日常の積み重ねとして取り入れる方が増えています。</p>
+
+<h2>セルフケアで足りる場合・サロンケアが向く場合</h2>
+<p>むくみが軽く、朝のマッサージや温めケアで日中にはすっきりする日が多い場合は、まずご自宅でのセルフケアを続けて様子を見る方法があります。一方で、頭皮の硬さが自分ではほぐしにくい、顔から首まで一続きで流したい、大切な予定に向けて顔の印象を整えたいという場合は、サロンでのケアが向いている目安になります。サロンでは、頭まわりから顔、首、デコルテまでつなげてケアすることで、施術後に「顔が軽くなった」「目元がぱっちりした」と感じやすい状態を目指します。どちらが正解というものではなく、今の状態に合わせて選ぶことが大切です。</p>
 
 <h2>当サロンでのケア</h2>
-<p>当サロンでは、頭まわりを中心としたドライヘッドスパの手技で頭皮を丁寧にほぐし、顔まわりは美容整体の手技で引き上げるようなイメージでケアします。首やデコルテまでつなげて流すことで、顔だけに留まらない全体の巡りを意識した施術を心がけています。施術後は、顔まわりが軽くなったような感覚や、目元がぱっちりしたような体感を目指します。大切な予定の前のケアにもおすすめです。</p>
-<p class="small">施術は、施術歴30年・鍼灸師の平賀建人が担当します。美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせます。</p>
+<p>当サロンの顔のむくみ・たるみケアは、「頭から引き上げるように、顔まわりの巡りを整える」ことを目指す組み立てです。頭・顔・首・デコルテを一続きで捉え、部位と目的に合わせて3つの手技を組み合わせます。</p>
+<p><strong>ドライヘッドスパ</strong>：頭まわりを中心に、頭皮を丁寧にほぐす手技です。頭皮のこわばりをゆるめ、顔を引き上げる土台を整えることを目的に進めます。<br>
+<strong>美容整体</strong>：顔まわりは引き上げるようなイメージでケアし、あわせて首のラインと頭の位置を整えます。顔全体のバランス感を整えることを目的に進めます。<br>
+<strong>アロマオイルマッサージ</strong>：首やデコルテまでつなげて流すようにケアし、顔だけに留まらない全体の巡りを意識した施術を心がけます。香りに包まれるリラックス感の高いケアです。</p>
+<p>ケアを通して目指すのは、こんな変化です。</p>
+<ul class="care">
+<li>顔まわりが軽くなり、朝のむくみ感が気になりにくい印象へ</li>
+<li>目元がぱっちりしたような、すっきりした感覚へ</li>
+<li>フェイスラインがすっきり見える印象へ</li>
+<li>頭皮がやわらかくなり、頭全体が軽く感じられる状態へ</li>
+<li>首・デコルテまで巡りが流れて、顔色の印象も明るく見える仕上がりへ</li>
+</ul>
+<p>施術後は、顔まわりが軽くなったような感覚や、目元がぱっちりしたような体感を目指します。大切な予定の前のケアにもおすすめです。施術の前後で鏡を一緒に確認し、感覚の違いを確かめながら、ご自宅で続けやすい朝のケアのポイントもご案内します。</p>
+<img class="main" src="../assets/stella-oil.jpg" alt="アロマオイルマッサージで首・デコルテをケアするイメージイラスト">
+
+<h2>施術の流れ</h2>
+<div class="step"><span class="st">STEP1 受付・カウンセリング</span><br>ご来店後、気になる部位やお悩み、ご希望の強さなどをうかがいます。完全個室のため、周りを気にせずお話しいただけます。</div>
+<div class="step"><span class="st">STEP2 お身体の状態確認</span><br>頭皮の硬さや顔まわりの状態、首・肩の緊張などを一緒に確認し、その日の状態に合わせた施術の進め方をご案内します。</div>
+<div class="step"><span class="st">STEP3 施術</span><br>美容整体を中心に、ご希望に応じてアロマオイルマッサージ、もみほぐしを組み合わせて進めます。強さは途中でも調整できます。</div>
+<div class="step"><span class="st">STEP4 終わりのご案内</span><br>施術後の状態を確認し、ご自宅で続けやすいセルフケアのポイントをお伝えします。次回の目安についても、ご希望があればご案内します。</div>
+
+<h2>料金</h2>
+<table>
+<tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
+<tr><td>80分</td><td>―</td><td>3,000円</td></tr>
+<tr><td>100分</td><td>10,000円</td><td>4,000円</td></tr>
+<tr><td>120分</td><td>―</td><td>5,000円</td></tr>
+</table>
+<p class="small">クリスマスキャンペーンは12月25日まで、ご新規様もリピーターの方も対象です。施術内容は当日の状態とご希望に合わせて組み立てます。</p>
 
 <h2>ご自宅でできるセルフケア</h2>
 <ul class="care">
-<li>朝、冷水と温水で交互に顔を洗い、巡りを促す</li>
-<li>耳の前後を指で挟んで円を描くようにほぐし、首筋を下へなでおろす</li>
-<li>寝る前の塩分と水分の摂りすぎに気をつけ、枕の高さを調整する</li>
+<li>朝の流しマッサージ：洗顔のあと、指の腹で顔の中心から外側へ、耳の下から首、鎖骨へとやさしくなで下ろします。各部位5回ほど、朝の身支度のときに取り入れるのが目安です。</li>
+<li>頭皮マッサージ：指の腹で頭皮全体を小さく円を描くように動かします。1回2〜3分、シャンプーの時間に取り入れると続けやすくなります。</li>
+<li>温冷タオル：蒸しタオルで顔を温めたあと、冷たいタオルを軽く当てます。温めて巡りを促すケアとして、週に2〜3回が目安です。</li>
+<li>塩分と水分の意識：塩分の多い食事が続いた日は、水分をこまめに取ることと、夜の入浴で体を温めることを意識してみてください。</li>
 </ul>
-
-<h2>受診の目安</h2>
-<p>むくみが片側だけに強い、長期間続く、体のむくみも伴う場合は、医療機関への受診をおすすめします。</p>
-
 <p style="font-weight:bold;color:#1e4d3b;margin:26px 0 4px">ご自宅でのケアに：セルフケア資料ライブラリ（無料）</p>
 <p>このお悩みに合わせたセルフケアの考え方を、無料の資料ライブラリでご紹介しています。<br>
 <a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="color:#1e4d3b">セルフケア資料ライブラリを開く →</a></p>
 
+<h2>受診の目安</h2>
+<p>むくみが片側だけに強い、長期間続く、体のむくみも伴う場合は、施術の前に医療機関への受診をおすすめします。また、急な体重の変化や息苦しさを伴う場合も、医療機関でご相談ください。</p>
+
+<h2>よくある質問</h2>
+<div class="faq"><p class="q">Q. 初めてでも大丈夫ですか？</p><p class="a">はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで気になる部位やご予定をうかがい、無理のない内容から始めます。施術の前後で鏡を一緒に確認しながら「顔が軽くなった」「目元がぱっちりした」といった感覚の違いを確かめますので、初めての方も安心してご利用いただけます。</p></div>
+<div class="faq"><p class="q">Q. 施術は痛いですか？</p><p class="a">強さは、ご希望をうかがいながら調整します。顔まわりはやさしい圧を基本に、頭皮は心地よい圧で丁寧にほぐしていきます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。</p></div>
+<div class="faq"><p class="q">Q. コースはどう選べばいいですか？</p><p class="a">80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。顔のむくみのケアで頭まわりから顔、首、デコルテ、肩までゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。</p></div>
+<div class="faq"><p class="q">Q. 場所と予約方法を教えてください。</p><p class="a">大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。</p></div>
+<div class="faq"><p class="q">Q. 男性も受けられますか？</p><p class="a">当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。</p></div>
+
+<h2>施術者について</h2>
+<div class="profile">
+<p style="margin:0 0 6px"><strong>平賀建人</strong>（施術歴30年）</p>
+<p style="margin:0">鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナーの資格を持ち、美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせて施術します。このページの内容は、施術者の知識と経験をもとに作成しています。</p>
+</div>
+<img class="main" src="../assets/stella-posture.jpg" alt="首と背骨のラインをイメージしたイラスト">
+
 <h2>料金・ご予約</h2>
-<div class="campaign">🎄 クリスマスキャンペーン 🎄<br>ご新規様もリピーターの方も 12/25まで<br>
+<div class="campaign">クリスマスキャンペーン<br>ご新規様もリピーターの方も 12/25まで<br>
 <span class="price">80分 <span class="gold">3,000円</span>／100分 <span class="gold">4,000円</span>／120分 <span class="gold">5,000円</span></span><br>
 <span class="small" style="color:#ddd">通常価格は100分10,000円です。施術内容はご希望に合わせて組み立てます。</span></div>
 <a class="btn" href="https://coubic.com/stella-polaris">予約サイト（Coubic）はこちら</a>
@@ -127,11 +260,11 @@ body{padding-bottom:84px}
 
 <h2>関連するお悩み</h2>
 <ul class="links">
-<li><a href="kao-yugami.html">顔の歪み・左右差</a></li>
-<li><a href="gansei-hirou.html">眼精疲労・まぶたの重み</a></li>
-<li><a href="era-hari.html">エラ張り・食いしばり</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/kao-yugami.html">顔の歪み・左右差</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/gansei-hirou.html">眼精疲労・まぶたの重み</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/era-hari.html">エラ張り・食いしばり</a></li>
 </ul>
-<a class="btn sub" href="../index.html">トップページへ戻る</a>
+<a class="btn sub" href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/">トップページへ戻る</a>
 
 <footer>
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>

@@ -17,18 +17,30 @@
 <style>
 body{margin:0;background:#f5f1e6;color:#333;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8}
 .wrap{max-width:760px;margin:0 auto;background:#fffdf7;padding:0 20px 40px}
+.note{background:#7a1f2b;color:#fff;text-align:center;padding:8px;font-size:13px}
 h1{font-size:24px;color:#1e4d3b;text-align:center;margin:24px 0 4px}
 .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px}
 img.main{width:100%;height:auto;display:block;border-radius:6px}
 .campaign{background:#1e4d3b;color:#fff;border-radius:8px;padding:14px 18px;margin:18px 0;text-align:center}
 .campaign .price{font-size:20px;font-weight:bold}.gold{color:#e8c97a}
 h2{font-size:19px;color:#1e4d3b;border-left:6px solid #7a1f2b;padding-left:10px;margin:34px 0 10px}
+h3{font-size:16px;color:#1e4d3b;margin:22px 0 6px}
 .btn{display:block;text-align:center;background:#1e4d3b;color:#fff;text-decoration:none;border-radius:30px;padding:12px;margin:14px auto;max-width:420px;font-weight:bold}
 .btn.line{background:#06c755}.btn.sub{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b}
 table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #ccc;padding:8px;text-align:center}th{background:#eef4ee}
 ul.links{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 ul.links li a{display:block;background:#eef4ee;border-radius:6px;padding:8px 10px;color:#1e4d3b;text-decoration:none;font-size:14px}
 ul.care{padding-left:22px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 28px;position:relative;border-bottom:1px dotted #ccc}
+ul.check li:before{content:"✓";position:absolute;left:4px;color:#7a1f2b;font-weight:bold}
+ol.steps{padding-left:22px}
+.step{background:#eef4ee;border-radius:8px;padding:12px 16px;margin:10px 0}
+.step .st{font-weight:bold;color:#7a1f2b}
+.faq{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:10px 0}
+.faq .q{font-weight:bold;color:#1e4d3b;margin:0 0 4px}
+.faq .a{margin:0}
+.profile{background:#eef4ee;border-radius:8px;padding:14px 18px;margin:14px 0}
 .small{font-size:13px;color:#666}
 .lead{font-size:17px;color:#1e4d3b;font-weight:bold;text-align:center;margin:16px 0}
 footer{border-top:2px solid #1e4d3b;margin-top:36px;padding-top:14px;font-size:14px;color:#555;text-align:center}
@@ -77,6 +89,51 @@ footer a{color:#1e4d3b}
         "url": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/"
       },
       "mainEntityOfPage": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/youtsu.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "初めてでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで腰の状態や気になる部位をうかがい、無理のない内容から始めます。施術の前後で腰の動きを確認しながら「腰が軽くなった」「歩きやすい」といった感覚の違いを一緒に確かめますので、初めての方も安心してご利用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "施術は痛いですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "強さは、ご希望をうかがいながら調整します。バキバキと音を鳴らすような強い手技は行わず、痛みのない範囲で丁寧に進めることを大切にしています。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コースはどう選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。腰のケアで腰まわりからお尻、太もも、背中までゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "場所と予約方法を教えてください。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "男性も受けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -92,32 +149,108 @@ body{padding-bottom:84px}
 <div class="wrap">
 <h1>慢性腰痛・重だるさ</h1>
 <p class="sub">美容整体ステラ・ポラリス東三国｜大阪市淀川区東三国・東三国駅徒歩5分・女性向け</p>
-<img class="main" src="../assets/stella-posture.jpg" alt="慢性腰痛・重だるさのイメージイラスト">
+<img class="main" src="../assets/stella-posture.jpg" alt="腰と骨盤のラインをイメージしたイラスト">
 <p class="lead">痛くない骨盤矯正。腰の重さを取って歩き姿を美しく</p>
+<p>腰の重だるさは、長時間同じ姿勢でいることや、骨盤まわりの筋肉のバランスの崩れ、冷えなどが重なって感じやすくなると言われています。腰そのものだけでなく、お尻や太もも、背中の筋肉の状態も腰の感覚と関わります。痛みというほどではないけれど、夕方になると腰が重い、立ち上がるときに伸ばしたくなる、という状態が続くと、歩き姿勢にも影響が出てきます。このページでは、腰の重だるさの背景にある仕組みと、腰まわりが軽く感じられる状態を目指す当サロンでのケア、ご自宅でできるセルフケアをご案内します。まずは下のチェックで、ご自身の状態を確かめてみてください。</p>
+<a class="btn" href="https://coubic.com/stella-polaris">ご予約はこちら（Coubic）</a>
 
-<h2>そのお悩みについて</h2>
-<p>腰の重だるさは、長時間同じ姿勢でいることや、骨盤まわりの筋肉のバランスの崩れ、冷えなどが重なって感じやすくなると言われています。腰そのものだけでなく、お尻や太もも、背中の筋肉の状態も腰の感覚と関わります。痛みというほどではないけれど、夕方になると腰が重い、立ち上がるときに伸ばしたくなる、という状態が続くと、歩き姿勢にも影響が出てきます。</p>
+<h2>こんなお悩みありませんか</h2>
+<ul class="check">
+<li>夕方になると腰が重だるく、伸ばしたくなる</li>
+<li>長時間座ったあと、立ち上がるときに腰が固まった感じがする</li>
+<li>朝起きたとき、腰まわりが重く感じる日が多い</li>
+<li>歩く姿勢が崩れている気がする</li>
+<li>お尻や太ももまで、重さが広がる感じがする</li>
+<li>マッサージを受けても、数日で元の重さに戻ってしまう</li>
+<li>体が冷えると、腰の重さが強くなる気がする</li>
+</ul>
+<p>当てはまる項目が多いほど、腰まわりの筋肉の疲れやバランスの崩れが積み重なっている目安とされています。腰の重さは腰だけの問題ではなく、お尻・太もも・背中を含めた全体の状態と関わっています。次のセルフチェックで、今の腰の動きの傾向を確かめてみましょう。</p>
+
+<h2>簡単セルフチェック（前屈・後屈チェック）</h2>
+<p>立ったままできる、腰の動きの傾向を知るための簡単な方法です。</p>
+<ol class="steps">
+<li>まっすぐ立ち、ゆっくり前屈して、腰や背中のつっぱり感を確認します。</li>
+<li>次に、両手を腰に当てて、ゆっくり後ろへ反らします。</li>
+<li>前屈と後屈でつっぱる場所が偏っている、左右で感覚が違う場合は、腰まわりの筋肉のバランスに偏りがある目安と言われています。痛みがある場合は無理をしないでください。</li>
+</ol>
+<p class="small">※これは診断ではありません。ご自身の状態の傾向を知る目安としてお使いください。</p>
+
+<h2>慢性腰痛・重だるさの原因と仕組み</h2>
+<h3>同じ姿勢と筋肉の疲れ</h3>
+<p>腰は、上半身の重さを支えながら体を動かす要の部位です。デスクワークや立ち仕事で同じ姿勢が続くと、腰まわりの筋肉は同じ状態で働き続け、疲れがたまりやすくなります。夕方に重だるく感じるのは、その日の疲れの積み重ねが表れているサインとも言えます。図1のように、腰の重さは腰だけでなく、骨盤・お尻・太もも・背中を含めた全体のバランスとつながっています。</p>
+<img class="main" src="../assets/diagram-youtsu.png" alt="腰の重だるさの仕組み図解：腰に負担がかかった姿勢と、バランスが整った姿勢の比較">
+<p class="small">図1　腰の重だるさで起こりやすい変化と、バランスが整った姿勢のイメージ。姿勢の状態には個人差があります。</p>
+<h3>骨盤まわりのバランス</h3>
+<p>骨盤は腰の土台です。骨盤の傾きや左右のバランスが崩れると、腰まわりの筋肉にかかる負担にも偏りが出やすくなります。反り腰や猫背といった姿勢のクセは、そのまま腰の負担の偏りにつながるため、腰のケアでは骨盤を含めた土台を見ることが大切です。土台が整うと、腰まわりの筋肉は無理のない働き方を取り戻しやすくなります。</p>
+<h3>お尻・太もも・背中とのつながり</h3>
+<p>腰の感覚は、腰の筋肉だけで決まるものではありません。お尻の筋肉が使いにくいと腰が代わりに頑張り、太ももの張りが強いと骨盤の動きが制限され、背中の緊張は腰まで波及します。腰が重いと感じるときほど、周りの部位を含めてゆるめることが、腰まわりの軽さへの近道になります。</p>
+<h3>冷えと巡りの影響</h3>
+<p>腰まわりは冷えやすい部位でもあります。冷房や冬の冷えで筋肉がこわばると、巡りが滞り、重だるさの感覚が強まりやすいと言われています。冷えると重くなる自覚がある方は、温めるケアを取り入れるだけでも感覚が変わることがあります。巡りのよい、温かい状態を保つことは、腰のケアの基本です。</p>
+
+<h2>セルフケアで足りる場合・サロンケアが向く場合</h2>
+<p>重さが軽く、温めたりストレッチをしたりしたあとに腰が軽く感じる日が多い場合は、まずご自宅でのセルフケアを続けて様子を見る方法があります。一方で、腰まわりが自分ではゆるめにくい、ほぐしても数日で戻ってしまう、骨盤を含めた姿勢のバランスから整えたいという場合は、サロンでのケアが向いている目安になります。サロンでは、バキバキと音を鳴らすような強い手技ではなく、痛みのない範囲で骨盤まわりを整えることで、施術後に「腰が軽くなった」「歩きやすい」と感じやすい状態を目指します。どちらが正解というものではなく、今の状態に合わせて選ぶことが大切です。</p>
 
 <h2>当サロンでのケア</h2>
-<p>当サロンでは、バキバキと音を鳴らすような強い手技は行わず、痛みのない範囲で骨盤まわりを整える美容整体を心がけています。腰・お尻・太ももをオイルマッサージともみほぐしで丁寧にゆるめ、全身のバランスを確認しながら施術します。施術後は腰まわりが軽くなったような感覚や、歩くときの足運びの変化を目指します。お仕事帰りに立ち寄りやすい夜の時間帯も営業しています。</p>
-<p class="small">施術は、施術歴30年・鍼灸師の平賀建人が担当します。美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせます。</p>
+<p>当サロンの腰まわりケアは、「骨盤の土台を整え、腰まわりが軽く感じられる状態」を目指す組み立てです。全身のバランスを確認しながら、部位と目的に合わせて3つの手技を組み合わせます。</p>
+<p><strong>美容整体</strong>：痛みのない範囲で骨盤まわりを整える手技を行い、腰に負担のかかりにくい姿勢の土台をつくることを目的に進めます。<br>
+<strong>アロマオイルマッサージ</strong>：腰・お尻・太ももをオイルで丁寧にゆるめ、巡りが流れやすい状態を目指します。香りに包まれるリラックス感の高いケアです。<br>
+<strong>もみほぐし</strong>：腰まわりや背中の張りやすい筋肉をほぐし、重だるさの背景になりやすい緊張をゆるめることを目的に進めます。</p>
+<p>ケアを通して目指すのは、こんな変化です。</p>
+<ul class="care">
+<li>腰まわりが軽くなり、立ち上がりがスムーズな感覚へ</li>
+<li>歩くときの足運びが軽やかになり、歩き姿が美しく見える印象へ</li>
+<li>お尻や太ももまでゆるんで、下半身全体が軽く感じられる状態へ</li>
+<li>姿勢の土台が整って、夕方の重だるさを感じにくい状態へ</li>
+<li>体が温まり、巡りがよくなったような体感へ</li>
+</ul>
+<p>施術後は腰まわりが軽くなったような感覚や、歩くときの足運びの変化を目指します。お仕事帰りに立ち寄りやすい夜の時間帯も営業しています。施術の前後で腰の動きを一緒に確認し、ご自宅で続けやすい温め方や姿勢のポイントもご案内します。</p>
+<img class="main" src="../assets/stella-oil.jpg" alt="アロマオイルマッサージで腰まわりをケアするイメージイラスト">
+
+<h2>施術の流れ</h2>
+<div class="step"><span class="st">STEP1 受付・カウンセリング</span><br>ご来店後、気になる部位やお悩み、ご希望の強さなどをうかがいます。完全個室のため、周りを気にせずお話しいただけます。</div>
+<div class="step"><span class="st">STEP2 お身体の状態確認</span><br>骨盤の傾きや腰の動き、姿勢の状態などを一緒に確認し、その日の状態に合わせた施術の進め方をご案内します。</div>
+<div class="step"><span class="st">STEP3 施術</span><br>美容整体を中心に、ご希望に応じてアロマオイルマッサージ、もみほぐしを組み合わせて進めます。強さは途中でも調整できます。</div>
+<div class="step"><span class="st">STEP4 終わりのご案内</span><br>施術後の状態を確認し、ご自宅で続けやすいセルフケアのポイントをお伝えします。次回の目安についても、ご希望があればご案内します。</div>
+
+<h2>料金</h2>
+<table>
+<tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
+<tr><td>80分</td><td>―</td><td>3,000円</td></tr>
+<tr><td>100分</td><td>10,000円</td><td>4,000円</td></tr>
+<tr><td>120分</td><td>―</td><td>5,000円</td></tr>
+</table>
+<p class="small">クリスマスキャンペーンは12月25日まで、ご新規様もリピーターの方も対象です。施術内容は当日の状態とご希望に合わせて組み立てます。</p>
 
 <h2>ご自宅でできるセルフケア</h2>
 <ul class="care">
-<li>長時間座るときは1時間に一度立ち上がり、腰をゆっくり反らす・丸める動きをする</li>
-<li>お尻の筋肉を伸ばすストレッチ（仰向けで片足を胸に引き寄せる）を行う</li>
-<li>腰まわりを冷やさないよう、腹巻きや衣類で調整する</li>
+<li>腰を温める：蒸しタオルやカイロで腰まわりを温めます。冷えを感じる日はとくに、入浴で体全体を温めることを意識してください。</li>
+<li>お尻のストレッチ：椅子に座って片足を反対の膝に乗せ、体を前に倒します。左右それぞれ20〜30秒、1日1〜2回が目安です。</li>
+<li>骨盤ゆらし体操：仰向けで膝を立て、骨盤を前後にゆっくりゆらします。朝起きたときと夜寝る前に各10回ほど行うと、腰まわりがほぐれやすくなります。</li>
+<li>座り姿勢の見直し：長時間座るときは、1時間に一度立ち上がって軽く体を伸ばします。クッションで腰を支える工夫も取り入れてみてください。</li>
 </ul>
-
-<h2>受診の目安</h2>
-<p>足のしびれや力が入りにくい、安静にしても痛みが強くなる場合は、医療機関への受診をおすすめします。</p>
-
 <p style="font-weight:bold;color:#1e4d3b;margin:26px 0 4px">ご自宅でのケアに：セルフケア資料ライブラリ（無料）</p>
 <p>このお悩みに合わせたセルフケアの考え方を、無料の資料ライブラリでご紹介しています。<br>
 <a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="color:#1e4d3b">セルフケア資料ライブラリを開く →</a></p>
 
+<h2>受診の目安</h2>
+<p>足のしびれや力が入りにくい、安静にしても痛みが強くなる場合は、施術の前に医療機関への受診をおすすめします。また、転倒などのあとに痛みが出た場合や、発熱を伴う場合も、医療機関でご相談ください。</p>
+
+<h2>よくある質問</h2>
+<div class="faq"><p class="q">Q. 初めてでも大丈夫ですか？</p><p class="a">はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで腰の状態や気になる部位をうかがい、無理のない内容から始めます。施術の前後で腰の動きを確認しながら「腰が軽くなった」「歩きやすい」といった感覚の違いを一緒に確かめますので、初めての方も安心してご利用いただけます。</p></div>
+<div class="faq"><p class="q">Q. 施術は痛いですか？</p><p class="a">強さは、ご希望をうかがいながら調整します。バキバキと音を鳴らすような強い手技は行わず、痛みのない範囲で丁寧に進めることを大切にしています。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。</p></div>
+<div class="faq"><p class="q">Q. コースはどう選べばいいですか？</p><p class="a">80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。腰のケアで腰まわりからお尻、太もも、背中までゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。</p></div>
+<div class="faq"><p class="q">Q. 場所と予約方法を教えてください。</p><p class="a">大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。</p></div>
+<div class="faq"><p class="q">Q. 男性も受けられますか？</p><p class="a">当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。</p></div>
+
+<h2>施術者について</h2>
+<div class="profile">
+<p style="margin:0 0 6px"><strong>平賀建人</strong>（施術歴30年）</p>
+<p style="margin:0">鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナーの資格を持ち、美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせて施術します。このページの内容は、施術者の知識と経験をもとに作成しています。</p>
+</div>
+<img class="main" src="../assets/stella-hero.jpg" alt="ステラ・ポラリス東三国のサロンの雰囲気を描いたイラスト">
+
 <h2>料金・ご予約</h2>
-<div class="campaign">🎄 クリスマスキャンペーン 🎄<br>ご新規様もリピーターの方も 12/25まで<br>
+<div class="campaign">クリスマスキャンペーン<br>ご新規様もリピーターの方も 12/25まで<br>
 <span class="price">80分 <span class="gold">3,000円</span>／100分 <span class="gold">4,000円</span>／120分 <span class="gold">5,000円</span></span><br>
 <span class="small" style="color:#ddd">通常価格は100分10,000円です。施術内容はご希望に合わせて組み立てます。</span></div>
 <a class="btn" href="https://coubic.com/stella-polaris">予約サイト（Coubic）はこちら</a>
@@ -127,11 +260,11 @@ body{padding-bottom:84px}
 
 <h2>関連するお悩み</h2>
 <ul class="links">
-<li><a href="kubire.html">くびれ作り</a></li>
-<li><a href="benpi.html">便秘・ぽっこり下腹</a></li>
-<li><a href="sango-kotsuban.html">骨盤の広がり（産後の骨盤矯正）</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/kubire.html">くびれ作り</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/benpi.html">便秘・ぽっこり下腹</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/sango-kotsuban.html">骨盤の広がり（産後の骨盤矯正）</a></li>
 </ul>
-<a class="btn sub" href="../index.html">トップページへ戻る</a>
+<a class="btn sub" href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/">トップページへ戻る</a>
 
 <footer>
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>

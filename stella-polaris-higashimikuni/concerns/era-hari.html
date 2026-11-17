@@ -17,18 +17,30 @@
 <style>
 body{margin:0;background:#f5f1e6;color:#333;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8}
 .wrap{max-width:760px;margin:0 auto;background:#fffdf7;padding:0 20px 40px}
+.note{background:#7a1f2b;color:#fff;text-align:center;padding:8px;font-size:13px}
 h1{font-size:24px;color:#1e4d3b;text-align:center;margin:24px 0 4px}
 .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px}
 img.main{width:100%;height:auto;display:block;border-radius:6px}
 .campaign{background:#1e4d3b;color:#fff;border-radius:8px;padding:14px 18px;margin:18px 0;text-align:center}
 .campaign .price{font-size:20px;font-weight:bold}.gold{color:#e8c97a}
 h2{font-size:19px;color:#1e4d3b;border-left:6px solid #7a1f2b;padding-left:10px;margin:34px 0 10px}
+h3{font-size:16px;color:#1e4d3b;margin:22px 0 6px}
 .btn{display:block;text-align:center;background:#1e4d3b;color:#fff;text-decoration:none;border-radius:30px;padding:12px;margin:14px auto;max-width:420px;font-weight:bold}
 .btn.line{background:#06c755}.btn.sub{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b}
 table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #ccc;padding:8px;text-align:center}th{background:#eef4ee}
 ul.links{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 ul.links li a{display:block;background:#eef4ee;border-radius:6px;padding:8px 10px;color:#1e4d3b;text-decoration:none;font-size:14px}
 ul.care{padding-left:22px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 28px;position:relative;border-bottom:1px dotted #ccc}
+ul.check li:before{content:"✓";position:absolute;left:4px;color:#7a1f2b;font-weight:bold}
+ol.steps{padding-left:22px}
+.step{background:#eef4ee;border-radius:8px;padding:12px 16px;margin:10px 0}
+.step .st{font-weight:bold;color:#7a1f2b}
+.faq{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:10px 0}
+.faq .q{font-weight:bold;color:#1e4d3b;margin:0 0 4px}
+.faq .a{margin:0}
+.profile{background:#eef4ee;border-radius:8px;padding:14px 18px;margin:14px 0}
 .small{font-size:13px;color:#666}
 .lead{font-size:17px;color:#1e4d3b;font-weight:bold;text-align:center;margin:16px 0}
 footer{border-top:2px solid #1e4d3b;margin-top:36px;padding-top:14px;font-size:14px;color:#555;text-align:center}
@@ -77,6 +89,51 @@ footer a{color:#1e4d3b}
         "url": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/"
       },
       "mainEntityOfPage": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/era-hari.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "初めてでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで顎まわりの状態や食いしばりの自覚をうかがい、無理のない内容から始めます。施術の前後で「顎が軽くなった」「力の抜けた感じがする」といった感覚の違いを一緒に確認しながら進めますので、初めての方も安心してご利用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "施術は痛いですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "強さは、ご希望をうかがいながら調整します。こわばった咬筋は最初に圧を強く感じることがありますが、無理のない圧で少しずつゆるめていきます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コースはどう選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。エラ張りのケアで顎まわりから首・肩、頭まわりまでゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "場所と予約方法を教えてください。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "男性も受けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -92,32 +149,108 @@ body{padding-bottom:84px}
 <div class="wrap">
 <h1>エラ張り・食いしばり</h1>
 <p class="sub">美容整体ステラ・ポラリス東三国｜大阪市淀川区東三国・東三国駅徒歩5分・女性向け</p>
-<img class="main" src="../assets/stella-hero.jpg" alt="エラ張り・食いしばりのイメージイラスト">
+<img class="main" src="../assets/stella-hero.jpg" alt="顎まわりをケアするイメージイラスト">
 <p class="lead">食いしばりによる顔の横幅を、筋肉の弛緩と整体で</p>
+<p>集中しているときや寝ている間に無意識に歯を食いしばると、噛む筋肉である咬筋が働き続け、こわばったままになりやすくなります。咬筋は顔の中でも強い力を持つ筋肉で、その張りがエラの張り出しや顔の横幅の印象につながることがあります。朝起きたときの顎の疲れや、頭まわりの重さを感じる方は、食いしばりのクセが隠れていることも少なくありません。このページでは、エラ張りと食いしばりの背景にある仕組みと、顎まわりが軽く感じられる状態を目指す当サロンでのケア、ご自宅でできるセルフケアをご案内します。まずは下のチェックで、ご自身の状態を確かめてみてください。</p>
+<a class="btn" href="https://coubic.com/stella-polaris">ご予約はこちら（Coubic）</a>
 
-<h2>そのお悩みについて</h2>
-<p>集中しているときや寝ている間に無意識に歯を食いしばると、噛む筋肉である咬筋が働き続け、こわばったままになりやすくなります。咬筋は顔の中でも強い力を持つ筋肉で、その張りがエラの張り出しや顔の横幅の印象につながることがあります。朝起きたときの顎の疲れや、頭まわりの重さを感じる方は、食いしばりのクセが隠れていることも少なくありません。</p>
+<h2>こんなお悩みありませんか</h2>
+<ul class="check">
+<li>朝起きると、顎が疲れている感じがする</li>
+<li>集中していると、歯を食いしばっていることに気づく</li>
+<li>エラの張りで、顔が大きく見える気がする</li>
+<li>こめかみや頭の横が、重く感じることがある</li>
+<li>歯科で、歯のすり減りを指摘されたことがある</li>
+<li>寝ている間の歯ぎしりを、家族に指摘されたことがある</li>
+<li>顎まわりを触ると、硬く盛り上がっている感じがする</li>
+</ul>
+<p>当てはまる項目が多いほど、食いしばりのクセで咬筋がこわばり、張りが強まっている目安とされています。食いしばりは無意識の習慣だからこそ、気づいてゆるめるきっかけが大切です。次のセルフチェックで、今の咬筋の状態の傾向を確かめてみましょう。</p>
+
+<h2>簡単セルフチェック（咬筋チェック）</h2>
+<p>指で触ってできる、咬筋の張りの傾向を知るための簡単な方法です。</p>
+<ol class="steps">
+<li>両手の指を、耳の下あたりの頬（エラの部分）に当てます。</li>
+<li>奥歯を軽く噛みしめて、盛り上がる筋肉の硬さを確認し、次に力を抜いてやわらかさの違いを比べます。</li>
+<li>力を抜いても盛り上がりや硬さが残る感じがする、左右で硬さが違う場合は、咬筋がこわばっている目安と言われています。</li>
+</ol>
+<p class="small">※これは診断ではありません。ご自身の状態の傾向を知る目安としてお使いください。</p>
+
+<h2>エラ張り・食いしばりの原因と仕組み</h2>
+<h3>咬筋の働きと強さ</h3>
+<p>咬筋は、頬の外側から顎の骨につながる、噛むための筋肉です。ものを噛むとき以外にも、力を入れるときや集中するときに無意識に働くことがあり、顔の筋肉の中でもとくに強い力を発揮します。働く時間が長いほど筋肉は発達し、こわばりも強くなりやすいため、エラの張り感や顔の横幅の印象につながることがあります。図1のように、エラの張りは咬筋だけでなく、こめかみや首・肩の緊張ともつながっています。</p>
+<img class="main" src="../assets/diagram-era-hari.png" alt="エラ張り・食いしばりの仕組み図解：咬筋がこわばった状態と、ゆるんだ状態の比較">
+<p class="small">図1　食いしばりで起こりやすい変化と、顎まわりがゆるんだ状態のイメージ。顔の状態には個人差があります。</p>
+<h3>無意識の食いしばり</h3>
+<p>食いしばりの多くは無意識に起こります。仕事や家事に集中しているとき、重いものを持つとき、そして寝ている間――。日中の食いしばりは「気づく」ことで減らしていけますが、就寝中は自分では気づきにくく、朝の顎の疲れとして表れることがあります。食いしばりが続く生活では、咬筋が休む時間が少なくなり、張りが抜けにくくなっていきます。</p>
+<h3>首・肩の緊張とのつながり</h3>
+<p>食いしばるときは、顎だけでなく首や肩にも力が入っていることが多いものです。姿勢の崩れで頭が前に出ると、顎の位置や噛み合わせの感覚にも影響し、食いしばりやすさにつながることがあります。顎まわりのケアを考えるときは、首・肩・姿勢を含めた全体の緊張をゆるめることが、力の抜けた状態への近道になります。</p>
+<h3>顔の横幅の印象への影響</h3>
+<p>エラの張りが目立つと、顔の横幅が広く見え、フェイスラインの印象が重く見えがちです。反対に、咬筋のこわばりがゆるむと、顎まわりがすっきりと見え、フェイスラインの印象も軽やかになります。骨格そのものではなく、筋肉の緊張によって強まって見える部分は、ゆるめるケアで印象を変えていける余地があります。</p>
+
+<h2>セルフケアで足りる場合・サロンケアが向く場合</h2>
+<p>食いしばりの自覚があり、日中に気づいて力を抜く習慣がついてきた段階では、まずご自宅でのクセの見直しとセルフケアを続けて様子を見る方法があります。一方で、咬筋のこわばりが自分ではゆるめにくい、朝の顎の疲れが続いている、フェイスラインの印象もあわせて整えたいという場合は、サロンでのケアが向いている目安になります。サロンでは、咬筋やこめかみ、顎まわりを丁寧にゆるめ、首や肩の緊張も含めてほぐすことで、施術後に「顎が軽くなった」と感じやすい状態を目指します。どちらが正解というものではなく、今の状態に合わせて選ぶことが大切です。</p>
 
 <h2>当サロンでのケア</h2>
-<p>当サロンでは、咬筋やこめかみ、顎まわりの筋肉を指の腹で丁寧にゆるめ、力の抜けた状態を感じていただくことを大切にします。あわせて首や肩の緊張をオイルマッサージでほぐし、美容整体で頭と首のバランスを整えます。施術後は顎まわりが軽くなったような感覚を目指し、日常で食いしばりに気づくためのポイントや、就寝前にできるリラックスの方法もご案内します。</p>
-<p class="small">施術は、施術歴30年・鍼灸師の平賀建人が担当します。美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせます。</p>
+<p>当サロンのエラ張りケアは、「咬筋のこわばりをゆるめ、力の抜けた顎まわり」を目指す組み立てです。顎まわりだけでなく、連動する首・肩を含めて、部位と目的に合わせて3つの手技を組み合わせます。</p>
+<p><strong>もみほぐし</strong>：咬筋やこめかみ、顎まわりの筋肉を指の腹で丁寧にゆるめます。力の抜けた状態を感じていただくことを大切に進めます。<br>
+<strong>アロマオイルマッサージ</strong>：首や肩の緊張をオイルでほぐし、顎まわりに力が入りやすい土台からゆるめることを目的に進めます。香りに包まれるリラックス感の高いケアです。<br>
+<strong>美容整体</strong>：頭と首のバランスを整え、顎の位置が安定しやすい姿勢の土台をつくることを目的に進めます。</p>
+<p>ケアを通して目指すのは、こんな変化です。</p>
+<ul class="care">
+<li>顎まわりが軽くなり、朝の顎の疲れ感が気になりにくい状態へ</li>
+<li>エラの張り感がやわらいで、フェイスラインがすっきり見える印象へ</li>
+<li>こめかみの重さがゆるんで、頭まわりが軽く感じられる状態へ</li>
+<li>力の抜けた状態を体感し、日常で食いしばりに気づきやすくなるきっかけへ</li>
+<li>首・肩までゆるんで、全身がリラックスしやすい体感へ</li>
+</ul>
+<p>施術後は顎まわりが軽くなったような感覚を目指し、日常で食いしばりに気づくためのポイントや、就寝前にできるリラックスの方法もご案内します。施術の前後で顎まわりの感覚を一緒に確認し、力の抜けた状態の心地よさを確かめます。</p>
+<img class="main" src="../assets/stella-oil.jpg" alt="アロマオイルマッサージで首・肩をケアするイメージイラスト">
+
+<h2>施術の流れ</h2>
+<div class="step"><span class="st">STEP1 受付・カウンセリング</span><br>ご来店後、気になる部位やお悩み、ご希望の強さなどをうかがいます。完全個室のため、周りを気にせずお話しいただけます。</div>
+<div class="step"><span class="st">STEP2 お身体の状態確認</span><br>咬筋やこめかみの張り、首・肩の緊張などを一緒に確認し、その日の状態に合わせた施術の進め方をご案内します。</div>
+<div class="step"><span class="st">STEP3 施術</span><br>美容整体を中心に、ご希望に応じてアロマオイルマッサージ、もみほぐしを組み合わせて進めます。強さは途中でも調整できます。</div>
+<div class="step"><span class="st">STEP4 終わりのご案内</span><br>施術後の状態を確認し、ご自宅で続けやすいセルフケアのポイントをお伝えします。次回の目安についても、ご希望があればご案内します。</div>
+
+<h2>料金</h2>
+<table>
+<tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
+<tr><td>80分</td><td>―</td><td>3,000円</td></tr>
+<tr><td>100分</td><td>10,000円</td><td>4,000円</td></tr>
+<tr><td>120分</td><td>―</td><td>5,000円</td></tr>
+</table>
+<p class="small">クリスマスキャンペーンは12月25日まで、ご新規様もリピーターの方も対象です。施術内容は当日の状態とご希望に合わせて組み立てます。</p>
 
 <h2>ご自宅でできるセルフケア</h2>
 <ul class="care">
-<li>日中、上下の歯が触れていないか意識し、唇を閉じて歯は離す習慣をつける</li>
-<li>咬筋（エラのあたり）を指の腹で円を描くようにやさしくほぐす</li>
-<li>就寝前に深呼吸と顎の力を抜く練習をし、温かい飲み物でリラックスする</li>
+<li>上下の歯を離す意識：日中、気づいたときに上下の歯を軽く離し、唇を閉じて顎の力を抜きます。メモや付箋を目につく場所に置くなど、気づくきっかけをつくるのが目安です。</li>
+<li>就寝前の顎ストレッチ：口をゆっくり開け閉めする動きを5回、顎まわりを蒸しタオルで温めてから行います。寝る前の習慣にすると続けやすくなります。</li>
+<li>こめかみのセルフマッサージ：こめかみを指の腹で小さく円を描くようにやさしくほぐします。左右各30秒ほど、頭の重さを感じたタイミングで行ってください。</li>
+<li>咬筋を温める：蒸しタオルを頬から顎まわりに当てて5分ほど温めます。入浴後のリラックスした時間に、週に数回取り入れるのがおすすめです。</li>
 </ul>
-
-<h2>受診の目安</h2>
-<p>顎の痛みや口の開けにくさ、歯の痛みがある場合は、歯科への相談をおすすめします。</p>
-
 <p style="font-weight:bold;color:#1e4d3b;margin:26px 0 4px">ご自宅でのケアに：セルフケア資料ライブラリ（無料）</p>
 <p>このお悩みに合わせたセルフケアの考え方を、無料の資料ライブラリでご紹介しています。<br>
 <a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="color:#1e4d3b">セルフケア資料ライブラリを開く →</a></p>
 
+<h2>受診の目安</h2>
+<p>顎の痛みや口の開けにくさ、歯の痛みがある場合は、施術の前に歯科への相談をおすすめします。また、顎の関節から音がして痛みを伴う場合も、歯科でご相談ください。</p>
+
+<h2>よくある質問</h2>
+<div class="faq"><p class="q">Q. 初めてでも大丈夫ですか？</p><p class="a">はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで顎まわりの状態や食いしばりの自覚をうかがい、無理のない内容から始めます。施術の前後で「顎が軽くなった」「力の抜けた感じがする」といった感覚の違いを一緒に確認しながら進めますので、初めての方も安心してご利用いただけます。</p></div>
+<div class="faq"><p class="q">Q. 施術は痛いですか？</p><p class="a">強さは、ご希望をうかがいながら調整します。こわばった咬筋は最初に圧を強く感じることがありますが、無理のない圧で少しずつゆるめていきます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。</p></div>
+<div class="faq"><p class="q">Q. コースはどう選べばいいですか？</p><p class="a">80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。エラ張りのケアで顎まわりから首・肩、頭まわりまでゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。</p></div>
+<div class="faq"><p class="q">Q. 場所と予約方法を教えてください。</p><p class="a">大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。</p></div>
+<div class="faq"><p class="q">Q. 男性も受けられますか？</p><p class="a">当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。</p></div>
+
+<h2>施術者について</h2>
+<div class="profile">
+<p style="margin:0 0 6px"><strong>平賀建人</strong>（施術歴30年）</p>
+<p style="margin:0">鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナーの資格を持ち、美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせて施術します。このページの内容は、施術者の知識と経験をもとに作成しています。</p>
+</div>
+<img class="main" src="../assets/stella-posture.jpg" alt="首と背骨のラインをイメージしたイラスト">
+
 <h2>料金・ご予約</h2>
-<div class="campaign">🎄 クリスマスキャンペーン 🎄<br>ご新規様もリピーターの方も 12/25まで<br>
+<div class="campaign">クリスマスキャンペーン<br>ご新規様もリピーターの方も 12/25まで<br>
 <span class="price">80分 <span class="gold">3,000円</span>／100分 <span class="gold">4,000円</span>／120分 <span class="gold">5,000円</span></span><br>
 <span class="small" style="color:#ddd">通常価格は100分10,000円です。施術内容はご希望に合わせて組み立てます。</span></div>
 <a class="btn" href="https://coubic.com/stella-polaris">予約サイト（Coubic）はこちら</a>
@@ -127,11 +260,11 @@ body{padding-bottom:84px}
 
 <h2>関連するお悩み</h2>
 <ul class="links">
-<li><a href="gansei-hirou.html">眼精疲労・まぶたの重み</a></li>
-<li><a href="sorigoshi.html">反り腰・ぽっこりお腹</a></li>
-<li><a href="kubire.html">くびれ作り</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/gansei-hirou.html">眼精疲労・まぶたの重み</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/sorigoshi.html">反り腰・ぽっこりお腹</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/kubire.html">くびれ作り</a></li>
 </ul>
-<a class="btn sub" href="../index.html">トップページへ戻る</a>
+<a class="btn sub" href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/">トップページへ戻る</a>
 
 <footer>
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>

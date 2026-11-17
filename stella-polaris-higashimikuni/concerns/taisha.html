@@ -17,18 +17,30 @@
 <style>
 body{margin:0;background:#f5f1e6;color:#333;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8}
 .wrap{max-width:760px;margin:0 auto;background:#fffdf7;padding:0 20px 40px}
+.note{background:#7a1f2b;color:#fff;text-align:center;padding:8px;font-size:13px}
 h1{font-size:24px;color:#1e4d3b;text-align:center;margin:24px 0 4px}
 .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px}
 img.main{width:100%;height:auto;display:block;border-radius:6px}
 .campaign{background:#1e4d3b;color:#fff;border-radius:8px;padding:14px 18px;margin:18px 0;text-align:center}
 .campaign .price{font-size:20px;font-weight:bold}.gold{color:#e8c97a}
 h2{font-size:19px;color:#1e4d3b;border-left:6px solid #7a1f2b;padding-left:10px;margin:34px 0 10px}
+h3{font-size:16px;color:#1e4d3b;margin:22px 0 6px}
 .btn{display:block;text-align:center;background:#1e4d3b;color:#fff;text-decoration:none;border-radius:30px;padding:12px;margin:14px auto;max-width:420px;font-weight:bold}
 .btn.line{background:#06c755}.btn.sub{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b}
 table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #ccc;padding:8px;text-align:center}th{background:#eef4ee}
 ul.links{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 ul.links li a{display:block;background:#eef4ee;border-radius:6px;padding:8px 10px;color:#1e4d3b;text-decoration:none;font-size:14px}
 ul.care{padding-left:22px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 28px;position:relative;border-bottom:1px dotted #ccc}
+ul.check li:before{content:"✓";position:absolute;left:4px;color:#7a1f2b;font-weight:bold}
+ol.steps{padding-left:22px}
+.step{background:#eef4ee;border-radius:8px;padding:12px 16px;margin:10px 0}
+.step .st{font-weight:bold;color:#7a1f2b}
+.faq{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:10px 0}
+.faq .q{font-weight:bold;color:#1e4d3b;margin:0 0 4px}
+.faq .a{margin:0}
+.profile{background:#eef4ee;border-radius:8px;padding:14px 18px;margin:14px 0}
 .small{font-size:13px;color:#666}
 .lead{font-size:17px;color:#1e4d3b;font-weight:bold;text-align:center;margin:16px 0}
 footer{border-top:2px solid #1e4d3b;margin-top:36px;padding-top:14px;font-size:14px;color:#555;text-align:center}
@@ -77,6 +89,51 @@ footer a{color:#1e4d3b}
         "url": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/"
       },
       "mainEntityOfPage": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/taisha.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "初めてでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで体の状態や気になる部位、生活習慣をうかがい、無理のない内容から始めます。施術の前後で体の感覚を確認しながら「体が温まった」「軽く動ける」といった違いを一緒に確かめますので、初めての方も安心してご利用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "施術は痛いですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "強さは、ご希望をうかがいながら調整します。全身をゆるめることを目的に、お身体の状態に合わせた圧で丁寧に進めます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コースはどう選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。全身の巡りを整えるケアで頭から足先までゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "場所と予約方法を教えてください。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "男性も受けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -92,32 +149,108 @@ body{padding-bottom:84px}
 <div class="wrap">
 <h1>代謝低下・痩せにくい</h1>
 <p class="sub">美容整体ステラ・ポラリス東三国｜大阪市淀川区東三国・東三国駅徒歩5分・女性向け</p>
-<img class="main" src="../assets/stella-oil.jpg" alt="代謝低下・痩せにくいのイメージイラスト">
+<img class="main" src="../assets/stella-oil.jpg" alt="全身をケアするイメージイラスト">
 <p class="lead">骨格を整えて基礎代謝を支える。無理なダイエット卒業への道</p>
+<p>年齢を重ねると、筋肉量の変化などにより基礎代謝はゆるやかに低下していくと言われています。食事量は変わらないのに体型が変わってきた、疲れやすく冷えも気になる、という方は、姿勢の崩れや巡りの滞りも重なっていることがあります。無理な食事制限を繰り返すより、体の土台を整えながら生活習慣を見直すことが、長く続けられる体づくりにつながります。このページでは、代謝が低下しやすくなる背景と、体の土台を整えることを目指す当サロンでのケア、ご自宅でできるセルフケアをご案内します。まずは下のチェックで、ご自身の状態を確かめてみてください。</p>
+<a class="btn" href="https://coubic.com/stella-polaris">ご予約はこちら（Coubic）</a>
 
-<h2>そのお悩みについて</h2>
-<p>年齢を重ねると、筋肉量の変化などにより基礎代謝はゆるやかに低下していくと言われています。食事量は変わらないのに体型が変わってきた、疲れやすく冷えも気になる、という方は、姿勢の崩れや巡りの滞りも重なっていることがあります。無理な食事制限を繰り返すより、体の土台を整えながら生活習慣を見直すことが、長く続けられる体づくりにつながります。</p>
+<h2>こんなお悩みありませんか</h2>
+<ul class="check">
+<li>食事量は変わらないのに、体型が変わってきた</li>
+<li>疲れやすく、冷えも気になる</li>
+<li>無理な食事制限を繰り返してきた</li>
+<li>運動をしても、体が温まりにくい感じがする</li>
+<li>姿勢が崩れて、呼吸が浅い気がする</li>
+<li>むくみやすく、体が重く感じる日が多い</li>
+<li>長く続けられる体づくりをしたいと思っている</li>
+</ul>
+<p>当てはまる項目が多いほど、筋肉量の変化に加えて、姿勢の崩れや巡りの滞りが重なっている目安とされています。代謝の土台は、毎日の体の使い方と生活習慣の積み重ねです。次のセルフチェックで、今の体の状態の傾向を確かめてみましょう。</p>
+
+<h2>簡単セルフチェック（深呼吸チェック）</h2>
+<p>座ったままできる、呼吸と姿勢の状態の傾向を知るための簡単な方法です。</p>
+<ol class="steps">
+<li>背筋を伸ばして椅子に座り、両手をお腹と胸に当てます。</li>
+<li>ゆっくり息を吸い、お腹と胸のどちらが大きく動くかを確認します。</li>
+<li>胸だけが動き、お腹まで空気が入らない感じがする場合は、呼吸が浅くなり、姿勢も崩れやすい状態の目安と言われています。</li>
+</ol>
+<p class="small">※これは診断ではありません。ご自身の状態の傾向を知る目安としてお使いください。</p>
+
+<h2>代謝低下・痩せにくいの原因と仕組み</h2>
+<h3>基礎代謝と筋肉量の変化</h3>
+<p>基礎代謝は、呼吸や体温の維持など、生きるために使われるエネルギーのことです。年齢を重ねると筋肉量が少しずつ減り、基礎代謝もゆるやかに低下していくと言われています。食事量が同じでも体型が変わってくる背景には、この変化があります。だからこそ、無理な食事制限でさらに筋肉を減らすのではなく、体を動かしやすく整える土台づくりが大切になります。図1のように、代謝の状態は姿勢・呼吸・巡りを含めた全身の状態とつながっています。</p>
+<img class="main" src="../assets/diagram-taisha.png" alt="代謝の仕組み図解：巡りが滞った状態と、巡りが流れる状態の比較">
+<p class="small">図1　代謝が低下しやすい状態で起こりやすい変化と、巡りが流れる体のイメージ。体の状態には個人差があります。</p>
+<h3>姿勢の崩れと呼吸の浅さ</h3>
+<p>猫背や反り腰といった姿勢の崩れが続くと、胸が縮こまって呼吸が浅くなりやすいと言われています。呼吸が浅い状態では、体全体の巡りも滞りやすく、疲れやすさや冷えの感覚にもつながります。姿勢を整えて深い呼吸ができる体は、それ自体が代謝の土台を支える状態です。</p>
+<h3>巡りと冷えの影響</h3>
+<p>巡りが滞ると、体は温まりにくくなり、むくみや重さの感覚も強まりやすくなります。冷えを感じる方の多くは、姿勢の崩れや筋肉の緊張による巡りの滞りが重なっています。全身をゆるめて巡りを促し、体が温まる感覚を取り戻すことは、軽やかに動ける体づくりの第一歩です。</p>
+<h3>生活習慣という土台</h3>
+<p>睡眠、食事、運動、入浴――代謝の土台は、特別なことではなく毎日の生活習慣の積み重ねです。短期間の無理な調整を繰り返すより、続けられる小さな習慣を育てることが、結果として長く続けられる体づくりにつながります。当サロンでは、登録販売者の知識から、生活習慣の見直しポイントについてのご相談も可能です。</p>
+
+<h2>セルフケアで足りる場合・サロンケアが向く場合</h2>
+<p>疲れや冷えが軽く、歩く量を増やしたり入浴を習慣にしたりすることで体が軽く感じる日が多い場合は、まずご自宅でのセルフケアと生活習慣の見直しを続けて様子を見る方法があります。一方で、全身が固くて自分ではゆるめにくい、姿勢や呼吸を含めて土台から整えたい、生活習慣の相談もしたいという場合は、サロンでのケアが向いている目安になります。サロンでは、姿勢や骨格のバランスを確認し、全身をゆるめることで巡りのよい状態を目指し、施術後に「体が温まった」「軽やかに動ける」と感じやすい状態を大切にします。どちらが正解というものではなく、今の状態に合わせて選ぶことが大切です。</p>
 
 <h2>当サロンでのケア</h2>
-<p>当サロンでは、姿勢や骨格のバランスを確認し、全身をアロマオイルマッサージともみほぐしで丁寧にゆるめることで、巡りのよい状態を目指します。美容整体で体の軸を整え、深い呼吸ができる姿勢づくりもご案内します。登録販売者の知識から、生活習慣の見直しポイントについてのご相談も可能です。施術後は体が温まり、軽やかに動けるような体感を大切にしています。なお、施術はダイエットの効果を保証するものではありません。</p>
-<p class="small">施術は、施術歴30年・鍼灸師の平賀建人が担当します。美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせます。</p>
+<p>当サロンの代謝ケアは、「体の土台を整え、巡りのよい状態をつくる」ことを目指す組み立てです。姿勢や骨格のバランスを確認しながら、部位と目的に合わせて3つの手技を組み合わせます。</p>
+<p><strong>美容整体</strong>：体の軸を整え、深い呼吸ができる姿勢づくりを目的に進めます。姿勢の土台が整うと、日常の動きやすさも変わってきます。<br>
+<strong>アロマオイルマッサージ</strong>：全身をオイルで丁寧にゆるめ、巡りが流れやすい状態を目指します。香りに包まれるリラックス感の高いケアです。<br>
+<strong>もみほぐし</strong>：背中や脚など、張りやすい大きな筋肉をほぐし、体が動かしやすい状態を目指します。登録販売者の知識から、生活習慣の見直しポイントのご相談も可能です。</p>
+<p>ケアを通して目指すのは、こんな変化です。</p>
+<ul class="care">
+<li>体が温まり、巡りがよくなったような体感へ</li>
+<li>軽やかに動けるような、体の軽さの感覚へ</li>
+<li>深い呼吸ができる姿勢へ</li>
+<li>むくみ感がゆるんで、体がすっきり見える印象へ</li>
+<li>無理のない体づくりを続けるための、土台づくりのきっかけへ</li>
+</ul>
+<p>施術後は体が温まり、軽やかに動けるような体感を大切にしています。施術の前後で体の感覚を一緒に確認し、ご自宅で続けやすい生活習慣のポイントもご案内します。短期間の無理な調整ではなく、続けられる体づくりを一緒に考えていきます。</p>
+<img class="main" src="../assets/stella-posture.jpg" alt="姿勢と背骨のラインをイメージしたイラスト">
+
+<h2>施術の流れ</h2>
+<div class="step"><span class="st">STEP1 受付・カウンセリング</span><br>ご来店後、気になる部位やお悩み、ご希望の強さなどをうかがいます。完全個室のため、周りを気にせずお話しいただけます。</div>
+<div class="step"><span class="st">STEP2 お身体の状態確認</span><br>姿勢や骨格のバランス、体の冷えや張りの状態などを一緒に確認し、その日の状態に合わせた施術の進め方をご案内します。</div>
+<div class="step"><span class="st">STEP3 施術</span><br>美容整体を中心に、ご希望に応じてアロマオイルマッサージ、もみほぐしを組み合わせて進めます。強さは途中でも調整できます。</div>
+<div class="step"><span class="st">STEP4 終わりのご案内</span><br>施術後の状態を確認し、ご自宅で続けやすいセルフケアのポイントをお伝えします。次回の目安についても、ご希望があればご案内します。</div>
+
+<h2>料金</h2>
+<table>
+<tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
+<tr><td>80分</td><td>―</td><td>3,000円</td></tr>
+<tr><td>100分</td><td>10,000円</td><td>4,000円</td></tr>
+<tr><td>120分</td><td>―</td><td>5,000円</td></tr>
+</table>
+<p class="small">クリスマスキャンペーンは12月25日まで、ご新規様もリピーターの方も対象です。施術内容は当日の状態とご希望に合わせて組み立てます。</p>
 
 <h2>ご自宅でできるセルフケア</h2>
 <ul class="care">
-<li>朝の光を浴びながら10分ほど歩き、体のリズムを整える</li>
-<li>たんぱく質を意識した食事と、よく噛む習慣を心がける</li>
-<li>湯船につかって体を温め、質のよい睡眠を目指す</li>
+<li>朝の白湯と軽い体操：起きたら白湯を飲み、両手を天井へ伸ばすストレッチをします。朝の小さな習慣を、1日のリズムの起点にしてください。</li>
+<li>歩く量を増やす：一駅分歩く、階段を使うなど、日常の中で歩く機会を少しずつ増やします。無理のない範囲で続けることが目安です。</li>
+<li>入浴で温める：シャワーだけで済ませず、湯船に浸かって体を温めます。週に数回からでも、巡りを促す習慣になります。</li>
+<li>睡眠のリズムを整える：寝る時間をできるだけそろえ、寝る前のスマートフォンの時間を短くするなど、眠りの質を意識してみてください。</li>
 </ul>
-
-<h2>受診の目安</h2>
-<p>急激な体重の増減や、強い疲労感が続く場合は、医療機関への受診をおすすめします。</p>
-
 <p style="font-weight:bold;color:#1e4d3b;margin:26px 0 4px">ご自宅でのケアに：セルフケア資料ライブラリ（無料）</p>
 <p>このお悩みに合わせたセルフケアの考え方を、無料の資料ライブラリでご紹介しています。<br>
 <a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="color:#1e4d3b">セルフケア資料ライブラリを開く →</a></p>
 
+<h2>受診の目安</h2>
+<p>急激な体重の増減や、強い疲労感が続く場合は、施術の前に医療機関への受診をおすすめします。また、むくみや冷えが急に強くなった場合も、医療機関でご相談ください。</p>
+
+<h2>よくある質問</h2>
+<div class="faq"><p class="q">Q. 初めてでも大丈夫ですか？</p><p class="a">はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで体の状態や気になる部位、生活習慣をうかがい、無理のない内容から始めます。施術の前後で体の感覚を確認しながら「体が温まった」「軽く動ける」といった違いを一緒に確かめますので、初めての方も安心してご利用いただけます。</p></div>
+<div class="faq"><p class="q">Q. 施術は痛いですか？</p><p class="a">強さは、ご希望をうかがいながら調整します。全身をゆるめることを目的に、お身体の状態に合わせた圧で丁寧に進めます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。</p></div>
+<div class="faq"><p class="q">Q. コースはどう選べばいいですか？</p><p class="a">80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。全身の巡りを整えるケアで頭から足先までゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。</p></div>
+<div class="faq"><p class="q">Q. 場所と予約方法を教えてください。</p><p class="a">大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。</p></div>
+<div class="faq"><p class="q">Q. 男性も受けられますか？</p><p class="a">当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。</p></div>
+
+<h2>施術者について</h2>
+<div class="profile">
+<p style="margin:0 0 6px"><strong>平賀建人</strong>（施術歴30年）</p>
+<p style="margin:0">鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナーの資格を持ち、美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせて施術します。このページの内容は、施術者の知識と経験をもとに作成しています。</p>
+</div>
+<img class="main" src="../assets/stella-hero.jpg" alt="ステラ・ポラリス東三国のサロンの雰囲気を描いたイラスト">
+
 <h2>料金・ご予約</h2>
-<div class="campaign">🎄 クリスマスキャンペーン 🎄<br>ご新規様もリピーターの方も 12/25まで<br>
+<div class="campaign">クリスマスキャンペーン<br>ご新規様もリピーターの方も 12/25まで<br>
 <span class="price">80分 <span class="gold">3,000円</span>／100分 <span class="gold">4,000円</span>／120分 <span class="gold">5,000円</span></span><br>
 <span class="small" style="color:#ddd">通常価格は100分10,000円です。施術内容はご希望に合わせて組み立てます。</span></div>
 <a class="btn" href="https://coubic.com/stella-polaris">予約サイト（Coubic）はこちら</a>
@@ -127,11 +260,11 @@ body{padding-bottom:84px}
 
 <h2>関連するお悩み</h2>
 <ul class="links">
-<li><a href="futomomo.html">太ももの外側の張り</a></li>
-<li><a href="zenshin-hirou.html">全身の疲労感・倦怠感</a></li>
-<li><a href="nekoze.html">猫背・円背</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/futomomo.html">太ももの外側の張り</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/zenshin-hirou.html">全身の疲労感・倦怠感</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/nekoze.html">猫背・円背</a></li>
 </ul>
-<a class="btn sub" href="../index.html">トップページへ戻る</a>
+<a class="btn sub" href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/">トップページへ戻る</a>
 
 <footer>
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>

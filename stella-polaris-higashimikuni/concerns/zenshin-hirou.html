@@ -17,18 +17,30 @@
 <style>
 body{margin:0;background:#f5f1e6;color:#333;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8}
 .wrap{max-width:760px;margin:0 auto;background:#fffdf7;padding:0 20px 40px}
+.note{background:#7a1f2b;color:#fff;text-align:center;padding:8px;font-size:13px}
 h1{font-size:24px;color:#1e4d3b;text-align:center;margin:24px 0 4px}
 .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px}
 img.main{width:100%;height:auto;display:block;border-radius:6px}
 .campaign{background:#1e4d3b;color:#fff;border-radius:8px;padding:14px 18px;margin:18px 0;text-align:center}
 .campaign .price{font-size:20px;font-weight:bold}.gold{color:#e8c97a}
 h2{font-size:19px;color:#1e4d3b;border-left:6px solid #7a1f2b;padding-left:10px;margin:34px 0 10px}
+h3{font-size:16px;color:#1e4d3b;margin:22px 0 6px}
 .btn{display:block;text-align:center;background:#1e4d3b;color:#fff;text-decoration:none;border-radius:30px;padding:12px;margin:14px auto;max-width:420px;font-weight:bold}
 .btn.line{background:#06c755}.btn.sub{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b}
 table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #ccc;padding:8px;text-align:center}th{background:#eef4ee}
 ul.links{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 ul.links li a{display:block;background:#eef4ee;border-radius:6px;padding:8px 10px;color:#1e4d3b;text-decoration:none;font-size:14px}
 ul.care{padding-left:22px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 28px;position:relative;border-bottom:1px dotted #ccc}
+ul.check li:before{content:"✓";position:absolute;left:4px;color:#7a1f2b;font-weight:bold}
+ol.steps{padding-left:22px}
+.step{background:#eef4ee;border-radius:8px;padding:12px 16px;margin:10px 0}
+.step .st{font-weight:bold;color:#7a1f2b}
+.faq{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:10px 0}
+.faq .q{font-weight:bold;color:#1e4d3b;margin:0 0 4px}
+.faq .a{margin:0}
+.profile{background:#eef4ee;border-radius:8px;padding:14px 18px;margin:14px 0}
 .small{font-size:13px;color:#666}
 .lead{font-size:17px;color:#1e4d3b;font-weight:bold;text-align:center;margin:16px 0}
 footer{border-top:2px solid #1e4d3b;margin-top:36px;padding-top:14px;font-size:14px;color:#555;text-align:center}
@@ -77,6 +89,51 @@ footer a{color:#1e4d3b}
         "url": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/"
       },
       "mainEntityOfPage": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/zenshin-hirou.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "初めてでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで体の状態や気になる部位をうかがい、無理のない内容から始めます。施術の前後で体の感覚を確認しながら「体が温かくなった」「呼吸が深くなった」といった違いを一緒に確かめますので、初めての方も安心してご利用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "施術は痛いですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "強さは、ご希望をうかがいながら調整します。深く休んでいただくことを目的に、ゆったりとした圧で丁寧に進めます。施術中に眠ってしまわれる方も少なくありません。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コースはどう選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。全身の疲れのケアで頭から足先までゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "場所と予約方法を教えてください。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "男性も受けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -92,32 +149,108 @@ body{padding-bottom:84px}
 <div class="wrap">
 <h1>全身の疲労感・倦怠感</h1>
 <p class="sub">美容整体ステラ・ポラリス東三国｜大阪市淀川区東三国・東三国駅徒歩5分・女性向け</p>
-<img class="main" src="../assets/stella-oil.jpg" alt="全身の疲労感・倦怠感のイメージイラスト">
-<p class="lead">気功と整体で巡りを整える。疲れが顔に出ない健康美</p>
+<img class="main" src="../assets/stella-oil.jpg" alt="全身をケアするイメージイラスト">
+<p class="lead">巡りを整える全身ケア。疲れが顔に出ない健康美</p>
+<p>全身の疲労感や倦怠感は、睡眠の質、姿勢の崩れによる筋肉の緊張、冷え、ストレスなどが重なって感じやすくなります。休んでもすっきりしない状態が続くと、表情や姿勢にも疲れが表れ、気持ちまで沈みがちになります。東洋の養生の考え方では、体内の巡りを整え、休むことと動くことのバランスを大切にしてきました。このページでは、全身の疲労感の背景にある仕組みと、全身が軽く感じられる状態を目指す当サロンでのケア、ご自宅でできるセルフケアをご案内します。まずは下のチェックで、ご自身の状態を確かめてみてください。</p>
+<a class="btn" href="https://coubic.com/stella-polaris">ご予約はこちら（Coubic）</a>
 
-<h2>そのお悩みについて</h2>
-<p>全身の疲労感や倦怠感は、睡眠の質、姿勢の崩れによる筋肉の緊張、冷え、ストレスなどが重なって感じやすくなります。休んでもすっきりしない状態が続くと、表情や姿勢にも疲れが表れ、気持ちまで沈みがちになります。東洋の養生の考え方では、体内の巡りを整え、休むことと動くことのバランスを大切にしてきました。</p>
+<h2>こんなお悩みありませんか</h2>
+<ul class="check">
+<li>休んでも疲れが抜けず、体が重い日が続く</li>
+<li>朝起きたときから、体がだるく感じる</li>
+<li>表情に疲れが出て、老けて見えると言われたことがある</li>
+<li>肩や首だけでなく、全身が固まった感じがする</li>
+<li>体が冷えやすく、なかなか温まらない</li>
+<li>気分まで沈みがちで、やる気が出にくい</li>
+<li>深くリラックスする時間が、最近取れていない</li>
+</ul>
+<p>当てはまる項目が多いほど、睡眠・姿勢・冷えといった要素が重なり、全身の巡りが滞りやすい状態の目安とされています。疲労感は体からのサインです。次のセルフチェックで、今の体の状態の傾向を確かめてみましょう。</p>
+
+<h2>簡単セルフチェック（呼吸と体の力みチェック）</h2>
+<p>座ったままできる、体の緊張の傾向を知るための簡単な方法です。</p>
+<ol class="steps">
+<li>椅子に座って目を閉じ、肩・顎・手の力を意識して抜きます。</li>
+<li>ゆっくり深呼吸をして、息が体のどこまで入る感じがするかを確認します。</li>
+<li>力を抜いたつもりでも肩が上がったままになる、呼吸が胸のあたりで止まる感じがする場合は、全身に緊張が残っている目安と言われています。</li>
+</ol>
+<p class="small">※これは診断ではありません。ご自身の状態の傾向を知る目安としてお使いください。</p>
+
+<h2>全身の疲労感・倦怠感の原因と仕組み</h2>
+<h3>睡眠の質との関わり</h3>
+<p>疲労感の大きな背景のひとつが、睡眠の質です。眠りが浅い、途中で目が覚める、朝すっきり起きられないといった状態が続くと、体は回復しきれないまま翌日を迎えることになります。寝る前の緊張が抜けていないと、眠りの質にも影響すると言われています。図1のように、全身の疲労感は睡眠・姿勢・巡りといった要素が重なって表れます。</p>
+<img class="main" src="../assets/diagram-zenshin-hirou.png" alt="全身の疲労感の仕組み図解：全身が緊張した状態と、全身がゆるんだ状態の比較">
+<p class="small">図1　全身の疲労感で起こりやすい変化と、全身がゆるんだ状態のイメージ。体の状態には個人差があります。</p>
+<h3>姿勢の崩れと筋肉の緊張</h3>
+<p>姿勢が崩れた状態では、体のあちこちの筋肉が余分な力を使い続けます。本人は休んでいるつもりでも、筋肉は働き続けているため、疲れが抜けにくくなります。全身が固まった感じがするのは、この緊張の積み重ねが背景にあることが多いものです。全身を大きくゆるめることは、緊張のリセットにつながります。</p>
+<h3>冷えと巡りの滞り</h3>
+<p>冷えや巡りの滞りも、疲労感を強める要素です。巡りが滞ると、体は温まりにくく、重だるさの感覚も抜けにくくなります。東洋の養生の考え方では、巡りを整えることが体の基本を整えることとされてきました。温かく、巡りのよい状態は、軽やかに動ける体の土台です。</p>
+<h3>休むことと動くことのバランス</h3>
+<p>疲れているときほど動きたくなくなりますが、軽く体を動かすことは巡りを促し、眠りの質にもつながると言われています。大切なのは、頑張ることではなく、休むことと動くことのバランスです。日常から離れて深く休む時間と、日常の中で軽く動く習慣、その両方を整えていくことが、疲れにくい体づくりにつながります。</p>
+
+<h2>セルフケアで足りる場合・サロンケアが向く場合</h2>
+<p>疲れが軽く、入浴や軽い運動で体が軽くなる日が多い場合は、まずご自宅でのセルフケアと休み方の見直しを続けて様子を見る方法があります。一方で、全身が固くて自分ではゆるめにくい、休んでもすっきりしない日が続いている、日常から離れて深くリセットする時間がほしいという場合は、サロンでのケアが向いている目安になります。サロンでは、全身を大きくゆるめ、呼吸に合わせたゆったりとした施術で巡りを意識することで、施術後に「体が温かくなった」「呼吸が深くなった」と感じやすい状態を目指します。完全個室の静かな空間で、日常から離れて休んでいただく時間を大切にしています。どちらが正解というものではなく、今の状態に合わせて選ぶことが大切です。</p>
 
 <h2>当サロンでのケア</h2>
-<p>当サロンでは、気功の考え方も取り入れながら、全身をアロマオイルマッサージともみほぐしで大きくゆるめ、美容整体で体の軸を整えます。呼吸に合わせたゆったりとした施術で、頭まわりから足先まで巡りを意識したケアを行います。完全個室の静かな空間で、日常から離れて深く休んでいただく時間を大切にしています。施術後は、体が温かく、呼吸が深くなったような体感を目指します。</p>
-<p class="small">施術は、施術歴30年・鍼灸師の平賀建人が担当します。美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせます。</p>
+<p>当サロンの全身ケアは、「全身をゆるめ、巡りを整えて深く休める状態」を目指す組み立てです。頭まわりから足先まで、部位と目的に合わせて3つの手技を組み合わせます。</p>
+<p><strong>アロマオイルマッサージ</strong>：全身をオイルで大きくゆるめ、巡りを意識したケアを行います。香りに包まれながらほぐれる、リラックス感の高いケアです。<br>
+<strong>美容整体</strong>：体の軸を整え、姿勢の崩れからくる余分な緊張が抜けやすい土台をつくることを目的に進めます。<br>
+<strong>もみほぐし</strong>：背中や脚など、張りやすい大きな筋肉をほぐし、全身の重だるさをゆるめることを目的に進めます。呼吸に合わせたゆったりとした進め方を大切にします。</p>
+<p>ケアを通して目指すのは、こんな変化です。</p>
+<ul class="care">
+<li>体が温かくなり、巡りがよくなったような体感へ</li>
+<li>呼吸が深くなり、力が抜けたような感覚へ</li>
+<li>全身が軽くなり、表情も明るく見える印象へ</li>
+<li>頭から足先までほぐれて、深く休めたような感覚へ</li>
+<li>翌朝の目覚めが楽しみになるような、体のリセット感へ</li>
+</ul>
+<p>完全個室の静かな空間で、日常から離れて深く休んでいただく時間を大切にしています。施術後は、体が温かく、呼吸が深くなったような体感を目指します。施術の前後で体の感覚を一緒に確認し、ご自宅での休み方のポイントもご案内します。</p>
+<img class="main" src="../assets/stella-posture.jpg" alt="姿勢と背骨のラインをイメージしたイラスト">
+
+<h2>施術の流れ</h2>
+<div class="step"><span class="st">STEP1 受付・カウンセリング</span><br>ご来店後、気になる部位やお悩み、ご希望の強さなどをうかがいます。完全個室のため、周りを気にせずお話しいただけます。</div>
+<div class="step"><span class="st">STEP2 お身体の状態確認</span><br>姿勢や全身の張りの状態、冷えの具合などを一緒に確認し、その日の状態に合わせた施術の進め方をご案内します。</div>
+<div class="step"><span class="st">STEP3 施術</span><br>美容整体を中心に、ご希望に応じてアロマオイルマッサージ、もみほぐしを組み合わせて進めます。強さは途中でも調整できます。</div>
+<div class="step"><span class="st">STEP4 終わりのご案内</span><br>施術後の状態を確認し、ご自宅で続けやすいセルフケアのポイントをお伝えします。次回の目安についても、ご希望があればご案内します。</div>
+
+<h2>料金</h2>
+<table>
+<tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
+<tr><td>80分</td><td>―</td><td>3,000円</td></tr>
+<tr><td>100分</td><td>10,000円</td><td>4,000円</td></tr>
+<tr><td>120分</td><td>―</td><td>5,000円</td></tr>
+</table>
+<p class="small">クリスマスキャンペーンは12月25日まで、ご新規様もリピーターの方も対象です。施術内容は当日の状態とご希望に合わせて組み立てます。</p>
 
 <h2>ご自宅でできるセルフケア</h2>
 <ul class="care">
-<li>就寝・起床の時間をそろえ、睡眠のリズムを整える</li>
-<li>朝、背伸びと深呼吸をして、体をゆっくり目覚めさせる</li>
-<li>温かい飲み物や入浴で体を冷やさない工夫をする</li>
+<li>入浴で温める：湯船にゆっくり浸かり、全身を温めます。寝る1〜2時間前の入浴は、眠りの質を意識するうえでもおすすめの習慣です。</li>
+<li>朝の光と軽い体操：朝起きたらカーテンを開けて光を浴び、両手を天井へ伸ばすストレッチをします。1日のリズムを整える起点になります。</li>
+<li>深呼吸の時間：1日に数回、ゆっくり息を吐くことを意識した深呼吸をします。力を抜くきっかけとして、仕事の合間にも取り入れてください。</li>
+<li>休む予定を先に入れる：忙しい時期ほど、休む時間を先に予定に入れます。何もしない時間を「予定」として確保する工夫です。</li>
 </ul>
-
-<h2>受診の目安</h2>
-<p>疲労感が長く続く場合や、発熱・体重減少などを伴う場合は、医療機関への受診をおすすめします。</p>
-
 <p style="font-weight:bold;color:#1e4d3b;margin:26px 0 4px">ご自宅でのケアに：セルフケア資料ライブラリ（無料）</p>
 <p>このお悩みに合わせたセルフケアの考え方を、無料の資料ライブラリでご紹介しています。<br>
 <a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="color:#1e4d3b">セルフケア資料ライブラリを開く →</a></p>
 
+<h2>受診の目安</h2>
+<p>疲労感が長く続く場合や、発熱・体重減少などを伴う場合は、施術の前に医療機関への受診をおすすめします。また、気分の落ち込みが強く続く場合も、医療機関や相談窓口でご相談ください。</p>
+
+<h2>よくある質問</h2>
+<div class="faq"><p class="q">Q. 初めてでも大丈夫ですか？</p><p class="a">はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで体の状態や気になる部位をうかがい、無理のない内容から始めます。施術の前後で体の感覚を確認しながら「体が温かくなった」「呼吸が深くなった」といった違いを一緒に確かめますので、初めての方も安心してご利用いただけます。</p></div>
+<div class="faq"><p class="q">Q. 施術は痛いですか？</p><p class="a">強さは、ご希望をうかがいながら調整します。深く休んでいただくことを目的に、ゆったりとした圧で丁寧に進めます。施術中に眠ってしまわれる方も少なくありません。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。</p></div>
+<div class="faq"><p class="q">Q. コースはどう選べばいいですか？</p><p class="a">80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。全身の疲れのケアで頭から足先までゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。</p></div>
+<div class="faq"><p class="q">Q. 場所と予約方法を教えてください。</p><p class="a">大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。</p></div>
+<div class="faq"><p class="q">Q. 男性も受けられますか？</p><p class="a">当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。</p></div>
+
+<h2>施術者について</h2>
+<div class="profile">
+<p style="margin:0 0 6px"><strong>平賀建人</strong>（施術歴30年）</p>
+<p style="margin:0">鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナーの資格を持ち、美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせて施術します。このページの内容は、施術者の知識と経験をもとに作成しています。</p>
+</div>
+<img class="main" src="../assets/stella-hero.jpg" alt="ステラ・ポラリス東三国のサロンの雰囲気を描いたイラスト">
+
 <h2>料金・ご予約</h2>
-<div class="campaign">🎄 クリスマスキャンペーン 🎄<br>ご新規様もリピーターの方も 12/25まで<br>
+<div class="campaign">クリスマスキャンペーン<br>ご新規様もリピーターの方も 12/25まで<br>
 <span class="price">80分 <span class="gold">3,000円</span>／100分 <span class="gold">4,000円</span>／120分 <span class="gold">5,000円</span></span><br>
 <span class="small" style="color:#ddd">通常価格は100分10,000円です。施術内容はご希望に合わせて組み立てます。</span></div>
 <a class="btn" href="https://coubic.com/stella-polaris">予約サイト（Coubic）はこちら</a>
@@ -127,11 +260,11 @@ body{padding-bottom:84px}
 
 <h2>関連するお悩み</h2>
 <ul class="links">
-<li><a href="taisha.html">代謝低下・痩せにくい</a></li>
-<li><a href="nekoze.html">猫背・円背</a></li>
-<li><a href="straight-neck.html">ストレートネック</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/taisha.html">代謝低下・痩せにくい</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/nekoze.html">猫背・円背</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/straight-neck.html">ストレートネック</a></li>
 </ul>
-<a class="btn sub" href="../index.html">トップページへ戻る</a>
+<a class="btn sub" href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/">トップページへ戻る</a>
 
 <footer>
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>

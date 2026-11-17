@@ -17,18 +17,30 @@
 <style>
 body{margin:0;background:#f5f1e6;color:#333;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8}
 .wrap{max-width:760px;margin:0 auto;background:#fffdf7;padding:0 20px 40px}
+.note{background:#7a1f2b;color:#fff;text-align:center;padding:8px;font-size:13px}
 h1{font-size:24px;color:#1e4d3b;text-align:center;margin:24px 0 4px}
 .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px}
 img.main{width:100%;height:auto;display:block;border-radius:6px}
 .campaign{background:#1e4d3b;color:#fff;border-radius:8px;padding:14px 18px;margin:18px 0;text-align:center}
 .campaign .price{font-size:20px;font-weight:bold}.gold{color:#e8c97a}
 h2{font-size:19px;color:#1e4d3b;border-left:6px solid #7a1f2b;padding-left:10px;margin:34px 0 10px}
+h3{font-size:16px;color:#1e4d3b;margin:22px 0 6px}
 .btn{display:block;text-align:center;background:#1e4d3b;color:#fff;text-decoration:none;border-radius:30px;padding:12px;margin:14px auto;max-width:420px;font-weight:bold}
 .btn.line{background:#06c755}.btn.sub{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b}
 table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #ccc;padding:8px;text-align:center}th{background:#eef4ee}
 ul.links{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 ul.links li a{display:block;background:#eef4ee;border-radius:6px;padding:8px 10px;color:#1e4d3b;text-decoration:none;font-size:14px}
 ul.care{padding-left:22px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 28px;position:relative;border-bottom:1px dotted #ccc}
+ul.check li:before{content:"✓";position:absolute;left:4px;color:#7a1f2b;font-weight:bold}
+ol.steps{padding-left:22px}
+.step{background:#eef4ee;border-radius:8px;padding:12px 16px;margin:10px 0}
+.step .st{font-weight:bold;color:#7a1f2b}
+.faq{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:10px 0}
+.faq .q{font-weight:bold;color:#1e4d3b;margin:0 0 4px}
+.faq .a{margin:0}
+.profile{background:#eef4ee;border-radius:8px;padding:14px 18px;margin:14px 0}
 .small{font-size:13px;color:#666}
 .lead{font-size:17px;color:#1e4d3b;font-weight:bold;text-align:center;margin:16px 0}
 footer{border-top:2px solid #1e4d3b;margin-top:36px;padding-top:14px;font-size:14px;color:#555;text-align:center}
@@ -77,6 +89,51 @@ footer a{color:#1e4d3b}
         "url": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/"
       },
       "mainEntityOfPage": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/kubire.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "初めてでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで気になる部位やご予定をうかがい、無理のない内容から始めます。施術の前後でウエストまわりの感覚を確認しながら「姿勢が伸びた」「呼吸が深くなった」といった感覚の違いを一緒に確かめますので、初めての方も安心してご利用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "施術は痛いですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "強さは、ご希望をうかがいながら調整します。お腹まわりはデリケートなため、やさしい圧を基本に、呼吸に合わせて丁寧に進めます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コースはどう選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。くびれのケアで肋骨まわりからお腹、腰、背中までゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "場所と予約方法を教えてください。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "男性も受けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -92,32 +149,108 @@ body{padding-bottom:84px}
 <div class="wrap">
 <h1>くびれ作り</h1>
 <p class="sub">美容整体ステラ・ポラリス東三国｜大阪市淀川区東三国・東三国駅徒歩5分・女性向け</p>
-<img class="main" src="../assets/stella-posture.jpg" alt="くびれ作りのイメージイラスト">
+<img class="main" src="../assets/stella-posture.jpg" alt="ウエストと骨盤のラインをイメージしたイラスト">
 <p class="lead">肋骨の開きを締め、内臓の位置を上げる美容整体</p>
+<p>くびれの見え方は、体重だけでなく、肋骨の開き具合や姿勢、呼吸の仕方によっても変わります。呼吸が浅く肋骨が開いたままの状態では、ウエストまわりが寸胴に見えやすくなると言われています。また、骨盤の傾きや背中の丸まりも、くびれのラインに影響します。体重は変わらないのにシルエットが気になる、という方から相談の多いテーマです。このページでは、くびれが見えにくくなる仕組みと、ウエストのラインが感じられる姿勢を目指す当サロンでのケア、ご自宅でできるセルフケアをご案内します。まずは下のチェックで、ご自身の状態を確かめてみてください。</p>
+<a class="btn" href="https://coubic.com/stella-polaris">ご予約はこちら（Coubic）</a>
 
-<h2>そのお悩みについて</h2>
-<p>くびれの見え方は、体重だけでなく、肋骨の開き具合や姿勢、呼吸の仕方によっても変わります。呼吸が浅く肋骨が開いたままの状態では、ウエストまわりが寸胴に見えやすくなると言われています。また、骨盤の傾きや背中の丸まりも、くびれのラインに影響します。体重は変わらないのにシルエットが気になる、という方から相談の多いテーマです。</p>
+<h2>こんなお悩みありませんか</h2>
+<ul class="check">
+<li>体重は変わらないのに、ウエストのくびれが感じられない</li>
+<li>肋骨の下の部分が、外に開いている気がする</li>
+<li>呼吸が浅く、胸だけで呼吸している感じがする</li>
+<li>ドレスや水着など、体のラインが出る服に自信がない</li>
+<li>猫背や反り腰など、姿勢の崩れを自覚している</li>
+<li>お腹まわりが張って、スカートのウエストがきつく感じる</li>
+<li>写真に写った横からのシルエットが気になる</li>
+</ul>
+<p>当てはまる項目が多いほど、肋骨の開きや姿勢の崩れが、くびれの見え方に影響している目安とされています。くびれは体重だけの問題ではなく、姿勢と呼吸という土台が関係しているのがポイントです。次のセルフチェックで、今の肋骨の状態の傾向を確かめてみましょう。</p>
+
+<h2>簡単セルフチェック（肋骨の開きチェック）</h2>
+<p>手の感覚でできる、肋骨の開きの傾向を知るための簡単な方法です。</p>
+<ol class="steps">
+<li>両手を肋骨の下のふくらみに当て、ゆっくり深呼吸をします。</li>
+<li>息を吸うときに手が外へ広がる動きと、吐くときに内側へ閉じる動きを確認します。</li>
+<li>吐いても肋骨が開いたままに感じる、左右で動きが違う場合は、肋骨まわりが固まっている目安と言われています。</li>
+</ol>
+<p class="small">※これは診断ではありません。ご自身の状態の傾向を知る目安としてお使いください。</p>
+
+<h2>くびれ作りの原因と仕組み</h2>
+<h3>肋骨の開きと呼吸の関係</h3>
+<p>肋骨は、呼吸に合わせて広がったり閉じたりする骨格です。ところが、浅い呼吸が続くと、肋骨は開いたままの位置で固まりやすくなると言われています。肋骨の下部が外に開いた状態では、ウエストの最も細い部分が埋もれて見え、くびれのない寸胴なシルエットに見えがちです。反対に、深い呼吸で肋骨が閉じる動きを取り戻すと、ウエストのラインは感じやすくなります。図1のように、くびれの見え方は肋骨・呼吸・姿勢の組み合わせで決まっていきます。</p>
+<img class="main" src="../assets/diagram-kubire.png" alt="くびれの仕組み図解：肋骨が開いた姿勢と、肋骨が締まった姿勢の比較">
+<p class="small">図1　くびれが見えにくい姿勢で起こりやすい変化と、ウエストのラインが感じられる姿勢のイメージ。姿勢の状態には個人差があります。</p>
+<h3>姿勢の崩れとの関係</h3>
+<p>猫背では背中が丸まってお腹が潰れたように見え、反り腰では下腹が前に出て見えます。どちらの姿勢でも、ウエストのラインは埋もれやすくなります。くびれはお腹まわりだけの問題ではなく、背骨と骨盤を含めた姿勢全体のバランスの上に成り立つものです。姿勢が整うと、それだけでシルエットの印象が変わることがあります。</p>
+<h3>お腹まわりの筋肉と支える力</h3>
+<p>お腹まわりには、体幹を支える筋肉が層になってついています。これらの筋肉が使いにくい状態では、肋骨や骨盤の位置を保ちにくくなり、姿勢の崩れとあわせてくびれが見えにくくなります。反対に、お腹に自然と力が入る姿勢が身につくと、ウエストまわりはすっきりと支えられやすくなります。鍛えることだけでなく、まず「使える状態」に整えることが大切です。</p>
+<h3>シルエットの印象と予定に向けたケア</h3>
+<p>くびれは、ドレスや水着、体のラインが出る服の印象を大きく左右するポイントです。イベントや旅行の予定に向けてシルエットを整えたいというご相談は、その時期に集中します。体重を落とすことだけに頼らず、姿勢と呼吸の土台から整えるケアは、短期間の無理な調整に頼らない方法として選ばれています。</p>
+
+<h2>セルフケアで足りる場合・サロンケアが向く場合</h2>
+<p>肋骨の動きが感じられ、深呼吸や姿勢の意識でウエストの感覚が変わる日が多い場合は、まずご自宅でのセルフケアを続けて様子を見る方法があります。一方で、肋骨まわりが自分では動きを感じにくい、深い呼吸の仕方がつかみにくい、ドレスや水着の予定に向けてシルエットを整えたいという場合は、サロンでのケアが向いている目安になります。サロンでは、呼吸に合わせて肋骨まわりを整えることで、施術後に「ウエストの感覚が変わった」「姿勢が伸びた」と感じやすい状態を目指します。どちらが正解というものではなく、今の状態に合わせて選ぶことが大切です。</p>
 
 <h2>当サロンでのケア</h2>
-<p>当サロンでは、呼吸に合わせて肋骨まわりを整える美容整体の手技を中心に、お腹や腰まわりをオイルマッサージで丁寧にゆるめます。深い呼吸ができるようになると姿勢も整いやすくなるため、施術では呼吸のご案内も大切にしています。施術後はウエストまわりの感覚の変化を一緒に確認し、くびれを意識した立ち姿勢のポイントもお伝えします。ドレスや水着の予定に向けたケアにもご相談ください。</p>
-<p class="small">施術は、施術歴30年・鍼灸師の平賀建人が担当します。美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせます。</p>
+<p>当サロンのくびれケアは、「肋骨の開きを締め、深い呼吸ができる姿勢」を目指す組み立てです。呼吸のご案内も交えながら、部位と目的に合わせて3つの手技を組み合わせます。</p>
+<p><strong>美容整体</strong>：呼吸に合わせて肋骨まわりを整える手技を中心に、骨盤の傾きや背骨のラインも確認しながら、ウエストのラインが感じられる姿勢の土台をつくることを目的に進めます。<br>
+<strong>アロマオイルマッサージ</strong>：お腹や腰まわりをオイルで丁寧にゆるめ、巡りが流れやすい状態を目指します。香りに包まれるリラックス感の高いケアです。<br>
+<strong>もみほぐし</strong>：背中や腰の張りやすい筋肉をほぐし、姿勢を保ちにくさの背景になりやすい緊張をゆるめることを目的に進めます。</p>
+<p>ケアを通して目指すのは、こんな変化です。</p>
+<ul class="care">
+<li>ウエストのくびれが感じられるシルエットへ</li>
+<li>深い呼吸がしやすくなり、姿勢が整いやすい状態へ</li>
+<li>お腹まわりがすっきり見える印象へ</li>
+<li>肋骨の開きが締まって、ドレスや水着のラインが楽しみになる仕上がりへ</li>
+<li>立ち姿のラインがきれいに見え、後ろ姿の印象も軽やかへ</li>
+</ul>
+<p>深い呼吸ができるようになると姿勢も整いやすくなるため、施術では呼吸のご案内も大切にしています。施術後はウエストまわりの感覚の変化を一緒に確認し、くびれを意識した立ち姿勢のポイントもお伝えします。ドレスや水着の予定に向けたケアにもご相談ください。</p>
+<img class="main" src="../assets/stella-oil.jpg" alt="アロマオイルマッサージでお腹まわりをケアするイメージイラスト">
+
+<h2>施術の流れ</h2>
+<div class="step"><span class="st">STEP1 受付・カウンセリング</span><br>ご来店後、気になる部位やお悩み、ご希望の強さなどをうかがいます。完全個室のため、周りを気にせずお話しいただけます。</div>
+<div class="step"><span class="st">STEP2 お身体の状態確認</span><br>肋骨の動きや呼吸の深さ、骨盤の傾きなどを一緒に確認し、その日の状態に合わせた施術の進め方をご案内します。</div>
+<div class="step"><span class="st">STEP3 施術</span><br>美容整体を中心に、ご希望に応じてアロマオイルマッサージ、もみほぐしを組み合わせて進めます。強さは途中でも調整できます。</div>
+<div class="step"><span class="st">STEP4 終わりのご案内</span><br>施術後の状態を確認し、ご自宅で続けやすいセルフケアのポイントをお伝えします。次回の目安についても、ご希望があればご案内します。</div>
+
+<h2>料金</h2>
+<table>
+<tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
+<tr><td>80分</td><td>―</td><td>3,000円</td></tr>
+<tr><td>100分</td><td>10,000円</td><td>4,000円</td></tr>
+<tr><td>120分</td><td>―</td><td>5,000円</td></tr>
+</table>
+<p class="small">クリスマスキャンペーンは12月25日まで、ご新規様もリピーターの方も対象です。施術内容は当日の状態とご希望に合わせて組み立てます。</p>
 
 <h2>ご自宅でできるセルフケア</h2>
 <ul class="care">
-<li>鼻から吸って口から長く吐く呼吸で、肋骨が締まる感覚を練習する</li>
-<li>体側を伸ばすストレッチを左右行い、わき腹をほぐす</li>
-<li>座るときは骨盤を立て、お腹を軽く引き上げる意識を持つ</li>
+<li>肋骨を締める深呼吸：両手を肋骨の下に当て、息を吐くときに肋骨が内側へ閉じる動きを意識します。5回を1セットとして、朝晩に行うのが目安です。</li>
+<li>ドローイン：お腹をへこませるように息を吐き、10秒キープします。5回を1セットとして1日2セット、座ったままでも取り入れられます。</li>
+<li>脇腹のストレッチ：片手を頭の上へ伸ばし、反対側へ体を倒して脇腹を伸ばします。左右それぞれ20〜30秒、1日1〜2回が目安です。</li>
+<li>姿勢のリセット習慣：長時間座ったあとは一度立ち上がり、両手を組んで天井へ伸ばすストレッチをします。固まる前にほぐす習慣が大切です。</li>
 </ul>
-
-<h2>受診の目安</h2>
-<p>お腹の張りや痛みが続く、急な体重の変化がある場合は、医療機関への相談をおすすめします。</p>
-
 <p style="font-weight:bold;color:#1e4d3b;margin:26px 0 4px">ご自宅でのケアに：セルフケア資料ライブラリ（無料）</p>
 <p>このお悩みに合わせたセルフケアの考え方を、無料の資料ライブラリでご紹介しています。<br>
 <a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="color:#1e4d3b">セルフケア資料ライブラリを開く →</a></p>
 
+<h2>受診の目安</h2>
+<p>お腹の張りや痛みが続く、急な体重の変化がある場合は、施術の前に医療機関への相談をおすすめします。また、食欲の急な変化や強い疲労感を伴う場合も、医療機関でご相談ください。</p>
+
+<h2>よくある質問</h2>
+<div class="faq"><p class="q">Q. 初めてでも大丈夫ですか？</p><p class="a">はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで気になる部位やご予定をうかがい、無理のない内容から始めます。施術の前後でウエストまわりの感覚を確認しながら「姿勢が伸びた」「呼吸が深くなった」といった感覚の違いを一緒に確かめますので、初めての方も安心してご利用いただけます。</p></div>
+<div class="faq"><p class="q">Q. 施術は痛いですか？</p><p class="a">強さは、ご希望をうかがいながら調整します。お腹まわりはデリケートなため、やさしい圧を基本に、呼吸に合わせて丁寧に進めます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。</p></div>
+<div class="faq"><p class="q">Q. コースはどう選べばいいですか？</p><p class="a">80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。くびれのケアで肋骨まわりからお腹、腰、背中までゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。</p></div>
+<div class="faq"><p class="q">Q. 場所と予約方法を教えてください。</p><p class="a">大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。</p></div>
+<div class="faq"><p class="q">Q. 男性も受けられますか？</p><p class="a">当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。</p></div>
+
+<h2>施術者について</h2>
+<div class="profile">
+<p style="margin:0 0 6px"><strong>平賀建人</strong>（施術歴30年）</p>
+<p style="margin:0">鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナーの資格を持ち、美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせて施術します。このページの内容は、施術者の知識と経験をもとに作成しています。</p>
+</div>
+<img class="main" src="../assets/stella-hero.jpg" alt="ステラ・ポラリス東三国のサロンの雰囲気を描いたイラスト">
+
 <h2>料金・ご予約</h2>
-<div class="campaign">🎄 クリスマスキャンペーン 🎄<br>ご新規様もリピーターの方も 12/25まで<br>
+<div class="campaign">クリスマスキャンペーン<br>ご新規様もリピーターの方も 12/25まで<br>
 <span class="price">80分 <span class="gold">3,000円</span>／100分 <span class="gold">4,000円</span>／120分 <span class="gold">5,000円</span></span><br>
 <span class="small" style="color:#ddd">通常価格は100分10,000円です。施術内容はご希望に合わせて組み立てます。</span></div>
 <a class="btn" href="https://coubic.com/stella-polaris">予約サイト（Coubic）はこちら</a>
@@ -127,11 +260,11 @@ body{padding-bottom:84px}
 
 <h2>関連するお悩み</h2>
 <ul class="links">
-<li><a href="sorigoshi.html">反り腰・ぽっこりお腹</a></li>
-<li><a href="youtsu.html">慢性腰痛・重だるさ</a></li>
-<li><a href="benpi.html">便秘・ぽっこり下腹</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/sorigoshi.html">反り腰・ぽっこりお腹</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/youtsu.html">慢性腰痛・重だるさ</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/benpi.html">便秘・ぽっこり下腹</a></li>
 </ul>
-<a class="btn sub" href="../index.html">トップページへ戻る</a>
+<a class="btn sub" href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/">トップページへ戻る</a>
 
 <footer>
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>

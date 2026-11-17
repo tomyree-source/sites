@@ -17,18 +17,30 @@
 <style>
 body{margin:0;background:#f5f1e6;color:#333;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8}
 .wrap{max-width:760px;margin:0 auto;background:#fffdf7;padding:0 20px 40px}
+.note{background:#7a1f2b;color:#fff;text-align:center;padding:8px;font-size:13px}
 h1{font-size:24px;color:#1e4d3b;text-align:center;margin:24px 0 4px}
 .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px}
 img.main{width:100%;height:auto;display:block;border-radius:6px}
 .campaign{background:#1e4d3b;color:#fff;border-radius:8px;padding:14px 18px;margin:18px 0;text-align:center}
 .campaign .price{font-size:20px;font-weight:bold}.gold{color:#e8c97a}
 h2{font-size:19px;color:#1e4d3b;border-left:6px solid #7a1f2b;padding-left:10px;margin:34px 0 10px}
+h3{font-size:16px;color:#1e4d3b;margin:22px 0 6px}
 .btn{display:block;text-align:center;background:#1e4d3b;color:#fff;text-decoration:none;border-radius:30px;padding:12px;margin:14px auto;max-width:420px;font-weight:bold}
 .btn.line{background:#06c755}.btn.sub{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b}
 table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #ccc;padding:8px;text-align:center}th{background:#eef4ee}
 ul.links{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 ul.links li a{display:block;background:#eef4ee;border-radius:6px;padding:8px 10px;color:#1e4d3b;text-decoration:none;font-size:14px}
 ul.care{padding-left:22px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 28px;position:relative;border-bottom:1px dotted #ccc}
+ul.check li:before{content:"✓";position:absolute;left:4px;color:#7a1f2b;font-weight:bold}
+ol.steps{padding-left:22px}
+.step{background:#eef4ee;border-radius:8px;padding:12px 16px;margin:10px 0}
+.step .st{font-weight:bold;color:#7a1f2b}
+.faq{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:10px 0}
+.faq .q{font-weight:bold;color:#1e4d3b;margin:0 0 4px}
+.faq .a{margin:0}
+.profile{background:#eef4ee;border-radius:8px;padding:14px 18px;margin:14px 0}
 .small{font-size:13px;color:#666}
 .lead{font-size:17px;color:#1e4d3b;font-weight:bold;text-align:center;margin:16px 0}
 footer{border-top:2px solid #1e4d3b;margin-top:36px;padding-top:14px;font-size:14px;color:#555;text-align:center}
@@ -77,6 +89,51 @@ footer a{color:#1e4d3b}
         "url": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/"
       },
       "mainEntityOfPage": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/ashi-mukumi.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "初めてでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで脚の状態や気になる部位をうかがい、無理のない内容から始めます。施術の前後で脚の感覚を確認しながら「脚が軽くなった」「靴が履きやすい」といった違いを一緒に確かめますので、初めての方も安心してご利用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "施術は痛いですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "強さは、ご希望をうかがいながら調整します。ふくらはぎは心地よい圧でほぐれる部位ですが、張りが強い場合は最初に圧を感じることがあります。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コースはどう選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。脚のむくみのケアで足先から太もも、骨盤まわりまでゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "場所と予約方法を教えてください。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "男性も受けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -92,32 +149,108 @@ body{padding-bottom:84px}
 <div class="wrap">
 <h1>脚のむくみ・冷え</h1>
 <p class="sub">美容整体ステラ・ポラリス東三国｜大阪市淀川区東三国・東三国駅徒歩5分・女性向け</p>
-<img class="main" src="../assets/stella-oil.jpg" alt="脚のむくみ・冷えのイメージイラスト">
+<img class="main" src="../assets/stella-oil.jpg" alt="脚をケアするイメージイラスト">
 <p class="lead">第二の心臓「ふくらはぎ」を活性化。整体×アロマ</p>
+<p>脚は心臓から遠く、血液やリンパ液が重力に逆らって戻る必要があるため、むくみを感じやすい部位です。ふくらはぎの筋肉は「第二の心臓」とも呼ばれ、ポンプのように巡りを支えています。長時間の立ち仕事や座り仕事で筋肉が動きにくいと、夕方には脚が重く、靴がきつく感じることもあります。冷えを感じやすい方は、巡りの滞りとあわせて気になる方が多いお悩みです。このページでは、脚のむくみ・冷えの背景にある仕組みと、脚が軽やかに感じられる状態を目指す当サロンでのケア、ご自宅でできるセルフケアをご案内します。まずは下のチェックで、ご自身の状態を確かめてみてください。</p>
+<a class="btn" href="https://coubic.com/stella-polaris">ご予約はこちら（Coubic）</a>
 
-<h2>そのお悩みについて</h2>
-<p>脚は心臓から遠く、血液やリンパ液が重力に逆らって戻る必要があるため、むくみを感じやすい部位です。ふくらはぎの筋肉は「第二の心臓」とも呼ばれ、ポンプのように巡りを支えています。長時間の立ち仕事や座り仕事で筋肉が動きにくいと、夕方には脚が重く、靴がきつく感じることもあります。冷えを感じやすい方は、巡りの滞りとあわせて気になる方が多いお悩みです。</p>
+<h2>こんなお悩みありませんか</h2>
+<ul class="check">
+<li>夕方になると脚が重く、靴がきつく感じる</li>
+<li>靴下の跡が、なかなか消えない</li>
+<li>ふくらはぎを押すと、へこみの戻りが遅い感じがする</li>
+<li>足先が冷えて、夜なかなか温まらない</li>
+<li>立ち仕事や座り仕事で、脚を動かす時間が少ない</li>
+<li>朝と夕方で、脚の太さの感じが違う</li>
+<li>脚のだるさで、仕事終わりの予定を入れる気になれない</li>
+</ul>
+<p>当てはまる項目が多いほど、ふくらはぎのポンプ作用が働きにくく、巡りが滞りやすい状態の目安とされています。脚のむくみは、その日の過ごし方が表れやすい場所です。次のセルフチェックで、今の脚の状態の傾向を確かめてみましょう。</p>
+
+<h2>簡単セルフチェック（ふくらはぎチェック）</h2>
+<p>指で押してできる、脚のむくみの傾向を知るための簡単な方法です。</p>
+<ol class="steps">
+<li>椅子に座り、すねの骨の内側を指で5秒ほど押します。</li>
+<li>指を離して、へこみの戻り方を確認します。</li>
+<li>へこみがゆっくり戻る、靴下の跡が残りやすい場合は、脚の巡りが滞りやすい状態の目安と言われています。</li>
+</ol>
+<p class="small">※これは診断ではありません。ご自身の状態の傾向を知る目安としてお使いください。</p>
+
+<h2>脚のむくみ・冷えの原因と仕組み</h2>
+<h3>重力と巡りの仕組み</h3>
+<p>脚は心臓から最も遠い場所にあり、血液やリンパ液は重力に逆らって上へ戻らなければなりません。この戻る力の中心になるのが、ふくらはぎの筋肉のポンプ作用です。歩いたり動いたりすることで筋肉が収縮し、巡りが押し上げられます。逆に、動かない時間が長いほど、余分な水分は脚にたまりやすくなります。図1のように、脚のむくみはふくらはぎの働きと、全身の巡りの状態とつながっています。</p>
+<img class="main" src="../assets/diagram-ashi-mukumi.png" alt="脚のむくみの仕組み図解：巡りが滞った脚と、巡りが流れる脚の比較">
+<p class="small">図1　脚のむくみで起こりやすい変化と、巡りが流れる脚のイメージ。脚の状態には個人差があります。</p>
+<h3>ふくらはぎのポンプ作用</h3>
+<p>ふくらはぎは「第二の心臓」とも呼ばれ、歩くたびに収縮して巡りを支えています。ところが、立ちっぱなしや座りっぱなしの仕事では、このポンプが十分に働く機会が減ります。筋肉そのものが固くなっていると、収縮の力も弱まりやすく、夕方の重さにつながります。ふくらはぎをやわらかく保つことは、巡りの土台を整えることです。</p>
+<h3>冷えとの関わり</h3>
+<p>体が冷えると血管が収縮し、巡りはさらに滞りやすくなると言われています。むくみと冷えは互いに強め合う関係にあり、足先の冷えを感じる方は、巡りの滞りも重なっていることが多いものです。脚を温めることは、巡りを促すうえでの基本のケアです。</p>
+<h3>同じ姿勢と生活習慣</h3>
+<p>長時間の立ち仕事・座り仕事、運動不足、水分や塩分のバランス、締めつけの強い靴下や靴など、日常の要素がむくみの強さに関わります。その日の過ごし方が夕方の脚に表れるからこそ、毎日の小さなケアの積み重ねが大切です。仕事終わりの脚の重さを「いつものこと」と諦めずに、巡りの土台から見直していきましょう。</p>
+
+<h2>セルフケアで足りる場合・サロンケアが向く場合</h2>
+<p>むくみが軽く、歩いたり温めたりしたあとに脚が軽くなる日が多い場合は、まずご自宅でのセルフケアを続けて様子を見る方法があります。一方で、ふくらはぎが固くて自分ではゆるめにくい、夕方の重さが毎日続いている、冷えも含めて全身の巡りから整えたいという場合は、サロンでのケアが向いている目安になります。サロンでは、足先から太ももまで巡りを流すイメージで丁寧にケアし、骨盤や脚全体のバランスも確認することで、施術後に「靴が履きやすくなった」と感じやすい脚の軽やかさを目指します。どちらが正解というものではなく、今の状態に合わせて選ぶことが大切です。</p>
 
 <h2>当サロンでのケア</h2>
-<p>当サロンでは、アロマオイルマッサージで足先から太ももまで、巡りを流すイメージで丁寧にケアします。ふくらはぎや足裏はもみほぐしでしっかりとゆるめ、美容整体で骨盤や脚全体のバランスも確認します。香りのよいオイルに包まれながらの施術は、リラックスの時間としても好評です。施術後は、靴が履きやすくなったような脚の軽やかさを目指します。</p>
-<p class="small">施術は、施術歴30年・鍼灸師の平賀建人が担当します。美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせます。</p>
+<p>当サロンの脚のむくみケアは、「ふくらはぎのポンプが働きやすい、巡りのよい脚」を目指す組み立てです。香りのよいオイルに包まれながら、部位と目的に合わせて3つの手技を組み合わせます。</p>
+<p><strong>アロマオイルマッサージ</strong>：足先から太ももまで、巡りを流すイメージで丁寧にケアします。香りのよいオイルに包まれながらの施術は、リラックスの時間としても好評です。<br>
+<strong>もみほぐし</strong>：ふくらはぎや足裏をしっかりとゆるめ、ポンプ作用が働きやすい状態を目指します。<br>
+<strong>美容整体</strong>：骨盤や脚全体のバランスを確認し、巡りの土台となる姿勢を整えることを目的に進めます。</p>
+<p>ケアを通して目指すのは、こんな変化です。</p>
+<ul class="care">
+<li>脚が軽やかになり、靴が履きやすくなったような感覚へ</li>
+<li>ふくらはぎがやわらかくなり、ポンプが働きやすい状態へ</li>
+<li>足先まで温かく、巡りがよくなったような体感へ</li>
+<li>夕方の重さが気になりにくい、仕事終わりが楽な脚へ</li>
+<li>脚のラインがすっきり見える印象へ</li>
+</ul>
+<p>施術後は、靴が履きやすくなったような脚の軽やかさを目指します。施術の前後で脚の感覚を一緒に確認し、ご自宅で続けやすいふくらはぎの動かし方もご案内します。香りのよいオイルに包まれる時間は、脚のケアとリラックスを兼ねたひとときです。</p>
+<img class="main" src="../assets/stella-posture.jpg" alt="骨盤と脚のラインをイメージしたイラスト">
+
+<h2>施術の流れ</h2>
+<div class="step"><span class="st">STEP1 受付・カウンセリング</span><br>ご来店後、気になる部位やお悩み、ご希望の強さなどをうかがいます。完全個室のため、周りを気にせずお話しいただけます。</div>
+<div class="step"><span class="st">STEP2 お身体の状態確認</span><br>ふくらはぎの張りや脚の巡りの状態、骨盤のバランスなどを一緒に確認し、その日の状態に合わせた施術の進め方をご案内します。</div>
+<div class="step"><span class="st">STEP3 施術</span><br>美容整体を中心に、ご希望に応じてアロマオイルマッサージ、もみほぐしを組み合わせて進めます。強さは途中でも調整できます。</div>
+<div class="step"><span class="st">STEP4 終わりのご案内</span><br>施術後の状態を確認し、ご自宅で続けやすいセルフケアのポイントをお伝えします。次回の目安についても、ご希望があればご案内します。</div>
+
+<h2>料金</h2>
+<table>
+<tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
+<tr><td>80分</td><td>―</td><td>3,000円</td></tr>
+<tr><td>100分</td><td>10,000円</td><td>4,000円</td></tr>
+<tr><td>120分</td><td>―</td><td>5,000円</td></tr>
+</table>
+<p class="small">クリスマスキャンペーンは12月25日まで、ご新規様もリピーターの方も対象です。施術内容は当日の状態とご希望に合わせて組み立てます。</p>
 
 <h2>ご自宅でできるセルフケア</h2>
 <ul class="care">
-<li>かかとの上げ下げをゆっくり20回行い、ふくらはぎのポンプを動かす</li>
-<li>入浴時に足首から膝へ向かって、両手で包むようになで上げる</li>
-<li>寝る前に脚を壁に立てかけて数分休ませる</li>
+<li>かかとの上げ下げ：立ったまま、かかとをゆっくり上げ下げします。20回を1セットとして、仕事の合間や歯磨きの時間に取り入れるのが目安です。ふくらはぎのポンプを動かす基本の動きです。</li>
+<li>足首回し：椅子に座って片足を浮かせ、足首を大きく回します。左右各10回、デスクワークの合間に行ってください。</li>
+<li>脚を温める：入浴で脚全体を温める、レッグウォーマーで足首を冷やさないなど、温める工夫を日常に取り入れます。</li>
+<li>脚を高くして休む：夜、クッションの上に脚を乗せて10分ほど休みます。1日の終わりのリセット習慣としておすすめです。</li>
 </ul>
-
-<h2>受診の目安</h2>
-<p>片脚だけの急な腫れや痛み、息苦しさを伴う場合は、すぐに医療機関を受診してください。</p>
-
 <p style="font-weight:bold;color:#1e4d3b;margin:26px 0 4px">ご自宅でのケアに：セルフケア資料ライブラリ（無料）</p>
 <p>このお悩みに合わせたセルフケアの考え方を、無料の資料ライブラリでご紹介しています。<br>
 <a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="color:#1e4d3b">セルフケア資料ライブラリを開く →</a></p>
 
+<h2>受診の目安</h2>
+<p>片脚だけの急な腫れや痛み、息苦しさを伴う場合は、すぐに医療機関を受診してください。また、むくみが長期間続く場合や、体のほかの部位のむくみも伴う場合も、医療機関でご相談ください。</p>
+
+<h2>よくある質問</h2>
+<div class="faq"><p class="q">Q. 初めてでも大丈夫ですか？</p><p class="a">はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで脚の状態や気になる部位をうかがい、無理のない内容から始めます。施術の前後で脚の感覚を確認しながら「脚が軽くなった」「靴が履きやすい」といった違いを一緒に確かめますので、初めての方も安心してご利用いただけます。</p></div>
+<div class="faq"><p class="q">Q. 施術は痛いですか？</p><p class="a">強さは、ご希望をうかがいながら調整します。ふくらはぎは心地よい圧でほぐれる部位ですが、張りが強い場合は最初に圧を感じることがあります。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。</p></div>
+<div class="faq"><p class="q">Q. コースはどう選べばいいですか？</p><p class="a">80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。脚のむくみのケアで足先から太もも、骨盤まわりまでゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。</p></div>
+<div class="faq"><p class="q">Q. 場所と予約方法を教えてください。</p><p class="a">大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。</p></div>
+<div class="faq"><p class="q">Q. 男性も受けられますか？</p><p class="a">当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。</p></div>
+
+<h2>施術者について</h2>
+<div class="profile">
+<p style="margin:0 0 6px"><strong>平賀建人</strong>（施術歴30年）</p>
+<p style="margin:0">鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナーの資格を持ち、美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせて施術します。このページの内容は、施術者の知識と経験をもとに作成しています。</p>
+</div>
+<img class="main" src="../assets/stella-hero.jpg" alt="ステラ・ポラリス東三国のサロンの雰囲気を描いたイラスト">
+
 <h2>料金・ご予約</h2>
-<div class="campaign">🎄 クリスマスキャンペーン 🎄<br>ご新規様もリピーターの方も 12/25まで<br>
+<div class="campaign">クリスマスキャンペーン<br>ご新規様もリピーターの方も 12/25まで<br>
 <span class="price">80分 <span class="gold">3,000円</span>／100分 <span class="gold">4,000円</span>／120分 <span class="gold">5,000円</span></span><br>
 <span class="small" style="color:#ddd">通常価格は100分10,000円です。施術内容はご希望に合わせて組み立てます。</span></div>
 <a class="btn" href="https://coubic.com/stella-polaris">予約サイト（Coubic）はこちら</a>
@@ -127,11 +260,11 @@ body{padding-bottom:84px}
 
 <h2>関連するお悩み</h2>
 <ul class="links">
-<li><a href="hip-up.html">ヒップアップ・垂れ尻</a></li>
-<li><a href="futomomo.html">太ももの外側の張り</a></li>
-<li><a href="taisha.html">代謝低下・痩せにくい</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/hip-up.html">ヒップアップ・垂れ尻</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/futomomo.html">太ももの外側の張り</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/taisha.html">代謝低下・痩せにくい</a></li>
 </ul>
-<a class="btn sub" href="../index.html">トップページへ戻る</a>
+<a class="btn sub" href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/">トップページへ戻る</a>
 
 <footer>
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>

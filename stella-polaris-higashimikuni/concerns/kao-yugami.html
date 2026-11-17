@@ -17,18 +17,30 @@
 <style>
 body{margin:0;background:#f5f1e6;color:#333;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8}
 .wrap{max-width:760px;margin:0 auto;background:#fffdf7;padding:0 20px 40px}
+.note{background:#7a1f2b;color:#fff;text-align:center;padding:8px;font-size:13px}
 h1{font-size:24px;color:#1e4d3b;text-align:center;margin:24px 0 4px}
 .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px}
 img.main{width:100%;height:auto;display:block;border-radius:6px}
 .campaign{background:#1e4d3b;color:#fff;border-radius:8px;padding:14px 18px;margin:18px 0;text-align:center}
 .campaign .price{font-size:20px;font-weight:bold}.gold{color:#e8c97a}
 h2{font-size:19px;color:#1e4d3b;border-left:6px solid #7a1f2b;padding-left:10px;margin:34px 0 10px}
+h3{font-size:16px;color:#1e4d3b;margin:22px 0 6px}
 .btn{display:block;text-align:center;background:#1e4d3b;color:#fff;text-decoration:none;border-radius:30px;padding:12px;margin:14px auto;max-width:420px;font-weight:bold}
 .btn.line{background:#06c755}.btn.sub{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b}
 table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #ccc;padding:8px;text-align:center}th{background:#eef4ee}
 ul.links{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 ul.links li a{display:block;background:#eef4ee;border-radius:6px;padding:8px 10px;color:#1e4d3b;text-decoration:none;font-size:14px}
 ul.care{padding-left:22px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 28px;position:relative;border-bottom:1px dotted #ccc}
+ul.check li:before{content:"✓";position:absolute;left:4px;color:#7a1f2b;font-weight:bold}
+ol.steps{padding-left:22px}
+.step{background:#eef4ee;border-radius:8px;padding:12px 16px;margin:10px 0}
+.step .st{font-weight:bold;color:#7a1f2b}
+.faq{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:10px 0}
+.faq .q{font-weight:bold;color:#1e4d3b;margin:0 0 4px}
+.faq .a{margin:0}
+.profile{background:#eef4ee;border-radius:8px;padding:14px 18px;margin:14px 0}
 .small{font-size:13px;color:#666}
 .lead{font-size:17px;color:#1e4d3b;font-weight:bold;text-align:center;margin:16px 0}
 footer{border-top:2px solid #1e4d3b;margin-top:36px;padding-top:14px;font-size:14px;color:#555;text-align:center}
@@ -77,6 +89,51 @@ footer a{color:#1e4d3b}
         "url": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/"
       },
       "mainEntityOfPage": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/kao-yugami.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "初めてでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで気になる部位や日常のクセをうかがい、無理のない内容から始めます。施術の前後で鏡を一緒に確認しながら「顔が整った感じがする」「表情が動かしやすい」といった感覚の違いを確かめますので、初めての方も安心してご利用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "施術は痛いですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "強さは、ご希望をうかがいながら調整します。顔まわりはデリケートなため、やさしい圧を基本に、噛む筋肉のこわばりを丁寧にゆるめていきます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コースはどう選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。顔のバランスのケアで顔まわりから首・肩、頭まわりまでゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "場所と予約方法を教えてください。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "男性も受けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -92,32 +149,108 @@ body{padding-bottom:84px}
 <div class="wrap">
 <h1>顔の歪み・左右差</h1>
 <p class="sub">美容整体ステラ・ポラリス東三国｜大阪市淀川区東三国・東三国駅徒歩5分・女性向け</p>
-<img class="main" src="../assets/stella-hero.jpg" alt="顔の歪み・左右差のイメージイラスト">
+<img class="main" src="../assets/stella-hero.jpg" alt="顔と首のバランスをイメージしたイラスト">
 <p class="lead">噛み合わせと首の骨の関係から見る整体</p>
+<p>顔の左右差は、骨格そのものだけでなく、片側で噛む習慣や頬杖、バッグをいつも同じ肩にかけるなど、日常のクセの積み重ねが関係していると言われています。首の骨の上には頭蓋骨が乗り、顎の動きとも連動するため、首まわりの緊張が顔のバランス感に影響することもあります。写真に写った自分の顔を見て、左右の違いが気になり始めたという方も多いお悩みです。このページでは、顔の左右差の背景にある仕組みと、顔全体が整ったような印象を目指す当サロンでのケア、ご自宅でできるセルフケアをご案内します。まずは下のチェックで、ご自身の状態を確かめてみてください。</p>
+<a class="btn" href="https://coubic.com/stella-polaris">ご予約はこちら（Coubic）</a>
 
-<h2>そのお悩みについて</h2>
-<p>顔の左右差は、骨格そのものだけでなく、片側で噛む習慣や頬杖、バッグをいつも同じ肩にかけるなど、日常のクセの積み重ねが関係していると言われています。首の骨の上には頭蓋骨が乗り、顎の動きとも連動するため、首まわりの緊張が顔のバランス感に影響することもあります。写真に写った自分の顔を見て、左右の違いが気になり始めたという方も多いお悩みです。</p>
+<h2>こんなお悩みありませんか</h2>
+<ul class="check">
+<li>証明写真や自撮りを見て、顔の左右差が気になる</li>
+<li>食事のとき、いつも同じ側で噛んでいる気がする</li>
+<li>頬杖をつくクセがある</li>
+<li>バッグをいつも同じ肩にかけている</li>
+<li>片側のエラだけが張っているように感じる</li>
+<li>笑ったときの口角の高さが、左右で違う気がする</li>
+<li>首や肩のコリにも、左右差を感じる</li>
+</ul>
+<p>当てはまる項目が多いほど、日常のクセが顔まわりの筋肉の使い方に偏りをつくっている目安とされています。顔の印象は、顔だけではなく首や肩を含めたバランスで決まる部分も大きいものです。次のセルフチェックで、今の顔のバランスの傾向を確かめてみましょう。</p>
+
+<h2>簡単セルフチェック（鏡でのバランスチェック）</h2>
+<p>鏡の前でできる、顔のバランスの傾向を知るための簡単な方法です。</p>
+<ol class="steps">
+<li>鏡の前にまっすぐ立ち、顔の中心に縦の線をイメージして、両目の高さ・眉の高さ・口角の位置を左右で比べます。</li>
+<li>次に、ゆっくり口を開け閉めして、顎の動きに左右のブレがないかを確認します。</li>
+<li>目の高さや口角の位置に違いを感じる、顎がまっすぐ開きにくい場合は、噛む筋肉や首まわりの緊張に偏りがある目安と言われています。</li>
+</ol>
+<p class="small">※これは診断ではありません。ご自身の状態の傾向を知る目安としてお使いください。</p>
+
+<h2>顔の歪み・左右差の原因と仕組み</h2>
+<h3>日常のクセの積み重ね</h3>
+<p>顔の左右差の背景には、生まれつきの骨格だけでなく、毎日の何気ないクセが関係していると言われています。片側だけで噛む、頬杖をつく、同じ肩にバッグをかける、横向きで寝る、足を組む――こうした習慣は、顔や首まわりの筋肉の使い方に偏りをつくり、少しずつバランス感に影響していきます。図1のように、顔の印象は顔まわりの筋肉だけでなく、土台である首や肩の状態ともつながっています。</p>
+<img class="main" src="../assets/diagram-kao-yugami.png" alt="顔の左右差の仕組み図解：筋肉の緊張に偏りがある状態と、バランスが整った状態の比較">
+<p class="small">図1　顔の左右差で起こりやすい変化と、バランスが整った顔のイメージ。顔の状態には個人差があります。</p>
+<h3>噛む筋肉の左右差</h3>
+<p>噛むときに働く咬筋や側頭筋は、使う側ほど発達し、こわばりやすい筋肉です。片側噛みのクセがあると、よく使う側のエラが張って見えたり、反対側との張りの差が目立ったりすることがあります。噛む筋肉の緊張は、顎の動きや顔全体のバランス感にも関わるため、顔のケアでは顎まわりをゆるめることも大切なポイントになります。</p>
+<h3>首と頭の位置との連動</h3>
+<p>頭蓋骨は首の骨の上にのっており、顎の関節の動きとも連動しています。首が傾いていたり、頭の位置が左右どちらかに偏っていたりすると、顔の見え方にも影響することがあります。顔だけをケアしても戻りやすいと感じる方は、土台である首や肩のバランスが関係している場合があります。顔と首は、切り離して考えにくい関係にあるのです。</p>
+<h3>骨格そのものとの違いを知る</h3>
+<p>人の顔は、もともと完全に左右対称ではないのが普通です。大切なのは、骨格そのものを変えようとすることではなく、筋肉の緊張や姿勢のクセによって強まって見える左右差を、ゆるめて整えていくという考え方です。緊張がゆるんでバランスが整うと、顔全体がすっきりと整ったような印象に近づきます。感じ方には個人差がありますが、まずはクセに気づくことが第一歩です。</p>
+
+<h2>セルフケアで足りる場合・サロンケアが向く場合</h2>
+<p>クセに心当たりがあり、噛み方や姿勢を意識し始めた段階で違和感が軽い場合は、まずご自宅でのクセの見直しとセルフケアを続けて様子を見る方法があります。一方で、噛む筋肉のこわばりが自分ではゆるめにくい、顔だけでなく首や肩のバランスから整えたい、写真に写る印象を変えていきたいという場合は、サロンでのケアが向いている目安になります。サロンでは、顔まわりだけでなく首・肩・頭まわり全体のバランスを確認しながらケアすることで、施術後に「顔が整った感じがする」「表情が動かしやすい」と感じやすい状態を目指します。どちらが正解というものではなく、今の状態に合わせて選ぶことが大切です。</p>
 
 <h2>当サロンでのケア</h2>
-<p>当サロンでは、顔だけを施術するのではなく、首・肩・頭まわり全体のバランスを確認するところから始めます。噛む筋肉やこめかみまわりはやさしい圧でゆるめ、美容整体で首のラインと頭の位置を整えます。施術前後で鏡を確認しながら感覚の変化を共有し、日常で気をつけたい噛み癖や姿勢のクセについてもご案内します。顔全体が整ったような印象と、表情の動かしやすさを目指します。</p>
-<p class="small">施術は、施術歴30年・鍼灸師の平賀建人が担当します。美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせます。</p>
+<p>当サロンの顔の左右差ケアは、「顔まわりの緊張をゆるめ、土台からバランスを整える」ことを目指す組み立てです。顔だけを施術するのではなく、首・肩・頭まわり全体を確認し、部位と目的に合わせて3つの手技を組み合わせます。</p>
+<p><strong>美容整体</strong>：首のラインと頭の位置を整え、顔の土台となるバランスをつくることを目的に。姿勢のクセも含めて確認しながら進めます。<br>
+<strong>アロマオイルマッサージ</strong>：首・肩・デコルテまわりの緊張をオイルでゆるめ、顔まわりへの巡りが流れやすい状態を目指します。香りに包まれるリラックス感の高いケアです。<br>
+<strong>もみほぐし</strong>：噛む筋肉やこめかみまわりをやさしい圧で丁寧にゆるめ、こわばりをほぐすことを目的に進めます。力の抜けた状態を感じていただくことを大切にします。</p>
+<p>ケアを通して目指すのは、こんな変化です。</p>
+<ul class="care">
+<li>顔全体が整ったような、すっきりした印象へ</li>
+<li>噛む筋肉のこわばりがゆるんで、表情が動かしやすい感覚へ</li>
+<li>片側のエラの張り感がやわらいで見える印象へ</li>
+<li>首のラインが整って、顔まわりが軽く感じられる状態へ</li>
+<li>写真に写る自分の印象が楽しみになるような仕上がりへ</li>
+</ul>
+<p>施術の前後では鏡を一緒に確認しながら、感覚の変化を共有します。「顔全体が整ったような印象」と「表情の動かしやすさ」を目指し、日常で気をつけたい噛み癖や姿勢のクセについてもご案内します。クセは毎日の積み重ねだからこそ、気づいて見直すきっかけづくりを大切にしています。</p>
+<img class="main" src="../assets/stella-oil.jpg" alt="アロマオイルマッサージで首・肩をケアするイメージイラスト">
+
+<h2>施術の流れ</h2>
+<div class="step"><span class="st">STEP1 受付・カウンセリング</span><br>ご来店後、気になる部位やお悩み、ご希望の強さなどをうかがいます。完全個室のため、周りを気にせずお話しいただけます。</div>
+<div class="step"><span class="st">STEP2 お身体の状態確認</span><br>顔まわりの緊張や首・肩のバランス、姿勢のクセなどを一緒に確認し、その日の状態に合わせた施術の進め方をご案内します。</div>
+<div class="step"><span class="st">STEP3 施術</span><br>美容整体を中心に、ご希望に応じてアロマオイルマッサージ、もみほぐしを組み合わせて進めます。強さは途中でも調整できます。</div>
+<div class="step"><span class="st">STEP4 終わりのご案内</span><br>施術後の状態を確認し、ご自宅で続けやすいセルフケアのポイントをお伝えします。次回の目安についても、ご希望があればご案内します。</div>
+
+<h2>料金</h2>
+<table>
+<tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
+<tr><td>80分</td><td>―</td><td>3,000円</td></tr>
+<tr><td>100分</td><td>10,000円</td><td>4,000円</td></tr>
+<tr><td>120分</td><td>―</td><td>5,000円</td></tr>
+</table>
+<p class="small">クリスマスキャンペーンは12月25日まで、ご新規様もリピーターの方も対象です。施術内容は当日の状態とご希望に合わせて組み立てます。</p>
 
 <h2>ご自宅でできるセルフケア</h2>
 <ul class="care">
-<li>食事のとき、左右両方の歯で噛むことを意識する</li>
-<li>頬杖や、片側の肩にバッグをかける習慣を見直す</li>
-<li>耳の下から顎にかけて、指の腹でやさしくほぐすマッサージを取り入れる</li>
+<li>両側で噛む意識：食事のとき、左右均等に噛うことを意識します。まずは1日1食から、噛む側を途中で替える習慣をつけるのが目安です。</li>
+<li>頬杖の見直し：頬杖に気づいたら手を下ろし、姿勢をまっすぐに整え直します。デスクにメモを貼るなど、気づくきっかけをつくるのがおすすめです。</li>
+<li>バッグの持ち替え：バッグをかける肩を日替わりで替える、リュックを使うなど、片側だけに負担がかからない工夫を取り入れます。</li>
+<li>顎まわりのストレッチ：口をゆっくり大きく開け閉めする動きを5回、朝と夜に行います。痛みのない範囲で、力を抜いて行ってください。</li>
 </ul>
-
-<h2>受診の目安</h2>
-<p>顎の関節の痛みや、口が開きにくい症状がある場合は、歯科や医療機関への相談をおすすめします。</p>
-
 <p style="font-weight:bold;color:#1e4d3b;margin:26px 0 4px">ご自宅でのケアに：セルフケア資料ライブラリ（無料）</p>
 <p>このお悩みに合わせたセルフケアの考え方を、無料の資料ライブラリでご紹介しています。<br>
 <a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="color:#1e4d3b">セルフケア資料ライブラリを開く →</a></p>
 
+<h2>受診の目安</h2>
+<p>顎の関節の痛みや、口が開きにくい症状がある場合は、施術の前に歯科や医療機関への相談をおすすめします。また、顔のしびれや動かしにくさが急に出た場合は、すぐに医療機関を受診してください。</p>
+
+<h2>よくある質問</h2>
+<div class="faq"><p class="q">Q. 初めてでも大丈夫ですか？</p><p class="a">はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで気になる部位や日常のクセをうかがい、無理のない内容から始めます。施術の前後で鏡を一緒に確認しながら「顔が整った感じがする」「表情が動かしやすい」といった感覚の違いを確かめますので、初めての方も安心してご利用いただけます。</p></div>
+<div class="faq"><p class="q">Q. 施術は痛いですか？</p><p class="a">強さは、ご希望をうかがいながら調整します。顔まわりはデリケートなため、やさしい圧を基本に、噛む筋肉のこわばりを丁寧にゆるめていきます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。</p></div>
+<div class="faq"><p class="q">Q. コースはどう選べばいいですか？</p><p class="a">80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。顔のバランスのケアで顔まわりから首・肩、頭まわりまでゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。</p></div>
+<div class="faq"><p class="q">Q. 場所と予約方法を教えてください。</p><p class="a">大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。</p></div>
+<div class="faq"><p class="q">Q. 男性も受けられますか？</p><p class="a">当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。</p></div>
+
+<h2>施術者について</h2>
+<div class="profile">
+<p style="margin:0 0 6px"><strong>平賀建人</strong>（施術歴30年）</p>
+<p style="margin:0">鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナーの資格を持ち、美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせて施術します。このページの内容は、施術者の知識と経験をもとに作成しています。</p>
+</div>
+<img class="main" src="../assets/stella-posture.jpg" alt="首と背骨のラインをイメージしたイラスト">
+
 <h2>料金・ご予約</h2>
-<div class="campaign">🎄 クリスマスキャンペーン 🎄<br>ご新規様もリピーターの方も 12/25まで<br>
+<div class="campaign">クリスマスキャンペーン<br>ご新規様もリピーターの方も 12/25まで<br>
 <span class="price">80分 <span class="gold">3,000円</span>／100分 <span class="gold">4,000円</span>／120分 <span class="gold">5,000円</span></span><br>
 <span class="small" style="color:#ddd">通常価格は100分10,000円です。施術内容はご希望に合わせて組み立てます。</span></div>
 <a class="btn" href="https://coubic.com/stella-polaris">予約サイト（Coubic）はこちら</a>
@@ -127,11 +260,11 @@ body{padding-bottom:84px}
 
 <h2>関連するお悩み</h2>
 <ul class="links">
-<li><a href="decollete.html">鎖骨ライン（デコルテ）</a></li>
-<li><a href="kao-mukumi.html">顔のむくみ・たるみ</a></li>
-<li><a href="gansei-hirou.html">眼精疲労・まぶたの重み</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/decollete.html">鎖骨ライン（デコルテ）</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/kao-mukumi.html">顔のむくみ・たるみ</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/gansei-hirou.html">眼精疲労・まぶたの重み</a></li>
 </ul>
-<a class="btn sub" href="../index.html">トップページへ戻る</a>
+<a class="btn sub" href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/">トップページへ戻る</a>
 
 <footer>
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>
