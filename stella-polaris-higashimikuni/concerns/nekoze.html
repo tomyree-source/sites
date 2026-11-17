@@ -17,18 +17,30 @@
 <style>
 body{margin:0;background:#f5f1e6;color:#333;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8}
 .wrap{max-width:760px;margin:0 auto;background:#fffdf7;padding:0 20px 40px}
+.note{background:#7a1f2b;color:#fff;text-align:center;padding:8px;font-size:13px}
 h1{font-size:24px;color:#1e4d3b;text-align:center;margin:24px 0 4px}
 .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px}
 img.main{width:100%;height:auto;display:block;border-radius:6px}
 .campaign{background:#1e4d3b;color:#fff;border-radius:8px;padding:14px 18px;margin:18px 0;text-align:center}
 .campaign .price{font-size:20px;font-weight:bold}.gold{color:#e8c97a}
 h2{font-size:19px;color:#1e4d3b;border-left:6px solid #7a1f2b;padding-left:10px;margin:34px 0 10px}
+h3{font-size:16px;color:#1e4d3b;margin:22px 0 6px}
 .btn{display:block;text-align:center;background:#1e4d3b;color:#fff;text-decoration:none;border-radius:30px;padding:12px;margin:14px auto;max-width:420px;font-weight:bold}
 .btn.line{background:#06c755}.btn.sub{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b}
 table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #ccc;padding:8px;text-align:center}th{background:#eef4ee}
 ul.links{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 ul.links li a{display:block;background:#eef4ee;border-radius:6px;padding:8px 10px;color:#1e4d3b;text-decoration:none;font-size:14px}
 ul.care{padding-left:22px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 28px;position:relative;border-bottom:1px dotted #ccc}
+ul.check li:before{content:"✓";position:absolute;left:4px;color:#7a1f2b;font-weight:bold}
+ol.steps{padding-left:22px}
+.step{background:#eef4ee;border-radius:8px;padding:12px 16px;margin:10px 0}
+.step .st{font-weight:bold;color:#7a1f2b}
+.faq{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:10px 0}
+.faq .q{font-weight:bold;color:#1e4d3b;margin:0 0 4px}
+.faq .a{margin:0}
+.profile{background:#eef4ee;border-radius:8px;padding:14px 18px;margin:14px 0}
 .small{font-size:13px;color:#666}
 .lead{font-size:17px;color:#1e4d3b;font-weight:bold;text-align:center;margin:16px 0}
 footer{border-top:2px solid #1e4d3b;margin-top:36px;padding-top:14px;font-size:14px;color:#555;text-align:center}
@@ -77,6 +89,51 @@ footer a{color:#1e4d3b}
         "url": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/"
       },
       "mainEntityOfPage": "https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/nekoze.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "初めてでも大丈夫ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで姿勢のクセや気になる部位をうかがい、無理のない内容から始めます。施術の前後で「背筋が伸びた」「胸が開いた」といった姿勢の感覚の違いを一緒に確認しながら進めますので、初めての方も安心してご利用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "施術は痛いですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "強さは、ご希望をうかがいながら調整します。強く押せばよいという考え方ではなく、お身体の状態に合わせた圧で、固まった首や肩のコリがゆるんでいく感覚を味わいながら受けていただけます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コースはどう選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。猫背のケアで胸まわりから背中、骨盤まわりまで全身をゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "場所と予約方法を教えてください。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "男性も受けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -92,32 +149,108 @@ body{padding-bottom:84px}
 <div class="wrap">
 <h1>猫背・円背</h1>
 <p class="sub">美容整体ステラ・ポラリス東三国｜大阪市淀川区東三国・東三国駅徒歩5分・女性向け</p>
-<img class="main" src="../assets/stella-posture.jpg" alt="猫背・円背のイメージイラスト">
+<img class="main" src="../assets/stella-posture.jpg" alt="姿勢と背骨のラインをイメージしたイラスト">
 <p class="lead">巻き肩を広げてバストラインを上げる。武術の姿勢に学ぶ猫背ケア</p>
+<p>背中が丸まった姿勢は、後ろ姿が老けて見える、胸が下がって見える、下腹が出て見えるといった見た目の印象に加え、肩や首のコリ、呼吸の浅さにもつながると言われています。反対に、身体の軸が整った姿勢は、背筋が伸びて後ろ姿がすっきり見え、胸が開いてバストラインも上がって見えるもの。このページでは、猫背・円背の背景にある仕組みと、軸の整った姿勢を目指す当サロンでのケア、ご自宅でできるセルフケアをご案内します。まずは下のチェックで、ご自身の状態を確かめてみてください。</p>
+<a class="btn" href="https://coubic.com/stella-polaris">ご予約はこちら（Coubic）</a>
 
-<h2>そのお悩みについて</h2>
-<p>猫背は、背中が丸まり、頭と肩が前に出た姿勢の状態を指します。長時間のデスクワークやスマートフォンの操作が続くと、胸の筋肉は縮んだまま、背中の筋肉は引き伸ばされたまま固まりやすくなることが背景にあると言われています。姿勢が丸まると呼吸が浅くなりやすく、肩や首への負担が増えるほか、後ろ姿や全体の印象にもつながります。武術の世界では「背骨を一本の軸として立つ」ことが基本とされ、余分な力を抜いてまっすぐに立つ感覚が大切にされてきました。</p>
+<h2>こんなお悩みありませんか</h2>
+<ul class="check">
+<li>写真に写った自分の後ろ姿を見て、背中の丸さに驚いたことがある</li>
+<li>デスクワークの終わりごろになると、肩や首が重く感じる</li>
+<li>スマートフォンを見ていると、いつの間にか頭が前に出ている</li>
+<li>深呼吸をしても、胸いっぱいに空気が入らない感じがする</li>
+<li>姿勢を正そうとしても、数分で元の丸まった姿勢に戻ってしまう</li>
+<li>肩が内側に入る「巻き肩」が気になっている</li>
+<li>夕方になると背中や腰まわりが重だるく、姿勢が崩れやすい</li>
+</ul>
+<p>当てはまる項目が多いほど、日常の姿勢のクセが積み重なっている目安とされています。裏を返せば、クセに気づいて整えていくことで、後ろ姿の印象を変えていけるということでもあります。次のセルフチェックで、今の姿勢の傾向を確かめてみましょう。</p>
+
+<h2>簡単セルフチェック（壁チェック）</h2>
+<p>壁を使った、姿勢の傾向を知るための簡単な方法です。</p>
+<ol class="steps">
+<li>壁に背を向けて立ち、かかと・お尻・背中・後頭部の4点を壁につけます。</li>
+<li>力を入れて胸を張るのではなく、自然に立った状態で4点がつくかを確認します。</li>
+<li>後頭部が壁につかない、あごが上がってしまう、腰と壁の間に手のひら以上のすき間がある場合は、頭や肩が前に出る姿勢のクセがついている目安と言われています。</li>
+</ol>
+<p class="small">※これは診断ではありません。ご自身の姿勢の傾向を知る目安としてお使いください。</p>
+
+<h2>猫背・円背の原因と仕組み</h2>
+<h3>デスクワークとスマートフォンの姿勢</h3>
+<p>猫背は、背中が丸まり、頭と肩が前に出た姿勢の状態を指します。パソコンやスマートフォンの画面をのぞき込む姿勢は、頭が前に出て背中が丸まりやすく、1日のうち長い時間をその姿勢で過ごすほど、体はその形を「いつもの姿勢」として覚えていくと言われています。とくに画面の位置が低いとあごが下がり、首から背中にかけての負担が増えやすいとされています。図1のように、背中の丸まりは首・肩・胸・お腹の見え方にもつながっていきます。</p>
+<img class="main" src="../assets/diagram-nekoze.png" alt="猫背の仕組み図解：バランスが崩れた姿勢と、身体の軸が整った姿勢の比較">
+<p class="small">図1　猫背の姿勢で起こりやすい変化と、身体の軸が整った姿勢のイメージ。姿勢の状態には個人差があります。</p>
+<h3>前と後ろの筋肉のバランス</h3>
+<p>丸まった姿勢が続くと、胸の前の筋肉は縮んだままの状態に、背中側の筋肉は引き伸ばされたままの状態になりやすいと言われています。胸まわりが縮むと肩が内側に入る巻き肩につながり、背中側は常に引き伸ばされることで重だるさを感じやすくなります。前と後ろ、どちらか一方ではなく、両方のバランスが崩れることが、姿勢を保ちにくさの背景にあると考えられています。</p>
+<h3>肩甲骨の動きと呼吸</h3>
+<p>背中の上部にある肩甲骨は、本来、背中の上を滑るように動く骨です。姿勢が丸まると肩甲骨が外側に開いたまま動きにくくなり、腕の上げ下げや深い呼吸にも影響すると言われています。胸が閉じた姿勢では肺が広がるスペースも限られ、呼吸が浅くなりやすいため、姿勢と呼吸は切り離せない関係にあります。</p>
+<h3>クセの積み重ね</h3>
+<p>姿勢は、骨格だけでなく日々の習慣の積み重ねで形づくられます。いつも同じ側にバッグを持つ、足を組む、ソファに浅く座るといった何気ない習慣も、体の使い方の偏りにつながると言われています。武術の世界では「背骨を一本の軸として立つ」ことが基本とされ、余分な力を抜いてまっすぐに立つ感覚が大切にされてきました。クセに気づくことが、姿勢を見直す第一歩になります。</p>
+
+<h2>セルフケアで足りる場合・サロンケアが向く場合</h2>
+<p>違和感が軽く、ストレッチや姿勢の見直しをしたあとに体が軽く感じる日が多い場合は、まずご自宅でのセルフケアを続けて様子を見る方法があります。一方で、胸まわりが自分ではゆるめにくい、まっすぐな姿勢を保つ感覚がつかみにくい、自分の姿勢のクセをプロの目で確認したいという場合は、サロンでのケアが向いている目安になります。サロンでは、ほぐしと美容整体を組み合わせて、施術後に「背筋が伸びた」「胸が開いて呼吸がしやすい」と感じやすい状態を目指します。どちらが正解というものではなく、今の状態に合わせて選ぶことが大切です。</p>
 
 <h2>当サロンでのケア</h2>
-<p>当サロンでは、まず現在の姿勢のクセを一緒に確認し、縮みやすい胸まわりをアロマオイルマッサージでゆるめ、背中側の筋肉にもみほぐしでアプローチします。そのうえで美容整体の手技で肩の位置や背骨のラインを整え、ご自身で「まっすぐ」を感じ取りやすい状態を目指します。武術の立ち方に学んだ呼吸のご案内も交えながら、施術後に背筋が伸びたような感覚や、胸が開いて呼吸がしやすくなったような体感を大切にしています。</p>
-<p class="small">施術は、施術歴30年・鍼灸師の平賀建人が担当します。美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせます。</p>
+<p>当サロンの猫背ケアは、「身体の軸が整った姿勢」を目指す組み立てです。まず現在の姿勢のクセを一緒に確認し、部位と目的に合わせて3つの手技を組み合わせます。</p>
+<p><strong>美容整体</strong>：肩の位置と背骨のラインを整え、背筋が伸びた姿勢の土台をつくることを目的に。丸まった背中をゆるやかに開き、「まっすぐ立つ」感覚を取り戻すお手伝いをします。<br>
+<strong>アロマオイルマッサージ</strong>：縮こまりやすい胸まわりや首・肩をオイルでゆるめ、胸が開きやすい状態を目指します。香りに包まれながらほぐれる、リラックス感の高いケアです。<br>
+<strong>もみほぐし</strong>：引き伸ばされて重だるくなりやすい背中側の筋肉や、ガチガチになりやすい肩甲骨まわりをほぐし、動きを引き出すことを目的に進めます。</p>
+<p>ケアを通して目指すのは、こんな変化です。</p>
+<ul class="care">
+<li>背筋が伸びて、後ろ姿がすっきり見える姿勢へ</li>
+<li>胸が開いて、バストラインが上がって見える姿勢へ</li>
+<li>下腹がぽっこり出て見える一因になる、背中の丸まりや骨盤の傾きにアプローチ</li>
+<li>首・肩のコリをほぐして、前に出やすい頭の位置を軸の上に整える</li>
+<li>肩甲骨まわりが動きやすくなり、深呼吸がしやすい感覚へ</li>
+</ul>
+<p>武術の立ち方に学んだ呼吸のご案内も交えながら、施術後に「背筋が伸びた」「胸が開いて呼吸がしやすい」と感じられるような体感を大切にしています。姿勢のクセは一日で変わるものではありませんが、整った姿勢の心地よさを知ることが、日常の姿勢を見直すきっかけになります。</p>
+<img class="main" src="../assets/stella-oil.jpg" alt="アロマオイルマッサージで背中をケアするイメージイラスト">
+
+<h2>施術の流れ</h2>
+<div class="step"><span class="st">STEP1 受付・カウンセリング</span><br>ご来店後、気になる部位や姿勢のお悩み、ご希望の強さなどをうかがいます。完全個室のため、周りを気にせずお話しいただけます。</div>
+<div class="step"><span class="st">STEP2 姿勢とお身体の状態確認</span><br>立った姿勢や肩の位置などを一緒に確認し、その日の状態に合わせた施術の進め方をご案内します。</div>
+<div class="step"><span class="st">STEP3 施術</span><br>美容整体を中心に、ご希望に応じてアロマオイルマッサージ、もみほぐしを組み合わせて進めます。強さは途中でも調整できます。</div>
+<div class="step"><span class="st">STEP4 終わりのご案内</span><br>施術後の状態を確認し、ご自宅で続けやすいセルフケアのポイントをお伝えします。次回の目安についても、ご希望があればご案内します。</div>
+
+<h2>料金</h2>
+<table>
+<tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
+<tr><td>80分</td><td>―</td><td>3,000円</td></tr>
+<tr><td>100分</td><td>10,000円</td><td>4,000円</td></tr>
+<tr><td>120分</td><td>―</td><td>5,000円</td></tr>
+</table>
+<p class="small">クリスマスキャンペーンは12月25日まで、ご新規様もリピーターの方も対象です。施術内容は当日の状態とご希望に合わせて組み立てます。</p>
 
 <h2>ご自宅でできるセルフケア</h2>
 <ul class="care">
-<li>1時間に一度は立ち上がり、両手を組んで天井へ伸ばすストレッチをする</li>
-<li>椅子に座るときは坐骨で座る意識を持ち、背もたれに寄りかかりすぎない</li>
-<li>胸の前で両手を合わせ、肩甲骨を寄せる動きをゆっくり10回繰り返す</li>
+<li>胸を開くストレッチ：ドアの枠や壁に前腕をつけ、体を少し前に傾けて胸の前を伸ばします。左右それぞれ20〜30秒を2セット、1日1〜2回が目安です。痛みのない範囲で行ってください。</li>
+<li>肩甲骨を寄せる動き：椅子に座り、両肘を後ろに引いて肩甲骨同士を寄せるように意識します。ゆっくり10回を2セット、デスクワークの合間に取り入れるのがおすすめです。</li>
+<li>1時間に一度のリセット：長時間座り続けたときは一度立ち上がり、両手を組んで天井へ伸ばすストレッチをします。姿勢を保つことより、固まる前にほぐす習慣が大切です。</li>
+<li>坐骨で座る意識：椅子に座るときは、お尻の骨（坐骨）で座る意識を持ち、背もたれに寄りかかりすぎないようにします。</li>
 </ul>
-
-<h2>受診の目安</h2>
-<p>背中の強い痛みや手足のしびれ、呼吸のしづらさが続く場合は、施術の前に医療機関への受診をおすすめします。</p>
-
 <p style="font-weight:bold;color:#1e4d3b;margin:26px 0 4px">ご自宅でのケアに：セルフケア資料ライブラリ（無料）</p>
 <p>このお悩みに合わせたセルフケアの考え方を、無料の資料ライブラリでご紹介しています。<br>
 <a href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener" style="color:#1e4d3b">セルフケア資料ライブラリを開く →</a></p>
 
+<h2>受診の目安</h2>
+<p>背中の強い痛みや手足のしびれ、呼吸のしづらさが続く場合は、施術の前に医療機関への受診をおすすめします。また、痛みが日ごとに強くなる場合や、転倒などのきっかけのあとに姿勢が急に変わったと感じる場合も、まずは医療機関でご相談ください。</p>
+
+<h2>よくある質問</h2>
+<div class="faq"><p class="q">Q. 初めてでも大丈夫ですか？</p><p class="a">はい。当サロンは完全予約制・完全個室で、1日3組までのご案内です。最初にカウンセリングで姿勢のクセや気になる部位をうかがい、無理のない内容から始めます。施術の前後で「背筋が伸びた」「胸が開いた」といった姿勢の感覚の違いを一緒に確認しながら進めますので、初めての方も安心してご利用いただけます。</p></div>
+<div class="faq"><p class="q">Q. 施術は痛いですか？</p><p class="a">強さは、ご希望をうかがいながら調整します。強く押せばよいという考え方ではなく、お身体の状態に合わせた圧で、固まった首や肩のコリがゆるんでいく感覚を味わいながら受けていただけます。感じ方には個人差がありますので、施術中も遠慮なくお声がけください。</p></div>
+<div class="faq"><p class="q">Q. コースはどう選べばいいですか？</p><p class="a">80分・100分・120分のコースがあり、ケアしたい部位の広さやお時間のご都合に合わせて選べます。猫背のケアで胸まわりから背中、骨盤まわりまで全身をゆっくり整えたい方には、100分が選ばれることが多いコースです。迷われる場合は、ご予約の際にお気軽にご相談ください。</p></div>
+<div class="faq"><p class="q">Q. 場所と予約方法を教えてください。</p><p class="a">大阪市淀川区東三国、東三国駅から徒歩5分です。完全予約制のため、予約サイト（Coubic）またはLINE公式アカウントからご予約をお願いしています。</p></div>
+<div class="faq"><p class="q">Q. 男性も受けられますか？</p><p class="a">当サロンは女性向けのため、男性の方は、同じ東三国の男性専用整体院「北辰堂」をご案内しています。</p></div>
+
+<h2>施術者について</h2>
+<div class="profile">
+<p style="margin:0 0 6px"><strong>平賀建人</strong>（施術歴30年）</p>
+<p style="margin:0">鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナーの資格を持ち、美容整体を中心に、アロマオイルマッサージ、もみほぐしを、その日の状態とご希望に合わせて組み合わせて施術します。このページの内容は、施術者の知識と経験をもとに作成しています。</p>
+</div>
+<img class="main" src="../assets/stella-hero.jpg" alt="ステラ・ポラリス東三国のサロンの雰囲気を描いたイラスト">
+
 <h2>料金・ご予約</h2>
-<div class="campaign">🎄 クリスマスキャンペーン 🎄<br>ご新規様もリピーターの方も 12/25まで<br>
+<div class="campaign">クリスマスキャンペーン<br>ご新規様もリピーターの方も 12/25まで<br>
 <span class="price">80分 <span class="gold">3,000円</span>／100分 <span class="gold">4,000円</span>／120分 <span class="gold">5,000円</span></span><br>
 <span class="small" style="color:#ddd">通常価格は100分10,000円です。施術内容はご希望に合わせて組み立てます。</span></div>
 <a class="btn" href="https://coubic.com/stella-polaris">予約サイト（Coubic）はこちら</a>
@@ -127,11 +260,11 @@ body{padding-bottom:84px}
 
 <h2>関連するお悩み</h2>
 <ul class="links">
-<li><a href="zenshin-hirou.html">全身の疲労感・倦怠感</a></li>
-<li><a href="straight-neck.html">ストレートネック</a></li>
-<li><a href="kenko-kotsu.html">肩甲骨のガチガチ</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/zenshin-hirou.html">全身の疲労感・倦怠感</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/straight-neck.html">ストレートネック</a></li>
+<li><a href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/concerns/kenko-kotsu.html">肩甲骨のガチガチ</a></li>
 </ul>
-<a class="btn sub" href="../index.html">トップページへ戻る</a>
+<a class="btn sub" href="https://tomyree-source.github.io/sites/stella-polaris-higashimikuni/">トップページへ戻る</a>
 
 <footer>
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>
