@@ -306,7 +306,7 @@ table.info th{width:32%;font-family:"Shippori Mincho",serif;font-weight:600;whit
 .fab-btn:hover{background:#e9dcbc}
 .fab-btn:focus-visible{outline:3px solid #f5efdf;outline-offset:2px}
 .fab-btn svg{width:20px;height:20px;flex:none}
-.line-fab{position:fixed;right:16px;bottom:calc(80px + env(safe-area-inset-bottom));z-index:94;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:999px;background:#06c755;color:#fff;border:1px solid rgba(255,255,255,.35);font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:700;letter-spacing:.05em;line-height:1;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.45)}
+.line-fab{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:94;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:999px;background:#06c755;color:#fff;border:1px solid rgba(255,255,255,.35);font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:700;letter-spacing:.05em;line-height:1;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.45)}
 .line-fab:hover{background:#05b34c}
 .line-fab:focus-visible{outline:3px solid #f5efdf;outline-offset:2px}
 @media(max-width:640px){
@@ -314,7 +314,7 @@ table.info th{width:32%;font-family:"Shippori Mincho",serif;font-weight:600;whit
   .fab-btn .fab-btn-label{display:none}
   .fab-btn svg{width:22px;height:22px}
 }
-.fab-panel{position:fixed;right:16px;bottom:calc(148px + env(safe-area-inset-bottom));z-index:90;width:min(344px,calc(100vw - 32px));max-height:min(68vh,560px);overflow-y:auto;overscroll-behavior:contain;background:#182238;border:1px solid rgba(233,220,188,.35);border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.55);opacity:0;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease}
+.fab-panel{position:fixed;right:16px;bottom:calc(80px + env(safe-area-inset-bottom));z-index:90;width:min(344px,calc(100vw - 32px));max-height:min(68vh,560px);overflow-y:auto;overscroll-behavior:contain;background:#182238;border:1px solid rgba(233,220,188,.35);border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.55);opacity:0;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease}
 .fab-panel.open{opacity:1;transform:translateY(0)}
 .fab-panel-head{display:flex;align-items:center;gap:10px;padding:12px 10px 10px 18px;border-bottom:1px solid rgba(233,220,188,.22);position:sticky;top:0;background:#182238;z-index:1}
 .fab-panel-title{font-family:"Noto Serif JP",serif;font-weight:600;font-size:16px;letter-spacing:.08em;color:#f5efdf}
