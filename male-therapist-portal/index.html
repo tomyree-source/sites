@@ -119,6 +119,12 @@ footer.site a{color:var(--gold-soft)}
 .rel-links{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-top:28px}
 .rel-links p{font-weight:700;margin-bottom:8px}
 .rel-links li{margin:4px 0 4px 18px;line-height:1.7}
+.filter-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:16px}
+.filter-box select{padding:8px;font-size:15px;border:1px solid var(--line);border-radius:8px}
+.chk{display:inline-flex;gap:6px;align-items:center;background:#f7f3ea;border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin:4px 4px 0 0;font-size:13.5px;cursor:pointer}
+.s-count{font-weight:700;margin:16px 0 8px}
+.step-row{display:flex;gap:12px;margin-top:12px}
+.step-row b{background:var(--gold);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex:none}
 </style>
 </head>
 <body>
@@ -127,11 +133,12 @@ footer.site a{color:var(--gold-soft)}
     <a class="logo" href="index.html">男性セラピストナビ<small>MALE THERAPIST NAVI</small></a>
     <nav>
       <a href="index.html#area">地域から探す</a>
+      <a href="search.html">条件から探す</a>
       <a href="column.html">コラム</a>
       <a href="goods.html">おすすめの本・用品</a>
       <a href="standard.html">安心の掲載基準</a>
       <a href="faq.html">初めての方へ</a>
-      <a href="apply.html">掲載申込</a>
+      <a href="for-salons.html">店舗の方へ</a>
     </nav>
   </div>
 </header>
@@ -165,10 +172,26 @@ footer.site a{color:var(--gold-soft)}
 
   <section id="condition">
     <h2><span class="en">SEARCH BY CONDITION</span>条件から探す</h2>
-    <p class="lead">安心して通うための条件は、各店舗の詳細ページの特徴タグで確認できます。</p>
-    <div class="cond">
-      <span>女性専用</span><span>完全個室</span><span>シャワー完備</span><span>国家資格あり</span><span>施術歴20年以上</span><span>完全予約制</span>
+    <p class="lead">地域・条件（完全個室／シャワー完備／国家資格あり／出張開催など）・営業中のみ、で実際に絞り込めます。件数は営業中と準備中を分けて表示します。</p>
+    <div class="cta-box">
+      <p>掲載全22店から、条件に合う店舗だけを表示できます。</p>
+      <a class="btn" href="search.html">条件検索ページで絞り込む</a>
     </div>
+  </section>
+
+  <section id="therapists">
+    <h2><span class="en">THERAPISTS</span>セラピストから探す</h2>
+    <p class="lead">「人柄で指名したい」という方へ。施術者の経歴と資格を事前に確認できます。現在、名前と資格を公開して掲載している施術者は平賀伸人です。掲載店が増えれば、同じ形式でここに並びます。</p>
+    <div class="profile">
+      <img src="assets/therapist-kento.webp" alt="施術者・平賀伸人のイラスト">
+      <div>
+        <p class="p-name">平賀 伸人</p>
+        <p class="p-role">ひらが のぶひと｜男性セラピスト</p>
+        <p>施術歴30年。鍼灸師としての東洋医学の知識を土台に、オイルマッサージと美容整体を組み合わせた施術を行います。当店では鍼灸施術は行いません。深く、しかし痛みを我慢させない圧の加減にこだわり、施術中いつでも強さを調整します。</p>
+        <div class="quals"><span>施術歴30年</span><span>鍼灸師（国家資格）</span><span>登録販売者</span><span>アロマセラピスト</span><span>パーソナルトレーナー</span></div>
+      </div>
+    </div>
+    <p style="margin-top:14px"><a class="btn" href="search.html#therapists">セラピスト一覧を見る</a></p>
   </section>
 
   <section id="new">
@@ -266,7 +289,7 @@ footer.site a{color:var(--gold-soft)}
 <footer class="site">
   <p class="f-name">男性セラピストナビ</p>
   <p style="margin-top:8px">男性セラピストが担当する女性向けサロンの専門検索ポータル｜ご予約は各店舗の公式サイト・LINE公式へ</p>
-  <p style="margin-top:6px"><a href="index.html">トップ</a>｜<a href="column.html">コラム</a>｜<a href="goods.html">おすすめの本・用品</a>｜<a href="standard.html">安心の掲載基準</a>｜<a href="faq.html">初めての方へ</a>｜<a href="apply.html">掲載申込</a>｜<a href="terms.html">掲載プラン・利用条件</a>｜<a href="https://note.com/222hifumin" target="_blank" rel="noopener">運営者のnote</a></p>
+  <p style="margin-top:6px"><a href="index.html">トップ</a>｜<a href="search.html">条件から探す</a>｜<a href="column.html">コラム</a>｜<a href="goods.html">おすすめの本・用品</a>｜<a href="standard.html">安心の掲載基準</a>｜<a href="faq.html">初めての方へ</a>｜<a href="for-salons.html">店舗の方へ</a>｜<a href="apply.html">掲載申込</a>｜<a href="terms.html">掲載プラン・利用条件</a>｜<a href="https://note.com/222hifumin" target="_blank" rel="noopener">運営者のnote</a></p>
 </footer>
 </body>
 </html>
