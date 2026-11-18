@@ -1,0 +1,1249 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>セラピストマッチ｜女性が理想のセラピストと出会える全国ポータル</title>
+<meta name="description" content="セラピストマッチは、女性のお客様が雰囲気・年代・得意なことから理想のセラピストを探せる全国ポータル。女性用風俗（女風）・性感・オイル・出張・タントラなど12ジャンル横断。総額の事前表示、NGの事前申告、届出確認、運営確認制口コミで初めてでも安心。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="セラピストマッチ">
+<meta property="og:title" id="ogTitle" content="セラピストマッチ｜女性が理想のセラピストと出会える全国ポータル">
+<meta property="og:description" id="ogDesc" content="お店の名前ではなく「どんな人に任せたいか」から選べる、女性のための全国ポータル。12ジャンル横断・届出確認・料金相場データ・安全ガイド。">
+<meta name="twitter:card" content="summary">
+<!-- Google tag (gtag.js) GA4: G-0V6GQSZV7F -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0V6GQSZV7F"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0V6GQSZV7F');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#faf5ef; --bg2:#f4ebe0; --surface:#fffcf8; --surface2:#f9f0e6;
+--ink:#33202a; --ink2:#5f4a54; --muted:#83707b;
+--line:#ecd9cb; --line2:#dec3b0;
+--bordeaux:#7a2438; --bordeaux2:#93334c; --plum:#4a2545; --plum2:#6a3a61;
+--rose:#b76e82; --rose-bg:#f9e9ec;
+--gold:#a98548; --gold-bg:#f6ead1;
+--ok:#2f6b4f; --ok-bg:#e3efe6;
+--warn-bg:#fbf0e6; --warn-line:#e3b98f; --warn-ink:#7a3f16;
+--shadow:0 10px 30px rgba(74,37,69,.10);
+--radius:18px;
+}
+@media (prefers-color-scheme: dark){
+:root{
+--bg:#1d1219; --bg2:#251722; --surface:#2b1b26; --surface2:#342231;
+--ink:#f7ece1; --ink2:#dbc4ba; --muted:#bda3ab;
+--line:#4c3444; --line2:#5d4356;
+--bordeaux:#d07d90; --bordeaux2:#dd9dab; --plum:#e6bede; --plum2:#cfa0c6;
+--rose:#d99cae; --rose-bg:#3a2432;
+--gold:#d3af6d; --gold-bg:#3a2c1e;
+--ok:#8fd0ab; --ok-bg:#1e3529;
+--warn-bg:#38251a; --warn-line:#7a5636; --warn-ink:#f0c9a0;
+--shadow:0 10px 30px rgba(0,0,0,.35);
+}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,sans-serif;line-height:1.75;font-size:15px}
+a{color:var(--bordeaux)}
+button,select,input{font:inherit}
+button,[role="button"],select,summary,a.btn{min-height:44px}
+.serif{font-family:"Noto Serif JP",serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px 56px}
+.topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 92%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1080px;margin:0 auto;padding:10px 16px 0}
+.brand{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand-name{font-family:"Noto Serif JP",serif;font-weight:900;font-size:26px;line-height:1.15;letter-spacing:.02em;color:var(--plum)}
+.brand-name span{color:var(--bordeaux)}
+.brand-sub{font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-top:2px}
+.live-pill{flex:none;font-size:11px;font-weight:900;letter-spacing:.08em;color:var(--ok);border:1.5px solid var(--ok);border-radius:999px;padding:5px 10px;margin-top:4px;background:var(--ok-bg)}
+.nav{display:flex;gap:6px;margin-top:10px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{flex:1;min-width:86px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:999px;padding:9px 8px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap}
+.nav button[aria-selected="true"]{background:var(--plum);border-color:var(--plum);color:#fff}
+@media (prefers-color-scheme: dark){.nav button[aria-selected="true"]{color:#1d1219}}
+/* age gate */
+.gate{position:fixed;inset:0;z-index:100;background:rgba(29,14,24,.72);display:grid;place-items:center;padding:18px}
+.gate-card{background:var(--surface);border-radius:22px;max-width:520px;width:100%;padding:26px 22px;box-shadow:var(--shadow);text-align:left}
+.gate-card .age-icon{width:52px;height:52px;border-radius:50%;background:var(--bordeaux);color:#fff;display:grid;place-items:center;font-weight:900;font-size:16px;margin-bottom:12px}
+.gate-card h2{font-family:"Noto Serif JP",serif;font-size:22px;margin:0 0 8px;color:var(--plum)}
+.gate-card p{font-size:13.5px;color:var(--ink2);margin:0 0 10px}
+.gate-btns{display:grid;gap:10px;margin-top:16px}
+.gate-btns button{border-radius:12px;padding:13px;font-weight:900;font-size:15px;cursor:pointer}
+.gate-yes{background:var(--bordeaux);color:#fff;border:0}
+.gate-no{background:var(--surface);border:1.5px solid var(--line2);color:var(--ink2)}
+.gate.hidden{display:none}
+.gate-denied{display:none;font-size:13.5px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);border-radius:12px;padding:12px 14px;margin-top:12px}
+.gate-denied.show{display:block}
+.hero{margin-top:16px;background:linear-gradient(145deg,var(--plum) 0%,#63304e 52%,var(--bordeaux) 100%);color:#fdf6ec;border-radius:22px;padding:28px 18px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-50px;top:-60px;width:210px;height:210px;border:1px solid rgba(255,235,200,.28);border-radius:50%}
+.hero::before{content:"";position:absolute;right:22px;bottom:-78px;width:150px;height:150px;border:1px solid rgba(255,235,200,.20);border-radius:50%}
+.hero .for-you{position:relative;z-index:1;display:inline-block;font-size:12px;font-weight:900;letter-spacing:.1em;color:#f3cf9f;border:1px solid rgba(243,207,159,.55);border-radius:999px;padding:4px 12px;margin-bottom:12px}
+.hero h1{font-family:"Noto Serif JP",serif;font-size:31px;line-height:1.4;margin:0 0 10px;font-weight:900;position:relative;z-index:1}
+.hero h1.accent{color:#f6cfa5}
+.hero p{margin:0;color:#f2ddca;font-size:14px;position:relative;z-index:1;max-width:38em}
+.hero-cta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.hero-cta .primary{background:#fdf6ec;color:var(--bordeaux);border:0;border-radius:999px;padding:13px 22px;font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.22)}
+.hero-cta .sub{background:transparent;color:#fdf6ec;border:1.5px solid rgba(253,246,236,.65);border-radius:999px;padding:12px 18px;font-weight:800;font-size:14px;cursor:pointer}
+.searchbox{position:relative;z-index:1;margin-top:20px;background:var(--surface);color:var(--ink);border-radius:16px;padding:14px}
+.searchbox .sb-title{font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--plum);margin:0 0 10px}
+.searchbox label{font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--plum);display:block;margin:0 0 6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.grid2{grid-template-columns:1fr}}
+select,input[type="search"],input[type="text"],input[type="email"],textarea{width:100%;border:1px solid var(--line2);border-radius:10px;padding:10px 12px;background:var(--surface);color:var(--ink)}
+.search-btn{width:100%;margin-top:12px;background:var(--plum);color:#fff;border:0;border-radius:12px;padding:13px;font-weight:900;font-size:15px;cursor:pointer;letter-spacing:.04em}
+@media (prefers-color-scheme: dark){.search-btn{color:#1d1219}}
+.searchbox p.search-note{font-size:12.5px;color:var(--ink2);font-weight:500;margin:8px 2px 0}
+.genre-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:860px){.genre-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.genre-grid{grid-template-columns:1fr}}
+.genre-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 15px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:5px;width:100%}
+.genre-card:hover{border-color:var(--rose)}
+.genre-card .g-num{font-size:11px;font-weight:900;letter-spacing:.08em;color:var(--gold)}
+.genre-card h3{margin:0;font-size:15px;line-height:1.45;color:var(--plum);font-family:"Noto Serif JP",serif}
+.genre-card p{margin:0;font-size:12.8px;color:var(--ink2);line-height:1.65}
+.genre-card .g-go{margin-top:auto;font-size:12px;font-weight:900;color:var(--bordeaux)}
+section{margin-top:34px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:2px solid var(--plum);padding-bottom:8px;margin-bottom:14px}
+.sec-head h2{font-family:"Noto Serif JP",serif;font-size:21px;margin:0;font-weight:900;color:var(--plum)}
+.sec-head a,.sec-head span{font-size:12.5px;font-weight:700;white-space:nowrap}
+.lead{color:var(--ink2);font-size:13.5px;margin:0 0 12px}
+.assure{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:860px){.assure{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.assure{grid-template-columns:1fr}}
+.assure-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:15px;display:flex;gap:12px}
+.assure-ic{flex:none;width:42px;height:42px;border-radius:50%;background:var(--rose-bg);display:grid;place-items:center;color:var(--bordeaux);font-weight:900;font-size:17px}
+.assure-item h3{margin:0 0 3px;font-size:14.5px;line-height:1.5}
+.assure-item p{margin:0;font-size:12.8px;color:var(--ink2);line-height:1.65}
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 15px;margin-bottom:14px}
+.fgroup{margin-bottom:10px}
+.fgroup:last-child{margin-bottom:0}
+.fgroup .flabel{font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--plum);margin:0 0 6px}
+.frow{display:flex;flex-wrap:wrap;gap:7px}
+.fchip{border:1.5px solid var(--line2);background:var(--surface);color:var(--ink2);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;cursor:pointer;min-height:38px}
+.fchip[aria-pressed="true"]{background:var(--rose);border-color:var(--rose);color:#fff}
+@media (prefers-color-scheme: dark){.fchip[aria-pressed="true"]{color:#1d1219}}
+.chip{border:1.5px solid var(--line2);background:var(--surface);color:var(--ink2);border-radius:999px;padding:8px 13px;font-size:13px;font-weight:700;cursor:pointer;min-height:40px}
+.chip[aria-pressed="true"]{background:var(--bordeaux);border-color:var(--bordeaux);color:#fff}
+.empty{background:var(--surface);border:1.5px dashed var(--line2);border-radius:var(--radius);padding:22px 18px;text-align:center}
+.empty .e-ic{font-size:26px;margin-bottom:6px}
+.empty h3{font-family:"Noto Serif JP",serif;margin:0 0 6px;font-size:17px;color:var(--plum)}
+.empty p{margin:0 auto 12px;font-size:13px;color:var(--ink2);max-width:34em}
+.empty button,.empty a{display:inline-flex;align-items:center;background:var(--bordeaux);color:#fff;border:0;text-decoration:none;border-radius:999px;padding:11px 18px;font-weight:800;font-size:13.5px;cursor:pointer;min-height:44px}
+.pref-group{margin-bottom:12px}
+.pref-group h3{font-size:12px;letter-spacing:.1em;color:var(--muted);margin:0 0 7px;font-weight:900}
+.pref-row{display:flex;flex-wrap:wrap;gap:7px}
+.pref{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;min-height:38px}
+.pref.hot{border-color:var(--bordeaux);color:var(--bordeaux);font-weight:900;background:var(--gold-bg)}
+.pref small{color:var(--muted);font-weight:500;margin-left:3px}
+.city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:860px){.city-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.city-grid{grid-template-columns:1fr}}
+.city-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:15px;text-align:left;cursor:pointer;width:100%}
+.city-card h3{font-family:"Noto Serif JP",serif;margin:0 0 3px;font-size:17px;color:var(--plum)}
+.city-card p{margin:0;font-size:12.5px;color:var(--ink2)}
+.city-card .c-go{font-size:12px;font-weight:900;color:var(--bordeaux);margin-top:8px;display:block}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:860px){.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cards{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 14px rgba(74,37,69,.05)}
+.card-top{padding:16px 16px 12px;background:linear-gradient(150deg,var(--surface2),var(--surface));border-bottom:1px dashed var(--line2)}
+.card-cat{font-size:11px;font-weight:900;letter-spacing:.07em;color:var(--bordeaux)}
+.card h3{font-family:"Noto Serif JP",serif;font-size:18px;margin:4px 0 2px;line-height:1.4}
+.card-area{font-size:12.5px;color:var(--muted)}
+.card-body{padding:12px 16px 16px;display:flex;flex-direction:column;gap:9px;flex:1}
+.card p.desc{margin:0;font-size:13px;color:var(--ink2)}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:900;border-radius:999px;padding:4px 9px;min-height:26px}
+.badge.ok{background:var(--ok-bg);color:var(--ok);border:1px solid color-mix(in srgb,var(--ok) 35%, transparent)}
+.badge.un{background:var(--surface2);color:var(--muted);border:1px solid var(--line)}
+.badge.genre{background:var(--gold-bg);color:#7a5c22;border:1px solid #e2cd9c}
+.badge.prep{background:var(--warn-bg);color:var(--warn-ink);border:1px solid var(--warn-line)}
+@media (prefers-color-scheme: dark){.badge.genre{color:var(--gold)}}
+.price-line{display:flex;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0;font-size:13px;gap:10px}
+.price-line b{color:var(--bordeaux);font-size:14px;text-align:right}
+.meta{font-size:12px;color:var(--muted)}
+.btn{margin-top:auto;text-align:center;text-decoration:none;background:var(--bordeaux);color:#fff;border-radius:11px;padding:11px;font-weight:800;font-size:14px;border:0;cursor:pointer;width:100%;display:block}
+.btn-sub{margin-top:8px;text-align:center;background:var(--surface);border:1.5px solid var(--line2);color:var(--ink2);border-radius:11px;padding:10px;font-weight:800;font-size:13.5px;cursor:pointer;width:100%}
+.market{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+@media(max-width:560px){.market-grid{gap:6px}}
+.mcell{background:var(--surface2);border-radius:12px;padding:12px 6px}
+.mcell .t{font-size:12px;color:var(--muted);font-weight:700}
+.mcell .v{font-family:"Noto Serif JP",serif;font-size:21px;font-weight:900;color:var(--bordeaux);line-height:1.3}
+.mcell .v small{font-size:12px}
+.bars{margin-top:14px;display:grid;gap:8px}
+.bar-row{display:grid;grid-template-columns:52px 1fr 74px;align-items:center;gap:8px;font-size:12.5px}
+.bar-track{height:10px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--plum2),var(--bordeaux2));border-radius:99px}
+.bar-row b{text-align:right;color:var(--ink)}
+.source-note{font-size:11.5px;color:var(--muted);margin:10px 0 0}
+.col-list{display:grid;gap:12px}
+.col-item{display:block;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-decoration:none;color:var(--ink);cursor:pointer;text-align:left;width:100%;padding:0}
+.col-visual{height:110px;position:relative;overflow:hidden}
+.col-visual > .cv-num{position:absolute;left:16px;bottom:10px;font-family:"Noto Serif JP",serif;font-size:34px;font-weight:900;color:rgba(255,246,230,.92)}
+.col-visual > .cv-tag{position:absolute;right:14px;top:12px;font-size:11px;font-weight:900;letter-spacing:.08em;background:rgba(255,252,248,.92);color:var(--bordeaux);border-radius:999px;padding:4px 10px}
+.cv1{background:linear-gradient(130deg,var(--plum),var(--bordeaux2))}
+.cv2{background:linear-gradient(130deg,#6a3a61,#b76e82)}
+.cv3{background:linear-gradient(130deg,#4a2545,#7a2438)}
+.col-visual::after{content:"";position:absolute;right:-30px;bottom:-50px;width:130px;height:130px;border:1px solid rgba(255,235,200,.4);border-radius:50%}
+.col-body{padding:14px 16px 16px}
+.col-body h3{margin:0 0 4px;font-size:16px;line-height:1.55;font-family:"Noto Serif JP",serif}
+.col-body p{margin:0;font-size:12.8px;color:var(--ink2)}
+.article{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-top:14px}
+.article > .col-visual{height:150px}
+.article-body{padding:20px 18px 22px;max-width:44em}
+.article-body h3{font-family:"Noto Serif JP",serif;font-size:17px;color:var(--plum);margin:22px 0 6px}
+.article-body h3:first-child{margin-top:0}
+.article-body p,.article-body li{font-size:14px;color:var(--ink2)}
+.article-body ul,.article-body ol{padding-left:1.3em;margin:6px 0}
+.article-body table{margin:10px 0}
+.cta{background:var(--plum);color:#f7ead9;border-radius:22px;padding:22px 18px;display:grid;gap:8px}
+.cta h2{font-family:"Noto Serif JP",serif;margin:0;font-size:21px;color:#fff}
+@media (prefers-color-scheme: dark){.cta h2{color:#1d1219}}
+.cta p{margin:0;font-size:13.5px;color:#e8d3c2;max-width:44em}
+@media (prefers-color-scheme: dark){.cta p{color:#4a3542}}
+.cta .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.cta button{display:inline-flex;align-items:center;background:#fff;color:var(--plum);border:0;font-weight:900;border-radius:999px;padding:11px 18px;font-size:14px;cursor:pointer;min-height:44px}
+.cta button.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+@media (prefers-color-scheme: dark){.cta button.ghost{color:#1d1219;border-color:rgba(29,18,25,.5)}}
+.crumb{font-size:12.5px;color:var(--muted);margin:14px 0 0}
+.crumb button{background:none;border:0;color:var(--bordeaux);font-weight:700;cursor:pointer;padding:6px 2px;min-height:36px}
+.page-title{font-family:"Noto Serif JP",serif;font-size:26px;margin:4px 0 4px;color:var(--plum);line-height:1.4}
+.area-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 14px}
+.result-note{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.shop-hero{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-top:14px}
+.shop-hero-top{background:linear-gradient(150deg,var(--plum),var(--bordeaux));color:#fdf3e7;padding:22px 18px}
+.shop-hero-top .card-cat{color:#eec9a8}
+.shop-hero-top h2{font-family:"Noto Serif JP",serif;font-size:25px;margin:4px 0 4px;line-height:1.35}
+.shop-hero-top p{margin:0;font-size:13px;color:#ecd8c6}
+.shop-hero-body{padding:16px 18px 18px}
+.badge-explain{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:11px 13px;font-size:12.8px;color:var(--ink);margin:12px 0 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{width:38%;color:var(--plum);font-weight:900;background:var(--surface2);font-size:13px}
+.price-table td:last-child{text-align:right;font-weight:900;color:var(--bordeaux);white-space:nowrap}
+.price-table th{width:auto}
+.two-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+@media(max-width:560px){.two-btns{grid-template-columns:1fr}}
+.two-btns a,.two-btns button{text-align:center;text-decoration:none;border-radius:12px;padding:13px;font-weight:900;font-size:15px;cursor:pointer}
+.btn-site{background:var(--surface);border:1.5px solid var(--plum);color:var(--plum)}
+.btn-line{background:#3d7a4e;color:#fff;border:0}
+.review-note{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 15px}
+footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--muted);display:grid;gap:6px}
+footer b{color:var(--ink2)}
+footer.fnav{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
+footer.fnav button{background:none;border:0;color:var(--bordeaux);font-weight:700;cursor:pointer;padding:6px 2px;min-height:36px;font-size:12.5px}
+.view{display:none}
+.view.active{display:block}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:var(--plum);color:#fff;padding:11px 18px;border-radius:999px;font-size:13.5px;font-weight:700;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:92vw;text-align:center;box-shadow:var(--shadow)}
+@media (prefers-color-scheme: dark){.toast{color:#1d1219}}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.form-grid{display:grid;gap:12px}
+.form-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.form-card h3{font-family:"Noto Serif JP",serif;margin:0 0 6px;font-size:17px;color:var(--plum)}
+.form-card p{margin:0 0 10px;font-size:13px;color:var(--ink2)}
+.form-card label{font-size:12px;font-weight:900;letter-spacing:.05em;color:var(--plum);display:block;margin:10px 0 5px}
+.info-block{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px}
+.info-block h3{font-family:"Noto Serif JP",serif;margin:0 0 6px;font-size:16px;color:var(--plum)}
+.info-block p,.info-block li{font-size:13px;color:var(--ink2)}
+.info-block ul{padding-left:1.3em;margin:6px 0}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.toast{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+<div class="gate-card">
+<div class="age-icon">18+</div>
+<h2 id="gateTitle">年齢確認</h2>
+<p><b>このサイトは18歳以上の女性のお客様向けです。18歳未満の方は閲覧できません。</b></p>
+<p>女性向け風俗・マッサージに関する情報を扱います。露骨な画像・表現は掲載していませんが、対象サービスの性質上、年齢確認にご協力ください。</p>
+<div class="gate-btns">
+<button type="button" class="gate-yes" id="gateYes">18歳以上です — 入る</button>
+<button type="button" class="gate-no" id="gateNo">18歳未満です</button>
+</div>
+<div class="gate-denied" id="gateDenied">申し訳ありません。18歳未満の方はこのサイトをご利用いただけません。ブラウザを閉じてください。</div>
+</div>
+</div>
+
+<header class="topbar">
+<div class="topbar-in">
+<div class="brand">
+<div>
+<div class="brand-name">セラピスト<span>マッチ</span></div>
+<div class="brand-sub">女性のための、セラピストと出会える全国ポータル</div>
+</div>
+<div class="live-pill">全国・掲載受付中</div>
+</div>
+<nav class="nav" aria-label="ページ切り替え">
+<button type="button" data-view="top" aria-selected="true">トップ</button>
+<button type="button" data-view="genre" aria-selected="false">ジャンル</button>
+<button type="button" data-view="pref" aria-selected="false">地域</button>
+<button type="button" data-view="columns" aria-selected="false">コラム</button>
+<button type="button" data-view="recruit" aria-selected="false">掲載申込</button>
+</nav>
+</div>
+</header>
+
+<div class="wrap">
+<!-- ================= TOP ================= -->
+<main class="view active" id="view-top">
+  <div class="hero">
+    <span class="for-you">女性のお客様へ</span>
+    <h1>理想のセラピストと、<br><span class="accent">出会える。</span></h1>
+    <p>お店の名前ではなく、「どんな人に任せたいか」から選べる場所です。雰囲気や得意なこと、実際に利用した女性の声を見ながら、あなたに合う一人を探せます。料金の総額も、苦手なことも、予約の前に確認できる設計にしています。</p>
+    <div class="hero-cta">
+      <button type="button" class="primary" id="heroFind">セラピストから探す</button>
+      <button type="button" class="sub" id="heroAssure">安心の5点を見る</button>
+    </div>
+    <form class="searchbox" id="searchForm">
+      <p class="sb-title">地域 × ジャンルから探す</p>
+      <div class="grid2">
+        <div>
+          <label for="prefSel">都道府県</label>
+          <select id="prefSel"></select>
+        </div>
+        <div>
+          <label for="genreSel">ジャンル</label>
+          <select id="genreSel"></select>
+        </div>
+      </div>
+      <button class="search-btn" type="submit">この条件で探す</button>
+      <p class="search-note">主要9都市（東京・大阪・名古屋・福岡・札幌・横浜・仙台・広島・大宮）で96店を掲載しています（公式サイト確認日：2026-11-18）。その他の都道府県は掲載準備中です。</p>
+    </form>
+  </div>
+
+  <section aria-labelledby="h-assure" id="assureSec">
+    <div class="sec-head"><h2 id="h-assure">初めてでも大丈夫な、5つの安心</h2></div>
+    <p class="lead">「料金が当日変わらないか」「苦手なことを言い出しにくい」「知り合いに知られないか」——女性のお客様から多い不安に、先回りして答える設計にしています。</p>
+    <div class="assure">
+      <div class="assure-item"><div class="assure-ic">¥</div><div><h3>1. 料金は「総額」が事前に分かる</h3><p>コース料金に指名料・交通費などを含めた総額の目安を、予約前に確認できるよう掲載基準にしています。当日の追加請求の不安を減らします。</p></div></div>
+      <div class="assure-item"><div class="assure-ic">✎</div><div><h3>2. NG事項は事前に伝えられる</h3><p>触れてほしくない部位や苦手なこと、会話の希望は、予約時や施術前に伝えられます。「途中で言い出しにくい」をなくします。</p></div></div>
+      <div class="assure-item"><div class="assure-ic">秘</div><div><h3>3. 身バレ対策：連絡方法が選べる</h3><p>連絡はLINE・メールなど、ご自身の都合に合う方法を選べます。本名や勤務先を伝える必要はありません。</p></div></div>
+      <div class="assure-item"><div class="assure-ic">✓</div><div><h3>4. 届出確認済みを目立たせます</h3><p>風営法の届出を運営が確認した店舗・セラピストには「届出確認済み」バッジを表示。未確認のものは「未確認」と正直に分けます。</p></div></div>
+      <div class="assure-item"><div class="assure-ic">★</div><div><h3>5. 口コミは運営確認制</h3><p>実際に利用した女性の声を、運営が確認してから掲載します。店舗側の一方的な削除はできず、否決分も運営が把握します。</p></div></div>
+      <div class="assure-item"><div class="assure-ic">?</div><div><h3>迷ったら安全ガイド</h3><p>怪しい店の見分け方、料金トラブルの避け方、予約から当日の流れまで。利用前に読めるガイドをコラムに用意しています。</p><button type="button" class="chip" data-goto="columns" style="margin-top:6px">コラムを読む →</button></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-thera" id="theraSec">
+    <div class="sec-head"><h2 id="h-thera">セラピストから探す</h2><span>タイプで絞り込み</span></div>
+    <p class="lead">雰囲気・年代・得意なことから、好みのタイプを選んでください。人物写真は使わず、イニシャルで表示します。掲載は公式情報と本人の確認が取れた方から順次行います。</p>
+    <div class="filters" role="group" aria-label="セラピストの絞り込み">
+      <div class="fgroup"><p class="flabel">雰囲気・タイプ</p><div class="frow" data-fgroup="vibe">
+        <button type="button" class="fchip" data-fval="all" aria-pressed="true">すべて</button>
+        <button type="button" class="fchip" data-fval="落ち着いた" aria-pressed="false">落ち着いた</button>
+        <button type="button" class="fchip" data-fval="包容力がある" aria-pressed="false">包容力がある</button>
+        <button type="button" class="fchip" data-fval="爽やか" aria-pressed="false">爽やか</button>
+        <button type="button" class="fchip" data-fval="聞き上手" aria-pressed="false">聞き上手</button>
+        <button type="button" class="fchip" data-fval="頼りがいがある" aria-pressed="false">頼りがいがある</button>
+        <button type="button" class="fchip" data-fval="癒し系" aria-pressed="false">癒し系</button>
+      </div></div>
+      <div class="fgroup"><p class="flabel">年代</p><div class="frow" data-fgroup="decade">
+        <button type="button" class="fchip" data-fval="all" aria-pressed="true">すべて</button>
+        <button type="button" class="fchip" data-fval="20代" aria-pressed="false">20代</button>
+        <button type="button" class="fchip" data-fval="30代" aria-pressed="false">30代</button>
+        <button type="button" class="fchip" data-fval="40代" aria-pressed="false">40代</button>
+      </div></div>
+      <div class="fgroup"><p class="flabel">得意なこと</p><div class="frow" data-fgroup="skill">
+        <button type="button" class="fchip" data-fval="all" aria-pressed="true">すべて</button>
+        <button type="button" class="fchip" data-fval="オイルマッサージ" aria-pressed="false">オイルマッサージ</button>
+        <button type="button" class="fchip" data-fval="整体" aria-pressed="false">整体</button>
+        <button type="button" class="fchip" data-fval="ヘッドケア" aria-pressed="false">ヘッドケア</button>
+        <button type="button" class="fchip" data-fval="アロマ" aria-pressed="false">アロマ</button>
+        <button type="button" class="fchip" data-fval="タントラ" aria-pressed="false">タントラ</button>
+        <button type="button" class="fchip" data-fval="添い寝" aria-pressed="false">添い寝</button>
+        <button type="button" class="fchip" data-fval="デート同行" aria-pressed="false">デート同行</button>
+        <button type="button" class="fchip" data-fval="カップル対応" aria-pressed="false">カップル対応</button>
+        <button type="button" class="fchip" data-fval="相談・コーチング" aria-pressed="false">相談・コーチング</button>
+        <button type="button" class="fchip" data-fval="会話・カウンセリング" aria-pressed="false">会話・カウンセリング</button>
+      </div></div>
+    </div>
+    <div id="topTherapists"></div>
+  </section>
+
+  <section aria-labelledby="h-genre-top">
+    <div class="sec-head"><h2 id="h-genre-top">ジャンルから探す</h2><span>全12ジャンル</span></div>
+    <p class="lead">「癒やされたい」「一緒に過ごしたい」「相談したい」——目的は人それぞれです。ジャンルを選ぶと、説明とそのジャンルの掲載状況を表示します。</p>
+    <div class="genre-grid" id="genreGridTop"></div>
+  </section>
+
+  <section aria-labelledby="h-city">
+    <div class="sec-head"><h2 id="h-city">主要都市から探す</h2><span>第1波・9都市</span></div>
+    <p class="lead">まずは主要9都市で掲載を始めています。各都市のページでは、地域 × ジャンルの組み合わせで探せます。</p>
+    <div class="city-grid" id="cityGrid"></div>
+  </section>
+
+  <section aria-labelledby="h-pref-top">
+    <div class="sec-head"><h2 id="h-pref-top">都道府県から探す</h2><span>全国47都道府県</span></div>
+    <div id="prefGroups"></div>
+    <p class="source-note">※ 主要9都市以外の都道府県は「掲載準備中」です。入口だけ先に用意し、掲載店が確認でき次第、順次公開します。</p>
+  </section>
+
+  <section aria-labelledby="h-shops-top">
+    <div class="sec-head"><h2 id="h-shops-top">掲載中の店舗</h2><span id="shopCountTop"></span></div>
+    <p class="lead">主要9都市で96店を掲載しています（各店の公式サイトで料金・エリア・届出の記載を確認済み／確認日：2026-11-18）。ここでは自店 YinYang-Harmony 本店と、届出確認済みの店舗を中心に一部を表示しています。全96店は「主要都市から探す」「ジャンルから探す」からご覧ください。YinYang-Harmony のサテライト8都市は開催準備中として表示しています。</p>
+    <div class="cards" id="topCards"></div>
+  </section>
+
+  <section aria-labelledby="h-market-top">
+    <div class="sec-head"><h2 id="h-market-top">全国の料金相場</h2><button type="button" class="chip" data-goto="col1">詳しい解説 →</button></div>
+    <div class="market">
+      <div class="market-grid">
+        <div class="mcell"><div class="t">60分</div><div class="v">10,000<small>円</small></div><div class="t">中央値の目安</div></div>
+        <div class="mcell"><div class="t">90分</div><div class="v">15,000<small>円</small></div><div class="t">中央値・最も選ばれる</div></div>
+        <div class="mcell"><div class="t">120分</div><div class="v">19,000<small>円</small></div><div class="t">中央値の目安</div></div>
+      </div>
+      <div class="bars" aria-hidden="true">
+        <div class="bar-row"><span>60分</span><div class="bar-track"><div class="bar-fill" style="width:52%"></div></div><b>¥10,000</b></div>
+        <div class="bar-row"><span>90分</span><div class="bar-track"><div class="bar-fill" style="width:79%"></div></div><b>¥15,000</b></div>
+        <div class="bar-row"><span>120分</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><b>¥19,000</b></div>
+      </div>
+      <p class="source-note">※ 出典の考え方：公開ポータル等の掲載店データをもとに、コース時間ごとの料金の中央値を集計した目安です（2026年11月時点の調査ベース。90分15,000円が中央値）。指名料・出張交通費・オプションは別途かかる場合があります。店舗ごとの実際の料金は、各店舗の公式サイトでご確認ください。詳しくはコラム「女風の料金相場」をご覧ください。</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-col-top">
+    <div class="sec-head"><h2 id="h-col-top">読みもの・ガイド</h2><button type="button" class="chip" data-goto="columns">コラム一覧 →</button></div>
+    <div class="col-list" id="topColumns"></div>
+  </section>
+
+  <section>
+    <div class="cta">
+      <h2>店舗・セラピストの方へ — 掲載は当面無料です</h2>
+      <p>全12ジャンルの掲載申込を受け付けています。店舗向けと、店舗に所属しないセラピスト個人向けの2種類があります。掲載は公式情報の確認と、届出の確認（取れた場合）が前提です。確認が取れた掲載には「届出確認済み」バッジを表示します。</p>
+      <div class="row">
+        <button type="button" data-goto="recruit">掲載を申し込む（無料）</button>
+        <button type="button" class="ghost" data-goto="recruit">掲載の条件を見る</button>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footerTop"></footer>
+</main>
+
+<!-- ================= GENRE ================= -->
+<main class="view" id="view-genre">
+  <p class="crumb"><button type="button" data-goto="top">トップ</button> ＞ ジャンル一覧</p>
+  <h2 class="page-title">12ジャンルから探す｜女性向けサービスの違いと選び方</h2>
+  <p class="lead">ジャンルごとに、どんなサービスか・どんな方に向いているか・予約前に確認したいことをまとめています。ジャンルを選ぶと、そのジャンルの掲載店舗を表示します。</p>
+  <div class="area-row" id="genreChips" aria-label="ジャンル選択"></div>
+  <div id="genreDetail"></div>
+  <footer class="site-footer"></footer>
+</main>
+
+<!-- ================= PREF ================= -->
+<main class="view" id="view-pref">
+  <p class="crumb"><button type="button" data-goto="top">トップ</button> ＞ 都道府県 ＞ <span id="prefCrumb">大阪府</span></p>
+  <h2 class="page-title" id="prefTitle">大阪府のセラピスト・店舗</h2>
+  <p class="lead" id="prefLead"></p>
+  <p class="flabel" style="font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--plum);margin:14px 0 6px">ジャンルで絞り込み</p>
+  <div class="area-row" id="prefGenreRow" style="margin-top:0"></div>
+  <p class="result-note" id="prefGenreDesc"></p>
+  <section style="margin-top:20px" aria-labelledby="h-pref-thera">
+    <div class="sec-head"><h2 id="h-pref-thera" style="font-size:18px">この地域のセラピスト</h2></div>
+    <div id="prefTherapists"></div>
+  </section>
+  <section aria-labelledby="h-pref-market">
+    <div class="market" role="region" aria-label="料金相場">
+      <div class="sec-head" style="margin-bottom:10px"><h2 id="h-pref-market" style="font-size:17px">料金相場（全国中央値の目安）</h2><span>中央値</span></div>
+      <div class="market-grid">
+        <div class="mcell"><div class="t">60分</div><div class="v">10,000<small>円</small></div></div>
+        <div class="mcell"><div class="t">90分</div><div class="v">15,000<small>円</small></div></div>
+        <div class="mcell"><div class="t">120分</div><div class="v">19,000<small>円</small></div></div>
+      </div>
+      <p class="source-note">全国の掲載データ集計（90分15,000円が中央値）をもとにした目安です。地域・店舗によって異なります。指名料・交通費を含めた総額は、予約前に各店舗へご確認ください。</p>
+    </div>
+  </section>
+  <section aria-labelledby="h-pref-shops">
+    <div class="sec-head"><h2 id="h-pref-shops">この地域の店舗</h2></div>
+    <p class="result-note" id="prefShopNote"></p>
+    <div id="prefShops"></div>
+  </section>
+  <footer class="site-footer"></footer>
+</main>
+
+<!-- ================= SHOP ================= -->
+<main class="view" id="view-shop">
+  <p class="crumb"><button type="button" data-goto="top">トップ</button> ＞ <button type="button" id="shopCrumbPref">都道府県</button> ＞ <span id="shopCrumbName">店舗</span></p>
+  <div id="shopBody"></div>
+  <footer class="site-footer"></footer>
+</main>
+
+<!-- ================= COLUMNS ================= -->
+<main class="view" id="view-columns">
+  <p class="crumb"><button type="button" data-goto="top">トップ</button> ＞ コラム</p>
+  <h2 class="page-title">コラム｜料金相場・初めてガイド・安全ガイド</h2>
+  <p class="lead">初めての方の不安を減らすための読みものです。料金の考え方、当日の流れ、避けたい店のサインを、順番に読める形でまとめています。</p>
+  <div class="col-list" id="allColumns"></div>
+  <footer class="site-footer"></footer>
+</main>
+
+<!-- ================= COLUMN ARTICLE ================= -->
+<main class="view" id="view-article">
+  <p class="crumb"><button type="button" data-goto="top">トップ</button> ＞ <button type="button" data-goto="columns">コラム</button> ＞ <span id="artCrumb">記事</span></p>
+  <div id="articleBody"></div>
+  <section aria-labelledby="h-art-other">
+    <div class="sec-head"><h2 id="h-art-other">他のコラム</h2></div>
+    <div class="col-list" id="articleOthers"></div>
+  </section>
+  <footer class="site-footer"></footer>
+</main>
+
+<!-- ================= RECRUIT ================= -->
+<main class="view" id="view-recruit">
+  <p class="crumb"><button type="button" data-goto="top">トップ</button> ＞ 掲載申込</p>
+  <h2 class="page-title">掲載申込｜店舗・セラピスト個人（当面無料）</h2>
+  <p class="lead">セラピストマッチへの掲載は、当面無料です。女性のお客様に安心して選んでもらうため、掲載には確認の手順があります。内容をご確認のうえ、店舗向け・個人向けのどちらかからお申し込みください。</p>
+
+  <section style="margin-top:20px" aria-labelledby="h-criteria">
+    <div class="sec-head"><h2 id="h-criteria">掲載基準</h2></div>
+    <div class="info-block">
+      <h3>掲載前に運営が確認すること</h3>
+      <ul>
+        <li><b>公式情報の確認：</b>店舗名・ジャンル・対応エリア・料金・連絡先が、公式サイトや公式案内で確認できること。確認できない情報は掲載しません。</li>
+        <li><b>届出の確認：</b>風営法の届出が確認できた掲載には「届出確認済み」バッジを表示します。確認が取れていない掲載は「未確認」と明示して分けます（未確認＝違法という意味ではありません）。</li>
+        <li><b>料金の総額表示：</b>指名料・交通費などを含めた総額の目安が、予約前に利用者へ伝わる形になっていること。</li>
+        <li><b>NG申告への対応：</b>利用者のNG事項・苦手なことを、予約時や施術前に伝えられる運用であること。</li>
+        <li><b>表現の基準：</b>露骨な画像・表現、効果を断定する表現は掲載しません。人物写真は使わず、イニシャル表示を基本とします。</li>
+      </ul>
+      <p>確認の過程で、追加の資料や情報の提示をお願いする場合があります。基準を満たさない場合は、掲載をお断りすることがあります。</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-forms">
+    <div class="sec-head"><h2 id="h-forms">申込フォーム</h2><span>2種類</span></div>
+    <div class="form-grid">
+      <div class="form-card">
+        <h3>店舗向け 掲載申込</h3>
+        <p>店舗・サロン・サービス単位での掲載です。店舗ページに料金表・対応エリア・在籍セラピスト欄を用意します。</p>
+        <label for="fShopName">店舗名・サービス名</label>
+        <input type="text" id="fShopName" placeholder="例：○○サロン 梅田店">
+        <label for="fShopGenre">ジャンル</label>
+        <select id="fShopGenre"></select>
+        <label for="fShopArea">都道府県・対応エリア</label>
+        <input type="text" id="fShopArea" placeholder="例：大阪府・梅田／大阪市内出張">
+        <label for="fShopUrl">公式サイトURL</label>
+        <input type="text" id="fShopUrl" placeholder="https://">
+        <label for="fShopNote">届出の状況・その他</label>
+        <textarea id="fShopNote" rows="3" placeholder="届出の有無、確認書類の提示可否など"></textarea>
+        <button type="button" class="btn" data-apply="店舗向け" style="margin-top:14px">店舗向けフォームで申し込む</button>
+        <p class="source-note">※ 申込フォームは現在準備中のため、このボタンは仮の導線です。受付開始時はこのページで案内します。</p>
+      </div>
+      <div class="form-card">
+        <h3>セラピスト個人向け 掲載申込</h3>
+        <p>店舗に所属しない個人営業の方、または個人プロフィールを独立して載せたい方向けです。雰囲気タグ・得意なこと・対応エリアで探せる個人ページを用意します。</p>
+        <label for="fPerName">活動名（イニシャル表示可）</label>
+        <input type="text" id="fPerName" placeholder="例：活動名／イニシャル">
+        <label for="fPerGenre">主なジャンル</label>
+        <select id="fPerGenre"></select>
+        <label for="fPerArea">活動エリア</label>
+        <input type="text" id="fPerArea" placeholder="例：東京都内・出張専門">
+        <label for="fPerContact">連絡方法（LINE・メール等）</label>
+        <input type="text" id="fPerContact" placeholder="公開してよい連絡方法">
+        <label for="fPerNote">得意なこと・届出の状況</label>
+        <textarea id="fPerNote" rows="3" placeholder="得意なこと、雰囲気、届出の有無など"></textarea>
+        <button type="button" class="btn" data-apply="セラピスト個人向け" style="margin-top:14px">個人向けフォームで申し込む</button>
+        <p class="source-note">※ 申込フォームは現在準備中のため、このボタンは仮の導線です。受付開始時はこのページで案内します。</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-flow">
+    <div class="sec-head"><h2 id="h-flow">掲載までの流れ</h2></div>
+    <div class="info-block">
+      <ol style="padding-left:1.3em;margin:6px 0">
+        <li style="font-size:13.5px;color:var(--ink2)"><b>申込：</b>上のフォームから必要事項を送ってください。</li>
+        <li style="font-size:13.5px;color:var(--ink2)"><b>確認：</b>運営が公式情報と届出の状況を確認します。不足があれば追加でお伺いします。</li>
+        <li style="font-size:13.5px;color:var(--ink2)"><b>掲載内容の作成：</b>確認できた情報をもとに運営がページを作成し、公開前に内容をご確認いただきます。</li>
+        <li style="font-size:13.5px;color:var(--ink2)"><b>公開：</b>都道府県ページ・ジャンルページから探せる形で公開します。口コミは運営確認制で運用します。</li>
+      </ol>
+      <p>掲載料は当面無料です。将来的に有料の上位表示・バナー等を始める場合は、事前に掲載中の方へ案内します。</p>
+    </div>
+  </section>
+  <footer class="site-footer"></footer>
+</main>
+
+<!-- ================= INFO ================= -->
+<main class="view" id="view-info">
+  <p class="crumb"><button type="button" data-goto="top">トップ</button> ＞ 運営情報・ご利用上の注意</p>
+  <h2 class="page-title">運営者情報・利用上の注意・プライバシー</h2>
+  <div id="infoBody" style="margin-top:14px"></div>
+  <footer class="site-footer"></footer>
+</main>
+
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ============ DATA (extensible: add stores / therapists here) ============ */
+var GENRES = [
+{id:"jofu", key:"女風", label:"女性用風俗（女風）", desc:"女性のお客様向けに、店舗や出張でセラピストが対応するサービス全般。", detail:"初めての方向けの案内や、流れ・総額の説明がある店舗を優先して掲載します。予約前に確認したいこと：コース内容と総額、指名の可否、NGの伝え方、支払いのタイミング。"},
+{id:"seikan", key:"性感", label:"性感マッサージ", desc:"感覚に寄り添うマッサージを中心にしたジャンル。", detail:"内容や境界は店舗ごとに大きく異なるため、事前に内容を確認できる店舗を掲載対象にします。予約前に確認したいこと：施術の範囲、苦手なことの伝え方、途中で止めたいときの合図。"},
+{id:"oil", key:"オイル", label:"オイルマッサージ（女性専用リラク）", desc:"女性専用サロンでのオイルトリートメントなど、リラクゼーション寄りの施術。", detail:"リラックス目的で選びたい方に。性的なサービスを含むかどうかは店舗ごとに異なるため、店舗ページの明記を確認してください。効能を断定する表現は掲載しません。"},
+{id:"shuccho", key:"出張", label:"出張マッサージ", desc:"ホテルやご自宅へセラピストが伺う形式。", detail:"対応エリアと交通費を含めた総額を、予約前に確認できることが掲載の条件です。予約前に確認したいこと：対応エリア、出張交通費、到着・退室の流れ、キャンセルの扱い。"},
+{id:"tantra", key:"タントラ", label:"タントラ・ヒーリング", desc:"呼吸や瞑想の考え方を取り入れ、ゆったりした時間づくりを大切にする施術。", detail:"静かに過ごしたい方に選ばれています。内容と境界は店舗ごとに異なるため、事前に確認できる形で掲載します。当サイトは施術の効果を保証するものではありません。"},
+{id:"date", key:"デート", label:"デート・レンタル彼氏", desc:"食事や街歩き、イベント同行など、一緒に外出を楽しむサービス。", detail:"待ち合わせ場所・終了時刻・行き先の費用負担・追加料金の有無を、事前に決めて利用する形を掲載基準にしています。"},
+{id:"soine", key:"添い寝", label:"添い寝・ハグ", desc:"添い寝やハグを中心に、寄り添う時間を提供するサービス。", detail:"できること・できないことを事前に明示した店舗を載せます。予約前に確認したいこと：時間の区切り、服装や距離感の希望、延長料金。"},
+{id:"couple", key:"カップル", label:"カップル向け", desc:"パートナーと一緒に利用できる店舗・コース。", detail:"同伴の条件、部屋の広さ、事前相談の内容を店舗ページで確認できます。二人分の総額表示がある店舗を優先します。"},
+{id:"lesbian", key:"レズビアン", label:"レズビアン風俗", desc:"女性セラピストが女性のお客様に対応するサービス。", detail:"担当者の情報や指名の可否を分かりやすく表示します。予約前に確認したいこと：担当者の性別・指名可否、施術の範囲。"},
+{id:"sm", key:"SM・フェチ", label:"SM・フェチ", desc:"好みや希望に寄り添う専門ジャンル。", detail:"希望・苦手なこと・やめる合図を事前に細かく確認できる店舗だけを掲載対象にします。無理のない範囲を一緒に決めることが前提です。"},
+{id:"soudan", key:"性の相談", label:"性の相談・コーチング", desc:"施術ではなく、話をしながら悩みを整理する相談・コーチング。", detail:"医療行為ではないこと、相談できる範囲を明記したサービスを掲載します。診断や治療が必要な場合は、医療機関など専門窓口への相談もご検討ください。"},
+{id:"kojin", key:"個人", label:"セラピスト個人（無所属・個人営業）", desc:"店舗に所属せず個人で活動するセラピスト。", detail:"活動拠点・連絡方法・届出の確認状況を正直に表示します。個人掲載では、本人確認と公式な活動情報の確認が取れた方から掲載します。"}
+];
+function genreByKey(k){ return GENRES.filter(function(g){return g.key===k;})[0] || null;}
+function genreById(id){ return GENRES.filter(function(g){return g.id===id;})[0] || null;}
+
+/* Store listings: 88 stores collected 2026-11-18 from official sites (9 cities)
++ YinYang-Harmony 8 satellites = 96 total. YinYang main store is in the 88 (deduplicated).
+verified: true only when the official site carries a filing notice (届出の記載「有」).
+Others show 「届出：未確認」 honestly. price "" = not confirmed -> shown as 公式サイトで確認.
+url "" = official URL not confirmed -> no link is rendered.
+status: "open" = YinYang main, "prep" = YinYang satellite preparing, "listed" = collected listing. */
+var STORES = [
+{id:"yinyang-osaka", name:"YinYang-Harmony 本店", genreKey:"タントラ", pref:"大阪府", city:"大阪", areaLabel:"梅田・堂山町", status:"open", verified:false, price:"90分 15,000円", form:"店舗型", url:"https://tomyree-source.github.io/sites/yinyang-harmony/", checked:"2026-11-18",
+desc:"大阪・梅田拠点の女性専用サロン。タントラの考え方を取り入れた、落ち着いた雰囲気の施術を行っています。レンタルサロンACE梅田内の店舗型で、出張も可。公式サイトに風営法の届出に関する記載はなく、風俗的サービスではない旨の明記があります。料金・コースの最新情報は公式サイトでご確認ください。"},
+{id:"tokyo-himitsu-honten", name:"東京秘密基地 本店", genreKey:"女風", pref:"東京都", city:"東京", areaLabel:"新宿・渋谷・池袋など東京23区", status:"listed", verified:false, price:"70分 11,000円", form:"出張", url:"https://go-kichi.com/tokyo/top/", checked:"2026-11-18"},
+{id:"tokyo-mantendo", name:"東京萬天堂", genreKey:"女風", pref:"東京都", city:"東京", areaLabel:"東京23区（新宿発）", status:"listed", verified:true, price:"90分 18,000円", form:"出張", url:"https://mantendo-tokyo.com/tokyo/price.html", checked:"2026-11-18"},
+{id:"candy-tokyo", name:"CANDY TOKYO", genreKey:"性感", pref:"東京都", city:"東京", areaLabel:"新宿・池袋／東京23区", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://candy-osaka.com/tokyo/top/", checked:"2026-11-18"},
+{id:"story-tokyo", name:"Story東京本店", genreKey:"女風", pref:"東京都", city:"東京", areaLabel:"東京都内（23区中心）", status:"listed", verified:true, price:"90分 17,000円", form:"出張", url:"https://www.story-tokyo.com/", checked:"2026-11-18"},
+{id:"mikado-tokyo", name:"帝 東京本店", genreKey:"女風", pref:"東京都", city:"東京", areaLabel:"新宿・渋谷・池袋／東京都内", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://mikado-tokyo.com/", checked:"2026-11-18"},
+{id:"neo99-tokyo", name:"NEO99 東京本店", genreKey:"女風", pref:"東京都", city:"東京", areaLabel:"東京都内（東京23区中心）", status:"listed", verified:false, price:"70分 13,000円", form:"出張", url:"https://99neo.com/", checked:"2026-11-18"},
+{id:"strawberry-tokyo", name:"ストロベリーボーイズ 東京本店", genreKey:"性感", pref:"東京都", city:"東京", areaLabel:"新宿／東京23区", status:"listed", verified:true, price:"60分 12,000円", form:"出張", url:"https://sutoroberrys.com/course/", checked:"2026-11-18"},
+{id:"jasmine-tokyo", name:"Jasmine（ジャスミン）", genreKey:"女風", pref:"東京都", city:"東京", areaLabel:"新宿／東京23区", status:"listed", verified:true, price:"60分 10,000円", form:"出張", url:"https://jasmine-e.net/", checked:"2026-11-18"},
+{id:"romance-shinjuku", name:"Romance（ロマンス）", genreKey:"デート", pref:"東京都", city:"東京", areaLabel:"新宿／東京都内", status:"listed", verified:true, price:"60分 3,000円", form:"出張", url:"https://romance-shinjuku.com/", checked:"2026-11-18"},
+{id:"ikebukuro-himitsu", name:"池袋秘密基地", genreKey:"女風", pref:"東京都", city:"東京", areaLabel:"池袋／東京23区", status:"listed", verified:false, price:"70分 11,000円", form:"出張", url:"https://go-kichi.com/s/ikebukuro/line", checked:"2026-11-18"},
+{id:"yokohama-mantendo", name:"横浜萬天堂", genreKey:"女風", pref:"神奈川県", city:"横浜", areaLabel:"横浜市・川崎市・町田市", status:"listed", verified:false, price:"90分 18,000円", form:"出張", url:"https://mantendo-ohmi.com/yokohama/concept.html", checked:"2026-11-18"},
+{id:"mikado-yokohama", name:"帝 横浜店", genreKey:"女風", pref:"神奈川県", city:"横浜", areaLabel:"横浜駅周辺（横浜発）", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://mikado-tokyo.com/", checked:"2026-11-18"},
+{id:"yokohama-himitsu", name:"横浜秘密基地", genreKey:"女風", pref:"神奈川県", city:"横浜", areaLabel:"横浜駅周辺／神奈川全域", status:"listed", verified:false, price:"70分 11,000円", form:"出張", url:"https://yokohama.go-kichi.com/", checked:"2026-11-18"},
+{id:"candy-yokohama", name:"CANDY YOKOHAMA", genreKey:"性感", pref:"神奈川県", city:"横浜", areaLabel:"横浜市内／神奈川県内", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://candy-osaka.com/yokohama/top/aboutus/", checked:"2026-11-18"},
+{id:"neo99-yokohama", name:"NEO99横浜店", genreKey:"女風", pref:"神奈川県", city:"横浜", areaLabel:"横浜市内／神奈川県内", status:"listed", verified:false, price:"70分 13,000円", form:"出張", url:"https://99neo.com/yokohama/", checked:"2026-11-18"},
+{id:"strawberry-yokohama", name:"ストロベリーボーイズ 横浜店", genreKey:"性感", pref:"神奈川県", city:"横浜", areaLabel:"横浜・関内・みなとみらい", status:"listed", verified:false, price:"60分 12,000円", form:"出張", url:"https://www.sutoroberrys.jp/", checked:"2026-11-18"},
+{id:"unmoment-yokohama", name:"Un moment pour toi 横浜（アンモモ横浜店）", genreKey:"性感", pref:"神奈川県", city:"横浜", areaLabel:"横浜・川崎／神奈川県（主に横浜市内）", status:"listed", verified:false, price:"120分 22,000円", form:"出張", url:"https://yokohama.unmoment-pourtoi.com/", checked:"2026-11-18"},
+{id:"camblia-yokohama", name:"カンブリア横浜店", genreKey:"性感", pref:"神奈川県", city:"横浜", areaLabel:"横浜駅・みなとみらい・関内・新横浜", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://camblia.com/kanagawa/yokohama/", checked:"2026-11-18"},
+{id:"oasis-yokohama", name:"オアシス横浜店", genreKey:"女風", pref:"神奈川県", city:"横浜", areaLabel:"横浜市内", status:"listed", verified:false, price:"90分 16,500円", form:"出張", url:"https://happ-s.com/yokohama/top/", checked:"2026-11-18"},
+{id:"omiya-mantendo", name:"大宮萬天堂", genreKey:"女風", pref:"埼玉県", city:"大宮", areaLabel:"大宮・浦和・与野／さいたま市内・川口市内", status:"listed", verified:true, price:"90分 18,000円", form:"出張", url:"https://mantendo-ohmi.com/omiya/price.html", checked:"2026-11-18"},
+{id:"mikado-omiya", name:"帝-MIKADO- 大宮店", genreKey:"女風", pref:"埼玉県", city:"大宮", areaLabel:"大宮（大宮発）", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://mikado-tokyo.com/", checked:"2026-11-18"},
+{id:"candy-saitama", name:"CANDY SAITAMA", genreKey:"性感", pref:"埼玉県", city:"大宮", areaLabel:"大宮・浦和／さいたま市内", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://candy-osaka.com/saitama/top/", checked:"2026-11-18"},
+{id:"neo99-saitama", name:"NEO99 埼玉店", genreKey:"女風", pref:"埼玉県", city:"大宮", areaLabel:"大宮／埼玉県内", status:"listed", verified:false, price:"90分 15,000円", form:"出張", url:"https://99neo.com/saitama/", checked:"2026-11-18"},
+{id:"omiya-himitsu", name:"大宮秘密基地", genreKey:"女風", pref:"埼玉県", city:"大宮", areaLabel:"大宮／さいたま市内", status:"listed", verified:false, price:"70分 11,000円", form:"出張", url:"https://go-kichi.com/s/omiya/", checked:"2026-11-18"},
+{id:"saitama-himitsu", name:"さいたま秘密基地", genreKey:"性感", pref:"埼玉県", city:"大宮", areaLabel:"さいたま市／埼玉県全域", status:"listed", verified:false, price:"90分 16,500円", form:"出張", url:"https://go-kichi.com/s/saitama/contents", checked:"2026-11-18"},
+{id:"nishikawaguchi-himitsu", name:"西川口秘密基地", genreKey:"性感", pref:"埼玉県", city:"大宮", areaLabel:"西川口・川口市／埼玉県全域", status:"listed", verified:false, price:"90分 16,500円", form:"出張", url:"https://go-kichi.com/nishikawaguchi/", checked:"2026-11-18"},
+{id:"oasis-omiya", name:"オアシス大宮店", genreKey:"女風", pref:"埼玉県", city:"大宮", areaLabel:"大宮／さいたま市内", status:"listed", verified:false, price:"90分 16,500円", form:"出張", url:"https://happ-s.com/omiya/top/", checked:"2026-11-18"},
+{id:"camblia-omiya", name:"カンブリア 大宮店", genreKey:"性感", pref:"埼玉県", city:"大宮", areaLabel:"大宮駅周辺・南銀", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://camblia.com/saitama/omiya/", checked:"2026-11-18"},
+{id:"emue-saitama", name:"EMUe埼玉（エミュ）", genreKey:"出張", pref:"埼玉県", city:"大宮", areaLabel:"大宮・浦和・川越・所沢／埼玉県全域", status:"listed", verified:false, price:"90分 14,000円", form:"出張", url:"https://saitama-emue.com/", checked:"2026-11-18"},
+{id:"osaka-himitsu", name:"大阪秘密基地", genreKey:"性感", pref:"大阪府", city:"大阪", areaLabel:"難波・心斎橋", status:"listed", verified:false, price:"70分 11,000円", form:"出張", url:"https://go-kichi.com/osaka/", checked:"2026-11-18"},
+{id:"umeda-himitsu", name:"梅田秘密基地", genreKey:"性感", pref:"大阪府", city:"大阪", areaLabel:"梅田", status:"listed", verified:false, price:"70分 11,000円", form:"出張", url:"https://go-kichi.com/s/umeda/", checked:"2026-11-18"},
+{id:"candy-osaka", name:"CANDY OSAKA", genreKey:"性感", pref:"大阪府", city:"大阪", areaLabel:"梅田・難波・心斎橋", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://candy-osaka.com/top/", checked:"2026-11-18"},
+{id:"osaka-mantendo", name:"大阪萬天堂", genreKey:"女風", pref:"大阪府", city:"大阪", areaLabel:"梅田", status:"listed", verified:true, price:"90分 18,000円", form:"出張", url:"https://mantendo-tokyo.com/osaka/", checked:"2026-11-18"},
+{id:"mikado-osaka", name:"帝 大阪店", genreKey:"女風", pref:"大阪府", city:"大阪", areaLabel:"梅田・難波・心斎橋", status:"listed", verified:false, price:"90分 15,000円", form:"出張", url:"https://mikado-tokyo.com/osaka/", checked:"2026-11-18"},
+{id:"strawberry-osaka", name:"ストロベリーボーイズ 大阪店", genreKey:"女風", pref:"大阪府", city:"大阪", areaLabel:"エリア未確認（公式サイトで確認）", status:"listed", verified:false, price:"60分 12,000円", form:"出張", url:"https://sutoroberrys-osaka.com/main.html", checked:"2026-11-18"},
+{id:"jasmine-osaka", name:"Jasmine 大阪店", genreKey:"女風", pref:"大阪府", city:"大阪", areaLabel:"難波", status:"listed", verified:true, price:"60分 10,000円", form:"出張", url:"https://jasmine-osaka.net/", checked:"2026-11-18"},
+{id:"sweetspot-osaka", name:"スイートスポット 大阪店", genreKey:"性感", pref:"大阪府", city:"大阪", areaLabel:"エリア未確認（公式サイトで確認）", status:"listed", verified:false, price:"90分 15,000円", form:"出張", url:"https://sweetspot.love/osaka", checked:"2026-11-18"},
+{id:"soporepo-osaka", name:"söpö repo 大阪店", genreKey:"女風", pref:"大阪府", city:"大阪", areaLabel:"梅田・難波・天王寺", status:"listed", verified:true, price:"120分 20,000円", form:"出張", url:"https://soporepo.com/osaka/", checked:"2026-11-18"},
+{id:"nagoya-himitsu", name:"名古屋秘密基地", genreKey:"性感", pref:"愛知県", city:"名古屋", areaLabel:"栄・新栄", status:"listed", verified:false, price:"70分 11,000円", form:"出張", url:"https://go-kichi.com/s/nagoya/", checked:"2026-11-18"},
+{id:"candy-nagoya", name:"CANDY NAGOYA", genreKey:"性感", pref:"愛知県", city:"名古屋", areaLabel:"栄・錦・金山", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://candy-osaka.com/nagoya/top/", checked:"2026-11-18"},
+{id:"nagoya-mantendo", name:"名古屋萬天堂", genreKey:"女風", pref:"愛知県", city:"名古屋", areaLabel:"名古屋市内", status:"listed", verified:true, price:"90分 18,000円", form:"出張", url:"https://mantendo-ohmi.com/nagoya/price.html", checked:"2026-11-18"},
+{id:"mikado-nagoya", name:"帝 名古屋店", genreKey:"女風", pref:"愛知県", city:"名古屋", areaLabel:"名古屋駅・栄・金山", status:"listed", verified:false, price:"90分 15,000円", form:"出張", url:"https://mikado-tokyo.com/nagoya/", checked:"2026-11-18"},
+{id:"strawberry-nagoya", name:"ストロベリーボーイズ 名古屋店", genreKey:"女風", pref:"愛知県", city:"名古屋", areaLabel:"新栄・金山", status:"listed", verified:false, price:"60分 12,000円", form:"出張", url:"https://sutoroberrys-aichi.com/main.html", checked:"2026-11-18"},
+{id:"jasmine-aichi", name:"Jasmine 愛知店", genreKey:"女風", pref:"愛知県", city:"名古屋", areaLabel:"名古屋市内", status:"listed", verified:true, price:"60分 10,000円", form:"出張", url:"https://jasmine-aichi.net/", checked:"2026-11-18"},
+{id:"soporepo-nagoya", name:"söpö repo", genreKey:"女風", pref:"愛知県", city:"名古屋", areaLabel:"名古屋市内", status:"listed", verified:false, price:"120分 20,000円", form:"出張", url:"https://soporepo.com/", checked:"2026-11-18"},
+{id:"prince-secret", name:"秘蜜の王子様", genreKey:"女風", pref:"愛知県", city:"名古屋", areaLabel:"名古屋市内", status:"listed", verified:true, price:"120分 22,000円", form:"出張", url:"https://www.princesecret.com/", checked:"2026-11-18"},
+{id:"topsecret-nagoya", name:"TOP SECRET 名古屋", genreKey:"SM・フェチ", pref:"愛知県", city:"名古屋", areaLabel:"名古屋駅・栄・金山・新栄", status:"listed", verified:true, price:"60分 13,000円", form:"出張", url:"http://top-secret-nagoya.com/", checked:"2026-11-18"},
+{id:"fukuoka-mantendo", name:"福岡萬天堂", genreKey:"性感", pref:"福岡県", city:"福岡", areaLabel:"福岡市内（博多発）", status:"listed", verified:true, price:"90分 18,000円", form:"出張", url:"https://mantendo-tokyo.com/fukuoka/", checked:"2026-11-18"},
+{id:"candy-fukuoka", name:"CANDY FUKUOKA", genreKey:"女風", pref:"福岡県", city:"福岡", areaLabel:"博多・天神・中洲", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://candy-osaka.com/fukuoka/top/", checked:"2026-11-18"},
+{id:"watashinoban", name:"わたしの番", genreKey:"女風", pref:"福岡県", city:"福岡", areaLabel:"福岡市博多区", status:"listed", verified:true, price:"90分 18,000円", form:"出張", url:"https://watashinoban.com/", checked:"2026-11-18"},
+{id:"jasmine-fukuoka", name:"Jasmine福岡店", genreKey:"性感", pref:"福岡県", city:"福岡", areaLabel:"福岡市内", status:"listed", verified:true, price:"60分 10,000円", form:"出張", url:"https://jasmine-fukuoka.net/", checked:"2026-11-18"},
+{id:"hakata-himitsu", name:"博多秘密基地", genreKey:"性感", pref:"福岡県", city:"福岡", areaLabel:"博多", status:"listed", verified:false, price:"90分 16,500円", form:"出張", url:"https://go-kichi.com/", checked:"2026-11-18"},
+{id:"mikado-hakata", name:"帝 博多店", genreKey:"女風", pref:"福岡県", city:"福岡", areaLabel:"博多・中洲・天神", status:"listed", verified:false, price:"90分 15,000円", form:"出張", url:"https://mikado-tokyo.com/", checked:"2026-11-18"},
+{id:"strawberry-fukuoka", name:"ストロベリーボーイズ福岡店", genreKey:"女風", pref:"福岡県", city:"福岡", areaLabel:"博多・天神・中洲", status:"listed", verified:false, price:"", form:"出張", url:"https://www.sutoroberrys.jp/store/fukuoka", checked:"2026-11-18"},
+{id:"nakasu-himitsu", name:"中洲秘密基地", genreKey:"性感", pref:"福岡県", city:"福岡", areaLabel:"中洲・天神", status:"listed", verified:false, price:"90分 16,500円", form:"出張", url:"https://go-kichi.com/", checked:"2026-11-18"},
+{id:"garueku-fukuoka", name:"福岡ガールズエクスタシー", genreKey:"レズビアン", pref:"福岡県", city:"福岡", areaLabel:"福岡市内", status:"listed", verified:true, price:"60分 8,000円", form:"出張", url:"https://www.garueku.com", checked:"2026-11-18"},
+{id:"sebastian-fukuoka", name:"SEBASTIAN", genreKey:"性感", pref:"福岡県", city:"福岡", areaLabel:"福岡市全域・福岡市近郊", status:"listed", verified:false, price:"", form:"出張", url:"https://sebastian.studio.site/", checked:"2026-11-18"},
+{id:"hitotoki-sapporo", name:"ひとときの楽園", genreKey:"性感", pref:"北海道", city:"札幌", areaLabel:"札幌市内（すすきの拠点）", status:"listed", verified:false, price:"90分 13,500円", form:"出張", url:"https://hitotokinorakuen.jimdofree.com/", checked:"2026-11-18"},
+{id:"ameha-sapporo", name:"雨はしずかに", genreKey:"性感", pref:"北海道", city:"札幌", areaLabel:"札幌市内", status:"listed", verified:false, price:"90分 15,000円", form:"出張", url:"https://www.ame-ha-shizukani.com", checked:"2026-11-18"},
+{id:"sapporo-mantendo", name:"札幌萬天堂", genreKey:"性感", pref:"北海道", city:"札幌", areaLabel:"札幌市街", status:"listed", verified:true, price:"90分 18,000円", form:"出張", url:"https://mantendo-tokyo.com/", checked:"2026-11-18"},
+{id:"fullmoon-sapporo", name:"Full Moon札幌", genreKey:"女風", pref:"北海道", city:"札幌", areaLabel:"札幌", status:"listed", verified:false, price:"120分 15,000円", form:"出張", url:"https://fullmoonsapporo.com/", checked:"2026-11-18"},
+{id:"hush-sapporo", name:"HUSH 札幌（ハッシュ）", genreKey:"性感", pref:"北海道", city:"札幌", areaLabel:"札幌", status:"listed", verified:false, price:"90分 11,000円", form:"出張", url:"https://hush-sapporo.com/", checked:"2026-11-18"},
+{id:"story-sapporo", name:"Story札幌店", genreKey:"女風", pref:"北海道", city:"札幌", areaLabel:"札幌", status:"listed", verified:true, price:"90分 17,000円", form:"出張", url:"https://www.story-sapporo.com/", checked:"2026-11-18"},
+{id:"sapporo-himitsu", name:"札幌秘密基地", genreKey:"性感", pref:"北海道", city:"札幌", areaLabel:"札幌市内（中央区・すすきの中心）", status:"listed", verified:false, price:"90分 16,500円", form:"出張", url:"https://go-kichi.com/sapporo", checked:"2026-11-18"},
+{id:"mikado-sapporo", name:"帝 札幌店", genreKey:"女風", pref:"北海道", city:"札幌", areaLabel:"札幌（すすきの）", status:"listed", verified:false, price:"90分 15,000円", form:"出張", url:"https://mikado-tokyo.com/sapporo/", checked:"2026-11-18"},
+{id:"iyashinomon", name:"癒しの門", genreKey:"女風", pref:"北海道", city:"札幌", areaLabel:"札幌", status:"listed", verified:false, price:"90分 10,000円", form:"出張", url:"https://iyashino-mon.com/", checked:"2026-11-18"},
+{id:"madoromi-sapporo", name:"まどろみ（madoromi）", genreKey:"性感", pref:"北海道", city:"札幌", areaLabel:"札幌", status:"listed", verified:false, price:"90分 10,000円", form:"出張", url:"https://madoromi-relax.com/", checked:"2026-11-18"},
+{id:"iero-sapporo", name:"i.Ero 札幌（あいえろ）", genreKey:"性感", pref:"北海道", city:"札幌", areaLabel:"札幌市・近郊", status:"listed", verified:false, price:"90分 14,000円", form:"出張", url:"https://iero-sapporo.jp/", checked:"2026-11-18"},
+{id:"complex-sendai", name:"Complex", genreKey:"性感", pref:"宮城県", city:"仙台", areaLabel:"宮城県全域", status:"listed", verified:false, price:"90分 10,000円", form:"出張", url:"https://www.ladycomplex.com/", checked:"2026-11-18"},
+{id:"sendai-mantendo", name:"仙台萬天堂", genreKey:"性感", pref:"宮城県", city:"仙台", areaLabel:"仙台市街", status:"listed", verified:true, price:"90分 18,000円", form:"出張", url:"https://mantendo-tokyo.com/", checked:"2026-11-18"},
+{id:"sendai-himitsu", name:"仙台秘密基地", genreKey:"性感", pref:"宮城県", city:"仙台", areaLabel:"仙台市内近郊（立町）", status:"listed", verified:false, price:"90分 16,500円", form:"出張", url:"https://go-kichi.com/sendai", checked:"2026-11-18"},
+{id:"jasmine-miyagi", name:"Jasmine宮城店", genreKey:"女風", pref:"宮城県", city:"仙台", areaLabel:"宮城県内", status:"listed", verified:false, price:"120分 20,000円", form:"出張", url:"https://jasmine-miyagi.net/", checked:"2026-11-18"},
+{id:"mikado-sendai", name:"帝 仙台店", genreKey:"女風", pref:"宮城県", city:"仙台", areaLabel:"仙台駅・国分町・長町", status:"listed", verified:false, price:"90分 15,000円", form:"出張", url:"https://mikado-tokyo.com/sendai/", checked:"2026-11-18"},
+{id:"firstlady-sendai", name:"First Lady（ファーストレディ）", genreKey:"レズビアン", pref:"宮城県", city:"仙台", areaLabel:"仙台", status:"listed", verified:false, price:"120分 22,000円", form:"未確認", url:"https://1st-lady.com/", checked:"2026-11-18"},
+{id:"undefined-sendai", name:"UNDEFINED", genreKey:"女風", pref:"宮城県", city:"仙台", areaLabel:"仙台（全国出張可）", status:"listed", verified:false, price:"120分 20,000円", form:"出張", url:"https://undefined-0.com/", checked:"2026-11-18"},
+{id:"envy-sendai", name:"ENVY", genreKey:"性感", pref:"宮城県", city:"仙台", areaLabel:"東北（全国出張）", status:"listed", verified:false, price:"90分 19,000円", form:"出張", url:"https://www.envy-tohoku.com/", checked:"2026-11-18"},
+{id:"luna-sendai", name:"ルナ", genreKey:"女風", pref:"宮城県", city:"仙台", areaLabel:"仙台市内～宮城県全域", status:"listed", verified:false, price:"", form:"出張", url:"https://www.ladies-fuzoku.com/tenpo/sendai.html", checked:"2026-11-18"},
+{id:"hiroshima-mantendo", name:"広島萬天堂", genreKey:"性感", pref:"広島県", city:"広島", areaLabel:"広島市内", status:"listed", verified:true, price:"90分 18,000円", form:"出張", url:"https://mantendo-tokyo.com/", checked:"2026-11-18"},
+{id:"candy-hiroshima", name:"CANDY HIROSHIMA", genreKey:"女風", pref:"広島県", city:"広島", areaLabel:"広島", status:"listed", verified:true, price:"90分 15,000円", form:"出張", url:"https://candy-osaka.com/hiroshima/", checked:"2026-11-18"},
+{id:"mikado-hiroshima", name:"帝 広島店", genreKey:"女風", pref:"広島県", city:"広島", areaLabel:"広島駅周辺・八丁堀・紙屋町", status:"listed", verified:false, price:"90分 15,000円", form:"出張", url:"https://mikado-tokyo.com/hiroshima/", checked:"2026-11-18"},
+{id:"himitsudo", name:"秘密堂（ひみつどう）", genreKey:"性感", pref:"広島県", city:"広島", areaLabel:"広島", status:"listed", verified:false, price:"90分 15,000円", form:"出張", url:"https://himitsudo.net/", checked:"2026-11-18"},
+{id:"primadonna-hiroshima", name:"PRIMA DONNA広島", genreKey:"女風", pref:"広島県", city:"広島", areaLabel:"広島市内", status:"listed", verified:false, price:"90分 14,000円", form:"出張", url:"https://hiroshima.prima-donna.net/", checked:"2026-11-18"},
+{id:"cutie-hiroshima", name:"CUTiE HIROSHIMA（キューティー広島）", genreKey:"性感", pref:"広島県", city:"広島", areaLabel:"広島", status:"listed", verified:false, price:"90分 14,000円", form:"出張", url:"", checked:"2026-11-18"},
+{id:"hiroshima-himitsu", name:"広島秘密基地", genreKey:"性感", pref:"広島県", city:"広島", areaLabel:"広島市近郊（広島駅周辺）", status:"listed", verified:false, price:"90分 16,500円", form:"出張", url:"https://go-kichi.com/s/hiroshima/", checked:"2026-11-18"},
+{id:"regolith-hiroshima", name:"広島レゴリス", genreKey:"性感", pref:"広島県", city:"広島", areaLabel:"広島発（全国出張）", status:"listed", verified:false, price:"90分 14,000円", form:"出張", url:"https://regolith-seikan-massage.jimdofree.com/", checked:"2026-11-18"},
+{id:"jewelry-hiroshima", name:"ジュエリー", genreKey:"性感", pref:"広島県", city:"広島", areaLabel:"広島", status:"listed", verified:false, price:"90分 8,000円", form:"未確認", url:"https://www.jewelry-iyashi.com/", checked:"2026-11-18"},
+{id:"spawhite", name:"SPA White 中国/四国", genreKey:"女風", pref:"広島県", city:"広島", areaLabel:"中国/四国（広島含む）", status:"listed", verified:false, price:"120分 19,000円", form:"出張", url:"https://spa-white.jp/", checked:"2026-11-18"},
+{id:"yinyang-tokyo", name:"YinYang-Harmony 東京", genreKey:"タントラ", pref:"東京都", city:"東京", areaLabel:"東京（開催地は公式案内で確認）", status:"prep", verified:false, price:"", form:"出張", url:"", checked:"2026-11-18",
+desc:"YinYang-Harmonyの東京サテライト。出張型での開催を準備中です。開催日程・場所・料金は公式案内でご確認ください。"},
+{id:"yinyang-nagoya", name:"YinYang-Harmony 名古屋", genreKey:"タントラ", pref:"愛知県", city:"名古屋", areaLabel:"名古屋（開催地は公式案内で確認）", status:"prep", verified:false, price:"", form:"出張", url:"", checked:"2026-11-18",
+desc:"YinYang-Harmonyの名古屋サテライト。出張型での開催を準備中です。開催日程・場所・料金は公式案内でご確認ください。"},
+{id:"yinyang-fukuoka", name:"YinYang-Harmony 福岡", genreKey:"タントラ", pref:"福岡県", city:"福岡", areaLabel:"福岡（開催地は公式案内で確認）", status:"prep", verified:false, price:"", form:"出張", url:"", checked:"2026-11-18",
+desc:"YinYang-Harmonyの福岡サテライト。出張型での開催を準備中です。開催日程・場所・料金は公式案内でご確認ください。"},
+{id:"yinyang-sapporo", name:"YinYang-Harmony 札幌", genreKey:"タントラ", pref:"北海道", city:"札幌", areaLabel:"札幌（開催地は公式案内で確認）", status:"prep", verified:false, price:"", form:"出張", url:"", checked:"2026-11-18",
+desc:"YinYang-Harmonyの札幌サテライト。出張型での開催を準備中です。開催日程・場所・料金は公式案内でご確認ください。"},
+{id:"yinyang-yokohama", name:"YinYang-Harmony 横浜", genreKey:"タントラ", pref:"神奈川県", city:"横浜", areaLabel:"横浜（開催地は公式案内で確認）", status:"prep", verified:false, price:"", form:"出張", url:"", checked:"2026-11-18",
+desc:"YinYang-Harmonyの横浜サテライト。出張型での開催を準備中です。開催日程・場所・料金は公式案内でご確認ください。"},
+{id:"yinyang-sendai", name:"YinYang-Harmony 仙台", genreKey:"タントラ", pref:"宮城県", city:"仙台", areaLabel:"仙台（開催地は公式案内で確認）", status:"prep", verified:false, price:"", form:"出張", url:"", checked:"2026-11-18",
+desc:"YinYang-Harmonyの仙台サテライト。出張型での開催を準備中です。開催日程・場所・料金は公式案内でご確認ください。"},
+{id:"yinyang-hiroshima", name:"YinYang-Harmony 広島", genreKey:"タントラ", pref:"広島県", city:"広島", areaLabel:"広島（開催地は公式案内で確認）", status:"prep", verified:false, price:"", form:"出張", url:"", checked:"2026-11-18",
+desc:"YinYang-Harmonyの広島サテライト。出張型での開催を準備中です。開催日程・場所・料金は公式案内でご確認ください。"},
+{id:"yinyang-omiya", name:"YinYang-Harmony 大宮", genreKey:"タントラ", pref:"埼玉県", city:"大宮", areaLabel:"大宮（開催地は公式案内で確認）", status:"prep", verified:false, price:"", form:"出張", url:"", checked:"2026-11-18",
+desc:"YinYang-Harmonyの大宮サテライト。出張型での開催を準備中です。開催日程・場所・料金は公式案内でご確認ください。"}
+];
+/* Therapist personal listings: none published yet.
+Entries are added here only after identity + official info confirmation.
+Shape: {id,name,kana,initial,age,decade,tags[],skills[],shopId,genreKey,pref,areaLabel,verified,price,msg,reviews[]} */
+var THERAPISTS = [];
+
+var MAIN_CITIES = [
+{city:"東京", pref:"東京都", note:"新宿・池袋など23区中心の出張型が多数"},
+{city:"大阪", pref:"大阪府", note:"梅田・難波中心。YinYang-Harmony本店も掲載"},
+{city:"名古屋", pref:"愛知県", note:"栄・名古屋駅周辺の店舗を掲載"},
+{city:"福岡", pref:"福岡県", note:"博多・天神・中洲エリアを掲載"},
+{city:"札幌", pref:"北海道", note:"すすきの・札幌市内の店舗を掲載"},
+{city:"横浜", pref:"神奈川県", note:"横浜駅・関内・みなとみらい周辺を掲載"},
+{city:"仙台", pref:"宮城県", note:"仙台駅・国分町周辺を掲載"},
+{city:"広島", pref:"広島県", note:"広島市内の店舗を掲載"},
+{city:"大宮", pref:"埼玉県", note:"大宮・浦和エリアを掲載（埼玉県）"}
+];
+var PREFS = [
+["北海道・東北",["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県"]],
+["関東",["茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県"]],
+["中部",["新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県"]],
+["関西",["三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県"]],
+["中国・四国",["鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県"]],
+["九州・沖縄",["福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]]
+];
+var ALL_PREFS = [];
+PREFS.forEach(function(g){ g[1].forEach(function(p){ ALL_PREFS.push(p);});});
+function isMainPref(p){ return MAIN_CITIES.some(function(c){ return c.pref===p;});}
+function storesInPref(p){ return STORES.filter(function(s){ return s.pref===p;});}
+
+var COLUMNS = [
+{view:"col1", num:"01", tag:"料金相場データ", cv:"cv1",
+title:"女風の料金相場はいくら？ 地域別・コース別の中央値と総額の見方",
+lead:"90分15,000円が全国の中央値。追加料金がかかりやすい項目と、総額の確認ポイントをまとめました。",
+body:'<h3>相場の結論：90分15,000円が中央値</h3>'
++'<p>公開ポータル等の掲載店データを集計すると、女性用風俗（女風）を中心としたコース料金の中央値は、60分で約10,000円、90分で15,000円、120分で約19,000円が目安になります。90分コースが最も掲載数が多く、利用者にも最も選ばれている時間帯です。</p>'
++'<table class="price-table"><tr><th>60分コース</th><td>中央値 約¥10,000</td></tr><tr><th>90分コース</th><td>中央値 ¥15,000</td></tr><tr><th>120分コース</th><td>中央値 約¥19,000</td></tr></table>'
++'<h3>出典の考え方</h3>'
++'<p>この相場は、公開されているポータルサイト等の掲載店データを対象に、店舗が公表しているコース料金を集め、時間帯ごとに並べたときの真ん中の値（中央値）をとったものです。平均値と違い、一部の高額店・格安店に引っ張られにくいため、「だいたいの相場」をつかむのに向いています。集計時点は2026年11月時点の調査ベースです。当サイトの掲載店が増えた段階で、自サイトの掲載データによる集計へ切り替えていきます。</p>'
++'<h3>相場より高くなりやすい項目</h3>'
++'<ul><li><b>指名料：</b>人気のセラピストは別途かかる場合があります。</li><li><b>出張交通費：</b>ホテル・自宅への出張では、距離や地域で加算されます。</li><li><b>深夜・早朝料金、ホテル代：</b>時間帯や場所の実費が別になることがあります。</li><li><b>オプション：</b>当日に追加を勧められる場合は、その場で総額を必ず確認してください。</li></ul>'
++'<h3>地域差の見方</h3>'
++'<p>東京・大阪など大都市の店舗型は相場の中心〜やや高め、出張型は交通費込みかどうかで総額が変わります。大切なのはコース料金そのものより、<b>「支払う総額がいくらか」を予約前に言葉で確認すること</b>です。総額を事前に答えてくれる店舗は、安心材料の一つになります。</p>'
++'<h3>まとめ</h3>'
++'<p>初めてなら90分・15,000円前後を目安に予算を組み、指名料と交通費を含めた総額を予約前に確認しましょう。当サイトの店舗ページでは、総額の目安が分かる形での掲載を基準にしています。</p>'},
+{view:"col2", num:"02", tag:"初めてガイド", cv:"cv2",
+title:"初めての女風ガイド：予約から当日の流れ・準備・注意点",
+lead:"予約の仕方、総額の確認、NGの伝え方、支払いのタイミングまで、初めての方が不安に感じやすい順に解説します。",
+body:'<h3>全体の流れ</h3>'
++'<ol><li><b>探す：</b>地域とジャンルを決め、セラピストの雰囲気・得意なこと・口コミを見て候補を絞ります。</li><li><b>確認する：</b>コース料金に指名料・交通費を含めた総額、対応エリア、キャンセルの扱いを確認します。</li><li><b>予約する：</b>希望日時とコース、連絡方法（LINE・メール等）を伝えます。本名を伝える必要は基本的にありません。</li><li><b>当日：</b>最初に流れと料金の再確認、希望とNG事項の共有をしてから始まります。</li><li><b>支払い：</b>タイミングは店舗により異なります（開始前・終了後）。予約時に確認しておくと安心です。</li></ol>'
++'<h3>予約前に伝えておくと安心なこと</h3>'
++'<ul><li>初めてであること（多くの店舗は初めて向けの説明を用意しています）</li><li>触れてほしくない部位・苦手なこと（NG事項）</li><li>会話は多めがいい／静かに過ごしたい、などの希望</li><li>連絡方法の希望と、連絡してよい時間帯</li></ul>'
++'<h3>当日の準備</h3>'
++'<p>特別な準備は要りません。シャワーや身支度は店舗の案内に従ってください。出張の場合は、タオルの用意や部屋の広さなど、店舗から事前に案内があることが一般的です。不安な点は、当日ではなく予約の時点でまとめて聞いておくのがおすすめです。</p>'
++'<h3>注意点</h3>'
++'<ul><li>総額が曖昧なまま予約しない。分からない項目はその場で質問する。</li><li>途中で希望が変わったら、我慢せずに伝える。やめてほしいことは、その場で伝えて構いません。</li><li>強引なオプション勧誘や、聞いていない追加請求があった場合は、その場で総額の内訳を確認する。</li><li>体調が優れない日は無理をせず、日程変更を相談する。</li></ul>'
++'<h3>まとめ</h3>'
++'<p>初めての不安の多くは「分からないこと」から来ます。総額・流れ・NGの伝え方を先に確認できる店舗を選ぶことが、安心して過ごすための一番の近道です。</p>'},
+{view:"col3", num:"03", tag:"安全ガイド", cv:"cv3",
+title:"怪しい店の見分け方：届出・料金表示・口コミの確認手順",
+lead:"届出の有無、料金の総額表示、強引な勧誘への対処など、避けたいサインを具体的に挙げます。",
+body:'<h3>チェック1：料金が「総額」で説明されているか</h3>'
++'<p>コース料金だけが大きく表示され、指名料・交通費・オプションが当日まで分からない店舗は注意が必要です。予約のやり取りで「全部でいくらですか」と聞いたときに、内訳と合わせて答えてくれるかどうかが一つの目安になります。</p>'
++'<h3>チェック2：届出・運営情報が見えるか</h3>'
++'<p>風営法の届出が必要な業態では、届出の有無は大切な確認項目です。当サイトでは、運営が届出を確認した掲載に「届出確認済み」バッジを表示し、未確認の掲載は「未確認」と明示して分けています。バッジがない＝違法という意味ではありませんが、確認を避ける店舗には慎重になった方が安全です。</p>'
++'<h3>チェック3：口コミの扱いが公平か</h3>'
++'<p>良い口コミしか載っていない場所より、運営が確認して掲載し、店舗側が一方的に削除できない仕組みの方が信頼できます。当サイトの口コミは運営確認制で、否決した投稿も運営側で記録する運用にしています。</p>'
++'<h3>避けたいサイン</h3>'
++'<ul><li>料金の質問に曖昧な答えしか返ってこない</li><li>当日になって聞いていない追加料金を請求される</li><li>NGを伝えても尊重されない、途中で止められない雰囲気がある</li><li>連絡先や運営情報が一切確認できない</li><li>効果や体験を断定・保証する表現で勧誘してくる</li></ul>'
++'<h3>トラブルを避ける小さな習慣</h3>'
++'<ul><li>予約内容と総額は、文字のやり取り（LINE・メール）で残しておく</li><li>支払いのタイミングと方法を事前に確認する</li><li>少しでも不安を感じたら、その場で無理に進めず、日を改める・利用をやめる判断をして構いません</li></ul>'
++'<h3>まとめ</h3>'
++'<p>「総額が事前に分かる」「届出や運営情報が見える」「口コミの仕組みが公平」——この3点を確認するだけでも、避けたい店の多くはふるいにかけられます。</p>'}
+];
+
+/* ============ HELPERS ============ */
+function esc(s){ return String(s||"");}
+function badgeHTML(verified){
+return verified
+? '<span class="badge ok">✓ 届出確認済み</span>'
+: '<span class="badge un">届出：未確認</span>';
+}
+function statusBadge(s){
+if(s.status==="prep") return '<span class="badge prep">開催準備中</span>';
+if(s.status==="open") return '<span class="badge ok">営業中</span>';
+return '<span class="badge un">掲載中</span>';
+}
+function storeDesc(s){
+if(s.desc) return s.desc;
+var g = genreByKey(s.genreKey);
+return s.city+"エリアの"+(g?g.label:"")+"です。営業形態は"+(s.form||"未確認")+"。コース・料金・予約方法の最新情報は公式サイトでご確認ください。";
+}
+function priceText(s){
+return s.price? "最安 "+s.price: "公式サイトで確認";
+}
+function officialLinkHTML(s){
+return s.url
+? '<a class="btn-sub" href="'+s.url+'" target="_blank" rel="noopener" style="display:block;text-decoration:none">公式サイトを見る ↗</a>'
+: '<div class="meta">公式URL未確認のため、リンクは掲載していません</div>';
+}
+function storeCardHTML(s){
+var g = genreByKey(s.genreKey);
+return '<article class="card">'
++ '<div class="card-top"><div class="card-cat">'+(g?g.label:"")+' ／ 女性向け</div><h3>'+s.name+'</h3><div class="card-area">'+s.areaLabel+'</div></div>'
++ '<div class="card-body"><div class="badges">'+statusBadge(s)+badgeHTML(s.verified)+'</div>'
++ '<p class="desc">'+storeDesc(s)+'</p>'
++ '<div class="price-line"><span>最安料金</span><b>'+priceText(s)+'</b></div>'
++ '<div class="meta">営業形態：'+(s.form||"未確認")+'／情報確認日：'+(s.checked||"2026-11-18")+'。指名料・交通費は別途の場合があります。総額は予約前に公式サイトでご確認ください。</div>'
++ '<button type="button" class="btn" data-store="'+s.id+'">店舗ページを見る</button>'
++ officialLinkHTML(s)
++ '</div></article>';
+}
+function emptyHTML(title, text, cta){
+return '<div class="empty"><div class="e-ic">—</div><h3>'+title+'</h3><p>'+text+'</p>'
++ (cta? '<button type="button" data-goto="recruit">掲載を申し込む（無料）</button>': '')
++ '</div>';
+}
+function therapistEmptyHTML(){
+return emptyHTML("掲載中のセラピストはまだいません",
+"セラピスト個人の掲載は、本人確認と公式情報の確認が取れた方から順次公開します。現在は掲載準備中です。店舗から探したい方は、下の掲載店舗をご覧ください。",
+true);
+}
+function colCardHTML(c){
+return '<button type="button" class="col-item" data-article="'+c.view+'">'
++ '<div class="col-visual '+c.cv+'"><span class="cv-tag">'+c.tag+'</span><span class="cv-num">'+c.num+'</span></div>'
++ '<div class="col-body"><h3>'+c.title+'</h3><p>'+c.lead+'</p></div></button>';
+}
+var FOOTER_HTML = '<div class="fnav">'
++ '<button type="button" data-goto="top">トップ</button>'
++ '<button type="button" data-goto="genre">ジャンル一覧</button>'
++ '<button type="button" data-goto="pref">地域から探す</button>'
++ '<button type="button" data-goto="columns">コラム</button>'
++ '<button type="button" data-goto="recruit">掲載申込</button>'
++ '<button type="button" data-goto="info">運営情報・利用上の注意</button></div>'
++ '<div><b>セラピストマッチ</b> — 女性のお客様が理想のセラピストと出会える全国ポータルです。</div>'
++ '<div>掲載情報は各店舗の公式情報を確認したものです。最新情報・予約可否は各店舗の公式サイトでご確認ください。</div>'
++ '<div>18歳未満の方は閲覧できません。当サイトは各店舗のサービス内容・効果を保証するものではありません。</div>';
+
+/* ============ SEO ============ */
+var SEO = {
+top:{t:"セラピストマッチ｜女性が理想のセラピストと出会える全国ポータル", d:"女性のお客様が雰囲気・年代・得意なことから理想のセラピストを探せる全国ポータル。12ジャンル横断、総額の事前表示・NGの事前申告・届出確認・確認制口コミで初めてでも安心。"},
+genre:{t:"ジャンル一覧｜女風・性感・オイル・出張・タントラなど12ジャンル", d:"女性用風俗（女風）から性の相談・コーチング、セラピスト個人まで12ジャンルの違いと選び方、予約前に確認したいことを解説。"},
+columns:{t:"コラム｜女風の料金相場・初めてガイド・怪しい店の見分け方", d:"女風の料金相場（90分15,000円が中央値）、初めての流れと準備、怪しい店の見分け方をまとめた安全ガイド。"},
+recruit:{t:"掲載申込｜店舗・セラピスト個人の掲載は当面無料", d:"セラピストマッチへの掲載申込。店舗向け・セラピスト個人向けの2種類。掲載基準は公式情報の確認と届出の確認。当面無料。"},
+info:{t:"運営者情報・利用上の注意・プライバシー", d:"セラピストマッチの運営者情報、利用上の注意、口コミの運営方針、プライバシーの考え方。"}
+};
+function setSEO(title, desc){
+document.title = title;
+var m = document.querySelector('meta[name="description"]');
+if(m) m.setAttribute("content", desc);
+var ot = document.getElementById("ogTitle"); if(ot) ot.setAttribute("content", title);
+var od = document.getElementById("ogDesc"); if(od) od.setAttribute("content", desc);
+if(window.gtag){ gtag("event","page_view",{page_title:title});}
+}
+
+/* ============ VIEW SWITCHING ============ */
+var NAVMAP = {top:"top", genre:"genre", pref:"pref", shop:"pref", columns:"columns", col1:"columns", col2:"columns", col3:"columns", article:"columns", recruit:"recruit", info:"top"};
+function showView(name){
+var target = name;
+if(name==="col1"||name==="col2"||name==="col3"){ renderArticle(name); target="article";}
+document.querySelectorAll(".view").forEach(function(v){ v.classList.remove("active");});
+var el = document.getElementById("view-"+target);
+if(el) el.classList.add("active");
+var navKey = NAVMAP[name] || "top";
+document.querySelectorAll(".nav button").forEach(function(b){ b.setAttribute("aria-selected", b.getAttribute("data-view")===navKey? "true":"false");});
+if(SEO[name]) setSEO(SEO[name].t, SEO[name].d);
+window.scrollTo({top:0});
+}
+function toast(msg){
+var t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
+setTimeout(function(){ t.classList.remove("show");},2800);
+}
+function bindDynamic(root){
+(root||document).querySelectorAll("[data-goto]").forEach(function(el){
+el.onclick=function(e){ e.preventDefault(); showView(el.getAttribute("data-goto"));};
+});
+(root||document).querySelectorAll("[data-store]").forEach(function(el){
+el.onclick=function(){ renderShop(el.getAttribute("data-store")); showView("shop");};
+});
+(root||document).querySelectorAll("[data-article]").forEach(function(el){
+el.onclick=function(){ showView(el.getAttribute("data-article"));};
+});
+(root||document).querySelectorAll("[data-prefgo]").forEach(function(el){
+el.onclick=function(){ openPref(el.getAttribute("data-prefgo"));};
+});
+}
+
+/* ============ TOP RENDERS ============ */
+function renderGenreGridTop(){
+document.getElementById("genreGridTop").innerHTML = GENRES.map(function(g,i){
+var n = STORES.filter(function(s){ return s.genreKey===g.key;}).length;
+return '<button type="button" class="genre-card" data-genrecard="'+g.id+'">'
++ '<span class="g-num">GENRE '+(i+1)+(n?' ／ 掲載 '+n+'件':' ／ 掲載募集中')+'</span>'
++ '<h3>'+g.label+'</h3><p>'+g.desc+'</p><span class="g-go">このジャンルで探す →</span></button>';
+}).join("");
+document.querySelectorAll("[data-genrecard]").forEach(function(b){
+b.onclick=function(){ openGenre(b.getAttribute("data-genrecard"));};
+});
+}
+function renderCities(){
+document.getElementById("cityGrid").innerHTML = MAIN_CITIES.map(function(c){
+var n = storesInPref(c.pref).length;
+return '<button type="button" class="city-card" data-prefgo="'+c.pref+'"><h3>'+c.city+'<span style="font-size:12px;color:var(--muted)">（'+c.pref+'）</span></h3><p>'+c.note+'</p><span class="c-go">掲載 '+n+'件を見る →</span></button>';
+}).join("");
+}
+function renderPrefs(){
+var html="";
+PREFS.forEach(function(g){
+html += '<div class="pref-group"><h3>'+g[0]+'</h3><div class="pref-row">';
+g[1].forEach(function(p){
+var n = storesInPref(p).length;
+var hot = isMainPref(p);
+html += '<button type="button" class="pref'+(hot?' hot':'')+'" data-prefgo="'+p+'">'+p+(n?'<small>'+n+'件</small>':(hot?'':'<small>準備中</small>'))+'</button>';
+});
+html += '</div></div>';
+});
+document.getElementById("prefGroups").innerHTML = html;
+}
+function renderTopShops(){
+var featured = STORES.filter(function(s){ return s.id==="yinyang-osaka";})
+.concat(STORES.filter(function(s){ return s.verified && s.id!=="yinyang-osaka";}))
+.slice(0,9);
+document.getElementById("topCards").innerHTML = featured.map(storeCardHTML).join("");
+document.getElementById("shopCountTop").textContent = "掲載 "+STORES.length+"件";
+bindDynamic(document.getElementById("topCards"));
+}
+var F = {vibe:"all", decade:"all", skill:"all"};
+function renderTopTherapists(){
+var list = THERAPISTS.filter(function(t){
+return (F.vibe==="all" || t.tags.indexOf(F.vibe)>=0)
+&& (F.decade==="all" || t.decade===F.decade)
+&& (F.skill==="all" || t.skills.indexOf(F.skill)>=0);
+});
+document.getElementById("topTherapists").innerHTML = list.length? "": therapistEmptyHTML();
+bindDynamic(document.getElementById("topTherapists"));
+}
+document.querySelectorAll(".frow").forEach(function(row){
+var group = row.getAttribute("data-fgroup");
+row.querySelectorAll(".fchip").forEach(function(c){
+c.addEventListener("click", function(){
+row.querySelectorAll(".fchip").forEach(function(x){ x.setAttribute("aria-pressed","false");});
+c.setAttribute("aria-pressed","true");
+F[group] = c.getAttribute("data-fval");
+renderTopTherapists();
+});
+});
+});
+function renderColumns(){
+var html = COLUMNS.map(colCardHTML).join("");
+document.getElementById("topColumns").innerHTML = html;
+document.getElementById("allColumns").innerHTML = html;
+bindDynamic(document);
+}
+
+/* ============ GENRE VIEW ============ */
+var currentGenreId = "tantra";
+function renderGenreChips(){
+document.getElementById("genreChips").innerHTML = GENRES.map(function(g){
+return '<button type="button" class="chip" data-gchip="'+g.id+'" aria-pressed="'+(g.id===currentGenreId)+'">'+g.label+'</button>';
+}).join("");
+document.querySelectorAll("[data-gchip]").forEach(function(b){
+b.onclick=function(){ openGenre(b.getAttribute("data-gchip"), true);};
+});
+}
+function openGenre(id, stay){
+currentGenreId = id;
+var g = genreById(id);
+if(!g) return;
+renderGenreChips();
+var list = STORES.filter(function(s){ return s.genreKey===g.key;});
+var shopsHTML = list.length
+? '<div class="cards">'+list.map(storeCardHTML).join("")+'</div>'
+: emptyHTML("このジャンルの掲載店は募集中です",
+"「"+g.label+"」の掲載店は現在募集中です。掲載は当面無料で、公式情報と届出の確認が取れた店舗から順次公開します。", true);
+document.getElementById("genreDetail").innerHTML =
+'<div class="info-block"><h3>'+g.label+'</h3><p>'+g.desc+'</p><p>'+g.detail+'</p></div>'
++ '<div class="sec-head" style="margin-top:22px"><h2 style="font-size:18px">'+g.label+'の掲載店舗</h2><span>'+list.length+'件</span></div>'
++ shopsHTML;
+setSEO(g.label+"｜"+g.desc+"セラピストマッチ",
+g.label+"の女性向けサービスを探すならセラピストマッチ。"+g.desc+" 届出確認・総額表示・確認制口コミで安心。");
+bindDynamic(document.getElementById("genreDetail"));
+if(!stay) showView("genre"); else { window.scrollTo({top:0});}
+document.querySelectorAll(".view").forEach(function(v){ v.classList.remove("active");});
+document.getElementById("view-genre").classList.add("active");
+document.querySelectorAll(".nav button").forEach(function(b){ b.setAttribute("aria-selected", b.getAttribute("data-view")==="genre"? "true":"false");});
+}
+
+/* ============ PREF VIEW ============ */
+var currentPref = "大阪府";
+var prefGenre = "all";
+function renderPrefGenreRow(){
+var html = '<button type="button" class="chip" data-pgenre="all" aria-pressed="'+(prefGenre==="all")+'">すべてのジャンル</button>';
+GENRES.forEach(function(g){
+html += '<button type="button" class="chip" data-pgenre="'+g.key+'" aria-pressed="'+(prefGenre===g.key)+'">'+g.label+'</button>';
+});
+document.getElementById("prefGenreRow").innerHTML = html;
+document.querySelectorAll("[data-pgenre]").forEach(function(b){
+b.onclick=function(){ prefGenre = b.getAttribute("data-pgenre"); renderPrefBody();};
+});
+}
+function openPref(p){
+currentPref = p; prefGenre = "all";
+renderPrefBody();
+showView("pref");
+}
+function renderPrefBody(){
+renderPrefGenreRow();
+var main = isMainPref(currentPref);
+var cityName = (MAIN_CITIES.filter(function(c){return c.pref===currentPref;})[0]||{}).city || currentPref;
+document.getElementById("prefCrumb").textContent = currentPref;
+var genreLabelTxt = prefGenre==="all"? "全ジャンル": (genreByKey(prefGenre)||{}).label;
+document.getElementById("prefTitle").textContent = currentPref+"のセラピスト・店舗｜"+genreLabelTxt;
+document.getElementById("prefLead").textContent = main
+? currentPref+"は第1波の主要エリアです。公式サイトで確認した店舗を掲載しています（確認日：2026-11-18）。セラピスト個人の掲載は準備中です。"
+: currentPref+"は現在「掲載準備中」です。掲載店が確認でき次第、このページで公開します。掲載をご希望の店舗・セラピストの方は、掲載申込からご連絡ください。";
+var gd = genreByKey(prefGenre);
+document.getElementById("prefGenreDesc").textContent = prefGenre==="all"
+? "全12ジャンルを表示しています。"
+: (gd? gd.label+"："+gd.desc: "");
+/* therapists in pref */
+var tlist = THERAPISTS.filter(function(t){ return t.pref===currentPref && (prefGenre==="all" || t.genreKey===prefGenre);});
+document.getElementById("prefTherapists").innerHTML = tlist.length? "": therapistEmptyHTML();
+/* shops in pref */
+var slist = storesInPref(currentPref).filter(function(s){ return prefGenre==="all" || s.genreKey===prefGenre;});
+document.getElementById("prefShopNote").textContent = "店舗："+slist.length+"件"+(main?"":"（掲載準備中）");
+document.getElementById("prefShops").innerHTML = slist.length
+? '<div class="cards">'+slist.map(storeCardHTML).join("")+'</div>'
+: emptyHTML(currentPref+"の掲載店は募集中です",
+main
+? "選択中のジャンルでは、"+currentPref+"の掲載店はまだありません。他のジャンルもご覧いただくか、掲載をご希望の場合は申込ページへどうぞ。"
+: currentPref+"は掲載準備中です。掲載店を募集中ですので、店舗・セラピストの方は無料でお申し込みいただけます。",
+true);
+setSEO(currentPref+"の女性向けセラピスト・店舗｜"+genreLabelTxt+"セラピストマッチ",
+currentPref+"（"+cityName+"）で女性向けサービスを探すならセラピストマッチ。"+genreLabelTxt+"の掲載店舗・セラピスト情報、料金相場、届出確認の有無を確認できます。");
+bindDynamic(document.getElementById("view-pref"));
+}
+
+/* ============ SHOP VIEW ============ */
+var currentStore = STORES[0];
+function renderShop(id){
+var s = STORES.filter(function(x){ return x.id===id;})[0];
+if(!s) return;
+currentStore = s;
+var g = genreByKey(s.genreKey);
+document.getElementById("shopCrumbName").textContent = s.name;
+var prefBtn = document.getElementById("shopCrumbPref");
+prefBtn.textContent = s.pref;
+prefBtn.onclick = function(){ openPref(s.pref);};
+var staff = THERAPISTS.filter(function(t){ return t.shopId===s.id;});
+var staffHTML = staff.length? "": emptyHTML("在籍セラピストは掲載準備中です",
+"この店舗の在籍セラピストは、本人確認と公式情報の確認が取れた方から順次掲載します。指名や最新の在籍状況は、店舗の公式サイトでご確認ください。", false);
+var badgeExplain = s.verified
+? '<div class="badge-explain"><b>届出確認バッジについて：</b>この店舗は、公式サイトで風営法の届出に関する記載（届出済みの旨または届出番号）を運営が確認できたため、「届出確認済み」を表示しています（確認日：'+(s.checked||"2026-11-18")+'）。最新の状況は公式サイトでもご確認ください。</div>'
+: '<div class="badge-explain"><b>届出確認バッジについて：</b>運営が公式サイトで届出の記載を確認できた掲載に「届出確認済み」を表示します。この店舗は現時点で「届出：未確認」表示です。未確認は違法という意味ではなく、公式サイトで届出の記載を確認できていない状態を示します。</div>';
+var openNote = s.status==="prep"
+? '<div class="badge-explain"><b>開催準備中：</b>この拠点はサテライトとして開催を準備中です。開催日程・場所・予約受付の開始は、公式案内でご確認ください。準備中のため、当サイトからの予約は受け付けていません。</div>'
+: (s.status==="open"
+? '<div class="badge-explain"><b>営業中：</b>予約は公式サイトから受け付けています。最新の受付状況は公式案内でご確認ください。</div>'
+: '<div class="badge-explain"><b>掲載中：</b>この店舗は、公式サイトで確認した情報（確認日：'+(s.checked||"2026-11-18")+'）をもとに掲載しています。予約・最新の受付状況は公式サイトでご確認ください。当サイトからの直接予約は受け付けていません。</div>');
+var officialBtns = s.url
+? '<div class="two-btns" style="grid-template-columns:1fr"><a class="btn-site" href="'+s.url+'" target="_blank" rel="noopener" style="display:block">公式サイトを見る ↗</a></div>'
++ '<p class="source-note">※ 公式LINEのURLは確認できていないため、当サイトからはリンクしていません。予約・相談の連絡方法は公式サイトでご確認ください。</p>'
+: '<div class="badge-explain"><b>公式サイト：</b>公式URLが未確認のため、リンクは掲載していません。店舗名で公式案内を検索してご確認ください。</div>'
++ '<p class="source-note">※ 公式LINEのURLも確認できていないため、当サイトからはリンクしていません。</p>';
+var priceHTML = s.price
+? '<div class="market" style="padding:6px 14px"><table class="price-table">'
++ '<tr><th>最安コース（公式確認）</th><td>'+s.price+'</td></tr>'
++ '</table></div>'
++ '<p style="font-size:13.5px;color:var(--ink2)">上記は公式サイトで確認した通常コースの最安です（確認日：'+(s.checked||"2026-11-18")+'）。初回割引・キャンペーン価格は含みません。指名料・交通費・ホテル代は別途かかる場合があります。支払う総額は、予約前に公式サイトでご確認ください。その他のコースは公式サイトをご覧ください。</p>'
+: '<div class="review-note"><p style="margin:0;font-size:13.5px;color:var(--ink2)"><b>料金は公式サイトで確認</b>してください。この店舗の通常コース最安料金は、公式サイトで確認が取れていないため当サイトには掲載していません。予算の目安には、全国の相場データをご利用ください：60分 約10,000円／90分 15,000円（中央値）／120分 約19,000円。指名料・交通費を含めた総額は、予約前に店舗へご確認ください。</p></div>';
+var officialRow = s.url
+? '<a href="'+s.url+'" target="_blank" rel="noopener">公式サイト ↗</a>'
+: '未確認（公式URLを確認できていないため、リンクは掲載していません）';
+document.getElementById("shopBody").innerHTML =
+'<div class="shop-hero"><div class="shop-hero-top">'
++ '<div class="card-cat">'+(g?g.label:"")+' ／ 女性向け</div>'
++ '<h2>'+s.name+'</h2><p>'+s.areaLabel+'／営業形態：'+(s.form||"未確認")+'</p></div>'
++ '<div class="shop-hero-body">'
++ '<div class="badges">'+statusBadge(s)+badgeHTML(s.verified)+'<span class="badge genre">'+(g?g.label:"")+'</span></div>'
++ (s.desc? '<p style="font-size:13.5px;color:var(--ink2);margin:12px 0 0">'+s.desc+'</p>': '<p style="font-size:13.5px;color:var(--ink2);margin:12px 0 0">'+s.city+'エリアの'+(g?g.label:"")+'です。営業形態は'+(s.form||"未確認")+'。コース・料金・予約方法の最新情報は公式サイトでご確認ください。</p>')
++ badgeExplain
++ openNote
++ officialBtns
++ '</div></div>'
++ '<section aria-labelledby="h-staff"><div class="sec-head"><h2 id="h-staff">在籍セラピスト</h2><span>確認でき次第掲載</span></div>'
++ '<p class="lead">気になる人のプロフィールから、雰囲気や口コミを確認して指名できる形を目指しています。</p>'
++ staffHTML + '</section>'
++ '<section aria-labelledby="h-price"><div class="sec-head"><h2 id="h-price">料金</h2><span>公式確認</span></div>'
++ priceHTML
++ '<p class="source-note">当サイトは施術の効果を保証するものではありません。</p></section>'
++ '<section aria-labelledby="h-info-shop"><div class="sec-head"><h2 id="h-info-shop">店舗情報</h2></div>'
++ '<div class="market" style="padding:6px 14px"><table>'
++ '<tr><th>ジャンル</th><td>'+(g?g.label:"")+'</td></tr>'
++ '<tr><th>対応エリア</th><td>'+s.areaLabel+'</td></tr>'
++ '<tr><th>営業形態</th><td>'+(s.form||"未確認")+'</td></tr>'
++ '<tr><th>最安料金</th><td>'+(s.price? s.price+"（通常コース最安・公式確認）": "料金は公式サイトで確認")+'</td></tr>'
++ '<tr><th>状態</th><td>'+(s.status==="prep"?"開催準備中（サテライト）":(s.status==="open"?"営業中（本店）":"掲載中"))+'</td></tr>'
++ '<tr><th>公式サイト</th><td>'+officialRow+'</td></tr>'
++ '<tr><th>営業時間・予約</th><td>受付時間・定休日・予約可否は公式サイトでご確認ください</td></tr>'
++ '<tr><th>NG事項の申告</th><td>予約時・施術前に伝えられる運用を掲載基準にしています。詳細は予約時に店舗へご確認ください</td></tr>'
++ '<tr><th>連絡方法</th><td>公式サイトでご確認ください（公式LINEのURLは未確認のためリンクしていません）</td></tr>'
++ '<tr><th>届出確認</th><td>'+(s.verified?"届出確認済み（公式サイトで届出の記載を確認）":"届出：未確認（公式サイトで届出の記載を確認できていません）")+'</td></tr>'
++ '<tr><th>情報確認日</th><td>'+(s.checked||"2026-11-18")+'</td></tr>'
++ '</table></div></section>'
++ '<section aria-labelledby="h-rev"><div class="sec-head"><h2 id="h-rev">この店舗の口コミ</h2><span>運営確認制</span></div>'
++ '<div class="review-note"><p style="margin:0 0 8px;font-size:13.5px;color:var(--ink2)"><b>口コミは運営確認制です。</b>投稿された口コミは、運営が内容を確認してから掲載します。掲載まで時間がかかる場合があり、確認できない投稿は掲載されません。店舗側が一方的に削除することはできず、否決した投稿も運営側で記録します。</p>'
++ '<p style="margin:0;font-size:13.5px;color:var(--ink2)">この店舗の口コミは、まだ掲載分がありません。実際に利用された方は、確認手続きのうえで投稿いただけます。</p></div>'
++ '<button type="button" class="chip" data-review style="min-height:44px;margin-top:10px">口コミを投稿する（運営確認後に掲載）</button></section>';
+setSEO(s.name+"｜"+s.pref+"・"+(g?g.label:"")+"・女性向け",
+s.name+"（"+s.areaLabel+"）の店舗ページ。ジャンル："+(g?g.label:"")+"。最安料金："+(s.price||"公式サイトで確認")+"。届出確認の有無、公式サイトへのリンク、口コミ（運営確認制）。");
+document.querySelectorAll("[data-review]").forEach(function(b){
+b.onclick=function(){ toast("口コミ投稿の受付は準備中です（運営確認制で運用します）");};
+});
+bindDynamic(document.getElementById("shopBody"));
+}
+
+/* ============ ARTICLE VIEW ============ */
+function renderArticle(viewKey){
+var c = COLUMNS.filter(function(x){ return x.view===viewKey;})[0];
+if(!c) return;
+document.getElementById("artCrumb").textContent = c.title;
+document.getElementById("articleBody").innerHTML =
+'<article class="article"><div class="col-visual '+c.cv+'"><span class="cv-tag">'+c.tag+'</span><span class="cv-num">'+c.num+'</span></div>'
++ '<div class="article-body"><h2 class="serif" style="font-size:23px;line-height:1.5;margin:0 0 10px;color:var(--plum)">'+c.title+'</h2>'
++ '<p style="font-size:14px;color:var(--ink2);margin:0 0 6px">'+c.lead+'</p>'
++ c.body
++ '<div class="two-btns"><button type="button" class="btn-site" data-goto="top">セラピストを探す</button><button type="button" class="btn-line" data-goto="pref" style="background:var(--bordeaux)">地域から探す</button></div>'
++ '</div></article>';
+document.getElementById("articleOthers").innerHTML = COLUMNS.filter(function(x){ return x.view!==viewKey;}).map(colCardHTML).join("");
+setSEO(c.title+"", c.lead);
+bindDynamic(document.getElementById("view-article"));
+}
+
+/* ============ INFO VIEW ============ */
+function renderInfo(){
+document.getElementById("infoBody").innerHTML =
+'<div class="info-block"><h3>運営者情報</h3>'
++ '<p>サイト名：セラピストマッチ<br>コンセプト：女性のお客様が、雰囲気・年代・得意なことから理想のセラピストと出会える全国ポータル。<br>掲載エリア：全国（主要9都市：東京・大阪・名古屋・福岡・札幌・横浜・仙台・広島・大宮で96店を掲載／2026-11-18時点）。<br>お問い合わせ：掲載申込ページのフォームからご連絡ください。個別の連絡先は、確認が取れたものからこのページに掲載します。</p></div>'
++ '<div class="info-block"><h3>掲載について</h3>'
++ '<ul><li>掲載は、各店舗・セラピストの公式情報を運営が確認したものだけを行います。確認できない情報は掲載しないか、「未確認」と明記します。</li>'
++ '<li>風営法の届出を運営が確認した掲載には「届出確認済み」バッジを表示します。未確認の表示は、違法という意味ではありません。</li>'
++ '<li>掲載料は当面無料です。有料メニューを始める場合は、事前に掲載中の方へ案内します。</li>'
++ '<li>露骨な画像・表現、効果を断定する表現は掲載しません。人物写真は使わず、イニシャル表示を基本とします。</li></ul></div>'
++ '<div class="info-block"><h3>口コミの運営方針</h3>'
++ '<ul><li>口コミは投稿後、運営が内容を確認してから掲載する「運営確認制」です。</li>'
++ '<li>店舗・セラピスト側が一方的に口コミを削除することはできません。否決した投稿も運営側で記録し、否決の放置・隠蔽ができない形で管理します。</li>'
++ '<li>事実と異なる内容、個人を特定できる情報、誹謗中傷にあたる内容は掲載しません。</li></ul></div>'
++ '<div class="info-block"><h3>利用上の注意</h3>'
++ '<ul><li>このサイトは18歳以上の方を対象としています。18歳未満の方は閲覧できません。</li>'
++ '<li>当サイトは店舗・セラピストの紹介を行うポータルであり、各店舗のサービス内容・効果を保証するものではありません。</li>'
++ '<li>料金・コース・営業時間・予約可否は変更される場合があります。最新情報は各店舗の公式サイトでご確認ください。</li>'
++ '<li>予約・支払い・キャンセル等の取引は、利用者と各店舗との間で直接行われます。総額や条件は、予約前に必ずご自身でご確認ください。</li>'
++ '<li>体調や状況によっては利用を控える判断も大切です。医療に関する悩みは、医療機関など専門窓口へご相談ください。</li></ul></div>'
++ '<div class="info-block"><h3>プライバシーについて</h3>'
++ '<ul><li>当サイトはアクセス解析（Google Analytics）を使用し、利用状況の把握と改善に役立てています。個人を特定する目的では使用しません。</li>'
++ '<li>掲載申込等でいただいた情報は、掲載の確認と連絡の目的以外には使用しません。</li>'
++ '<li>利用者の本名・勤務先などを店舗へ伝える必要はありません。連絡方法はご自身の都合に合うものを選べる形を、掲載基準として店舗へ求めています。</li></ul></div>'
++ '<div class="info-block"><h3>年齢制限について</h3>'
++ '<p>対象サービスの性質上、18歳未満の方の閲覧・利用はお断りしています。トップの年齢確認で「18歳以上です」を選んだ方のみ、コンテンツを表示します。</p></div>';
+}
+
+/* ============ INIT ============ */
+function fillFooters(){
+document.querySelectorAll("footer.site-footer, #footerTop").forEach(function(f){ f.innerHTML = FOOTER_HTML;});
+}
+function initSelects(){
+var prefSel = document.getElementById("prefSel");
+prefSel.innerHTML = '<option value="">全国（指定なし）</option>' + ALL_PREFS.map(function(p){ return '<option value="'+p+'"'+(p==="大阪府"?" selected":"")+'>'+p+'</option>';}).join("");
+var genreSel = document.getElementById("genreSel");
+genreSel.innerHTML = '<option value="">すべてのジャンル</option>' + GENRES.map(function(g){ return '<option value="'+g.id+'"'+(g.id==="tantra"?" selected":"")+'>'+g.label+'</option>';}).join("");
+["fShopGenre","fPerGenre"].forEach(function(id){
+var el = document.getElementById(id);
+if(el) el.innerHTML = GENRES.map(function(g){ return '<option value="'+g.id+'">'+g.label+'</option>';}).join("");
+});
+}
+document.querySelectorAll(".nav button").forEach(function(b){
+b.addEventListener("click", function(){
+var v = b.getAttribute("data-view");
+if(v==="pref"){ openPref(currentPref); return;}
+if(v==="genre"){ openGenre(currentGenreId, true); return;}
+showView(v);
+});
+});
+document.getElementById("heroFind").addEventListener("click", function(){
+document.getElementById("theraSec").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("heroAssure").addEventListener("click", function(){
+document.getElementById("assureSec").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("searchForm").addEventListener("submit", function(e){
+e.preventDefault();
+var p = document.getElementById("prefSel").value;
+var gid = document.getElementById("genreSel").value;
+if(p){ openPref(p); if(gid){ var g = genreById(gid); if(g){ prefGenre = g.key; renderPrefBody();}}}
+else if(gid){ openGenre(gid);}
+else { toast("都道府県かジャンルを選んでください");}
+});
+document.querySelectorAll("[data-apply]").forEach(function(b){
+b.addEventListener("click", function(){
+toast(b.getAttribute("data-apply")+"の申込フォームは準備中です。受付開始時はこのページで案内します");
+});
+});
+/* age gate (in-memory only for this session) */
+document.getElementById("gateYes").addEventListener("click", function(){
+document.getElementById("ageGate").classList.add("hidden");
+toast("年齢確認ありがとうございます");
+});
+document.getElementById("gateNo").addEventListener("click", function(){
+document.getElementById("gateDenied").classList.add("show");
+});
+
+fillFooters();
+initSelects();
+renderGenreGridTop();
+renderCities();
+renderPrefs();
+renderTopShops();
+renderTopTherapists();
+renderColumns();
+renderGenreChips();
+openGenre("tantra", true);
+/* openGenre switches view; return to top on first load */
+document.querySelectorAll(".view").forEach(function(v){ v.classList.remove("active");});
+document.getElementById("view-top").classList.add("active");
+document.querySelectorAll(".nav button").forEach(function(b){ b.setAttribute("aria-selected", b.getAttribute("data-view")==="top"? "true":"false");});
+renderPrefBody();
+renderShop("yinyang-osaka");
+renderInfo();
+setSEO(SEO.top.t, SEO.top.d);
+bindDynamic(document);
+</script>
+</body>
+</html>
