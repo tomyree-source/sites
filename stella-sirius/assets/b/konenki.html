@@ -147,5 +147,108 @@ table.info th{width:32%;font-family:"Shippori Mincho",serif;font-weight:600;whit
 <p><a href="https://tomyree-source.github.io/sites/stella-sirius/">トップページへ戻る</a>　｜　<a href="../sitemap.html">サイトマップ（全ページ一覧）</a></p>
 </footer>
 </div>
+<!-- stella-fab-v1 -->
+<style>
+.fab-overlay{position:fixed;inset:0;z-index:80;background:rgba(4,8,18,.55);opacity:0;transition:opacity .18s ease}
+.fab-overlay.open{opacity:1}
+.fab-btn{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:95;display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:10px 18px 10px 15px;border-radius:999px;background:#a9853c;color:#221a08;border:1px solid rgba(244,239,228,.45);font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:700;letter-spacing:.06em;line-height:1;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.45)}
+.fab-btn:hover{background:#e9dcbc}
+.fab-btn:focus-visible{outline:3px solid #f5efdf;outline-offset:2px}
+.fab-btn svg{width:20px;height:20px;flex:none}
+.line-fab{position:fixed;right:16px;bottom:calc(80px + env(safe-area-inset-bottom));z-index:94;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:999px;background:#06c755;color:#fff;border:1px solid rgba(255,255,255,.35);font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:700;letter-spacing:.05em;line-height:1;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.45)}
+.line-fab:hover{background:#05b34c}
+.line-fab:focus-visible{outline:3px solid #f5efdf;outline-offset:2px}
+@media(max-width:640px){
+  .fab-btn{width:52px;height:52px;min-height:52px;padding:0;justify-content:center;border-radius:50%}
+  .fab-btn .fab-btn-label{display:none}
+  .fab-btn svg{width:22px;height:22px}
+}
+.fab-panel{position:fixed;right:16px;bottom:calc(148px + env(safe-area-inset-bottom));z-index:90;width:min(344px,calc(100vw - 32px));max-height:min(68vh,560px);overflow-y:auto;overscroll-behavior:contain;background:#182238;border:1px solid rgba(233,220,188,.35);border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.55);opacity:0;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease}
+.fab-panel.open{opacity:1;transform:translateY(0)}
+.fab-panel-head{display:flex;align-items:center;gap:10px;padding:12px 10px 10px 18px;border-bottom:1px solid rgba(233,220,188,.22);position:sticky;top:0;background:#182238;z-index:1}
+.fab-panel-title{font-family:"Noto Serif JP",serif;font-weight:600;font-size:16px;letter-spacing:.08em;color:#f5efdf}
+.fab-close{margin-left:auto;width:38px;height:38px;flex:none;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(233,220,188,.22);border-radius:50%;background:#22304f;color:#e8e2d2;padding:0;cursor:pointer}
+.fab-close:hover{border-color:#a9853c;color:#e9dcbc}
+.fab-close:focus-visible{outline:3px solid #a9853c;outline-offset:2px}
+.fab-close svg{width:17px;height:17px}
+.fab-cta{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 12px 2px;padding:13px 16px;border-radius:10px;background:#a9853c;color:#221a08;font-size:15px;font-weight:700;letter-spacing:.05em;text-decoration:none}
+.fab-cta:hover{background:#e9dcbc}
+.fab-cta:focus-visible{outline:3px solid #f5efdf;outline-offset:2px}
+.fab-panel ul{list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.fab-panel ul a{display:block;padding:10px 12px;border-radius:8px;color:#cfc8b2;text-decoration:none;font-size:14.5px;font-weight:500;line-height:1.4}
+.fab-panel ul a:hover{background:rgba(201,168,106,.12);color:#e9dcbc}
+.fab-panel ul a:focus-visible{outline:3px solid #a9853c;outline-offset:-1px}
+@media(prefers-reduced-motion:reduce){.fab-overlay,.fab-panel{transition:none}}
+@media print{.fab-btn,.fab-panel,.fab-overlay,.line-fab{display:none!important}}
+</style>
+<button type="button" class="fab-btn" id="fab-btn" aria-label="メニュー" aria-expanded="false" aria-controls="fab-panel" aria-haspopup="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  <span class="fab-btn-label">メニュー</span>
+</button>
+<div class="fab-overlay" id="fab-overlay" hidden></div>
+<nav class="fab-panel" id="fab-panel" aria-label="メインメニュー" hidden>
+  <div class="fab-panel-head">
+    <span class="fab-panel-title">メニュー</span>
+    <button type="button" class="fab-close" id="fab-close" aria-label="メニューを閉じる">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <a class="fab-cta" href="https://lin.ee/tQEatJI" target="_blank" rel="noopener noreferrer">LINE公式アカウントでお問い合わせ</a>
+  <ul>
+    <li><a href="../../assets/concerns.html">お悩み別ページ</a></li>
+    <li><a href="../../assets/meridians.html">経絡・経穴ガイド</a></li>
+    <li><a href="../../assets/blog.html">ブログ・コラム</a></li>
+    <li><a href="../../assets/faq.html">よくある質問</a></li>
+    <li><a href="../../assets/recruit.html">セラピスト求人</a></li>
+    <li><a href="../../assets/english.html">English Guide</a></li>
+    <li><a href="../../assets/sitemap.html">サイトマップ</a></li>
+    <li><a href="../../index.html">トップページ</a></li>
+  </ul>
+</nav>
+<a class="line-fab" href="https://lin.ee/tQEatJI" target="_blank" rel="noopener noreferrer">LINEでお問い合わせ</a>
+<script>
+(function(){
+  "use strict";
+  /* ---------- floating menu ---------- */
+  var fabBtn = document.getElementById('fab-btn'),
+      fabPanel = document.getElementById('fab-panel'),
+      fabOverlay = document.getElementById('fab-overlay'),
+      fabClose = document.getElementById('fab-close');
+  if (!fabBtn || !fabPanel || !fabOverlay) return;
+  var fabOpen = false, fabTimer = null;
+  function openFab(){
+    if (fabOpen) return;
+    fabOpen = true;
+    if (fabTimer){ clearTimeout(fabTimer); fabTimer = null; }
+    fabPanel.hidden = false;
+    fabOverlay.hidden = false;
+    void fabPanel.offsetWidth;
+    fabPanel.classList.add('open');
+    fabOverlay.classList.add('open');
+    fabBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    if (fabClose) fabClose.focus();
+  }
+  function closeFab(restoreFocus){
+    if (!fabOpen) return;
+    fabOpen = false;
+    fabPanel.classList.remove('open');
+    fabOverlay.classList.remove('open');
+    fabBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    fabTimer = setTimeout(function(){
+      if (!fabOpen){ fabPanel.hidden = true; fabOverlay.hidden = true; }
+      fabTimer = null;
+    }, 200);
+    if (restoreFocus) fabBtn.focus();
+  }
+  fabBtn.addEventListener('click', function(){ fabOpen ? closeFab(false) : openFab(); });
+  if (fabClose) fabClose.addEventListener('click', function(){ closeFab(true); });
+  fabOverlay.addEventListener('click', function(){ closeFab(true); });
+  document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') closeFab(true); });
+  fabPanel.addEventListener('click', function(ev){ if (ev.target.closest && ev.target.closest('a')) closeFab(false); });
+})();
+</script>
+<!-- /stella-fab-v1 -->
 </body>
 </html>
