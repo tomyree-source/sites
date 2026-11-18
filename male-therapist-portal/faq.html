@@ -101,6 +101,22 @@ details.faq p{font-size:14.5px;margin-top:8px;color:var(--ink-soft)}
 footer.site{margin-top:56px;background:var(--navy);color:#bdb6cf;padding:36px 20px;text-align:center;font-size:13px}
 footer.site .f-name{font-family:"Hiragino Mincho ProN",serif;color:#fff;font-size:16px;letter-spacing:.1em}
 footer.site a{color:var(--gold-soft)}
+.col-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:16px}
+.col-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.col-card img{width:100%;height:180px;object-fit:cover;display:block}
+.col-card .c-body{padding:16px 18px 18px}
+.cat-chip{display:inline-block;background:var(--navy);color:var(--gold-soft);border-radius:999px;padding:2px 12px;font-size:12px}
+.col-date{color:var(--ink-soft);font-size:12.5px;margin-left:8px}
+.col-card h3{font-size:16.5px;margin-top:8px;line-height:1.5}
+.col-card h3 a{color:var(--ink);text-decoration:none}
+.col-card p{font-size:13.5px;color:var(--ink-soft);margin-top:6px;line-height:1.7}
+.art h2{font-size:21px;margin:32px 0 12px;color:var(--navy);border-left:4px solid var(--gold);padding-left:10px;line-height:1.5}
+.art p{line-height:1.9;margin:10px 0;font-size:15.5px}
+.art ul{line-height:1.9;margin:10px 0 10px 20px;font-size:15.5px}
+.art-eyecatch{width:100%;border-radius:14px;margin:18px 0;display:block}
+.rel-links{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-top:28px}
+.rel-links p{font-weight:700;margin-bottom:8px}
+.rel-links li{margin:4px 0 4px 18px;line-height:1.7}
 </style>
 </head>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "男性セラピストと聞いて少し不安です", "acceptedAnswer": {"@type": "Answer", "text": "掲載店では、施術の前に範囲をご説明し、施術部位以外にはタオルを掛け、お着替えの際は席を外す配慮を行っています。性的なサービスは一切行いません。不安な点は、予約の前に各店舗のLINE公式から相談できます。施術者の経歴と資格は、各店舗の詳細ページで事前に確認できます。"}}, {"@type": "Question", "name": "施術中に触れられたくない部位がある場合は？", "acceptedAnswer": {"@type": "Answer", "text": "予約時や施術前のカウンセリングで、その旨をお伝えください。掲載店ではご希望に沿って施術範囲を調整します。施術中でも、気になることがあればその場で遠慮なくお伝えください。"}}, {"@type": "Question", "name": "着替えはどうなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "お着替えの際、セラピストは席を外します。施術着やタオルの用意は店舗によって異なりますので、各店舗の詳細ページと公式サイトをご確認ください。"}}, {"@type": "Question", "name": "圧の強さは調整できますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。施術中いつでも調整できます。男性セラピストは圧が強いイメージがありますが、掲載店のセラピストはお体の状態とご希望に合わせて加減します。遠慮なくお伝えください。"}}, {"@type": "Question", "name": "予約はどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "各店舗の詳細ページの「ポータル経由で予約リクエストを送る」ボタンから、専用フォームで希望日時とメニューを送ってください。内容は店舗へ取り次ぎ、店舗から連絡が入ります。LINEで直接やり取りしたい場合は、各店舗のLINEボタンもご利用いただけます。ポータルでは電話番号を掲載していないため、ご連絡はLINE等の文字の連絡が基本です。"}}, {"@type": "Question", "name": "料金の目安はどれくらいですか？", "acceptedAnswer": {"@type": "Answer", "text": "店舗ごとに明示しています。たとえばステラ各店は90分10,000円の単一価格、YinYang-Harmonyは90分15,000円からです。時間や部位で料金が変わらない明朗な価格設定の店舗を中心に掲載しています。"}}]}</script>
@@ -110,6 +126,7 @@ footer.site a{color:var(--gold-soft)}
     <a class="logo" href="index.html">男性セラピストナビ<small>MALE THERAPIST NAVI</small></a>
     <nav>
       <a href="index.html#area">地域から探す</a>
+      <a href="column.html">コラム</a>
       <a href="goods.html">おすすめの本・用品</a>
       <a href="standard.html">安心の掲載基準</a>
       <a href="faq.html">初めての方へ</a>
@@ -134,7 +151,7 @@ footer.site a{color:var(--gold-soft)}
 <footer class="site">
   <p class="f-name">男性セラピストナビ</p>
   <p style="margin-top:8px">男性セラピストが担当する女性向けサロンの専門検索ポータル｜ご予約は各店舗の公式サイト・LINE公式へ</p>
-  <p style="margin-top:6px"><a href="index.html">トップ</a>｜<a href="goods.html">おすすめの本・用品</a>｜<a href="standard.html">安心の掲載基準</a>｜<a href="faq.html">初めての方へ</a>｜<a href="apply.html">掲載申込</a>｜<a href="terms.html">掲載プラン・利用条件</a>｜<a href="https://note.com/222hifumin" target="_blank" rel="noopener">運営者のnote</a></p>
+  <p style="margin-top:6px"><a href="index.html">トップ</a>｜<a href="column.html">コラム</a>｜<a href="goods.html">おすすめの本・用品</a>｜<a href="standard.html">安心の掲載基準</a>｜<a href="faq.html">初めての方へ</a>｜<a href="apply.html">掲載申込</a>｜<a href="terms.html">掲載プラン・利用条件</a>｜<a href="https://note.com/222hifumin" target="_blank" rel="noopener">運営者のnote</a></p>
 </footer>
 </body>
 </html>
