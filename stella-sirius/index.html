@@ -986,6 +986,9 @@ window.addEventListener('hashchange',function(){applyTitle();});
 .fab-panel ul a:focus-visible{outline:3px solid #a9853c;outline-offset:-1px}
 @media(prefers-reduced-motion:reduce){.fab-overlay,.fab-panel{transition:none}}
 @media print{.fab-btn,.fab-panel,.fab-overlay,.line-fab{display:none!important}}
+
+/* フッター末尾が固定のLINE・メニューボタンに隠れないよう下余白を確保（2026-11-20） */
+body{padding-bottom:96px}
 </style>
 <button type="button" class="fab-btn" id="fab-btn" aria-label="メニュー" aria-expanded="false" aria-controls="fab-panel" aria-haspopup="true">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
