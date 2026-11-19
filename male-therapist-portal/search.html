@@ -158,7 +158,7 @@ footer.site a{color:var(--gold-soft)}
     <h2><span class="en">THERAPISTS</span>セラピストから探す</h2>
     <p class="lead">「人柄で指名したい」という方へ。現在、名前と資格を公開して掲載している施術者は平賀伸人1名です。他店が掲載されれば、同じ形式（写真またはイラスト／経歴・資格／得意分野／対応エリア／担当店舗）でここに並びます。</p>
     <div class="profile">
-      <img src="assets/therapist-kento.webp" alt="施術者・平賀伸人のイラスト">
+      <img src="assets/therapist-kento-v2.webp" alt="施術者・平賀伸人のイラスト">
       <div>
         <p class="p-name">平賀 伸人</p>
         <p class="p-role">ひらが のぶひと｜男性セラピスト</p>
@@ -180,7 +180,7 @@ function render(){
   document.getElementById('empty').style.display=list.length?'none':'block';
   document.getElementById('cards').innerHTML=list.map(s=>`
    <a class="card" href="${s.slug}">
-    <img src="assets/therapist-kento.webp" alt="施術者のイラスト">
+    <img src="assets/therapist-kento-v2.webp" alt="施術者のイラスト">
     <span><span class="c-name">${s.name}</span><span class="status ${s.status==='open'?'open':'prep'}">${stLabel[s.status]}</span>
     <span class="c-meta">${s.region}｜${s.menu} 90分 ${s.price.toLocaleString()}円${s.status!=='open'?'（予定）':''}</span>
     <span class="c-meta">${s.access}</span>
