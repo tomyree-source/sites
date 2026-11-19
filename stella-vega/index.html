@@ -20,7 +20,8 @@
 /* 旧ハッシュURL（#column-…・#recruit）の救済：外部から直接開かれた場合は対応する分割ページ（静的HTML）へ転送する。サイト内からの遷移では転送しない。 */
 (function(){var h=location.hash||"";var ref=document.referrer||"";if(ref.indexOf("/sites/stella-vega/")>-1||ref.indexOf("/space-9")>-1)return;var M={"#column-benpi-ashiya":"benpi","#column-kubikori-ashiya":"kubikori","#column-kounenki-ashiya":"kounenki","#column-shisei-nekoze-ashiya":"shisei-nekoze","#column-koshi-ashiya":"koshi","#column-zutsuu-ashiya":"zutsuu","#column-ashi-mukumi-ashiya":"ashi-mukumi","#column-katakori-deskwork-ashiya":"katakori-deskwork","#column-netsuki-ashiya":"netsuki","#column-hiekan-ashiya":"hiekan","#column-me-tsukare-ashiya":"me-tsukare","#column-pms-ashiya":"pms","#column-jiritsu-ashiya":"jiritsu","#column-senaka-hari-ashiya":"senaka-hari","#column-zenshin-hirou-ashiya":"zenshin-hirou","#column-ashi-tsukare-ashiya":"ashi-tsukare","#column-ude-te-tsukare-ashiya":"ude-te-tsukare","#column-kao-mukumi-ashiya":"kao-mukumi","#column-koshi-50dai-ashiya":"koshi-50dai","#column-zutsuu-50dai-ashiya":"zutsuu-50dai","#column-asa-katakori-kubi-ashiya":"asa-katakori-kubi","#column-koshi-40dai-ashiya":"koshi-40dai","#column-me-50dai-ashiya":"me-50dai","#column-asa-koshi-ashiya":"asa-koshi","#column-ame-atama-omosa-ashiya":"ame-atama-omosa","#column-katakori-50dai-ashiya":"katakori-50dai","#column-shumatsu-hirou-ashiya":"shumatsu-hirou","#column-asa-me-tsukare-ashiya":"asa-me-tsukare","#column-shigoto-kaeri-hirou-ashiya":"shigoto-kaeri-hirou","#column-atama-omosa-50dai-ashiya":"atama-omosa-50dai","#column-ame-katakori-ashiya":"ame-katakori","#column-katakori-40dai-ashiya":"katakori-40dai","#column-nenmatsu-hirou-ashiya":"nenmatsu-hirou","#column-nenmatsu-hiekan-ashiya":"nenmatsu-hiekan","#column-oosouji-katakori-ashiya":"oosouji-katakori","#column-ame-me-tsukare-ashiya":"ame-me-tsukare","#column-kisei-mukumi-ashiya":"kisei-mukumi","#column-bonenkai-hirou-ashiya":"bonenkai-hirou","#column-fuyu-kansou-kusumi-ashiya":"fuyu-kansou-kusumi"};if(M[h])location.replace("assets/b/"+M[h]+".html");else if(h==="#recruit")location.replace("assets/recruit.html");})();
 </script>
-    <link rel="icon" href="assets/hero.jpg" />
+    <link rel="icon" type="image/png" href="assets/brand-icon.png" />
+<link rel="apple-touch-icon" href="assets/brand-icon.png" />
     <title>ステラベガ【芦屋】女性専用オイルマッサージ・美容整体｜90分10,000円</title>
     <meta property="og:title" content="ステラベガ【芦屋】女性専用オイルマッサージ・美容整体｜90分10,000円" />
     <meta property="og:description" content="芦屋の女性専用プライベートサロン「ステラベガ」。施術歴30年のセラピストによるオイルマッサージと美容整体。90分10,000円（税込）、月〜土17:00〜22:00、完全予約制・完全個室。住所はご予約確定後にご案内します。" />
@@ -821,13 +822,14 @@
       footer.site a{color:#8fa2b5;text-decoration:none}
       footer.site a:hover{color:var(--gold-soft)}
       footer.site .fine{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;line-height:1.8}
-    </style>
+    .brand-icon{width:36px;height:36px;border-radius:9px;vertical-align:-10px;margin-right:8px;object-fit:cover}
+</style>
   </head>
   <body>
     <header class="site">
       <div class="site-inner">
         <a class="brand" href="#top">
-          <span class="star">✦</span>
+          <img class="brand-icon" src="assets/brand-icon.png" alt="" width="36" height="36">
           <span class="name">ステラベガ</span>
           <span class="sub">STELLA VEGA ・ ASHIYA</span>
         </a>
