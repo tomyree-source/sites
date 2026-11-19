@@ -744,7 +744,16 @@
         .manga-box { padding: 20px 16px 16px; }
         .sister-card img { min-height: 200px; order: -1; }
       }
-    </style>
+    
+      /* guide link cards */
+      .guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .guide-card { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; text-decoration: none; color: inherit; }
+      .guide-card h3 { font-family: "Shippori Mincho", serif; font-size: 1.08rem; margin: 0 0 8px; color: var(--gold-bright); line-height: 1.6; }
+      .guide-card p { font-size: 0.9rem; color: var(--ink-soft); margin: 0 0 10px; line-height: 1.8; }
+      .guide-go { font-size: 0.85rem; font-weight: 700; color: var(--gold-bright); letter-spacing: 0.04em; }
+      @media (max-width: 900px) { .guide-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 560px) { .guide-grid { grid-template-columns: 1fr; } }
+</style>
   </head>
   <body>
 
@@ -775,7 +784,7 @@
           </div>
           <div class="hero-actions">
             <a class="btn btn-ivory" href="#reserve">ご予約・お問い合わせ</a>
-            <a class="hero-sublink" href="#flow">施術の流れを見る →</a>
+            <a class="hero-sublink" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/flow.html">施術の流れを見る →</a>
           </div>
           <p class="hero-note">リラクゼーションを目的とした施術です。医療行為ではありません。</p>
         </div>
@@ -798,118 +807,6 @@
         </div>
       </dl>
     </header>
-
-    <!-- ============ CONCEPT ============ -->
-    <section id="concept">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="en">About Tantra</span>
-          <h2>タントラとは ― 呼吸と瞑想で整える、<br />大阪のタントラ・ヒーリング</h2>
-        </div>
-        <div class="concept-grid">
-          <div class="reveal">
-            <img src="assets/aroma-still.webp" alt="木のトレイに並ぶアロマオイルの瓶、キャンドル、お香、陰陽をかたどった白と黒の石" />
-          </div>
-          <div class="concept-text reveal">
-            <h3>「陰陽」の調和を取り戻すための、静かな時間</h3>
-            <p>
-              タントラは、インドに古くから伝わる心身の調和の考え方です。当サロンではその中でも、呼吸・瞑想・エネルギーの巡りに焦点を当て、
-              東洋医学の「陰陽」や気功の考え方と組み合わせた、独自のヒーリングとしてご提供しています。
-            </p>
-            <p>
-              ゆったりとした呼吸に合わせたオイルトリートメントの手技が、日常の緊張で固まった心とからだを少しずつゆるめていきます。
-              施術中は静かな空間で、ご自身の内側に意識を向ける瞑想のような時間をお過ごしください。
-            </p>
-            <ul class="concept-points">
-              <li><strong>呼吸</strong>深くゆっくりとした呼吸のリズムに施術を合わせ、心身がゆるむ土台をつくります。</li>
-              <li><strong>瞑想</strong>静かな照明と香りの中で感覚に意識を向ける、瞑想的なリラクゼーションです。</li>
-              <li><strong>気功</strong>セラピストが気功を取り入れた手技で、エネルギーの巡りを意識したケアを行います。</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    
-          <p style="text-align:center;margin-top:18px"><a class="btn btn-gold" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/about.html">タントラとは・初めての方へ（詳しいページ）</a></p>
-        </section>
-
-    <!-- ============ SAFETY ============ -->
-    <section class="alt" id="safety">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="en">Safety &amp; Trust</span>
-          <h2>初めての方にも、安心してお越しいただくために</h2>
-        </div>
-        <div class="safety-grid">
-          <div class="safety-card reveal">
-            <h3><span class="num">01</span>国家資格を持つセラピスト</h3>
-            <p>施術は、鍼灸師の国家資格を持ち、施術歴30年のセラピスト「伸人」が担当します。東洋医学の知識に基づいた、丁寧で確かな手技が土台です。</p>
-          </div>
-          <div class="safety-card reveal">
-            <h3><span class="num">02</span>完全予約制のプライベート空間</h3>
-            <p>梅田・堂山町のレンタルサロンACE梅田内の個室で、完全予約制にて施術を行います。他のお客様と顔を合わせることはありません。</p>
-          </div>
-          <div class="safety-card reveal">
-            <h3><span class="num">03</span>カウンセリングを大切に</h3>
-            <p>施術前に体調やご希望をうかがい、その日の状態に合わせて内容を調整します。気になることがあれば、遠慮なくご相談ください。</p>
-          </div>
-          <div class="safety-card reveal">
-            <h3><span class="num">04</span>料金は明朗、追加請求なし</h3>
-            <p>全コース、カウンセリングとシャワーの時間を含んだ料金です。表示料金以外の追加費用はかかりません（出張の場合は別途、出張費のみ）。</p>
-          </div>
-        </div>
-        <div class="notice-box reveal">
-          <strong>当サロンについてのお約束：</strong>
-          YinYang-Harmonyは、心身の調和とリラクゼーションを目的とした健全なヒーリングサロンです。
-          <strong>医療行為や、風俗的サービスを目的としたものではありません。</strong>
-          そのようなご要望にはお応えできませんので、あらかじめご了承ください。
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ FLOW ============ -->
-    <section class="deep" id="flow">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="en">Flow</span>
-          <h2>施術の流れ</h2>
-          <p>ご予約からお帰りまで、全コースにカウンセリングとシャワーの時間が含まれています。</p>
-        </div>
-        <ol class="flow-list">
-          <li class="reveal">
-            <span class="step-no">01</span>
-            <h3>ご予約（LINE）</h3>
-            <p>LINEからご希望の日時とコースをお知らせください。空き状況を確認してご返信します。</p>
-          </li>
-          <li class="reveal">
-            <span class="step-no">02</span>
-            <h3>ご来店・カウンセリング</h3>
-            <p>サロン到着後、その日の体調やお悩み、ご希望の圧の強さなどをうかがいます。</p>
-          </li>
-          <li class="reveal">
-            <span class="step-no">03</span>
-            <h3>シャワー・お着替え</h3>
-            <p>施術の前にシャワーでリフレッシュ。ご用意したウェアにお着替えいただきます。</p>
-          </li>
-          <li class="reveal">
-            <span class="step-no">04</span>
-            <h3>施術</h3>
-            <p>呼吸のリズムに合わせたオイルトリートメントと気功を取り入れた手技で、全身をゆったりとケアします。</p>
-          </li>
-          <li class="reveal">
-            <span class="step-no">05</span>
-            <h3>シャワー・クールダウン</h3>
-            <p>施術後はシャワーでオイルを流し、静かに心身を日常へ戻していく時間をお取りします。</p>
-          </li>
-          <li class="reveal">
-            <span class="step-no">06</span>
-            <h3>アフター・お会計</h3>
-            <p>お身体の状態やセルフケアのポイントをお伝えします。お会計のうえ、お帰りとなります。</p>
-          </li>
-        </ol>
-      </div>
-    
-          <p style="text-align:center;margin-top:18px"><a class="btn btn-gold" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/flow.html">施術の流れ（詳しいページ）</a></p>
-        </section>
 
     <!-- ============ MENU ============ -->
     <section id="menu">
@@ -957,7 +854,6 @@
           <p style="text-align:center;margin-top:18px"><a class="btn btn-gold" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/price.html">コース・料金（詳しいページ）</a></p>
         </section>
 
-    <!-- ============ THERAPIST ============ -->
     <section class="alt" id="therapist">
       <div class="wrap">
         <div class="sec-head reveal">
@@ -991,156 +887,28 @@
     
           <p style="text-align:center;margin-top:18px"><a class="btn btn-gold" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/therapist.html">セラピスト紹介（詳しいページ）</a></p>
         </section>
-
-    <!-- ============ COLUMN ============ -->
-    <section id="column">
+    <!-- ============ GUIDE (link index) ============ -->
+    <section id="guide">
       <div class="wrap">
         <div class="sec-head reveal">
-          <span class="en">Column — Reading Tantra</span>
-          <h2>コラム ― タントラを学ぶ、静かな読み物</h2>
-          <p>歴史や思想を、学術・文化的な視点から丁寧にご紹介します。初めての方の疑問解消から、呼吸・瞑想・気功の基礎まで、当サロンの考え方の土台となる記事をまとめました。</p>
+          <span class="en">Guide</span>
+          <h2>ご案内</h2>
+          <p>サロンの詳しいご案内は、各ページでご紹介しています。</p>
         </div>
-        <p class="column-lead reveal">
-          当サロンが大切にしているのは、派手な体験談ではなく、長い時間をかけて受け継がれてきた「心とからだの調和」という視点です。
-          下の目次から、気になるテーマをお選びください。各記事は単独でも読める構成になっています。また、文章だけでは伝わりにくいテーマは、マンガ形式の解説パートでもご紹介しています。
-        </p>
-
-        <div class="ganesha-feature reveal" aria-label="ガネーシャのイラストと解説">
-          <figure>
-            <img src="assets/ganesha.webp" alt="深い紺色の背景に金の曼荼羅と蓮の花に包まれ、瞑想するように座るガネーシャの上品なイラスト" loading="lazy" />
-          </figure>
-          <div class="ganesha-body">
-            <p class="g-kicker">Ganesha — Symbol of Beginnings</p>
-            <h3>ガネーシャ ― 始まりと知恵を見守る、インドの神様</h3>
-            <p>
-              象の頭を持つ<strong>ガネーシャ</strong>は、インドで古くから親しまれてきた神様です。ヒンドゥー教の伝統では、物事の始まりに敬意を払う存在、障害を取り除き、知恵と学びを支える存在として語られてきました。新しいことを始める場にその姿が置かれることが多いのも、そのためと伝えられています。
-            </p>
-            <p>
-              タントラやヨーガの歴史を辿るコラムの入口に、このイラストを置きました。蓮の花と曼荼羅、静かに目を閉じた表情は、当サロンが大切にする「慌てず、自分の巡りに戻っていく」という時間のイメージとも重なります。
-            </p>
-            <p class="ganesha-caption">※ 本イラストは当サイトのために描いたオリジナル作品です。ガネーシャは信仰の対象として敬意を持って描いています。当サロンは特定の宗教とは関係のないリラクゼーションサロンであり、参拝や信仰をお願いするものではありません。</p>
-          </div>
-        </div>
-
-        <nav class="column-toc reveal" aria-label="コラム目次">
-          
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/tsubo-atama.html"><span class="toc-no">COLUMN 37</span><strong>ツボの押し方（頭の重さ） ― 頭の重さを感じるときのツボと、タントラのまなざし</strong><span class="desc">頭の重さと結びつけて伝統的に知られてきたツボ（百会・太陽・風池）の場所の見つけ方と、押し方の目安（力加減・時間・注意点）を実用的に整理します。考えられる要因の整理、日常のセルフケア、受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/tsubo-yuragi.html"><span class="toc-no">COLUMN 38</span><strong>ツボの押し方（更年期のゆらぎ） ― 更年期のゆらぎを感じるときのツボと、タントラのまなざし</strong><span class="desc">更年期のゆらぎと結びつけて伝統的に知られてきたツボ（三陰交・内関・太渓）の場所の見つけ方と、押し方の目安（力加減・時間・注意点）を実用的に整理します。考えられる要因の整理、日常のセルフケア、受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/tsubo-te.html"><span class="toc-no">COLUMN 39</span><strong>ツボの押し方（手のこわばり） ― 手のこわばりを感じるときのツボと、タントラのまなざし</strong><span class="desc">手のこわばりと結びつけて伝統的に知られてきたツボ（合谷・労宮・外関）の場所の見つけ方と、押し方の目安（力加減・時間・注意点）を実用的に整理します。考えられる要因の整理、日常のセルフケア、受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/tsubo-ude.html"><span class="toc-no">COLUMN 40</span><strong>ツボの押し方（腕・手の疲れ） ― 腕や手の疲れを感じるときのツボと、タントラのまなざし</strong><span class="desc">腕・手の疲れと結びつけて伝統的に知られてきたツボ（曲池・手三里・合谷）の場所の見つけ方と、押し方の目安（力加減・時間・注意点）を実用的に整理します。考えられる要因の整理、日常のセルフケア、受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/qigong-noon.html"><span class="toc-no">COLUMN 41</span><strong>気功体操のやり方（昼の数分） ― 昼のひとときと、タントラのまなざし</strong><span class="desc">気功の伝統で受け継がれてきた体操の中から、昼の数分でできる小さな動きの流れ（立つ静止、腕を上げてゆっくり下ろす、肩を回す、腰のひねり、座っての仕上げ）を実践手順に絞って整理します。呼吸と気づきの向け方、午後の切り替えへの取り入れ方、無理のない続け方と受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/tsubo-seiri.html"><span class="toc-no">COLUMN 42</span><strong>ツボの押し方（生理痛・PMS） ― 周期に寄り添う時間と、タントラのまなざし</strong><span class="desc">月経の周期と結びつけて伝統的に知られてきたツボ（三陰交・血海・関元）の場所の見つけ方と、押し方の目安（力加減・時間・注意点）を実用的に整理します。考えられる要因の整理、日常のセルフケア、注意点と受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/tsubo-benpi.html"><span class="toc-no">COLUMN 43</span><strong>ツボの押し方（便秘・お腹の張り） ― お腹の張り感を感じるときのツボと、タントラのまなざし</strong><span class="desc">お腹の張り感や便通と結びつけて伝統的に知られてきたツボ（天枢・中脘・足三里）の場所の見つけ方と、押し方の目安（力加減・時間・注意点）を実用的に整理します。考えられる要因の整理、日常のセルフケア、注意点と受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/qigong-evening.html"><span class="toc-no">COLUMN 44</span><strong>気功体操のやり方（夕方の数分） ― 夕方のひとときと、タントラのまなざし</strong><span class="desc">仕事帰りや夕食前の数分に行う夕方の気功体操の考え方（陽から陰へ移る境目）と、立つ・胸を開く・腰を回す・膝をゆるめる・座って仕上げる五つの小さな動きの手順、夕方のひとときへの取り入れ方、注意点と受診の目安を、タントラのまなざしとともにご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/tsubo-hiza.html"><span class="toc-no">COLUMN 45</span><strong>ツボの押し方（膝の重さ） ― 膝まわりの重さを感じるときのツボと、タントラのまなざし</strong><span class="desc">膝まわりの重さと結びつけて伝統的に知られてきたツボ（犢鼻・陽陵泉・陰陵泉）の場所の見つけ方と、押し方の目安（力加減・時間・注意点）を実用的に整理します。考えられる要因の整理、日常のセルフケア、注意点と受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/breathing-night.html"><span class="toc-no">COLUMN 46</span><strong>呼吸法の実践（寝る前の数分） ― 眠りに入る前のひとときと、タントラのまなざし</strong><span class="desc">眠りに入る前の数分に行う呼吸法の実践手順（姿勢の整え方、吐く息を少し長くする数え方、仕上げの流れ）を実用的に整理します。眠りに入りにくい夜に考えられる要因の整理、注意点と受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/tsubo-kusumi.html"><span class="toc-no">COLUMN 47</span><strong>ツボの押し方（肌のくすみ・たるみ） ― 肌のくすみ感が気になるときのツボと、タントラのまなざし</strong><span class="desc">肌のくすみ感や顔のたるみ感と結びつけて伝統的に知られてきたツボ（迎香・地倉・頬車）の場所の見つけ方と、押し方の目安（力加減・時間・注意点）を実用的に整理します。考えられる要因の整理、日常のセルフケア、注意点と受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/tsubo-onaka.html"><span class="toc-no">COLUMN 48</span><strong>ツボの押し方（下腹の巡り） ― 気海・関元・支溝と、夜の過ごし方</strong><span class="desc">便秘傾向やお腹の張り感と結びつけて伝統的に知られてきたツボ（気海・関元・支溝）の場所の見つけ方と、押し方の目安（力加減・時間・注意点）を実用的に整理します。第43回（天枢・中脘・足三里）とは別のツボから、お腹の巡りを眺めます。考えられる要因の整理、日常の過ごし方、注意点と受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/breathing-morning.html"><span class="toc-no">COLUMN 49</span><strong>呼吸法の実践（朝の数分） ― 一日の始まりの整え方と、タントラのまなざし</strong><span class="desc">目覚めた直後の朝の数分に、布団の中から座る姿勢へ移りながら行える呼吸法の実践手順（目覚めを確かめる数呼吸、朝の光を迎える進め方、吸う息と吐く息を均等に数える形、短く区切る仕上げ）を実用的に整理します。気功体操の朝の動きや寝る前の実践とは分けた「朝の整え方」、注意点と受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-          <a class="toc-card" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/b/tsubo-shisei.html"><span class="toc-no">COLUMN 50</span><strong>ツボの押し方（姿勢・猫背） ― 肩甲骨まわりと、背すじの整え方</strong><span class="desc">姿勢の丸まり（猫背）と結びつけて伝統的に知られてきたツボ（天宗・膏肓・身柱）の場所の見つけ方と、背中は手が届きにくいからこその押し方の目安（壁とボールを使う方法・力加減・時間・注意点）を実用的に整理します。第35回（巻き肩）・第30回（背中の張り）とは別の場所から、肩甲骨まわりと背すじを眺めます。考えられる要因の整理、日常への取り入れ方、注意点と受診の目安もご紹介します。</span><span class="read">記事を読む →</span></a>
-        </nav>
-        <p class="column-disclaimer reveal">本コラムは、歴史・文化・伝統的な考え方を紹介する読み物です。マンガパートも含め、特定の宗教への勧誘を目的とするものではなく、医療的な効能を保証するものでもありません。不確かな起源や伝承については「〜と伝えられています」という形でご紹介しています。マンガの登場人物はオリジナルキャラクターです。</p>
-        <p style="text-align:center;margin-top:18px"><a class="btn btn-gold" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/blog.html">コラム一覧（全50記事）を見る</a></p>
-
-        
-      </div>
-    </section>
-
-    <!-- ============ FAQ ============ -->
-    <section class="alt" id="faq">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="en">FAQ</span>
-          <h2>よくある質問</h2>
-        </div>
-        <div class="faq-list">
-          <details class="faq reveal">
-            <summary>タントラマッサージは初めてで不安です。大丈夫ですか？</summary>
-            <div class="a"><p>はい。当サロンのタントラマッサージは、呼吸・瞑想・気功の考え方を取り入れた、心身の調和のためのリラクゼーションです。施術前に丁寧にカウンセリングを行い、内容をご説明してから始めますので、初めての方も安心してお越しください。</p></div>
-          </details>
-          <details class="faq reveal">
-            <summary>風俗的なサービスはありますか？</summary>
-            <div class="a"><p>ありません。当サロンは女性専用の健全なヒーリングサロンであり、風俗的サービスを目的としたものではありません。そのようなご要望にはお応えできませんので、ご理解のうえご予約ください。</p></div>
-          </details>
-        <details class="faq">
-          <summary>男性セラピストと聞いて少し不安です</summary>
-          <div class="a"><p>施術を担当するのは男性セラピスト1名です。ご不安な点は、ご予約前にLINEでご質問いただけます。施術の範囲や流れは事前にご説明し、施術中はタオルをかけて進めます。お着替えの際はセラピストが席を外します。性的なサービスは一切行っておりません。</p></div>
-        </details>
-        <p style="text-align:center;margin-top:18px"><a class="btn btn-gold" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/faq.html">よくある質問（詳しいページ）</a></p></div>
-    </section>
-
-    <!-- ============ ACCESS ============ -->
-    <section id="access">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="en">Access</span>
-          <h2>アクセス・営業案内</h2>
-        </div>
-        <div class="notice-box reveal">
-          <strong>移転のお知らせ：</strong>
-          YinYang-Harmonyは、2026年11月8日より施術場所をレンタルサロンACE梅田（大阪市北区堂山町12-5 ロイヤルハイツ梅田Ⅱ 303号室）へ移転いたします。料金・営業時間（10:00〜20:00、完全予約制）・ご予約方法（LINE）に変更はございません。
-        </div>
-        <div class="access-grid">
-          <div class="access-card reveal">
-            <h3>サロン情報</h3>
-            <table>
-              <tr><th>店名</th><td>YinYang-Harmony（インヤン・ハーモニー）</td></tr>
-              <tr><th>所在地</th><td>〒530-0027 大阪市北区堂山町12-5<br />ロイヤルハイツ梅田Ⅱ 303号室<br />レンタルサロンACE梅田内</td></tr>
-              <tr><th>営業時間</th><td>10:00〜20:00（完全予約制／不定休）</td></tr>
-              <tr><th>ご予約</th><td>LINEにて受付</td></tr>
-              <tr><th>出張</th><td>ご自宅・ホテルへの出張可</td></tr>
-            </table>
-          </div>
-          <div class="access-card reveal">
-            <h3>最寄り駅</h3>
-            <ul>
-              <li>地下鉄谷町線「中崎町駅」から徒歩約5分</li>
-              <li>阪急「大阪梅田駅」から徒歩約8分</li>
-              <li>Osaka Metro 谷町線「東梅田駅」からもアクセス可</li>
-              <li>Osaka Metro 御堂筋線「梅田駅」からもアクセス可</li>
-            </ul>
-            <p style="font-size:0.9rem; color:var(--ink-soft); margin-top:14px;">
-              詳しい場所は
-              <a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E9%98%AA%E5%B8%82%E5%8C%97%E5%8C%BA%E5%A0%82%E5%B1%B1%E7%94%BA12-5+%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%AB%E3%83%8F%E3%82%A4%E3%83%84%E6%A2%85%E7%94%B0%E2%85%A1" target="_blank" rel="noopener">Googleマップで確認する</a>
-              こともできます。ご予約確定後、当日のご案内をLINEでお送りします。
-            </p>
-          </div>
-        </div>
-      </div>
-    
-          <p style="text-align:center;margin-top:18px"><a class="btn btn-gold" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/access.html">アクセス・営業案内（詳しいページ）</a></p>
-        </section>
-
-    <!-- ============ BLOG ============ -->
-    <section class="alt" id="blog">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="en">Official Blog</span>
-          <h2>読み物 ― コラムで学ぶタントラ</h2>
-        </div>
-        <div class="blog-card reveal">
-          <p>読み物のブログは、公式サイト内への移行を始めました。移行した記事は下の「ブログ一覧」からお読みいただけます（順次追加していきます）。当サイトのコラムでは、タントラの文化や歴史、呼吸・瞑想にまつわる読み物をご用意しています。施術の合間の学びや、静かなひとときのお供にどうぞ。</p>
-          <a class="btn btn-gold" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/essays.html">ブログ一覧を見る</a>
-          <a class="btn btn-gold" href="#column">コラム（読み物）を読む</a>
-          <p class="blog-note">ブログは一覧ページへ、コラムは当サイト内の目次へ移動します。</p>
+        <div class="guide-grid">
+          <a class="guide-card reveal" id="concept" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/about.html"><h3>サロンについて</h3><p>コンセプトと、安心してお過ごしいただくための取り組み</p><span class="guide-go">ページを見る →</span></a>
+          <a class="guide-card reveal" id="flow" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/flow.html"><h3>施術の流れ</h3><p>ご来店からお帰りまでの流れ</p><span class="guide-go">ページを見る →</span></a>
+          <a class="guide-card reveal" id="column" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/blog.html"><h3>コラム</h3><p>呼吸・経絡・セルフケアの読み物（全48記事）</p><span class="guide-go">ページを見る →</span></a>
+          <a class="guide-card reveal" id="blog" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/essays.html"><h3>ブログ</h3><p>日々の読み物とサロンからのお知らせ</p><span class="guide-go">ページを見る →</span></a>
+          <a class="guide-card reveal" id="faq" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/faq.html"><h3>よくある質問</h3><p>初めての方の不安や疑問にお答えします</p><span class="guide-go">ページを見る →</span></a>
+          <a class="guide-card reveal" id="access" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/access.html"><h3>アクセス</h3><p>大阪・梅田 堂山町（中崎町駅から徒歩約5分）</p><span class="guide-go">ページを見る →</span></a>
+          <a class="guide-card reveal" id="new-arrivals" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/new-books.html"><h3>新着の本と新商品</h3><p>呼吸・瞑想・香りの新刊と新商品 <span class="pr-badge">PR</span></p><span class="guide-go">ページを見る →</span></a>
+          <a class="guide-card reveal" id="recruit" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/recruit.html"><h3>セラピスト募集</h3><p>業務委託セラピストを募集しています（報酬は施術料の60%）</p><span class="guide-go">ページを見る →</span></a>
+          <a class="guide-card reveal" id="sister" href="https://tomyree-source.github.io/sites/stella-polaris/" target="_blank" rel="noopener"><h3>ステラポラリス（姉妹サロン）</h3><p>梅田の女性向けオイルマッサージ・美容整体（90分 10,000円）</p><span class="guide-go">サイトを見る →</span></a>
         </div>
       </div>
     </section>
 
-    <!-- ============ NEW BOOKS & GOODS ============ -->
-    <section id="new-arrivals">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="en">New Books &amp; Goods</span>
-          <h2>新着の本と新商品<span class="pr-badge">PR</span></h2>
-          <p>呼吸・瞑想・香りなど、サロンのテーマに沿った新刊の本と、香りの新商品をご紹介するコーナーです（2026年10月30日更新）。</p>
-        </div>
-
-        <p style="text-align:center;margin-top:18px"><a class="btn btn-gold" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/new-books.html">新着の本と新商品を見る</a></p>
-      </div>
-    </section>
-
-    <!-- ============ RESERVE ============ -->
     <section class="deep" id="reserve">
       <div class="wrap">
         <div class="sec-head reveal">
@@ -1171,68 +939,8 @@
         </div>
       </div>
     </section>
+     </main>
 
-    <!-- ============ SISTER ============ -->
-    <section id="sister">
-      <div class="wrap">
-        <div class="sister-card reveal">
-          <div class="sister-body">
-            <h3>ステラポラリス</h3>
-            <p class="sister-sub">SISTER SALON — UMEDA</p>
-            <p>
-              姉妹サロン「ステラポラリス」は、梅田で女性向けのオイルマッサージと美容整体をご提供するサロンです。
-              東洋医学の知識を活かしたケアで、美しさと健やかさの両面からサポートします。
-            </p>
-            <div class="sister-meta">
-              <span>料金：90分 10,000円</span>
-              <span>営業：月〜土 17:00〜22:00（日曜休み）</span>
-              <span>場所：大阪・梅田</span>
-            </div>
-            <p style="margin-top:18px;"><a href="https://tomyree-source.github.io/sites/stella-polaris/" target="_blank" rel="noopener" style="color:var(--gold-bright); letter-spacing:0.05em;">ステラポラリスのサイトを見る →</a></p>
-          </div>
-          <img src="assets/hero-room.webp" alt="姉妹サロン・ステラポラリスのイメージ（落ち着いた施術室）" loading="lazy" />
-        </div>
-      </div>
-    </section>
-
-    </main>
-
-    <div id="view-recruit" hidden>
-      <div class="view-bar"><div class="wrap"><a href="#top">&larr; トップページに戻る</a></div></div>
-    <!-- ============ RECRUIT ============ -->
-    <section class="alt" id="recruit">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="en">Recruit — Therapist</span>
-          <h2>セラピスト募集（業務委託）</h2>
-          <p>YinYang-Harmonyで一緒に施術を担当してくださるセラピストを、業務委託で募集しています。未経験の方も、すでに技術をお持ちの方も、それぞれの歩み方に合わせた関わり方ができます。</p>
-        </div>
-
-        <div class="recruit-pillars">
-          <div class="recruit-card reveal">
-            <span class="rc-no">01 — 業務委託</span>
-            <h3>雇用ではなく、業務委託で</h3>
-            <p>当サロンでの関わり方は雇用ではなく<strong>業務委託</strong>です。<strong>報酬は施術料の60%</strong>です。ご自身の予定や働き方に合わせて、無理のないペースで担当いただけます。そのほかの詳細条件は、面談の場で丁寧にご案内します。</p>
-          </div>
-          <div class="recruit-card reveal">
-            <span class="rc-no">02 — 研修無料</span>
-            <h3>未経験者は研修無料</h3>
-            <p>施術の経験がない方もご応募いただけます。デビューまでの研修は<strong>無料</strong>です。基礎から一つずつ確認しながら進めますので、初めての方も安心してご相談ください。</p>
-          </div>
-          <div class="recruit-card reveal">
-            <span class="rc-no">03 — 技術のメニュー化</span>
-            <h3>あなたの技術が、そのままメニューに</h3>
-            <p>経験者の方は、<strong>ご自身が持っている技術をそのままメニュー化</strong>できます。新しい手技を一から覚え直すのではなく、これまで培ってきた技術を活かして施術に入っていただけます。</p>
-          </div>
-        </div>
-
-        <p style="text-align:center;margin-top:18px"><a class="btn btn-gold" href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/recruit.html">募集の詳細・応募フォームはこちら</a></p>
-      </div>
-    </section>
-      <div class="view-bar"><div class="wrap"><a href="#top">&larr; トップページに戻る</a></div></div>
-    </div>
-
-    <!-- ============ FOOTER ============ -->
     <footer>
       <div class="wrap">
         <div class="foot-grid">
@@ -1250,7 +958,7 @@
             <ul>
               <li><a href="assets/blog.html">読み物・コラムの一覧はこちら</a></li>
               <li><a href="#menu">コース・料金</a></li>
-              <li><a href="#column">コラム ― タントラを学ぶ（全50記事）</a></li>
+              <li><a href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/blog.html">コラム ― タントラを学ぶ（全50記事）</a></li>
               <li><a href="#reserve">ご予約について</a></li>
               <li><a href="#recruit">セラピスト募集（業務委託）</a></li>
               <li><a href="#sister">姉妹サロン「ステラポラリス」</a></li>
@@ -1278,12 +986,12 @@
         <li><a href="#flow">施術の流れ</a></li>
         <li><a href="#menu">コース・料金</a></li>
         <li><a href="#therapist">セラピスト</a></li>
-        <li><a href="#column">コラム</a></li>
+        <li><a href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/blog.html">コラム</a></li>
         <li><a href="#new-arrivals">新着の本・新商品</a></li>
         <li><a href="#faq">よくある質問</a></li>
         <li><a href="#access">アクセス</a></li>
         <li><a href="#recruit">セラピスト募集</a></li>
-        <li class="fab-wide"><a href="#column">コラム（読み物）</a></li>
+        <li class="fab-wide"><a href="https://tomyree-source.github.io/sites/yinyang-harmony/assets/blog.html">コラム（読み物）</a></li>
         <li class="fab-wide"><a href="#reserve" class="fab-cta">ご予約</a></li>
       </ul>
     </nav>
