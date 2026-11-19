@@ -707,5 +707,24 @@
             window.scrollTo(window.scrollX, window.scrollY);
           });
         }
-      })();
+              Object.assign(DICT, {
+          "ご案内": "Guide",
+          "サロンの詳しいご案内は、各ページでご紹介しています。": "Please see each page for details about the salon.",
+          "サロンについて": "About the Salon",
+          "コンセプトと、安心してお過ごしいただくための取り組み": "Our concept and how we help you feel at ease",
+          "ご来店からお帰りまでの流れ": "From arrival to farewell",
+          "呼吸・経絡・セルフケアの読み物（全48記事）": "Readings on breathing, meridians and self-care (48 articles)",
+          "ブログ": "Blog",
+          "日々の読み物とサロンからのお知らせ": "Everyday readings and salon news",
+          "初めての方の不安や疑問にお答えします": "Answers for first-time guests",
+          "大阪・梅田 堂山町（中崎町駅から徒歩約5分）": "Doyama-cho, Umeda, Osaka (5 min from Nakazakicho Station)",
+          "新着の本と新商品": "New Books & Goods",
+          "呼吸・瞑想・香りの新刊と新商品": "New books and goods on breathing, meditation and aroma",
+          "業務委託セラピストを募集しています（報酬は施術料の60%）": "Now hiring contract therapists (60% of treatment fees)",
+          "ステラポラリス（姉妹サロン）": "Stella Polaris (Sister Salon)",
+          "梅田の女性向けオイルマッサージ・美容整体（90分 10,000円）": "Women's oil massage & beauty seitai in Umeda (90 min, ¥10,000)",
+          "ページを見る →": "View page →",
+          "サイトを見る →": "Visit site →"
+        });
+})();
     
