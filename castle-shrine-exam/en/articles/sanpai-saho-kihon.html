@@ -85,5 +85,50 @@
     <p style="font-size:13px;color:var(--dim)">Japan Travel Certification — Castle, Shrine, Hot Springs &amp; Sake certification quizzes from Japan</p>
   </div>
 </footer>
+<script>
+(function(){
+  var SITE_ID = 'tabi-kentei';
+  var RULES = [
+    ['amazon', /(^|\.)amazon\.co\.jp$|(^|\.)amzn\.to$|(^|\.)amzn\.asia$/],
+    ['rakuten', /(^|\.)rakuten\.co\.jp$|(^|\.)r10\.to$/],
+    ['a8', /(^|\.)a8\.net$/],
+    ['moshimo', /(^|\.)moshimo\.com$/],
+    ['valuecommerce', /(^|\.)valuecommerce\.com$/],
+    ['suzuri', /(^|\.)suzuri\.jp$/]
+  ];
+  function aspOf(host){
+    for (var i=0;i<RULES.length;i++){ if (RULES[i][1].test(host)) return RULES[i][0]; }
+    return null;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var url;
+    try { url = new URL(a.href, location.href); } catch (err) { return; }
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+    var asp = aspOf(url.hostname);
+    var forced = a.getAttribute('data-aff');
+    if (!asp && !forced) return;
+    if (typeof window.gtag !== 'function') return;
+    var asin = '';
+    var m = url.pathname.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/);
+    if (m) asin = m[1];
+    var text = (a.textContent || '').replace(/\s+/g,' ').trim();
+    if (!text) { var img = a.querySelector('img'); if (img) text = img.getAttribute('alt') || ''; }
+    var params = {
+      site_id: SITE_ID,
+      asp: forced || asp,
+      link_id: asin,
+      link_text: text.slice(0,80),
+      link_domain: url.hostname,
+      page_path: location.pathname,
+      transport_type: 'beacon'
+    };
+    var pn = a.getAttribute('data-aff-name'); if (pn) params.product_name = pn.slice(0,80);
+    var pc = a.getAttribute('data-aff-cat'); if (pc) params.product_category = pc.slice(0,80);
+    window.gtag('event', 'affiliate_click', params);
+  }, true);
+})();
+</script>
 </body>
 </html>
