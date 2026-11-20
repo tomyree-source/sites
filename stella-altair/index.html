@@ -1779,7 +1779,7 @@
         var items = grid.querySelectorAll('.concern');
         for (var j = 0; j < items.length; j++) items[j].classList.toggle('active', j === i);
         var c = concerns[i];
-        detail.innerHTML = '<h3>' + cText(c, 't') + '</h3><p>' + cText(c, 'body') + '</p><div class="meridian">' + cText(c, 'm') + '</div>';
+        detail.innerHTML = '<h3>' + cText(c, 't') + '</h3><p class="csub">' + cText(c, 's') + '</p><p>' + cText(c, 'body') + '</p><div class="meridian">' + cText(c, 'm') + '</div>';
       }
       function renderConcerns() {
         grid.innerHTML = '';
@@ -2611,6 +2611,19 @@
 .pf-price-t{display:block;font-size:11px;letter-spacing:.1em}
 .pf-price-v{font-size:21px;font-weight:800}
 .pf-price-u{font-size:11px}
+
+      /* お悩み別ガイドを他店と同じ紺地・症状名2列グリッドへ（2026-11-20） */
+      #concerns{background:var(--navy)}
+      #concerns .sec-head h2{color:var(--on-navy)}
+      #concerns .sec-head p{color:var(--on-navy-soft)}
+      #concerns .kicker{color:var(--gold-soft)}
+      .concern-grid{grid-template-columns:1fr 1fr;gap:10px}
+      .concern{background:var(--navy-2);border:1px solid rgba(200,164,92,.45);border-radius:10px;padding:15px 10px;text-align:center;color:var(--on-navy)}
+      .concern .t{font-size:15px;font-weight:700;letter-spacing:.03em}
+      .concern .s{display:none}
+      .concern:last-child{grid-column:1/-1}
+      .concern.active{border-color:var(--gold);background:var(--navy-3);box-shadow:0 0 0 1px var(--gold)}
+      .concern-detail .csub{color:#a07f37;font-weight:700;margin:2px 0 8px}
 </style>
 <a class="line-fab" href="https://lin.ee/NHOXaMl" target="_blank" rel="noopener noreferrer">LINEでお問い合わせ</a>
 <!-- /stella-fab-v1 -->
