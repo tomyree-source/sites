@@ -481,6 +481,15 @@
 .crumb{font-size:.85em;opacity:.75;margin:16px 0 8px}
 .cta-box{margin-top:36px;padding:20px;border:1px solid rgba(120,120,160,.35);border-radius:12px}
 .related-box{margin-top:36px;padding:20px;border:1px solid rgba(120,120,160,.35);border-radius:12px}
+.products-box{margin-top:36px;padding:20px;border:1px solid rgba(120,120,160,.35);border-radius:12px}
+.products-box .pr-note{font-size:.85em;opacity:.8;margin:.4em 0 1em}
+.product-grid{display:grid;gap:16px}
+.product-card{display:flex;gap:14px;align-items:flex-start}
+.product-card img{width:96px;height:96px;object-fit:contain;border-radius:8px;background:#fff;flex:none}
+.product-info p{margin:.2em 0}
+.product-name{font-weight:bold}
+.product-note{font-size:.92em}
+.product-link{font-size:.92em}
 .related-box ul{margin:.6em 0 0;padding-left:1.2em}
 .related-box li{margin:.45em 0}
 .cta-box a.btn{display:inline-block;margin-top:8px}
@@ -524,6 +533,20 @@
       <li><a href="6791682771.html">性の悩みはどこに相談できる？｜相談先の選び方の基礎知識</a></li>
     </ul>
   </div>
+  <div class="products-box">
+    <p><strong>この記事のテーマに合う本・用品（PR）</strong></p>
+    <p class="pr-note">PR：このブロックにはAmazonアソシエイトのアフィリエイトリンクが含まれます。価格・在庫はリンク先でご確認ください。</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <a href="https://www.amazon.co.jp/dp/B00BCFIQ4Y?tag=cat22202-22" target="_blank" rel="noopener" data-aff-name="女医が教える 本当に気持ちのいいセックス（宋美玄）"><img src="https://m.media-amazon.com/images/I/81iwRDiMMRL._AC_UL320_.jpg" alt="女医が教える 本当に気持ちのいいセックス（宋美玄）" loading="lazy"></a>
+        <div class="product-info">
+          <p class="product-name"><a href="https://www.amazon.co.jp/dp/B00BCFIQ4Y?tag=cat22202-22" target="_blank" rel="noopener" data-aff-name="女医が教える 本当に気持ちのいいセックス（宋美玄）">女医が教える 本当に気持ちのいいセックス（宋美玄）</a></p>
+          <p class="product-note">産婦人科医の宋美玄さんが、からだの仕組みと気持ちの両面から性の基礎知識を解説した本です。</p>
+          <p class="product-link"><a href="https://www.amazon.co.jp/dp/B00BCFIQ4Y?tag=cat22202-22" target="_blank" rel="noopener" data-aff-name="女医が教える 本当に気持ちのいいセックス（宋美玄）">Amazonで見る</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="cta-box">
     <p><strong>読み終えて、誰かに話したくなったら</strong></p>
     <p>最初のご相談はLINE公式アカウント（@942xdxma）で受け付けています。じっくり言葉にしたい方へ：有料の個別相談（文章・1テーマ・往復5回まで）も受付中です。開始記念1,000円（先着10名）／通常3,000円。</p>
@@ -532,5 +555,51 @@
   </div>
   <p class="back-link"><a href="../reading.html">← 読み物一覧へ戻る</a></p>
 </main>
+<!-- affiliate click tracking -->
+<script>
+(function(){
+  var SITE_ID = 'tsukiakari';
+  var RULES = [
+    ['amazon', /(^|\.)amazon\.co\.jp$|(^|\.)amzn\.to$|(^|\.)amzn\.asia$/],
+    ['rakuten', /(^|\.)rakuten\.co\.jp$|(^|\.)r10\.to$/],
+    ['a8', /(^|\.)a8\.net$/],
+    ['moshimo', /(^|\.)moshimo\.com$/],
+    ['valuecommerce', /(^|\.)valuecommerce\.com$/],
+    ['suzuri', /(^|\.)suzuri\.jp$/]
+  ];
+  function aspOf(host){
+    for (var i=0;i<RULES.length;i++){ if (RULES[i][1].test(host)) return RULES[i][0]; }
+    return null;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var url;
+    try { url = new URL(a.href, location.href); } catch (err) { return; }
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+    var asp = aspOf(url.hostname);
+    var forced = a.getAttribute('data-aff');
+    if (!asp && !forced) return;
+    if (typeof window.gtag !== 'function') return;
+    var asin = '';
+    var m = url.pathname.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/);
+    if (m) asin = m[1];
+    var text = (a.textContent || '').replace(/\s+/g,' ').trim();
+    if (!text) { var img = a.querySelector('img'); if (img) text = img.getAttribute('alt') || ''; }
+    var params = {
+      site_id: SITE_ID,
+      asp: forced || asp,
+      link_id: asin,
+      link_text: text.slice(0,80),
+      link_domain: url.hostname,
+      page_path: location.pathname,
+      transport_type: 'beacon'
+    };
+    var pn = a.getAttribute('data-aff-name'); if (pn) params.product_name = pn.slice(0,80);
+    var pc = a.getAttribute('data-aff-cat'); if (pc) params.product_category = pc.slice(0,80);
+    window.gtag('event', 'affiliate_click', params);
+  }, true);
+})();
+</script>
 </body>
 </html>
