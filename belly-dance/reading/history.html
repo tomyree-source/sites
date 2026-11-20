@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0V6GQSZV7F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0V6GQSZV7F');
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="いま世界各地で踊られているベリーダンスは、どのような道のりをたどって現在の形になったのかを、時系列で整理した読み物です。" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="ベリーダンスの歴史入門｜エジプトから世界へ広がった踊りの流れと現代のスタイルとのつながり｜ベリーダンスの手帖" />
+    <meta property="og:url" content="https://tomyree-source.github.io/sites/belly-dance/reading/history.html" />
+    <meta property="og:description" content="いま世界各地で踊られているベリーダンスは、どのような道のりをたどって現在の形になったのかを、時系列で整理した読み物です。" />
+    <meta property="og:image" content="../assets/winter-practice-guide.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ベリーダンスの歴史入門｜エジプトから世界へ広がった踊りの流れと現代のスタイルとのつながり｜ベリーダンスの手帖" />
+    <meta name="twitter:description" content="いま世界各地で踊られているベリーダンスは、どのような道のりをたどって現在の形になったのかを、時系列で整理した読み物です。" />
+    <meta name="twitter:image" content="../assets/winter-practice-guide.webp" />
+    <link rel="icon" href="data:," />
+    <title>ベリーダンスの歴史入門｜エジプトから世界へ広がった踊りの流れと現代のスタイルとのつながり｜ベリーダンスの手帖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --bg:#f8f2e7;
+        --bg-soft:#f1e7d3;
+        --surface:#fffdf8;
+        --ink:#2e2118;
+        --ink-soft:#5d4c3a;
+        --line:#e0d0b2;
+        --teal:#0d5a54;
+        --teal-deep:#083f3b;
+        --teal-ink:#eafaf3;
+        --gold:#a97a24;
+        --gold-bright:#c9973f;
+        --burgundy:#7c2d3e;
+        --accent-soft:#fdf3d8;
+        --shadow:0 10px 30px rgba(62,42,16,.12);
+        --radius:14px;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#171310;
+          --bg-soft:#1f1813;
+          --surface:#251d16;
+          --ink:#f2e8d8;
+          --ink-soft:#cdbb9f;
+          --line:#453723;
+          --teal:#2f8f83;
+          --teal-deep:#0d2f2b;
+          --teal-ink:#eafaf3;
+          --gold:#d9a94f;
+          --gold-bright:#e8bc66;
+          --burgundy:#d98a9b;
+          --accent-soft:#33270f;
+          --shadow:0 10px 30px rgba(0,0,0,.45);
+        }
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0;background:var(--bg);color:var(--ink);
+        font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+        line-height:1.85;font-size:16px;
+        -webkit-font-smoothing:antialiased;
+      }
+      img{max-width:100%;display:block}
+      a{color:var(--teal)}
+      h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN",serif;line-height:1.4;margin:0}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+      /* ---------- header ---------- */
+      header.site{
+        position:sticky;top:0;z-index:50;
+        background:color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter:blur(10px);
+        border-bottom:1px solid var(--line);
+      }
+      .site-inner{display:flex;align-items:center;gap:18px;max-width:1080px;margin:0 auto;padding:8px 20px}
+      .brand{font-family:"Shippori Mincho B1",serif;font-weight:800;font-size:1.25rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+      .brand small{display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.14em;color:var(--gold)}
+      #about,#styles,#moves,#rhythm,#costume,#hipscarf,#props,#reading-size,#reading-care,#reading-props,#reading-hafla,#reading-buying,#reading-styles,#reading-moves,#reading-shimmy,#reading-hipdrop,#reading-hip-circle,#reading-home-practice,#reading-beginner-faq,#reading-rhythm,#reading-history,#reading-music,#reading-veil,#reading-winter-hafla,#reading-winter-costume-choice,#reading-winter-practice,#reading-zill,#reading-sword,#reading-recital-viewing,#new,#items,#calc,#quiz,#faq,#characters,#sns,#schools,#register{scroll-margin-top:64px}
+      /* ---------- floating menu（日本の旅検定 space-14 と同一仕様） ---------- */
+      .fab-overlay{
+        position:fixed;inset:0;z-index:80;
+        background:rgba(46,33,24,.38);
+        opacity:0;transition:opacity .18s ease;
+      }
+      .fab-overlay.open{opacity:1}
+      .fab-btn{
+        position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:95;
+        display:inline-flex;align-items:center;gap:8px;
+        min-height:48px;padding:10px 18px 10px 15px;border-radius:999px;
+        background:var(--teal);color:#fff;border:1px solid rgba(255,255,255,.35);
+        font-family:inherit;font-size:15px;font-weight:700;letter-spacing:.06em;line-height:1;
+        box-shadow:0 8px 22px rgba(62,42,16,.35);cursor:pointer;
+      }
+      .fab-btn:hover{filter:brightness(1.1)}
+      .fab-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .fab-btn svg{width:20px;height:20px;flex:none}
+      @media (max-width:640px){
+        .fab-btn{
+          width:52px;height:52px;min-height:52px;padding:0;
+          justify-content:center;border-radius:50%;
+        }
+        .fab-btn .fab-btn-label{display:none}
+        .fab-btn svg{width:22px;height:22px}
+      }
+      .fab-panel{
+        position:fixed;right:16px;bottom:calc(78px + env(safe-area-inset-bottom));z-index:90;
+        width:min(344px,calc(100vw - 32px));
+        max-height:min(68vh,560px);overflow-y:auto;overscroll-behavior:contain;
+        background:var(--surface);border:1px solid var(--line);border-radius:16px;
+        box-shadow:var(--shadow);
+        opacity:0;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease;
+      }
+      .fab-panel.open{opacity:1;transform:translateY(0)}
+      .fab-panel-head{
+        display:flex;align-items:center;gap:10px;
+        padding:12px 10px 10px 18px;border-bottom:1px solid var(--line);
+        position:sticky;top:0;background:var(--surface);z-index:1;
+      }
+      .fab-panel-title{font-family:"Shippori Mincho B1",serif;font-weight:800;font-size:16px;letter-spacing:.08em;color:var(--ink)}
+      .fab-close{
+        margin-left:auto;width:38px;height:38px;flex:none;
+        display:inline-flex;align-items:center;justify-content:center;
+        border:1px solid var(--line);border-radius:50%;
+        background:var(--bg-soft);color:var(--ink);padding:0;cursor:pointer;font-family:inherit;
+      }
+      .fab-close:hover{background:var(--accent-soft)}
+      .fab-close:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .fab-close svg{width:17px;height:17px}
+      nav.main ul{list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+      nav.main a{
+        display:block;padding:10px 12px;border-radius:8px;
+        color:var(--ink-soft);text-decoration:none;font-size:14.5px;font-weight:500;line-height:1.4;
+      }
+      nav.main a:hover{background:var(--bg-soft);color:var(--ink)}
+      nav.main a:focus-visible{outline:3px solid var(--gold);outline-offset:-1px}
+      @media print{
+        .fab-btn,.fab-panel,.fab-overlay{display:none !important}
+      }
+      /* ---------- hero ---------- */
+      .hero{padding:34px 0 8px}
+      .hero-img{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+      .hero-img img{width:100%;height:auto}
+      .hero-text{padding:30px 4px 6px;text-align:left}
+      .hero-text .lead-in{
+        display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.18em;color:var(--gold);
+        border:1px solid var(--gold);border-radius:999px;padding:3px 14px;margin-bottom:16px;
+      }
+      .hero-text h1{font-size:clamp(1.7rem,4.6vw,2.7rem);font-weight:800}
+      .hero-text h1 .accent{color:var(--teal)}
+      .hero-text p{color:var(--ink-soft);max-width:46em;margin:16px 0 0}
+      .hero-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+      .hero-nav a{
+        text-decoration:none;font-weight:700;font-size:.9rem;color:var(--teal-ink);background:var(--teal);
+        padding:11px 20px;border-radius:999px;
+      }
+      .hero-nav a.ghost{background:transparent;color:var(--teal);border:1.5px solid var(--teal)}
+      .pr-note{
+        margin:26px 0 0;background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius);
+        padding:14px 18px;font-size:.85rem;color:var(--ink-soft);
+      }
+      .pr-note strong{color:var(--ink)}
+      /* ---------- sections ---------- */
+      section.block{padding:56px 0 8px}
+      .sec-head{margin-bottom:26px}
+      .sec-head .num{
+        font-family:"Shippori Mincho B1",serif;color:var(--gold);font-size:.95rem;letter-spacing:.2em;font-weight:700;
+      }
+      .sec-head h2{font-size:clamp(1.45rem,3.4vw,2rem);font-weight:800;margin-top:4px}
+      .sec-head p{color:var(--ink-soft);margin:10px 0 0;max-width:44em}
+      .photo{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+      .photo img{width:100%;height:100%;object-fit:contain;background:var(--bg-soft)}
+      .caption{font-size:.8rem;color:var(--ink-soft);margin-top:8px}
+      .split{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+      @media (max-width:760px){.split{grid-template-columns:1fr}}
+      .card{
+        background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+        padding:22px;box-shadow:0 3px 12px rgba(62,42,16,.06);
+      }
+      .card h3{font-size:1.12rem;font-weight:700;margin-bottom:8px}
+      .card p{margin:0;color:var(--ink-soft);font-size:.95rem}
+      .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+      .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+      @media (max-width:860px){.grid3{grid-template-columns:1fr 1fr}}
+      @media (max-width:560px){.grid3,.grid2{grid-template-columns:1fr}}
+      .tag{
+        display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;
+        color:var(--burgundy);border:1px solid currentColor;border-radius:999px;padding:1px 10px;margin-bottom:10px;
+      }
+      /* new badge (最新の読み物1本だけに付ける) */
+      .new-badge{
+        display:inline-block;background:var(--gold);color:#fff;
+        font-family:"Zen Kaku Gothic New",sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.1em;line-height:1.5;
+        border-radius:999px;padding:1px 9px;margin-left:8px;vertical-align:middle;white-space:nowrap;
+      }
+      .sec-head .new-badge{font-size:.75rem;padding:2px 12px;margin-left:10px}
+      /* moves table-ish list */
+      .move-list{display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
+      @media (max-width:700px){.move-list{grid-template-columns:1fr}}
+      .move{padding:16px 0;border-bottom:1px dashed var(--line)}
+      .move h3{font-size:1.05rem;display:flex;align-items:baseline;gap:10px}
+      .move h3 .en{font-family:"Zen Kaku Gothic New",sans-serif;font-size:.75rem;color:var(--gold);letter-spacing:.1em;font-weight:700}
+      .move p{margin:6px 0 0;color:var(--ink-soft);font-size:.93rem}
+      /* rhythm chips */
+      .rhythm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+      .rhythm{background:var(--teal-deep);color:var(--teal-ink);border-radius:var(--radius);padding:18px}
+      .rhythm h3{font-size:1.05rem;color:#fff}
+      .rhythm .beat{font-family:"Shippori Mincho B1",serif;font-size:1.3rem;color:var(--gold-bright);letter-spacing:.14em;margin:6px 0}
+      .rhythm p{margin:0;font-size:.85rem;color:#cfe8dd}
+      /* dark band */
+      .band{background:var(--teal-deep);color:var(--teal-ink);margin-top:56px;padding:52px 0}
+      .band .sec-head h2{color:#fff}
+      .band .sec-head p{color:#cfe8dd}
+      .band .sec-head .num{color:var(--gold-bright)}
+      /* costume parts */
+      .part{display:flex;gap:16px;padding:16px 0;border-bottom:1px dashed var(--line)}
+      .part:last-child{border-bottom:none}
+      .part .no{
+        flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:var(--teal);color:#fff;
+        display:flex;align-items:center;justify-content:center;font-family:"Shippori Mincho B1",serif;font-weight:700;
+      }
+      .part h3{font-size:1.05rem}
+      .part p{margin:4px 0 0;color:var(--ink-soft);font-size:.93rem}
+      /* size table */
+      table.size{width:100%;border-collapse:collapse;font-size:.92rem;background:var(--surface)}
+      table.size th,table.size td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+      table.size th{background:var(--bg-soft);font-weight:700;white-space:nowrap}
+      .table-scroll{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--line)}
+      .table-scroll table.size th,.table-scroll table.size td{border-width:0 0 1px}
+      /* products */
+      .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+      .filters button{
+        font:inherit;font-size:.86rem;font-weight:700;cursor:pointer;
+        border:1.5px solid var(--teal);color:var(--teal);background:transparent;border-radius:999px;padding:7px 18px;
+      }
+      .filters button.active{background:var(--teal);color:#fff}
+      .product{
+        background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+        padding:20px;display:flex;flex-direction:column;gap:8px;
+      }
+      .product .cat{font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--gold)}
+      .product h3{font-size:1.05rem;line-height:1.5}
+      .product p{margin:0;color:var(--ink-soft);font-size:.9rem;flex:1}
+      .product .spec{font-size:.8rem;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:8px}
+      .product .pr{font-size:.7rem;font-weight:700;color:var(--burgundy)}
+      .buy{
+        display:inline-block;text-align:center;text-decoration:none;font-weight:700;font-size:.92rem;
+        background:var(--gold);color:#fff;padding:11px 16px;border-radius:10px;margin-top:4px;
+      }
+      .buy:hover{background:var(--gold-bright)}
+      /* calculator */
+      .calc{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+      .calc h3{font-size:1.1rem;margin-bottom:6px}
+      .calc .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 14px}
+      .calc label{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line);cursor:pointer;font-size:.95rem}
+      .calc label:last-of-type{border-bottom:none}
+      .calc input[type="checkbox"]{width:19px;height:19px;margin-top:4px;accent-color:var(--teal);flex:0 0 auto}
+      .calc .price{margin-left:auto;font-weight:700;white-space:nowrap;color:var(--teal)}
+      .calc-total{
+        margin-top:16px;background:var(--accent-soft);border-radius:10px;padding:14px 18px;
+        display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
+      }
+      .calc-total .yen{font-family:"Shippori Mincho B1",serif;font-size:1.5rem;font-weight:800;color:var(--burgundy)}
+      .calc-total small{color:var(--ink-soft)}
+      /* quiz */
+      .quiz-q{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:14px}
+      .quiz-q h3{font-size:1rem;margin-bottom:12px}
+      .quiz-q h3 .qn{color:var(--gold);font-family:"Shippori Mincho B1",serif;margin-right:8px}
+      .choices{display:grid;gap:8px}
+      .choices button{
+        font:inherit;text-align:left;cursor:pointer;font-size:.93rem;
+        background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 14px;color:var(--ink);
+      }
+      .choices button:hover{border-color:var(--teal)}
+      .choices button.correct{border-color:var(--teal);background:#e3f2ec;color:var(--teal-deep);font-weight:700}
+      .choices button.wrong{border-color:var(--burgundy);background:#f9e8ec;color:var(--burgundy)}
+      .choices button:disabled{cursor:default;opacity:.85}
+      .quiz-q .explain{display:none;margin:12px 0 0;font-size:.88rem;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:10px}
+      .quiz-q.answered .explain{display:block}
+      .quiz-score{
+        display:none;background:var(--teal-deep);color:#fff;border-radius:var(--radius);padding:20px;text-align:center;
+        font-family:"Shippori Mincho B1",serif;font-size:1.2rem;
+      }
+      .quiz-score.show{display:block}
+      /* faq */
+      details.faq{
+        background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+        padding:4px 20px;margin-bottom:12px;
+      }
+      details.faq summary{cursor:pointer;font-weight:700;padding:14px 0;font-size:.98rem}
+      details.faq p{margin:0 0 16px;color:var(--ink-soft);font-size:.93rem}
+      /* footer */
+      footer.site{margin-top:64px;background:var(--teal-deep);color:#cfe8dd;padding:44px 0 36px}
+      footer.site .brand{color:#fff}
+      footer.site p{font-size:.85rem;margin:10px 0 0;max-width:52em}
+      footer.site .fine{font-size:.78rem;color:#9db8ab;border-top:1px solid rgba(255,255,255,.18);margin-top:24px;padding-top:16px}
+      .to-top{display:inline-block;margin-top:14px;color:var(--gold-bright);font-size:.85rem}
+      @media (max-width:760px){
+        .site-inner{padding:7px 14px;gap:10px}
+        .brand{font-size:1.1rem}
+      }
+      /* characters + sns */
+      .char-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+      @media (max-width:700px){.char-grid{grid-template-columns:1fr}}
+      .char-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 3px 12px rgba(62,42,16,.06)}
+      .char-card .char-img{background:#fff}
+      .char-card .char-img img{width:100%;height:380px;object-fit:contain}
+      @media (max-width:700px){.char-card .char-img img{height:340px}}
+      .char-card .char-body{padding:20px 22px 22px}
+      .char-card h3{font-size:1.2rem}
+      .char-card h3 .role{font-family:"Zen Kaku Gothic New",sans-serif;font-size:.75rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-left:8px}
+      .char-card p{margin:8px 0 0;color:var(--ink-soft);font-size:.94rem}
+      .speech{
+        margin-top:14px;background:var(--accent-soft);border-radius:10px;padding:12px 16px;
+        font-size:.92rem;color:var(--ink);
+      }
+      .speech strong{color:var(--teal)}
+      .status{
+        display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;border-radius:999px;
+        padding:2px 11px;margin-bottom:10px;border:1px solid currentColor;
+      }
+      .status.prep{color:var(--burgundy)}
+      .status.open{color:var(--teal)}
+      .handle{font-weight:700;color:var(--teal);font-size:1.02rem}
+      /* real (photo-style) Laila gallery */
+      .real-stage{
+        margin-top:30px;background:var(--teal-deep);color:var(--teal-ink);
+        border-radius:18px;padding:28px 24px 26px;box-shadow:var(--shadow);
+      }
+      .real-stage .tag{color:var(--gold-bright)}
+      .real-stage h3{color:#fff;font-size:clamp(1.25rem,3vw,1.6rem);font-weight:800}
+      .real-stage .real-lead{color:#cfe8dd;font-size:.95rem;margin:10px 0 0;max-width:46em}
+      .real-main{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+      .real-poses{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+      @media (max-width:860px){.real-poses{grid-template-columns:1fr 1fr}}
+      @media (max-width:640px){.real-main{grid-template-columns:1fr}}
+      figure.real-shot{margin:0}
+      figure.real-shot .real-img{
+        border-radius:12px;overflow:hidden;border:1px solid rgba(201,151,63,.55);
+        background:#082723;
+      }
+      figure.real-shot img{width:100%;object-fit:contain;margin:0 auto}
+      .real-main figure.real-shot img{height:540px}
+      .real-poses figure.real-shot img{height:300px}
+      @media (max-width:640px){
+        .real-main figure.real-shot img{height:440px}
+        .real-poses figure.real-shot img{height:250px}
+      }
+      figure.real-shot figcaption{font-size:.82rem;color:#cfe8dd;margin-top:8px;line-height:1.6}
+      figure.real-shot figcaption strong{color:var(--gold-bright);display:block;font-size:.88rem}
+      .real-dance{
+        display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;
+        margin-top:26px;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);
+      }
+      @media (max-width:640px){.real-dance{grid-template-columns:1fr;justify-items:center;text-align:left}}
+      .real-dance h4{font-family:"Shippori Mincho B1",serif;color:#fff;font-size:1.12rem;margin:0 0 8px}
+      .real-dance p{color:#cfe8dd;font-size:.93rem;margin:0;max-width:34em}
+      .real-dance .speech{background:rgba(255,255,255,.08);color:#fff}
+      .real-dance .speech strong{color:var(--gold-bright)}
+      .real-dance video{
+        height:460px;max-width:min(300px,78vw);width:auto;border-radius:14px;
+        border:1px solid rgba(201,151,63,.55);background:#000;display:block;
+      }
+      @media (max-width:640px){.real-dance video{height:440px}}
+      .real-note{font-size:.8rem;color:#9db8ab;margin:18px 0 0}
+      /* new arrivals strip */
+      .fresh{
+        background:var(--surface);border:1.5px solid var(--gold);border-radius:var(--radius);
+        padding:20px 22px;margin-bottom:22px;
+      }
+      .fresh h3{font-size:1.08rem;margin-bottom:4px}
+      .fresh .when{font-size:.8rem;color:var(--gold);font-weight:700;letter-spacing:.06em}
+      .fresh ul{margin:10px 0 0;padding-left:1.2em;color:var(--ink-soft);font-size:.93rem}
+      .fresh li{margin-bottom:6px}
+      /* ---------- page nav (single-file page switching) ---------- */
+      .site-inner{flex-wrap:wrap}
+      .page-nav{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+      .page-nav a{text-decoration:none}
+      .page-nav button,.page-nav a{
+        font:inherit;font-size:.86rem;font-weight:700;cursor:pointer;line-height:1.4;
+        border:1.5px solid var(--line);background:transparent;color:var(--ink-soft);
+        border-radius:999px;padding:7px 16px;
+      }
+      .page-nav button:hover,.page-nav a:hover{border-color:var(--teal);color:var(--teal)}
+      .page-nav button.active,.page-nav a.active{background:var(--teal);border-color:var(--teal);color:#fff}
+      .page-nav button:focus-visible,.page-nav a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      @media (max-width:640px){.page-nav{margin-left:0}}
+      [data-page][hidden]{display:none !important}
+      /* ---------- portal banner (控えめな案内) ---------- */
+      .portal-banner{
+        display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;
+        background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+        padding:16px 20px;
+      }
+      .portal-banner p{margin:0;color:var(--ink-soft);font-size:.93rem;flex:1;min-width:min(26em,100%)}
+      .portal-banner p strong{color:var(--ink)}
+      .portal-banner a{
+        font-weight:700;font-size:.9rem;text-decoration:none;color:var(--teal);
+        border:1.5px solid var(--teal);border-radius:999px;padding:8px 18px;white-space:nowrap;
+      }
+      .portal-banner a:hover{background:var(--teal);color:#fff}
+      .portal-banner a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      /* ---------- school portal ---------- */
+      .pfilters{
+        background:transparent;border:1px dashed var(--line);border-radius:var(--radius);
+        padding:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;
+      }
+      .pfilters-note{font-size:.82rem;color:var(--ink-soft);margin:0 0 8px}
+      .pfilters label{display:block;font-size:.8rem;font-weight:700;color:var(--teal);margin-bottom:5px}
+      .pfilters select{
+        width:100%;font:inherit;font-size:.95rem;padding:10px;
+        border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);
+      }
+      .pfilters select:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+      .feat-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .feat-chip{
+        font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;line-height:1.5;
+        border:1.5px solid var(--teal);color:var(--teal);background:transparent;border-radius:999px;padding:6px 14px;
+      }
+      .feat-chip.on{background:var(--teal);color:#fff}
+      .feat-chip:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .school-count{font-size:.88rem;color:var(--ink-soft);margin:16px 0 0}
+      .school-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:14px}
+      .school-card{
+        position:relative;
+        background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+        padding:20px;display:flex;flex-direction:column;gap:8px;box-shadow:0 3px 12px rgba(62,42,16,.06);
+      }
+      .school-card.has-site{cursor:pointer}
+      .school-card.has-site:hover{border-color:var(--teal)}
+      .school-card .site-link{color:inherit;text-decoration:none}
+      .school-card .site-link::after{content:"";position:absolute;inset:0;border-radius:var(--radius)}
+      .school-card .site-link:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .school-card .go-site{font-size:.86rem;font-weight:700;color:var(--teal);margin-top:2px}
+      .school-card .sns-link{position:relative;z-index:2;font-size:.82rem}
+      /* ---------- region index + prefecture sub-view ---------- */
+      .region-index{margin-bottom:26px}
+      .region-block{margin-bottom:16px}
+      .region-block h3{font-size:.98rem;color:var(--teal);margin-bottom:8px;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;letter-spacing:.06em}
+      .region-prefs{display:flex;flex-wrap:wrap;gap:8px}
+      .region-pref{
+        font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;line-height:1.5;
+        border:1.5px solid var(--line);color:var(--ink);background:var(--surface);border-radius:999px;padding:6px 14px;
+      }
+      .region-pref .cnt{font-weight:500;font-size:.78rem;color:var(--ink-soft);margin-left:5px}
+      .region-pref:hover{border-color:var(--teal);color:var(--teal)}
+      .region-pref:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .region-pref.current{background:var(--teal);border-color:var(--teal);color:#fff;cursor:default}
+      .region-pref.current .cnt{color:#cfe8dd}
+      .back-btn{
+        font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;line-height:1.5;
+        background:transparent;border:none;color:var(--teal);padding:4px 0;margin-bottom:10px;
+      }
+      .back-btn:hover{text-decoration:underline}
+      .back-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .pref-head h3{font-size:clamp(1.3rem,3vw,1.7rem);font-weight:800}
+      .pref-head p{color:var(--ink-soft);margin:8px 0 0;font-size:.94rem}
+      .pref-switch{margin-top:30px;border-top:1px dashed var(--line);padding-top:18px}
+      .pref-switch h4{font-size:.9rem;color:var(--teal);margin:0 0 10px;font-family:"Zen Kaku Gothic New",sans-serif;letter-spacing:.06em}
+      .school-card h3{font-size:1.08rem;line-height:1.5}
+      .school-card .area{font-size:.86rem;font-weight:700;color:var(--gold);margin:0}
+      .school-card .desc{margin:0;color:var(--ink-soft);font-size:.92rem;flex:1}
+      .school-card .stags{display:flex;flex-wrap:wrap;gap:6px}
+      .stag{background:var(--bg-soft);color:var(--teal-deep);font-size:.74rem;font-weight:700;border-radius:6px;padding:2px 9px}
+      @media (prefers-color-scheme: dark){.stag{color:var(--teal-ink)}}
+      .school-card .links{border-top:1px dashed var(--line);padding-top:10px;font-size:.9rem}
+      .school-card .links a{font-weight:700;text-decoration:none;margin-right:14px}
+      .school-empty{
+        border:2px dashed var(--gold);border-radius:var(--radius);background:var(--accent-soft);
+        padding:26px 22px;text-align:center;margin-top:16px;color:var(--ink-soft);font-size:.95rem;
+      }
+      .school-empty b{color:var(--teal);font-size:1.05rem}
+      /* ---------- register steps ---------- */
+      .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+      @media (max-width:760px){.steps3{grid-template-columns:1fr}}
+      .step-card .n{
+        display:inline-flex;align-items:center;justify-content:center;
+        width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;
+        font-family:"Shippori Mincho B1",serif;font-weight:700;margin-bottom:10px;
+      }
+      .reg-notes{margin:0;padding-left:1.3em;color:var(--ink-soft);font-size:.93rem}
+      .reg-notes li{margin-bottom:8px}
+      .register-btn{
+        display:inline-block;text-align:center;text-decoration:none;font-weight:800;font-size:1.08rem;
+        background:var(--gold);color:#fff;padding:17px 42px;border-radius:999px;
+        box-shadow:0 8px 22px rgba(169,122,36,.35);letter-spacing:.02em;
+      }
+      .register-btn:hover{background:var(--gold-bright)}
+      .register-btn:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+      /* ---------- nudge: primary CTA (1 per page) ---------- */
+      .primary-cta-wrap{margin:22px 0 4px}
+      .primary-cta{
+        display:inline-block;text-align:center;text-decoration:none;font-weight:800;font-size:1.08rem;
+        background:var(--gold);color:#fff;padding:17px 38px;border-radius:999px;line-height:1.5;
+        box-shadow:0 8px 22px rgba(169,122,36,.35);letter-spacing:.02em;
+      }
+      .primary-cta:hover{background:var(--gold-bright);color:#fff}
+      .primary-cta:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+      .page-cta-bar{
+        display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;
+        margin-top:34px;background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius);
+        padding:18px 22px;
+      }
+      .page-cta-bar p{margin:0;color:var(--ink-soft);font-size:.93rem;flex:1;min-width:min(24em,100%)}
+      .page-cta-bar p strong{color:var(--ink)}
+      .page-cta-bar .primary-cta-wrap{margin:0}
+      .content-counts{
+        font-size:.85rem;color:var(--ink-soft);margin:14px 0 0;letter-spacing:.02em;
+      }
+      .content-counts strong{color:var(--teal);font-weight:700}
+      /* ---------- nudge: steps band ---------- */
+      .steps-band{
+        background:var(--surface);border:1.5px solid var(--gold);border-radius:var(--radius);
+        padding:24px 24px 22px;box-shadow:0 3px 12px rgba(62,42,16,.06);
+      }
+      .steps-band h2{font-size:1.3rem;font-weight:800;margin-bottom:6px}
+      .steps-band .steps-lead{color:var(--ink-soft);font-size:.93rem;margin:0 0 18px}
+      .steps-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:stretch}
+      @media (max-width:760px){.steps-flow{grid-template-columns:1fr}.steps-arrow{transform:rotate(90deg);justify-self:center}}
+      .step-link{
+        display:block;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);
+        border-radius:12px;padding:16px 18px;
+      }
+      .step-link:hover{border-color:var(--teal)}
+      .step-link:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .step-link .step-no{
+        display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;
+        background:var(--teal);color:#fff;font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:.95rem;margin-bottom:8px;
+      }
+      .step-link strong{display:block;font-size:1.02rem;line-height:1.5}
+      .step-link span.step-desc{display:block;color:var(--ink-soft);font-size:.87rem;margin-top:4px;line-height:1.65}
+      .step-link .step-go{display:block;color:var(--teal);font-weight:700;font-size:.85rem;margin-top:8px}
+      .steps-arrow{align-self:center;color:var(--gold);font-weight:800;font-size:1.2rem}
+      /* ---------- nudge: pick-first (default recommendation) ---------- */
+      .pick-first{
+        background:var(--accent-soft);border:2px solid var(--gold);border-radius:var(--radius);
+        padding:22px 24px;margin-bottom:22px;
+      }
+      .pick-first .pick-label{
+        display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.1em;color:#fff;background:var(--gold);
+        border-radius:999px;padding:3px 14px;margin-bottom:12px;
+      }
+      .pick-first h3{font-size:1.18rem;line-height:1.55;margin-bottom:8px}
+      .pick-first p{margin:0;color:var(--ink-soft);font-size:.95rem;max-width:46em}
+      .pick-first .pick-actions{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+      .pick-first .pr{font-size:.7rem;font-weight:700;color:var(--burgundy)}
+      /* ---------- nudge: next-step box ---------- */
+      .next-step{
+        margin-top:24px;background:var(--accent-soft);border:1px solid var(--gold);border-radius:var(--radius);
+        padding:20px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;
+      }
+      .next-step .next-label{
+        font-size:.75rem;font-weight:800;letter-spacing:.12em;color:var(--gold);display:block;margin-bottom:4px;
+      }
+      .next-step p{margin:0;color:var(--ink-soft);font-size:.93rem;flex:1;min-width:min(22em,100%)}
+      .next-step-btn{
+        display:inline-block;text-align:center;text-decoration:none;font-weight:700;font-size:.95rem;
+        background:var(--teal);color:#fff;padding:12px 24px;border-radius:999px;line-height:1.5;white-space:normal;
+      }
+      .next-step-btn:hover{background:var(--teal);filter:brightness(1.12);color:#fff}
+      .next-step-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      @media (prefers-reduced-motion: reduce){
+        html{scroll-behavior:auto}
+        .fab-overlay,.fab-panel{transition:none}
+      }
+    </style>
+    <link rel="canonical" href="https://tomyree-source.github.io/sites/belly-dance/reading/history.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ベリーダンス手帖",
+      "alternateName": "ベリーダンスの手帖",
+      "url": "https://tomyree-source.github.io/sites/belly-dance/",
+      "description": "ベリーダンスの基礎の動き・スタイル・衣装とヒップスカーフの選び方を、案内役ライラとフェネックのフェネが紹介する学びと衣装の専門メディア。教室ポータルも掲載。",
+      "inLanguage": "ja"
+    }
+    </script>
+  </head><body>
+    <header class="site">
+      <div class="site-inner">
+        <a class="brand" href="../index.html">ベリーダンス手帖<small>BELLY DANCE NOTEBOOK</small></a>
+        <nav class="page-nav" aria-label="ページ切り替え">
+          <a href="../index.html">トップ</a>
+          <a href="../learn.html" class="active" aria-current="page">学びと動き</a>
+          <a href="../costume.html">衣装と小物</a>
+          <a href="../schools.html">教室を探す</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+
+<!-- READING: HISTORY INTRO -->
+<section class="block" id="reading-history" data-page="learn">
+<div class="wrap">
+<div class="sec-head">
+<div class="num">READING — HISTORY INTRO</div>
+<h2>ベリーダンスの歴史入門｜エジプトから世界へ広がった踊りの流れと現代のスタイルとのつながり</h2>
+<p>
+いま世界各地で踊られているベリーダンスは、どのような道のりをたどって現在の形になったのかを、時系列で整理した読み物です。
+<a href="../index.html#about">「ベリーダンスとは」</a>では成り立ちを短く紹介しているため、この記事では「民俗的な踊りが舞台の踊りになるまで」
+「世界へ広がるきっかけ」「現代の各スタイルへの分岐」という流れに絞って解説します。起源については研究者の間でも見解が分かれる部分があるため、
+定説として語られることの多い事柄と、諸説ある事柄を分けて記述します。スタイル名の基礎は<a href="../learn.html#styles">主なスタイル解説</a>もあわせてご覧ください。
+</p>
+</div>
+
+<div class="card" style="margin-bottom:22px">
+<h3>最初に押さえておきたいこと：起源には諸説がある</h3>
+<p>
+ベリーダンスの起源については、古代エジプトの壁画や浮き彫りに似たポーズが見られることから「数千年の歴史を持つ踊り」と紹介されることがあります。
+一方で、壁画のポーズと現代の舞台形式が直接つながっているかどうかについては、資料のうえで連続性を確認しにくいとする見方もあり、学術的には起源をひとつに特定しない扱いが一般的です。
+現在につながる形として追いやすいのは、中東や北アフリカ各地で受け継がれてきた民俗的な踊りと、19世紀末から20世紀にかけてエジプト・カイロの劇場やキャバレーで整えられた舞台形式です。
+この記事では、確認しやすい後者の流れを中心にたどります。踊りの基本形そのものについては<a href="../learn.html#moves">基本の動き・用語集</a>も参考になります。
+</p>
+</div>
+
+<h3 style="font-size:1.15rem;margin-bottom:12px">流れをたどる年表</h3>
+<div class="table-scroll" style="margin-bottom:14px">
+<table class="size">
+<tr><th>時期</th><th>出来事・背景</th><th>現代へのつながり</th></tr>
+<tr>
+<td>近代以前</td>
+<td>エジプトをはじめ中東・北アフリカ各地で、祝祭や家庭の集まりなどの場で、腰や胸を動かす民俗的な踊りが受け継がれてきました。エジプトではガワージーと呼ばれる旅の踊り手たちの存在も記録に残ります。</td>
+<td>現在フォークロア（民族舞踊）として学ばれるバラディやサイーディなどの土台とされます。民謡舞踊の位置づけは<a href="../reading/styles.html">読み物：スタイルの違い</a>でも整理しています。</td>
+</tr>
+<tr>
+<td>19世紀後半</td>
+<td>ヨーロッパやアメリカで万国博覧会が盛んに開かれ、中東の踊りが展示や興行として紹介される機会が増えました。1893年のシカゴ万国博覧会で中東のダンサーが注目を集めた出来事は、英語圏で「belly dance（ベリーダンス）」という通称が広まるきっかけの一つとしてよく挙げられます。</td>
+<td>「ベリーダンス」という呼び名自体が、この時期に踊りの外側（欧米）から付けられ広まった経緯を持ちます。現地での呼び名「ラックス・シャルキー」との違いは、名称の成り立ちを知る手がかりになります。</td>
+</tr>
+<tr>
+<td>1920年代〜</td>
+<td>エジプト・カイロで劇場やキャバレーの文化が発展し、踊りが「観せる舞台芸術」として整えられていきました。女優で興行主でもあったバーディア・マサブニが1926年にカイロで開いた劇場は、振付師の起用や舞台構成の導入など、現代のラックス・シャルキーの形づくりに大きな役割を果たした場として紹介されることが多い存在です。</td>
+<td>ブラとベルトの衣装（ベドラー）にロングスカートを合わせる舞台衣装の形や、登場シーンでベールを使う見せ方など、現在のステージ形式の多くはこの時期の舞台化の流れの中に位置づけられます。衣装の構成は<a href="../costume.html#costume">衣装ガイド：パーツと選び方</a>で解説しています。</td>
+</tr>
+<tr>
+<td>1930〜1950年代</td>
+<td>エジプト映画産業の黄金期と重なり、映画の中のダンスシーンを通じて踊りが国内外へ広く伝わりました。サミア・ガマルやタヘイヤ・カリオカなど、映画で活躍したダンサーの名が、この時代を代表する存在として今も語られます。</td>
+<td>古典的なエジプシャンスタイルの映像資料として、現在でも当時の映画や舞台映像が参照されることがあります。歌詞の情感を身体で表す表現の重視は、現代のエジプシャンにも受け継がれる特徴とされます。</td>
+</tr>
+<tr>
+<td>20世紀中盤〜後半</td>
+<td>トルコでは独自の舞台文化の中でターキッシュスタイルが発展し、レバノンなど中東各国でも地域色のある踊りが育ちました。一方、アメリカでは中東系移民のコミュニティやレストランでの演奏・踊りを土台に、愛好家文化が広がっていきました。</td>
+<td>国ごとの分岐が進み、9/8拍子を多用するターキッシュや、のちのトライバル／フュージョンの土台になるアメリカでの展開へとつながります。リズムの違いは<a href="../learn.html#rhythm">基本リズム</a>のカルシーラマの項も参考になります。</td>
+</tr>
+<tr>
+<td>1960〜1970年代</td>
+<td>アメリカでグループ即興の形式の原型が形作られ、のちにトライバルスタイルやFCBD®スタイルと呼ばれる即興群舞の流れへ発展していきました。他ジャンルの要素を取り入れる試みも、この頃から少しずつ広がったとされます。</td>
+<td>現在のフュージョンへつながる「要素を組み合わせる」という発想の出発点の一つです。形式の特徴は<a href="../learn.html#styles">主なスタイル解説</a>のトライバル／FCBD®スタイルの項もご覧ください。</td>
+</tr>
+<tr>
+<td>現代</td>
+<td>国際的なフェスティバルやワークショップ、映像配信を通じて、ダンサーや講師が国を越えて行き交う機会が増えました。日本でも教室やイベントを通じて学ぶ人が増え、地域ごとに複数のスタイルを扱う教室が見られるようになっています。</td>
+<td>エジプシャンを軸にしながら、ターキッシュやフュージョンの要素を取り入れるなど、スタイル同士が影響し合う形が一般的になっています。そのため現代の学びでは、スタイル名だけでなく「どの地域・時代の流れを引く踊りか」を意識することが手がかりになります。</td>
+</tr>
+</table>
+</div>
+<p style="color:var(--ink-soft);font-size:.9rem;margin-top:4px">
+※ 年表は流れを追いやすくするための概略です。個別の出来事の年代や評価については資料によって記述が異なる場合があり、詳細は専門書や各資料の記述が優先されます。
+</p>
+
+<h3 style="font-size:1.15rem;margin:22px 0 12px">3つの転機で見る「広がり方」</h3>
+<div class="grid3" style="margin-bottom:22px">
+<div class="card">
+<h3>1. 舞台化（カイロ）</h3>
+<p>
+集まりの場の踊りが、チケットを買って観る舞台の演目になったことが大きな転機です。振付や舞台構成、衣装の様式が整えられ、
+「ラックス・シャルキー」という舞台形式として確立していきました。土台となる太鼓のパターンの学びは
+<a href="../reading/rhythm.html">読み物：リズムの基礎</a>でも扱っています。
+</p>
+</div>
+<div class="card">
+<h3>2. 映像と博覧会による拡散</h3>
+<p>
+万国博覧会の興行と、エジプト映画のダンスシーンという二つの経路で、踊りは中東の外へ伝わりました。
+映像を通じて広まったことで、現地を訪れなくても踊りの姿に触れられるようになり、各国で模倣や再解釈が進んだとされます。
+</p>
+</div>
+<div class="card">
+<h3>3. 各国での再解釈と分岐</h3>
+<p>
+伝わった先の音楽や舞踊文化と交わることで、ターキッシュ、トライバル、フュージョンなど地域や発想ごとの分岐が生まれました。
+現在のスタイルの多様さは、この「広がる過程で姿を変えてきた」歴史の積み重ねとして理解できます。
+</p>
+</div>
+</div>
+
+<div class="card" style="margin-bottom:22px">
+<h3>現代のスタイルとのつながりをどう読むか</h3>
+<p>
+歴史の流れを知ると、現在のスタイルの違いも「どこから来た違いか」で整理しやすくなります。たとえば、エジプシャンで歌詞の情感表現が重視される背景には、
+カイロの舞台と映画の時代に歌曲と結びついて発展した経緯があります。ターキッシュに9/8拍子やフロアワークが目立つ背景には、トルコ独自の音楽・舞台文化の流れがあります。
+フュージョンの自由度の高さは、ベリーダンスが各国へ広がった後に、ほかのジャンルとの組み合わせとして意図的に発展した経緯と対応します。
+このように、スタイルごとの特徴と歴史的な出発点を並べて見ると、教室選びや曲選びの際にも「自分が惹かれるのは、どの流れの踊りか」という観点が持てるようになります。
+スタイル同士の具体的な比較は<a href="../reading/styles.html">読み物：スタイルの違い</a>、基本動作の種類は<a href="../reading/moves.html">読み物：基礎の動き入門</a>でそれぞれ詳しく扱っています。
+なお、衣装の見た目の違い（ベドラーやガラベーヤなど）も、民謡舞踊か舞台形式かという背景の違いと対応する部分が多く、<a href="../costume.html#props">小物・プロップス図鑑</a>で紹介しているアサヤ（杖）やシャマダン（燭台）も、特定の民俗的な文脈を持つ小物です。
+</p>
+</div>
+
+<div class="grid2" style="margin-bottom:22px">
+<div class="card">
+<h3>歴史を学ぶときの注意点</h3>
+<p>
+起源をめぐる話題では、魅力的な説ほど断定的に語られがちです。「古代からそのまま続いてきた」とする説明や、特定の人物・地域だけを起源とする説明に触れたときは、
+「いつの時代の、どの資料に基づく話か」を分けて受け取ることが大切です。用語の確認には<a href="../learn.html#quiz">用語クイズ</a>や<a href="../learn.html#faq">よくある質問</a>も利用できます。
+</p>
+</div>
+<div class="card">
+<h3>この記事の位置づけ</h3>
+<p>
+この読み物は、中立メディアとして公開情報の範囲で歴史の概略を整理した入門編です。特定の流派や教室の公式見解ではなく、
+年代や人物の評価についても、資料によって異なる記述があることを前提にしています。より深く学ぶ場合は、専門書や歴史資料にあたることをおすすめします。
+</p>
+</div>
+</div>
+
+<div class="speech" style="margin-top:22px;max-width:52em">
+<strong>ライラ：</strong>
+「いま踊っている動きや衣装にも、たどってきた道のりがあります。流れを知ると、曲やスタイルの見え方が少し変わってきますよ」
+</div>
+<p style="color:var(--ink-soft);font-size:.9rem;margin-top:16px">
+関連ページ：
+<a href="../index.html#about">ベリーダンスとは</a>／
+<a href="../learn.html#styles">主なスタイル解説</a>／
+<a href="../reading/styles.html">読み物：スタイルの違い</a>／
+<a href="../learn.html#moves">基本の動き・用語集</a>／
+<a href="../reading/moves.html">読み物：基礎の動き入門</a>／
+<a href="../learn.html#rhythm">基本リズム</a>／
+<a href="../reading/rhythm.html">読み物：リズムの基礎</a>／
+<a href="../costume.html#costume">衣装ガイド：パーツと選び方</a>／
+<a href="../reading/size.html">読み物：衣装のサイズの考え方</a>／
+<a href="../learn.html#faq">よくある質問</a>
+</p>
+<div class="next-step">
+<p><span class="next-label">次の一歩</span>歴史の流れをつかんだら、現代に残るスタイル同士の違いを比べてみましょう。</p>
+<a class="next-step-btn" href="../reading/styles.html">次は、スタイルの違いを比べてみる</a>
+</div>
+</div>
+</section>
+
+<footer class="site">
+<div class="wrap">
+<a class="brand" href="../index.html">ベリーダンス手帖<small style="color:var(--gold-bright)">BELLY DANCE NOTEBOOK</small></a>
+<p>
+ベリーダンスの基礎知識・スタイル・基本の動きとリズム、そして衣装と小物の選び方を扱う専門メディアです。
+記載内容は公開情報に基づき、特定の教室や流派の公式見解ではありません。
+</p>
+<p>
+公式キャラクターは案内役のライラとペットのフェネ（いずれも架空のキャラクター）です。
+SNSは Instagram／Threads の <a href="https://www.instagram.com/belly.techo/" target="_blank" rel="noopener" style="color:var(--gold-bright)">@belly.techo</a> で発信しています（<a href="../index.html#sns" style="color:var(--gold-bright)">SNS・これからの展開</a>）。
+</p>
+<p>
+全国の教室・スタジオを探せる<a href="../schools.html#schools" style="color:var(--gold-bright)">教室ポータル「教室を探す」</a>も開設しました。教室・スタジオの<a href="../schools.html#register" style="color:var(--gold-bright)">無料登録</a>も受け付けています。
+</p>
+<p>
+当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定された
+アフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。
+</p>
+<div class="fine">
+価格・在庫・仕様はすべてリンク先の販売ページの表示が正となります。当サイトのイラストはイメージです。商品そのものの写真は各販売ページでご確認ください。<br />
+<a class="to-top" href="../index.html">▲ ページの先頭へ戻る</a>
+</div>
+</div>
+</footer>
+
+<!-- ============ フローティングメニュー ============ -->
+<div class="fab-overlay" id="fab-overlay" hidden></div>
+<nav class="main fab-panel" id="fab-panel" aria-label="メインメニュー" hidden>
+  <div class="fab-panel-head">
+    <span class="fab-panel-title">メニュー</span>
+    <button type="button" class="fab-close" id="fab-close" aria-label="メニューを閉じる">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+  </div>
+  <ul>
+    <li><a href="../index.html">トップ</a></li>
+    <li><a href="../schools.html#schools">教室を探す</a></li>
+    <li><a href="../schools.html#register">教室の登録（無料）</a></li>
+    <li><a href="../index.html#about">ベリーダンスとは</a></li>
+    <li><a href="../learn.html#styles">スタイル</a></li>
+    <li><a href="../learn.html#moves">基本の動き</a></li>
+    <li><a href="../learn.html#rhythm">リズム</a></li>
+    <li><a href="../costume.html#costume">衣装ガイド</a></li>
+    <li><a href="../costume.html#hipscarf">ヒップスカーフ</a></li>
+    <li><a href="../costume.html#props">小物・プロップス</a></li>
+    <li><a href="../reading/winter-practice.html">読み物：冬の練習で気をつけたいこと<span class="new-badge">新着</span></a></li>
+    <li><a href="../reading/winter-costume-choice.html">読み物：冬の発表会の衣装の選び方と防寒</a></li>
+    <li><a href="../reading/recital-viewing.html">読み物：発表会の見方・楽しみ方入門</a></li>
+    <li><a href="../reading/sword.html">読み物：剣（ソード）の使い方入門</a></li>
+    <li><a href="../reading/zill.html">読み物：ジルの使い方入門</a></li>
+    <li><a href="../reading/winter-hafla.html">読み物：冬の発表会の衣装準備</a></li>
+    <li><a href="../reading/veil.html">読み物：ベールの使い方入門</a></li>
+    <li><a href="../reading/music.html">読み物：音楽の種類とリズムの聴き方</a></li>
+    <li><a href="../reading/beginner-faq.html">読み物：初心者のよくある疑問</a></li>
+    <li><a href="../reading/hipdrop.html">読み物：ヒップドロップのやり方と練習</a></li>
+    <li><a href="../reading/hip-circle.html">読み物：ヒップサークルとフィギュアエイトの深掘り</a></li>
+    <li><a href="../reading/home-practice.html">読み物：自宅練習の組み立て方</a></li>
+    <li><a href="../reading/size.html">読み物：衣装のサイズ</a></li>
+    <li><a href="../reading/care.html">読み物：衣装のお手入れと保管</a></li>
+    <li><a href="../reading/styles.html">読み物：スタイルの違い</a></li>
+    <li><a href="../reading/moves.html">読み物：基礎の動き入門</a></li>
+    <li><a href="../reading/shimmy.html">読み物：シミーのやり方と練習</a></li>
+    <li><a href="../reading/rhythm.html">読み物：リズムの基礎</a></li>
+    <li><a href="../reading/history.html">読み物：歴史入門</a></li>
+    <li><a href="../reading/props.html">読み物：小物・アクセサリー入門</a></li>
+    <li><a href="../reading/hafla.html">読み物：発表会・ハフラの準備</a></li>
+    <li><a href="../reading/buying.html">読み物：衣装の購入先の見方</a></li>
+    <li><a href="../index.html#new">新着</a></li>
+    <li><a href="../costume.html#items">アイテム紹介</a></li>
+    <li><a href="../costume.html#calc">予算シミュレーション</a></li>
+    <li><a href="../learn.html#quiz">用語クイズ</a></li>
+    <li><a href="../learn.html#faq">FAQ</a></li>
+    <li><a href="../index.html#characters">キャラクター</a></li>
+    <li><a href="../index.html#sns">SNS・展開</a></li>
+  </ul>
+</nav>
+<button type="button" class="fab-btn" id="fab-btn" aria-label="メニュー" aria-expanded="false" aria-controls="fab-panel" aria-haspopup="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  <span class="fab-btn-label">メニュー</span>
+</button>
+
+<script>
+(function () {
+// ---- product filter ----
+var buttons = document.querySelectorAll('.filters button');
+var products = document.querySelectorAll('#productGrid .product');
+buttons.forEach(function (btn) {
+btn.addEventListener('click', function () {
+buttons.forEach(function (b) { b.classList.remove('active');});
+btn.classList.add('active');
+var f = btn.getAttribute('data-filter');
+products.forEach(function (p) {
+p.style.display = (f === 'all' || p.getAttribute('data-cat') === f)? '': 'none';
+});
+});
+});
+
+// ---- budget calculator ----
+var items = document.querySelectorAll('.calc-item');
+var result = document.getElementById('calcResult');
+function fmt(n) { return n.toLocaleString('ja-JP');}
+function recalc() {
+if (!result) return;
+var low = 0, high = 0;
+items.forEach(function (it) {
+if (it.checked) {
+low += parseInt(it.getAttribute('data-low'), 10);
+high += parseInt(it.getAttribute('data-high'), 10);
+}
+});
+result.textContent = fmt(low) + '〜' + fmt(high) + '円';
+}
+items.forEach(function (it) { it.addEventListener('change', recalc);});
+recalc();
+
+// ---- quiz ----
+var questions = document.querySelectorAll('.quiz-q');
+var answered = 0, correct = 0;
+var scoreBox = document.getElementById('quizScore');
+questions.forEach(function (q) {
+var answer = parseInt(q.getAttribute('data-answer'), 10);
+var choices = q.querySelectorAll('.choices button');
+choices.forEach(function (btn, idx) {
+btn.addEventListener('click', function () {
+if (q.classList.contains('answered')) return;
+q.classList.add('answered');
+choices.forEach(function (b, i) {
+b.disabled = true;
+if (i === answer) b.classList.add('correct');
+});
+if (idx === answer) { correct++;} else { btn.classList.add('wrong');}
+answered++;
+if (answered === questions.length) {
+var msg = '';
+if (correct === 5) msg = '全問正解！ベリーダンスの基礎はばっちりです。';
+else if (correct >= 3) msg = 'あと少し！このページの用語集を見返すと満点が狙えます。';
+else msg = 'おつかれさまでした。基本の動きと用語集のコーナーから復習してみてください。';
+scoreBox.textContent = '結果：' + correct + ' / ' + questions.length + ' 問正解 — ' + msg;
+scoreBox.classList.add('show');
+}
+});
+});
+});
+})();
+</script>
+<script>
+// ---------- floating menu ----------
+(function () {
+"use strict";
+var fabBtn = document.getElementById("fab-btn"), fabPanel = document.getElementById("fab-panel"),
+    fabOverlay = document.getElementById("fab-overlay"), fabClose = document.getElementById("fab-close");
+if (!fabBtn || !fabPanel || !fabOverlay) return;
+var fabOpen = false, fabTimer = null;
+function openFab() {
+  if (fabOpen) return;
+  fabOpen = true;
+  if (fabTimer) { clearTimeout(fabTimer); fabTimer = null; }
+  fabPanel.hidden = false;
+  fabOverlay.hidden = false;
+  void fabPanel.offsetWidth;
+  fabPanel.classList.add("open");
+  fabOverlay.classList.add("open");
+  fabBtn.setAttribute("aria-expanded", "true");
+  document.body.style.overflow = "hidden";
+  if (fabClose) fabClose.focus();
+}
+function closeFab(restoreFocus) {
+  if (!fabOpen) return;
+  fabOpen = false;
+  fabPanel.classList.remove("open");
+  fabOverlay.classList.remove("open");
+  fabBtn.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
+  fabTimer = setTimeout(function () {
+    if (!fabOpen) { fabPanel.hidden = true; fabOverlay.hidden = true; }
+    fabTimer = null;
+  }, 200);
+  if (restoreFocus) fabBtn.focus();
+}
+fabBtn.addEventListener("click", function () { fabOpen ? closeFab(false) : openFab(); });
+if (fabClose) fabClose.addEventListener("click", function () { closeFab(true); });
+fabOverlay.addEventListener("click", function () { closeFab(true); });
+document.addEventListener("keydown", function (e) {
+  if (fabOpen && (e.key === "Escape" || e.key === "Esc")) closeFab(true);
+});
+Array.prototype.forEach.call(fabPanel.querySelectorAll("a"), function (a) {
+  a.addEventListener("click", function () { closeFab(false); });
+});
+window.addEventListener("hashchange", function () { closeFab(false); });
+})();
+</script>
+<script>
+// ---------- page switching + school portal ----------
+(function () {
+"use strict";
+// ---- page switching (single-file, Seraphina official site style) ----
+var FIRST_ID = { top: "top", learn: "styles", costume: "costume", portal: "schools" };
+var pageEls = Array.prototype.slice.call(document.querySelectorAll("[data-page]"));
+var navBtns = Array.prototype.slice.call(document.querySelectorAll(".page-nav button"));
+function pageOfEl(el) {
+  var p = el && el.closest ? el.closest("[data-page]") : null;
+  return p ? p.getAttribute("data-page") : "top";
+}
+function activate(name) {
+  pageEls.forEach(function (el) { el.hidden = el.getAttribute("data-page") !== name; });
+  navBtns.forEach(function (b) {
+    var on = b.getAttribute("data-goto") === name;
+    b.classList.toggle("active", on);
+    if (on) { b.setAttribute("aria-current", "page"); } else { b.removeAttribute("aria-current"); }
+  });
+}
+function scrollToEl(el) {
+  setTimeout(function () { el.scrollIntoView({ block: "start" }); }, 40);
+}
+var resetSchoolView = null;
+function goToId(id) {
+  if (id === "schools" && resetSchoolView) resetSchoolView();
+  if (!id || id === "top") { activate("top"); window.scrollTo(0, 0); return; }
+  var el = document.getElementById(id);
+  if (!el) { activate("top"); window.scrollTo(0, 0); return; }
+  activate(pageOfEl(el));
+  scrollToEl(el);
+}
+navBtns.forEach(function (b) {
+  b.addEventListener("click", function () {
+    var p = b.getAttribute("data-goto");
+    if (p === "portal" && resetSchoolView) resetSchoolView();
+    activate(p);
+    window.scrollTo(0, 0);
+    try { history.replaceState(null, "", "#" + FIRST_ID[p]); } catch (e) {}
+  });
+});
+document.addEventListener("click", function (e) {
+  var t = e.target;
+  var a = t && t.closest ? t.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var id = a.getAttribute("href").slice(1);
+  if (!id) return;
+  if (id !== "top" && !document.getElementById(id)) return;
+  e.preventDefault();
+  goToId(id);
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+});
+if (location.hash.length > 1) {
+  var hel = document.getElementById(location.hash.slice(1));
+  if (hel) { activate(pageOfEl(hel)); scrollToEl(hel); } else { activate("top"); }
+} else {
+  activate("top");
+}
+
+// ---- school portal (data-driven; add entries to SCHOOLS to publish) ----
+// Entry shape: { name, pref, city, station, styles:[], features:[], forms:[], website, sns, intro }
+var SCHOOLS = [];
+var PREFS = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県","オンラインのみ"];
+var prefSel = document.getElementById("f-pref");
+var styleSel = document.getElementById("f-style");
+var formSel = document.getElementById("f-form");
+var grid = document.getElementById("schoolGrid");
+var emptyBox = document.getElementById("schoolEmpty");
+var noMatch = document.getElementById("schoolNoMatch");
+var countEl = document.getElementById("schoolCount");
+var chips = Array.prototype.slice.call(document.querySelectorAll(".feat-chip"));
+if (prefSel && grid) {
+  PREFS.forEach(function (p) {
+    var o = document.createElement("option");
+    o.value = p; o.textContent = p;
+    prefSel.appendChild(o);
+  });
+  function buildCard(s) {
+    var card = document.createElement("article");
+    card.className = "school-card" + (s.website ? " has-site" : "");
+    var h = document.createElement("h3");
+    if (s.website) {
+      var titleLink = document.createElement("a");
+      titleLink.className = "site-link";
+      titleLink.href = s.website; titleLink.target = "_blank"; titleLink.rel = "noopener";
+      titleLink.textContent = s.name;
+      h.appendChild(titleLink);
+    } else {
+      h.textContent = s.name;
+    }
+    card.appendChild(h);
+    var area = document.createElement("p"); area.className = "area";
+    area.textContent = s.pref + (s.city ? " " + s.city : "") + (s.station ? "／" + s.station : "");
+    card.appendChild(area);
+    if (s.intro) { var d = document.createElement("p"); d.className = "desc"; d.textContent = s.intro; card.appendChild(d); }
+    var tags = document.createElement("div"); tags.className = "stags";
+    (s.styles || []).concat(s.features || [], s.forms || []).forEach(function (t) {
+      var sp = document.createElement("span"); sp.className = "stag"; sp.textContent = t; tags.appendChild(sp);
+    });
+    if (tags.childNodes.length) card.appendChild(tags);
+    if (s.website) {
+      var go = document.createElement("p"); go.className = "go-site";
+      go.textContent = "公式サイトへ →";
+      card.appendChild(go);
+    }
+    if (s.sns) {
+      var links = document.createElement("div"); links.className = "links";
+      var a2 = document.createElement("a"); a2.className = "sns-link";
+      a2.href = s.sns; a2.target = "_blank"; a2.rel = "noopener"; a2.textContent = "SNSを見る";
+      links.appendChild(a2);
+      card.appendChild(links);
+    }
+    return card;
+  }
+  function renderSchools() {
+    var pref = prefSel.value, style = styleSel.value, form = formSel.value;
+    var feats = [];
+    chips.forEach(function (c) { if (c.classList.contains("on")) feats.push(c.getAttribute("data-feat")); });
+    var list = SCHOOLS.filter(function (s) {
+      if (pref && s.pref !== pref) return false;
+      if (style && (s.styles || []).indexOf(style) < 0) return false;
+      if (form && (s.forms || []).indexOf(form) < 0) return false;
+      for (var i = 0; i < feats.length; i++) { if ((s.features || []).indexOf(feats[i]) < 0) return false; }
+      return true;
+    });
+    var isFiltered = !!(pref || style || form || feats.length);
+    countEl.textContent = "掲載教室：" + list.length + "件";
+    grid.innerHTML = "";
+    list.forEach(function (s) { grid.appendChild(buildCard(s)); });
+    grid.hidden = list.length === 0;
+    if (SCHOOLS.length === 0) {
+      emptyBox.hidden = isFiltered;
+      noMatch.hidden = !isFiltered;
+    } else {
+      emptyBox.hidden = true;
+      noMatch.hidden = list.length !== 0;
+    }
+  }
+  [prefSel, styleSel, formSel].forEach(function (sel) { sel.addEventListener("change", renderSchools); });
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      var on = c.classList.toggle("on");
+      c.setAttribute("aria-pressed", on ? "true" : "false");
+      renderSchools();
+    });
+  });
+  renderSchools();
+
+  // ---- region index + prefecture sub-views ----
+  var REGIONS = [
+    { name: "北海道・東北", prefs: ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県"] },
+    { name: "関東", prefs: ["茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県"] },
+    { name: "中部", prefs: ["新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県"] },
+    { name: "近畿", prefs: ["三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県"] },
+    { name: "中国", prefs: ["鳥取県","島根県","岡山県","広島県","山口県"] },
+    { name: "四国", prefs: ["徳島県","香川県","愛媛県","高知県"] },
+    { name: "九州・沖縄", prefs: ["福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"] },
+    { name: "オンライン", prefs: ["オンラインのみ"] }
+  ];
+  var schoolHome = document.getElementById("schoolHome");
+  var prefView = document.getElementById("prefView");
+  var regionIndex = document.getElementById("regionIndex");
+  var prefTitle = document.getElementById("prefTitle");
+  var prefLead = document.getElementById("prefLead");
+  var prefCount = document.getElementById("prefCount");
+  var prefGrid = document.getElementById("prefGrid");
+  var prefEmpty = document.getElementById("prefEmpty");
+  var prefSwitch = document.getElementById("prefSwitch");
+  function countFor(p) {
+    return SCHOOLS.filter(function (s) { return s.pref === p; }).length;
+  }
+  function makePrefBtn(p, current) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "region-pref" + (current ? " current" : "");
+    b.textContent = p;
+    var c = document.createElement("span");
+    c.className = "cnt"; c.textContent = countFor(p) + "件";
+    b.appendChild(c);
+    if (current) { b.disabled = true; b.setAttribute("aria-current", "true"); }
+    else { b.addEventListener("click", function () { openPref(p, true); }); }
+    return b;
+  }
+  if (regionIndex) {
+    REGIONS.forEach(function (r) {
+      var block = document.createElement("div"); block.className = "region-block";
+      var h = document.createElement("h3"); h.textContent = r.name; block.appendChild(h);
+      var row = document.createElement("div"); row.className = "region-prefs";
+      r.prefs.forEach(function (p) { row.appendChild(makePrefBtn(p, false)); });
+      block.appendChild(row);
+      regionIndex.appendChild(block);
+    });
+  }
+  function openPref(p, pushHash) {
+    if (!schoolHome || !prefView) return;
+    schoolHome.hidden = true;
+    prefView.hidden = false;
+    prefTitle.textContent = p === "オンラインのみ" ? "オンラインの教室" : p + "の教室";
+    prefLead.textContent = p === "オンラインのみ"
+      ? "オンラインで受講できる教室へのリンク集です。カードを選ぶと各教室の公式サイトへ移動します。"
+      : p + "のベリーダンス教室・スタジオへのリンク集です。カードを選ぶと各教室の公式サイトへ移動します。";
+    var list = SCHOOLS.filter(function (s) { return s.pref === p; });
+    prefCount.textContent = "掲載教室：" + list.length + "件";
+    prefGrid.innerHTML = "";
+    list.forEach(function (s) { prefGrid.appendChild(buildCard(s)); });
+    prefGrid.hidden = list.length === 0;
+    prefEmpty.hidden = list.length !== 0;
+    if (prefSwitch) {
+      prefSwitch.innerHTML = "";
+      PREFS.forEach(function (q) { prefSwitch.appendChild(makePrefBtn(q, q === p)); });
+    }
+    if (pushHash) { try { history.replaceState(null, "", "#schools/" + encodeURIComponent(p)); } catch (e) {} }
+    var sec = document.getElementById("schools");
+    if (sec) sec.scrollIntoView({ block: "start" });
+  }
+  function closePref(pushHash) {
+    if (!schoolHome || !prefView) return;
+    prefView.hidden = true;
+    schoolHome.hidden = false;
+    if (pushHash) { try { history.replaceState(null, "", "#schools"); } catch (e) {} }
+    var sec = document.getElementById("schools");
+    if (sec) sec.scrollIntoView({ block: "start" });
+  }
+  resetSchoolView = function () { closePref(false); };
+  var pb1 = document.getElementById("prefBack");
+  var pb2 = document.getElementById("prefBack2");
+  if (pb1) pb1.addEventListener("click", function () { closePref(true); });
+  if (pb2) pb2.addEventListener("click", function () { closePref(true); });
+  // deep link: #schools/<都道府県>
+  if (location.hash.indexOf("#schools/") === 0) {
+    var hp = null;
+    try { hp = decodeURIComponent(location.hash.slice("#schools/".length)); } catch (e) {}
+    if (hp && PREFS.indexOf(hp) >= 0) { activate("portal"); openPref(hp, false); }
+  }
+}
+})();
+</script>
+<script>
+// 分割ページ用: 単一ファイル用ルーターが付けた hidden を解除し、以後も維持する
+(function () {
+  "use strict";
+  function unhide() {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-page]"), function (el) {
+      if (el.hidden) el.hidden = false;
+    });
+  }
+  unhide();
+  if (window.MutationObserver) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-page]"), function (el) {
+      new MutationObserver(unhide).observe(el, { attributes: true, attributeFilter: ["hidden"] });
+    });
+  }
+  if (location.hash.length > 1 && location.hash.indexOf("#schools/") !== 0) {
+    var el = document.getElementById(location.hash.slice(1));
+    if (el) setTimeout(function () { el.scrollIntoView({ block: "start" }); }, 60);
+  }
+})();
+</script>
+</body>
+</html>
