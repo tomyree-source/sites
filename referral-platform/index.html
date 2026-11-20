@@ -2051,6 +2051,38 @@
       .col-article .next-step p:last-child { margin-bottom: 0; }
       .col-article .next-step a { color: var(--accent-strong); font-weight: 700; text-underline-offset: 3px; }
 
+      /* ============ Affiliate updates (2026-11-21): category special frame / tools band ============ */
+      .col-article .cat-special {
+        border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin: 18px 0 6px;
+        background: var(--surface);
+      }
+      .col-article .cat-special .cs-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--accent-strong); margin: 0 0 8px; }
+      .col-article .cat-special ul { margin: 0; }
+      .col-article .cat-special li { margin-bottom: 6px; }
+      .col-article .cat-special li:last-child { margin-bottom: 0; }
+      .col-article .cat-special a { color: var(--accent-strong); font-weight: 700; text-underline-offset: 3px; }
+
+      .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      @media (max-width: 900px) { .tools-grid { grid-template-columns: 1fr; } }
+      .tool-card {
+        display: flex; flex-direction: column; text-align: left; cursor: pointer;
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        box-shadow: var(--shadow); padding: 0; overflow: hidden; font: inherit; color: inherit;
+        transition: border-color .15s ease;
+      }
+      .tool-card:hover, .tool-card:focus-visible { border-color: var(--accent); outline: none; }
+      .tool-card .t-thumb { display: block; aspect-ratio: 3 / 2; overflow: hidden; }
+      .tool-card .t-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .tool-card .t-body { display: flex; flex-direction: column; padding: 16px 18px 18px; }
+      .tool-card .t-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+      .tool-card .t-num {
+        font-size: 12px; font-weight: 900; color: var(--accent-strong);
+        background: var(--accent-soft); border-radius: 999px; padding: 1px 10px;
+      }
+      .tool-card .t-cat { font-size: 12px; font-weight: 700; color: var(--ink-3); letter-spacing: .04em; }
+      .tool-card .t-title { display: block; font-size: 15.5px; font-weight: 700; line-height: 1.55; }
+      .tool-card .t-more { display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 700; color: var(--accent-strong); }
+
       .flow-intro { font-size: 14.5px; font-weight: 700; margin: -8px 0 18px; }
       .flow-note { font-size: 13px; color: var(--ink-2); margin: 18px 0 0; }
       .flow-steps { align-items: start; }
@@ -2142,6 +2174,40 @@
           </div>
           <p class="flow-note" data-en="We are currently at steps 1 and 2.">今は①と②の段階です。</p>
       </div>
+
+      <!-- ===== Recommended tools & services (special features) ===== -->
+      <section aria-labelledby="tools-h" id="tools">
+        <div class="sec-head">
+          <h2 id="tools-h" data-en="Recommended Tools &amp; Services">おすすめツール・サービス</h2>
+          <p data-en="Three special features on tools a solo salon can start on its own: building your website, and two ways to bring scattered bookings together. Each walks through the thinking and the steps to start.">一人サロンが自分で始められるツールを、特別編3本で紹介します。ホームページ作りと、予約をまとめる2つの方法です。それぞれ、考え方と始め方を順を追って整理しました。</p>
+        </div>
+        <div class="tools-grid">
+          <button type="button" class="tool-card" id="toolCardPerachi">
+            <span class="t-thumb"><img src="assets/perachi-eyecatch.webp" alt="自分のサロンの施術室で、ノートパソコンを開いてホームページを作っているセラピスト小春のカラーイラスト" width="1920" height="1280" loading="lazy" decoding="async" /></span>
+            <span class="t-body">
+              <span class="t-meta"><span class="t-num" data-en="Special Feature">特別編</span><span class="t-cat" data-en="Web &amp; Content">Web・発信</span></span>
+              <span class="t-title" data-en="Peraichi — How a Solo Salon Builds Its Own Website">ペライチ ― 一人サロンが自分でホームページを作るときの考え方</span>
+              <span class="t-more" data-en="Read the special feature →">特別編を読む →</span>
+            </span>
+          </button>
+          <button type="button" class="tool-card" id="toolCardFreee">
+            <span class="t-thumb"><img src="assets/freee-eyecatch.webp" alt="自分のサロンの施術室で、予約カレンダーが表示されたスマートフォンを持っているセラピスト小春のカラーイラスト" width="1920" height="1280" loading="lazy" decoding="async" /></span>
+            <span class="t-body">
+              <span class="t-meta"><span class="t-num" data-en="Special Feature">特別編</span><span class="t-cat" data-en="Booking Management">予約管理</span></span>
+              <span class="t-title" data-en="freee Yoyaku — Moving Your Bookings Beyond Phone and LINE">freee予約 ― 一人サロンの予約を電話とLINEから卒業するときの考え方</span>
+              <span class="t-more" data-en="Read the special feature →">特別編を読む →</span>
+            </span>
+          </button>
+          <button type="button" class="tool-card" id="toolCardRepitte">
+            <span class="t-thumb"><img src="assets/repitte-eyecatch.webp" alt="自分のサロンの施術室で、LINE予約のカレンダーが表示されたスマートフォンを持っているセラピスト小春のカラーイラスト" width="1920" height="1280" loading="lazy" decoding="async" /></span>
+            <span class="t-body">
+              <span class="t-meta"><span class="t-num" data-en="Special Feature">特別編</span><span class="t-cat" data-en="Booking Management">予約管理</span></span>
+              <span class="t-title" data-en="Repitte — Reducing Missed Bookings with LINE Booking">リピッテ ― 一人サロンの予約の取りこぼしを減らす考え方</span>
+              <span class="t-more" data-en="Read the special feature →">特別編を読む →</span>
+            </span>
+          </button>
+        </div>
+      </section>
 
       <!-- ===== Curriculum (columns as teaching materials) ===== -->
       <section aria-labelledby="col-h" id="columns">
@@ -4184,6 +4250,35 @@
         '<p>料金と仕組み（送客・カルテ）は「<a href="#pricing">送客システムの利用料金</a>」で先に全部出しています。</p>' +
         '<p>開講とサービス開始の案内は、このページでお知らせします。</p>' +
         '</div>';
+      /* Category-linked special-feature frame, appended right after the "next step"
+         block above. Like NEXT_STEP_HTML it is rendered here at article-build time
+         (column body data is never rewritten), so future columns get it automatically.
+         Links point only to the on-site special features, so no PR label is needed here. */
+      var SPECIAL_INFO = {
+        'special-perachi': 'ペライチ特別編「一人サロンが自分でホームページを作るときの考え方」',
+        'special-freee': 'freee予約特別編「一人サロンの予約を電話とLINEから卒業するときの考え方」',
+        'special-repitte': 'リピッテ特別編「一人サロンの予約の取りこぼしを減らす考え方」'
+      };
+      var CAT_SPECIALS = {
+        '予約管理': ['special-freee', 'special-repitte'],
+        'Web・発信': ['special-perachi'],
+        'リピートの仕組み': ['special-repitte'],
+        'メニュー・料金': ['special-freee'],
+        '口コミ・MEO': ['special-perachi'],
+        '集客の広げ方': ['special-perachi']
+      };
+      function catSpecialHTML(cat) {
+        var ids = CAT_SPECIALS[cat];
+        if (!ids || !ids.length) return '';
+        var items = '';
+        for (var csi = 0; csi < ids.length; csi++) {
+          items += '<li><a href="#' + ids[csi] + '" data-open-special="' + ids[csi] + '">' + SPECIAL_INFO[ids[csi]] + '</a></li>';
+        }
+        return '<div class="cat-special">' +
+          '<p class="cs-label">このテーマのおすすめ特別編</p>' +
+          '<ul>' + items + '</ul>' +
+          '</div>';
+      }
       COLUMNS.forEach(function (c, i) {
         var n = i + 1;
         var card = document.createElement('button');
@@ -4200,6 +4295,7 @@
         art.hidden = true;
         art.innerHTML = '<p class="a-cat">セラピスト集客塾 教材 第' + n + '回 ｜ ' + c.cat + '</p><h2>' + c.title + '</h2>' + c.body +
           NEXT_STEP_HTML +
+          catSpecialHTML(c.cat) +
           '<div class="a-nav">' +
           '<button type="button" class="prev"' + (n === 1 ? ' disabled' : '') + '>← 前の教材</button>' +
           '<button type="button" class="next"' + (n === COLUMNS.length ? ' disabled' : '') + '>次の教材 →</button>' +
@@ -4230,6 +4326,20 @@
       if (specialCardFreee) specialCardFreee.addEventListener('click', function () { openSpecial('special-freee'); });
       var specialCardRepitte = document.getElementById('specialCardRepitte');
       if (specialCardRepitte) specialCardRepitte.addEventListener('click', function () { openSpecial('special-repitte'); });
+      /* "おすすめツール・サービス" band on the top page: same specials, direct entry. */
+      var toolCardPerachi = document.getElementById('toolCardPerachi');
+      if (toolCardPerachi) toolCardPerachi.addEventListener('click', function () { openSpecial('special-perachi'); });
+      var toolCardFreee = document.getElementById('toolCardFreee');
+      if (toolCardFreee) toolCardFreee.addEventListener('click', function () { openSpecial('special-freee'); });
+      var toolCardRepitte = document.getElementById('toolCardRepitte');
+      if (toolCardRepitte) toolCardRepitte.addEventListener('click', function () { openSpecial('special-repitte'); });
+      /* Category special frames inside the numbered columns link to the specials. */
+      colArticles.addEventListener('click', function (e) {
+        var csLink = e.target && e.target.closest ? e.target.closest('[data-open-special]') : null;
+        if (!csLink) return;
+        e.preventDefault();
+        openSpecial(csLink.getAttribute('data-open-special'));
+      });
       if (specialArticlesEl) {
         var relLinks = specialArticlesEl.querySelectorAll('[data-open-column]');
         for (var ri = 0; ri < relLinks.length; ri++) {
@@ -4466,6 +4576,49 @@
         var startEn = /[?&]lang=en\b/.test(location.search) ||
           (!/[?&]lang=ja\b/.test(location.search) && /^en\b/i.test(navigator.language || ''));
         if (startEn) setLang('en');
+      })();
+    </script>
+    <script>
+      /* ============ Affiliate click measurement (affiliate_click) ============
+         One delegated listener for the whole site: a click on any affiliate
+         link (A8.net / Rakuten / Amazon / SUZURI / Coconala) fires the GA4
+         event "affiliate_click" — the same event name and parameter style
+         used across all of the owner's sites. The ASP is detected from the
+         link host, and page_path / link_url / link_text are sent so clicks
+         can be broken down by site, ASP and destination. Because the listener
+         is delegated, it also covers the PR blocks in the special features
+         and any affiliate links rendered later. */
+      (function () {
+        function detectAsp(host) {
+          if (/(^|\.)a8\.net$/.test(host)) return 'a8net';
+          if (/(^|\.)rakuten\.co\.jp$/.test(host) || /(^|\.)rakuten\.ne\.jp$/.test(host) || host === 'a.r10.to') return 'rakuten';
+          if (/(^|\.)amazon\.co\.jp$/.test(host) || /(^|\.)amazon\.com$/.test(host) || host === 'amzn.to' || host === 'amzn.asia') return 'amazon';
+          if (/(^|\.)suzuri\.jp$/.test(host)) return 'suzuri';
+          if (/(^|\.)coconala\.com$/.test(host)) return 'coconala';
+          return '';
+        }
+        document.addEventListener('click', function (e) {
+          var link = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+          if (!link) return;
+          var url;
+          try { url = new URL(link.href, location.href); } catch (err) { return; }
+          var asp = detectAsp(url.hostname.toLowerCase());
+          if (!asp) return;
+          if (typeof gtag !== 'function') return;
+          var text = (link.textContent || '').replace(/\s+/g, ' ').trim();
+          if (!text) {
+            var img = link.querySelector('img');
+            text = img ? (img.getAttribute('alt') || '') : '';
+          }
+          gtag('event', 'affiliate_click', {
+            asp: asp,
+            link_url: link.href,
+            link_text: text.slice(0, 100),
+            link_domain: url.hostname,
+            page_path: location.pathname,
+            page_location: location.href
+          });
+        });
       })();
     </script>
     <script>
