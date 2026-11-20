@@ -85,7 +85,7 @@
       .site-inner{display:flex;align-items:center;gap:18px;max-width:1080px;margin:0 auto;padding:8px 20px}
       .brand{font-family:"Shippori Mincho B1",serif;font-weight:800;font-size:1.25rem;color:var(--ink);text-decoration:none;white-space:nowrap}
       .brand small{display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.14em;color:var(--gold)}
-      #about,#styles,#moves,#rhythm,#costume,#hipscarf,#props,#reading-size,#reading-care,#reading-props,#reading-hafla,#reading-buying,#reading-styles,#reading-moves,#reading-shimmy,#reading-hipdrop,#reading-hip-circle,#reading-home-practice,#reading-beginner-faq,#reading-rhythm,#reading-history,#reading-music,#reading-veil,#reading-winter-hafla,#reading-winter-costume-choice,#reading-winter-practice,#reading-zill,#reading-sword,#reading-recital-viewing,#new,#items,#calc,#quiz,#faq,#characters,#sns,#schools,#register{scroll-margin-top:64px}
+      #about,#styles,#moves,#rhythm,#costume,#hipscarf,#props,#reading-size,#reading-care,#reading-props,#reading-hafla,#reading-buying,#reading-styles,#reading-moves,#reading-shimmy,#reading-hipdrop,#reading-hip-circle,#reading-home-practice,#reading-beginner-faq,#reading-rhythm,#reading-history,#reading-music,#reading-veil,#reading-winter-hafla,#reading-winter-costume-choice,#reading-hipscarf-price,#reading-winter-practice,#reading-zill,#reading-sword,#reading-recital-viewing,#new,#items,#calc,#quiz,#faq,#characters,#sns,#schools,#register{scroll-margin-top:64px}
       /* ---------- floating menu（日本の旅検定 space-14 と同一仕様） ---------- */
       .fab-overlay{
         position:fixed;inset:0;z-index:80;
@@ -800,8 +800,14 @@
 <button type="button" data-filter="costume">衣装・小物</button>
 <button type="button" data-filter="book">書籍・DVD</button>
 </div>
+        <div class="filters price-filters" role="group" aria-label="価格帯で絞り込む">
+          <button type="button" class="active" data-price-filter="all">価格帯：すべて</button>
+          <button type="button" data-price-filter="p1">〜2,000円</button>
+          <button type="button" data-price-filter="p2">2,000〜10,000円</button>
+          <button type="button" data-price-filter="p3">10,000円〜</button>
+        </div>
 <div class="grid3" id="productGrid">
-<article class="product" data-cat="lesson">
+<article class="product" id="item-n0" data-cat="lesson">
 <span class="cat">レッスン用品</span>
 <h3>コイン付きヒップスカーフ（シフォン）</h3>
 <p>入門の定番。軽いシフォン生地に金色コインをあしらったタイプで、色展開が豊富なカテゴリです。コイン約128枚・全長150cm前後の仕様が多く見られます。</p>
@@ -809,7 +815,7 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%83%92%E3%83%83%E3%83%97%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%95+%E3%82%B3%E3%82%A4%E3%83%B3+%E3%82%B7%E3%83%95%E3%82%A9%E3%83%B3&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="lesson">
+<article class="product" id="item-n1" data-cat="lesson">
 <span class="cat">レッスン用品</span>
 <h3>コイン付きヒップスカーフ（ベロア）</h3>
 <p>ベロア生地で滑りにくく、腰に留まりやすいタイプ。国内のベリーダンス専門店でも定番として扱われるカテゴリで、発色の深さが特徴です。</p>
@@ -817,7 +823,7 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%83%92%E3%83%83%E3%83%97%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%95+%E3%83%99%E3%83%AD%E3%82%A2&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="lesson">
+<article class="product" id="item-n2" data-cat="lesson">
 <span class="cat">レッスン用品</span>
 <h3>フリンジ・スパンコールのヒップスカーフ</h3>
 <p>フリンジ（タッセル）とスパンコールで、動きに揺れと光を足すタイプのヒップスカーフです。コインタイプとは印象が変わり、色展開が豊富なカテゴリです。</p>
@@ -825,7 +831,37 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%83%92%E3%83%83%E3%83%97%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%95+%E3%83%95%E3%83%AA%E3%83%B3%E3%82%B8&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="lesson">
+<article class="product" id="item-hipscarf-1490" data-cat="lesson" data-price="1490">
+<span class="cat">レッスン用品</span>
+<h3>ヒップスカーフ（お手頃価格）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">1,490円（税込）・送料は商品ページでご確認ください</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>コイン付きヒップスカーフのお手頃価格帯の商品です。楽天市場の「Belly Treasure」では1,490円（税込、2026年11月21日確認）で販売されています。送料は商品ページでご確認ください。</p>
+<div class="spec">確認ポイント：全長／コインの付き方／送料</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c68236.39ad800a.59c68237.080efb22/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbellytreasure%2Fbq-009-202311%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-hipscarf-2270" data-cat="lesson" data-price="2270">
+<span class="cat">レッスン用品</span>
+<h3>ヒップスカーフ（中間価格帯）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">2,270円（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>ゴールドコインのヒップベルトタイプです。楽天市場の「ミカドレス」では2,270円（税込）・送料無料（2026年11月21日確認）で販売されています。</p>
+<div class="spec">確認ポイント：ベルトの調節範囲／コインの付き方／サイズ表記</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c6891e.6761a73d.59c6891f.5e1c8691/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmika%2Fpierced-1799%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-hipscarf-4598" data-cat="lesson" data-price="4598">
+<span class="cat">レッスン用品</span>
+<h3>ヒップスカーフ（高価格帯）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">4,598円（税込）・送料は商品ページでご確認ください</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>4カラー／ゴールド展開の高価格帯ヒップスカーフです。楽天市場の「Belly Treasure」では4,598円（税込、2026年11月21日確認）で販売されています。送料は商品ページでご確認ください。</p>
+<div class="spec">確認ポイント：カラー展開／全長／送料</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c68236.39ad800a.59c68237.080efb22/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbellytreasure%2Fmdw-y105-20260701%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-n6" data-cat="lesson">
 <span class="cat">レッスン用品</span>
 <h3>レッスン着セットアップ</h3>
 <p>トップスとパンツ／スカートの上下セット。Amazon.co.jpでは「MISI CHAO」などのダンスウェアブランドのレッスン着が継続的に販売されています。ストレッチ素材かどうかが動きやすさの分かれ目です。</p>
@@ -833,7 +869,7 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%83%AC%E3%83%83%E3%82%B9%E3%83%B3%E7%9D%80+%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="lesson">
+<article class="product" id="item-n7" data-cat="lesson">
 <span class="cat">レッスン用品</span>
 <h3>レッスン着トップス単品</h3>
 <p>トップスだけを買い替え・買い足しできる単品カテゴリです。セットアップとは別に、色違いや形違い（チョリ型など）を揃える使い方をされます。</p>
@@ -841,7 +877,7 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%83%88%E3%83%83%E3%83%97%E3%82%B9&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="lesson">
+<article class="product" id="item-n8" data-cat="lesson">
 <span class="cat">レッスン用品</span>
 <h3>フレアパンツ単品</h3>
 <p>レッスン着のパンツ単品です。裾が広がるフレア型が定番で、トップスやヒップスカーフと色を合わせて使われます。</p>
@@ -849,7 +885,7 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%83%91%E3%83%B3%E3%83%84&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="lesson">
+<article class="product" id="item-n9" data-cat="lesson">
 <span class="cat">レッスン用品</span>
 <h3>フィンガーシンバル（ジル）2ペア・4枚セット</h3>
 <p>両手分がそろう4枚セット。Amazon.co.jpでは「ZERONOWA」のゴールド・2ペアセット（直径約55mm）などが販売されています。教室で使う場合は、サイズがレッスンに合うか講師への確認が推奨されます。</p>
@@ -857,7 +893,27 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%95%E3%82%A3%E3%83%B3%E3%82%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%83%90%E3%83%AB+%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%82%B8%E3%83%AB&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-zill-1100" data-cat="costume" data-price="1100">
+<span class="cat">衣装・小物</span>
+<h3>ジル 1ペア（入門価格帯）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">1,100円（税込）・＋送料350円（メール便）</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>直径約5.5cm・軽量タイプのジル1ペア（片手分）です。両手で使う場合は2ペアが必要です。楽天市場の「ギャラリー」では1,100円（税込）＋送料350円（メール便、2026年11月21日確認）で販売されています。</p>
+<div class="spec">確認ポイント：直径（約5.5cm）／1ペア＝片手分の点／ゴム（指への固定）の仕様</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c60a31.25270c51.59c60a32.c0877718/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-dfgallery%2Fkm212h17%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-zill-5516" data-cat="costume" data-price="5516">
+<span class="cat">衣装・小物</span>
+<h3>ジル 4枚セット（本格価格帯）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">5,516円（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>銅製のジル4枚セット（両手分）です。楽天市場の「Grams」では5,516円（税込）・送料無料（2026年11月21日確認）で販売されています。予約商品のため、発送まで5〜12営業日ほどかかる予定とされています。</p>
+<div class="spec">確認ポイント：素材（銅製）／予約商品（発送まで5〜12営業日）／ゴムの仕様</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c6b00a.84efb963.59c6b00b.20eb007d/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgrams-shop%2Fmeodqumawmzeofxlvatu4rlkfe-alg%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-n12" data-cat="costume">
 <span class="cat">衣装・小物</span>
 <h3>シルクベール 100％シルク</h3>
 <p>本番用のベールに使われる天然シルク製。Amazon.co.jpでは「MISI CHAO」のシルク100％ベール（2.0m／2.5m／2.7mのサイズ展開）などが販売されています。化繊ベールとの違いは軽さと落ち感です。</p>
@@ -865,7 +921,7 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%82%B7%E3%83%AB%E3%82%AF%E3%83%99%E3%83%BC%E3%83%AB&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="lesson">
+<article class="product" id="item-amz-veil-chiffon" data-cat="lesson">
 <span class="cat">レッスン用品</span>
 <h3>練習用ベール（シフォン）</h3>
 <p>化繊（シフォン等）の練習用ベールです。シルクに比べて扱いやすく価格も手頃で、レッスンや自宅練習の入門用として広く使われるカテゴリです。標準的な大きさは約250cm×110cm前後です。</p>
@@ -873,7 +929,27 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%83%99%E3%83%BC%E3%83%AB+%E3%82%B7%E3%83%95%E3%82%A9%E3%83%B3&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-veil-2998" data-cat="costume" data-price="2998">
+<span class="cat">衣装・小物</span>
+<h3>シルクベール（お手頃価格）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">2,998円〜（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>絹100％のグラデーションベール（250×114cm・25色展開）です。楽天市場の「KALAVIKA」ではサイズ・色により2,998円〜3,580円（税込）・送料無料（2026年11月21日確認）で販売されています。</p>
+<div class="spec">確認ポイント：サイズ（250×114cm）／カラー展開／素材表記（絹100％）</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c6ad3a.6a4e7694.59c6ad3b.1a0706ac/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkalavika%2Fym24037%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-veil-9988" data-cat="costume" data-price="9988">
+<span class="cat">衣装・小物</span>
+<h3>シルクベール（本格・絞り染め）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">9,988円（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>シルク100％・絞り染めのベール（240×110cm、イエロー／ピンク）です。楽天市場の「Salalah」では9,988円（税込）・送料無料（2026年11月21日確認）で販売されています。</p>
+<div class="spec">確認ポイント：サイズ（240×110cm）／カラー／絞り染めの柄の出方</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c68335.f7ed8cba.59c68336.c78fd095/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsalalah%2Fsv0162%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-n16" data-cat="costume">
 <span class="cat">衣装・小物</span>
 <h3>ファンベール 左右ペア</h3>
 <p>扇子＋ロングシルクの小物。全長約180cm・左右セットが標準仕様です。布がシルクか化繊かで価格と流れ方が変わります。開く向きが決まっているため、左右の区別も確認ポイントです。</p>
@@ -881,7 +957,7 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%83%95%E3%82%A1%E3%83%B3%E3%83%99%E3%83%BC%E3%83%AB&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-n17" data-cat="costume">
 <span class="cat">衣装・小物</span>
 <h3>衣装セット（ブラ＋ベルト＋スカート）</h3>
 <p>発表会向けのセット衣装。セット内容は商品ごとに大きく異なり、「ブラ＋ベルトのみ（スカート別売）」も多いカテゴリです。セット内容とサイズ対応表を必ず確認してください。</p>
@@ -889,7 +965,37 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E8%A1%A3%E8%A3%85+%E3%82%BB%E3%83%83%E3%83%88&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-costume-5480" data-cat="costume" data-price="5480">
+<span class="cat">衣装・小物</span>
+<h3>衣装3点セット（お手頃価格）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">5,480円（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>ブラ・ベルト・スカートの3点セット。スパンコールとシフォンフリル、花モチーフ付きで、カラーはレッド／フューシャピンク／ロイヤルブルー、サイズはS／M／Lです。楽天市場の「Zacca Clover」では5,480円（税込）・送料無料（2026年11月21日確認）で販売されています。</p>
+<div class="spec">確認ポイント：セット内容の内訳／サイズ表（S／M／L）／ブラのカップ対応</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c6abe3.6b71915d.59c6abe4.4d5bbb7a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fzacca-clover%2Fzcg959%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-costume-15180" data-cat="costume" data-price="15180">
+<span class="cat">衣装・小物</span>
+<h3>ブラ・ベルト2点セット（中間価格帯）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">15,180円（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>サテン地のブラとベルトの2点セット（全11色）です。スカートは含まれないため、別に揃える前提の商品です。楽天市場の「Salalah」では15,180円（税込）・送料無料（2026年11月21日確認）で販売されています。</p>
+<div class="spec">確認ポイント：セット内容（ブラ・ベルトのみ）／カラー展開／サイズ表</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c68335.f7ed8cba.59c68336.c78fd095/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsalalah%2Fbr0206%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-costume-30800" data-cat="costume" data-price="30800">
+<span class="cat">衣装・小物</span>
+<h3>オーダーメイド衣装（本格価格帯）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">30,800円（税込）・送料無料（2万円以上の注文で無料）</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>シフォン・刺繍・ストーンを使ったオーダーメイドの2点セット（ブラ＆ベルト）です。納期は約3ヶ月が目安とされています。楽天市場の「Belly Treasure」では30,800円（税込、2026年11月21日確認）で販売されており、送料は2万円以上の注文で無料です。</p>
+<div class="spec">確認ポイント：納期（約3ヶ月）／採寸の方法／セット内容</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c68236.39ad800a.59c68237.080efb22/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbellytreasure%2Fdwh-001-202510%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-n21" data-cat="costume">
 <span class="cat">衣装・小物</span>
 <h3>スカート単品（ロング）</h3>
 <p>衣装とは別売りのことが多いパーツです。マーメイド型、サーキュラー（全円）型、スリット入りなど形が多様で、手持ちのブラ＆ベルトに合わせて選べます。</p>
@@ -897,15 +1003,37 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%88&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-skirt-1890" data-cat="costume" data-price="1890">
+<span class="cat">衣装・小物</span>
+<h3>サテンロングスカート（お手頃価格）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">1,890円（税込）・＋送料350円（3,980円以上の購入で無料）</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>ボリュームのあるサテンロングスカートです。楽天市場の「ギャラリー」では1,890円（税込）＋送料350円（3,980円以上の購入で送料無料、2026年11月21日確認）で販売されています。裾のロックミシンに「よれ」がある訳あり品として販売されているため、状態の説明を商品ページでご確認ください。</p>
+<div class="spec">確認ポイント：訳ありの内容（裾のロックミシンのよれ）／丈／送料条件</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c60a31.25270c51.59c60a32.c0877718/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-dfgallery%2Fsk79231%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-skirt-3800" data-cat="costume" data-price="3800">
+<span class="cat">衣装・小物</span>
+<h3>全円サテンスカート（中間価格帯）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">3,800円（税込）・＋送料590円（3,980円以上の購入で無料）</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>720度の全円サテンロングスカートです。楽天市場の「ギャラリー」では3,800円（税込）＋送料590円（3,980円以上の購入で送料無料、2026年11月21日確認）で販売されています。裾のロックミシンに「よれ」がある訳あり品として販売されているため、状態の説明を商品ページでご確認ください。</p>
+<div class="spec">確認ポイント：訳ありの内容（裾のロックミシンのよれ）／丈／送料条件</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c60a31.25270c51.59c60a32.c0877718/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-dfgallery%2Fsk71209%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-galabeya" data-cat="costume" data-price="4488">
 <span class="cat">衣装・小物</span>
 <h3>ガラベーヤ／ドレス型衣装</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">4,488円（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
 <p>バラディなど民謡舞踊（フォークロア）で着るワンピース型の衣装です。楽天市場の「Costume Shop HARUI」ではアバヤ／ガラベーヤ（7色展開・4,488円・送料無料、2026年11月20日確認）が販売されています。ベドラー（ブラ＆ベルト）とは用途が違うため、演目に合わせて選び分けます。</p>
 <div class="spec">確認ポイント：着丈／袖の形／サイズ対応表</div>
 <span class="pr">PR｜楽天アフィリエイトリンク</span>
 <a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c60c02.f18d8a21.59c60c03.5268fb76/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fharui-shop%2Fxsabba%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-amz-accessory" data-cat="costume">
 <span class="cat">衣装・小物</span>
 <h3>アクセサリーセット（ネックレス・イヤリング等）</h3>
 <p>ネックレス・イヤリング・ブレスレット・アンクレットなどがセットになった装身具です。衣装セットに含まれない場合が多いパーツで、衣装の色に合わせて選ばれます。</p>
@@ -913,15 +1041,17 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B5%E3%83%AA%E3%83%BC+%E3%82%BB%E3%83%83%E3%83%88&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-kids" data-cat="costume" data-price="1850">
 <span class="cat">衣装・小物</span>
 <h3>キッズ衣装セット</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">1,850円（税込）・＋送料350円</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
 <p>子ども向けのベリーダンス衣装セットです。楽天市場の専門店「ギャラリー」ではキッズ用全身セット（1,850円＋送料350円、2026年11月21日確認）が販売されています。発表会やイベント用に、大人用とは別枠で展開されているカテゴリです。</p>
 <div class="spec">確認ポイント：対象身長／セット内容の内訳／サイズ表</div>
 <span class="pr">PR｜楽天アフィリエイトリンク</span>
 <a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c60a31.25270c51.59c60a32.c0877718/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-dfgallery%2Fst41023-kd%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-n27" data-cat="costume">
 <span class="cat">衣装・小物</span>
 <h3>イシスウィング</h3>
 <p>大きく広がる翼状の舞台小物。スティック付きかどうか、LED内蔵かどうかで仕様が分かれます。広げたときの幅（翼丈）がステージの広さに合うかも確認しましょう。</p>
@@ -929,39 +1059,67 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E3%82%A4%E3%82%B7%E3%82%B9%E3%82%A6%E3%82%A3%E3%83%B3%E3%82%B0&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-isis-3980" data-cat="costume" data-price="3980">
+<span class="cat">衣装・小物</span>
+<h3>イシスウィング（通常タイプ）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">3,980円（税込）・送料込み（沖縄を除く）</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>スチール製スティック2本付きの通常タイプ（ゴールド／シルバー）です。楽天市場の「ギャラリー」では3,980円（税込）・送料込み（沖縄を除く、2026年11月21日確認）で販売されています。訳あり品として販売されているため、状態の説明を商品ページでご確認ください。</p>
+<div class="spec">確認ポイント：訳ありの内容／スティックの有無／翼の長さ</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c60a31.25270c51.59c60a32.c0877718/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-dfgallery%2Fkm3503%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-isis-led" data-cat="costume" data-price="6550">
+<span class="cat">衣装・小物</span>
+<h3>イシスウィング（LEDタイプ）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">6,550円（税込）・送料無料（海外発送）</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
+<p>LEDライト内蔵・360度伸縮スティック付きのイシスウィングです。楽天市場の「YILINFEIER」では6,550円（税込）・送料無料（2026年11月21日確認）で販売されています。海外通販の商品で、国際発送（3〜7日以内発送）となる点にご注意ください。</p>
+<div class="spec">確認ポイント：LEDの仕様／国際発送（3〜7日以内発送）／翼の長さ</div>
+<span class="pr">PR｜楽天アフィリエイトリンク</span>
+<a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c6b0af.ce674de7.59c6b0b0.8936720a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fyilinfeier%2Flwen334%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
+</article>
+<article class="product" id="item-asaya" data-cat="costume" data-price="1500">
 <span class="cat">衣装・小物</span>
 <h3>アサヤ（杖）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">1,500円（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
 <p>サイーディで使う杖です。楽天市場のベリーダンス専門店「ギャラリー」ではストレートタイプ（95cm・1,500円・送料無料、2026年11月20日確認）が販売されています。フォークロア演目の象徴的な小物です。</p>
 <div class="spec">確認ポイント：長さ／重さ／装飾の付き方</div>
 <span class="pr">PR｜楽天アフィリエイトリンク</span>
 <a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c60a31.25270c51.59c60a32.c0877718/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-dfgallery%2Fkm3500%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-shamadan" data-cat="costume" data-price="17800">
 <span class="cat">衣装・小物</span>
 <h3>シャマダン（燭台）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">17,800円〜（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
 <p>ゼッファ（結婚式の行列）などで頭に載せる大きな燭台です。楽天市場のベリーダンス専門店「Belly Treasure」ではベリーダンス用シャマダン（17,800円〜・送料無料、2026年11月21日確認）が販売されています。</p>
 <div class="spec">確認ポイント：高さ／重さ／キャンドルの固定方法</div>
 <span class="pr">PR｜楽天アフィリエイトリンク</span>
 <a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c68236.39ad800a.59c68237.080efb22/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbellytreasure%2Fbq-zt001-202503%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-melaya" data-cat="costume" data-price="7920">
 <span class="cat">衣装・小物</span>
 <h3>ミラーヤラフ（メラヤ）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">7,920円（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
 <p>エジプトの民謡舞踊で羽織る、スパンコール装飾のベール状の小物です。楽天市場「Salalah」ではミラーヤベール（7,920円・送料無料、2026年11月21日確認）が販売されています。</p>
 <div class="spec">確認ポイント：サイズ／装飾の付き方／色展開</div>
 <span class="pr">PR｜楽天アフィリエイトリンク</span>
 <a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c68335.f7ed8cba.59c68336.c78fd095/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsalalah%2Flw0982%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
 </article>
-<article class="product" data-cat="costume">
+<article class="product" id="item-darabuka" data-cat="costume" data-price="15500">
 <span class="cat">衣装・小物</span>
 <h3>ダラブッカ（太鼓）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">15,500円（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
 <p>アラブ音楽のゴブレット型太鼓で、ベリーダンスのリズムの中心になる楽器です。楽天市場「地球雑貨 アース・ヴィレッジ」ではファイバーグラス製ドゥンベック（15,500円・送料無料、2026年11月21日確認）が販売されています。踊り手がリズムを学ぶときにも使われます。</p>
 <div class="spec">確認ポイント：胴の素材／ヘッドの素材／サイズ</div>
 <span class="pr">PR｜楽天アフィリエイトリンク</span>
 <a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c68408.7a210347.59c68409.96ad7429/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fearthvillage%2F110007%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
 </article>
-<article class="product" data-cat="lesson">
+<article class="product" id="item-n34" data-cat="lesson">
 <span class="cat">レッスン用品</span>
 <h3>ハーフシューズ／バレエシューズ</h3>
 <p>裸足が基本のベリーダンスですが、床が冷たい・滑るスタジオでは足裏を守るハーフシューズやバレエシューズを使う人もいます。ターン（回転）のしやすさはソールの素材で変わります。</p>
@@ -969,23 +1127,27 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%83%8F%E3%83%BC%E3%83%95%E3%82%B7%E3%83%A5%E3%83%BC%E3%82%BA+%E3%83%80%E3%83%B3%E3%82%B9+%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="lesson">
+<article class="product" id="item-lessonbag" data-cat="lesson" data-price="1980">
 <span class="cat">レッスン用品</span>
 <h3>レッスンバッグ</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">1,980円（税込）・送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
 <p>衣装やヒップスカーフ、着替えをまとめて運ぶバッグです。楽天市場のベリーダンス専門店「Belly Treasure」ではレッスンバッグ（1,980円・送料無料、2026年11月21日確認）が販売されています。</p>
 <div class="spec">確認ポイント：容量／ポケットの数／肩掛けの可否</div>
 <span class="pr">PR｜楽天アフィリエイトリンク</span>
 <a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c68236.39ad800a.59c68237.080efb22/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbellytreasure%2Fvich-001-202501%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
 </article>
-<article class="product" data-cat="lesson">
+<article class="product" id="item-innerpants" data-cat="lesson" data-price="990">
 <span class="cat">レッスン用品</span>
 <h3>インナーパンツ（見せパン）</h3>
+        <div class="price-line" style="font-weight:700;font-size:1.05rem;margin:2px 0 6px">990円（税込）・メール便送料無料</div>
+        <span class="real-badge" style="display:inline-block;font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;margin-bottom:6px">実商品</span>
 <p>スリットの深いスカートの下に重ねるインナーパンツです。楽天市場「ミカドレス」ではベリーダンス用と明記されたレースの見せパン（990円・メール便送料無料、2026年11月21日確認）が販売されています。</p>
 <div class="spec">確認ポイント：サイズ／丈／素材表記</div>
 <span class="pr">PR｜楽天アフィリエイトリンク</span>
 <a class="buy" href="https://hb.afl.rakuten.co.jp/ichiba/59c6891e.6761a73d.59c6891f.5e1c8691/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmika%2F996932%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener">楽天市場で見る</a>
 </article>
-<article class="product" data-cat="book">
+<article class="product" id="item-amz-book50" data-cat="book">
 <span class="cat">書籍・DVD</span>
 <h3>『魅せるベリーダンス上達のポイント50』</h3>
 <p>メイツ出版「コツがわかる本」シリーズの一冊。初心者から中級者向けに、身につけたいテクニックを基本レッスンとトレーニング法から紹介し、後半では入門向けと中級向けの振付を扱います。</p>
@@ -993,7 +1155,7 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E9%AD%85%E3%81%9B%E3%82%8B%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9%E4%B8%8A%E9%81%94%E3%81%AE%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%8850&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="book">
+<article class="product" id="item-amz-book-kirei" data-cat="book">
 <span class="cat">書籍・DVD</span>
 <h3>『キレイ実感！ベリーダンス』青木香葉・著</h3>
 <p>リットーミュージックのDVDブック。付録DVDと対応して、腕・お腹・肩・腰などパーツ別の基本動作と簡単な振り付けをレクチャーし、歴史・音楽・衣装などの関連情報もマンガを交えて紹介する構成です。</p>
@@ -1001,7 +1163,7 @@
 <span class="pr">PR｜Amazonアソシエイトリンク</span>
 <a class="buy" href="https://www.amazon.co.jp/s?k=%E3%82%AD%E3%83%AC%E3%82%A4%E5%AE%9F%E6%84%9F+%E3%83%99%E3%83%AA%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9+%E9%9D%92%E6%9C%A8%E9%A6%99%E8%91%89&tag=cat22202-22" target="_blank" rel="sponsored noopener">Amazonで探す</a>
 </article>
-<article class="product" data-cat="book">
+<article class="product" id="item-n39" data-cat="book">
 <span class="cat">書籍・DVD</span>
 <h3>入門DVD／レッスンDVD各種</h3>
 <p>自宅練習用には、基本の動きをパート別に収録した入門DVDが各社から出ています。収録時間と「振付まで入っているか」「スロー再生での確認がしやすい構成か」が選ぶ際の目安です。</p>
@@ -1090,7 +1252,8 @@ SNSは Instagram／Threads の <a href="https://www.instagram.com/belly.techo/" 
     <li><a href="#costume">衣装ガイド</a></li>
     <li><a href="#hipscarf">ヒップスカーフ</a></li>
     <li><a href="#props">小物・プロップス</a></li>
-    <li><a href="reading/winter-practice.html">読み物：冬の練習で気をつけたいこと<span class="new-badge">新着</span></a></li>
+    <li><a href="reading/hipscarf-price.html">読み物：ヒップスカーフの価格帯ガイド<span class="new-badge">新着</span></a></li>
+    <li><a href="reading/winter-practice.html">読み物：冬の練習で気をつけたいこと</a></li>
     <li><a href="reading/winter-costume-choice.html">読み物：冬の発表会の衣装の選び方と防寒</a></li>
     <li><a href="reading/recital-viewing.html">読み物：発表会の見方・楽しみ方入門</a></li>
     <li><a href="reading/sword.html">読み物：剣（ソード）の使い方入門</a></li>
@@ -1475,6 +1638,25 @@ if (prefSel && grid) {
 })();
 </script>
 <script>
+// アフィリエイトクリック計測（GA4）: 商品名・販売元・ページを送る
+(function () {
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) return;
+    var href = a.getAttribute("href") || "";
+    var merchant = "";
+    if (href.indexOf("hb.afl.rakuten.co.jp") > -1 || href.indexOf("a.r10.to") > -1) merchant = "rakuten";
+    else if (href.indexOf("amazon.co.jp") > -1) merchant = "amazon";
+    if (!merchant) return;
+    var card = a.closest ? a.closest(".product") : null;
+    var name = "";
+    if (card) { var h = card.querySelector("h3"); if (h) name = h.textContent.trim(); }
+    if (!name) name = a.textContent.trim();
+    if (window.gtag) gtag("event", "affiliate_click", { merchant: merchant, product_name: name, page_path: location.pathname });
+  }, true);
+})();
+</script>
+<script>
 // 分割ページ用: 単一ファイル用ルーターが付けた hidden を解除し、以後も維持する
 (function () {
   "use strict";
@@ -1493,6 +1675,45 @@ if (prefSel && grid) {
     var el = document.getElementById(location.hash.slice(1));
     if (el) setTimeout(function () { el.scrollIntoView({ block: "start" }); }, 60);
   }
+})();
+</script>
+<script>
+// 価格帯フィルタ（カテゴリフィルタと併用）
+(function () {
+  var grid = document.getElementById("productGrid");
+  if (!grid) return;
+  var priceBtns = document.querySelectorAll("[data-price-filter]");
+  var catBtns = document.querySelectorAll("[data-filter]");
+  function activeVal(btns, attr) {
+    var v = "all";
+    Array.prototype.forEach.call(btns, function (b) { if (b.classList.contains("active")) v = b.getAttribute(attr); });
+    return v;
+  }
+  function apply() {
+    var pf = activeVal(priceBtns, "data-price-filter");
+    Array.prototype.forEach.call(grid.querySelectorAll(".product"), function (p) {
+      if (pf === "all") return;
+      var price = p.getAttribute("data-price");
+      var ok = false;
+      if (price !== null) {
+        var n = parseInt(price, 10);
+        if (pf === "p1") ok = n < 2000;
+        else if (pf === "p2") ok = n >= 2000 && n < 10000;
+        else if (pf === "p3") ok = n >= 10000;
+      }
+      if (!ok) p.style.display = "none";
+    });
+  }
+  Array.prototype.forEach.call(priceBtns, function (b) {
+    b.addEventListener("click", function () {
+      Array.prototype.forEach.call(priceBtns, function (x) { x.classList.remove("active"); });
+      b.classList.add("active");
+      setTimeout(apply, 0);
+    });
+  });
+  Array.prototype.forEach.call(catBtns, function (b) {
+    b.addEventListener("click", function () { setTimeout(apply, 0); });
+  });
 })();
 </script>
 </body>
