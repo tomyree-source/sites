@@ -351,6 +351,56 @@ footer a:hover{text-decoration:underline}
     </div>
   </section>
 
+
+  <!-- 開業備品のおすすめ -->
+  <section id="goods" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-label">Goods — 開業備品</div>
+        <h2>開業備品のおすすめ</h2>
+        <p>開業時にそろえる備品を、施術歴30年の現場目線で比べたコーナーです。お客様の体に触れる物はケチらず、触れない物は安い物で始めるのが基本。各リンク先はAmazonの検索結果です（PR）。</p>
+      </div>
+      <div class="grid-2">
+        <a class="card" href="https://www.amazon.co.jp/s?k=%E6%8A%98%E3%82%8A%E3%81%9F%E3%81%9F%E3%81%BF+%E3%83%9E%E3%83%83%E3%82%B5%E3%83%BC%E3%82%B8%E3%83%99%E3%83%83%E3%83%89+%E6%96%BD%E8%A1%93%E7%94%A8&tag=cat22202-22" target="_blank" rel="noopener sponsored" data-aff-name="施術ベッド" data-aff-cat="開業備品">
+          <div class="card-body">
+            <span class="card-tag">備品 ・ 最優先</span>
+            <h3>施術ベッド（折りたたみ）</h3>
+            <p>格安帯は9,800円〜。幅70cm前後と高さ調整で選ぶのが要点です。毎日使うなら国内メーカー系のポータブルも候補に入ります。</p>
+            <div class="card-foot"><span class="price">¥9,800〜</span><span class="read-link">Amazonで見る →</span></div>
+          </div>
+        </a>
+        <a class="card" href="https://www.amazon.co.jp/s?k=%E3%82%BF%E3%82%AA%E3%83%AB%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%BC+12L&tag=cat22202-22" target="_blank" rel="noopener sponsored" data-aff-name="タオルウォーマー" data-aff-cat="開業備品">
+          <div class="card-body">
+            <span class="card-tag gold">備品 ・ 清潔感</span>
+            <h3>タオルウォーマー 12L</h3>
+            <p>フェイスタオル約12枚が入る12L級で、1人サロンの1日の回転に足ります。温かいタオルは満足度に直結します。</p>
+            <div class="card-foot"><span class="price">¥12,980前後</span><span class="read-link">Amazonで見る →</span></div>
+          </div>
+        </a>
+        <a class="card" href="https://www.amazon.co.jp/s?k=%E6%A5%AD%E5%8B%99%E7%94%A8+%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B9%E3%82%BF%E3%82%AA%E3%83%AB+12%E6%9E%9A&tag=cat22202-22" target="_blank" rel="noopener sponsored" data-aff-name="業務用フェイスタオル" data-aff-cat="開業備品">
+          <div class="card-body">
+            <span class="card-tag">備品 ・ 消耗品</span>
+            <h3>業務用フェイスタオル 12枚セット</h3>
+            <p>1枚あたり250円ほど。オイルのシミが目立たない濃色を2セット用意すると、洗濯の回転が止まりません。</p>
+            <div class="card-foot"><span class="price">¥2,970〜</span><span class="read-link">Amazonで見る →</span></div>
+          </div>
+        </a>
+        <a class="card" href="https://www.amazon.co.jp/s?k=%E3%83%9B%E3%83%9B%E3%83%90%E3%82%AA%E3%82%A4%E3%83%AB+1000ml+%E6%A5%AD%E5%8B%99%E7%94%A8&tag=cat22202-22" target="_blank" rel="noopener sponsored" data-aff-name="ホホバオイル" data-aff-cat="開業備品">
+          <div class="card-body">
+            <span class="card-tag gold">備品 ・ 肌に触れる物</span>
+            <h3>ホホバオイル 1L（業務用）</h3>
+            <p>肌に直接触れる物なので、ここはケチらない側。酸化しにくいホホバの1Lは、全身20〜30回分が目安です。</p>
+            <div class="card-foot"><span class="price">¥5,500〜</span><span class="read-link">Amazonで見る →</span></div>
+          </div>
+        </a>
+      </div>
+      <div class="btn-row" style="margin-top:22px">
+        <a class="btn btn-primary" href="https://note.com/222hifumin" target="_blank" rel="noopener">12品すべての比較記事を読む（note・無料） →</a>
+      </div>
+      <p class="fineprint">※ 価格は2026年11月時点の目安です。最新の価格と在庫はリンク先でご確認ください。本コーナーのリンクにはアフィリエイトリンクが含まれます。</p>
+    </div>
+  </section>
+
   <!-- LINE公式 -->
   <section id="line">
     <div class="wrap">
@@ -412,5 +462,50 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
+
+<script>
+(function(){
+  var SITE_ID = 'hifumin-note';
+  var RULES = [
+    ['amazon', /(^|\.)amazon\.co\.jp$|(^|\.)amzn\.to$|(^|\.)amzn\.asia$/],
+    ['rakuten', /(^|\.)rakuten\.co\.jp$|(^|\.)r10\.to$/],
+    ['a8', /(^|\.)a8\.net$/],
+    ['moshimo', /(^|\.)moshimo\.com$/],
+    ['valuecommerce', /(^|\.)valuecommerce\.com$/]
+  ];
+  function aspOf(host){
+    for (var i=0;i<RULES.length;i++){ if (RULES[i][1].test(host)) return RULES[i][0]; }
+    return null;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var url;
+    try { url = new URL(a.href, location.href); } catch (err) { return; }
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+    var asp = aspOf(url.hostname);
+    var forced = a.getAttribute('data-aff');
+    if (!asp && !forced) return;
+    if (typeof window.gtag !== 'function') return;
+    var asin = '';
+    var m = url.pathname.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/);
+    if (m) asin = m[1];
+    var text = (a.textContent || '').replace(/\s+/g,' ').trim();
+    if (!text) { var img = a.querySelector('img'); if (img) text = img.getAttribute('alt') || ''; }
+    var params = {
+      site_id: SITE_ID,
+      asp: forced || asp,
+      link_id: asin,
+      link_text: text.slice(0,80),
+      link_domain: url.hostname,
+      page_path: location.pathname,
+      transport_type: 'beacon'
+    };
+    var pn = a.getAttribute('data-aff-name'); if (pn) params.product_name = pn.slice(0,80);
+    var pc = a.getAttribute('data-aff-cat'); if (pc) params.product_category = pc.slice(0,80);
+    window.gtag('event', 'affiliate_click', params);
+  }, true);
+})();
+</script>
 </body>
 </html>
