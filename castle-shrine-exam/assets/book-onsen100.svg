@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+<rect width="300" height="420" fill="#1f5f6e"/>
+<rect x="14" y="14" width="272" height="392" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+<text x="150" y="76" text-anchor="middle" font-size="16" fill="#cfeef5" font-family="sans-serif">一生に一度は行きたい</text>
+<text x="150" y="118" text-anchor="middle" font-size="27" font-weight="700" fill="#ffffff" font-family="sans-serif">温泉100選</text>
+<text x="150" y="146" text-anchor="middle" font-size="13" fill="#cfeef5" font-family="sans-serif">新装版</text>
+<g stroke="#ffffff" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.9">
+<path d="M118 210 q8 -16 0 -32"/>
+<path d="M150 214 q8 -16 0 -32"/>
+<path d="M182 210 q8 -16 0 -32"/>
+</g>
+<path d="M84 246 h132 l-14 62 a10 10 0 0 1 -10 8 h-84 a10 10 0 0 1 -10 -8 Z" fill="#fffdf7" opacity="0.92"/>
+<text x="150" y="356" text-anchor="middle" font-size="13" fill="#ffffff" font-family="sans-serif">石川理夫 著</text>
+</svg>

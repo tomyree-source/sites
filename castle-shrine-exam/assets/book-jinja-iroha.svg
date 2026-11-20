@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+<rect width="300" height="420" fill="#5d2a2a"/>
+<rect x="14" y="14" width="272" height="392" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+<text x="150" y="86" text-anchor="middle" font-size="25" font-weight="700" fill="#ffffff" font-family="sans-serif">神社のいろは</text>
+<text x="150" y="120" text-anchor="middle" font-size="14" fill="#f3d9c8" font-family="sans-serif">神社検定公式テキスト 1</text>
+<g fill="#e8b4a0">
+<path d="M60 190 Q150 168 240 190 L232 206 Q150 186 68 206 Z"/>
+<rect x="78" y="212" width="144" height="10"/>
+<rect x="96" y="222" width="12" height="86"/>
+<rect x="192" y="222" width="12" height="86"/>
+<rect x="140" y="222" width="20" height="40"/>
+</g>
+<text x="150" y="352" text-anchor="middle" font-size="13" fill="#ffffff" font-family="sans-serif">神社本庁 監修</text>
+</svg>
