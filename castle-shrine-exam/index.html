@@ -550,6 +550,23 @@
       .product-card p.desc { font-size: 14.5px; color: var(--ink-soft); margin: 0 0 14px; flex: 1; }
       .product-card .price-note { font-size: 12.5px; color: var(--dim); margin: 10px 0 0; }
 
+      /* ---------- home starter picks ---------- */
+      .starter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      @media (max-width: 900px) { .starter-grid { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 480px) { .starter-grid { grid-template-columns: 1fr; } }
+      .starter-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 18px; display: flex; flex-direction: column; gap: 10px;
+        text-decoration: none; color: var(--ink);
+      }
+      .starter-card:hover { border-color: var(--indigo); box-shadow: var(--shadow); }
+      .starter-card:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+      .starter-card .card-cover { margin: 0; display: block; }
+      .starter-card .card-cover img { width: 110px; height: auto; display: block; border-radius: 4px; border: 1px solid var(--line); box-shadow: 0 4px 14px rgba(60,48,20,0.18); }
+      .starter-card .cover-note { font-size: 10.5px; color: var(--dim); margin: 6px 0 0; }
+      .starter-card h3 { font-size: 15.5px; margin: 0; line-height: 1.55; }
+      .starter-card .starter-more { margin-top: auto; font-size: 13.5px; font-weight: 700; color: var(--indigo); }
+
       /* ---------- history ---------- */
       table.history { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
       table.history th, table.history td { padding: 11px 14px; text-align: left; font-size: 14.5px; border-bottom: 1px solid var(--line); }
@@ -880,6 +897,40 @@
         </div>
 
         <div class="wrap">
+          <section class="block" aria-labelledby="starter-h" style="margin-top:40px">
+            <h2 id="starter-h">まず読むなら・まず揃えるなら <span class="en">START HERE</span></h2>
+            <p class="block-lead">検定の学習と旅の計画に、まず手に取りたい4冊です。いずれもAmazon.co.jpへのリンク（PR）です。</p>
+            <div class="starter-grid">
+              <a class="starter-card" href="https://www.amazon.co.jp/dp/4651201148?tag=cat22202-22" target="_blank" rel="sponsored noopener">
+                <span><span class="tag pr">PR</span></span>
+                <span class="card-cover"><img src="assets/book-hyakumeijo.svg" alt="『日本100名城に行こう 公式スタンプ帳つき』のイメージ画像" loading="lazy" /><span class="cover-note">表紙イメージ（実際の表紙とは異なります）</span></span>
+                <h3>日本100名城に行こう 公式スタンプ帳つき</h3>
+                <span class="starter-more">Amazonで見る →</span>
+              </a>
+              <a class="starter-card" href="https://www.amazon.co.jp/dp/4594065503?tag=cat22202-22" target="_blank" rel="sponsored noopener">
+                <span><span class="tag pr">PR</span></span>
+                <span class="card-cover"><img src="assets/book-jinja-iroha.svg" alt="『神社のいろは 神社検定公式テキスト 1』のイメージ画像" loading="lazy" /><span class="cover-note">表紙イメージ（実際の表紙とは異なります）</span></span>
+                <h3>神社のいろは 神社検定公式テキスト 1</h3>
+                <span class="starter-more">Amazonで見る →</span>
+              </a>
+              <a class="starter-card" href="https://www.amazon.co.jp/dp/4299059166?tag=cat22202-22" target="_blank" rel="sponsored noopener">
+                <span><span class="tag pr">PR</span></span>
+                <span class="card-cover"><img src="assets/book-onsen100.svg" alt="『一生に一度は行きたい温泉100選 新装版』のイメージ画像" loading="lazy" /><span class="cover-note">表紙イメージ（実際の表紙とは異なります）</span></span>
+                <h3>一生に一度は行きたい温泉100選 新装版</h3>
+                <span class="starter-more">Amazonで見る →</span>
+              </a>
+              <a class="starter-card" href="https://www.amazon.co.jp/dp/4418172599?tag=cat22202-22" target="_blank" rel="sponsored noopener">
+                <span><span class="tag pr">PR</span></span>
+                <span class="card-cover"><img src="assets/book-nihonshu.svg" alt="『ゼロから分かる！ 図解日本酒入門』のイメージ画像" loading="lazy" /><span class="cover-note">表紙イメージ（実際の表紙とは異なります）</span></span>
+                <h3>ゼロから分かる！ 図解日本酒入門</h3>
+                <span class="starter-more">Amazonで見る →</span>
+              </a>
+            </div>
+            <div class="btn-row">
+              <a class="btn ghost" href="#/shop">ショップ（本・グッズ全商品）を見る →</a>
+            </div>
+          </section>
+
           <section class="block" aria-labelledby="guide-h" style="margin-top:40px">
             <h2 id="guide-h">初めての人向け入口 <span class="en">GETTING STARTED</span></h2>
             <p class="block-lead">初めての方は、この3ステップでサイトの楽しみ方がわかります。まずは気になる検定をひとつ選んで、教科書から読み始めてみてください。</p>
@@ -1826,6 +1877,8 @@ brandsafe_js_async('//ad-verification.a8.net/ad', '_site=4171&_article=2315&_lin
         { id: "onsen-meito", image: "assets/onsen-meito.svg", title: "ここちバス 日本の名湯 全18種セット 30g×56包 個包装 アソート 入浴剤【Amazon.co.jp限定】", author: "バスクリン", byLabel: "メーカー", category: "入浴剤", description: "バスクリンの入浴剤「日本の名湯」シリーズの全18種を詰め合わせたアソートです。登別カルルス・乳頭・山代・黒川・別府・道後など、各温泉地の湯の色と香りを表現した「温泉地公認」仕様で、医薬部外品。30gの個包装が56包入っています。画像はパッケージのイメージです。", baseUrl: "https://www.amazon.co.jp/dp/B0BC87PJKW", imageNote: "パッケージのイメージ（実際の商品とは異なります）", priceNote: "価格はAmazonでご確認ください" },
         { id: "rurubu-hakone", image: "assets/book-rurubu-hakone.svg", title: "るるぶ箱根'26（るるぶ情報版）", author: "JTBパブリッシング 旅行ガイドブック 編集部", category: "温泉ガイド", description: "神奈川県・箱根の温泉と宿、グルメ、観光スポットを案内するガイドブックの2026年版です。電子書籍付きで、箱根十七湯をめぐる旅の計画に使えます。", baseUrl: "https://www.amazon.co.jp/dp/453316594X", priceNote: "価格はAmazonでご確認ください" },
         { id: "mapple-onsen-hokkaido", image: "assets/book-mapple-onsen.svg", title: "まっぷる 温泉やど 北海道（まっぷるマガジン）", author: "昭文社 旅行ガイドブック 編集部", category: "温泉ガイド", description: "北海道の温泉地と宿を紹介するガイドブックです。温泉宿情報誌のシリーズで、各宿の泉質や風呂、日帰り利用などのデータを掲載しています。登別温泉など道内の名湯めぐりに。", baseUrl: "https://www.amazon.co.jp/dp/4398299971", priceNote: "価格はAmazonでご確認ください" },
+        { id: "jinja-iroha", image: "assets/book-jinja-iroha.svg", title: "神社のいろは 神社検定公式テキスト 1", author: "神社本庁 監修", category: "神社の本", description: "神社検定の公式テキスト。参拝作法から神様、お祭り、歴史まで、神社の基礎的なことがらをQ＆A方式で平易に解説した一冊。神社検定3級の基本テキストです。", baseUrl: "https://www.amazon.co.jp/dp/4594065503", priceNote: "価格はAmazonでご確認ください" },
+        { id: "onsen-100sen", image: "assets/book-onsen100.svg", title: "一生に一度は行きたい温泉100選 新装版", author: "石川理夫", category: "温泉ガイド", description: "温泉評論家が選ぶ、全国の極上温泉100か所を豊富な写真で紹介するガイド。絶景温泉から秘湯まで、温泉地選びの参考になる一冊です。", baseUrl: "https://www.amazon.co.jp/dp/4299059166", priceNote: "価格はAmazonでご確認ください" },
         { id: "zukai-nihonshu", image: "assets/book-nihonshu.svg", title: "ゼロから分かる！ 図解日本酒入門", author: "山本洋子", category: "日本酒の本", description: "日本酒の原料や造り、特定名称酒の分類、味わいの傾向などを、図解でやさしく解説した入門書です。地酒検定の教科書と合わせて、日本酒の基礎を整理するのに使えます。", baseUrl: "https://www.amazon.co.jp/dp/4418172599", priceNote: "価格はAmazonでご確認ください" },
         { id: "kuraberu-jizake", image: "assets/sake-kuraberu.svg", title: "蔵べるシリーズ 全国12蔵元 地酒飲み比べセット 180ml×12本（純米吟醸・大吟醸入り）", author: "ドウシシャ（DOSHISHA）", byLabel: "メーカー", category: "日本酒セット", description: "北海道の千歳鶴から高知の土佐菊水まで、全国12蔵元の地酒を180ml瓶で詰め合わせた飲み比べセットです。櫻政宗の大吟醸、白龍の純米吟醸など、純米吟醸・大吟醸を含むラインナップと表示されています。お酒は20歳になってから。画像はパッケージのイメージです。", baseUrl: "https://www.amazon.co.jp/dp/B0CPP4S69R", imageNote: "パッケージのイメージ（実際の商品とは異なります）", priceNote: "価格はAmazonでご確認ください" },
         { id: "hinemos-set", image: "assets/sake-hinemos.svg", title: "HINEMOS 日本酒 飲み比べセット dinner time（純米大吟醸・スパークリング・にごり酒）4銘柄", author: "株式会社RiceWine（HINEMOS）", byLabel: "メーカー", category: "日本酒セット", description: "HINEMOSブランドの日本酒飲み比べセットです。純米大吟醸、スパークリング、にごり酒を含む4銘柄の詰め合わせで、箱入り。アルコール分は15度と表示されています。お酒は20歳になってから。画像はパッケージのイメージです。", baseUrl: "https://www.amazon.co.jp/dp/B0DL6D83CK", imageNote: "パッケージのイメージ（実際の商品とは異なります）", priceNote: "価格はAmazonでご確認ください" },
@@ -5205,12 +5258,25 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
         "教科書 各5章": "Textbooks: 5 chapters each",
         "出題10問・7問以上で合格": "10 questions — pass with 7 or more",
         "旅ガチャ 全191種": "Travel Gacha: 191 cards",
-        "本検定は独自教材にもとづく民間の認定で、公的な資格ではありません。": "These are private certifications based on original materials, not public qualifications."
+        "本検定は独自教材にもとづく民間の認定で、公的な資格ではありません。": "These are private certifications based on original materials, not public qualifications.",
+        "まず読むなら・まず揃えるなら": "First Books to Read, First Gear to Get",
+        "検定の学習と旅の計画に、まず手に取りたい4冊です。いずれもAmazon.co.jpへのリンク（PR）です。": "Four books to pick up first for exam study and trip planning. All links go to Amazon.co.jp (PR).",
+        "日本100名城に行こう 公式スタンプ帳つき": "Visit Japan's 100 Famous Castles — with Official Stamp Book",
+        "神社のいろは 神社検定公式テキスト 1": "The ABCs of Shrines: Official Shrine Exam Textbook 1",
+        "一生に一度は行きたい温泉100選 新装版": "100 Hot Springs to Visit Once in a Lifetime (New Edition)",
+        "ゼロから分かる！ 図解日本酒入門": "Sake from Zero! An Illustrated Introduction to Japanese Sake",
+        "表紙イメージ（実際の表紙とは異なります）": "Cover image (illustrative; the actual cover differs)",
+        "Amazonで見る →": "View on Amazon →",
+        "ショップ（本・グッズ全商品）を見る →": "See the shop (all books & goods) →"
       };
       var ALT_EN = {
         "姫路城のイラスト": "Illustration of Himeji Castle",
         "川沿いに木造旅館とガス灯が並ぶ銀山温泉のイラスト": "Illustration of Ginzan Onsen, with wooden inns and gas lamps along the river",
         "兜をかぶった公式マスコット こま吉": "Komakichi, the official mascot wearing a samurai helmet",
+        "『日本100名城に行こう 公式スタンプ帳つき』のイメージ画像": "Cover image of “Visit Japan's 100 Famous Castles — with Official Stamp Book”",
+        "『神社のいろは 神社検定公式テキスト 1』のイメージ画像": "Cover image of “The ABCs of Shrines: Official Shrine Exam Textbook 1”",
+        "『一生に一度は行きたい温泉100選 新装版』のイメージ画像": "Cover image of “100 Hot Springs to Visit Once in a Lifetime (New Edition)”",
+        "『ゼロから分かる！ 図解日本酒入門』のイメージ画像": "Cover image of “Sake from Zero! An Illustrated Introduction to Japanese Sake”",
         "白い天守がそびえる日本のお城のイラスト": "Illustration of a Japanese castle with a white keep",
         "朱い鳥居と社殿のある神社のイラスト": "Illustration of a shrine with a vermilion torii gate and shrine buildings",
         "湯けむりの立つ露天風呂と山あいの温泉宿のイラスト": "Illustration of an open-air bath with rising steam and a hot spring inn in the mountains",
@@ -5365,6 +5431,51 @@ var CASTLE_EXTRA = {"2": {"img": "assets/ill-castle-2.webp", "desc2": "五稜郭
   }
   window.addEventListener("hashchange", go);
   go();
+})();
+</script>
+<script>
+(function(){
+  var SITE_ID = 'tabi-kentei';
+  var RULES = [
+    ['amazon', /(^|\.)amazon\.co\.jp$|(^|\.)amzn\.to$|(^|\.)amzn\.asia$/],
+    ['rakuten', /(^|\.)rakuten\.co\.jp$|(^|\.)r10\.to$/],
+    ['a8', /(^|\.)a8\.net$/],
+    ['moshimo', /(^|\.)moshimo\.com$/],
+    ['valuecommerce', /(^|\.)valuecommerce\.com$/],
+    ['suzuri', /(^|\.)suzuri\.jp$/]
+  ];
+  function aspOf(host){
+    for (var i=0;i<RULES.length;i++){ if (RULES[i][1].test(host)) return RULES[i][0]; }
+    return null;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var url;
+    try { url = new URL(a.href, location.href); } catch (err) { return; }
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+    var asp = aspOf(url.hostname);
+    var forced = a.getAttribute('data-aff');
+    if (!asp && !forced) return;
+    if (typeof window.gtag !== 'function') return;
+    var asin = '';
+    var m = url.pathname.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/);
+    if (m) asin = m[1];
+    var text = (a.textContent || '').replace(/\s+/g,' ').trim();
+    if (!text) { var img = a.querySelector('img'); if (img) text = img.getAttribute('alt') || ''; }
+    var params = {
+      site_id: SITE_ID,
+      asp: forced || asp,
+      link_id: asin,
+      link_text: text.slice(0,80),
+      link_domain: url.hostname,
+      page_path: location.pathname,
+      transport_type: 'beacon'
+    };
+    var pn = a.getAttribute('data-aff-name'); if (pn) params.product_name = pn.slice(0,80);
+    var pc = a.getAttribute('data-aff-cat'); if (pc) params.product_category = pc.slice(0,80);
+    window.gtag('event', 'affiliate_click', params);
+  }, true);
 })();
 </script>
 </body>
