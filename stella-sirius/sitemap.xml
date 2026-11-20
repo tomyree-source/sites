@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tomyree-source.github.io/sites/stella-sirius/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://tomyree-source.github.io/sites/stella-sirius/assets/blog.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -213,6 +213,11 @@
   <url>
     <loc>https://tomyree-source.github.io/sites/stella-sirius/assets/b/kisei-mukumi.html</loc>
     <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tomyree-source.github.io/sites/stella-sirius/assets/b/fuyu-kansou-hie.html</loc>
+    <lastmod>2026-11-20</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
