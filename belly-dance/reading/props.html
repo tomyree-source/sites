@@ -1129,7 +1129,21 @@ if (location.hash.length > 1) {
 
 // ---- school portal (data-driven; add entries to SCHOOLS to publish) ----
 // Entry shape: { name, pref, city, station, styles:[], features:[], forms:[], website, sns, intro }
-var SCHOOLS = [];
+var SCHOOLS = [
+{name:"ラクスポリマ☆ベリーダンススクール",pref:"兵庫県",city:"神戸市中央区・三宮",station:"三宮駅",styles:["オリエンタル","エジプシャン","ターキッシュ・ロマ"],features:["体験レッスン（要予約）","入門・基礎クラス","プライベートレッスン"],forms:["ドロップイン受講可"],intro:"神戸・三宮を本拠に、大阪・徳島・熊本など複数地域で教室を開くスクール。入門から振付クラスまで段階別のクラスがあり、体験レッスンも受け付けています。",website:"https://www.raksporrima.com",sns:""},
+{name:"Ay Belly Dance School",pref:"大阪府",city:"大阪市",station:"堺筋本町駅（船場の会場）",styles:["オリエンタル"],features:["発表会の開催","ハフラの開催"],forms:[],intro:"ダンサーSothis（ソティス）が主宰するスクール。大阪・船場のスタジオを会場に、生演奏を交えた発表会やハフラを開いています。",website:"http://sothis.is-mine.net/",sns:""},
+{name:"IL Sey Bellydance Company",pref:"大阪府",city:"大阪市（中津・塚本・四ツ橋）",station:"中津駅・塚本駅・四ツ橋駅",styles:["オリエンタル","ベリーダンスフィットネス"],features:["初心者向けクラス","オンラインレッスン","サブスク動画レッスン"],forms:[],intro:"ベリーダンサーIL Sey（イルセ）が主宰し、大阪を中心に対面レッスンを行うカンパニー。オンラインライブや動画のサブスク講座も提供しています。",website:"https://ilseybellydancer.com/",sns:""},
+{name:"ロータスランド（Lotus Land）",pref:"大阪府",city:"大阪市中央区・心斎橋",station:"心斎橋駅・本町駅",styles:["エジプシャンスタイル"],features:["初心者クラス","プライベートレッスン","発表会"],forms:[],intro:"ダンサーLotusを中心とするベリーダンスカンパニーで、大阪・心斎橋を拠点にエジプシャンスタイルのレッスンを展開しています。",website:"https://www.lotusland.jp/",sns:""},
+{name:"Sammyベリーダンススタジオ",pref:"京都府",city:"京都市下京区・四条烏丸",station:"四条駅・烏丸駅",styles:[],features:["体験レッスン","基礎クラス","発表会の開催"],forms:[],intro:"京都・四条烏丸に専用スタジオを持つベリーダンススタジオ。基礎から学べるクラスがあり、体験レッスンや発表会も行っています。",website:"http://sammybellydancestudio.com/",sns:""},
+{name:"杏慈BellyDanceSchool",pref:"京都府",city:"京都市伏見区・四条",station:"",styles:[],features:["体験・見学随時受付","初心者歓迎"],forms:[],intro:"ベリーダンサー杏慈（アンジー）が講師を務めるスクール。京都の伏見・四条と大阪・枚方でレッスンを開講しています。",website:"https://bellydancer-angy.com/",sns:""},
+{name:"TRIBAL.KB",pref:"兵庫県",city:"神戸市",station:"",styles:["トライバルフュージョン","FCBDスタイル","フィンガーシンバル"],features:["ビギナークラス","オンラインレッスン"],forms:[],intro:"Mayu Katoが主宰し、神戸でトライバルフュージョンとFCBDスタイルを教えるスタジオ。ビギナーとアドバンスのクラスがあり、オンラインクラスも開いています。",website:"https://www.kb-tribal.com/",sns:""},
+{name:"Turkish Bellydance & Pilates Studio PIRIL",pref:"大阪府",city:"大阪市中央区（天満橋・谷町四丁目）",station:"天満橋駅・谷町四丁目駅",styles:["トルコスタイル（ターキッシュ）","ピラティス併設"],features:["体験レッスン","初心者歓迎","チケット制"],forms:[],intro:"大阪市中央区にある、トルコスタイルのベリーダンスとピラティスの教室。講師Ceciliaによるレッスンで、チケット制で通えます。",website:"https://studiopiril.com/",sns:""},
+{name:"NESMA（ネスマベリーダンス大阪）",pref:"大阪府",city:"大阪市中央区・谷町四丁目",station:"谷町四丁目駅",styles:["FCBD®Style（即興群舞）"],features:["ワークショップ・練習会の開催"],forms:[],intro:"大阪・谷町四丁目を拠点とするベリーダンスの団体。即興群舞のFCBD®Styleを中心に、レッスンや生音の練習会・ワークショップを行っています。",website:"http://nesma.jp/bellydance/",sns:""},
+{name:"AL SAFAR ORIENTAL DANCE & YOGA",pref:"大阪府",city:"大阪市北区・中央区（南森町・天満橋・扇町）",station:"南森町駅・扇町駅・天満橋駅",styles:["オリエンタルダンス"],features:["体験レッスン受付中","少人数制レッスン","初心者対象クラス"],forms:[],intro:"大阪市内で講師Atifaが開くオリエンタルダンスの教室。初心者を対象とした少人数制のレッスンを、南森町・天満橋・扇町周辺のスタジオで行っています。",website:"https://emicamroccojp.wixsite.com/al-safar-oriental-da",sns:""},
+{name:"Yumi Bellydance",pref:"兵庫県",city:"神戸市・西宮市",station:"",styles:[],features:["発表会・ハフラの開催"],forms:[],intro:"神戸・西宮でレッスンを行うベリーダンススクール。発表会やハフラを定期的に開いています。",website:"https://yumi-belly.com/",sns:""},
+{name:"Yalla Yalla Belly（ヤッラーヤッラーベリー）",pref:"和歌山県",city:"和歌山市",station:"",styles:["オリエンタル"],features:["女性専用スクール","体験レッスン受付中","初心者向けクラス"],forms:[],intro:"和歌山市にある女性専用のベリーダンススクール。講師MISAKIが、初心者向けのクラスを中心に体験レッスンを受け付けています。",website:"https://yalla-yalla-belly.com/",sns:""},
+{name:"Merna Land（メルナランド）",pref:"兵庫県",city:"神戸市中央区・三ノ宮",station:"三ノ宮駅・神戸三宮駅",styles:["エジプシャン"],features:["入門クラスあり","未経験者でも受けられるレッスン","発表会（メルパ）の開催"],forms:[],intro:"講師メルナが担当するベリーダンスのクラスで、ロータスランドの公式サイトで案内されています。神戸・三ノ宮や神戸駅、西宮、大阪のスタジオやカルチャー教室で開講しています。",website:"https://www.lotusland.jp/lesson/merna/",sns:""}
+];
 var PREFS = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県","オンラインのみ"];
 var prefSel = document.getElementById("f-pref");
 var styleSel = document.getElementById("f-style");
