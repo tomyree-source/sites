@@ -83,6 +83,11 @@ body{padding-bottom:84px}
 .floating-cta a{flex:1;text-align:center;border-radius:30px;padding:12px 6px;font-weight:bold;text-decoration:none;font-size:15px}
 .floating-cta .cta-reserve{background:#1e4d3b;color:#fff}
 .floating-cta .cta-line{background:#06c755;color:#fff}
+.floating-cta .cta-menu{background:#fff;color:#1e4d3b;border:2px solid #1e4d3b;flex:0 0 96px}
+.menu-panel{position:fixed;left:0;right:0;bottom:66px;z-index:998;background:#fffdf7;border-top:2px solid #1e4d3b;box-shadow:0 -4px 16px rgba(0,0,0,.15);display:none}
+.menu-panel.open{display:block}
+.menu-panel a{display:block;padding:13px 18px;color:#1e4d3b;text-decoration:none;border-bottom:1px dotted #ccc;font-weight:bold;font-size:15px}
+.menu-panel a:last-child{border-bottom:none}
 </style>
 </head><body>
 <div class="wrap">
@@ -210,5 +215,13 @@ body{padding-bottom:84px}
 美容整体ステラ・ポラリス東三国｜<a href="https://www.instagram.com/stella_polaris222">Instagram @stella_polaris222</a><br>
 大阪府大阪市淀川区東三国2丁目25番4号101
 </footer>
-</div><div class="floating-cta"><a class="cta-reserve" href="https://coubic.com/stella-polaris">ご予約はこちら</a><a class="cta-line" href="https://lin.ee/uCiinWB">LINEで予約・相談</a></div>
+</div><div class="menu-panel" id="site-menu">
+<a href="index.html">トップページ</a>
+<a href="yasui-guide.html">料金ガイド｜東三国で安く受けたい方へ</a>
+<a href="kogao-taiken.html">小顔矯正30分無料体験</a>
+<a href="column.html">女性のお悩みコラム</a>
+<a href="https://tomyree-source.github.io/sites/selfcare-library/">セルフケア資料ライブラリ（無料）</a>
+<a href="https://tomyree-source.github.io/sites/higashimikuni/">男性専用整体院「北辰堂」（男性の方）</a>
+</div>
+<div class="floating-cta"><a class="cta-reserve" href="https://coubic.com/stella-polaris">ご予約はこちら</a><a class="cta-line" href="https://lin.ee/uCiinWB">LINEで予約・相談</a><a class="cta-menu" href="#" onclick="document.getElementById('site-menu').classList.toggle('open');return false;">☰ メニュー</a></div>
 </body></html>
