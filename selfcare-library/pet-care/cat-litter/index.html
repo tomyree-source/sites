@@ -46,6 +46,14 @@ li{margin:.35em 0}
 nav.pager{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid #e5ded0;margin-top:2.2em;padding-top:1em;font-size:.95em}
 footer{max-width:760px;margin:0 auto;padding:14px 18px 30px;color:#888;font-size:.85em;text-align:center}
 a{color:#7a5c2e}
+.toc{border:1px solid #e3d9bd;background:#fdfaf1;border-radius:8px;padding:12px 16px;margin:1.4em 0}
+.toc p{margin:.2em 0 .5em;font-weight:bold}
+.toc ul{margin:.2em 0}
+table.cmp{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92em}
+table.cmp th,table.cmp td{border:1px solid #ddd2b8;padding:7px 9px;text-align:left;vertical-align:top;line-height:1.6}
+table.cmp th{background:#f7f1de}
+.faq dt{font-weight:bold;margin:1em 0 .2em}
+.faq dd{margin:0 0 .6em}
 .cards{display:flex;flex-wrap:wrap;gap:14px;margin:1em 0}
 .card{width:160px;border:1px solid #e5ddc8;border-radius:12px;padding:12px;background:#fffdf6}
 .card img{width:100%;height:auto;border:1px solid #eee;border-radius:6px}
@@ -60,6 +68,17 @@ a{color:#7a5c2e}
 .first-tag{display:inline-block;background:#d9a441;color:#fff;font-size:11px;font-weight:bold;padding:1px 8px;border-radius:8px;margin:0 0 4px}
 .pr-note{font-size:12px;color:#666;line-height:1.7}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"症状別セルフケア資料","item":"https://tomyree-source.github.io/sites/selfcare-library/"},
+{"@type":"ListItem","position":2,"name":"ペットケアコーナー","item":"https://tomyree-source.github.io/sites/selfcare-library/pet-care/"},
+{"@type":"ListItem","position":3,"name":"猫のトイレの砂の選び方","item":"https://tomyree-source.github.io/sites/selfcare-library/pet-care/cat-litter/"}]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"砂の全交換は、どのくらいの頻度ですればいいですか？","acceptedAnswer":{"@type":"Answer","text":"固まるタイプは、汚れた部分だけを取り除いて減った分を足す使い方が基本です。全交換の頻度は砂の種類やトイレの数で変わりますが、月に1回ほどを目安に、においや汚れが気になるときは早めに行います。容器は洗ってよく乾かしてから、新しい砂を入れてください。"}},
+{"@type":"Question","name":"システムトイレのシートは、何のために使うのですか？","acceptedAnswer":{"@type":"Answer","text":"システムトイレの下段トレーに敷いて、尿を受け止めるための専用シートです。「ニャンとも清潔トイレ」のような専用トイレには、そのトイレ専用のシートを使います。交換の目安は、製品の表示とにおいの様子を見て判断してください。"}},
+{"@type":"Question","name":"砂を急に変えたら、使ってくれなくなりました。","acceptedAnswer":{"@type":"Answer","text":"猫は砂の感触の好みがはっきりしているため、急な全交換で使わなくなることがあります。今の砂に新しい砂を少しずつ混ぜて割合を増やしていくか、新しい砂のトイレを並べて置いて猫に選んでもらう方法が無難です。"}}]}]}
+</script>
 </head>
 <body>
 <main>
@@ -68,7 +87,17 @@ a{color:#7a5c2e}
 <figure><img src="eyecatch.webp" alt="清潔な猫用トイレのそばでくつろぐ白猫のイラスト" width="1200" height="800"><figcaption>砂選びは、猫が気に入って使ってくれることがいちばんの基準です。</figcaption></figure>
 
 <p>猫のトイレの砂にはいろいろな素材があり、どれが正解というより、猫が気に入って使ってくれるかどうかが基準になります。この記事は一般的な飼育・ケアの情報で、病気の診断や治療のためのものではありません。トイレの様子に気になる変化が続くときは、動物病院に相談してください。</p>
-<h2>砂の種類と特徴</h2>
+<div class="toc">
+<p>この記事の内容</p>
+<ul>
+<li><a href="#types">砂の種類と特徴（素材別の比較表つき）</a></li>
+<li><a href="#points">選び方のポイント</a></li>
+<li><a href="#switch">砂の切り替え方</a></li>
+<li><a href="#place">トイレの数と置き場所</a></li>
+<li><a href="#faq">よくある質問</a></li>
+</ul>
+</div>
+<h2 id="types">砂の種類と特徴</h2>
 <ul>
 <li><strong>紙</strong>：軽くて持ち運びしやすく、燃えるゴミに出せる地域が多い素材です。処分の方法は自治体のルールを確認してください</li>
 <li><strong>木</strong>：木の香りがあり、吸水するタイプと崩れるタイプがあります</li>
@@ -88,19 +117,28 @@ a{color:#7a5c2e}
 </div>
 </div>
 </div>
-<h2>選び方のポイント</h2>
+<h3>素材別の比較表</h3>
+<table class="cmp">
+<tr><th>素材</th><th>固まり方</th><th>処分の目安</th><th>重さ・扱い</th><th>向いている暮らし</th></tr>
+<tr><td>紙</td><td>固まるタイプと、固まらないタイプがあります</td><td>燃えるゴミに出せる地域が多い素材です（自治体のルールを確認）</td><td>軽くて持ち運びしやすい</td><td>買い出しやゴミ出しの負担を軽くしたい暮らし</td></tr>
+<tr><td>木</td><td>吸水するタイプと、崩れるタイプがあります</td><td>自治体のルールを確認してください</td><td>木の香りがあります</td><td>システムトイレで使うペレットタイプもあります</td></tr>
+<tr><td>鉱物（ベントナイトなど）</td><td>尿で固まります</td><td>自治体のルールを確認してください</td><td>重く、粉が立ちやすいものもあります</td><td>粒の感触が自然の砂に近く、好む猫が多いとされます</td></tr>
+<tr><td>おから</td><td>固まるタイプがあります</td><td>トイレに流せるタイプもあります（配管の条件はメーカー表示を確認）</td><td>軽い素材です</td><td>処分の手間を減らしたい暮らし</td></tr>
+<tr><td>シリカゲル</td><td>固まらず、吸水します</td><td>自治体のルールを確認してください</td><td>吸水と消臭に優れ、交換の手間が少なめです</td><td>こまめな掃除の時間をとりにくい暮らし（粒を食べないよう注意）</td></tr>
+</table>
+<h2 id="points">選び方のポイント</h2>
 <ul>
 <li><strong>猫の好みが最優先</strong>：使ってくれない砂は、どんなに便利でも意味がありません</li>
 <li>処分のしやすさ：燃えるゴミに出せるか、トイレに流せるかは、お住まいの自治体と住まいの配管によります</li>
 <li>飛び散りと粉立ち：粒の大きさや重さで変わります。掃除のしやすさにも関わります</li>
 <li>固まり方：固まるタイプは汚れた部分だけ取り除けて、砂の補充がしやすくなります</li>
 </ul>
-<h2>砂の切り替え方</h2>
+<h2 id="switch">砂の切り替え方</h2>
 <p>急に全て変えると使ってくれなくなることがあります。今の砂に新しい砂を少しずつ混ぜて割合を増やしていくか、新しい砂を入れたトイレを並べて置き、猫に選んでもらう方法が無難です。</p>
-<h2>トイレの数と置き場所</h2>
+<h2 id="place">トイレの数と置き場所</h2>
 <p>トイレの数は「猫の頭数＋1」が目安とされます。置き場所は、静かで落ち着ける場所、食事の場所から離れた場所が基本です。洗濯機のそばなど、大きな音がする場所を嫌がる猫もいます。</p>
 <div class="box">
-<h2>注意</h2>
+<h2 id="caution">注意</h2>
 <ul>
 <li>砂を食べる様子が見られる場合は、その砂の使用を止めて、動物病院に相談してください。</li>
 <li>トイレの回数・量・様子がいつもと違う状態が続くときは、早めに動物病院へ相談してください。</li>
@@ -108,6 +146,15 @@ a{color:#7a5c2e}
 </ul>
 </div>
 
+<h2 id="faq">よくある質問</h2>
+<dl class="faq">
+<dt>砂の全交換は、どのくらいの頻度ですればいいですか？</dt>
+<dd>固まるタイプは、汚れた部分だけを取り除いて減った分を足す使い方が基本です。全交換の頻度は砂の種類やトイレの数で変わりますが、月に1回ほどを目安に、においや汚れが気になるときは早めに行います。容器は洗ってよく乾かしてから、新しい砂を入れてください。</dd>
+<dt>システムトイレのシートは、何のために使うのですか？</dt>
+<dd>システムトイレの下段トレーに敷いて、尿を受け止めるための専用シートです。「ニャンとも清潔トイレ」のような専用トイレには、そのトイレ専用のシートを使います。交換の目安は、製品の表示とにおいの様子を見て判断してください。</dd>
+<dt>砂を急に変えたら、使ってくれなくなりました。</dt>
+<dd>猫は砂の感触の好みがはっきりしているため、急な全交換で使わなくなることがあります。今の砂に新しい砂を少しずつ混ぜて割合を増やしていくか、新しい砂のトイレを並べて置いて猫に選んでもらう方法が無難です（「砂の切り替え方」の節も参考にしてください）。</dd>
+</dl>
 <h2>おすすめ用品（PR）</h2>
 <p>この記事のテーマに合わせて選んだ用品です。詳しくは販売ページでご確認ください。</p>
 <div class="cards">
