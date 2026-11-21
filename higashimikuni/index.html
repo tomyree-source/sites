@@ -355,10 +355,10 @@ footer b{color:var(--ink)}
 .lang-switch button{border:none;background:transparent;color:var(--ink2);font:inherit;font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:6px;cursor:pointer;letter-spacing:.05em;line-height:1.3}
 .lang-switch button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
 /* symptom guide (top page) */
-.sym-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none;margin:0;padding:0}
+.sym-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none;margin:0;padding:0}
 @media (max-width:900px){.sym-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.sym-grid{grid-template-columns:1fr}}
-.sym-grid li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+@media (max-width:560px){.sym-grid{grid-template-columns:1fr 1fr;gap:10px}#symptoms .sym-grid li.linked a{padding:13px 12px}#symptoms .sym-grid b{font-size:14.5px;line-height:1.45;margin-bottom:0}#symptoms .sym-grid span{display:none}}
+.sym-grid li{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
 .sym-grid b{display:block;font-size:16px;margin-bottom:4px;line-height:1.5}
 .sym-grid span{color:var(--ink2);font-size:13.5px;line-height:1.65;display:block}
 .sym-cat{font-size:17px;font-weight:700;color:var(--accent);margin:28px 0 12px;letter-spacing:.02em}
