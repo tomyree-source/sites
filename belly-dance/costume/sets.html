@@ -619,6 +619,12 @@
           <button type="button" data-price-filter="p3">10,000円〜</button>
         </div>
         <p style="margin-top:10px"><a href="#compare">実商品を価格・送料の比較表で比べる</a></p>
+
+        <div class="filters sort-filters" role="group" aria-label="並び替え">
+          <button type="button" class="active" data-sort="rec">並び替え：おすすめ順</button>
+          <button type="button" data-sort="asc">価格の安い順</button>
+          <button type="button" data-sort="desc">価格の高い順</button>
+        </div>
 <div class="grid3" id="productGrid">
 <article class="product" id="item-set3-zacca-arabian-4set" data-price="3580">
         <img src="https://tshop.r10s.jp/zacca-clover/cabinet/fashion15/zcg3001-00.jpg?_ex=200x200&s=0&r=1" alt="アラビアン衣装 全身4点セット（ベール・ブラトップス・スカート・チェーンベルト）" loading="lazy" style="width:100%;height:auto;max-height:240px;object-fit:contain;display:block;margin:0 0 8px;border-radius:8px;background:#fff">
@@ -1131,6 +1137,44 @@
   });
   Array.prototype.forEach.call(catBtns, function (b) {
     b.addEventListener("click", function () { setTimeout(apply, 0); });
+  });
+})();
+</script>
+<script>
+// 並び替え（種類別ページ専用）: おすすめ順＝掲載順、価格の安い順／高い順。
+// 価格のないカード（カテゴリ紹介）はどちらの並びでも末尾に置く。
+// 価格帯フィルタ（pf-hide）とは独立に、DOMの並びだけを変える。
+(function () {
+  var grid = document.getElementById("productGrid");
+  if (!grid) return;
+  var btns = document.querySelectorAll("[data-sort]");
+  if (!btns.length) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll(".product"));
+  cards.forEach(function (p, i) { p.setAttribute("data-idx", i); });
+  function priceOf(p) {
+    var v = p.getAttribute("data-price");
+    return v === null ? null : parseInt(v, 10);
+  }
+  function apply(mode) {
+    var sorted = cards.slice().sort(function (a, b) {
+      var ia = parseInt(a.getAttribute("data-idx"), 10);
+      var ib = parseInt(b.getAttribute("data-idx"), 10);
+      if (mode === "rec") return ia - ib;
+      var pa = priceOf(a), pb = priceOf(b);
+      if (pa === null && pb === null) return ia - ib;
+      if (pa === null) return 1;
+      if (pb === null) return -1;
+      var d = mode === "asc" ? pa - pb : pb - pa;
+      return d !== 0 ? d : ia - ib;
+    });
+    sorted.forEach(function (p) { grid.appendChild(p); });
+  }
+  Array.prototype.forEach.call(btns, function (b) {
+    b.addEventListener("click", function () {
+      Array.prototype.forEach.call(btns, function (x) { x.classList.remove("active"); });
+      b.classList.add("active");
+      apply(b.getAttribute("data-sort"));
+    });
   });
 })();
 </script>
