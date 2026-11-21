@@ -46,6 +46,14 @@ li{margin:.35em 0}
 nav.pager{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid #e5ded0;margin-top:2.2em;padding-top:1em;font-size:.95em}
 footer{max-width:760px;margin:0 auto;padding:14px 18px 30px;color:#888;font-size:.85em;text-align:center}
 a{color:#7a5c2e}
+.toc{border:1px solid #e3d9bd;background:#fdfaf1;border-radius:8px;padding:12px 16px;margin:1.4em 0}
+.toc p{margin:.2em 0 .5em;font-weight:bold}
+.toc ul{margin:.2em 0}
+table.cmp{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92em}
+table.cmp th,table.cmp td{border:1px solid #ddd2b8;padding:7px 9px;text-align:left;vertical-align:top;line-height:1.6}
+table.cmp th{background:#f7f1de}
+.faq dt{font-weight:bold;margin:1em 0 .2em}
+.faq dd{margin:0 0 .6em}
 .cards{display:flex;flex-wrap:wrap;gap:14px;margin:1em 0}
 .card{width:160px;border:1px solid #e5ddc8;border-radius:12px;padding:12px;background:#fffdf6}
 .card img{width:100%;height:auto;border:1px solid #eee;border-radius:6px}
@@ -60,6 +68,9 @@ a{color:#7a5c2e}
 .first-tag{display:inline-block;background:#d9a441;color:#fff;font-size:11px;font-weight:bold;padding:1px 8px;border-radius:8px;margin:0 0 4px}
 .pr-note{font-size:12px;color:#666;line-height:1.7}
 </style>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "症状別セルフケア資料", "item": "https://tomyree-source.github.io/sites/selfcare-library/"}, {"@type": "ListItem", "position": 2, "name": "ペットケアコーナー", "item": "https://tomyree-source.github.io/sites/selfcare-library/pet-care/"}, {"@type": "ListItem", "position": 3, "name": "猫のブラッシングの基本", "item": "https://tomyree-source.github.io/sites/selfcare-library/pet-care/brushing/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ブラッシングは毎日した方がいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "短毛の猫は週に1〜2回、長毛の猫は毎日少しずつが目安とされます。換毛期（春と秋）は抜け毛が増えるので、回数を少し増やすと部屋に落ちる毛も減らしやすくなります。時間は長くなくて大丈夫で、猫が嫌がる前に切り上げる方が続けやすくなります。"}}, {"@type": "Question", "name": "毛玉ができてしまったら、どうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "無理に引っ張ると皮膚まで引っ張ってしまうので、指で少しずつほぐすか、根元を持って少しずつとくようにします。ハサミで切ると皮膚を傷つけやすいので、大きな毛玉や皮膚に張りついた毛玉は、トリミングサロンや動物病院に相談する方が安全です。"}}, {"@type": "Question", "name": "ブラシを嫌がります。どうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "ラバーブラシなど当たりのやわらかいものから始めるのが入口です。猫がリラックスしているときに、背中やあごの下など触られて平気な場所から短い時間だけとかし、終わったらほめます。耳を倒す、しっぽを大きく振る、体をよじるといったサインが出たら、その日は切り上げてください。"}}]}]}
+</script>
 </head>
 <body>
 <main>
@@ -68,24 +79,35 @@ a{color:#7a5c2e}
 <figure><img src="eyecatch.webp" alt="クッションの上でブラッシングされて気持ちよさそうにしている長毛の猫のイラスト" width="1200" height="800"><figcaption>ブラッシングは、猫が気持ちいいと感じる短い時間から始めるのが続けるコツです。</figcaption></figure>
 
 <p>ブラッシングは、抜け毛や毛玉のケアだけでなく、皮膚や被毛の様子を見る機会にもなる毎日のケアです。この記事は一般的な飼育・ケアの情報で、病気の診断や治療のためのものではありません。皮膚の様子に気になる変化があるときは、動物病院に相談してください。</p>
-<h2>ブラッシングでできること</h2>
+<div class="toc">
+<p>この記事の内容</p>
+<ul>
+<li><a href="#merit">ブラッシングでできること</a></li>
+<li><a href="#freq">頻度の目安</a></li>
+<li><a href="#start">嫌がられない始め方</a></li>
+<li><a href="#tips">とき方のコツ</a></li>
+<li><a href="#types">ブラシの種類（比較表つき）</a></li>
+<li><a href="#faq">よくある質問</a></li>
+</ul>
+</div>
+<h2 id="merit">ブラッシングでできること</h2>
 <ul>
 <li>抜け毛を取り除き、毛玉ができにくい状態を保つ手伝いになります</li>
 <li>皮膚の赤み・かさぶた・できものなど、普段は毛に隠れている様子に気づく機会になります</li>
 <li>猫が平気であれば、触れ合いの時間にもなります</li>
 </ul>
-<h2>頻度の目安</h2>
+<h2 id="freq">頻度の目安</h2>
 <p>短毛の猫は週に1〜2回、長毛の猫は毎日少しずつが目安とされます。換毛期（春と秋）は抜け毛が増えるので、回数を少し増やすと部屋に落ちる毛も減らしやすくなります。時間は長くなくて大丈夫です。猫が嫌がる前に切り上げる方が、結果として続けやすくなります。</p>
-<h2>嫌がられない始め方</h2>
+<h2 id="start">嫌がられない始め方</h2>
 <ul>
 <li>猫がリラックスしているときに、短い時間から始める</li>
 <li>背中やあごの下など、触られて平気な場所からとく</li>
 <li>終わったらほめる。おやつを組み合わせるのも一つの方法です</li>
 <li>耳を倒す、しっぽを大きく振る、体をよじる、といったサインが出たら、その日は切り上げる</li>
 </ul>
-<h2>とき方のコツ</h2>
+<h2 id="tips">とき方のコツ</h2>
 <p>毛の流れに沿って、力を入れずにやさしくとかします。毛玉は無理に引っ張ると皮膚まで引っ張ってしまうので、指で少しずつほぐすか、根元を持って少しずつとくようにします。ハサミで切ると皮膚を傷つけやすいので、大きな毛玉や皮膚に張りついた毛玉は、トリミングサロンや動物病院に相談する方が安全です。</p>
-<h2>ブラシの種類</h2>
+<h2 id="types">ブラシの種類</h2>
 <ul>
 <li><strong>スリッカーブラシ</strong>：細かいピンが並んだブラシ。短毛〜長毛の抜け毛取りに広く使われます。皮膚に強く当てすぎないように</li>
 <li><strong>ラバーブラシ</strong>：ゴム製で当たりがやわらかく、撫でる感覚に近いのでブラッシングが苦手な猫の入り口に</li>
@@ -93,6 +115,14 @@ a{color:#7a5c2e}
 <li><strong>獣毛ブラシ</strong>：毛にツヤを出す仕上げ用として使われます</li>
 </ul>
 <div class="box">
+<h3>ブラシの種類の比較表</h3>
+<table class="cmp">
+<tr><th>種類</th><th>特徴</th><th>向いている猫・場面</th></tr>
+<tr><td>スリッカーブラシ</td><td>細かいピンが並んだブラシで、抜け毛取りに広く使われます。皮膚に強く当てすぎないようにします</td><td>短毛〜長毛の毎日のケアの軸に</td></tr>
+<tr><td>ラバーブラシ</td><td>ゴム製で当たりがやわらかく、撫でる感覚に近いブラシです</td><td>ブラッシングが苦手な猫の入り口に</td></tr>
+<tr><td>コーム（くし）</td><td>毛の流れを整えるくしです</td><td>長毛の仕上げや、毛玉のチェックに</td></tr>
+<tr><td>獣毛ブラシ</td><td>毛にツヤを出す仕上げ用のブラシです</td><td>仕上げのひと手間に</td></tr>
+</table>
 <div class="inrec">
 <p class="inrec-title">まずこれ（PR）</p>
 <div class="cards">
@@ -105,13 +135,22 @@ a{color:#7a5c2e}
 </div>
 </div>
 </div>
-<h2>注意</h2>
+<h2 id="caution">注意</h2>
 <ul>
 <li><strong>精油（アロマオイル）は猫に使わないでください。</strong>香りの強いケア用品も、猫が嫌がることがあります。使う場合は無香料のものを選ぶのが無難です。</li>
 <li>皮膚の赤み、かさぶた、脱毛、かゆがる様子が続くときは、ブラッシングで様子見を続けず、動物病院に相談してください。</li>
 </ul>
 </div>
 
+<h2 id="faq">よくある質問</h2>
+<dl class="faq">
+<dt>ブラッシングは毎日した方がいいですか？</dt>
+<dd>短毛の猫は週に1〜2回、長毛の猫は毎日少しずつが目安とされます。換毛期（春と秋）は抜け毛が増えるので、回数を少し増やすと部屋に落ちる毛も減らしやすくなります。時間は長くなくて大丈夫で、猫が嫌がる前に切り上げる方が続けやすくなります。</dd>
+<dt>毛玉ができてしまったら、どうすればいいですか？</dt>
+<dd>無理に引っ張ると皮膚まで引っ張ってしまうので、指で少しずつほぐすか、根元を持って少しずつとくようにします。ハサミで切ると皮膚を傷つけやすいので、大きな毛玉や皮膚に張りついた毛玉は、トリミングサロンや動物病院に相談する方が安全です。</dd>
+<dt>ブラシを嫌がります。どうすればいいですか？</dt>
+<dd>ラバーブラシなど当たりのやわらかいものから始めるのが入口です。猫がリラックスしているときに、背中やあごの下など触られて平気な場所から短い時間だけとかし、終わったらほめます。耳を倒す、しっぽを大きく振る、体をよじるといったサインが出たら、その日は切り上げてください。</dd>
+</dl>
 <h2>おすすめ用品（PR）</h2>
 <p>この記事のテーマに合わせて選んだ用品です。詳しくは販売ページでご確認ください。</p>
 <div class="cards">
