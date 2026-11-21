@@ -46,6 +46,14 @@ li{margin:.35em 0}
 nav.pager{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid #e5ded0;margin-top:2.2em;padding-top:1em;font-size:.95em}
 footer{max-width:760px;margin:0 auto;padding:14px 18px 30px;color:#888;font-size:.85em;text-align:center}
 a{color:#7a5c2e}
+.toc{border:1px solid #e3d9bd;background:#fdfaf1;border-radius:8px;padding:12px 16px;margin:1.4em 0}
+.toc p{margin:.2em 0 .5em;font-weight:bold}
+.toc ul{margin:.2em 0}
+table.cmp{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92em}
+table.cmp th,table.cmp td{border:1px solid #ddd2b8;padding:7px 9px;text-align:left;vertical-align:top;line-height:1.6}
+table.cmp th{background:#f7f1de}
+.faq dt{font-weight:bold;margin:1em 0 .2em}
+.faq dd{margin:0 0 .6em}
 .cards{display:flex;flex-wrap:wrap;gap:14px;margin:1em 0}
 .card{width:160px;border:1px solid #e5ddc8;border-radius:12px;padding:12px;background:#fffdf6}
 .card img{width:100%;height:auto;border:1px solid #eee;border-radius:6px}
@@ -60,6 +68,9 @@ a{color:#7a5c2e}
 .first-tag{display:inline-block;background:#d9a441;color:#fff;font-size:11px;font-weight:bold;padding:1px 8px;border-radius:8px;margin:0 0 4px}
 .pr-note{font-size:12px;color:#666;line-height:1.7}
 </style>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "症状別セルフケア資料", "item": "https://tomyree-source.github.io/sites/selfcare-library/"}, {"@type": "ListItem", "position": 2, "name": "ペットケアコーナー", "item": "https://tomyree-source.github.io/sites/selfcare-library/pet-care/"}, {"@type": "ListItem", "position": 3, "name": "猫の歯みがきの始め方", "item": "https://tomyree-source.github.io/sites/selfcare-library/pet-care/dental-care/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "歯みがきは毎日必要ですか？", "acceptedAnswer": {"@type": "Answer", "text": "歯垢は数日で歯石になると言われるため、毎日が理想とされます。ただ、最初から毎日を目指すと続かないことも多いので、まずは週に数回から始めて、猫と飼い主さんのペースで回数を増やしていくのが現実的です。"}}, {"@type": "Question", "name": "人用の歯みがき粉を使ってもいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "使わないでください。猫にとって良くない成分（キシリトールなど）が含まれることがあります。使う場合は猫用のものを選んでください。"}}, {"@type": "Question", "name": "歯みがきシートだけで十分ですか？", "acceptedAnswer": {"@type": "Answer", "text": "シートは慣らすための入口の段階です。シートに慣れてきたら、猫用の小さな歯ブラシに進むのが基本です。なお、口臭が強い、食べにくそうにしている、よだれが増えた、歯ぐきが赤い・腫れているといった様子が続くときは、動物病院で口の中を見てもらってください。"}}]}]}
+</script>
 </head>
 <body>
 <main>
@@ -68,13 +79,29 @@ a{color:#7a5c2e}
 <figure><img src="eyecatch.webp" alt="飼い主の指に頬をすり寄せる猫と、そばに置かれた猫用歯ブラシと歯みがきシートのイラスト" width="1200" height="800"><figcaption>歯のケアは、口のまわりを触ることから少しずつ慣らしていきます。</figcaption></figure>
 
 <p>歯垢は放っておくと歯石になり、口臭や歯ぐきのトラブルの原因になることがあります。とはいえ、猫の歯みがきは一気に始めようとすると嫌がられて続きません。この記事は一般的な飼育・ケアの情報で、病気の診断や治療のためのものではありません。口の中の様子に気になる変化があるときは、動物病院に相談してください。</p>
-<h2>慣らし方の手順</h2>
+<div class="toc">
+<p>この記事の内容</p>
+<ul>
+<li><a href="#steps">慣らし方の手順（段階の比較表つき）</a></li>
+<li><a href="#freq">頻度の目安</a></li>
+<li><a href="#tips">無理をしないコツ</a></li>
+<li><a href="#faq">よくある質問</a></li>
+</ul>
+</div>
+<h2 id="steps">慣らし方の手順</h2>
 <h3>1. 口のまわりを触ることから</h3>
 <p>まずは頬や口のまわりをやさしく触ることから始めます。触らせてくれたらほめる、を数日繰り返して、口のまわりを触られることに慣らします。</p>
 <h3>2. 歯みがきシートで拭く</h3>
 <p>指に歯みがきシートを巻いて、歯の表面を軽く拭きます。最初は前の方の歯だけでも大丈夫です。奥歯まで一度にやろうとせず、短い時間で切り上げます。</p>
 <h3>3. 猫用歯ブラシへ</h3>
 <p>シートに慣れてきたら、猫用の小さな歯ブラシに進みます。力を入れず、歯と歯ぐきの境目を小さく動かすのが基本です。</p>
+<h3>ケアの段階の比較表</h3>
+<table class="cmp">
+<tr><th>段階</th><th>すること</th><th>使うもの</th><th>ポイント</th></tr>
+<tr><td>1. 口のまわりを触る</td><td>頬や口のまわりをやさしく触り、触らせてくれたらほめます</td><td>なし</td><td>数日繰り返して、口のまわりを触られることに慣らします</td></tr>
+<tr><td>2. シートで拭く</td><td>指に歯みがきシートを巻いて、歯の表面を軽く拭きます</td><td>歯みがきシート</td><td>最初は前の方の歯だけでも大丈夫です。短い時間で切り上げます</td></tr>
+<tr><td>3. 猫用歯ブラシ</td><td>歯と歯ぐきの境目を、力を入れずに小さく動かします</td><td>猫用の小さな歯ブラシ</td><td>シートに慣れてきたら進む段階です</td></tr>
+</table>
 <div class="inrec">
 <p class="inrec-title">まずこれ（PR）</p>
 <div class="cards">
@@ -87,16 +114,16 @@ a{color:#7a5c2e}
 </div>
 </div>
 </div>
-<h2>頻度の目安</h2>
+<h2 id="freq">頻度の目安</h2>
 <p>歯垢は数日で歯石になると言われるため、毎日が理想とされますが、最初から毎日を目指すと続かないことも多いものです。まずは週に数回から始めて、猫と飼い主さんのペースで回数を増やしていくのが現実的です。</p>
-<h2>無理をしないコツ</h2>
+<h2 id="tips">無理をしないコツ</h2>
 <ul>
 <li>嫌がったらその日は終わりにする。押さえつけて行わない</li>
 <li>できたところまでをほめる。ごほうびを組み合わせるのも一つの方法です</li>
 <li>眠そうなときや遊びで興奮しているときは避け、落ち着いている時間に行う</li>
 </ul>
 <div class="box">
-<h2>注意</h2>
+<h2 id="caution">注意</h2>
 <ul>
 <li><strong>人用の歯みがき粉は使わないでください。</strong>猫にとって良くない成分（キシリトールなど）が含まれることがあります。使う場合は猫用のものを選んでください。</li>
 <li>口臭が強い、食べにくそうにしている、よだれが増えた、歯ぐきが赤い・腫れているといった様子が続くときは、動物病院で口の中を見てもらってください。</li>
@@ -104,6 +131,15 @@ a{color:#7a5c2e}
 </ul>
 </div>
 
+<h2 id="faq">よくある質問</h2>
+<dl class="faq">
+<dt>歯みがきは毎日必要ですか？</dt>
+<dd>歯垢は数日で歯石になると言われるため、毎日が理想とされます。ただ、最初から毎日を目指すと続かないことも多いので、まずは週に数回から始めて、猫と飼い主さんのペースで回数を増やしていくのが現実的です。</dd>
+<dt>人用の歯みがき粉を使ってもいいですか？</dt>
+<dd>使わないでください。猫にとって良くない成分（キシリトールなど）が含まれることがあります。使う場合は猫用のものを選んでください。</dd>
+<dt>歯みがきシートだけで十分ですか？</dt>
+<dd>シートは慣らすための入口の段階です。シートに慣れてきたら、猫用の小さな歯ブラシに進むのが基本です。なお、口臭が強い、食べにくそうにしている、よだれが増えた、歯ぐきが赤い・腫れているといった様子が続くときは、動物病院で口の中を見てもらってください。</dd>
+</dl>
 <h2>おすすめ用品（PR）</h2>
 <p>この記事のテーマに合わせて選んだ用品です。詳しくは販売ページでご確認ください。</p>
 <div class="cards">
