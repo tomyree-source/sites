@@ -42,7 +42,7 @@ article.post h1{font-size:28px;color:#1d2a4a;line-height:1.45;margin:26px 0 6px}
 article.post h2{font-size:21px;color:#1d2a4a;border-left:6px solid #7fb3d9;padding-left:10px;margin:28px 0 10px}
 article.post p{margin:10px 0}
 article.post ul{margin:10px 0 10px 22px}
-figure.fig{background:#fff;border:1px solid #e5ddcb;border-radius:14px;padding:14px;margin:16px 0;text-align:center}
+figure.fig{background:#fff;border:1px solid #e5ddcb;border-radius:14px;padding:14px;margin:16px 0;text-align:center}.fig img{max-width:100%;height:auto;border-radius:8px}
 figure.fig figcaption{font-size:13px;color:#4a5468;margin-top:8px;text-align:left}
 .pr{border:1px dashed #b9c6d4;border-radius:12px;padding:14px 16px;background:#fbfcfe;margin-top:18px}
 .pr small{display:block;color:#68738a;margin-bottom:6px}
@@ -54,6 +54,8 @@ figure.fig figcaption{font-size:13px;color:#4a5468;margin-top:8px;text-align:lef
 table.cmp{width:100%;border-collapse:collapse;background:#fff;font-size:14px;margin:12px 0}
 table.cmp th,table.cmp td{border:1px solid #e5ddcb;padding:8px 10px;text-align:left}
 table.cmp th{background:#eef4f9}
+.author{max-width:880px;margin:36px auto 0;padding:16px;background:#fff;border:1px solid #e5ddcb;border-radius:12px;font-size:14px}
+.author b{color:#3d4e6d}
 footer.site{border-top:1px solid #e5ddcb;margin-top:44px;padding:20px 16px;font-size:13px;color:#68738a;text-align:center}
 .crumb{font-size:13px;color:#68738a;margin-top:16px}
 @media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:20px}.hero h1{font-size:26px}.strip{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.pgrid{grid-template-columns:repeat(2,1fr)}article.post h1{font-size:24px}}
