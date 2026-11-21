@@ -886,10 +886,10 @@
         <div class="sec-head">
           <p class="kicker">Guide by Concern</p>
           <h2>お悩み別ガイド</h2>
-          <p>気になるお悩みを選ぶと、東洋医学の見方と、施術でのアプローチをご紹介します。体の地図＝経絡から読み解くのが、ステラベガのやり方です。</p>
+          <p>お悩みは全42件。それぞれの個別ページで、東洋医学の考え方と当店でのケア、ご自宅でのセルフケアをご紹介します。</p>
         </div>
-        <div class="concern-grid" id="concernGrid"></div>
-        <div class="concern-detail" id="concernDetail" aria-live="polite"></div>
+        <ul class="concern-grid concern-links"><li><a href="assets/s/katakori.html">肩こり</a></li><li><a href="assets/s/kubikori.html">首こり</a></li><li><a href="assets/s/sumaho-kubi.html">スマホ首</a></li><li><a href="assets/s/asa-kowabari.html">朝の首・肩のこわばり</a></li><li><a href="assets/s/samui-kata.html">寒い日の肩こり</a></li><li><a href="assets/s/kincho-kata.html">緊張した日の肩</a></li><li><a href="assets/s/senaka.html">背中の張り</a></li><li><a href="assets/s/koshi.html">腰の重だるさ</a></li><li><a href="assets/s/suwari-koshi.html">座りっぱなしの腰・お尻</a></li><li><a href="assets/s/dakko-koshi.html">抱っこ疲れの腰・腕</a></li><li><a href="assets/s/sango-koshi.html">産後の腰・肩</a></li><li><a href="assets/s/kaji-kata.html">家事疲れの腰・肩</a></li><li><a href="assets/s/ude.html">腕・手の疲れ</a></li><li><a href="assets/s/makikata.html">巻き肩</a></li><li><a href="assets/s/nekose.html">猫背</a></li><li><a href="assets/s/shisei.html">姿勢の印象</a></li><li><a href="assets/s/atama.html">頭の重さ</a></li><li><a href="assets/s/me.html">目の疲れ感</a></li><li><a href="assets/s/gamen-me.html">画面仕事の目の疲れ</a></li><li><a href="assets/s/kuishibari.html">食いしばり・顎の疲れ</a></li><li><a href="assets/s/kao.html">顔のむくみ感</a></li><li><a href="assets/s/ashitsukare.html">足の疲れ</a></li><li><a href="assets/s/tachi-ashi.html">立ち仕事の脚</a></li><li><a href="assets/s/heel-ashi.html">ヒールの日の足</a></li><li><a href="assets/s/yugata-ashi.html">夕方の脚の重だるさ</a></li><li><a href="assets/s/mukumi.html">脚のむくみ</a></li><li><a href="assets/s/ido-mukumi.html">移動後の脚のむくみ</a></li><li><a href="assets/s/hie.html">冷え</a></li><li><a href="assets/s/reibou-hie.html">冷房冷え</a></li><li><a href="assets/s/seirimae.html">生理前後の不調感</a></li><li><a href="assets/s/seirimae-mukumi.html">生理前のむくみ</a></li><li><a href="assets/s/konenki-mae.html">更年期前のゆらぎ</a></li><li><a href="assets/s/konenki.html">更年期のゆらぎ</a></li><li><a href="assets/s/suimin.html">眠りの浅さ</a></li><li><a href="assets/s/netsuki.html">寝つきにくい夜</a></li><li><a href="assets/s/jiritsu.html">自律神経の乱れ感</a></li><li><a href="assets/s/darusa.html">体のだるさ</a></li><li><a href="assets/s/zenshin.html">全身の疲れ</a></li><li><a href="assets/s/refresh.html">リフレッシュ</a></li><li><a href="assets/s/ame-darusa.html">雨の日の体の重さ</a></li><li><a href="assets/s/kisetsu-fucho.html">季節の変わり目の不調感</a></li><li><a href="assets/s/undobusoku.html">運動不足の体の硬さ</a></li></ul>
+        
       </div>
     </section>
 
@@ -1276,30 +1276,9 @@
         { ja:{ t:'全身の疲労感・リフレッシュ', s:'とにかく一度リセットしたい日に', body:'部位を問わず体全体が重いときは、全身の巡りを底上げする構成にします。背中・脚・腕・頭まで、90分をフルに使った総合ケアで、星空の下で深呼吸するようなリセット感をどうぞ。', m:'関わる経絡：全身の経絡をバランスよく' },
           en:{ t:'Whole-body fatigue & refresh', s:'For days when you simply need a reset', body:'When the whole body feels heavy rather than one specific area, we structure the session to lift circulation throughout. Using the full 90 minutes on the back, legs, arms and head, it is a complete reset \u2014 like taking a deep breath under a starry sky.', m:'Related meridians: All meridians, in balance' } }
       ];
-      var grid = document.getElementById('concernGrid');
-      var detail = document.getElementById('concernDetail');
       var currentConcern = 0;
-      function showConcern(i) {
-        currentConcern = i;
-        var items = grid.querySelectorAll('.concern');
-        for (var j = 0; j < items.length; j++) items[j].classList.toggle('active', j === i);
-        var c = concerns[i][window.__lang];
-        detail.innerHTML = '<h3>' + c.t + '</h3><p>' + c.body + '</p><div class="meridian">' + c.m + '</div>';
-      }
-      function renderConcerns() {
-        grid.innerHTML = '';
-        concerns.forEach(function (c, i) {
-          var d = c[window.__lang];
-          var b = document.createElement('button');
-          b.type = 'button';
-          b.className = 'concern';
-          b.innerHTML = '<div class="t">' + d.t + '</div><div class="s">' + d.s + '</div>';
-          b.addEventListener('click', function () { showConcern(i); });
-          grid.appendChild(b);
-        });
-        showConcern(currentConcern);
-      }
-      renderConcerns();
+      function showConcern(i) {}
+      function renderConcerns() {}
 
       // ---------- meridians (bilingual) ----------
       var meridians = [
@@ -1917,7 +1896,7 @@
         "頭・首・肩まわりのヘッドケアを含む構成":"Includes head care for the head, neck and shoulders",
         "日常で続けられるセルフケアのアドバイス":"Advice on self-care you can continue in daily life",
         "オイルコースとの組み合わせも可能":"Can be combined with the oil course",
-        "気になるお悩みを選ぶと、東洋医学の見方と、施術でのアプローチをご紹介します。体の地図＝経絡から読み解くのが、ステラベガのやり方です。":"Choose a concern to see how East Asian medicine views it and how we approach it in treatment. Reading the body\u2019s map — the meridians — is the Stella Vega way.",
+        "お悩みは全42件。それぞれの個別ページで、東洋医学の考え方と当店でのケア、ご自宅でのセルフケアをご紹介します。":"All 42 concerns, each with its own page: the East Asian medicine view, the care we offer, and self-care you can do at home.",
         "経絡ガイド—体を巡る12の流れ":"Meridian Guide — The 12 Flows of the Body",
         "東洋医学では、体には「経絡」と呼ばれる気血の通り道があると考えます。ステラベガの施術は、この流れを整えることを土台にしています。":"In East Asian medicine, the body is understood to have pathways of qi and blood called meridians. Stella Vega\u2019s treatments are built on restoring the flow of these pathways.",
         "※経絡の説明は東洋医学の伝統的な考え方にもとづくもので、施術はリラクゼーションと美容を目的としています。医療行為ではなく、鍼（はり）を使った施術は当サロンでは行いません。体調に不安がある場合は、まず医療機関へご相談ください。":"* The meridian explanations are based on traditional East Asian medicine. Treatments are for relaxation and beauty; they are not medical care, and acupuncture is not performed at this salon. If you have concerns about your health, please consult a medical professional first.",
@@ -2407,7 +2386,12 @@
 body{padding-bottom:96px}
 </style>
   <!-- stella-fab-v1 -->
-<style>.line-fab{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:94;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:999px;background:#06c755;color:#fff;border:1px solid rgba(255,255,255,.35);font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:700;letter-spacing:.05em;line-height:1;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.45)}.line-fab:hover{background:#05b34c}@media print{.line-fab{display:none!important}}</style>
+<style>.line-fab{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:94;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:999px;background:#06c755;color:#fff;border:1px solid rgba(255,255,255,.35);font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:700;letter-spacing:.05em;line-height:1;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.45)}.line-fab:hover{background:#05b34c}@media print{.line-fab{display:none!important}}
+/* concerns static links (all 42) */
+ul.concern-grid{list-style:none;margin:0;padding:0}
+ul.concern-grid li a{display:block;background:var(--navy-2);border:1px solid rgba(200,164,92,.45);border-radius:10px;padding:15px 10px;text-align:center;color:var(--on-navy);text-decoration:none;font-size:15px;font-weight:700;letter-spacing:.03em}
+ul.concern-grid li a:hover{border-color:var(--gold)}
+</style>
 <a class="line-fab" href="https://lin.ee/NlMUJU5" target="_blank" rel="noopener noreferrer">LINEでお問い合わせ</a>
 <!-- /stella-fab-v1 -->
 </body>
