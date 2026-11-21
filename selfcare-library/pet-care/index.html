@@ -57,8 +57,18 @@ a{color:#7a5c2e}
 .stamps h2{border:none;padding:0;margin:.2em 0.5em}
 .card.first{border:2px solid #d9a441;background:#fff8e6}
 .first-tag{display:inline-block;background:#d9a441;color:#fff;font-size:11px;font-weight:bold;padding:1px 8px;border-radius:8px;margin:0 0 4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:1em 0}
+.chips a{display:inline-block;border:1px solid #c9a227;border-radius:999px;padding:4px 14px;color:#7a5c2e;text-decoration:none;font-size:.92em;background:#fffdf6}
+.card{box-shadow:0 1px 4px rgba(90,70,20,.10)}
+.worry{margin:1.2em 0}
+.worry li{margin:.5em 0}
 .pr-note{font-size:12px;color:#666;line-height:1.7}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"症状別セルフケア資料","item":"https://tomyree-source.github.io/sites/selfcare-library/"},
+{"@type":"ListItem","position":2,"name":"猫のペットケアコーナー","item":"https://tomyree-source.github.io/sites/selfcare-library/pet-care/"}]}
+</script>
 </head>
 <body>
 <main>
@@ -93,9 +103,23 @@ a{color:#7a5c2e}
 </ul>
 </div>
 
+<h2>猫の悩みから探す</h2>
+<ul class="worry">
+<li>抜け毛や毛玉が気になる → <a href="brushing/">猫のブラッシングの基本｜嫌がられない始め方とブラシの選び方</a></li>
+<li>口臭や歯の汚れが気になる → <a href="dental-care/">猫の歯みがきの始め方｜シートから慣らす手順</a></li>
+<li>家具で爪を研いで困っている → <a href="scratcher/">猫の爪とぎの置き場所と素材の選び方</a></li>
+<li>トイレの砂選びで迷う、においが気になる → <a href="cat-litter/">猫のトイレの砂の選び方｜紙・木・鉱物などの種類と好みの見方</a></li>
+<li>フードの切り替え方や食いつきが気になる → <a href="food/">猫の食事の基本｜ドライとウェットの使い分けと切り替え方</a></li>
+</ul>
+<nav class="chips">
+<a href="#cat-food">食事</a>
+<a href="#cat-toilet">トイレ</a>
+<a href="#cat-care">お手入れ</a>
+<a href="#cat-play">爪とぎ</a>
+</nav>
 <h2>カテゴリから選ぶ</h2>
 <p>毎日のケアの場面ごとに、おすすめ用品と読み物をまとめました。迷ったら「まずこれ」の1点からどうぞ。</p>
-<h2>食事のおすすめ用品（PR）</h2>
+<h2 id="cat-food">食事のおすすめ用品（PR）</h2>
 <p>主食は総合栄養食が基本です。ドライを軸に、ウェットで水分もとれる組み合わせが続けやすい形です。</p>
 <div class="cards">
 <div class="card first">
@@ -114,7 +138,7 @@ a{color:#7a5c2e}
 </div>
 <p><a href="food/">→ 猫の食事の基本｜ドライとウェットの使い分け</a></p>
 <p class="pr-note">※このカテゴリの商品リンクは楽天アフィリエイトによる広告リンクです。価格や在庫は販売ページでご確認ください。</p>
-<h2>トイレのおすすめ用品（PR）</h2>
+<h2 id="cat-toilet">トイレのおすすめ用品（PR）</h2>
 <p>砂は猫の好みが最優先です。紙の砂は軽くて扱いやすく、ニャンともシートは専用システムトイレ向けの専用品です。</p>
 <div class="cards">
 <div class="card first">
@@ -133,7 +157,7 @@ a{color:#7a5c2e}
 </div>
 <p><a href="cat-litter/">→ 猫のトイレの砂の選び方｜紙・木・鉱物などの種類と好みの見方</a></p>
 <p class="pr-note">※このカテゴリの商品リンクは楽天アフィリエイトによる広告リンクです。価格や在庫は販売ページでご確認ください。</p>
-<h2>お手入れのおすすめ用品（PR）</h2>
+<h2 id="cat-care">お手入れのおすすめ用品（PR）</h2>
 <p>ブラッシングと歯のケアは、短い時間から少しずつ慣らすのが基本です。入口はスリッカーブラシと歯みがきシートです。</p>
 <div class="cards">
 <div class="card first">
@@ -165,7 +189,7 @@ a{color:#7a5c2e}
 </div>
 <p><a href="brushing/">→ 猫のブラッシングの基本｜嫌がられない始め方</a></p>
 <p class="pr-note">※このカテゴリの商品リンクは楽天アフィリエイトによる広告リンクです。価格や在庫は販売ページでご確認ください。</p>
-<h2>爪とぎのおすすめ用品（PR）</h2>
+<h2 id="cat-play">爪とぎのおすすめ用品（PR）</h2>
 <p>爪とぎは猫の通り道や寝起きの場所に置くのがコツです。段ボールと麻巻き、素材の違う2タイプを用意しました。</p>
 <div class="cards">
 <div class="card first">
