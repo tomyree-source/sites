@@ -255,6 +255,10 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="../../index.html"><span class="star">★</span> 美容整体ステラ・カペラ<small>STELLA CAPELLA ／ 名古屋・栄エリア</small></a>
+<button type="button" class="ham-btn" id="ham-btn" aria-label="メニュー" aria-expanded="false" aria-controls="ham-panel" aria-haspopup="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  <span class="ham-btn-label">メニュー</span>
+</button>
   </div>
 </header>
 <div class="notice-bar" role="note">
@@ -413,5 +417,105 @@
 })();
 </script>
 <!-- /stella-fab-v1 -->
+<!-- stella-ham-v1 -->
+<style>
+.ham-btn{margin-left:auto;display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:8px 14px;border-radius:999px;background:transparent;border:1px solid rgba(201,168,106,.65);color:#e9dcbc;font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;line-height:1;cursor:pointer;white-space:nowrap;flex:none}
+.ham-btn:hover{background:rgba(201,168,106,.16)}
+.ham-btn:focus-visible{outline:3px solid #e9dcbc;outline-offset:2px}
+.ham-btn svg{width:19px;height:19px;flex:none}
+.ham-btn[aria-expanded="true"]{background:#a9853c;color:#221a08;border-color:#a9853c}
+@media(max-width:640px){
+  .ham-btn{min-height:40px;padding:8px 11px}
+  .ham-btn .ham-btn-label{display:none}
+}
+.ham-overlay{position:fixed;inset:0;z-index:110;background:rgba(4,8,18,.45)}
+.ham-panel{position:fixed;right:12px;z-index:115;width:min(344px,calc(100vw - 24px));max-height:min(68vh,560px);overflow-y:auto;overscroll-behavior:contain;background:#182238;border:1px solid rgba(233,220,188,.35);border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.55)}
+.ham-panel-head{display:flex;align-items:center;gap:10px;padding:12px 10px 10px 18px;border-bottom:1px solid rgba(233,220,188,.22);position:sticky;top:0;background:#182238;z-index:1}
+.ham-panel-title{font-family:"Noto Serif JP",serif;font-weight:600;font-size:16px;letter-spacing:.08em;color:#f5efdf}
+.ham-close{margin-left:auto;width:38px;height:38px;flex:none;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(233,220,188,.22);border-radius:50%;background:#22304f;color:#e8e2d2;padding:0;cursor:pointer}
+.ham-close:hover{border-color:#a9853c;color:#e9dcbc}
+.ham-close:focus-visible{outline:3px solid #a9853c;outline-offset:2px}
+.ham-close svg{width:17px;height:17px}
+.ham-cta{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 12px 2px;padding:13px 16px;border-radius:10px;background:#06c755;color:#fff;font-size:15px;font-weight:700;letter-spacing:.05em;text-decoration:none}
+.ham-cta:hover{background:#05b34c}
+.ham-cta:focus-visible{outline:3px solid #f5efdf;outline-offset:2px}
+.ham-panel ul{list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.ham-panel ul a{display:block;padding:10px 12px;border-radius:8px;color:#cfc8b2;text-decoration:none;font-size:14.5px;font-weight:500;line-height:1.4}
+.ham-panel ul a:hover{background:rgba(201,168,106,.12);color:#e9dcbc}
+.ham-panel ul a:focus-visible{outline:3px solid #a9853c;outline-offset:-1px}
+@media(max-width:768px){
+  .main-nav{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){.ham-panel{transition:none}}
+@media print{.ham-btn,.ham-panel,.ham-overlay{display:none!important}}
+</style>
+<div class="ham-overlay" id="ham-overlay" hidden></div>
+<nav class="ham-panel" id="ham-panel" aria-label="メインメニュー" hidden>
+  <div class="ham-panel-head">
+    <span class="ham-panel-title">メニュー</span>
+    <button type="button" class="ham-close" id="ham-close" aria-label="メニューを閉じる">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <a class="ham-cta" href="https://lin.ee/rV7SbGr" target="_blank" rel="noopener noreferrer">LINE公式アカウントでお問い合わせ</a>
+  <ul>
+    <li><a href="../../assets/concerns.html">お悩み別ページ</a></li>
+    <li><a href="../../assets/meridians.html">経絡・経穴ガイド</a></li>
+    <li><a href="../../assets/blog.html">ブログ・コラム</a></li>
+    <li><a href="../../assets/faq.html">よくある質問</a></li>
+    <li><a href="../../assets/recruit.html">セラピスト求人</a></li>
+    <li><a href="../../assets/english.html">English Guide</a></li>
+    <li><a href="../../assets/sitemap.html">サイトマップ</a></li>
+    <li><a href="../../index.html">トップページ</a></li>
+  </ul>
+</nav>
+<script>
+(function(){
+  "use strict";
+  /* ---------- header hamburger menu ---------- */
+  var hamBtn = document.getElementById('ham-btn'),
+      hamPanel = document.getElementById('ham-panel'),
+      hamOverlay = document.getElementById('ham-overlay'),
+      hamClose = document.getElementById('ham-close');
+  if (!hamBtn || !hamPanel || !hamOverlay) return;
+  var hamOpen = false;
+  function placeHam(){
+    var h = hamBtn.closest ? hamBtn.closest('header') : null;
+    var top = 8;
+    if (h){
+      var r = h.getBoundingClientRect();
+      top = Math.max(8, Math.round(r.bottom) + 8);
+    }
+    hamPanel.style.top = top + 'px';
+  }
+  function openHam(){
+    if (hamOpen) return;
+    hamOpen = true;
+    placeHam();
+    hamPanel.hidden = false;
+    hamOverlay.hidden = false;
+    hamBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    if (hamClose) hamClose.focus();
+  }
+  function closeHam(restoreFocus){
+    if (!hamOpen) return;
+    hamOpen = false;
+    hamPanel.hidden = true;
+    hamOverlay.hidden = true;
+    hamBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (restoreFocus) hamBtn.focus();
+  }
+  hamBtn.addEventListener('click', function(){ hamOpen ? closeHam(false) : openHam(); });
+  if (hamClose) hamClose.addEventListener('click', function(){ closeHam(true); });
+  hamOverlay.addEventListener('click', function(){ closeHam(true); });
+  document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') closeHam(true); });
+  hamPanel.addEventListener('click', function(ev){ if (ev.target.closest && ev.target.closest('a')) closeHam(false); });
+  window.addEventListener('resize', function(){ if (hamOpen) placeHam(); });
+})();
+</script>
+<!-- /stella-ham-v1 -->
+
 </body>
 </html>
