@@ -2,19 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/</loc><lastmod>2026-11-22</lastmod></url>
   <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/apply.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-ashiya.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-fukuoka-tenjin.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-aichi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-akita.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-aomori.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-chiba.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-ehime.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-fukui.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-fukuoka.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-fukushima.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-gifu.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-gunma.html</loc></url>
   <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-hiroshima.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-kobe-sannomiya.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-hokkaido.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-hyogo.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-ibaraki.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-ishikawa.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-iwate.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-kagawa.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-kagoshima.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-kanagawa.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-kochi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-kumamoto.html</loc></url>
   <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-kyoto.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-nagoya-sakae.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-omiya.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-osaka-namba.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-osaka-umeda.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-sapporo.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-sendai.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-tokyo-shinjuku.html</loc></url>
-  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-yokohama.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-mie.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-miyagi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-miyazaki.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-nagano.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-nagasaki.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-nara.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-niigata.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-oita.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-okayama.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-okinawa.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-osaka.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-saga.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-saitama.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-shiga.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-shimane.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-shizuoka.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-tochigi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-tokushima.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-tokyo.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-tottori.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-toyama.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-wakayama.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-yamagata.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-yamaguchi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/area-yamanashi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-ashiya.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-fukuoka-shi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-hiroshima-shi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-kobe.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-kyoto-shi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-nagoya.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-osaka-shi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-saitama-shi.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-sapporo.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-sendai.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-shinjuku.html</loc></url>
+  <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/city-yokohama.html</loc></url>
   <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/column-erabikata.html</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/column-hie-ki-ni-naru-kisetsu.html</loc><lastmod>2026-11-22</lastmod></url>
   <url><loc>https://tomyree-source.github.io/sites/male-therapist-portal/column-katakori-tsurai-hi.html</loc><lastmod>2026-11-18</lastmod></url>
