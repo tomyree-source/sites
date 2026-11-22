@@ -456,6 +456,18 @@
       .region-pref:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
       .region-pref.current{background:var(--teal);border-color:var(--teal);color:#fff;cursor:default}
       .region-pref.current .cnt{color:#cfe8dd}
+      .region-item{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+      .region-cities{display:flex;flex-wrap:wrap;gap:2px 10px;padding-left:8px}
+      .region-city{font:inherit;font-size:.78rem;font-weight:500;cursor:pointer;background:none;border:none;color:var(--teal);padding:0;text-decoration:underline;text-underline-offset:3px}
+      .region-city .cnt{color:var(--ink-soft);font-size:.72rem;margin-left:2px}
+      .region-city:hover{color:var(--ink)}
+      .region-city:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      .pref-cities-title{font-size:.9rem;color:var(--teal);margin:18px 0 10px;font-family:"Zen Kaku Gothic New",sans-serif;letter-spacing:.06em}
+      .city-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .city-chip{font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;line-height:1.5;border:1.5px solid var(--teal);color:var(--teal);background:transparent;border-radius:999px;padding:6px 14px}
+      .city-chip .cnt{font-weight:500;font-size:.78rem;margin-left:5px}
+      .city-chip.on{background:var(--teal);color:#fff}
+      .city-chip:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
       .back-btn{
         font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;line-height:1.5;
         background:transparent;border:none;color:var(--teal);padding:4px 0;margin-bottom:10px;
@@ -1260,17 +1272,7 @@ if (prefSel && grid) {
   });
   renderSchools();
 
-  // ---- region index + prefecture sub-views ----
-  var REGIONS = [
-    { name: "北海道・東北", prefs: ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県"] },
-    { name: "関東", prefs: ["茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県"] },
-    { name: "中部", prefs: ["新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県"] },
-    { name: "近畿", prefs: ["三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県"] },
-    { name: "中国", prefs: ["鳥取県","島根県","岡山県","広島県","山口県"] },
-    { name: "四国", prefs: ["徳島県","香川県","愛媛県","高知県"] },
-    { name: "九州・沖縄", prefs: ["福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"] },
-    { name: "オンライン", prefs: ["オンラインのみ"] }
-  ];
+  // ---- prefecture index + prefecture sub-views ----
   var schoolHome = document.getElementById("schoolHome");
   var prefView = document.getElementById("prefView");
   var regionIndex = document.getElementById("regionIndex");
@@ -1280,8 +1282,88 @@ if (prefSel && grid) {
   var prefGrid = document.getElementById("prefGrid");
   var prefEmpty = document.getElementById("prefEmpty");
   var prefSwitch = document.getElementById("prefSwitch");
+  var prefCities = document.getElementById("prefCities");
+  var prefCityChips = document.getElementById("prefCityChips");
+  var currentPref = null;
+  var currentCity = null;
+  function cityBase(city) {
+    var raw = (city == null ? "" : String(city)).trim();
+    if (!raw) return raw;
+    var idx = -1;
+    var seps = ["（", "(", "・"];
+    for (var i = 0; i < seps.length; i++) {
+      var j = raw.indexOf(seps[i]);
+      if (j >= 0 && (idx < 0 || j < idx)) idx = j;
+    }
+    if (idx < 0) return raw;
+    var base = raw.slice(0, idx).trim();
+    return base ? base : raw;
+  }
+  function citiesFor(p) {
+    var map = {};
+    var order = [];
+    SCHOOLS.forEach(function (s) {
+      if (s.pref !== p) return;
+      var b = cityBase(s.city || "");
+      if (!b) b = (s.city || "").trim();
+      if (!Object.prototype.hasOwnProperty.call(map, b)) { map[b] = { name: b, count: 0, order: order.length }; order.push(b); }
+      map[b].count++;
+    });
+    var arr = order.map(function (k) { return map[k]; });
+    arr.sort(function (a, b) { if (b.count !== a.count) return b.count - a.count; return a.order - b.order; });
+    return arr;
+  }
   function countFor(p) {
     return SCHOOLS.filter(function (s) { return s.pref === p; }).length;
+  }
+  function prefHash() {
+    var h = "#schools/" + encodeURIComponent(currentPref);
+    if (currentCity) h += "/" + encodeURIComponent(currentCity);
+    return h;
+  }
+  function renderPrefGrid() {
+    if (!currentPref) return;
+    var all = SCHOOLS.filter(function (s) { return s.pref === currentPref; });
+    var list = currentCity ? all.filter(function (s) { return cityBase(s.city || "") === currentCity; }) : all;
+    prefCount.textContent = "掲載教室：" + list.length + "件";
+    prefGrid.innerHTML = "";
+    list.forEach(function (s) { prefGrid.appendChild(buildCard(s)); });
+    prefGrid.hidden = list.length === 0;
+    prefEmpty.hidden = list.length !== 0;
+  }
+  function renderPrefCities() {
+    if (!prefCities || !prefCityChips) return;
+    var cities = currentPref ? citiesFor(currentPref) : [];
+    var total = currentPref ? countFor(currentPref) : 0;
+    if (!currentPref || total === 0 || cities.length <= 1) {
+      prefCities.hidden = true;
+      prefCityChips.innerHTML = "";
+      return;
+    }
+    prefCities.hidden = false;
+    prefCityChips.innerHTML = "";
+    function makeChip(label, cityVal, count) {
+      var b = document.createElement("button");
+      b.type = "button";
+      var isOn = (cityVal === null && !currentCity) || (cityVal !== null && currentCity === cityVal);
+      b.className = "city-chip" + (isOn ? " on" : "");
+      b.setAttribute("aria-pressed", isOn ? "true" : "false");
+      b.textContent = label;
+      if (typeof count === "number") {
+        var c = document.createElement("span");
+        c.className = "cnt"; c.textContent = count + "件";
+        b.appendChild(c);
+      }
+      b.addEventListener("click", function () {
+        currentCity = cityVal;
+        renderPrefCities();
+        renderPrefGrid();
+        try { history.replaceState(null, "", prefHash()); } catch (e) {}
+      });
+      return b;
+    }
+    prefCityChips.appendChild(makeChip("すべて", null, total));
+    cities.forEach(function (ct) { prefCityChips.appendChild(makeChip(ct.name, ct.name, ct.count)); });
   }
   function makePrefBtn(p, current) {
     var b = document.createElement("button");
@@ -1296,39 +1378,59 @@ if (prefSel && grid) {
     return b;
   }
   if (regionIndex) {
-    REGIONS.forEach(function (r) {
-      var block = document.createElement("div"); block.className = "region-block";
-      var h = document.createElement("h3"); h.textContent = r.name; block.appendChild(h);
-      var row = document.createElement("div"); row.className = "region-prefs";
-      r.prefs.forEach(function (p) { row.appendChild(makePrefBtn(p, false)); });
-      block.appendChild(row);
-      regionIndex.appendChild(block);
+    var row = document.createElement("div"); row.className = "region-prefs";
+    PREFS.forEach(function (p) {
+      var item = document.createElement("div"); item.className = "region-item";
+      item.appendChild(makePrefBtn(p, false));
+      var cities = citiesFor(p);
+      if (cities.length) {
+        var citiesDiv = document.createElement("div"); citiesDiv.className = "region-cities";
+        cities.slice(0, 5).forEach(function (ct) {
+          var cb = document.createElement("button");
+          cb.type = "button"; cb.className = "region-city";
+          cb.textContent = ct.name;
+          var cc = document.createElement("span");
+          cc.className = "cnt"; cc.textContent = ct.count + "件";
+          cb.appendChild(cc);
+          (function (prefName, cityName) {
+            cb.addEventListener("click", function () { openPref(prefName, true, cityName); });
+          })(p, ct.name);
+          citiesDiv.appendChild(cb);
+        });
+        item.appendChild(citiesDiv);
+      }
+      row.appendChild(item);
     });
+    regionIndex.appendChild(row);
   }
-  function openPref(p, pushHash) {
+  function openPref(p, pushHash, city) {
     if (!schoolHome || !prefView) return;
+    currentPref = p;
+    currentCity = null;
+    if (city) {
+      var valid = citiesFor(p).some(function (ct) { return ct.name === city; });
+      if (valid) currentCity = city;
+    }
     schoolHome.hidden = true;
     prefView.hidden = false;
     prefTitle.textContent = p === "オンラインのみ" ? "オンラインの教室" : p + "の教室";
     prefLead.textContent = p === "オンラインのみ"
       ? "オンラインで受講できる教室へのリンク集です。カードを選ぶと各教室の公式サイトへ移動します。"
       : p + "のベリーダンス教室・スタジオへのリンク集です。カードを選ぶと各教室の公式サイトへ移動します。";
-    var list = SCHOOLS.filter(function (s) { return s.pref === p; });
-    prefCount.textContent = "掲載教室：" + list.length + "件";
-    prefGrid.innerHTML = "";
-    list.forEach(function (s) { prefGrid.appendChild(buildCard(s)); });
-    prefGrid.hidden = list.length === 0;
-    prefEmpty.hidden = list.length !== 0;
+    renderPrefCities();
+    renderPrefGrid();
     if (prefSwitch) {
       prefSwitch.innerHTML = "";
       PREFS.forEach(function (q) { prefSwitch.appendChild(makePrefBtn(q, q === p)); });
     }
-    if (pushHash) { try { history.replaceState(null, "", "#schools/" + encodeURIComponent(p)); } catch (e) {} }
+    if (pushHash) { try { history.replaceState(null, "", prefHash()); } catch (e) {} }
     var sec = document.getElementById("schools");
     if (sec) sec.scrollIntoView({ block: "start" });
   }
   function closePref(pushHash) {
     if (!schoolHome || !prefView) return;
+    currentPref = null;
+    currentCity = null;
     prefView.hidden = true;
     schoolHome.hidden = false;
     if (pushHash) { try { history.replaceState(null, "", "#schools"); } catch (e) {} }
@@ -1340,11 +1442,16 @@ if (prefSel && grid) {
   var pb2 = document.getElementById("prefBack2");
   if (pb1) pb1.addEventListener("click", function () { closePref(true); });
   if (pb2) pb2.addEventListener("click", function () { closePref(true); });
-  // deep link: #schools/<都道府県>
+  // deep link: #schools/<都道府県>[/<都市基底名>]
   if (location.hash.indexOf("#schools/") === 0) {
     var hp = null;
-    try { hp = decodeURIComponent(location.hash.slice("#schools/".length)); } catch (e) {}
-    if (hp && PREFS.indexOf(hp) >= 0) { activate("portal"); openPref(hp, false); }
+    var hc = null;
+    try {
+      var parts = location.hash.slice("#schools/".length).split("/");
+      if (parts.length >= 1 && parts[0]) hp = decodeURIComponent(parts[0]);
+      if (parts.length >= 2 && parts[1]) hc = decodeURIComponent(parts[1]);
+    } catch (e) {}
+    if (hp && PREFS.indexOf(hp) >= 0) { activate("portal"); openPref(hp, false, hc || undefined); }
   }
 }
 })();
