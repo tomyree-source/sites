@@ -50,6 +50,9 @@ figure.fig figcaption{font-size:13px;color:#4a5468;margin-top:8px;text-align:lef
 .pcard{background:#fff;border:1px solid #e5ddcb;border-radius:12px;padding:10px;font-size:13px}
 .pcard img{width:100%;height:150px;object-fit:contain;display:block}
 .pcard .price{font-weight:800;color:#b03a5b}
+.pcard .pname{font-weight:700;font-size:13.5px;line-height:1.5}
+.pcard .pnote{color:#5a5348;font-size:12.5px;line-height:1.55}
+.pcard .prev{color:#8a6d1f;font-size:12.5px}
 .note{background:#fff7e0;border:1px solid #ecd27f;border-radius:10px;padding:10px 14px;font-size:13px;margin:16px 0}
 table.cmp{width:100%;border-collapse:collapse;background:#fff;font-size:14px;margin:12px 0}
 table.cmp th,table.cmp td{border:1px solid #e5ddcb;padding:8px 10px;text-align:left}
