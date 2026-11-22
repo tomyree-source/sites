@@ -800,13 +800,13 @@ html{scroll-behavior:auto}
 <div class="search-panel" role="search">
 <div class="search-row">
 <input type="search" id="kwInput" placeholder="道場名・流派名・市区町村などで検索" aria-label="キーワード検索" />
-<select id="areaSelect" aria-label="地方で絞り込む">
-<option value="">すべての地方</option>
-<option>北海道</option><option>東北</option><option>関東</option><option>中部</option>
-<option>近畿</option><option>中国</option><option>四国</option><option>九州・沖縄</option>
-</select>
 <select id="prefSelect" aria-label="都道府県で絞り込む">
 <option value="">すべての都道府県</option>
+</select>
+</div>
+<div class="search-row" style="margin-top:10px">
+<select id="citySelect" aria-label="市区町村で絞り込む" disabled>
+<option value="">都道府県を選ぶと市区町村を選べます</option>
 </select>
 </div>
 <div class="pill-label">流派・ジャンル</div>
@@ -6543,12 +6543,10 @@ var REGIONS = [
 {area:"九州・沖縄", prefs:["福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]}
 ];
 
-var prefToArea = {};
-REGIONS.forEach(function(r){ r.prefs.forEach(function(p){ prefToArea[p]=r.area;});});
 var ALL_PREFS = [];
 REGIONS.forEach(function(r){ ALL_PREFS = ALL_PREFS.concat(r.prefs);});
 
-var state = { genre:"", area:"", pref:"", kw:""};
+var state = { genre:"", pref:"", city:"", kw:""};
 
 /* --- genre pills --- */
 var pillsBox = document.getElementById("genrePills");
@@ -6606,8 +6604,9 @@ r.prefs.forEach(function(p){
 var b = document.createElement("button");
 b.type="button"; b.className="pref"; b.textContent=p;
 b.addEventListener("click", function(){
-state.pref = p; state.area = prefToArea[p];
-prefSelect.value = p; areaSelect.value = state.area;
+state.pref = p;
+prefSelect.value = p;
+syncCitySelect();
 renderResult();
 document.getElementById("search").scrollIntoView({behavior:"smooth"});
 });
@@ -6618,19 +6617,10 @@ regionGrid.appendChild(block);
 });
 
 /* --- selects --- */
-var areaSelect = document.getElementById("areaSelect");
 var prefSelect = document.getElementById("prefSelect");
-ALL_PREFS.forEach(function(p){
-var o = document.createElement("option"); o.textContent = p; prefSelect.appendChild(o);
-});
-areaSelect.addEventListener("change", function(){
-state.area = areaSelect.value;
-if (state.pref && prefToArea[state.pref]!== state.area){ state.pref=""; prefSelect.value="";}
-renderResult();
-});
 prefSelect.addEventListener("change", function(){
 state.pref = prefSelect.value;
-if (state.pref){ state.area = prefToArea[state.pref]; areaSelect.value = state.area;}
+syncCitySelect();
 renderResult();
 });
 document.getElementById("kwInput").addEventListener("input", function(e){
@@ -7768,6 +7758,32 @@ schedule:"日曜・祝日 10時から12時／土曜 18時から20時（平日分
 desc:"青森県青森市の青森市スポーツ会館で練習するレスリングクラブ。年少から中学3年生までが所属しています。"
 }
 ];
+/* --- 都道府県セレクトの選択肢：全47都道府県（北から南の都道府県順） --- */
+ALL_PREFS.forEach(function(p){
+var o = document.createElement("option"); o.textContent = p; prefSelect.appendChild(o);
+});
+/* --- 市区町村セレクト：選択中の都道府県に掲載道場がある市区町村のみ --- */
+var citySelect = document.getElementById("citySelect");
+function syncCitySelect(){
+state.city = "";
+citySelect.innerHTML = "";
+var top = document.createElement("option");
+top.value = "";
+top.textContent = state.pref ? "すべての市区町村" : "都道府県を選ぶと市区町村を選べます";
+citySelect.appendChild(top);
+citySelect.disabled = !state.pref;
+if (!state.pref) return;
+var seen = {};
+DOJOS.forEach(function(d){
+if (d.pref !== state.pref || !d.city || seen[d.city]) return;
+seen[d.city] = true;
+var o = document.createElement("option"); o.textContent = d.city; citySelect.appendChild(o);
+});
+}
+citySelect.addEventListener("change", function(){
+state.city = citySelect.value;
+renderResult();
+});
 var resultCond = document.getElementById("resultCond");
 var resultTitle = document.getElementById("resultTitle");
 var emptyState = document.getElementById("emptyState");
@@ -7776,15 +7792,16 @@ var emptyText = document.getElementById("emptyText");
 var dojoList = document.getElementById("dojoList");
 function condText(){
 var parts = [];
-parts.push(state.pref || state.area || "全国");
+parts.push(state.pref || "全国");
+if (state.city) parts.push(state.city);
 parts.push(state.genre || "全ジャンル");
 if (state.kw) parts.push("「"+state.kw+"」");
 return parts.join("・");
 }
 function dojoMatches(d){
 if (state.genre && d.genre !== state.genre) return false;
-if (state.area && d.area !== state.area) return false;
 if (state.pref && d.pref !== state.pref) return false;
+if (state.city && d.city !== state.city) return false;
 if (state.kw){
 var hay = d.name + " " + d.ryuha + " " + d.genre + " " + d.pref + " " + d.city + " " + d.target + " " + d.schedule + " " + d.desc;
 if (hay.indexOf(state.kw) === -1) return false;
@@ -7839,11 +7856,17 @@ return;
 }
 dojoList.hidden = true;
 if (emptyState) emptyState.style.display = "";
-if (resultTitle) resultTitle.textContent = "掲載道場";
-var hasFilter = state.genre || state.area || state.pref || state.kw;
+var hasFilter = state.genre || state.pref || state.city || state.kw;
+if (resultTitle) resultTitle.textContent = hasFilter ? "掲載道場（0件）" : "掲載道場";
 if (hasFilter){
+var prefHasDojo = !state.pref || DOJOS.some(function(d){ return d.pref === state.pref; });
+if (state.pref && !prefHasDojo){
+emptyTitle.textContent = state.pref + "の掲載道場はまだありません";
+emptyText.textContent = state.pref + "の道場は、現在登録受付中です。掲載は順次追加していきます。お近くの道場をご存じの方、道場・ジムを運営されている方は、無料の登録申請をご利用ください。";
+} else {
 emptyTitle.textContent = cond + " の道場は、現在登録受付中です";
 emptyText.textContent = "この条件に合う道場はまだ掲載されていません。掲載は順次追加していきます。お近くの道場をご存じの方、道場・ジムを運営されている方は、無料の登録申請をご利用ください。";
+}
 } else {
 emptyTitle.textContent = "全国の道場・ジムの登録を受け付けています";
 emptyText.textContent = "このポータルは開設したばかりで、掲載道場はこれから順次追加していきます。道場・ジムを運営されている方は、無料で登録申請できます。申請内容を確認のうえ、こちらに掲載します。";
