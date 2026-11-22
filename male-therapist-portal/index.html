@@ -48,6 +48,7 @@ h2 .en{display:block;font-size:11px;letter-spacing:.3em;color:#8a6d2f;font-famil
 .area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
 @media(max-width:860px){.area-grid{grid-template-columns:repeat(2,1fr)}}
 .area-grid a{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-decoration:none}
+.area-grid .prep{display:block;background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:16px 18px;color:var(--ink-soft)}
 .area-grid a:hover{border-color:var(--gold)}
 .area-grid .a-name{font-family:"Hiragino Mincho ProN",serif;font-size:17px}
 .area-grid .a-count{display:block;font-size:12px;color:var(--ink-soft);margin-top:2px}
@@ -153,19 +154,53 @@ footer.site a{color:var(--gold-soft)}
     <h2><span class="en">SEARCH BY AREA</span>地域から探す</h2>
     <p class="lead">お住まいや勤務先の近くから探せます。掲載店舗は順次増やしています。</p>
     <div class="area-grid">
-      <a href="area-osaka-umeda.html"><span class="a-name">大阪・梅田</span><span class="a-count">掲載 2件</span></a>
-      <a href="area-osaka-namba.html"><span class="a-name">大阪・難波</span><span class="a-count">掲載 1件</span></a>
-      <a href="area-kobe-sannomiya.html"><span class="a-name">神戸・三ノ宮</span><span class="a-count">掲載 1件</span></a>
-      <a href="area-ashiya.html"><span class="a-name">芦屋</span><span class="a-count">掲載 1件</span></a>
-      <a href="area-kyoto.html"><span class="a-name">京都</span><span class="a-count">掲載 1件</span></a>
-      <a href="area-tokyo-shinjuku.html"><span class="a-name">東京・新宿</span><span class="a-count">掲載 2件</span></a>
-      <a href="area-nagoya-sakae.html"><span class="a-name">名古屋・栄</span><span class="a-count">掲載 2件</span></a>
-      <a href="area-fukuoka-tenjin.html"><span class="a-name">福岡・天神</span><span class="a-count">掲載 2件</span></a>
-      <a href="area-sapporo.html"><span class="a-name">札幌</span><span class="a-count">掲載 2件</span></a>
-      <a href="area-yokohama.html"><span class="a-name">横浜・関内</span><span class="a-count">掲載 2件</span></a>
-      <a href="area-sendai.html"><span class="a-name">仙台</span><span class="a-count">掲載 2件</span></a>
-      <a href="area-hiroshima.html"><span class="a-name">広島</span><span class="a-count">掲載 2件</span></a>
-      <a href="area-omiya.html"><span class="a-name">大宮</span><span class="a-count">掲載 2件</span></a>
+      <a href="area-hokkaido.html"><span class="a-name">北海道</span><span class="a-count">掲載 2件</span></a>
+      <a href="area-aomori.html"><span class="a-name">青森県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-iwate.html"><span class="a-name">岩手県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-miyagi.html"><span class="a-name">宮城県</span><span class="a-count">掲載 2件</span></a>
+      <a href="area-akita.html"><span class="a-name">秋田県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-yamagata.html"><span class="a-name">山形県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-fukushima.html"><span class="a-name">福島県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-ibaraki.html"><span class="a-name">茨城県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-tochigi.html"><span class="a-name">栃木県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-gunma.html"><span class="a-name">群馬県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-saitama.html"><span class="a-name">埼玉県</span><span class="a-count">掲載 2件</span></a>
+      <a href="area-chiba.html"><span class="a-name">千葉県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-tokyo.html"><span class="a-name">東京都</span><span class="a-count">掲載 2件</span></a>
+      <a href="area-kanagawa.html"><span class="a-name">神奈川県</span><span class="a-count">掲載 2件</span></a>
+      <a href="area-niigata.html"><span class="a-name">新潟県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-toyama.html"><span class="a-name">富山県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-ishikawa.html"><span class="a-name">石川県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-fukui.html"><span class="a-name">福井県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-yamanashi.html"><span class="a-name">山梨県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-nagano.html"><span class="a-name">長野県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-gifu.html"><span class="a-name">岐阜県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-shizuoka.html"><span class="a-name">静岡県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-aichi.html"><span class="a-name">愛知県</span><span class="a-count">掲載 2件</span></a>
+      <a href="area-mie.html"><span class="a-name">三重県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-shiga.html"><span class="a-name">滋賀県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-kyoto.html"><span class="a-name">京都府</span><span class="a-count">掲載 1件</span></a>
+      <a href="area-osaka.html"><span class="a-name">大阪府</span><span class="a-count">掲載 3件</span></a>
+      <a href="area-hyogo.html"><span class="a-name">兵庫県</span><span class="a-count">掲載 2件</span></a>
+      <a href="area-nara.html"><span class="a-name">奈良県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-wakayama.html"><span class="a-name">和歌山県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-tottori.html"><span class="a-name">鳥取県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-shimane.html"><span class="a-name">島根県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-okayama.html"><span class="a-name">岡山県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-hiroshima.html"><span class="a-name">広島県</span><span class="a-count">掲載 2件</span></a>
+      <a href="area-yamaguchi.html"><span class="a-name">山口県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-tokushima.html"><span class="a-name">徳島県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-kagawa.html"><span class="a-name">香川県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-ehime.html"><span class="a-name">愛媛県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-kochi.html"><span class="a-name">高知県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-fukuoka.html"><span class="a-name">福岡県</span><span class="a-count">掲載 2件</span></a>
+      <a href="area-saga.html"><span class="a-name">佐賀県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-nagasaki.html"><span class="a-name">長崎県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-kumamoto.html"><span class="a-name">熊本県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-oita.html"><span class="a-name">大分県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-miyazaki.html"><span class="a-name">宮崎県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-kagoshima.html"><span class="a-name">鹿児島県</span><span class="a-count">掲載 0件</span></a>
+      <a href="area-okinawa.html"><span class="a-name">沖縄県</span><span class="a-count">掲載 0件</span></a>
       
     </div>
   </section>
