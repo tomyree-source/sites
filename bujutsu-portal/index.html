@@ -517,6 +517,12 @@ border-radius:999px;padding:7px 15px;
 .result-head{display:flex;align-items:baseline;gap:12px;margin:28px 0 14px;flex-wrap:wrap}
 .result-head h3{margin:0;font-size:1.15rem}
 .result-head.cond{color:var(--ink-3);font-size:.88rem}
+.dojo-picker{margin:0 0 14px}
+.dojo-picker label{display:block;font-size:.78rem;font-weight:900;letter-spacing:.1em;color:var(--ink-3);margin:0 0 8px}
+.dojo-picker select{
+font:inherit;width:100%;min-height:48px;padding:12px 12px;border-radius:10px;
+border:1px solid var(--line-2);background:var(--surface);color:var(--ink);max-width:100%;
+}
 .empty-state{
 border:1.5px dashed var(--line-2);border-radius:var(--radius);
 background:var(--surface);padding:34px 24px;text-align:center;
@@ -849,6 +855,10 @@ html{scroll-behavior:auto}
 </div>
 
 <div id="resultArea">
+<div class="dojo-picker" id="dojoPicker">
+<label for="dojoSelect">道場名</label>
+<select id="dojoSelect" aria-label="道場名を選ぶ"></select>
+</div>
 <div id="dojoList" class="dojo-list" aria-live="polite"></div>
 <div class="empty-state" id="emptyState">
 <span class="sample-note">現在、掲載道場を募集中です</span>
@@ -8312,6 +8322,9 @@ var emptyState = document.getElementById("emptyState");
 var emptyTitle = document.getElementById("emptyTitle");
 var emptyText = document.getElementById("emptyText");
 var dojoList = document.getElementById("dojoList");
+var dojoPicker = document.getElementById("dojoPicker");
+var dojoSelect = document.getElementById("dojoSelect");
+var selectedDojo = null;
 function condText(){
 var parts = [];
 parts.push(state.pref || "全国");
@@ -8364,18 +8377,45 @@ site.appendChild(sa);
 card.appendChild(site);
 return card;
 }
+function renderSelectedCard(){
+dojoList.innerHTML = "";
+if (selectedDojo) dojoList.appendChild(renderDojoCard(selectedDojo));
+}
+if (dojoSelect){
+dojoSelect.addEventListener("change", function(){
+var idx = parseInt(dojoSelect.value, 10);
+if (!isNaN(idx) && DOJOS[idx]){
+selectedDojo = DOJOS[idx];
+renderSelectedCard();
+}
+});
+}
 function renderResult(){
 var cond = condText();
 resultCond.textContent = "条件：" + cond;
 var matched = DOJOS.filter(dojoMatches);
-dojoList.innerHTML = "";
-matched.forEach(function(d){ dojoList.appendChild(renderDojoCard(d));});
 if (matched.length){
+if (!selectedDojo || matched.indexOf(selectedDojo) === -1) selectedDojo = matched[0];
+if (dojoSelect){
+dojoSelect.innerHTML = "";
+matched.forEach(function(d){
+var o = document.createElement("option");
+o.value = String(DOJOS.indexOf(d));
+o.textContent = d.name + "（" + (d.city ? d.pref + "・" + d.city : d.pref) + "）";
+dojoSelect.appendChild(o);
+});
+dojoSelect.value = String(DOJOS.indexOf(selectedDojo));
+}
+if (dojoPicker) dojoPicker.style.display = "";
+renderSelectedCard();
 dojoList.hidden = false;
 if (emptyState) emptyState.style.display = "none";
 if (resultTitle) resultTitle.textContent = "掲載道場（" + matched.length + "件）";
 return;
 }
+selectedDojo = null;
+if (dojoPicker) dojoPicker.style.display = "none";
+dojoList.innerHTML = "";
 dojoList.hidden = true;
 if (emptyState) emptyState.style.display = "";
 var hasFilter = state.genre || state.pref || state.city || state.kw;
