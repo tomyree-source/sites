@@ -177,3 +177,26 @@ footer.site .flogo{font-family:var(--eng);font-weight:700;font-size:22px;letter-
   .band .panel .kick{letter-spacing:.16em}
 }
 @media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:28px}.strip{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.pgrid{grid-template-columns:repeat(2,1fr)}.feature .pgrid{grid-template-columns:repeat(2,1fr)}article.post h1{font-size:24px}nav.main{gap:14px}nav.main a{letter-spacing:.18em}}
+/* magazine article（記事の雑誌コーナー化・2026-11-23見本承認済み） */
+.mag-corner{display:flex;justify-content:space-between;gap:10px;border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);padding:10px 2px;font-family:var(--eng);letter-spacing:.24em;font-size:11px;font-weight:700}
+article.post.mag h1{font-size:clamp(29px,6.2vw,44px);line-height:1.38;margin-top:24px}
+.mag-lead{font-size:15.5px;line-height:2.05;margin-top:18px;color:#33302a}
+.mag-credit{font-size:10.5px;letter-spacing:.18em;color:var(--sub);margin-top:14px}
+.mag-hero{display:block;width:100%}
+article.post.mag{counter-reset:sec}
+article.post.mag h2{border-left:none;padding-left:0}
+article.post.mag h2::before{counter-increment:sec;content:"POINT " counter(sec,decimal-leading-zero);display:block;font-family:var(--eng);font-size:12.5px;letter-spacing:.34em;color:var(--bronze);font-weight:700;margin-bottom:6px}
+article.post.mag .mag-ng h2::before,article.post.mag .mag-shop h2::before{content:none;counter-increment:none}
+.mag .bubble{background:transparent;border:none;border-left:5px solid var(--accent);border-radius:0;padding:4px 0 4px 20px;margin:30px 0 8px;font-family:var(--serif);font-weight:900;font-size:clamp(17px,4vw,23px);line-height:1.8;color:var(--ink)}
+.mag .bubble.men{border-left-color:var(--navy)}
+.mag .bubble.pair{border-left-color:var(--sage)}
+.mag .bubble b{font-weight:900}
+.mag-drop::first-letter{font-family:var(--serif);font-weight:900;font-size:3.1em;float:left;line-height:1.02;padding:4px 12px 0 0;color:var(--accent)}
+.mag-ng{background:var(--ink);color:#F3EEE2;padding:24px 26px;margin-top:40px}
+article.post.mag .mag-ng h2{color:#fff;margin-top:0}
+.mag-ng li{color:#E7E0CF}
+.mag-shop-head{margin-top:52px;border-top:3px solid var(--ink);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.mag-shop-head .en{font-family:var(--eng);font-size:30px;letter-spacing:.22em;font-weight:700}
+.mag-next{margin-top:44px;border:1px solid var(--ink);padding:20px 24px;display:block;text-decoration:none;color:var(--ink)}
+.mag-next .k{font-family:var(--eng);font-size:11px;letter-spacing:.3em;color:var(--bronze);font-weight:700}
+.mag-next .t{font-family:var(--serif);font-weight:900;font-size:19px;margin-top:6px;display:block}
