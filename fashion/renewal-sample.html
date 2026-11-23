@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>POSTURE &amp; STYLE｜リニューアル見本（トップページ）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F4EE; --paper:#FFFDF9; --ink:#17181A; --sub:#6E6A61; --line:#E0D9CB;
+  --bronze:#A4824F; --rose:#9E4A5B; --navy:#22304A; --sage:#4A6741;
+  --serif:'Noto Serif JP',serif; --sans:'Noto Sans JP',sans-serif; --eng:'Cormorant Garamond',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.9;font-size:15.5px;-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}
+img{display:block;max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+/* header */
+header.site{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:5}
+.hwrap{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--eng);font-size:24px;font-weight:600;letter-spacing:.22em;text-decoration:none}
+.logo span{color:var(--bronze)}
+nav.main{display:flex;gap:34px}
+nav.main a{text-decoration:none;font-size:12.5px;letter-spacing:.28em;font-weight:500;padding:4px 0;border-bottom:1px solid transparent}
+nav.main a:hover{border-bottom-color:var(--bronze)}
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:0;margin-top:0;border-bottom:1px solid var(--line)}
+.hero-txt{padding:84px 56px 84px 24px;display:flex;flex-direction:column;justify-content:center;max-width:640px;margin-left:auto;width:100%}
+.kicker{font-family:var(--eng);font-size:14px;letter-spacing:.42em;color:var(--bronze);text-transform:uppercase;margin-bottom:26px}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:44px;line-height:1.5;letter-spacing:.04em}
+.hero h1 em{font-style:normal;color:var(--bronze)}
+.hero p{margin:28px 0 38px;color:var(--sub);font-size:15px;max-width:30em}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 30px;font-size:13px;letter-spacing:.22em;font-weight:500;text-decoration:none;border:1px solid var(--ink);transition:.25s}
+.btn-fill{background:var(--ink);color:#fff}
+.btn-fill:hover{background:var(--bronze);border-color:var(--bronze)}
+.btn-line{background:transparent;color:var(--ink)}
+.btn-line:hover{border-color:var(--bronze);color:var(--bronze)}
+.hero-img{background:#EFE9DD;display:flex;align-items:center;justify-content:center;padding:36px}
+.hero-img img{max-height:560px;width:auto;max-width:100%;object-fit:contain}
+/* editorial index strip */
+.index4{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.index4 div{padding:22px 10px;text-align:center;border-right:1px solid var(--line)}
+.index4 div:last-child{border-right:none}
+.index4 .no{font-family:var(--eng);color:var(--bronze);font-size:13px;letter-spacing:.3em;display:block;margin-bottom:4px}
+.index4 .lb{font-size:13.5px;letter-spacing:.14em;font-weight:500}
+/* sections */
+section.blk{padding:76px 0 8px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--ink);padding-bottom:14px;margin-bottom:34px}
+.sec-head .lft{display:flex;align-items:baseline;gap:18px}
+.sec-head .no{font-family:var(--eng);font-size:15px;letter-spacing:.3em;color:var(--bronze)}
+.sec-head h2{font-family:var(--serif);font-size:27px;font-weight:600;letter-spacing:.06em}
+.sec-head .eng{font-family:var(--eng);letter-spacing:.34em;font-size:12.5px;color:var(--sub);text-transform:uppercase}
+.lead{color:var(--sub);max-width:44em;margin-bottom:30px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{background:transparent}
+.card .thumb{background:#EFE9DD;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:16px}
+.card .thumb img{width:100%;height:100%;object-fit:contain}
+.tag{display:inline-block;font-size:10.5px;letter-spacing:.3em;font-weight:500;color:var(--bronze);text-transform:uppercase;margin-bottom:8px}
+.tag.m{color:var(--navy)}.tag.t{color:var(--sage)}
+.card h3{font-family:var(--serif);font-size:17.5px;font-weight:600;line-height:1.6;margin-bottom:8px}
+.card p{font-size:13.5px;color:var(--sub);line-height:1.8}
+.card .more{display:inline-block;margin-top:12px;font-size:12px;letter-spacing:.24em;font-weight:500;text-decoration:none;border-bottom:1px solid var(--bronze);padding-bottom:3px}
+/* product cards */
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:6px}
+.pcard{background:transparent}
+.pcard .pimg{background:var(--paper);border:1px solid var(--line);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.pcard .pimg img{width:100%;height:100%;object-fit:contain}
+.pcard .pname{font-weight:500;font-size:14px;line-height:1.6}
+.pcard .pnote{color:var(--sub);font-size:12.5px;line-height:1.7;margin-top:4px}
+.pcard .prev{color:var(--bronze);font-size:12.5px;margin-top:4px;letter-spacing:.06em}
+.pcard .price{font-family:var(--serif);font-weight:700;font-size:17px;margin-top:8px}
+.pcard .price small{font-size:11px;color:var(--sub);font-family:var(--sans);font-weight:300}
+.pcard .shop{color:var(--sub);font-size:12px}
+.pcard .buy{display:inline-block;margin-top:10px;font-size:11.5px;letter-spacing:.22em;font-weight:500;text-decoration:none;border:1px solid var(--ink);padding:8px 18px}
+.pcard .buy:hover{background:var(--ink);color:#fff}
+.pr-note{font-size:11.5px;color:var(--sub);letter-spacing:.08em;margin-bottom:16px}
+/* author + footer */
+.author{max-width:880px;margin:80px auto 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 10px;text-align:center;font-size:13.5px;color:var(--sub)}
+.author b{color:var(--ink);font-family:var(--serif);letter-spacing:.08em}
+.author a{letter-spacing:.14em;font-size:12.5px}
+footer.site{margin-top:56px;padding:34px 16px 44px;text-align:center;font-size:12px;color:var(--sub);letter-spacing:.1em}
+footer.site .flogo{font-family:var(--eng);font-size:19px;letter-spacing:.24em;color:var(--ink);margin-bottom:10px}
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .hero-txt{padding:52px 24px 40px;margin:0}
+  .hero h1{font-size:31px}
+  .hero-img{padding:22px}
+  .index4{grid-template-columns:repeat(2,1fr)}
+  .index4 div{border-bottom:1px solid var(--line)}
+  .cards{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  nav.main{gap:18px}
+  .sec-head .eng{display:none}
+}
+</style></head><body>
+<header class="site"><div class="hwrap"><a class="logo" href="#">POSTURE <span>&amp;</span> STYLE</a>
+<nav class="main"><a href="#">女性</a><a href="#">男性</a><a href="#">トレーニング</a><a href="#">ペア</a></nav></div></header>
+
+<div class="hero">
+  <div class="hero-txt">
+    <div class="kicker">Fashion &amp; Posture — for 40s and beyond</div>
+    <h1>姿勢が変わると、<br><em>服の見え方</em>が変わる。</h1>
+    <p>40代・50代のためのファッション案内。女性は体型カバー、男性は清潔感。そして、服が似合う体づくりのトレーニングまで、施術歴30年の専門家の視点で案内します。</p>
+    <div class="cta"><a class="btn btn-fill" href="#women">女性はこちら</a><a class="btn btn-line" href="#men">男性はこちら</a><a class="btn btn-line" href="#training">トレーニング</a></div>
+  </div>
+  <div class="hero-img"><img src="https://tomyree-source.github.io/sites/fashion/assets/hero.webp" alt="案内役のセラフィナとケント、白猫ルミと黒猫ノクス"></div>
+</div>
+
+<div class="wrap">
+  <div class="index4">
+    <div><span class="no">01</span><span class="lb">女性｜体型カバー</span></div>
+    <div><span class="no">02</span><span class="lb">男性｜清潔感</span></div>
+    <div><span class="no">03</span><span class="lb">姿勢の専門家の解説</span></div>
+    <div><span class="no">04</span><span class="lb">男女ペアのストレッチ</span></div>
+  </div>
+
+  <section class="blk" id="women">
+    <div class="sec-head"><div class="lft"><span class="no">01</span><h2>女性｜体型カバー</h2></div><span class="eng">Women — Body Cover</span></div>
+    <p class="lead">お腹・二の腕・ヒップは、服の切り替え位置と生地で見え方が変わります。体を責めず、今の体に合う選び方を一緒に探しましょう。案内はセラフィナと白猫ルミです。</p>
+    <div class="cards">
+      <div class="card"><div class="thumb"><img src="https://tomyree-source.github.io/sites/fashion/assets/article-denim-scene.webp" alt="デニムを着るセラフィナ"></div><span class="tag">Article</span><h3>デニムで脚を長く見せる選び方（40代）</h3><p>股上の深さ・丈・生地の落ち感。脚を長く見せたい40代のデニム選びの3つの目安と、目安に合う商品の比較。</p><a class="more" href="#">記事を読む</a></div>
+      <div class="card"><div class="thumb"><img src="https://tomyree-source.github.io/sites/fashion/assets/article-onepiece-scene.webp" alt="ワンピースを着るセラフィナ" onerror="this.parentNode.style.display='none'"></div><span class="tag">Article</span><h3>ぽっこりお腹カバー ワンピースの選び方</h3><p>ウエストの切り替え位置、Aラインの広がり方、生地の落ち感。3つの目安で失敗を減らします。</p><a class="more" href="#">記事を読む</a></div>
+      <div class="card"><div class="thumb"><img src="https://tomyree-source.github.io/sites/fashion/assets/training-tw9-scene.webp" alt="壁プッシュをするセラフィナ"></div><span class="tag t">Training</span><h3>二の腕引き締め｜壁プッシュとタオル絞り</h3><p>服の選び方とあわせて、自宅でできる体づくりへ案内します。所要は約5分です。</p><a class="more" href="#">記事を読む</a></div>
+    </div>
+
+    <div style="margin-top:52px">
+      <p class="pr-note">PR｜この記事のテーマに合うデニム</p>
+      <div class="pgrid">
+        <div class="pcard"><div class="pimg"><img src="https://tshop.r10s.jp/antiqua-a/cabinet/151/pj-01463.jpg?_ex=300x300&s=0&r=1" alt="antiqua ワイドデニム"></div><p class="pname">antiqua ワイドデニム（タック入り）</p><p class="pnote">股上33〜35cmの深め設計。綿100%・タック入りで腰まわりにゆとり</p><p class="prev">★4.50（レビュー4件）</p><p class="price">12,990円 <small>（税込）</small></p><p class="shop">antiqua（アンティカ）</p><a class="buy" href="#">商品を見る</a></div>
+        <div class="pcard"><div class="pimg"><img src="https://tshop.r10s.jp/conron-psl-r/cabinet/compass1694148356.jpg?_ex=300x300" alt="ストレッチデニム" onerror="this.style.display='none'"></div><p class="pname">ストレッチ スリムストレートデニム</p><p class="pnote">選べる股下で丈を合わせやすい。プチプラ価格</p><p class="prev">★4.63（レビュー49件）</p><p class="price">2,680円 <small>（税込）</small></p><p class="shop">CONRON</p><a class="buy" href="#">商品を見る</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk" id="men">
+    <div class="sec-head"><div class="lft"><span class="no">02</span><h2>男性｜清潔感</h2></div><span class="eng">Men — Clean Look</span></div>
+    <p class="lead">清潔感は、サイズ・シワ・色の3点でほぼ決まります。高い服より、合う服を選びましょう。案内はケントと黒猫ノクスです。</p>
+    <div class="cards">
+      <div class="card"><div class="thumb"><img src="https://tomyree-source.github.io/sites/fashion/assets/article-men-telework-scene.webp" alt="テレワークで白シャツを着るケント"></div><span class="tag m">Article</span><h3>テレワークの画面映えシャツ</h3><p>明るい無地・立つ襟・ノーアイロン。ビデオ会議で清潔感が出るシャツ選びの3つの基準。</p><a class="more" href="#">記事を読む</a></div>
+      <div class="card"><div class="thumb"><img src="https://tomyree-source.github.io/sites/fashion/assets/article-men-coat-scene.webp" alt="コートを着るケント"></div><span class="tag m">Article</span><h3>冬のアウターの選び方｜コートの着丈と肩</h3><p>着丈と肩のラインで、コートの印象は決まります。40代メンズの失敗しない選び方。</p><a class="more" href="#">記事を読む</a></div>
+      <div class="card"><div class="thumb"><img src="https://tomyree-source.github.io/sites/fashion/assets/training-tm1-scene.webp" alt="トレーニングをするケント" onerror="this.parentNode.style.display='none'"></div><span class="tag t">Training</span><h3>巻き肩・猫背対策（男性）</h3><p>ジャケットが決まらない原因は姿勢かもしれません。胸を開く3分のケア。</p><a class="more" href="#">記事を読む</a></div>
+    </div>
+  </section>
+
+  <section class="blk" id="training">
+    <div class="sec-head"><div class="lft"><span class="no">03</span><h2>トレーニング</h2></div><span class="eng">Training — Posture Care</span></div>
+    <p class="lead">服が似合う体づくりを、部位別に。道具なし、またはバンドとマットだけでできる内容だけを集めました。</p>
+  </section>
+
+  <div class="author"><b>運営：222工房</b>（運営者は施術歴30年のセラピスト／鍼灸師・登録販売者・アロマセラピスト・パーソナルトレーナー資格）<br>姿勢と体の使い方の専門家の視点で、「きれいに見える・動きやすい・疲れにくい」服と体づくりを案内します。<br><a href="#">運営者と商品の選定基準について</a></div>
+</div>
+
+<footer class="site"><div class="flogo">POSTURE &amp; STYLE</div>姿勢の専門家が案内する、40代からのファッションと体づくり<br>当サイトはアフィリエイトプログラムに参加しています。商品紹介のブロックにはPR表記を入れています。</footer>
+</body></html>
