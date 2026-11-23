@@ -34,18 +34,21 @@ header.site nav a:hover::after{width:100%}
 @keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,246,239,.16) 0%,rgba(250,246,239,0) 32%,rgba(250,246,239,.5) 66%,var(--base) 100%)}
 .hero-word{position:absolute;top:120px;left:16px;font-family:'Cormorant Garamond',serif;font-size:19vw;line-height:.9;color:rgba(255,255,255,.38);letter-spacing:.02em;writing-mode:vertical-rl;font-style:italic;pointer-events:none}
-.hero-inner{position:relative;z-index:2;padding:0 20px 30px;max-width:640px}
-.hero.kicker{font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:var(--gold);font-weight:600;margin:0 0 10px}
-.hero h1{font-family:'Shippori Mincho',serif;font-weight:700;font-size:34px;line-height:1.5;letter-spacing:.04em;margin:0 0 14px}
+.hero-inner{position:relative;z-index:2;padding:0 20px 118px;max-width:640px}
+.hero.kicker{font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:var(--gold);font-weight:600;margin:0 0 14px}
+.hero h1{font-family:'Shippori Mincho',serif;font-weight:700;font-size:37px;line-height:1.55;letter-spacing:.04em;margin:0 0 20px}
 .hero h1.accent{color:var(--gold)}
-.hero p.lead{margin:0 0 20px;font-size:15px}
+.hero p.lead{margin:0 0 34px;font-size:15px;line-height:2.05}
+.float-cta{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;display:flex;justify-content:center;align-items:center;gap:10px;background:var(--ink);color:#fff;text-decoration:none;padding:16px 20px;border-radius:999px;font-weight:700;letter-spacing:.08em;font-size:16px;box-shadow:0 14px 30px rgba(51,65,58,.32)}
+.float-cta .arr{transition:transform .3s}
+.float-cta:hover .arr{transform:translateX(4px)}
 .hero.badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
 .badge{background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:12px}
 .cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;text-decoration:none;padding:14px 28px;border-radius:999px;font-weight:700;letter-spacing:.06em;box-shadow:0 10px 24px rgba(51,65,58,.22);transition:transform.3s}
 .cta.arr{transition:transform.3s}
 .cta:hover{transform:translateY(-2px)}
 .cta:hover.arr{transform:translateX(4px)}
-.guide{display:flex;gap:12px;align-items:flex-start;margin-top:26px;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:20px 20px 20px 4px;padding:12px 14px;max-width:520px}
+.guide{display:flex;gap:12px;align-items:flex-start;margin-top:0;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:20px 20px 20px 4px;padding:14px 16px;max-width:520px}
 .guide img{width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:center 6%;flex:none}
 .guide p{margin:0;font-size:13px;line-height:1.8}
 .guide.name{font-family:'Shippori Mincho',serif;font-weight:700;color:var(--gold);font-size:12px;letter-spacing:.12em}
@@ -103,15 +106,16 @@ h2{font-family:'Shippori Mincho',serif;font-size:24px;letter-spacing:.05em;margi
 .apply h2{color:#fff}
 .apply p{color:#D8DCD2;font-size:14px;position:relative;z-index:1}
 .apply.cta{background:var(--gold);box-shadow:none}
-footer{background:#2E3A33;color:#C9CFC2;padding:10px 20px 44px;font-size:13px;position:relative}
+footer{background:#2E3A33;color:#C9CFC2;padding:10px 20px 120px;font-size:13px;position:relative}
 footer.inner{max-width:1120px;margin:0 auto}
 footer.flogo{font-family:'Cormorant Garamond',serif;letter-spacing:.14em;font-size:18px;color:#fff}
 footer a{color:#D9BE8C}
 footer nav{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 0}
 @media(min-width:760px){
 header.site nav{display:block}
-.hero-inner{padding:0 48px 52px}
-.hero h1{font-size:52px}
+.hero-inner{padding:0 48px 120px}
+  .float-cta{left:auto;right:28px;bottom:24px;width:340px}
+.hero h1{font-size:54px}
 .hero-word{font-size:11vw}
 .concept{grid-template-columns:1fr 1.1fr;align-items:center}
 .style-grid{grid-template-columns:repeat(3,1fr)}
@@ -133,8 +137,6 @@ h2{font-size:30px}
 <p class="kicker">YOGA STUDIO PORTAL — JAPAN</p>
 <h1>呼吸とともに、<br><span class="accent">わたし</span>をととのえる。</h1>
 <p class="lead">Simple Yoga Lifeは、全国47都道府県のヨガスタジオを探せるポータルです。掲載は、公式サイトで営業実態を確認できたスタジオだけ。エリアや目的から、今のあなたに合うヨガが見つかります。</p>
-<div class="badges"><span class="badge">掲載 110店</span><span class="badge">20都道府県に掲載あり</span><span class="badge">公式確認済みの情報だけ</span></div>
-<a class="cta" href="#areas">エリアから探す <span class="arr">→</span></a>
 <div class="guide">
 <img src="assets/seraphina-hero.webp" alt="案内役セラフィナ">
 <p><span class="name">GUIDE — セラフィナ</span><br>こんにちは、案内役のセラフィナです。初めてのヨガも、久しぶりのヨガも大丈夫。一緒に、あなたに合うスタジオを見つけましょう。</p>
@@ -219,6 +221,8 @@ h2{font-size:30px}
 <p>運営：222工房／掲載情報は各スタジオの公式サイトで確認できた事実のみを要約し、出典と確認日を付けています。</p>
 </div>
 </footer>
+
+<a class="float-cta" href="#areas">エリアから探す <span class="arr">→</span></a>
 
 <script>
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}})},{threshold:.12});
