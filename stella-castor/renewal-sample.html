@@ -134,7 +134,7 @@ header{
 .btn-line svg{width:18px;height:18px;flex:none;}
 .btn-line:hover{background:var(--main);color:#fff;}
 .btn-line:hover svg *{stroke:#fff;}
-.fv-photo{margin-top:52px;position:relative;}
+.fv-photo{margin-top:30px;position:relative;}
 .fv-photo .main-img{
   width:88%;
   border-radius:8px;
@@ -149,7 +149,7 @@ header{
   border:6px solid var(--bg);
 }
 .fv-caption{
-  margin-top:56px;font-size:11.5px;color:var(--mut);letter-spacing:.14em;
+  margin-top:64px;font-size:11.5px;color:var(--mut);letter-spacing:.14em;
 }
 /* ---------- concept ---------- */
 .sec-concept{background:var(--sub);}
@@ -174,11 +174,14 @@ header{
 .concept-body p:last-child{margin-bottom:0;}
 .concept-body .sig{font-family:var(--serif-jp);letter-spacing:.12em;color:var(--main-deep);}
 /* ---------- concerns ---------- */
-.concern-list{border-top:1px solid var(--line);}
+.concern-list{
+  border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;column-gap:26px;
+}
 .concern-list a{
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:17px 4px;border-bottom:1px solid var(--line);
-  font-family:var(--serif-jp);font-size:16.5px;letter-spacing:.12em;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:14px 2px;border-bottom:1px solid var(--line);
+  font-family:var(--serif-jp);font-size:13.5px;letter-spacing:.05em;
   transition:padding-left .3s,color .3s;
 }
 .concern-list a:hover{padding-left:12px;color:var(--main-deep);}
@@ -271,14 +274,34 @@ footer{
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   border-top:1px solid var(--line);
 }
-.reserve-bar a{
+.reserve-bar a,.reserve-bar button{
   flex:1;display:flex;align-items:center;justify-content:center;gap:9px;
   padding:15px 8px calc(15px + env(safe-area-inset-bottom));
   font-size:13.5px;letter-spacing:.14em;font-family:var(--serif-jp);font-weight:500;
   color:var(--main-deep);
 }
-.reserve-bar a + a{border-left:1px solid var(--line);}
-.reserve-bar a svg{width:19px;height:19px;flex:none;}
+.reserve-bar button{
+  background:none;border:none;border-right:1px solid var(--line);
+  font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.reserve-bar a svg,.reserve-bar button svg{width:19px;height:19px;flex:none;}
+.menu-panel{
+  position:fixed;left:12px;right:12px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:49;
+  background:rgba(248,246,242,.94);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:8px;
+  box-shadow:0 18px 40px rgba(110,93,79,.16);
+  padding:10px 22px;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .35s,transform .35s,visibility .35s;
+}
+.menu-panel.open{opacity:1;visibility:visible;transform:translateY(0);}
+.menu-panel a{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 2px;font-family:var(--serif-jp);font-size:15px;letter-spacing:.1em;color:var(--ink);
+}
+.menu-panel a + a{border-top:1px solid var(--line);}
+.menu-panel a .arrow{font-family:var(--serif-en);color:var(--main);font-size:14px;}
 .reserve-bar a.primary{color:#fff;background:rgba(122,139,124,.92);}
 .reserve-bar a.primary svg *{stroke:#fff;}
 /* ---------- fixed CTA : PC vertical ---------- */
@@ -287,6 +310,7 @@ footer{
 @media (min-width:821px){
   body{padding-bottom:0;font-size:15.5px;}
   .reserve-bar{display:none;}
+  .menu-panel{display:none;}
   .reserve-side{
     display:flex;align-items:center;justify-content:center;gap:14px;
     position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:50;
@@ -306,12 +330,24 @@ footer{
   .bg-word{font-size:150px;top:44px;}
   .sec-head h2{font-size:31px;}
   .fv{padding:84px 24px 130px;}
-  .fv h1{font-size:47px;}
+  .fv h1{font-size:42px;letter-spacing:.05em;white-space:nowrap;}
   .fv h1 .small{font-size:23px;}
   .fv .v-text{font-size:13.5px;right:calc(50% - 530px + 6px);}
-  .fv-photo .main-img{width:72%;}
-  .fv-photo .sub-img{width:30%;bottom:-52px;}
-  .fv-caption{margin-top:76px;}
+  .fv .wrap{
+    display:grid;
+    grid-template-columns:1fr 1.12fr;
+    grid-template-areas:"top photo" "bottom photo" "caption photo";
+    column-gap:60px;align-items:start;
+  }
+  .fv-text-top{grid-area:top;}
+  .fv-text-bottom{grid-area:bottom;}
+  .fv-photo{grid-area:photo;margin-top:10px;}
+  .fv-caption{grid-area:caption;}
+  .fv-photo .main-img{width:100%;}
+  .fv-photo .sub-img{width:36%;bottom:-46px;}
+  .fv-caption{margin-top:56px;}
+  .fv-lead{padding-right:0;}
+  .concern-list a{font-size:15.5px;padding:16px 4px;}
   .concept-grid{flex-direction:row;gap:72px;align-items:flex-start;}
   .concept-photos{flex:1.05;}
   .concept-body{flex:1;padding-top:26px;}
@@ -348,8 +384,15 @@ footer{
 <section class="fv">
   <p class="v-text">大人の女性のための、静かな癒しの時間</p>
   <div class="wrap">
+    <div class="fv-text-top">
     <p class="fv-eyebrow fade">Women Only — Oil Massage &amp; Seitai</p>
     <h1 class="fade"><span class="small">女性専用オイルマッサージ＆美容整体</span>ステラカストル新大阪</h1>
+    </div>
+    <div class="fv-photo fade">
+      <img class="main-img" src="assets/hero-treatment.webp" alt="個室でオイルマッサージの施術を受ける女性客と男性セラピストのイラスト">
+      <img class="sub-img" src="assets/renewal-room.webp" alt="自然光の入るサロン個室のイメージイラスト">
+    </div>
+    <div class="fv-text-bottom">
     <p class="fv-lead fade">新大阪駅から徒歩3分。施術歴30年・鍼灸師の国家資格を持つ男性セラピストが、オイルマッサージと美容整体を組み合わせてお一人おひとりに向き合います。</p>
     <div class="fv-meta fade">
       <span><b>90分 10,000円</b>（税込）</span>
@@ -360,9 +403,6 @@ footer{
       <svg viewBox="0 0 24 24" fill="none" stroke="#8C7A6B" stroke-width="1.2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
       LINEで予約する
     </a>
-    <div class="fv-photo fade">
-      <img class="main-img" src="assets/hero-treatment.webp" alt="個室でオイルマッサージの施術を受ける女性客と男性セラピストのイラスト">
-      <img class="sub-img" src="assets/renewal-room.webp" alt="自然光の入るサロン個室のイメージイラスト">
     </div>
     <p class="fv-caption fade">SHIN-OSAKA — WOMEN ONLY SALON</p>
   </div>
@@ -404,15 +444,48 @@ footer{
     </div>
     <div class="concern-list fade">
       <a href="assets/s/katakori.html">肩こり<span class="arrow">→</span></a>
-      <a href="assets/s/kubikori.html">首こり・スマホ首<span class="arrow">→</span></a>
+      <a href="assets/s/kubikori.html">首こり<span class="arrow">→</span></a>
+      <a href="assets/s/sumaho-kubi.html">スマホ首<span class="arrow">→</span></a>
+      <a href="assets/s/asa-kowabari.html">朝の首・肩のこわばり<span class="arrow">→</span></a>
+      <a href="assets/s/samui-kata.html">寒い日の肩こり<span class="arrow">→</span></a>
+      <a href="assets/s/kincho-kata.html">緊張した日の肩<span class="arrow">→</span></a>
+      <a href="assets/s/senaka.html">背中の張り<span class="arrow">→</span></a>
       <a href="assets/s/koshi.html">腰の重さ・腰痛<span class="arrow">→</span></a>
-      <a href="assets/s/mukumi.html">むくみ<span class="arrow">→</span></a>
+      <a href="assets/s/suwari-koshi.html">座りっぱなしの腰<span class="arrow">→</span></a>
+      <a href="assets/s/dakko-koshi.html">抱っこ疲れの腰<span class="arrow">→</span></a>
+      <a href="assets/s/sango-koshi.html">産後の腰・肩<span class="arrow">→</span></a>
+      <a href="assets/s/kaji-kata.html">家事疲れの肩・腕<span class="arrow">→</span></a>
+      <a href="assets/s/ude.html">腕のだるさ<span class="arrow">→</span></a>
+      <a href="assets/s/makikata.html">巻き肩<span class="arrow">→</span></a>
+      <a href="assets/s/nekose.html">猫背<span class="arrow">→</span></a>
+      <a href="assets/s/shisei.html">姿勢のくずれ<span class="arrow">→</span></a>
+      <a href="assets/s/atama.html">頭痛・頭の重さ<span class="arrow">→</span></a>
+      <a href="assets/s/me.html">眼精疲労・目の疲れ<span class="arrow">→</span></a>
+      <a href="assets/s/gamen-me.html">画面疲れの目<span class="arrow">→</span></a>
+      <a href="assets/s/kuishibari.html">食いしばり<span class="arrow">→</span></a>
+      <a href="assets/s/kao.html">顔のむくみ・くすみ感<span class="arrow">→</span></a>
+      <a href="assets/s/ashitsukare.html">歩き疲れの脚<span class="arrow">→</span></a>
+      <a href="assets/s/tachi-ashi.html">立ちっぱなしの脚<span class="arrow">→</span></a>
+      <a href="assets/s/heel-ashi.html">ヒールの日の脚<span class="arrow">→</span></a>
+      <a href="assets/s/yugata-ashi.html">夕方の脚の重さ<span class="arrow">→</span></a>
+      <a href="assets/s/mukumi.html">脚のむくみ<span class="arrow">→</span></a>
+      <a href="assets/s/ido-mukumi.html">移動の多い日のむくみ<span class="arrow">→</span></a>
       <a href="assets/s/hie.html">冷え<span class="arrow">→</span></a>
-      <a href="assets/s/atama.html">頭の重さ<span class="arrow">→</span></a>
-      <a href="assets/s/shisei.html">姿勢・猫背<span class="arrow">→</span></a>
+      <a href="assets/s/reibou-hie.html">冷房による冷え<span class="arrow">→</span></a>
+      <a href="assets/s/seirimae.html">生理前後の不調感<span class="arrow">→</span></a>
+      <a href="assets/s/seirimae-mukumi.html">生理前のむくみ<span class="arrow">→</span></a>
+      <a href="assets/s/konenki-mae.html">更年期前の不調<span class="arrow">→</span></a>
+      <a href="assets/s/konenki.html">更年期のゆらぎ<span class="arrow">→</span></a>
       <a href="assets/s/suimin.html">眠りの浅さ<span class="arrow">→</span></a>
+      <a href="assets/s/netsuki.html">寝つきの悪さ<span class="arrow">→</span></a>
+      <a href="assets/s/jiritsu.html">自律神経の乱れ<span class="arrow">→</span></a>
+      <a href="assets/s/darusa.html">体のだるさ<span class="arrow">→</span></a>
+      <a href="assets/s/zenshin.html">全身の疲労感<span class="arrow">→</span></a>
+      <a href="assets/s/refresh.html">全身のリフレッシュ<span class="arrow">→</span></a>
+      <a href="assets/s/ame-darusa.html">雨の日のだるさ<span class="arrow">→</span></a>
+      <a href="assets/s/kisetsu-fucho.html">季節の変わり目の不調<span class="arrow">→</span></a>
+      <a href="assets/s/undobusoku.html">運動不足の体の硬さ<span class="arrow">→</span></a>
     </div>
-    <p class="concern-more fade"><a class="link-more" href="assets/concerns.html">お悩み一覧（全42件）を見る</a></p>
   </div>
 </section>
 
@@ -534,12 +607,23 @@ footer{
   RESERVE
 </a>
 
+<!-- モバイル：メニューパネル -->
+<div class="menu-panel" id="menuPanel">
+  <a href="#concept">コンセプト<span class="arrow">→</span></a>
+  <a href="#concerns">症状・お悩み<span class="arrow">→</span></a>
+  <a href="#menu">料金<span class="arrow">→</span></a>
+  <a href="#therapist">施術者<span class="arrow">→</span></a>
+  <a href="#access">店舗情報・アクセス<span class="arrow">→</span></a>
+  <a href="assets/faq.html">よくある質問<span class="arrow">→</span></a>
+  <a href="assets/monitor.html">施術モニター募集<span class="arrow">→</span></a>
+</div>
+
 <!-- モバイル：すりガラス固定バー -->
 <nav class="reserve-bar">
-  <a href="https://lin.ee/5olO9gX" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#8C7A6B" stroke-width="1.2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-    Web予約
-  </a>
+  <button type="button" id="menuBtn" aria-expanded="false" aria-controls="menuPanel">
+    <svg id="menuIcon" viewBox="0 0 24 24" fill="none" stroke="#8C7A6B" stroke-width="1.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    メニュー
+  </button>
   <a class="primary" href="https://lin.ee/5olO9gX" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><path d="M21 12a8 8 0 0 1-8 8H4l2.2-2.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01" stroke-linecap="round" stroke-width="2"/></svg>
     LINE予約
@@ -556,6 +640,30 @@ footer{
     });
   },{threshold:.12});
   els.forEach(function(e){ io.observe(e); });
+
+  var btn = document.getElementById('menuBtn');
+  var panel = document.getElementById('menuPanel');
+  var icon = document.getElementById('menuIcon');
+  var ICON_OPEN = '<path d="M4 7h16M4 12h16M4 17h16"/>';
+  var ICON_CLOSE = '<path d="M6 6l12 12M18 6L6 18"/>';
+  function setMenu(open){
+    panel.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    icon.innerHTML = open ? ICON_CLOSE : ICON_OPEN;
+  }
+  if(btn && panel){
+    btn.addEventListener('click', function(){
+      setMenu(!panel.classList.contains('open'));
+    });
+    panel.addEventListener('click', function(e){
+      if(e.target.closest('a')) setMenu(false);
+    });
+    document.addEventListener('click', function(e){
+      if(panel.classList.contains('open') && !e.target.closest('#menuPanel') && !e.target.closest('#menuBtn')){
+        setMenu(false);
+      }
+    });
+  }
 })();
 </script>
 </body>
