@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>ステラポラリス梅田｜リニューアル案（真夜中の紺×星の金）</title>
+<meta name="description" content="ステラポラリス梅田のリニューアル見本ページです。女性専用オイルマッサージ＆美容整体、90分10,000円。中崎町駅徒歩5分。">
+<link rel="icon" href="assets/brand-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0V6GQSZV7F"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0V6GQSZV7F');
+</script>
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "z8ijjnzsj3");
+</script>
+<style>
+:root{
+  --bg:#F4F5F8;
+  --sub:#E4E8F1;
+  --main:#2E3D5C;
+  --main-deep:#1C2942;
+  --sage:#43598A;
+  --ink:#232B38;
+  --mut:#5B6572;
+  --line:#C9CFDA;
+  --serif-en:'Cormorant Garamond',serif;
+  --serif-jp:'Shippori Mincho','Noto Serif JP',serif;
+  --sans:'Noto Sans JP',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:15px;
+  line-height:1.75;
+  letter-spacing:.04em;
+  padding-bottom:76px; /* モバイル固定バー分 */
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+.en{font-family:var(--serif-en);font-weight:400;letter-spacing:.22em;text-transform:uppercase;}
+.sec{padding:84px 24px;position:relative;}
+.wrap{max-width:1060px;margin:0 auto;position:relative;}
+.sec-head{margin-bottom:44px;}
+.sec-head .en{font-size:13px;color:var(--main);display:block;margin-bottom:10px;}
+.sec-head h2{font-family:var(--serif-jp);font-weight:500;font-size:26px;letter-spacing:.12em;line-height:1.5;}
+.sec-head .rule{width:44px;height:1px;background:var(--main);margin-top:20px;}
+.bg-word{
+  position:absolute;top:26px;right:2px;
+  font-family:var(--serif-en);font-weight:300;
+  font-size:88px;letter-spacing:.08em;
+  color:rgba(46,61,92,.07);
+  pointer-events:none;line-height:1;white-space:nowrap;
+}
+.v-text{
+  writing-mode:vertical-rl;
+  font-family:var(--serif-jp);
+  letter-spacing:.34em;
+  color:var(--main-deep);
+}
+
+/* ---------- mira: star motif / waves / motion / steps ---------- */
+.wave{display:block;line-height:0;margin-bottom:-1px;}
+.wave svg{display:block;width:100%;height:30px;}
+@keyframes heroZoom{from{transform:scale(1);}to{transform:scale(1.07);}}
+.fv-photo{overflow:hidden;border-radius:8px;box-shadow:0 24px 48px rgba(28,41,66,.14);}
+.fv-photo .main-img{box-shadow:none;animation:heroZoom 16s ease-out forwards;}
+.steps{margin-top:52px;}
+.steps-head{font-family:var(--serif-jp);font-size:18px;font-weight:500;letter-spacing:.12em;margin-bottom:8px;}
+.steps-lead{font-size:13px;color:var(--mut);margin-bottom:26px;}
+.step-grid{display:grid;gap:26px;}
+.step-card img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;margin-bottom:14px;}
+.step-card .no{font-family:var(--serif-en);font-size:12px;letter-spacing:.26em;color:var(--main);display:block;margin-bottom:6px;}
+.step-card h3{font-family:var(--serif-jp);font-size:16.5px;font-weight:500;letter-spacing:.1em;margin-bottom:6px;}
+.step-card p{font-size:13.5px;color:var(--mut);line-height:1.9;}
+@media (min-width:821px){
+  .wave svg{height:46px;}
+  .step-grid{grid-template-columns:repeat(3,1fr);gap:30px;}
+}
+/* ---------- fade-in ---------- */
+.fade{opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease;}
+.fade.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  .fade{opacity:1;transform:none;transition:none;}
+  .fv-photo .main-img{animation:none;}
+}
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:40;
+  background:rgba(244,245,248,.92);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.header-in{
+  max-width:1060px;margin:0 auto;
+  padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.logo .en{font-size:11px;color:var(--main);display:block;letter-spacing:.3em;}
+.logo .jp{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:.14em;}
+.header-nav{display:none;}
+/* ---------- first view ---------- */
+.fv{padding:44px 24px 84px;position:relative;overflow:hidden;}
+.fv .v-text{
+  position:absolute;top:52px;right:22px;
+  font-size:12px;opacity:.85;
+}
+.fv-eyebrow{
+  font-size:11px;letter-spacing:.28em;color:var(--main);
+  font-family:var(--serif-en);text-transform:uppercase;
+  margin-bottom:18px;
+}
+.fv h1{
+  font-family:var(--serif-jp);font-weight:500;
+  font-size:30px;line-height:1.45;letter-spacing:.07em;
+  margin-bottom:8px;
+}
+.fv h1 .small{display:block;font-size:19px;letter-spacing:.14em;color:var(--main-deep);margin-bottom:10px;}
+.fv-lead{
+  font-size:14px;color:var(--mut);
+  max-width:30em;margin:18px 0 26px;line-height:2;
+  padding-right:36px;
+}
+.fv-meta{
+  display:flex;flex-wrap:wrap;gap:8px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:14px 0;margin-bottom:28px;max-width:520px;
+}
+.fv-meta span{
+  font-size:12.5px;letter-spacing:.1em;color:var(--ink);
+  padding:0 14px;border-right:1px solid var(--line);
+}
+.fv-meta span:first-child{padding-left:0;}
+.fv-meta span:last-child{border-right:none;}
+.fv-meta b{font-family:var(--serif-jp);font-weight:600;font-size:15px;}
+.btn-line{
+  display:inline-flex;align-items:center;gap:12px;
+  border:1px solid var(--main);color:var(--main-deep);
+  padding:14px 30px;font-size:13.5px;letter-spacing:.16em;
+  background:transparent;transition:background .3s,color .3s;
+}
+.btn-line svg{width:18px;height:18px;flex:none;}
+.btn-line:hover{background:var(--main);color:#fff;}
+.btn-line:hover svg *{stroke:#fff;}
+.fv-photo{margin-top:30px;position:relative;}
+.fv-photo .main-img{
+  width:100%;
+  border-radius:8px;
+  aspect-ratio:4/3;object-fit:cover;
+}
+.fv-caption{
+  margin-top:22px;font-size:11.5px;color:var(--mut);letter-spacing:.14em;
+}
+/* ---------- concept ---------- */
+.sec-concept{background:var(--sub);}
+.concept-grid{display:flex;flex-direction:column;gap:40px;}
+.concept-photos{display:flex;flex-direction:column;gap:16px;}
+.concept-photos .p1{
+  width:100%;
+  border-radius:50% 50% 0 0 / 30% 30% 0 0;
+  aspect-ratio:3/4;object-fit:cover;
+}
+.concept-photos .p2{
+  width:64%;margin:0 auto;
+  border-radius:8px;
+  aspect-ratio:1/2;object-fit:cover;
+}
+.concept-body p{font-size:14.5px;line-height:2.1;color:var(--ink);margin-bottom:20px;max-width:34em;}
+.concept-body p:last-child{margin-bottom:0;}
+.concept-body .sig{font-family:var(--serif-jp);letter-spacing:.12em;color:var(--main-deep);}
+/* ---------- concerns ---------- */
+.concern-list{
+  border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;column-gap:26px;
+}
+.concern-list a{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:14px 2px;border-bottom:1px solid var(--line);
+  font-family:var(--serif-jp);font-size:13.5px;letter-spacing:.05em;
+  transition:padding-left .3s,color .3s;
+}
+.concern-list a:hover{padding-left:12px;color:var(--main-deep);}
+.concern-list a .arrow{font-family:var(--serif-en);color:var(--main);font-size:15px;letter-spacing:0;}
+.concern-more{margin-top:30px;text-align:left;}
+.link-more{
+  font-size:13px;letter-spacing:.16em;color:var(--main-deep);
+  border-bottom:1px solid var(--main);padding-bottom:4px;
+}
+/* ---------- menu ---------- */
+.sec-menu{background:var(--sub);}
+.menu-card{
+  background:var(--bg);
+  border:1px solid var(--line);
+  padding:38px 28px;
+  max-width:640px;
+}
+.menu-card .en{font-size:12px;color:var(--main);display:block;margin-bottom:12px;}
+.menu-name{font-family:var(--serif-jp);font-size:20px;font-weight:500;letter-spacing:.12em;line-height:1.6;}
+.menu-price{
+  font-family:var(--serif-jp);
+  font-size:34px;font-weight:600;letter-spacing:.06em;
+  margin:16px 0 6px;color:var(--ink);
+}
+.menu-price small{font-size:14px;font-weight:400;color:var(--mut);letter-spacing:.1em;}
+.menu-notes{border-top:1px solid var(--line);margin-top:24px;padding-top:20px;}
+.menu-notes li{
+  list-style:none;font-size:13px;color:var(--mut);line-height:2;
+  padding-left:16px;position:relative;
+}
+.menu-notes li::before{content:"";position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--main);}
+/* ---------- therapist ---------- */
+.therapist-grid{display:flex;flex-direction:column;gap:40px;}
+.therapist-photo img{
+  width:76%;max-width:340px;
+  border-radius:50% 50% 0 0 / 30% 30% 0 0;
+  aspect-ratio:3/4;object-fit:cover;object-position:top center;
+}
+.therapist-body .name{
+  font-family:var(--serif-jp);font-size:21px;font-weight:600;letter-spacing:.14em;margin-bottom:6px;
+}
+.therapist-body .cred{font-size:12.5px;color:var(--main-deep);letter-spacing:.12em;margin-bottom:22px;}
+.therapist-body p{font-size:14.5px;line-height:2.1;max-width:34em;margin-bottom:18px;}
+.quals{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+.quals span{
+  font-size:11.5px;letter-spacing:.1em;color:var(--main-deep);
+  border:1px solid var(--line);padding:6px 12px;background:#fff;
+}
+/* ---------- access ---------- */
+.sec-access{background:var(--sub);}
+.info-rows{border-top:1px solid var(--line);max-width:720px;}
+.access-photo{
+  width:100%;aspect-ratio:3/2;object-fit:cover;
+  border-radius:8px;margin-bottom:34px;display:block;
+}
+.info-rows .row{
+  display:flex;flex-direction:column;gap:4px;
+  padding:18px 4px;border-bottom:1px solid var(--line);
+}
+.info-rows dt{
+  font-family:var(--serif-en);font-size:11.5px;letter-spacing:.24em;
+  color:var(--main);text-transform:uppercase;
+}
+.info-rows dd{font-size:14.5px;letter-spacing:.08em;}
+.info-rows dd small{display:block;color:var(--mut);font-size:12.5px;margin-top:2px;}
+/* ---------- reserve ---------- */
+.sec-reserve{text-align:left;}
+.reserve-box{
+  border:1px solid var(--line);
+  padding:48px 28px;max-width:720px;
+  background:linear-gradient(180deg,#fff, var(--bg));
+}
+.reserve-box .en{font-size:12px;color:var(--main);display:block;margin-bottom:12px;}
+.reserve-box h2{font-family:var(--serif-jp);font-weight:500;font-size:24px;letter-spacing:.12em;line-height:1.6;margin-bottom:16px;}
+.reserve-box p{font-size:14px;color:var(--mut);line-height:2;max-width:32em;margin-bottom:30px;}
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--line);
+  padding:52px 24px 40px;
+  background:var(--bg);
+}
+.footer-in{max-width:1060px;margin:0 auto;}
+.footer-in .en{font-size:11px;color:var(--main);display:block;margin-bottom:8px;}
+.footer-in .fname{font-family:var(--serif-jp);font-size:16px;font-weight:600;letter-spacing:.14em;margin-bottom:18px;}
+.footer-links{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:12.5px;color:var(--mut);margin-bottom:30px;}
+.footer-links a{border-bottom:1px solid transparent;}
+.footer-links a:hover{border-bottom-color:var(--main);}
+.copy{font-size:11px;color:var(--mut);letter-spacing:.12em;}
+/* ---------- fixed CTA : mobile bar ---------- */
+.reserve-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  display:flex;
+  background:rgba(244,245,248,.82);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-top:1px solid var(--line);
+}
+.reserve-bar a,.reserve-bar button{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:9px;
+  padding:15px 8px calc(15px + env(safe-area-inset-bottom));
+  font-size:13.5px;letter-spacing:.14em;font-family:var(--serif-jp);font-weight:500;
+  color:var(--main-deep);
+}
+.reserve-bar button{
+  background:none;border:none;border-right:1px solid var(--line);
+  font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.reserve-bar a svg,.reserve-bar button svg{width:19px;height:19px;flex:none;}
+.menu-panel{
+  position:fixed;left:12px;right:12px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:49;
+  background:rgba(244,245,248,.94);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:8px;
+  box-shadow:0 18px 40px rgba(28,41,66,.16);
+  padding:10px 22px;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .35s,transform .35s,visibility .35s;
+}
+.menu-panel.open{opacity:1;visibility:visible;transform:translateY(0);}
+.menu-panel a{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 2px;font-family:var(--serif-jp);font-size:15px;letter-spacing:.1em;color:var(--ink);
+}
+.menu-panel a + a{border-top:1px solid var(--line);}
+.menu-panel a .arrow{font-family:var(--serif-en);color:var(--main);font-size:14px;}
+.reserve-bar a.primary{color:#fff;background:rgba(67,89,138,.92);}
+.reserve-bar a.primary svg *{stroke:#fff;}
+/* ---------- fixed CTA : PC vertical ---------- */
+.reserve-side{display:none;}
+/* ---------- PC ---------- */
+@media (min-width:821px){
+  body{padding-bottom:0;font-size:15.5px;}
+  .reserve-bar{display:none;}
+  .menu-panel{display:none;}
+  .reserve-side{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:50;
+    writing-mode:vertical-rl;
+    background:var(--main);color:#fff;
+    font-family:var(--serif-en);font-size:13px;letter-spacing:.42em;
+    padding:30px 11px 30px 15px;
+    border-radius:8px 0 0 8px;
+    transition:background .3s;
+  }
+  .reserve-side:hover{background:var(--main-deep);}
+  .reserve-side svg{width:16px;height:16px;transform:rotate(90deg);}
+  .reserve-side svg *{stroke:#fff;}
+  .header-nav{display:flex;gap:30px;font-size:12.5px;letter-spacing:.16em;color:var(--mut);}
+  .header-nav a:hover{color:var(--main-deep);}
+  .sec{padding:130px 24px;}
+  .bg-word{font-size:150px;top:44px;}
+  .sec-head h2{font-size:31px;}
+  .fv{padding:84px 24px 130px;}
+  .fv h1{font-size:42px;letter-spacing:.05em;white-space:nowrap;}
+  .fv h1 .small{font-size:23px;}
+  .fv .v-text{font-size:13.5px;right:calc(50% - 530px + 6px);}
+  .fv .wrap{
+    display:grid;
+    grid-template-columns:1fr 1.12fr;
+    grid-template-areas:"top photo" "bottom photo" "caption photo";
+    column-gap:60px;align-items:start;
+  }
+  .fv-text-top{grid-area:top;}
+  .fv-text-bottom{grid-area:bottom;}
+  .fv-photo{grid-area:photo;margin-top:10px;}
+  .fv-caption{grid-area:caption;}
+  .fv-photo .main-img{width:100%;}
+  .fv-lead{padding-right:0;}
+  .concern-list a{font-size:15.5px;padding:16px 4px;}
+  .concept-grid{flex-direction:row;gap:72px;align-items:flex-start;}
+  .concept-photos{flex:1.05;}
+  .concept-body{flex:1;padding-top:26px;}
+  .therapist-grid{flex-direction:row;gap:72px;align-items:flex-start;}
+  .therapist-photo{flex:.85;}
+  .therapist-photo img{width:100%;}
+  .therapist-body{flex:1.15;padding-top:14px;}
+  .info-rows .row{flex-direction:row;gap:36px;align-items:baseline;}
+  .info-rows dt{width:130px;flex:none;}
+  .menu-card{padding:52px 56px;}
+  .reserve-box{padding:64px 56px;}
+}
+.sec-concept,.sec-menu,.sec-access{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg fill='%23B49A67'%3E%3Cpath fill-opacity='0.16' d='M30 18l2.2 5.8 5.8 2.2-5.8 2.2L30 34l-2.2-5.8L22 26l5.8-2.2z'/%3E%3Ccircle cx='104' cy='52' r='1.8' fill-opacity='0.22'/%3E%3Cpath fill-opacity='0.12' d='M122 96l1.7 4.4 4.4 1.7-4.4 1.7-1.7 4.4-1.7-4.4-4.4-1.7 4.4-1.7z'/%3E%3Ccircle cx='58' cy='118' r='1.5' fill-opacity='0.18'/%3E%3Ccircle cx='16' cy='86' r='1.3' fill-opacity='0.15'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---------- mira: whale band & motif ---------- */
+.whale-band{position:relative;}
+.whale-band img{border-radius:10px;}
+.whale-band img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 64%;display:block;}
+.whale-band .cap{padding:16px 4px 0;color:var(--ink);}
+.whale-band .cap .t{color:var(--main-deep);}
+.whale-band .cap p{color:var(--mut)!important;}
+.whale-band .cap .t{font-family:var(--serif-jp);font-size:19px;font-weight:500;letter-spacing:.14em;margin-bottom:6px;}
+.whale-band .cap p{font-size:12.5px;line-height:1.9;color:rgba(245,241,232,.9);}
+.sec-reserve{position:relative;overflow:hidden;}
+.sec-reserve .wrap{position:relative;z-index:1;}
+.whale-motif{position:absolute;right:-46px;bottom:6px;width:340px;opacity:.07;pointer-events:none;}
+.footer-whale{width:56px;opacity:.55;margin:0 auto 14px;display:block;}
+@media (min-width:821px){
+  .whale-band img{aspect-ratio:21/9;}
+  .whale-band{border-radius:10px;overflow:hidden;}
+  .whale-band img{border-radius:0;}
+  .whale-band .cap{position:absolute;left:0;right:0;bottom:0;padding:64px 34px 24px;background:linear-gradient(transparent,rgba(24,30,48,.66));color:#F5F1E8;}
+  .whale-band .cap .t{color:#F5F1E8;}
+  .whale-band .cap p{color:rgba(245,241,232,.9)!important;}
+  .whale-band .cap .t{font-size:23px;}
+  .whale-band .cap p{font-size:13.5px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <a class="logo" href="#">
+      <span class="en">Stella Polaris Umeda</span>
+      <span class="jp">ステラポラリス梅田</span>
+    </a>
+    <nav class="header-nav">
+      <a href="#concept">コンセプト</a>
+      <a href="#concerns">症状・お悩み</a>
+      <a href="#menu">料金</a>
+      <a href="#therapist">施術者</a>
+      <a href="#access">アクセス</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ FIRST VIEW ============ -->
+<section class="fv">
+  <div class="wrap">
+    <div class="fv-text-top">
+    <p class="fv-eyebrow fade">Women Only — Oil Massage &amp; Seitai</p>
+    <h1 class="fade"><span class="small">女性専用オイルマッサージ＆美容整体</span>ステラポラリス梅田</h1>
+    </div>
+    <div class="fv-photo fade">
+      <img class="main-img" src="assets/renewal-hero.webp" alt="個室でオイルマッサージの施術を受ける女性客と男性セラピストのイラスト">
+    </div>
+    <div class="fv-text-bottom">
+    <p class="fv-lead fade">中崎町駅から徒歩5分。梅田の街の灯りを眺める個室で受ける、女性専用のオイルマッサージ＆美容整体です。施術歴30年・鍼灸師の国家資格を持つ男性セラピストが、東洋医学の視点も交えてお一人おひとりに向き合います。</p>
+    <div class="fv-meta fade">
+      <span><b>90分 10,000円</b>（税込）</span>
+      <span>完全個室</span>
+      <span>中崎町駅 徒歩5分</span>
+    </div>
+    <a class="btn-line fade" href="https://line.me/R/ti/p/@781zpvsr" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2E3D5C" stroke-width="1.2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+      LINEで予約する
+    </a>
+    </div>
+    <p class="fv-caption fade">UMEDA — WOMEN ONLY SALON</p>
+  </div>
+</section>
+
+<!-- ============ CONCEPT ============ -->
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 64" preserveAspectRatio="none"><path d="M0,34 C240,62 480,6 720,26 C960,46 1200,14 1440,34 L1440,64 L0,64 Z" fill="#E4E8F1"/></svg></div>
+
+<section class="sec sec-concept" id="concept">
+  <span class="bg-word">Concept</span>
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="en">Concept</span>
+      <h2>梅田の夜に、<br>静かに整う場所。</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="concept-grid">
+      <div class="concept-photos fade">
+        <img class="p1" src="assets/renewal-care.webp" alt="オイルマッサージの施術のイメージイラスト">
+        <img class="p2" src="assets/renewal-posture.webp" alt="姿勢チェックのイメージイラスト">
+      </div>
+      <div class="concept-body fade">
+        <p>ステラポラリス梅田は、中崎町駅から徒歩5分の女性専用サロンです。温めたオイルの心地よさで全身をゆるめながら、姿勢や骨格の土台にも目を向ける美容整体を組み合わせ、一つの流れの中で施術します。</p>
+        <p>施術を担当するのは、施術歴30年・鍼灸師の国家資格を持つ男性セラピストです。東洋医学の視点から経絡や巡りにも目を向け、肩や首の重さ、腰まわりのだるさ、むくみや冷えといった日々のお悩みに合わせて、圧のかけ方と施術の順序を調整します。</p>
+        <p>完全個室の静かな空間で、周りを気にせずお過ごしください。料金は90分10,000円の単一価格。コース選びで迷う時間も、追加の心配もありません。</p>
+        <p class="sig">— 東洋医学の視点と、姿勢を整える確かさを、一度に。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONCERNS ============ -->
+<section class="sec" id="concerns">
+  <span class="bg-word">Concerns</span>
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="en">Concerns</span>
+      <h2>症状・お悩み別に探す</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="concern-list fade">
+ <a href="assets/s/katakori.html">肩こり<span class="arrow">→</span></a>
+ <a href="assets/s/kubikori.html">首こり<span class="arrow">→</span></a>
+ <a href="assets/s/senaka.html">背中の張り<span class="arrow">→</span></a>
+ <a href="assets/s/koshi.html">腰の重だるさ<span class="arrow">→</span></a>
+ <a href="assets/s/zenshin.html">全身の疲れ<span class="arrow">→</span></a>
+ <a href="assets/s/mukumi.html">脚のむくみ<span class="arrow">→</span></a>
+ <a href="assets/s/hie.html">冷え<span class="arrow">→</span></a>
+ <a href="assets/s/darusa.html">体のだるさ<span class="arrow">→</span></a>
+ <a href="assets/s/nekose.html">猫背<span class="arrow">→</span></a>
+ <a href="assets/s/makikata.html">巻き肩<span class="arrow">→</span></a>
+ <a href="assets/s/shisei.html">姿勢<span class="arrow">→</span></a>
+ <a href="assets/s/kao.html">顔のむくみ感<span class="arrow">→</span></a>
+ <a href="assets/s/me.html">目の疲れ感<span class="arrow">→</span></a>
+ <a href="assets/s/atama.html">頭の重さ<span class="arrow">→</span></a>
+ <a href="assets/s/refresh.html">リフレッシュ<span class="arrow">→</span></a>
+ <a href="assets/s/suimin.html">眠りの浅さ<span class="arrow">→</span></a>
+ <a href="assets/s/jiritsu.html">自律神経の乱れ感<span class="arrow">→</span></a>
+ <a href="assets/s/seirimae.html">生理前後の不調感<span class="arrow">→</span></a>
+ <a href="assets/s/konenki.html">更年期のゆらぎ<span class="arrow">→</span></a>
+ <a href="assets/s/ude.html">腕・手の疲れ<span class="arrow">→</span></a>
+ <a href="assets/s/ashitsukare.html">足の疲れ<span class="arrow">→</span></a>
+ <a href="assets/s/asa-kubikata.html">朝の首・肩のこわばり<span class="arrow">→</span></a>
+ <a href="assets/s/yugata-ashi.html">夕方の脚の重だるさ<span class="arrow">→</span></a>
+ <a href="assets/s/gamen-me.html">画面仕事の目の疲れ<span class="arrow">→</span></a>
+ <a href="assets/s/sumaho-kubi.html">スマホ首<span class="arrow">→</span></a>
+ <a href="assets/s/suwari-koshi.html">座りっぱなしの腰・お尻<span class="arrow">→</span></a>
+ <a href="assets/s/tachi-ashi.html">立ち仕事の脚の疲れ<span class="arrow">→</span></a>
+ <a href="assets/s/heel-ashi.html">ヒールの日の足<span class="arrow">→</span></a>
+ <a href="assets/s/dakko.html">抱っこの腰・腕の疲れ<span class="arrow">→</span></a>
+ <a href="assets/s/kaji.html">家事の腰・肩<span class="arrow">→</span></a>
+ <a href="assets/s/netuki.html">寝つきの緊張<span class="arrow">→</span></a>
+ <a href="assets/s/ame-karada.html">雨の日の体の重さ<span class="arrow">→</span></a>
+ <a href="assets/s/kisetsu.html">季節の変わり目の不調感<span class="arrow">→</span></a>
+ <a href="assets/s/samui-kata.html">寒い日の肩こり<span class="arrow">→</span></a>
+ <a href="assets/s/reibou.html">冷房冷え<span class="arrow">→</span></a>
+ <a href="assets/s/pre-konenki.html">更年期前のゆらぎ<span class="arrow">→</span></a>
+ <a href="assets/s/seirimae-mukumi.html">生理前のむくみ<span class="arrow">→</span></a>
+ <a href="assets/s/sango-koshi.html">産後の腰・肩<span class="arrow">→</span></a>
+ <a href="assets/s/idou-mukumi.html">長時間移動の脚のむくみ<span class="arrow">→</span></a>
+ <a href="assets/s/undou-katasa.html">運動不足の体の硬さ<span class="arrow">→</span></a>
+ <a href="assets/s/kincho-kata.html">緊張した日の肩<span class="arrow">→</span></a>
+ <a href="assets/s/kuishibari.html">食いしばり・顎の疲れ<span class="arrow">→</span></a>
+ </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 64" preserveAspectRatio="none"><path d="M0,34 C240,62 480,6 720,26 C960,46 1200,14 1440,34 L1440,64 L0,64 Z" fill="#E4E8F1"/></svg></div>
+
+<section class="sec sec-menu" id="menu">
+  <span class="bg-word">Menu</span>
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="en">Menu</span>
+      <h2>料金</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="menu-card fade">
+      <span class="en">Oil Massage &amp; Seitai</span>
+      <p class="menu-name">オイルマッサージ＆美容整体</p>
+      <p class="menu-price">90分 10,000円 <small>（税込）</small></p>
+      <ul class="menu-notes">
+        <li>料金はこの1コースのみ。初回割引や追加料金はありません</li>
+        <li>女性専用・完全個室です</li>
+        <li>お支払いは現金のみとなります</li>
+        <li>施術モニターも募集中です（90分3,000円・東三国で実施）</li>
+      </ul>
+    </div>
+    <p class="concern-more fade"><a class="link-more" href="assets/monitor.html">施術モニター募集のご案内</a></p>
+  </div>
+</section>
+
+<!-- ============ WHALE BAND ============ -->
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 64" preserveAspectRatio="none"><path d="M0,34 C240,62 480,6 720,26 C960,46 1200,14 1440,34 L1440,64 L0,64 Z" fill="#F4F5F8"/></svg></div>
+<section class="sec" style="padding-top:26px;padding-bottom:26px;">
+  <div class="wrap">
+    <figure class="whale-band fade">
+      <img src="assets/renewal-star.webp" alt="梅田の夜空に輝く北極星のイラスト">
+      <figcaption class="cap">
+        <p class="t">北極星の名を、いただいて。</p>
+        <p>店名の「ポラリス」は、北極星の名前です。北の空で動かずに輝き続けるその星は、昔から旅人の道しるべでした。忙しさで自分の感覚を見失いそうな日にも、帰るべきペースを思い出す目印のような場所でありたいと思っています。</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ THERAPIST ============ -->
+<section class="sec" id="therapist">
+  <span class="bg-word">Therapist</span>
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="en">Therapist</span>
+      <h2>施術者について</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="therapist-grid">
+      <div class="therapist-photo fade">
+        <img src="assets/therapist-kento.webp" alt="施術者・平賀伸人のイラスト">
+      </div>
+      <div class="therapist-body fade">
+        <p class="name">平賀伸人</p>
+        <p class="cred">施術歴30年 ／ 鍼灸師（国家資格）</p>
+        <p>体の使い方と向き合い続けてきた、施術歴30年のセラピストです。鍼灸師として東洋医学を学んできた視点から、筋肉の緊張だけでなく、姿勢や骨格の土台、経絡や巡りの状態までを見て、その日の体に合った順序で整えていきます。</p>
+        <p>強い力で押すだけの施術はしません。「終わったあと体が軽い」「呼吸が深くなった」——そう感じていただける時間を大切に、力加減はお声を聞きながら進めます。</p>
+        <div class="quals">
+          <span>鍼灸師（国家資格）</span>
+          <span>登録販売者</span>
+          <span>アロマセラピスト</span>
+          <span>パーソナルトレーナー</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACCESS ============ -->
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 64" preserveAspectRatio="none"><path d="M0,34 C240,62 480,6 720,26 C960,46 1200,14 1440,34 L1440,64 L0,64 Z" fill="#E4E8F1"/></svg></div>
+
+<section class="sec sec-access" id="access">
+  <span class="bg-word">Access</span>
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="en">Salon / Access</span>
+      <h2>店舗情報・アクセス</h2>
+      <div class="rule"></div>
+    </div>
+    <img class="access-photo fade" src="assets/renewal-room2.webp" alt="サロンの個室のイメージイラスト">
+    <dl class="info-rows fade">
+      <div class="row">
+        <dt>Address</dt>
+        <dd>大阪市北区堂山町12-5 ロイヤルハイツ梅田Ⅱ 303号室<small>中崎町駅から徒歩5分・阪急梅田駅から徒歩8分（レンタルサロンACE内）</small></dd>
+      </div>
+      <div class="row">
+        <dt>Hours</dt>
+        <dd>月〜土 17:00〜22:00<small>日曜休み ／ 完全予約制</small></dd>
+      </div>
+      <div class="row">
+        <dt>Price</dt>
+        <dd>90分 10,000円（税込）<small>お支払いは現金のみ</small></dd>
+      </div>
+      <div class="row">
+        <dt>Reserve</dt>
+        <dd>LINE公式アカウントからご予約ください<small>当日のご予約も、空きがあれば承ります</small></dd>
+      </div>
+    </dl>
+    <div class="steps fade">
+      <h3 class="steps-head">中崎町駅からの道順</h3>
+      <p class="steps-lead">駅からは徒歩5分ほどです。堂山町の夕方の灯りを抜けてお越しください。</p>
+      <div class="step-grid">
+        <div class="step-card">
+          <img src="assets/renewal-step1.webp" alt="中崎町駅の出口のイメージイラスト">
+          <span class="no">Step 1</span>
+          <h3>中崎町駅を出て</h3>
+          <p>大阪メトロ谷町線・中崎町駅を出たら、堂山町方面へ進みます。</p>
+        </div>
+        <div class="step-card">
+          <img src="assets/renewal-step2.webp" alt="堂山町の通りを歩くイメージイラスト">
+          <span class="no">Step 2</span>
+          <h3>堂山町の通りをまっすぐ</h3>
+          <p>飲食店の灯りが並ぶ通りをまっすぐ進みます。ここまで来ればあと少しです。</p>
+        </div>
+        <div class="step-card">
+          <img src="assets/renewal-step3.webp" alt="ロイヤルハイツ梅田Ⅱの入口のイメージイラスト">
+          <span class="no">Step 3</span>
+          <h3>ロイヤルハイツ梅田Ⅱに到着</h3>
+          <p>3階の303号室が当サロンです。お気をつけてお越しください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVE ============ -->
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 64" preserveAspectRatio="none"><path d="M0,34 C240,62 480,6 720,26 C960,46 1200,14 1440,34 L1440,64 L0,64 Z" fill="#F4F5F8"/></svg></div>
+
+<section class="sec sec-reserve" id="reserve">
+  <svg class="whale-motif" viewBox="0 0 200 200" aria-hidden="true"><path d="M100 4 L116 84 L196 100 L116 116 L100 196 L84 116 L4 100 L84 84 Z" fill="#2E3D5C"/></svg>
+  <div class="wrap">
+    <div class="reserve-box fade">
+      <span class="en">Reservation</span>
+      <h2>ご予約はLINEから</h2>
+      <p>ご予約・お問い合わせは、LINE公式アカウントで承っています。ご希望の日時をお送りください。空き状況を確認して返信いたします。</p>
+      <a class="btn-line" href="https://line.me/R/ti/p/@781zpvsr" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2E3D5C" stroke-width="1.2"><path d="M21 12a8 8 0 0 1-8 8H4l2.2-2.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01" stroke-linecap="round" stroke-width="2"/></svg>
+        LINEで予約する
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-in">
+    <span class="en">Stella Polaris Umeda</span>
+    <svg class="footer-whale" viewBox="0 0 200 200" aria-hidden="true"><path d="M100 4 L116 84 L196 100 L116 116 L100 196 L84 116 L4 100 L84 84 Z" fill="#2E3D5C"/></svg>
+    <p class="fname">ステラポラリス梅田</p>
+    <nav class="footer-links">
+      <a href="assets/concerns.html">症状・お悩み</a>
+      <a href="assets/meridians.html">経絡ガイド</a>
+      <a href="assets/monitor.html">施術モニター募集</a>
+      <a href="assets/faq.html">よくある質問</a>
+    </nav>
+    <p class="copy">© Stella Polaris Umeda</p>
+  </div>
+</footer>
+
+<!-- PC：右端の縦書き固定ボタン -->
+<a class="reserve-side" href="https://line.me/R/ti/p/@781zpvsr" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+  RESERVE
+</a>
+
+<!-- モバイル：メニューパネル -->
+<div class="menu-panel" id="menuPanel">
+  <a href="#concept">コンセプト<span class="arrow">→</span></a>
+  <a href="#concerns">症状・お悩み<span class="arrow">→</span></a>
+  <a href="#menu">料金<span class="arrow">→</span></a>
+  <a href="#therapist">施術者<span class="arrow">→</span></a>
+  <a href="#access">店舗情報・アクセス<span class="arrow">→</span></a>
+  <a href="assets/faq.html">よくある質問<span class="arrow">→</span></a>
+  <a href="assets/monitor.html">施術モニター募集<span class="arrow">→</span></a>
+</div>
+
+<!-- モバイル：すりガラス固定バー -->
+<nav class="reserve-bar">
+  <button type="button" id="menuBtn" aria-expanded="false" aria-controls="menuPanel">
+    <svg id="menuIcon" viewBox="0 0 24 24" fill="none" stroke="#2E3D5C" stroke-width="1.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    メニュー
+  </button>
+  <a class="primary" href="https://line.me/R/ti/p/@781zpvsr" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><path d="M21 12a8 8 0 0 1-8 8H4l2.2-2.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01" stroke-linecap="round" stroke-width="2"/></svg>
+    LINE予約
+  </a>
+</nav>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.fade');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+
+  var words = document.querySelectorAll('.bg-word');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(words.length && !reduceMotion){
+    var ticking = false;
+    function parallax(){
+      var vh = window.innerHeight;
+      words.forEach(function(w){
+        var r = w.parentElement.getBoundingClientRect();
+        if(r.bottom < 0 || r.top > vh) return;
+        var off = (r.top - vh * 0.5) * -0.05;
+        w.style.transform = 'translateY(' + off.toFixed(1) + 'px)';
+      });
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ ticking = true; requestAnimationFrame(parallax); }
+    }, {passive:true});
+    parallax();
+  }
+
+  var btn = document.getElementById('menuBtn');
+  var panel = document.getElementById('menuPanel');
+  var icon = document.getElementById('menuIcon');
+  var ICON_OPEN = '<path d="M4 7h16M4 12h16M4 17h16"/>';
+  var ICON_CLOSE = '<path d="M6 6l12 12M18 6L6 18"/>';
+  function setMenu(open){
+    panel.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    icon.innerHTML = open ? ICON_CLOSE : ICON_OPEN;
+  }
+  if(btn && panel){
+    btn.addEventListener('click', function(){
+      setMenu(!panel.classList.contains('open'));
+    });
+    panel.addEventListener('click', function(e){
+      if(e.target.closest('a')) setMenu(false);
+    });
+    document.addEventListener('click', function(e){
+      if(panel.classList.contains('open') && !e.target.closest('#menuPanel') && !e.target.closest('#menuBtn')){
+        setMenu(false);
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
