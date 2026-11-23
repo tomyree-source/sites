@@ -39,7 +39,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
-:root{--navy:#0b1730;--navy2:#070f22;--gold:#c9a86a;--gold-soft:#e3cf9e;--cream:#f4efe4;--txt:#ece7da;--soft:#b9c0d4;--line:rgba(201,168,106,.3)}
+:root{--navy:#2E3D5C;--navy2:#F4F5F8;--gold:#A8874F;--gold-soft:#8C6D2F;--cream:#1C2942;--txt:#232B38;--soft:#5B6572;--line:rgba(46,61,92,.16)}
 *{box-sizing:border-box}body{margin:0;background:var(--navy2);color:var(--txt);font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;line-height:1.9;font-size:16px}
 .wrap{max-width:880px;margin:0 auto;padding:0 20px 64px}
 header.site{border-bottom:1px solid var(--line);padding:16px 0}
@@ -54,7 +54,7 @@ h2{font-family:"Shippori Mincho",serif;font-size:21px;margin:34px 0 10px;color:v
 .cat{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 12px;font-size:12.5px;color:var(--gold-soft);margin-left:10px;vertical-align:middle}
 p{margin:0 0 14px}
 ul{margin:0 0 14px;padding-left:1.3em}
-.box{background:#0e1d3d;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:20px 0}
+.box{background:#EDF0F5;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:20px 0}
 .rel{display:flex;flex-wrap:wrap;gap:8px}
 .rel a{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13.5px;color:var(--gold-soft);text-decoration:none}
 .rel a:hover{border-color:var(--gold)}
@@ -68,13 +68,50 @@ footer a{color:var(--gold-soft)}
 .list small{color:var(--soft);display:block}
 @media(max-width:640px){h1{font-size:24px}}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* renewal-chrome-v1 */
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;padding-bottom:94px}
+@media(min-width:821px){body{padding-bottom:0}}
+.rn-header{position:relative;z-index:40;background:rgba(244,245,248,.92);border-bottom:1px solid rgba(46,61,92,.16)}
+.rn-header-in{max-width:1120px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.rn-logo{text-decoration:none;line-height:1.25}
+.rn-logo .en{display:block;font-family:"Cormorant Garamond",serif;font-size:12px;letter-spacing:.34em;color:#8C6D2F}
+.rn-logo .jp{display:block;font-family:"Shippori Mincho","Noto Serif JP",serif;font-size:19px;letter-spacing:.12em;color:#1C2942;font-weight:600}
+.rn-nav{display:none;gap:26px}
+.rn-nav a{font-size:13px;letter-spacing:.1em;color:#2E3D5C;text-decoration:none}
+@media(min-width:821px){.rn-nav{display:flex}}
+.rn-bar{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:96;display:flex;gap:8px;padding:8px;border-radius:16px;background:rgba(244,245,248,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(46,61,92,.2);box-shadow:0 12px 30px rgba(28,41,66,.18)}
+.rn-bar button,.rn-bar a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:11px;font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:600;letter-spacing:.08em;text-decoration:none;cursor:pointer}
+.rn-bar button{background:#fff;color:#2E3D5C;border:1px solid rgba(46,61,92,.35)}
+.rn-bar a.primary{background:#43598A;color:#fff;border:1px solid #43598A}
+@media(min-width:821px){.rn-bar{display:none}}
+.rn-panel{position:fixed;left:10px;right:10px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:97;padding:10px;border-radius:16px;background:rgba(244,245,248,.97);border:1px solid rgba(46,61,92,.25);box-shadow:0 18px 44px rgba(28,41,66,.25);opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+.rn-panel.open{opacity:1;transform:none;pointer-events:auto}
+.rn-panel a{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:9px;color:#232B38;text-decoration:none;font-size:15px;letter-spacing:.06em}
+.rn-panel a:hover{background:rgba(67,89,138,.08)}
+.rn-panel a .arrow{color:#A8874F}
+@media(min-width:821px){.rn-panel{left:auto;width:340px}}
+.rn-side{display:none}
+@media(min-width:821px){.rn-side{display:inline-flex;position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:96;flex-direction:column;align-items:center;gap:12px;padding:20px 10px;background:#2E3D5C;color:#fff;text-decoration:none;border-radius:10px 0 0 10px;font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:.34em;writing-mode:vertical-rl;box-shadow:0 12px 30px rgba(28,41,66,.3)}}
+</style>
 </head>
 <body>
-<header class="site"><div class="wrap"><a class="brand" href="https://tomyree-source.github.io/sites/stella-polaris/"><span>✦</span> ステラポラリス</a>
-<button type="button" class="ham-btn" id="ham-btn" aria-label="メニュー" aria-expanded="false" aria-controls="ham-panel" aria-haspopup="true">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-  <span class="ham-btn-label">メニュー</span>
-</button></div></header>
+<header class="rn-header">
+  <div class="rn-header-in">
+    <a class="rn-logo" href="https://tomyree-source.github.io/sites/stella-polaris/">
+      <span class="en">Stella Polaris Umeda</span>
+      <span class="jp">ステラポラリス梅田</span>
+    </a>
+    <nav class="rn-nav">
+      <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/concerns.html">症状・お悩み</a>
+      <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/menu.html">料金</a>
+      <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/about.html">施術者</a>
+      <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/access.html">アクセス</a>
+    </nav>
+  </div>
+</header>
+
 <div class="wrap">
 <nav class="crumbs" aria-label="パンくず"><a href="https://tomyree-source.github.io/sites/stella-polaris/">トップ</a> › <a href="https://tomyree-source.github.io/sites/stella-polaris/column.html">ブログ</a> › 梅田で年末の忙しさに気になる首こり｜うつむき姿勢の続く日の過ごし方とセルフケア、受診の目安</nav>
 <main><h1>梅田で年末の忙しさに気になる首こり｜うつむき姿勢の続く日の過ごし方とセルフケア、受診の目安<span class="cat">ハウツー</span></h1><p class="meta">ステラポラリス（大阪・梅田／女性専用）ブログ｜2026年11月20日公開｜執筆：施術歴30年・鍼灸師資格のセラピスト</p><figure style="margin:8px 0 22px;text-align:center"><img src="../assets/b/nenmatsu-katakori-eyecatch.webp" alt="年末の部屋で窓辺に立ち、首に手を当てる女性の水彩イラスト" style="width:100%;max-width:640px;height:auto;border-radius:12px" /></figure><p>梅田で働く・暮らす方へ。年末の忙しさが続く時期に「首が重く感じる」「うつむく姿勢が続くと首のまわりがこわばる気がする」と感じる首こりについて、一般的な解説と考えられる要因の整理、無理のない範囲のセルフケア、医療機関への受診の目安をまとめました。一般的な健康情報としてお読みください。</p><p class="keys" aria-label="この記事のキーワード"><span>#梅田 年末 首こり</span><span>#年末 忙しさ 首こり</span><span>#首こり セルフケア</span><span>#うつむき姿勢 首</span><span>#梅田 女性専用 サロン 首こり</span></p><h2>年末の忙しさに気になる首こりとは（一般的な解説）</h2><p>首こりとは、病名ではなく、「首が重く感じる」「首のまわりがこわばる気がする」「後頭部のあたりが張る感じがする」といった感覚を表す言葉として使われることがあります。ふだんは気にならない方でも、年末の忙しい時期は、年賀状の準備や大掃除、買い出し、仕事の締め切りの対応などで、うつむいた姿勢が続く場面が増え、首の重さを感じることがあるとされます。感じ方には個人差が大きく、同じ忙しさでも気にならない日もあれば、夜になって重さを感じる日もあるとされます。</p><p>大切なのは、「ふだんの自分と比べてどうか」「どんな日の後に気になりやすいか」という視点です。うつむく作業が長く続いた日なのか、寒い屋外で過ごす時間が長かった日なのか、睡眠が短かった日の翌日なのか——気になりやすい場面を簡単に振り返っておくと、自分の傾向がつかみやすくなります。なお、首こりの感じ方だけで体の状態を判断することはできません。気になる変化が続く場合は、後半の「受診の目安」もあわせてご確認ください。</p><h2>考えられる要因の整理</h2><p>1つ目は、うつむき姿勢の続く作業です。大掃除では棚の上や床の隅を拭くとき、年賀状の準備では机に向かって書き物が続くとき、買い出しでは荷物の整理やスマホで連絡・手配をするときなど、首を前に傾けた姿勢が長く続く場面が年末は多くなりやすいとされます。うつむいた姿勢が続くと、首の後ろ側や肩まわりがこわばった感じがすることもあるとされます。ただし、感じ方には個人差があり、「うつむき姿勢のせい」と決めつけられるものではありません。</p><p>2つ目は、年末の用事の詰め込みと休みの不足です。年末は仕事の締め切り、年賀状、大掃除、買い出し、忘年会と、用事が短い期間に重なりやすく、休む区切りが取りにくくなる時期とされます。やることが多い日は、気づかないうちに肩や首に力が入ったまま過ごし、夜になって首の重さを感じることもあるとされます。</p><p>3つ目は、冬の寒さと重ね着です。12月の梅田は、暖房のきいた屋内と冷たい屋外を行き来する場面が多く、寒さの中で首をすくめる姿勢が続くこともあるとされます。コートやマフラーを重ね着すると、首まわりが窮屈に感じられたり、肩に力が入ったまま歩く時間が長くなったりすることもあるとされます。寒さそのものが首こりの原因と決まっているわけではありませんが、年末の寒さが重さの感じ方に関わっている可能性は考えられます。</p><p>4つ目は、忘年会・会食が続く時期の生活リズムの乱れです。忘年会や会食が続く時期は、食事や睡眠の時間がふだんとずれたり、帰りが遅くなって翌朝の支度が慌ただしくなったりしやすいとされます。要因はひとつではなく、その日の用事や過ごし方、寒さによって組み合わせが変わるため、思い当たるものをひとつずつ見直すことが大切です。</p><h2>年末の忙しい日のセルフケア</h2><p>まずは「用事の合間に、立ち上がって伸びをする」ことです。大掃除や年賀状の準備の合間に、立ち上がって両腕を上げて背伸びをする、ゆっくり息を吐く深呼吸を数回行う、といった動きは、短い時間でも取り入れやすいものです。忙しい日ほど、用事を詰め込みすぎず、翌日に回せるものは翌日に回すことも大切です。</p><p>次に「湯船で温まる」ことです。その日の夜は、湯船にゆっくりつかって首・肩まわりを温める、温かいタオルを首に当てる、といった過ごし方は、冷えた体をいたわる基本とされます。湯船につかる時間がない日は、シャワーで首・肩まわりを温めるだけでも、区切りとして取り入れやすい方法です。低温やけどには十分注意し、温熱用品を使う場合は使い方の表示を確認してください。</p><p>あわせて「首・肩をゆっくり回す」ことも挙げられます。入浴後や眠る前に、首を前後左右にゆっくり傾ける、肩を前後にゆっくり回す、といった動きは、短い時間でも取り入れやすいものです。強く伸ばしたり、痛みを感じるほど動かしたりする必要はありません。スマホを見る時間を区切る、画面を目の高さに近づけるといった工夫も挙げられます。ただし、セルフケアはあくまで日常の首こりへの対処です。重さが強い日は、ケアよりもまず休むことを優先することも大切です。</p><h2>受診の目安｜こんなときは医療機関へ</h2><p>年末の忙しさに感じる首こりの多くは、うつむき姿勢の続く作業や用事の詰め込み、寒さといった日常の要素が重なって感じられるとされますが、中には医療機関での確認を優先したいサインもあります。「首の重さや痛みが長く続き、年末の忙しさが落ち着いても変わらない」「首や腕にしびれを伴う」「首を動かすと強い痛みがある」「発熱を伴う」「頭痛や吐き気を伴う」といった場合は、セルフケアで様子を見続けず、整形外科など医療機関への受診をおすすめします。年末年始は医療機関の診療日が限られる時期でもあるため、気になるサインがある場合は、早めの時期に相談先を確認しておくことも大切です。</p><p>また、首こりと思っていた背景に、体の状態など、検査で初めて分かる要素が関係していることもあるため、気になる状態が続く場合は一度相談してみてください。当店のケアはリラクゼーションを目的としたボディケアで、首こりや病気を診断したり、それらに対応したりするものではありません。医療機関での確認を優先したうえで、日常のコンディションを整える選択肢のひとつとしてご利用ください。</p><h2>当店でのケアとサロンのご案内</h2><p>ステラポラリスは、大阪・梅田エリアのレンタルサロンで施術する女性専用・完全予約制のサロンです。2026年11月4日に開院しました。営業は月〜土17:00〜22:00（日曜休み）、施術はオイルマッサージと美容整体、料金は90分10,000円です。ご予約はLINEで受付中です。</p><p>場所は大阪市北区堂山町12-5 ロイヤルハイツ梅田Ⅱ 303号室（レンタルサロンACE内）、中崎町駅から徒歩5分・阪急梅田駅から徒歩8分です。担当は施術歴30年・鍼灸師資格を持つセラピスト1名で、当店では鍼灸施術は行いません。</p><h2>ほかのブログ記事</h2><div class="rel"><a href="b-nenmatsu-katakori.html">梅田で年末の忙しさに気になる肩こり｜大掃除や忘年会が続く時期の過ごし方とセルフケア、受診の目安 →</a><a href="b-deskwork-kubikori.html">梅田でデスクワーク後に気になる首こり｜要因の整理とセルフケア、受診の目安 →</a><a href="b-bonenkai-hirou.html">梅田で忘年会続きに気になる疲労感｜要因の整理とセルフケア、受診の目安 →</a></div><p><a class="cta" href="https://tomyree-source.github.io/sites/stella-polaris/column/b-nenmatsu-kubikori.html">この記事をメインサイトで開く</a></p></main>
@@ -117,74 +154,11 @@ footer a{color:var(--gold-soft)}
 @media(prefers-reduced-motion:reduce){.fab-overlay,.fab-panel{transition:none}}
 @media print{.fab-btn,.fab-panel,.fab-overlay,.line-fab{display:none!important}}
 </style>
-<button type="button" class="fab-btn" id="fab-btn" aria-label="メニュー" aria-expanded="false" aria-controls="fab-panel" aria-haspopup="true">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-  <span class="fab-btn-label">メニュー</span>
-</button>
-<div class="fab-overlay" id="fab-overlay" hidden></div>
-<nav class="fab-panel" id="fab-panel" aria-label="メインメニュー" hidden>
-  <div class="fab-panel-head">
-    <span class="fab-panel-title">メニュー</span>
-    <button type="button" class="fab-close" id="fab-close" aria-label="メニューを閉じる">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-  </div>
-  <a class="fab-cta" href="https://line.me/R/ti/p/@781zpvsr" target="_blank" rel="noopener noreferrer">LINE公式アカウントでお問い合わせ</a>
-  <ul>
-    <li><a href="../concerns.html">お悩み別ページ</a></li>
-    <li><a href="../meridians.html">経絡・経穴ガイド</a></li>
-    <li><a href="../column.html">ブログ・コラム</a></li>
-    <li><a href="../faq.html">よくある質問</a></li>
-    <li><a href="../recruit.html">セラピスト求人</a></li>
-    <li><a href="../english.html">English Guide</a></li>
-    <li><a href="../sitemap.html">サイトマップ</a></li>
-    <li><a href="../index.html">トップページ</a></li>
-  </ul>
-</nav>
-<a class="line-fab" href="https://line.me/R/ti/p/@781zpvsr" target="_blank" rel="noopener noreferrer">LINEでお問い合わせ</a>
-<script>
-(function(){
-  "use strict";
-  /* ---------- floating menu ---------- */
-  var fabBtn = document.getElementById('fab-btn'),
-      fabPanel = document.getElementById('fab-panel'),
-      fabOverlay = document.getElementById('fab-overlay'),
-      fabClose = document.getElementById('fab-close');
-  if (!fabBtn || !fabPanel || !fabOverlay) return;
-  var fabOpen = false, fabTimer = null;
-  function openFab(){
-    if (fabOpen) return;
-    fabOpen = true;
-    if (fabTimer){ clearTimeout(fabTimer); fabTimer = null; }
-    fabPanel.hidden = false;
-    fabOverlay.hidden = false;
-    void fabPanel.offsetWidth;
-    fabPanel.classList.add('open');
-    fabOverlay.classList.add('open');
-    fabBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-    if (fabClose) fabClose.focus();
-  }
-  function closeFab(restoreFocus){
-    if (!fabOpen) return;
-    fabOpen = false;
-    fabPanel.classList.remove('open');
-    fabOverlay.classList.remove('open');
-    fabBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    fabTimer = setTimeout(function(){
-      if (!fabOpen){ fabPanel.hidden = true; fabOverlay.hidden = true; }
-      fabTimer = null;
-    }, 200);
-    if (restoreFocus) fabBtn.focus();
-  }
-  fabBtn.addEventListener('click', function(){ fabOpen ? closeFab(false) : openFab(); });
-  if (fabClose) fabClose.addEventListener('click', function(){ closeFab(true); });
-  fabOverlay.addEventListener('click', function(){ closeFab(true); });
-  document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') closeFab(true); });
-  fabPanel.addEventListener('click', function(ev){ if (ev.target.closest && ev.target.closest('a')) closeFab(false); });
-})();
-</script>
+
+
+
+
+
 <!-- /stella-fab-v1 -->
 <!-- stella-ham-v1 -->
 <style>
@@ -219,72 +193,37 @@ footer a{color:var(--gold-soft)}
 @media print{.ham-btn,.ham-panel,.ham-overlay{display:none!important}}
 </style>
 <div class="ham-overlay" id="ham-overlay" hidden></div>
-<nav class="ham-panel" id="ham-panel" aria-label="メインメニュー" hidden>
-  <div class="ham-panel-head">
-    <span class="ham-panel-title">メニュー</span>
-    <button type="button" class="ham-close" id="ham-close" aria-label="メニューを閉じる">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-  </div>
-  <a class="ham-cta" href="https://line.me/R/ti/p/@781zpvsr" target="_blank" rel="noopener noreferrer">LINE公式アカウントでお問い合わせ</a>
-  <ul>
-    <li><a href="../../assets/concerns.html">お悩み別ページ</a></li>
-    <li><a href="../../assets/meridians.html">経絡・経穴ガイド</a></li>
-    <li><a href="../../assets/blog.html">ブログ・コラム</a></li>
-    <li><a href="../../assets/faq.html">よくある質問</a></li>
-    <li><a href="../../assets/recruit.html">セラピスト求人</a></li>
-    <li><a href="../../assets/english.html">English Guide</a></li>
-    <li><a href="../../assets/sitemap.html">サイトマップ</a></li>
-    <li><a href="../../index.html">トップページ</a></li>
-  </ul>
-</nav>
-<script>
-(function(){
-  "use strict";
-  /* ---------- header hamburger menu ---------- */
-  var hamBtn = document.getElementById('ham-btn'),
-      hamPanel = document.getElementById('ham-panel'),
-      hamOverlay = document.getElementById('ham-overlay'),
-      hamClose = document.getElementById('ham-close');
-  if (!hamBtn || !hamPanel || !hamOverlay) return;
-  var hamOpen = false;
-  function placeHam(){
-    var h = hamBtn.closest ? hamBtn.closest('header') : null;
-    var top = 8;
-    if (h){
-      var r = h.getBoundingClientRect();
-      top = Math.max(8, Math.round(r.bottom) + 8);
-    }
-    hamPanel.style.top = top + 'px';
-  }
-  function openHam(){
-    if (hamOpen) return;
-    hamOpen = true;
-    placeHam();
-    hamPanel.hidden = false;
-    hamOverlay.hidden = false;
-    hamBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-    if (hamClose) hamClose.focus();
-  }
-  function closeHam(restoreFocus){
-    if (!hamOpen) return;
-    hamOpen = false;
-    hamPanel.hidden = true;
-    hamOverlay.hidden = true;
-    hamBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    if (restoreFocus) hamBtn.focus();
-  }
-  hamBtn.addEventListener('click', function(){ hamOpen ? closeHam(false) : openHam(); });
-  if (hamClose) hamClose.addEventListener('click', function(){ closeHam(true); });
-  hamOverlay.addEventListener('click', function(){ closeHam(true); });
-  document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') closeHam(true); });
-  hamPanel.addEventListener('click', function(ev){ if (ev.target.closest && ev.target.closest('a')) closeHam(false); });
-  window.addEventListener('resize', function(){ if (hamOpen) placeHam(); });
-})();
-</script>
+
+
 <!-- /stella-ham-v1 -->
 
+<div class="rn-panel" id="rnMenuPanel">
+  <a href="https://tomyree-source.github.io/sites/stella-polaris/">トップ<span class="arrow">→</span></a>
+  <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/concerns.html">症状・お悩み<span class="arrow">→</span></a>
+  <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/menu.html">料金<span class="arrow">→</span></a>
+  <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/about.html">施術者について<span class="arrow">→</span></a>
+  <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/access.html">店舗情報・アクセス<span class="arrow">→</span></a>
+  <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/meridians.html">経絡ガイド<span class="arrow">→</span></a>
+  <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/blog.html">コラム<span class="arrow">→</span></a>
+  <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/faq.html">よくある質問<span class="arrow">→</span></a>
+  <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/monitor.html">施術モニター募集<span class="arrow">→</span></a>
+  <a href="https://tomyree-source.github.io/sites/stella-polaris/assets/english.html">English<span class="arrow">→</span></a>
+</div>
+<nav class="rn-bar">
+  <button type="button" id="rnMenuBtn" aria-expanded="false" aria-controls="rnMenuPanel">☰ メニュー</button>
+  <a class="primary" href="https://line.me/R/ti/p/@781zpvsr" target="_blank" rel="noopener">LINE予約</a>
+</nav>
+<a class="rn-side" href="https://line.me/R/ti/p/@781zpvsr" target="_blank" rel="noopener">RESERVE</a>
+<script>
+(function(){
+  var btn=document.getElementById('rnMenuBtn'), panel=document.getElementById('rnMenuPanel');
+  if(!btn||!panel) return;
+  btn.addEventListener('click',function(){
+    var open=panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open?'true':'false');
+  });
+  panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }); });
+})();
+</script>
 </body>
 </html>
