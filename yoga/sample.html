@@ -30,15 +30,15 @@ header.site nav a:hover::after{width:100%}
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
 .hero-bg{position:absolute;top:88px;left:12px;right:12px;bottom:0;border-radius:150px 150px 0 0;overflow:hidden}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 12%;animation:heroZoom 14s ease-out forwards}
-@keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 6%;animation:heroZoom 14s ease-out forwards}
+@keyframes heroZoom{from{transform:scale(1.13) translateY(8px)}to{transform:scale(1.04) translateY(38px)}}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,246,239,.16) 0%,rgba(250,246,239,0) 32%,rgba(250,246,239,.5) 66%,var(--base) 100%)}
 .hero-word{position:absolute;top:120px;left:16px;font-family:'Cormorant Garamond',serif;font-size:19vw;line-height:.9;color:rgba(255,255,255,.38);letter-spacing:.02em;writing-mode:vertical-rl;font-style:italic;pointer-events:none}
-.hero-inner{position:relative;z-index:2;padding:0 20px 118px;max-width:640px}
+.hero-inner{position:relative;z-index:2;padding:0 20px 84px;max-width:640px}
 .hero.kicker{font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:var(--gold);font-weight:600;margin:0 0 14px}
 .hero h1{font-family:'Shippori Mincho',serif;font-weight:700;font-size:37px;line-height:1.55;letter-spacing:.04em;margin:0 0 20px}
 .hero h1.accent{color:var(--gold)}
-.hero p.lead{margin:0 0 34px;font-size:15px;line-height:2.05}
+.hero p.lead{margin:0 0 28px;font-size:15px;line-height:2.05}
 .float-cta{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;display:flex;justify-content:center;align-items:center;gap:10px;background:var(--ink);color:#fff;text-decoration:none;padding:16px 20px;border-radius:999px;font-weight:700;letter-spacing:.08em;font-size:16px;box-shadow:0 14px 30px rgba(51,65,58,.32)}
 .float-cta .arr{transition:transform .3s}
 .float-cta:hover .arr{transform:translateX(4px)}
@@ -113,7 +113,7 @@ footer a{color:#D9BE8C}
 footer nav{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 0}
 @media(min-width:760px){
 header.site nav{display:block}
-.hero-inner{padding:0 48px 120px}
+.hero-inner{padding:0 48px 88px}
   .float-cta{left:auto;right:28px;bottom:24px;width:340px}
 .hero h1{font-size:54px}
 .hero-word{font-size:11vw}
