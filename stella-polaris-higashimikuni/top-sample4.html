@@ -16,8 +16,8 @@ body{background:var(--cream);color:var(--ink);font-family:"Noto Sans JP",sans-se
 img{display:block;max-width:100%}
 /* ===== ファーストビュー（スマホファースト：画像と文字を重ねない分割構成） ===== */
 .fv{background:var(--green-d)}
-.fv-media{position:relative;height:38svh;overflow:hidden}
-.fv-media img{width:100%;height:100%;object-fit:cover;object-position:88% 50%}
+.fv-media{position:relative;overflow:hidden;background:#20382c}
+.fv-media img{width:100%;height:auto}
 @keyframes heroZoom{from{transform:scale(1.1)}to{transform:scale(1)}}
 .fv-media::after{content:"";position:absolute;left:0;right:0;bottom:0;height:44px;background:linear-gradient(180deg,transparent,rgba(20,51,39,.55))}
 .fv-big{position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:"Cormorant Garamond",serif;font-size:16.5vw;line-height:1;letter-spacing:.08em;color:transparent;-webkit-text-stroke:1px rgba(232,201,122,.38);white-space:nowrap;pointer-events:none}
@@ -43,8 +43,8 @@ img{display:block;max-width:100%}
 /* ===== PC向け（641px以上）：重ねる構図 ===== */
 @media (min-width:641px){
 .fv{position:relative;min-height:calc(100svh - 118px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
-.fv-media{position:absolute;inset:0;height:auto}
-.fv-media img{object-position:center 80%;animation:heroZoom 14s ease-out both}
+.fv-media{position:absolute;inset:0;height:auto;background:none}
+.fv-media img{width:100%;height:100%;object-fit:cover;object-position:center 80%;animation:heroZoom 14s ease-out both}
 .fv-media::after{left:0;right:0;top:0;bottom:0;height:auto;background:linear-gradient(180deg,rgba(20,51,39,.30) 0%,rgba(20,51,39,.02) 30%,rgba(20,51,39,.38) 62%,rgba(20,51,39,.88) 100%)}
 .fv-big{top:4%;font-size:19vw;-webkit-text-stroke:1px rgba(232,201,122,.4)}
 .fv-vert{top:15%;right:14px;font-size:13px;letter-spacing:.42em}
