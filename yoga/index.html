@@ -52,6 +52,13 @@ body{padding-top:0}
 .guide img{width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:center 6%;flex:none}
 .guide p{margin:0;font-size:13px;line-height:1.8}
 .guide .name{font-family:'Shippori Mincho',serif;font-weight:700;color:var(--gold);font-size:12px;letter-spacing:.12em}
+details.fold{border:1px solid var(--line);border-radius:18px;background:var(--card);margin:0 0 14px;overflow:hidden}
+details.fold summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 18px;font-family:'Shippori Mincho',serif;font-weight:700;font-size:16px;color:var(--ink)}
+details.fold summary::-webkit-details-marker{display:none}
+details.fold summary .op{color:var(--gold);font-size:12px;font-weight:700;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+details.fold summary .op::before{content:"全て見る ＋"}
+details.fold[open ] summary .op::before{content:"閉じる －"}
+details.fold .grid{padding:2px 14px 16px}
 .wave{display:block;width:100%;height:56px;margin-bottom:-1px}
 section.blk{margin:58px 0;position:relative}
 .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;position:relative;z-index:1}
@@ -167,7 +174,7 @@ section.blk{margin:58px 0;position:relative}
 <a class="area-card wide reveal" href="#all-areas"><span class="pref">47都道府県すべてから探す</span><br><span class="count">掲載のない県は「掲載店を準備中」の受け皿ページがあります</span><span class="go">→</span></a>
 </div>
 </section>
-<h2 id="all-areas">エリア一覧（47都道府県）</h2><div class="grid"><article class="card"><h3><a href="sapporo.html">北海道のヨガスタジオ</a></h3><p>掲載 6店</p><p><a href="sapporo.html">北海道のスタジオ一覧を見る →</a></p></article>
+<details class="fold" id="all-areas"><summary>エリア一覧（47都道府県）<span class="op"></span></summary><div class="grid"><article class="card"><h3><a href="sapporo.html">北海道のヨガスタジオ</a></h3><p>掲載 6店</p><p><a href="sapporo.html">北海道のスタジオ一覧を見る →</a></p></article>
 <article class="card"><h3><a href="aomori.html">青森県のヨガスタジオ</a></h3><p>掲載店を準備中</p><p><a href="aomori.html">青森県のページを見る →</a></p></article>
 <article class="card"><h3><a href="iwate.html">岩手県のヨガスタジオ</a></h3><p>掲載店を準備中</p><p><a href="iwate.html">岩手県のページを見る →</a></p></article>
 <article class="card"><h3><a href="sendai.html">宮城県のヨガスタジオ</a></h3><p>掲載 7店</p><p><a href="sendai.html">宮城県のスタジオ一覧を見る →</a></p></article>
@@ -213,19 +220,19 @@ section.blk{margin:58px 0;position:relative}
 <article class="card"><h3><a href="oita.html">大分県のヨガスタジオ</a></h3><p>掲載店を準備中</p><p><a href="oita.html">大分県のページを見る →</a></p></article>
 <article class="card"><h3><a href="miyazaki.html">宮崎県のヨガスタジオ</a></h3><p>掲載店を準備中</p><p><a href="miyazaki.html">宮崎県のページを見る →</a></p></article>
 <article class="card"><h3><a href="kagoshima.html">鹿児島県のヨガスタジオ</a></h3><p>掲載店を準備中</p><p><a href="kagoshima.html">鹿児島県のページを見る →</a></p></article>
-<article class="card"><h3><a href="okinawa.html">沖縄県のヨガスタジオ</a></h3><p>掲載店を準備中</p><p><a href="okinawa.html">沖縄県のページを見る →</a></p></article></div>
-<h2>ヨガの種類から探す</h2><div class="grid"><article class="card"><h3>ハタヨガ</h3><p>呼吸とポーズをバランスよく組み合わせた、ヨガの基本となるスタイルです。ゆっくりとした動きの中で、自分の体の感覚を確かめたい方に。</p></article>
+<article class="card"><h3><a href="okinawa.html">沖縄県のヨガスタジオ</a></h3><p>掲載店を準備中</p><p><a href="okinawa.html">沖縄県のページを見る →</a></p></article></div></details>
+<details class="fold"><summary>ヨガの種類から探す<span class="op"></span></summary><div class="grid"><article class="card"><h3>ハタヨガ</h3><p>呼吸とポーズをバランスよく組み合わせた、ヨガの基本となるスタイルです。ゆっくりとした動きの中で、自分の体の感覚を確かめたい方に。</p></article>
 <article class="card"><h3>ホットヨガ</h3><p>室温や湿度を高めたスタジオの中で体を動かすスタイルです。たっぷり汗をかきながら、爽快感を味わいたい方に。</p></article>
 <article class="card"><h3>リラックス・陰ヨガ</h3><p>一つのポーズをじっくり保ち、力を抜いて呼吸を深めるスタイルです。日常から少し離れて、穏やかな時間を過ごしたいときに。</p></article>
 <article class="card"><h3>パワーヨガ</h3><p>呼吸に合わせてテンポよくポーズをつなげていく、運動量のあるヨガです。しっかり体を動かしてアクティブに楽しみたい方に。</p></article>
 <article class="card"><h3>瞑想・マインドフルネス系</h3><p>静かに座って呼吸や今の感覚に意識を向ける時間です。自分の心とじっくり向き合ってみたい方に。</p></article>
-<article class="card"><h3>産前産後ヨガ</h3><p>妊娠中や出産後の変化する体に合わせた穏やかなプログラムです。体調や時期に合わせて無理なく体を動かしたい方に。</p></article></div>
-<h2>目的から探す</h2><div class="grid"><article class="card"><h3>運動不足を感じるとき</h3><p>デスクワークなどで動かす機会が減った体を、無理のないペースで動かしていきたいときに。</p></article>
+<article class="card"><h3>産前産後ヨガ</h3><p>妊娠中や出産後の変化する体に合わせた穏やかなプログラムです。体調や時期に合わせて無理なく体を動かしたい方に。</p></article></div></details>
+<details class="fold"><summary>目的から探す<span class="op"></span></summary><div class="grid"><article class="card"><h3>運動不足を感じるとき</h3><p>デスクワークなどで動かす機会が減った体を、無理のないペースで動かしていきたいときに。</p></article>
 <article class="card"><h3>気分転換に</h3><p>仕事や家事の合間に呼吸を深めて、気持ちのリフレッシュを目指したいときに。</p></article>
 <article class="card"><h3>姿勢を意識したいとき</h3><p>自分の体の使い方や立ち姿を見つめ直し、日常のバランスを意識したい方に。</p></article>
 <article class="card"><h3>朝活・夜活に</h3><p>出勤前のスタートや、一日の終わりの切り替えに合う時間帯のクラスを探せます。</p></article>
-<article class="card"><h3>初心者でも始めたい</h3><p>基本的な動きや丁寧なガイドを大切にするスタジオを集めました。</p></article></div>
-<h2>大阪府の掲載スタジオ（12店）</h2><div class="grid"><article class="card"><h3><a href="studios/lava-umeda.html">ホットヨガスタジオ LAVA 梅田店</a></h3>
+<article class="card"><h3>初心者でも始めたい</h3><p>基本的な動きや丁寧なガイドを大切にするスタジオを集めました。</p></article></div></details>
+<details class="fold"><summary>大阪府の掲載スタジオ（12店）<span class="op"></span></summary><div class="grid"><article class="card"><h3><a href="studios/lava-umeda.html">ホットヨガスタジオ LAVA 梅田店</a></h3>
 <p class="meta">梅田｜梅田駅・東梅田駅・大阪駅</p><div><span class="tag">ホットヨガ</span><span class="tag">梅田</span><span class="tag">男女共用</span><span class="tag">初心者向けあり</span></div>
 <p>男女共用のホットヨガ専門店です。温かいスタジオで行う60分のレッスンが中心で、基本のポーズを扱う初心者向けから、部位や目的に合わせたクラスまで種類が多く用意されています。個室シャワ…</p><p class="meta">料金の目安：月4回プラン 9,800円／通い放題プラン 14,800円〜16,800円（別途、運営管理費680円／月）</p>
 <p><a href="studios/lava-umeda.html">詳細を見る →</a></p></article>
@@ -272,7 +279,7 @@ section.blk{margin:58px 0;position:relative}
 <article class="card"><h3><a href="studios/az-nishinakajima.html">a.z.yogastudio</a></h3>
 <p class="meta">西中島（淀川区）｜西中島エリア</p><div><span class="tag">常温ヨガ</span><span class="tag">西中島</span><span class="tag">少人数制</span><span class="tag">夜クラス</span></div>
 <p>各クラス5名までの少人数制スタジオです。夜19:00／20:45のクラスがあり、仕事帰りの利用を案内しています。ヨガに骨格調整とピラティスの要素を取り入れた初心者向けクラスなど、難…</p><p class="meta">料金の目安：入会金・年会費不要の回数券制。3回券 7,500円、4回券 8,500円（いずれも期限1か月、現金のみ）</p>
-<p><a href="studios/az-nishinakajima.html">詳細を見る →</a></p></article></div>
+<p><a href="studios/az-nishinakajima.html">詳細を見る →</a></p></article></div></details>
 <h2>エリア別ガイド・初心者入門シリーズ</h2><div class="grid"><article class="card"><img src="assets/guide-osaka.webp" alt="大阪のヨガスタジオの選び方｜梅田・心斎橋・天王寺エリアガイドのアイキャッチ" style="width:100%;height:auto;border-radius:8px"><h3><a href="guide-osaka.html">大阪のヨガスタジオの選び方｜梅田・心斎橋・天王寺エリアガイド</a></h3><p><a href="guide-osaka.html">ガイドを読む →</a></p></article><article class="card"><img src="assets/learn-01.webp" alt="ヨガとは？初心者が知っておきたい始め方の基本のアイキャッチ" style="width:100%;height:auto;border-radius:8px"><h3><a href="learn-01.html">入門 第1回 ヨガとは？初心者が知っておきたい始め方の基本</a></h3><p><a href="learn-01.html">記事を読む →</a></p></article></div><p><a href="guides.html">エリア別ガイド一覧</a>／<a href="learn.html">入門シリーズ一覧</a></p><h2>初めての方へ</h2><p>ヨガを始める際は、動きやすいTシャツやパンツなどの服装に、お水とタオルがあれば安心です。ヨガマットはスタジオでレンタルできることも多いため、事前に確認しておくと身軽に通えます。体験レッスンでは、開始少し前に余裕をもって到着し、着替えや簡単な説明を受けてからクラスに参加するのが一般的な流れです。まずはご自身のペースで呼吸を楽しみながら、スタジオの雰囲気を体感してみてください。</p>
 <section class="blk">
 <div class="sec-head reveal"><span class="no">04</span><h2>ポータルの使い方</h2></div>
@@ -295,6 +302,7 @@ section.blk{margin:58px 0;position:relative}
 <script>
 var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io2.unobserve(e.target);}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(function(el){io2.observe(el);});
+var aa=document.getElementById('all-areas');document.querySelectorAll('a[href="#all-areas"]').forEach(function(a){a.addEventListener('click',function(){if(aa){aa.open=true;}});});
 </script>
 <footer><p>Simple Yoga Life｜運営：222工房</p><p>掲載情報は各スタジオの公式サイト等で確認した事実を要約したものです。料金・スケジュールは変わることがあります。最新情報は各スタジオの公式サイトでご確認ください。</p><p><a href="about.html">運営・掲載について</a><a href="apply.html">掲載申込・本登録</a> ／ <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCmj_Oh1vqOuBdeSIbCc-d46GWhuQE0n5CaN9Qq1o1eqSduA/viewform" target="_blank" rel="noopener">掲載内容の修正・削除依頼フォーム</a></p><nav aria-label="姉妹サイト" style="margin-top:14px;line-height:2"><span style="font-weight:700">姉妹サイト</span><br><a href="https://tomyree-source.github.io/sites/fashion/">POSTURE &amp; STYLE（ファッション）</a> ／ <a href="https://tomyree-source.github.io/sites/belly-dance/">ベリーダンスの手帖</a> ／ <a href="https://tomyree-source.github.io/sites/aroma-notes/">アロマと休息の手帖</a> ／ <a href="https://felis-cattus222.github.io/beauty-site/">美容の道具箱</a> ／ <a href="https://felis-cattus222.github.io/felis-cattus/">Felis cattus</a></nav></footer>
 <style>
