@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>セラピストマッチ（リニューアル見本A）｜理想のセラピストと出会える</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0V6GQSZV7F"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-0V6GQSZV7F');</script>
+<style>
+:root{
+  --plum:#2b1030; --plum2:#451b47; --cream:#faf5ec; --cream2:#f3ead9;
+  --gold:#c9973f; --gold2:#e6c584; --rose:#b76e79; --ink:#33222f; --mut:#7a6872;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans JP",sans-serif;color:var(--ink);background:var(--cream);line-height:1.9;font-size:15px;padding-bottom:86px}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.mincho{font-family:"Shippori Mincho",serif}
+.en{font-family:"Cormorant Garamond",serif}
+
+/* ===== FV ===== */
+.fv{position:relative;background:linear-gradient(180deg,#1d0a21 0%,var(--plum) 55%,var(--plum2) 100%);color:var(--cream);overflow:hidden;padding:26px 20px 44px}
+.fv .bgtype{position:absolute;top:34px;left:50%;transform:translateX(-50%);font-family:"Cormorant Garamond",serif;font-size:19vw;line-height:.9;letter-spacing:.04em;color:rgba(250,245,236,.055);white-space:nowrap;pointer-events:none}
+.fv .brand{position:relative;display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.18em}
+.fv .brand .logo{font-family:"Shippori Mincho",serif;font-size:17px;letter-spacing:.12em}
+.fv .brand .logo b{color:var(--gold2);font-weight:700}
+.fv .age{border:1px solid rgba(230,197,132,.55);color:var(--gold2);border-radius:999px;padding:2px 10px;font-size:11px;letter-spacing:.08em}
+.fv .lead{position:relative;margin-top:30px;font-size:12.5px;letter-spacing:.22em;color:var(--gold2)}
+.fv h1{position:relative;font-family:"Shippori Mincho",serif;font-weight:700;font-size:37px;line-height:1.5;letter-spacing:.04em;margin-top:10px}
+.fv h1 .g{color:var(--gold2)}
+.fv .sub{position:relative;margin-top:14px;font-size:13.5px;color:rgba(250,245,236,.86);line-height:1.95}
+.fv .hero{position:relative;margin:26px auto 0;width:min(86%,340px)}
+.fv .hero .frame{border-radius:170px 170px 18px 18px;overflow:hidden;border:1px solid rgba(230,197,132,.5);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.fv .hero img{width:100%;height:400px;object-fit:cover;object-position:center 30%;animation:slowzoom 16s var(--ease) infinite alternate}
+@keyframes slowzoom{from{transform:scale(1)}to{transform:scale(1.07)}}
+.fv .badges{position:relative;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:24px}
+.fv .badges span{font-size:11.5px;border:1px solid rgba(250,245,236,.35);border-radius:999px;padding:5px 12px;background:rgba(255,255,255,.06);letter-spacing:.04em}
+.fv .cta{position:relative;margin-top:24px;display:flex;flex-direction:column;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:15px 20px;font-weight:700;font-size:15px;letter-spacing:.06em;transition:transform .45s var(--ease)}
+.btn .arr{transition:transform .45s var(--ease)}
+.btn:active .arr{transform:translateX(4px)}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#2b1030;box-shadow:0 12px 28px rgba(201,151,63,.35)}
+.btn-ghost{border:1px solid rgba(250,245,236,.5);color:var(--cream)}
+.fv .note{position:relative;margin-top:14px;text-align:center;font-size:11.5px;color:rgba(250,245,236,.6)}
+
+/* ===== sections ===== */
+.sec{padding:52px 20px 8px;max-width:640px;margin:0 auto}
+.sec .kicker{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--rose);font-size:15px;letter-spacing:.14em}
+.sec h2{font-family:"Shippori Mincho",serif;font-size:24px;line-height:1.6;margin:6px 0 10px}
+.sec p{color:#57434f;font-size:14px}
+.fade{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.fade.on{opacity:1;transform:none}
+
+/* therapist cards */
+.tcards{display:flex;gap:14px;overflow-x:auto;padding:18px 20px 14px;margin:0 -20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.tcard{scroll-snap-align:start;flex:0 0 218px;background:#fff;border:1px solid #eadfce;border-radius:16px;padding:20px 18px;box-shadow:0 10px 26px rgba(43,16,48,.07)}
+.tcard .ini{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--plum2),var(--rose));color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:"Shippori Mincho",serif;font-size:21px}
+.tcard .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.tcard .tags span{font-size:10.5px;background:var(--cream2);border-radius:999px;padding:3px 9px;color:#6d5138}
+.tcard h3{font-family:"Shippori Mincho",serif;font-size:16.5px;margin-top:10px}
+.tcard p{font-size:12.5px;color:var(--mut);line-height:1.8}
+.tcard .meta{margin-top:10px;font-size:12px;color:var(--gold);font-weight:700}
+.sample-note{font-size:11px;color:var(--mut);margin-top:4px}
+
+/* safety */
+.safe{display:grid;gap:10px;margin-top:18px}
+.safe .row{display:flex;gap:12px;background:#fff;border:1px solid #eadfce;border-radius:14px;padding:14px 16px;align-items:flex-start}
+.safe .n{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--gold);font-size:20px;line-height:1.2}
+.safe h3{font-size:14.5px;font-family:"Shippori Mincho",serif}
+.safe p{font-size:12.5px;color:var(--mut);line-height:1.75}
+
+/* price strip */
+.price{margin-top:20px;background:var(--plum);color:var(--cream);border-radius:18px;padding:22px;text-align:center}
+.price .row{display:flex;justify-content:space-around;margin-top:8px}
+.price .cell .t{font-size:12px;color:var(--gold2);letter-spacing:.1em}
+.price .cell .v{font-family:"Shippori Mincho",serif;font-size:21px}
+.price .mid .v{color:var(--gold2)}
+.price small{display:block;margin-top:12px;font-size:11px;color:rgba(250,245,236,.65);line-height:1.8}
+
+footer{padding:38px 20px 20px;text-align:center;color:var(--mut);font-size:11.5px}
+footer .flogo{font-family:"Shippori Mincho",serif;color:var(--plum);font-size:16px;letter-spacing:.1em}
+
+/* floating bar */
+.fbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:flex;gap:10px;align-items:stretch}
+.fbar .main{flex:1;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#2b1030;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;letter-spacing:.05em;box-shadow:0 14px 30px rgba(43,16,48,.35);padding:15px}
+.fbar .menu{width:56px;border-radius:50%;background:var(--plum);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 14px 30px rgba(43,16,48,.35);border:1px solid rgba(230,197,132,.4)}
+.mnav{position:fixed;inset:0;background:rgba(29,10,33,.96);z-index:70;display:none;flex-direction:column;justify-content:center;padding:34px;color:var(--cream)}
+.mnav.open{display:flex}
+.mnav a{font-family:"Shippori Mincho",serif;font-size:21px;padding:13px 4px;border-bottom:1px solid rgba(250,245,236,.14);display:flex;justify-content:space-between}
+.mnav a span{color:var(--gold2);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px}
+.mnav .close{position:absolute;top:20px;right:22px;font-size:26px;color:var(--gold2)}
+@media(min-width:760px){
+  .fv h1{font-size:52px}
+  .fv .bgtype{font-size:150px}
+  .sec{max-width:880px}
+  .fbar{left:auto;right:26px;bottom:26px;width:430px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== ファーストビュー ===== -->
+<header class="fv">
+  <div class="bgtype">Therapist Match</div>
+  <div class="brand">
+    <div class="logo">セラピスト<b>マッチ</b></div>
+    <div class="age">18歳未満は利用できません</div>
+  </div>
+  <p class="lead">女性のための、セラピスト探し</p>
+  <h1>理想のセラピストと、<br><span class="g">出会える。</span></h1>
+  <p class="sub">お店の名前ではなく、「どんな人に任せたいか」から選べる場所です。雰囲気や得意なこと、実際に利用した女性の声を見ながら、あなたに合う一人を探せます。</p>
+  <div class="hero">
+    <div class="frame"><img src="assets/sample-hero.webp" alt="プラム色の灯りに包まれた夜のサロンのイラスト"></div>
+  </div>
+  <div class="badges">
+    <span>料金は総額表示</span><span>届出確認バッジ</span><span>口コミは運営確認制</span>
+  </div>
+  <div class="cta">
+    <a class="btn btn-gold" href="#therapists">タイプから探す <span class="arr">→</span></a>
+    <a class="btn btn-ghost" href="https://tomyree-source.github.io/sites/therapist-match/">地域・ジャンルから探す</a>
+  </div>
+  <p class="note">全国9都市・96店掲載中（公式サイト確認済み）</p>
+</header>
+
+<!-- ===== セラピストカード ===== -->
+<section class="sec fade" id="therapists">
+  <p class="kicker">Meet your therapist</p>
+  <h2>雰囲気と、得意なことから。</h2>
+  <p>人物写真は使わず、イニシャルと雰囲気タグで表示します。どんな人かは、プロフィールと口コミで確かめてください。</p>
+  <div class="tcards">
+    <article class="tcard">
+      <div class="ini">K</div>
+      <div class="tags"><span>穏やか</span><span>聞き上手</span><span>30代</span></div>
+      <h3>オイルマッサージが得意</h3>
+      <p>ゆっくりした圧と、静かな会話で過ごしたい方に。大阪・梅田エリア。</p>
+      <p class="meta">90分 15,000円〜（総額）</p>
+    </article>
+    <article class="tcard">
+      <div class="ini">R</div>
+      <div class="tags"><span>明るい</span><span>デート対応</span><span>20代</span></div>
+      <h3>一緒に過ごす時間が得意</h3>
+      <p>お出かけや食事の同行も相談できます。東京・新宿エリア。</p>
+      <p class="meta">120分 19,000円〜（総額）</p>
+    </article>
+    <article class="tcard">
+      <div class="ini">S</div>
+      <div class="tags"><span>落ち着いた</span><span>タントラ</span><span>40代</span></div>
+      <h3>深いリラックスが得意</h3>
+      <p>呼吸に合わせたヒーリング寄りの施術。名古屋・栄エリア。</p>
+      <p class="meta">90分 15,000円〜（総額）</p>
+    </article>
+  </div>
+  <p class="sample-note">※ カードはデザイン見本のための仮表示です。実際の掲載は、公式情報と本人の確認が取れた方から順次行います。</p>
+</section>
+
+<!-- ===== 安心 ===== -->
+<section class="sec fade">
+  <p class="kicker">Safety first</p>
+  <h2>初めてでも大丈夫な、5つの安心</h2>
+  <div class="safe">
+    <div class="row"><div class="n">01</div><div><h3>料金は「総額」が事前に分かる</h3><p>指名料・交通費などを含めた総額の目安を、予約前に確認できます。</p></div></div>
+    <div class="row"><div class="n">02</div><div><h3>NG事項は事前に伝えられる</h3><p>触れてほしくない部位や苦手なことは、予約の時点で伝えられます。</p></div></div>
+    <div class="row"><div class="n">03</div><div><h3>身バレ対策：連絡方法が選べる</h3><p>LINE・メールなど、都合に合う方法を選べます。本名を伝える必要はありません。</p></div></div>
+    <div class="row"><div class="n">04</div><div><h3>届出確認済みを目立たせます</h3><p>届出を運営が確認した掲載にはバッジを表示。未確認は正直に分けます。</p></div></div>
+    <div class="row"><div class="n">05</div><div><h3>口コミは運営確認制</h3><p>実際に利用した女性の声を、運営が確認してから掲載します。</p></div></div>
+  </div>
+</section>
+
+<!-- ===== 相場 ===== -->
+<section class="sec fade">
+  <p class="kicker">Price guide</p>
+  <h2>料金相場の目安</h2>
+  <div class="price">
+    <div class="row">
+      <div class="cell"><div class="t">60分</div><div class="v">10,000円</div></div>
+      <div class="cell mid"><div class="t">90分・最も選ばれる</div><div class="v">15,000円</div></div>
+      <div class="cell"><div class="t">120分</div><div class="v">19,000円</div></div>
+    </div>
+    <small>公開ポータル等の掲載店データをもとにした中央値の目安です（2026年11月時点）。指名料・交通費・オプションは別途かかる場合があります。</small>
+  </div>
+</section>
+
+<footer>
+  <p class="flogo">セラピストマッチ</p>
+  <p>女性が理想のセラピストと出会える全国ポータル（リニューアル見本A）</p>
+</footer>
+
+<!-- floating bar -->
+<div class="fbar">
+  <a class="main" href="#therapists">タイプから探す →</a>
+  <a class="menu" href="#" id="menuBtn" aria-label="メニュー">☰</a>
+</div>
+<nav class="mnav" id="mnav">
+  <a class="close" href="#" id="closeBtn">×</a>
+  <a href="#therapists">セラピストから探す <span>therapists</span></a>
+  <a href="https://tomyree-source.github.io/sites/therapist-match/">地域・ジャンルから探す <span>search</span></a>
+  <a href="https://tomyree-source.github.io/sites/therapist-match/">初めてのガイド <span>guide</span></a>
+  <a href="https://tomyree-source.github.io/sites/therapist-match/">掲載申込（当面無料） <span>join</span></a>
+</nav>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+const mn=document.getElementById('mnav');
+document.getElementById('menuBtn').addEventListener('click',e=>{e.preventDefault();mn.classList.add('open')});
+document.getElementById('closeBtn').addEventListener('click',e=>{e.preventDefault();mn.classList.remove('open')});
+mn.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>mn.classList.remove('open')));
+</script>
+</body>
+</html>
