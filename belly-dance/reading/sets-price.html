@@ -913,6 +913,119 @@
         .page-head-title{grid-area:title;font-size:3.2rem}
         .page-head-viz{grid-area:viz;margin:0;max-width:none}
       }
+      /* ==========================================================
+         TOP GLAM — トップ見本の華やか強化（トップページのみ適用）
+         ・背景にオリエンタルの線画モチーフ（八芒星の格子）を薄く敷く
+         ・セクション境目に波型ディバイダ＋三日月のメダリオン
+         ・画像枠はアーチ型／大きめ角丸、金の重ねで奥行きを出す
+         配色 60-30-10（生成り×深いターコイズ×ゴールド）は維持。
+         人物画像は object-fit: contain か元比率どおりの枠で切り取らない。
+         ========================================================== */
+      /* --- オリエンタル模様：八芒星＋小ドットの格子（金の線・ごく薄く） --- */
+      .hero2,#about,#characters,#reading-entry,section.steps-sec{
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23a97a24' stroke-opacity='.12' stroke-width='1'%3E%3Cpath d='M42 8 L49 35 L76 42 L49 49 L42 76 L35 49 L8 42 L35 35 Z'/%3E%3Ccircle cx='42' cy='42' r='3.5'/%3E%3Cpath d='M0 0 L11 0 M0 0 L0 11 M84 0 L73 0 M84 0 L84 11 M0 84 L11 84 M0 84 L0 73 M84 84 L73 84 M84 84 L84 73'/%3E%3C/g%3E%3Cg fill='%230b5a68' fill-opacity='.09'%3E%3Ccircle cx='0' cy='42' r='2'/%3E%3Ccircle cx='84' cy='42' r='2'/%3E%3Ccircle cx='42' cy='0' r='2'/%3E%3Ccircle cx='42' cy='84' r='2'/%3E%3C/g%3E%3C/svg%3E");
+      }
+      #about,section.steps-sec{background-color:var(--bg-soft)}
+      #about,#characters,#reading-entry,section.steps-sec{padding-bottom:54px}
+      /* --- 波型ディバイダ --- */
+      .wave-div{display:block;line-height:0;position:relative}
+      .wave-div svg{display:block;width:100%;height:44px}
+      @media (min-width:760px){.wave-div svg{height:64px}}
+      .wave-div .wv-fill{fill:currentColor}
+      .wave-div .wv-line{fill:none;stroke:var(--gold);stroke-width:2;opacity:.45}
+      .wd-into-soft{color:var(--bg-soft)}
+      .wd-into-base{color:var(--bg);background:var(--bg-soft)}
+      .wv-moon{
+        position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+        width:36px;height:36px;border-radius:50%;
+        background:var(--bg);border:1px solid color-mix(in srgb,var(--gold) 55%,var(--line));
+        display:flex;align-items:center;justify-content:center;
+        box-shadow:0 4px 12px rgba(62,42,16,.14);
+      }
+      .wv-moon svg{width:19px;height:19px;fill:var(--gold)}
+      /* --- ヒーロー：アーチの二重重ね＋三日月＋幅広シーン画像 --- */
+      .hero2 .hero2-arch{
+        box-shadow:16px 18px 0 -6px color-mix(in srgb,var(--h-gold) 24%,transparent),var(--shadow);
+      }
+      .hero2-eyebrow svg{width:17px;height:17px;fill:var(--h-gold);flex:none}
+      .hero2-scene{position:relative;z-index:1;margin-top:32px}
+      .hero2-scene .viz-frame{
+        aspect-ratio:3/2;border-radius:170px 170px 18px 18px;
+        border-color:color-mix(in srgb,var(--gold) 45%,var(--line));
+      }
+      .hero2-scene figcaption{font-size:.83rem;color:var(--h-soft);margin-top:10px;line-height:1.7}
+      @media (min-width:1024px){.hero2-scene{max-width:900px}}
+      /* --- ABOUT：角丸を大きく、場面ストリップはアーチ型に --- */
+      #about .photo{border-radius:26px}
+      #about .scene-strip .viz-frame{border-radius:999px 999px 14px 14px}
+      #about .card{border-radius:16px}
+      /* --- CHARACTERS：カード全体をアーチ型にし、金のオフセットで重ねる --- */
+      #characters .char-card{
+        border-radius:150px 150px 20px 20px;
+        box-shadow:10px 12px 0 -4px var(--accent-soft),0 3px 12px rgba(62,42,16,.06);
+      }
+      /* --- STEPS：小物の幅広ビジュアル＋ランタン＋重ね影 --- */
+      .steps-viz{margin:0 auto 22px;max-width:780px}
+      .steps-viz .viz-frame{aspect-ratio:3/2;border-radius:999px 999px 16px 16px}
+      .steps-viz figcaption{font-size:.83rem;color:var(--ink-soft);margin-top:9px;line-height:1.7}
+      section.steps-sec .steps-band{
+        position:relative;border-radius:22px;
+        box-shadow:10px 12px 0 -4px var(--accent-soft),0 3px 12px rgba(62,42,16,.06);
+      }
+      section.steps-sec .step-thumb{border-radius:14px}
+      section.steps-sec .steps-lead{padding-right:78px}
+      .band-lantern{position:absolute;top:0;color:var(--gold);opacity:.55;pointer-events:none}
+      .band-lantern.bl-1{right:24px;width:23px;height:56px}
+      .band-lantern.bl-2{right:60px;width:19px;height:40px}
+      @media (max-width:560px){section.steps-sec .steps-lead{padding-right:64px}}
+      /* --- READING：カードの角丸＋ダンサーギャラリー（アーチ枠・全身収納） --- */
+      #reading-entry .read-card{border-radius:20px}
+      .dancer-gallery{margin-top:36px}
+      .dancer-gallery-head h3{font-size:1.18rem;font-weight:800}
+      .dancer-gallery-head p{color:var(--ink-soft);font-size:.93rem;margin:8px 0 0;max-width:44em}
+      .dancer-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+      @media (min-width:860px){.dancer-row{grid-template-columns:repeat(4,1fr);gap:18px}}
+      .dancer-row figure{margin:0}
+      .dancer-frame{
+        border-radius:999px 999px 14px 14px;overflow:hidden;aspect-ratio:2/3;
+        border:1px solid color-mix(in srgb,var(--gold) 42%,var(--line));
+        background:var(--bg-soft);box-shadow:var(--shadow);
+      }
+      .dancer-frame img{width:100%;height:100%;object-fit:contain}
+      .dancer-row figcaption{text-align:center;margin-top:9px;line-height:1.6}
+      .dancer-row figcaption .dn{
+        display:block;font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:.95rem;letter-spacing:.14em;color:var(--ink);
+      }
+      .dancer-row figcaption .ds{display:block;font-size:.76rem;color:var(--ink-soft);letter-spacing:.06em}
+      @media (hover:hover){
+        .dancer-frame img{transition:transform .8s ease}
+        .dancer-row figure:hover .dancer-frame img{transform:scale(1.03)}
+      }
+      @media (prefers-reduced-motion: reduce){
+        .dancer-frame img{transition:none}
+      }
+      /* ==========================================================
+         SUBPAGE GLAM — トップ見本の華やかさを下層ページへ本制作展開
+         ・八芒星の格子モチーフを共通化（.motif-bg でも使える）し、
+           各ページの page-head と主要セクションの背景に敷く
+         ・波型ディバイダは page-head 直下とセクション境目に配置
+           （HTML 側で .wave-div を置く。トップと同じ部品）
+         ・読み物はマストヘッド周辺だけにモチーフを敷き、下へ消す
+         配色・線の薄さはトップ見本と同一。本文の可読性は損なわない。
+         ========================================================== */
+      .motif-bg,.page-head,#styles,#moves,#learn-dancers,#quiz,#faq,
+      #costume,#hipscarf,#props,#items,#calc,#schools,#register{
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23a97a24' stroke-opacity='.12' stroke-width='1'%3E%3Cpath d='M42 8 L49 35 L76 42 L49 49 L42 76 L35 49 L8 42 L35 35 Z'/%3E%3Ccircle cx='42' cy='42' r='3.5'/%3E%3Cpath d='M0 0 L11 0 M0 0 L0 11 M84 0 L73 0 M84 0 L84 11 M0 84 L11 84 M0 84 L0 73 M84 84 L73 84 M84 84 L84 73'/%3E%3C/g%3E%3Cg fill='%230b5a68' fill-opacity='.09'%3E%3Ccircle cx='0' cy='42' r='2'/%3E%3Ccircle cx='84' cy='42' r='2'/%3E%3Ccircle cx='42' cy='0' r='2'/%3E%3Ccircle cx='42' cy='84' r='2'/%3E%3C/g%3E%3C/svg%3E");
+      }
+      /* 読み物：マストヘッド周辺のモチーフ（本文側へ向けてフェードアウト） */
+      section.block[id^="reading-"]{position:relative;padding-top:40px}
+      section.block[id^="reading-"] .wrap{position:relative;z-index:1}
+      section.block[id^="reading-"]::before{
+        content:"";position:absolute;top:0;left:0;right:0;height:430px;z-index:0;pointer-events:none;
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23a97a24' stroke-opacity='.12' stroke-width='1'%3E%3Cpath d='M42 8 L49 35 L76 42 L49 49 L42 76 L35 49 L8 42 L35 35 Z'/%3E%3Ccircle cx='42' cy='42' r='3.5'/%3E%3Cpath d='M0 0 L11 0 M0 0 L0 11 M84 0 L73 0 M84 0 L84 11 M0 84 L11 84 M0 84 L0 73 M84 84 L73 84 M84 84 L84 73'/%3E%3C/g%3E%3Cg fill='%230b5a68' fill-opacity='.09'%3E%3Ccircle cx='0' cy='42' r='2'/%3E%3Ccircle cx='84' cy='42' r='2'/%3E%3Ccircle cx='42' cy='0' r='2'/%3E%3Ccircle cx='42' cy='84' r='2'/%3E%3C/g%3E%3C/svg%3E");
+        -webkit-mask-image:linear-gradient(180deg,#000 22%,transparent 96%);
+        mask-image:linear-gradient(180deg,#000 22%,transparent 96%);
+      }
     </style>
     <link rel="canonical" href="https://tomyree-source.github.io/sites/belly-dance/reading/sets-price.html">
     <script type="application/ld+json">
