@@ -26,7 +26,7 @@
     <title>自宅でのベリーダンス練習の組み立て方｜スペース・時間・内容の目安｜ベリーダンスの手帖</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
     <style>
       :root{
         --bg:#f8f2e7;
@@ -34,16 +34,16 @@
         --surface:#fffdf8;
         --ink:#2e2118;
         --ink-soft:#5d4c3a;
-        --line:#e0d0b2;
-        --teal:#0d5a54;
-        --teal-deep:#083f3b;
+        --line:#e6d9bf;
+        --teal:#0b5a68;
+        --teal-deep:#07424d;
         --teal-ink:#eafaf3;
         --gold:#a97a24;
         --gold-bright:#c9973f;
         --burgundy:#7c2d3e;
         --accent-soft:#fdf3d8;
-        --shadow:0 10px 30px rgba(62,42,16,.12);
-        --radius:14px;
+        --shadow:0 10px 28px rgba(62,42,16,.10);
+        --radius:10px;
       }
       @media (prefers-color-scheme: dark){
         :root{
@@ -67,13 +67,13 @@
       html{scroll-behavior:smooth}
       body{
         margin:0;background:var(--bg);color:var(--ink);
-        font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
-        line-height:1.85;font-size:16px;
+        font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+        line-height:1.9;letter-spacing:.02em;font-size:16px;
         -webkit-font-smoothing:antialiased;
       }
       img{max-width:100%;display:block}
       a{color:var(--teal)}
-      h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN",serif;line-height:1.4;margin:0}
+      h1,h2,h3{font-family:"Shippori Mincho B1","Hiragino Mincho ProN",serif;line-height:1.4;letter-spacing:.05em;margin:0}
       .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
       /* ---------- header ---------- */
       header.site{
@@ -85,7 +85,7 @@
       .site-inner{display:flex;align-items:center;gap:18px;max-width:1080px;margin:0 auto;padding:8px 20px}
       .brand{font-family:"Shippori Mincho B1",serif;font-weight:800;font-size:1.25rem;color:var(--ink);text-decoration:none;white-space:nowrap}
       .brand small{display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.14em;color:var(--gold)}
-      #about,#styles,#moves,#rhythm,#costume,#hipscarf,#props,#reading-size,#reading-care,#reading-props,#reading-hafla,#reading-buying,#reading-styles,#reading-moves,#reading-shimmy,#reading-hipdrop,#reading-hip-circle,#reading-home-practice,#reading-beginner-faq,#reading-rhythm,#reading-history,#reading-music,#reading-veil,#reading-winter-hafla,#reading-winter-costume-choice,#reading-hipscarf-price,#reading-winter-practice,#reading-zill,#reading-sword,#reading-recital-viewing,#reading-snake-arms,#reading-school-search,#reading-hipscarf-types,#reading-lesson-wear,#reading-hafla-hairmakeup,#new,#items,#calc,#quiz,#faq,#characters,#sns,#schools,#register{scroll-margin-top:64px}
+      #about,#styles,#moves,#rhythm,#costume,#hipscarf,#props,#reading-size,#reading-care,#reading-props,#reading-hafla,#reading-buying,#reading-styles,#reading-moves,#reading-shimmy,#reading-hipdrop,#reading-hip-circle,#reading-home-practice,#reading-beginner-faq,#reading-rhythm,#reading-history,#reading-music,#reading-veil,#reading-winter-hafla,#reading-winter-costume-choice,#reading-hipscarf-price,#reading-winter-practice,#reading-zill,#reading-sword,#reading-recital-viewing,#reading-snake-arms,#reading-school-search,#reading-hipscarf-types,#reading-lesson-wear,#reading-hafla-hairmakeup,#items,#calc,#quiz,#faq,#characters,#sns,#schools,#register{scroll-margin-top:64px}
       /* ---------- floating menu（日本の旅検定 space-14 と同一仕様） ---------- */
       .fab-overlay{
         position:fixed;inset:0;z-index:80;
@@ -584,6 +584,335 @@
         html{scroll-behavior:auto}
         .fab-overlay,.fab-panel{transition:none}
       }
+      /* ==========================================================
+         HERO 2026 — デザイナー仕様・見本（ファーストビューのみ）
+         Fonts: Shippori Mincho B1（見出し和文）× Cormorant Garamond（英字・数字）× Noto Sans JP（本文）
+         Color 60-30-10: 生成り 60 / 深いターコイズ 30 / ゴールド 10
+         ========================================================== */
+      .hero2{
+        --h-ink:#2b2118;
+        --h-soft:#6a5942;
+        --h-teal:#0b5a68;
+        --h-teal-deep:#07424d;
+        --h-gold:#a97a24;
+        --h-line:rgba(43,33,24,.16);
+        --h-arch:#f2e8d2;
+        --h-type:rgba(11,90,104,.08);
+        --h-serif:"Shippori Mincho B1","Hiragino Mincho ProN",serif;
+        --h-latin:"Cormorant Garamond","Shippori Mincho B1",serif;
+        --h-sans:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+        position:relative;overflow:hidden;
+        padding:24px 0 10px;
+        font-family:var(--h-sans);color:var(--h-ink);
+      }
+      @media (prefers-color-scheme: dark){
+        .hero2{
+          --h-ink:#f2e8d8;
+          --h-soft:#cdbb9f;
+          --h-teal:#57b7c4;
+          --h-teal-deep:#8fd3dd;
+          --h-gold:#d9a94f;
+          --h-line:rgba(242,232,216,.18);
+          --h-arch:#251c11;
+          --h-type:rgba(87,183,196,.07);
+        }
+      }
+      .hero2-bgtype{
+        position:absolute;top:6px;right:-8px;z-index:0;
+        font-family:var(--h-latin);font-weight:700;
+        font-size:24vw;line-height:.82;letter-spacing:.02em;
+        color:var(--h-type);white-space:nowrap;pointer-events:none;user-select:none;
+      }
+      .hero2-inner{
+        position:relative;z-index:1;
+        display:grid;grid-template-columns:minmax(0,1fr) 92px;column-gap:14px;align-items:start;
+        grid-template-areas:
+          "eyebrow eyebrow"
+          "title title"
+          "tagline figure"
+          "lead figure"
+          "stats stats"
+          "actions actions";
+      }
+      .hero2-eyebrow{grid-area:eyebrow}
+      .hero2-title{grid-area:title}
+      .hero2-tagline{grid-area:tagline}
+      .hero2-lead{grid-area:lead}
+      .hero2-stats{grid-area:stats}
+      .hero2-actions{grid-area:actions}
+      .hero2-figure{grid-area:figure}
+      .h-more{display:none}
+      .hero2-eyebrow{
+        display:flex;align-items:center;gap:12px;margin:6px 0 18px;
+        font-family:var(--h-latin);font-size:.82rem;font-weight:600;letter-spacing:.24em;color:var(--h-gold);
+      }
+      .hero2-eyebrow::after{content:"";height:1px;width:44px;background:var(--h-gold);opacity:.65}
+      .hero2-title{
+        font-family:var(--h-serif);font-weight:800;
+        font-size:clamp(2.15rem,10.5vw,2.5rem);line-height:1.42;letter-spacing:.07em;color:var(--h-ink);
+      }
+      .hero2-title .tl{display:block}
+      .hero2-title em{font-style:normal;color:var(--h-teal)}
+      .hero2-tagline{
+        font-family:var(--h-serif);font-weight:700;
+        font-size:1rem;line-height:1.9;letter-spacing:.1em;color:var(--h-teal-deep);
+        margin:12px 0 0;
+      }
+      .hero2-lead{
+        font-size:.9rem;line-height:1.95;letter-spacing:.04em;color:var(--h-soft);
+        margin:10px 0 0;max-width:34em;
+      }
+      .hero2-lead strong{color:var(--h-ink);font-weight:700}
+      /* stats — 実在の数字 */
+      .hero2-stats{
+        list-style:none;display:flex;margin:20px 0 0;padding:14px 0 0;
+        border-top:1px solid var(--h-line);
+      }
+      .hero2-stats li{padding:0 14px}
+      .hero2-stats li:first-child{padding-left:0}
+      .hero2-stats li + li{border-left:1px solid var(--h-line)}
+      .hero2-stats .num{
+        font-family:var(--h-latin);font-weight:600;font-size:2rem;line-height:1;color:var(--h-teal-deep);
+      }
+      .hero2-stats .unit{font-family:var(--h-serif);font-size:.82rem;font-weight:700;color:var(--h-teal);margin-left:2px}
+      .hero2-stats .label{display:block;font-size:.72rem;font-weight:500;letter-spacing:.12em;color:var(--h-soft);margin-top:6px}
+      /* actions — 主CTAは「教室を探す」に一本化 */
+      .hero2-actions{margin-top:22px}
+      .hero2-cta{
+        display:inline-flex;align-items:center;gap:12px;
+        background:var(--h-teal);color:#fff;text-decoration:none;
+        font-family:var(--h-sans);font-weight:700;font-size:1.02rem;letter-spacing:.08em;line-height:1.5;
+        padding:15px 30px;border-radius:10px;
+        transition:background .25s ease;
+      }
+      @media (prefers-color-scheme: dark){.hero2-cta{background:#0e5a68}}
+      .hero2-cta svg{width:20px;height:20px;flex:none;transition:transform .25s ease}
+      .hero2-cta:hover{background:var(--h-teal-deep)}
+      @media (prefers-color-scheme: dark){.hero2-cta:hover{background:#0b4a56}}
+      .hero2-cta:hover svg{transform:translateX(5px)}
+      .hero2-cta:focus-visible{outline:3px solid var(--h-gold);outline-offset:3px}
+      .hero2-sub{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:18px}
+      .hero2-sub a{
+        position:relative;color:var(--h-teal-deep);text-decoration:none;
+        font-size:.9rem;font-weight:700;letter-spacing:.06em;padding-bottom:3px;
+      }
+      .hero2-sub a::after{
+        content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+        background:var(--h-gold);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+      }
+      .hero2-sub a:hover::after{transform:scaleX(1)}
+      .hero2-sub a:focus-visible{outline:3px solid var(--h-gold);outline-offset:2px}
+      .hero2-sub .arr{display:inline-block;transition:transform .25s ease}
+      .hero2-sub a:hover .arr{transform:translateX(4px)}
+      /* figure — ライラ全身を切り取らずに収める（object-fit: contain） */
+      .hero2-figure{margin:14px 0 0}
+      .hero2-arch{
+        border:1px solid var(--h-line);border-radius:999px 999px 10px 10px;
+        background:var(--h-arch);overflow:hidden;
+        animation:hero2breathe 9s ease-in-out infinite alternate;
+      }
+      .hero2-arch img{
+        width:100%;height:212px;object-fit:contain;object-position:center bottom;
+        padding:6px 3px 0;
+      }
+      .hero2-figure figcaption{
+        font-size:.7rem;letter-spacing:.1em;color:var(--h-soft);text-align:center;margin-top:9px;line-height:1.7;
+      }
+      .hero2-figure figcaption .fc-name{font-family:var(--h-serif);font-weight:700;font-size:.8rem;color:var(--h-ink);display:block;letter-spacing:.14em}
+      @keyframes hero2breathe{
+        from{transform:scale(1) translateY(0)}
+        to{transform:scale(1.025) translateY(-5px)}
+      }
+      /* entrance + scroll reveal */
+      .hero2 .rv{opacity:0;transform:translateY(20px);animation:hero2up .9s cubic-bezier(.22,.8,.32,1) forwards}
+      .hero2 .rv-d1{animation-delay:.08s}
+      .hero2 .rv-d2{animation-delay:.2s}
+      .hero2 .rv-d3{animation-delay:.34s}
+      @keyframes hero2up{to{opacity:1;transform:none}}
+      .hero2-note{position:relative;z-index:1;margin-top:36px;display:grid;gap:14px}
+      .hero2-note .speech{margin-top:0}
+      .hero2-note .pr-note{margin-top:0}
+      .hero2-note .pr-note.rv-armed{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+      .hero2-note .pr-note.rv-armed.inview{opacity:1;transform:none}
+      /* ---------- tablet ---------- */
+      @media (min-width:640px){
+        .hero2{padding:44px 0 14px}
+        .hero2-bgtype{font-size:19vw}
+        .hero2-inner{grid-template-columns:minmax(0,1fr) 208px;column-gap:30px}
+        .h-more{display:inline}
+        .hero2-title{font-size:clamp(2.5rem,6.4vw,3rem)}
+        .hero2-tagline{font-size:1.12rem;margin-top:16px}
+        .hero2-lead{font-size:.92rem;margin-top:14px}
+        .hero2-arch img{height:400px;padding:8px 4px 0}
+        .hero2-stats{margin-top:24px;padding-top:16px}
+        .hero2-stats .num{font-size:2.5rem}
+        .hero2-stats li{padding:0 20px}
+        .hero2-stats li:first-child{padding-left:0}
+        .hero2-actions{margin-top:26px}
+      }
+      /* ---------- desktop ---------- */
+      @media (min-width:1024px){
+        .hero2{padding:64px 0 20px}
+        .hero2-bgtype{font-size:13.5rem;top:22px;right:2%}
+        .hero2-inner{
+          grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:64px;
+          grid-template-areas:
+            "eyebrow figure"
+            "title figure"
+            "tagline figure"
+            "lead figure"
+            "stats figure"
+            "actions figure";
+        }
+        .hero2-eyebrow{margin-top:36px}
+        .hero2-title{font-size:3.9rem;line-height:1.35}
+        .hero2-tagline{font-size:1.3rem;margin-top:22px}
+        .hero2-lead{font-size:.98rem;margin-top:18px}
+        .hero2-stats{margin-top:32px;padding-top:22px}
+        .hero2-stats .num{font-size:3.1rem}
+        .hero2-stats li{padding:0 26px}
+        .hero2-stats li:first-child{padding-left:0}
+        .hero2-stats li:nth-child(2){transform:translateY(8px)}
+        .hero2-actions{margin-top:36px}
+        .hero2-figure{margin-top:0}
+        .hero2-arch img{height:600px;padding:14px 10px 0}
+        .hero2-note{grid-template-columns:1fr 1fr;align-items:start;margin-top:52px}
+      }
+      @media (prefers-reduced-motion: reduce){
+        .hero2-arch{animation:none}
+        .hero2 .rv{opacity:1;transform:none;animation:none}
+        .hero2-note .pr-note.rv-armed{opacity:1;transform:none;transition:none}
+        .hero2-cta svg,.hero2-sub a::after,.hero2-sub .arr{transition:none}
+      }
+      /* ==========================================================
+         TOP VISUALS — トップ各セクションのビジュアル＋見本と同じ動き
+         （スクロール連動フェードイン＋画像の緩やかなズーム）
+         人物・場面は切り取らず、元画像と同じ縦横比の枠に収める
+         ========================================================== */
+      .viz-frame{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:var(--bg-soft)}
+      .viz-frame img{width:100%;height:100%;object-fit:cover}
+      /* about: 場面ストリップ（ベール／自宅練習／発表会） */
+      .scene-strip{display:grid;grid-template-columns:1fr;gap:16px;margin-top:28px}
+      @media (min-width:760px){.scene-strip{grid-template-columns:repeat(3,1fr)}}
+      .scene-strip figure{margin:0}
+      .scene-strip .viz-frame{aspect-ratio:3/2}
+      .scene-strip figcaption{font-size:.82rem;color:var(--ink-soft);margin-top:8px;line-height:1.6}
+      .scene-strip figcaption strong{color:var(--teal);display:block;font-size:.88rem}
+      /* new: 幅広ビジュアル */
+      .wide-viz{margin:0 0 22px;max-width:760px}
+      .wide-viz .viz-frame{aspect-ratio:3/2}
+      .wide-viz figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:8px}
+      /* steps: サムネイル */
+      .step-thumb{display:block;border-radius:8px;overflow:hidden;margin-bottom:12px;background:var(--bg-soft);aspect-ratio:3/2}
+      .step-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+      /* reading entry cards */
+      .read-grid{display:grid;grid-template-columns:1fr;gap:18px}
+      @media (min-width:760px){.read-grid{grid-template-columns:repeat(3,1fr)}}
+      .read-card{
+        display:block;text-decoration:none;color:var(--ink);
+        background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+        box-shadow:0 3px 12px rgba(62,42,16,.06);
+      }
+      .read-card .viz-frame{border:none;border-radius:0;box-shadow:none;aspect-ratio:3/2}
+      .read-card .read-body{padding:16px 18px 18px}
+      .read-card h3{font-size:1.05rem;line-height:1.55}
+      .read-card p{margin:6px 0 0;color:var(--ink-soft);font-size:.9rem}
+      .read-card .read-go{display:block;color:var(--teal);font-weight:700;font-size:.86rem;margin-top:10px}
+      .read-card:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+      /* scroll reveal — JSが .viz-armed を付けた要素だけ初期非表示にする（JSなしでも見える） */
+      [data-viz].viz-armed{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+      [data-viz].viz-armed .viz-zoom{transform:scale(1.07);transition:transform 1.6s cubic-bezier(.22,.8,.32,1)}
+      [data-viz].viz-armed.inview{opacity:1;transform:none}
+      [data-viz].viz-armed.inview .viz-zoom{transform:scale(1)}
+      @media (hover:hover){
+        .scene-strip .viz-frame img,.read-card .viz-frame img,.step-thumb img{transition:transform .8s ease}
+        .scene-strip figure:hover .viz-frame img,.read-card:hover .viz-frame img,.step-link:hover .step-thumb img{transform:scale(1.04)}
+      }
+      @media (prefers-reduced-motion: reduce){
+        [data-viz].viz-armed{opacity:1;transform:none;transition:none}
+        [data-viz].viz-armed .viz-zoom{transform:none;transition:none}
+        .scene-strip .viz-frame img,.read-card .viz-frame img,.step-thumb img{transition:none}
+      }
+      /* ==========================================================
+         DESIGN ROLLOUT — デザイナー仕様を全ページへ展開
+         見本（hero2）の言語を共通化する：セクション見出しの跳躍率と
+         字間、Cormorant のアイブロウ＋金の罫、ホバーのマイクロ
+         インタラクション、セクションごとのリズム変化、読み物の
+         マストヘッド、各ページ冒頭の入り口（page-head）。
+         色は共通変数（生成り／深いターコイズ #0b5a68／ゴールド）に統一。
+         ========================================================== */
+      /* 見出し：跳躍率・字間・行間 */
+      .sec-head h2{font-size:clamp(1.6rem,5vw,2.3rem);line-height:1.5;letter-spacing:.06em}
+      .sec-head p{line-height:1.95;letter-spacing:.02em}
+      .sec-head .num{
+        display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;
+        font-family:"Cormorant Garamond","Shippori Mincho B1",serif;
+        font-size:1rem;font-weight:600;letter-spacing:.22em;
+      }
+      .sec-head .num::after{content:"";height:1px;width:44px;background:var(--gold);opacity:.65;flex:none}
+      .band .sec-head .num::after{background:var(--gold-bright)}
+      /* 書体の共通化（旧ゴシック指定箇所を Noto Sans JP／Cormorant へ） */
+      .brand small,.new-badge,.region-block h3,.pref-cities-title,.pref-switch h4{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif}
+      .move h3 .en{font-family:"Cormorant Garamond",serif;font-size:.88rem;letter-spacing:.14em}
+      .product .cat{letter-spacing:.14em}
+      /* CTA の角は見本の 10px にそろえる */
+      .primary-cta,.register-btn{border-radius:10px;transition:background .25s ease,transform .25s ease}
+      .next-step-btn{border-radius:10px}
+      .hero-nav a{border-radius:10px}
+      /* ホバーのマイクロインタラクション */
+      @media (hover:hover){
+        .card,.product,.school-card,.step-link,.read-card{transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+        .card:hover,.product:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--teal) 40%,var(--line));box-shadow:0 14px 28px rgba(62,42,16,.10)}
+        .school-card:hover{transform:translateY(-3px)}
+        .step-link:hover,.read-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--teal) 40%,var(--line))}
+        .primary-cta:hover,.register-btn:hover{transform:translateY(-2px)}
+      }
+      /* セクションごとにリズムを変える（均等グリッドの単調さを避ける） */
+      @media (min-width:861px){
+        #styles .grid3{grid-template-columns:1fr 1fr}
+        #styles .grid3 .card:first-child{grid-column:1/-1}
+        #props .grid3{grid-template-columns:1fr 1fr}
+        #props .grid3 .card:last-child{grid-column:1/-1}
+      }
+      /* 読み物：記事マストヘッド（大きな見出し＋1px の罫） */
+      section.block[id^="reading-"]{padding-top:64px}
+      section.block[id^="reading-"] .sec-head{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:32px}
+      section.block[id^="reading-"] .sec-head h2{font-size:clamp(1.5rem,5.2vw,2.1rem);line-height:1.6;letter-spacing:.05em}
+      section.block[id^="reading-"] .sec-head p{font-size:.97rem}
+      /* ---------- ページ冒頭の入り口（page-head） ---------- */
+      .page-head{position:relative;overflow:hidden;padding:30px 0 4px}
+      .page-head-bgtype{
+        position:absolute;top:0;right:-6px;z-index:0;
+        font-family:"Cormorant Garamond",serif;font-weight:700;
+        font-size:27vw;line-height:.82;letter-spacing:.02em;
+        color:color-mix(in srgb,var(--teal) 8%,transparent);
+        white-space:nowrap;pointer-events:none;user-select:none;
+      }
+      .page-head-inner{position:relative;z-index:1}
+      .page-head-eyebrow{
+        display:flex;align-items:center;gap:12px;margin:4px 0 14px;
+        font-family:"Cormorant Garamond",serif;font-size:.84rem;font-weight:600;letter-spacing:.24em;color:var(--gold);
+      }
+      .page-head-eyebrow::after{content:"";height:1px;width:44px;background:var(--gold);opacity:.65}
+      .page-head-title{font-size:clamp(2rem,9.5vw,2.45rem);line-height:1.4;letter-spacing:.07em;font-weight:800}
+      .page-head-viz{margin:22px 0 0}
+      .page-head-viz .viz-frame{aspect-ratio:3/2}
+      @media (min-width:640px){
+        .page-head{padding:42px 0 8px}
+        .page-head-bgtype{font-size:19vw}
+        .page-head-viz{max-width:560px}
+      }
+      @media (min-width:1024px){
+        .page-head{padding:56px 0 12px}
+        .page-head-bgtype{font-size:11.5rem;top:14px}
+        .page-head-inner{
+          display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:56px;align-items:center;
+          grid-template-areas:"eyebrow viz" "title viz";
+        }
+        .page-head-eyebrow{grid-area:eyebrow;margin-bottom:16px}
+        .page-head-title{grid-area:title;font-size:3.2rem}
+        .page-head-viz{grid-area:viz;margin:0;max-width:none}
+      }
     </style>
     <link rel="canonical" href="https://tomyree-source.github.io/sites/belly-dance/reading/home-practice.html">
     <script type="application/ld+json">
@@ -931,7 +1260,6 @@
     <li><a href="../reading/props.html">読み物：小物・アクセサリー入門</a></li>
     <li><a href="../reading/hafla.html">読み物：発表会・ハフラの準備</a></li>
     <li><a href="../reading/buying.html">読み物：衣装の購入先の見方</a></li>
-    
     <li><a href="../costume.html#items">アイテム紹介</a></li>
     <li><a href="../costume.html#calc">予算シミュレーション</a></li>
     <li><a href="../learn.html#quiz">用語クイズ</a></li>
@@ -1462,6 +1790,47 @@ if (prefSel && grid) {
     if (hp && PREFS.indexOf(hp) >= 0) { activate("portal"); openPref(hp, false, hc || undefined); }
   }
 }
+})();
+</script>
+<script>
+// top visuals: scroll-linked fade-in + gentle zoom (same motion language as hero sample)
+(function () {
+  var els = document.querySelectorAll("[data-viz]");
+  if (!els.length) return;
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  els.forEach(function (el) { el.classList.add("viz-armed"); });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add("inview"); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+<script>
+// design rollout: extend the same scroll-linked fade-in to page heads,
+// section heads and reading-article visuals across all pages
+(function () {
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var els = document.querySelectorAll(
+    ".page-head, section.block .sec-head, .band .sec-head, section.block .photo, .pick-first, .steps3"
+  );
+  var targets = [];
+  els.forEach(function (el) {
+    if (el.classList.contains("viz-armed") || el.classList.contains("inview")) return;
+    el.setAttribute("data-viz", "");
+    el.classList.add("viz-armed");
+    targets.push(el);
+  });
+  if (!targets.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add("inview"); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  targets.forEach(function (el) { io.observe(el); });
 })();
 </script>
 <script>
