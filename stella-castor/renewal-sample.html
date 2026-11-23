@@ -154,9 +154,9 @@ header{
   aspect-ratio:3/4;object-fit:cover;
 }
 .concept-photos .p2{
-  width:100%;
+  width:64%;margin:0 auto;
   border-radius:8px;
-  aspect-ratio:4/3;object-fit:cover;
+  aspect-ratio:1/2;object-fit:cover;
 }
 .concept-body p{font-size:14.5px;line-height:2.1;color:var(--ink);margin-bottom:20px;max-width:34em;}
 .concept-body p:last-child{margin-bottom:0;}
@@ -221,6 +221,10 @@ header{
 /* ---------- access ---------- */
 .sec-access{background:var(--sub);}
 .info-rows{border-top:1px solid var(--line);max-width:720px;}
+.access-photo{
+  width:100%;aspect-ratio:3/2;object-fit:cover;
+  border-radius:8px;margin-bottom:34px;display:block;
+}
 .info-rows .row{
   display:flex;flex-direction:column;gap:4px;
   padding:18px 4px;border-bottom:1px solid var(--line);
@@ -404,7 +408,7 @@ footer{
     <div class="concept-grid">
       <div class="concept-photos fade">
         <img class="p1" src="assets/renewal-care.webp" alt="オイルマッサージの施術のイメージイラスト">
-        <img class="p2" src="assets/hero-treatment.webp" alt="施術シーンのイメージイラスト" style="object-position:72% 50%;">
+        <img class="p2" src="assets/renewal-posture.webp" alt="姿勢チェックのイメージイラスト">
       </div>
       <div class="concept-body fade">
         <p>ステラカストル新大阪は、女性専用のオイルマッサージ＆美容整体サロンです。温めたオイルで全身をゆるめる心地よさと、姿勢や骨格の土台を整える美容整体。その両方を、一つの施術の流れの中で組み合わせます。</p>
@@ -534,6 +538,7 @@ footer{
       <h2>店舗情報・アクセス</h2>
       <div class="rule"></div>
     </div>
+    <img class="access-photo fade" src="assets/renewal-room2.webp" alt="サロンの個室のイメージイラスト">
     <dl class="info-rows fade">
       <div class="row">
         <dt>Address</dt>
