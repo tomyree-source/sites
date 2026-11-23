@@ -29,11 +29,11 @@ header.site nav a:hover::after{width:100%}
 .apply-btn{background:var(--ink);color:#fff!important;padding:7px 16px;border-radius:999px}
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 20%;animation:heroZoom 14s ease-out forwards}
+.hero-bg{position:absolute;top:88px;left:12px;right:12px;bottom:0;border-radius:150px 150px 0 0;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 12%;animation:heroZoom 14s ease-out forwards}
 @keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,246,239,.16) 0%,rgba(250,246,239,0) 32%,rgba(250,246,239,.5) 66%,var(--base) 100%)}
-.hero-word{position:absolute;top:64px;right:6px;font-family:'Cormorant Garamond',serif;font-size:19vw;line-height:.9;color:rgba(255,255,255,.5);letter-spacing:.02em;writing-mode:vertical-rl;font-style:italic;pointer-events:none}
+.hero-word{position:absolute;top:120px;left:16px;font-family:'Cormorant Garamond',serif;font-size:19vw;line-height:.9;color:rgba(255,255,255,.38);letter-spacing:.02em;writing-mode:vertical-rl;font-style:italic;pointer-events:none}
 .hero-inner{position:relative;z-index:2;padding:0 20px 30px;max-width:640px}
 .hero.kicker{font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:var(--gold);font-weight:600;margin:0 0 10px}
 .hero h1{font-family:'Shippori Mincho',serif;font-weight:700;font-size:34px;line-height:1.5;letter-spacing:.04em;margin:0 0 14px}
@@ -46,7 +46,7 @@ header.site nav a:hover::after{width:100%}
 .cta:hover{transform:translateY(-2px)}
 .cta:hover.arr{transform:translateX(4px)}
 .guide{display:flex;gap:12px;align-items:flex-start;margin-top:26px;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:20px 20px 20px 4px;padding:12px 14px;max-width:520px}
-.guide img{width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:center 16%;flex:none}
+.guide img{width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:center 6%;flex:none}
 .guide p{margin:0;font-size:13px;line-height:1.8}
 .guide.name{font-family:'Shippori Mincho',serif;font-weight:700;color:var(--gold);font-size:12px;letter-spacing:.12em}
 /* wave dividers */
