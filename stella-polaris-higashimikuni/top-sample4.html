@@ -14,50 +14,54 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--cream);color:var(--ink);font-family:"Noto Sans JP",sans-serif;line-height:1.9;padding-bottom:120px}
 img{display:block;max-width:100%}
-/* ===== ファーストビュー（スマホファースト） ===== */
-.fv{position:relative;min-height:calc(100svh - 118px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--green-d)}
-.fv-bg{position:absolute;inset:0}
-.fv-bg img{width:100%;height:100%;object-fit:cover;object-position:74% 58%;animation:heroZoom 14s ease-out both}
-@keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-.fv-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,51,39,.30) 0%,rgba(20,51,39,.02) 30%,rgba(20,51,39,.38) 62%,rgba(20,51,39,.88) 100%)}
-.fv-big{position:absolute;top:6px;left:50%;transform:translateX(-50%);font-family:"Cormorant Garamond",serif;font-size:16.5vw;line-height:1;letter-spacing:.08em;color:transparent;-webkit-text-stroke:1px rgba(232,201,122,.30);white-space:nowrap;pointer-events:none}
-.fv-vert{position:absolute;top:19%;right:9px;writing-mode:vertical-rl;font-family:"Shippori Mincho",serif;font-size:11px;letter-spacing:.34em;color:rgba(255,255,255,.85);text-shadow:0 1px 8px rgba(0,0,0,.5)}
-.fv-inner{position:relative;padding:0 16px 14px;color:#fff}
+/* ===== ファーストビュー（スマホファースト：画像と文字を重ねない分割構成） ===== */
+.fv{background:var(--green-d)}
+.fv-media{position:relative;height:38svh;overflow:hidden}
+.fv-media img{width:100%;height:100%;object-fit:cover;object-position:88% 50%;animation:heroZoom 14s ease-out both}
+@keyframes heroZoom{from{transform:scale(1.1)}to{transform:scale(1)}}
+.fv-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,51,39,.28) 0%,transparent 34%,transparent 76%,rgba(20,51,39,.6) 100%)}
+.fv-big{position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:"Cormorant Garamond",serif;font-size:16.5vw;line-height:1;letter-spacing:.08em;color:transparent;-webkit-text-stroke:1px rgba(232,201,122,.38);white-space:nowrap;pointer-events:none}
+.fv-vert{position:absolute;top:16%;right:9px;writing-mode:vertical-rl;font-family:"Shippori Mincho",serif;font-size:11px;letter-spacing:.34em;color:rgba(255,255,255,.9);text-shadow:0 1px 8px rgba(0,0,0,.55)}
+.fv-inner{position:relative;padding:16px 16px 20px;color:#fff;background:linear-gradient(180deg,#143327 0%,#1a4232 100%)}
 .fv-en{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:11px;letter-spacing:.13em;white-space:nowrap;color:var(--gold-l);animation:fadeUp .9s .1s ease both}
 .fv h1{font-family:"Shippori Mincho",serif;color:#fff;margin-top:2px}
 .fv h1 .l1{display:block;font-family:"Noto Sans JP",sans-serif;font-size:12px;font-weight:700;letter-spacing:.44em;color:var(--gold-l);animation:fadeUp .9s .2s ease both}
 .fv h1 .l2{display:block;font-size:32px;font-weight:800;letter-spacing:.06em;line-height:1.3;white-space:nowrap;text-shadow:0 2px 18px rgba(0,0,0,.45);animation:fadeUp .9s .32s ease both}
 .fv h1 .l3{display:block;font-size:16px;font-weight:700;letter-spacing:.32em;margin-top:2px;animation:fadeUp .9s .44s ease both}
-.fv-catch{font-family:"Shippori Mincho",serif;font-size:13.5px;line-height:1.75;letter-spacing:.05em;margin-top:8px;padding-right:38px;text-shadow:0 1px 10px rgba(0,0,0,.55);animation:fadeUp .9s .56s ease both}
+.fv-catch{font-family:"Shippori Mincho",serif;font-size:13.5px;line-height:1.75;letter-spacing:.05em;margin-top:8px;text-shadow:0 1px 10px rgba(0,0,0,.55);animation:fadeUp .9s .56s ease both}
 .fv-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px;animation:fadeUp .9s .68s ease both}
-.fv-badges span{font-size:11px;font-weight:700;letter-spacing:.05em;padding:4px 10px;border:1px solid rgba(255,255,255,.65);border-radius:999px;background:rgba(20,51,39,.45);backdrop-filter:blur(3px)}
-.fv-camp{position:absolute;top:33%;left:16px;right:48px;background:rgba(247,243,234,.94);color:var(--ink);border-radius:999px;padding:7px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(0,0,0,.3);animation:fadeUp .9s .8s ease both}
+.fv-badges span{font-size:11px;font-weight:700;letter-spacing:.05em;padding:4px 10px;border:1px solid rgba(255,255,255,.65);border-radius:999px;background:rgba(20,51,39,.45)}
+.fv-camp{margin-top:14px;background:rgba(247,243,234,.97);color:var(--ink);border-radius:20px;padding:10px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(0,0,0,.3);animation:fadeUp .9s .8s ease both}
 .fv-camp .cap{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--burg);white-space:nowrap;line-height:1.5}
 .fv-camp .price{font-family:"Shippori Mincho",serif;font-size:13px;font-weight:700;color:var(--green);white-space:nowrap}
 .fv-camp .price b{font-size:20px;color:var(--burg)}
 .fv-camp .note{font-size:10.5px;color:#6b6252;line-height:1.55}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-.fv-scroll{position:relative;text-align:center;color:rgba(255,255,255,.85);font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:.4em;padding:2px 0 10px;background:linear-gradient(180deg,rgba(20,51,39,.88),rgba(20,51,39,1))}
+.fv-scroll{position:relative;text-align:center;color:rgba(255,255,255,.85);font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:.4em;padding:2px 0 10px;background:#1a4232}
 .fv-scroll::after{content:"";display:block;width:1px;height:26px;margin:5px auto 0;background:linear-gradient(180deg,var(--gold-l),transparent);animation:drop 1.8s ease-in-out infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-/* ===== PC向け（641px以上） ===== */
+/* ===== PC向け（641px以上）：重ねる構図 ===== */
 @media (min-width:641px){
-.fv-bg img{object-position:center 80%}
+.fv{position:relative;min-height:calc(100svh - 118px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.fv-media{position:absolute;inset:0;height:auto}
+.fv-media img{object-position:center 80%}
+.fv-media::after{background:linear-gradient(180deg,rgba(20,51,39,.30) 0%,rgba(20,51,39,.02) 30%,rgba(20,51,39,.38) 62%,rgba(20,51,39,.88) 100%)}
 .fv-big{top:4%;font-size:19vw;-webkit-text-stroke:1px rgba(232,201,122,.4)}
 .fv-vert{top:15%;right:14px;font-size:13px;letter-spacing:.42em}
-.fv-inner{padding:0 22px 20px}
+.fv-inner{position:static;background:none;padding:0 22px 20px}
 .fv-en{font-size:15px;letter-spacing:.28em}
 .fv h1 .l1{font-size:13px;letter-spacing:.52em}
 .fv h1 .l2{font-size:41px;letter-spacing:.09em}
 .fv h1 .l3{font-size:19px;letter-spacing:.4em}
-.fv-catch{font-size:15.5px;padding-right:0;margin-top:10px}
+.fv-catch{font-size:15.5px;margin-top:10px}
 .fv-badges{gap:7px;margin-top:13px}
 .fv-badges span{font-size:12px;padding:5px 12px}
-.fv-camp{top:30%;left:22px;right:auto;width:600px;max-width:calc(100% - 44px);padding:9px 20px;gap:12px}
+.fv-camp{position:absolute;top:30%;left:22px;width:600px;max-width:calc(100% - 44px);border-radius:999px;padding:9px 20px;gap:12px;margin-top:0}
 .fv-camp .cap{font-size:11px}
 .fv-camp .price{font-size:15px}
 .fv-camp .price b{font-size:24px}
 .fv-camp .note{font-size:11.5px}
+.fv-scroll{background:linear-gradient(180deg,rgba(20,51,39,.88),rgba(20,51,39,1))}
 }
 /* ===== 以下はデザイン言語の見本（本制作で全セクション展開） ===== */
 .below{max-width:820px;margin:0 auto;padding:34px 22px 10px}
@@ -83,19 +87,20 @@ img{display:block;max-width:100%}
 <body>
 <!-- ===== ファーストビュー ===== -->
 <section class="fv">
-  <div class="fv-bg"><img src="assets/fv-hero.jpg" alt="ステラ・ポラリス東三国のサロンのイラスト"></div>
-  <div class="fv-big">POLARIS</div>
-  <div class="fv-vert">東三国の隠れ家サロン</div>
-  <div class="fv-camp">
-      <p class="cap">CHRISTMAS<br>CAMPAIGN</p>
-      <p class="price">80分 <b>3,000</b>円〜</p>
-      <p class="note">12/25まで・通常8,000円。小顔矯正30分無料体験も受付中。ご予約は下のバーから。</p>
-    </div>
+  <div class="fv-media"><img src="assets/fv-hero.jpg" alt="ステラ・ポラリス東三国のサロンのイラスト">
+    <div class="fv-big">POLARIS</div>
+    <div class="fv-vert">東三国の隠れ家サロン</div>
+  </div>
   <div class="fv-inner">
     <p class="fv-en">Biyou Seitai — Higashimikuni, Osaka</p>
     <h1><span class="l1">美容整体</span><span class="l2">ステラ・ポラリス</span><span class="l3">東三国</span></h1>
     <p class="fv-catch">姿勢とお疲れに寄り添う、女性のための美容整体</p>
     <div class="fv-badges"><span>女性専用・完全個室</span><span>完全予約制</span><span>施術歴30年・鍼灸師</span><span>東三国駅 徒歩5分</span></div>
+    <div class="fv-camp">
+      <p class="cap">CHRISTMAS<br>CAMPAIGN</p>
+      <p class="price">80分 <b>3,000</b>円〜</p>
+      <p class="note">12/25まで・通常8,000円。小顔矯正30分無料体験も受付中。ご予約は下のバーから。</p>
+    </div>
   </div>
   <div class="fv-scroll">SCROLL</div>
 </section>
