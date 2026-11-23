@@ -64,7 +64,7 @@ p{margin:0 0 12px;font-size:15px}
 .camp .cap{font-family:"Cormorant Garamond",serif;letter-spacing:.2em;font-size:11px;color:var(--gold)}
 .camp h3{font-family:"Shippori Mincho",serif;font-size:20px;margin:4px 0 6px;font-weight:600}
 .camp .price{font-family:"Shippori Mincho",serif;font-size:19px}
-.camp .price b{font-size:26px;color:#e8c97a}
+.camp .price b{font-size:26px;color:#e8c97a;white-space:nowrap}
 .camp .small{font-size:12.5px;color:#e6e1cf}
 .camp .btn{margin:12px 0 0;max-width:none}
 /* 施術の流れ */
@@ -91,6 +91,7 @@ table{width:100%;border-collapse:collapse;margin:12px 0;background:var(--paper)}
 td,th{border:1px solid #ddd5bf;padding:10px 8px;text-align:center;font-size:14.5px}
 th{background:#eef4ee;font-family:"Shippori Mincho",serif;color:var(--green)}
 td b{font-family:"Shippori Mincho",serif;font-size:17px;color:var(--burg)}
+td.p{white-space:nowrap}
 .small{font-size:13px;color:var(--mut)}
 /* 施術者 */
 .prof{display:flex;gap:16px;align-items:flex-start;margin-top:6px}
@@ -101,6 +102,7 @@ td b{font-family:"Shippori Mincho",serif;font-size:17px;color:var(--burg)}
 .cards3 a{display:flex;gap:12px;align-items:center;background:var(--paper);border:1px solid #e7dfc9;border-radius:12px;padding:10px;text-decoration:none;color:var(--green);transition:transform .25s}
 .cards3 a:hover{transform:translateY(-2px)}
 .cards3 img{width:96px;height:72px;object-fit:cover;border-radius:8px;flex:0 0 auto}
+.cards3 img.fit{object-fit:contain;background:#f7f2e7}
 .cards3 .tt{font-family:"Shippori Mincho",serif;font-weight:600;font-size:15.5px;line-height:1.5}
 .cards3 .ds{font-size:12.5px;color:var(--mut);line-height:1.6}
 .menbox{border:1.5px solid var(--green);border-radius:14px;padding:18px;background:var(--paper)}
@@ -301,9 +303,9 @@ body{padding-bottom:120px}
 <img class="arch rv" src="assets/stella-oil.jpg" alt="オイルのイラスト">
 <table class="rv">
 <tr><th>コース</th><th>通常価格</th><th>キャンペーン価格（12/25まで）</th></tr>
-<tr><td>80分</td><td>8,000円</td><td><b>3,000円</b></td></tr>
-<tr><td>100分（至福の100分オーダーメイド）</td><td>10,000円</td><td><b>4,000円</b></td></tr>
-<tr><td>120分</td><td>12,000円</td><td><b>5,000円</b></td></tr>
+<tr><td>80分</td><td class="p">8,000円</td><td class="p"><b>3,000円</b></td></tr>
+<tr><td>100分（至福の100分オーダーメイド）</td><td class="p">10,000円</td><td class="p"><b>4,000円</b></td></tr>
+<tr><td>120分</td><td class="p">12,000円</td><td class="p"><b>5,000円</b></td></tr>
 </table>
 <p class="small">コースの詳しい内容や変更のご相談はLINEからお願い致します。</p>
 <a class="btn sub" href="yasui-guide.html">東三国で美容整体を安く受けたい方へ｜料金ガイド</a></section><section><p class="sec-en">Therapist</p><h2 class="sec-t">施術者について</h2><div class="sec-rule"></div>
@@ -319,7 +321,7 @@ body{padding-bottom:120px}
 <a class="btn sub" href="https://tomyree-source.github.io/sites/selfcare-library/" target="_blank" rel="noopener">セルフケア資料ライブラリを開く →</a></section><section><p class="sec-en">Guide</p><h2 class="sec-t">美容整体の専門解説</h2><div class="sec-rule"></div>
 <p class="rv">「なぜ姿勢は崩れるのか」「骨盤の傾きで何が変わるのか」など、美容整体の仕組みを施術歴30年の施術者が図解つきで詳しく解説するシリーズです。美容整体とは何か、骨盤と姿勢、筋肉の張りとゆるみ、むくみと血行・リンパ、自律神経、女性ホルモンと年代別の変化の全6本で、お悩みの根本にある体の仕組みが分かります。</p>
 <div class="cards3 rv">
-<a href="guide/biyou-seitai-toha.html"><img src="assets/guide-posture-line-v5.png" alt="姿勢の目安の図"><span><span class="tt">美容整体とは</span><br><span class="ds">姿勢の目安と、整体で整える考え方</span></span></a>
+<a href="guide/biyou-seitai-toha.html"><img class="fit" src="assets/guide-posture-line-v5.png" alt="姿勢の目安の図"><span><span class="tt">美容整体とは</span><br><span class="ds">姿勢の目安と、整体で整える考え方</span></span></a>
 <a href="guide/nekoze-seitai.html"><img src="assets/guide2-nekoze-seitai.jpg" alt="猫背のイラスト"><span><span class="tt">猫背の仕組みとケア</span><br><span class="ds">背中が丸くなる理由と戻し方</span></span></a>
 <a href="guide/mukumi-junkan.html"><img src="assets/guide-legs-up.jpg" alt="脚のケアのイラスト"><span><span class="tt">むくみと血行・リンパの仕組み</span><br><span class="ds">巡りの滞りが作る重だるさ</span></span></a>
 </div>
