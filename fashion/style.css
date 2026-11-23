@@ -151,6 +151,7 @@ footer.site .flogo{font-family:var(--eng);font-weight:700;font-size:22px;letter-
 .band .panel h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.55}
 .band .panel p{font-size:13px;margin-top:10px;line-height:1.85;color:#D9D2C2}
 .band .panel a{color:#fff;font-size:12px;letter-spacing:.24em;font-weight:700;text-decoration:none;border-bottom:1.5px solid #D8B878;padding-bottom:3px;display:inline-block;margin-top:14px}
+.rank-banner{display:block;background:var(--accent);color:#fff;text-align:center;font-weight:700;letter-spacing:.1em;padding:13px 12px;text-decoration:none;font-size:14.5px;margin-top:14px}
 /* season banner */
 .season{margin-top:70px;background:var(--ink);color:#F3EEE2;text-align:center;padding:44px 20px}
 .season .k{font-size:11px;letter-spacing:.44em;color:#D8B878;font-weight:700}
@@ -171,6 +172,8 @@ footer.site .flogo{font-family:var(--eng);font-weight:700;font-size:22px;letter-
   .topbar{font-size:10px;letter-spacing:.18em}
   .topbar .wrap{flex-direction:column;height:auto;padding-top:7px;padding-bottom:7px;gap:2px;justify-content:center;text-align:center}
   .masthead .issue{font-size:10px;letter-spacing:.2em;white-space:nowrap}
-  .ghost{font-size:13vw}
+  .ghost{font-size:8vw;letter-spacing:.03em}
+  .cover .panel .kick{letter-spacing:.16em}
+  .band .panel .kick{letter-spacing:.16em}
 }
 @media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:28px}.strip{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.pgrid{grid-template-columns:repeat(2,1fr)}.feature .pgrid{grid-template-columns:repeat(2,1fr)}article.post h1{font-size:24px}nav.main{gap:14px}nav.main a{letter-spacing:.18em}}
