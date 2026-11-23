@@ -31,7 +31,7 @@ img{display:block;max-width:100%}
 .fv-catch{font-family:"Shippori Mincho",serif;font-size:13.5px;line-height:1.75;letter-spacing:.05em;margin-top:8px;padding-right:38px;text-shadow:0 1px 10px rgba(0,0,0,.55);animation:fadeUp .9s .56s ease both}
 .fv-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px;animation:fadeUp .9s .68s ease both}
 .fv-badges span{font-size:11px;font-weight:700;letter-spacing:.05em;padding:4px 10px;border:1px solid rgba(255,255,255,.65);border-radius:999px;background:rgba(20,51,39,.45);backdrop-filter:blur(3px)}
-.fv-camp{margin-top:12px;background:rgba(247,243,234,.94);color:var(--ink);border-radius:999px;padding:7px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(0,0,0,.3);animation:fadeUp .9s .8s ease both}
+.fv-camp{position:absolute;top:33%;left:16px;right:48px;background:rgba(247,243,234,.94);color:var(--ink);border-radius:999px;padding:7px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(0,0,0,.3);animation:fadeUp .9s .8s ease both}
 .fv-camp .cap{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--burg);white-space:nowrap;line-height:1.5}
 .fv-camp .price{font-family:"Shippori Mincho",serif;font-size:13px;font-weight:700;color:var(--green);white-space:nowrap}
 .fv-camp .price b{font-size:20px;color:var(--burg)}
@@ -53,7 +53,7 @@ img{display:block;max-width:100%}
 .fv-catch{font-size:15.5px;padding-right:0;margin-top:10px}
 .fv-badges{gap:7px;margin-top:13px}
 .fv-badges span{font-size:12px;padding:5px 12px}
-.fv-camp{max-width:600px;padding:9px 20px;gap:12px}
+.fv-camp{top:30%;left:22px;right:auto;width:600px;max-width:calc(100% - 44px);padding:9px 20px;gap:12px}
 .fv-camp .cap{font-size:11px}
 .fv-camp .price{font-size:15px}
 .fv-camp .price b{font-size:24px}
@@ -86,16 +86,16 @@ img{display:block;max-width:100%}
   <div class="fv-bg"><img src="assets/fv-hero.jpg" alt="ステラ・ポラリス東三国のサロンのイラスト"></div>
   <div class="fv-big">POLARIS</div>
   <div class="fv-vert">東三国の隠れ家サロン</div>
+  <div class="fv-camp">
+      <p class="cap">CHRISTMAS<br>CAMPAIGN</p>
+      <p class="price">80分 <b>3,000</b>円〜</p>
+      <p class="note">12/25まで・通常8,000円。小顔矯正30分無料体験も受付中。ご予約は下のバーから。</p>
+    </div>
   <div class="fv-inner">
     <p class="fv-en">Biyou Seitai — Higashimikuni, Osaka</p>
     <h1><span class="l1">美容整体</span><span class="l2">ステラ・ポラリス</span><span class="l3">東三国</span></h1>
     <p class="fv-catch">姿勢とお疲れに寄り添う、女性のための美容整体</p>
     <div class="fv-badges"><span>女性専用・完全個室</span><span>完全予約制</span><span>施術歴30年・鍼灸師</span><span>東三国駅 徒歩5分</span></div>
-    <div class="fv-camp">
-      <p class="cap">CHRISTMAS<br>CAMPAIGN</p>
-      <p class="price">80分 <b>3,000</b>円〜</p>
-      <p class="note">12/25まで・通常8,000円。小顔矯正30分無料体験も受付中。ご予約は下のバーから。</p>
-    </div>
   </div>
   <div class="fv-scroll">SCROLL</div>
 </section>
