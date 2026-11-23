@@ -366,7 +366,7 @@ background:
 radial-gradient(720px 340px at 88% -60px, var(--gold-soft), transparent 65%),
 linear-gradient(180deg, var(--bg-2), var(--bg));
 border-bottom:1px solid var(--line);
-padding:52px 0 44px;
+padding:34px 0 28px;
 }
 .hero-grid{display:grid;grid-template-columns:1.25fr.75fr;gap:36px;align-items:center}
 .hero.kicker{
@@ -393,7 +393,7 @@ font-family:inherit;
 .btn-line:hover{border-color:var(--ink-3)}
 .btn-navy{background:var(--navy);color:#fff}
 @media (prefers-color-scheme: dark){.btn-navy{background:#31497a}}
-.hero-facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.hero-facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .fact{
 background:var(--surface);border:1px solid var(--line);border-radius:10px;
 padding:10px 16px;min-width:118px;
@@ -406,7 +406,7 @@ box-shadow:var(--shadow);padding:18px;text-align:center;
 }
 .hero-char.frame{
 background:#f6efdd;border-radius:12px;overflow:hidden;
-aspect-ratio:4/3.4;display:flex;align-items:flex-end;justify-content:center;
+aspect-ratio:4/3;display:flex;align-items:flex-end;justify-content:center;
 }
 @media (prefers-color-scheme: dark){.hero-char.frame{background:#efe6cf}}
 .hero-char img{width:100%;height:100%;object-fit:contain}
@@ -481,7 +481,7 @@ padding:8px 16px;border-radius:999px;border:1px solid var(--line-2);background:v
 .sns-btn .at-mark{font-family:"Noto Serif JP",serif;font-weight:900;font-size:1.05rem;line-height:1;color:var(--red)}
 
 /* ---------- sections ---------- */
-section{padding:52px 0}
+section{padding:44px 0}
 section.alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .sec-head{margin-bottom:26px;max-width:44em}
 .sec-head.no{
@@ -743,7 +743,7 @@ footer .sns-links .at-mark{font-family:"Noto Serif JP",serif;font-weight:900;fon
 @media (max-width:820px){
 .hero-grid{grid-template-columns:1fr}
 .reg-grid{grid-template-columns:1fr}
-section{padding:42px 0}
+section{padding:34px 0}
 .char-list{padding:6px 16px}
 .char-list table,.char-list tbody,.char-list tr,.char-list td{display:block;width:100%}
 .char-list thead{display:none}
@@ -757,6 +757,37 @@ html{scroll-behavior:auto}
 }
 
 /* ---------- 読み物の折りたたみ／グッズ・案内役の「すべて見る」展開（共通処理用） ---------- */
+/* ---------- top shortening: chips / collapsibles / compact ---------- */
+.genre-chips{display:flex;flex-wrap:wrap;gap:8px}
+.genre-chip{font:inherit;font-weight:700;font-size:.92rem;cursor:pointer;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);border-radius:999px;padding:9px 16px;line-height:1.4}
+.genre-chip:hover{border-color:var(--red);color:var(--red)}
+.region-grid[hidden]{display:none}
+.char-list[hidden]{display:none}
+#materialsBody[hidden]{display:none}
+#registerDetail[hidden]{display:none}
+footer .f-reading-links[hidden]{display:none}
+.region-toggle-bar{margin:0}
+.materials-entry{background:var(--surface);color:var(--ink);border-radius:var(--radius);padding:20px 22px;display:flex;gap:14px 20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.materials-entry p{margin:0;color:var(--ink-2);max-width:38em}
+.materials-entry p strong{color:var(--ink)}
+#materialsBody{margin-top:18px}
+.register-summary{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px}
+.register-summary-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+#registerDetail{margin-top:20px}
+.dojo-hint{color:var(--ink-3);font-size:.9rem;margin:0 0 22px}
+.dojo-hint[hidden]{display:none}
+.f-reading-toggle{font:inherit;font-weight:700;font-size:.88rem;cursor:pointer;background:transparent;border:1px solid #46506a;border-radius:999px;padding:8px 18px;color:#dbe3f2;margin:4px 0 2px}
+.f-reading-toggle:hover{border-color:#a9bcdf;color:#fff}
+@media (max-width:640px){
+#choose{padding-top:24px;padding-bottom:24px}
+#choose .sec-head{margin-bottom:14px}
+#choose .choose-grid{grid-template-columns:1fr 1fr;gap:8px}
+#choose .choose-card{padding:11px 10px}
+#choose .choose-card .num{font-size:1.15rem}
+#choose .choose-card h3{font-size:.92rem;margin:4px 0 3px;line-height:1.5}
+#choose .choose-card p{font-size:.8rem;line-height:1.65}
+.materials-entry{padding:16px}
+}
 section.reading-collapsed{display:none}
 .more-hidden{display:none!important}
 .reading-close-bar{display:flex;justify-content:flex-end;margin:0 0 16px}
@@ -768,6 +799,42 @@ background:var(--surface);color:var(--ink);border:1px solid var(--line-2);
 }
 .reading-close-btn:hover{border-color:var(--red);color:var(--red)}
 .showmore-bar{margin-top:20px;text-align:center}
+
+/* ---------- 第2弾：スマホの縦圧縮（案内役・グッズ2列／ヒーロー余白／ピル横スクロール） ---------- */
+@media (max-width:820px){
+.hero{padding:10px 0 8px}
+.hero-grid{gap:10px}
+.hero h1{margin:6px 0 6px}
+.hero .lead{margin-bottom:8px}
+.hero-actions .btn{padding-top:10px;padding-bottom:10px}
+.hero-facts{margin-top:6px;gap:6px}
+.fact{display:inline-flex;align-items:baseline;gap:6px;min-width:0;padding:5px 10px;border-radius:999px}
+.fact b{font-size:.98rem;line-height:1.2}
+.fact small{font-size:.72rem;white-space:nowrap}
+.hero-sub{margin-top:5px}
+.hero-note{margin-top:5px}
+.sns-row{margin-top:9px}
+.hero-char{padding:8px}
+.hero-char p{margin-top:4px}
+/* 第4弾（最終調整）：スマホでは画像枠の高さを抑える。object-fit:containのままなので人物は見切れない */
+.hero-char .frame{height:288px}
+}
+@media (max-width:640px){
+#characters .char-grid,#goods .char-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+#characters .char-card .c-body,#goods .char-card .c-body{padding:10px 8px 12px}
+#characters .char-card .c-name,#goods .char-card .c-name{font-size:.95rem}
+#characters .char-card .c-say{font-size:.78rem;line-height:1.55}
+#goods .goods-links{gap:4px;margin-top:6px}
+#goods .goods-links a{font-size:.8rem;padding:6px 6px}
+/* 第4弾（最終調整）：#goodsの見出し・カードまわりの余白を微圧縮 */
+#goods{padding-top:24px;padding-bottom:24px}
+#goods .sec-head{margin-bottom:14px}
+#goods .char-grid{gap:8px}
+#goods .char-card .c-body{padding:8px 8px 10px}
+#goods .showmore-bar{margin-top:12px}
+.pills{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;scrollbar-width:thin}
+.pill{flex:0 0 auto;white-space:nowrap}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "武術道場ポータル", "url": "https://tomyree-source.github.io/sites/bujutsu-portal/", "description": "全国の武術道場・ジムを探せる無料の道場紹介リンク集。流派・ジャンルと地域から検索でき、道場・ジムは無料で登録申請できます。読み物「稽古を始める前に知っておきたいこと｜服装・持ち物・稽古の流れと心構え」では、初めて稽古に行く前の服装・持ち物・稽古の一般的な流れと心構えを解説します。案内役は武術どうぶつ「まるまる道場」。", "inLanguage": "ja"}</script>
 </head>
@@ -873,6 +940,7 @@ background:var(--surface);color:var(--ink);border:1px solid var(--line-2);
 <select id="dojoSelect" aria-label="道場名を選ぶ"></select>
 </div>
 <div id="dojoList" class="dojo-list" aria-live="polite"></div>
+<p class="dojo-hint" id="dojoHint" hidden>道場名のプルダウンから選ぶと、選んだ道場の詳細カードがここに表示されます。</p>
 <div class="empty-state" id="emptyState">
 <span class="sample-note">現在、掲載道場を募集中です</span>
 <p class="big" id="emptyTitle">全国の道場・ジムの登録を受け付けています</p>
@@ -913,9 +981,9 @@ background:var(--surface);color:var(--ink);border:1px solid var(--line-2);
 <div class="sec-head">
 <div class="no">GENRE</div>
 <h2>流派・ジャンルから探す</h2>
-<p>気になるジャンルを選ぶと、上の検索に条件がセットされます。各ジャンルの案内役は「まるまる道場」の仲間たちです。</p>
+<p>気になるジャンルを選ぶと、上の「道場を探す」に条件がセットされ、そのジャンルで絞り込めます。</p>
 </div>
-<div class="genre-grid" id="genreGrid"></div>
+<div class="genre-chips" id="genreGrid" role="group" aria-label="ジャンルを選んで道場を探す"></div>
 </div>
 </section>
 
@@ -927,7 +995,8 @@ background:var(--surface);color:var(--ink);border:1px solid var(--line-2);
 <h2>地域から探す</h2>
 <p>全国47都道府県が対象です。都道府県名を選ぶと、その地域の掲載状況を表示します。</p>
 </div>
-<div class="region-grid" id="regionGrid"></div>
+<div class="region-toggle-bar"><button type="button" class="btn btn-navy" id="regionToggle" aria-expanded="false" aria-controls="regionGrid">都道府県から探す</button></div>
+<div class="region-grid" id="regionGrid" hidden></div>
 </div>
 </section>
 
@@ -1139,6 +1208,18 @@ background:var(--surface);color:var(--ink);border:1px solid var(--line-2);
 <p>掲載料・登録料はかかりません。個人の道場、支部道場、格闘技ジム、教室・サークルも登録できます。内容を確認してから掲載する申請制です。</p>
 </div>
 
+<div class="register-summary">
+<ul class="reg-conditions" style="margin:0 0 16px">
+<li>掲載料・登録料は無料です</li>
+<li>個人の道場、支部道場、格闘技ジム、教室・サークルも登録できます</li>
+<li>内容を確認してから掲載する申請制です</li>
+</ul>
+<div class="register-summary-actions">
+<a class="btn btn-red" href="https://forms.gle/RDZ9VGhuFeyonB8Y7" target="_blank" rel="noopener">無料で登録申請する</a>
+<button type="button" class="btn btn-line" id="registerToggle" aria-expanded="false" aria-controls="registerDetail">詳しく見る</button>
+</div>
+</div>
+<div id="registerDetail" hidden>
 <div class="reg-grid">
 <div>
 <ol class="steps">
@@ -1197,6 +1278,7 @@ background:var(--surface);color:var(--ink);border:1px solid var(--line-2);
 </div>
 </div>
 </div>
+</div>
 </section>
 
 <!-- ===== materials ===== -->
@@ -1205,8 +1287,10 @@ background:var(--surface);color:var(--ink);border:1px solid var(--line-2);
 <div class="sec-head">
 <div class="no">MATERIALS</div>
 <h2>道場・ジム運営者向け イラスト素材集</h2>
-<p>道場やジムのホームページ・SNS・チラシにそのまま使える、ジャンル別のイラスト素材集です。各編とも、稽古風景・施設・用具・横長バナー・SNS背景の全36点を収録し、購入した道場・ジムでの商用利用ができます。販売はダウンロード販売のBOOTHで行っています。</p>
+<p>道場やジムのホームページ・SNS・チラシに使える、ジャンル別のイラスト素材集です。各編36点・¥500で、購入した道場・ジムでの商用利用ができます。販売はBOOTHで行っています。</p>
 </div>
+<div class="materials-entry"><p><strong>全9編</strong>（空手／キックボクシング／ボクシング／柔術・MMA／柔道／剣道／合気道／テコンドー／ムエタイ）をご用意しています。</p><button type="button" class="btn btn-red" id="materialsToggle" aria-expanded="false" aria-controls="materialsBody">素材集を見る</button></div>
+<div id="materialsBody" hidden>
 <div class="pack-grid">
 
 <div class="pack-card">
@@ -1319,6 +1403,7 @@ background:var(--surface);color:var(--ink);border:1px solid var(--line-2);
 
 </div>
 <p class="materials-note">テコンドーとムエタイは、このポータルでは単独ジャンルを設けていません。道場探しでは、ムエタイ系は「キックボクシング」、テコンドーは「その他・複合」からも探せます。素材集の全商品は<a href="https://angel222.booth.pm/" target="_blank" rel="noopener">BOOTHショップ「angel222」</a>でご覧いただけます。</p>
+</div>
 </div>
 </section>
 
@@ -6937,6 +7022,9 @@ background:var(--surface);color:var(--ink);border:1px solid var(--line-2);
 <a href="#search">道場を探す</a>
 <a href="#genre">流派・ジャンル</a>
 <a href="#region">地域</a>
+</div>
+<button type="button" class="f-reading-toggle" id="footerReadingToggle" aria-expanded="false" aria-controls="footerReadingLinks">読み物一覧</button>
+<div class="f-links f-reading-links" id="footerReadingLinks" hidden>
 <a href="#reading-first-keiko">読み物</a>
 <a href="#reading-genre-guide">読み物：ジャンル入門</a>
 <a href="#reading-ryuha-philosophy">読み物：流派の考え方</a>
@@ -6980,6 +7068,8 @@ background:var(--surface);color:var(--ink);border:1px solid var(--line-2);
 <a href="#reading-kids-start">読み物：子どもに武術を習わせるときの考え方</a>
 <a href="#reading-taido-guide">読み物：躰道とは｜体軸を回して攻防する日本発祥の武道、五つの操体と法形・実戦・展開</a>
 <a href="#reading-taikai-viewing">読み物：武術の試合・大会の見方</a>
+</div>
+<div class="f-links">
 <a href="#materials">イラスト素材集</a>
 <a href="#register">無料登録</a>
 </div>
@@ -7115,24 +7205,16 @@ btns[i].setAttribute("aria-pressed", btns[i].dataset.value===state.genre? "true"
 }
 }
 
-/* --- genre cards --- */
+/* --- genre chips --- */
 var grid = document.getElementById("genreGrid");
 GENRES.forEach(function(g){
-var card = document.createElement("button");
-card.type = "button"; card.className = "genre-card";
-var html = '';
-if (g.img) html += '<span class="g-img" data-img="'+g.img+'" data-alt="'+(g.alt||"")+'"></span>';
-html += '<span class="g-sub">'+g.sub+'</span><span class="g-name">'+g.name+'</span><p>'+g.desc+'</p>';
-if (g.char) html += '<span class="g-char">案内役：'+g.char+'</span>';
-html += '<span class="g-char" style="color:var(--red)">このジャンルで探す →</span>';
-card.innerHTML = html;
-var gw = card.querySelector(".g-img");
-if (gw) { var gi = document.createElement("img"); gi.src = gw.getAttribute("data-img"); gi.alt = gw.getAttribute("data-alt") || ""; gi.loading = "lazy"; gw.appendChild(gi); }
-card.addEventListener("click", function(){
+var chip = document.createElement("button");
+chip.type = "button"; chip.className = "genre-chip"; chip.textContent = g.name;
+chip.addEventListener("click", function(){
 state.genre = g.name; syncPills(); renderResult();
 document.getElementById("search").scrollIntoView({behavior:"smooth"});
 });
-grid.appendChild(card);
+grid.appendChild(chip);
 });
 
 /* --- region blocks --- */
@@ -8397,9 +8479,17 @@ if (selectedDojo) dojoList.appendChild(renderDojoCard(selectedDojo));
 if (dojoSelect){
 dojoSelect.addEventListener("change", function(){
 var idx = parseInt(dojoSelect.value, 10);
+var hintEl = document.getElementById("dojoHint");
 if (!isNaN(idx) && DOJOS[idx]){
 selectedDojo = DOJOS[idx];
 renderSelectedCard();
+dojoList.hidden = false;
+if (hintEl) hintEl.hidden = true;
+} else {
+selectedDojo = null;
+dojoList.innerHTML = "";
+dojoList.hidden = true;
+if (hintEl) hintEl.hidden = false;
 }
 });
 }
@@ -8407,21 +8497,32 @@ function renderResult(){
 var cond = condText();
 resultCond.textContent = "条件：" + cond;
 var matched = DOJOS.filter(dojoMatches);
+var hintEl = document.getElementById("dojoHint");
 if (matched.length){
-if (!selectedDojo || matched.indexOf(selectedDojo) === -1) selectedDojo = matched[0];
+if (!selectedDojo || matched.indexOf(selectedDojo) === -1) selectedDojo = null;
 if (dojoSelect){
 dojoSelect.innerHTML = "";
+var ph = document.createElement("option");
+ph.value = ""; ph.textContent = "道場名を選ぶ";
+dojoSelect.appendChild(ph);
 matched.forEach(function(d){
 var o = document.createElement("option");
 o.value = String(DOJOS.indexOf(d));
 o.textContent = d.name + "（" + (d.city ? d.pref + "・" + d.city : d.pref) + "）";
 dojoSelect.appendChild(o);
 });
-dojoSelect.value = String(DOJOS.indexOf(selectedDojo));
+dojoSelect.value = selectedDojo ? String(DOJOS.indexOf(selectedDojo)) : "";
 }
 if (dojoPicker) dojoPicker.style.display = "";
+if (selectedDojo){
 renderSelectedCard();
 dojoList.hidden = false;
+if (hintEl) hintEl.hidden = true;
+} else {
+dojoList.innerHTML = "";
+dojoList.hidden = true;
+if (hintEl) hintEl.hidden = false;
+}
 if (emptyState) emptyState.style.display = "none";
 if (resultTitle) resultTitle.textContent = "掲載道場（" + matched.length + "件）";
 return;
@@ -8430,6 +8531,7 @@ selectedDojo = null;
 if (dojoPicker) dojoPicker.style.display = "none";
 dojoList.innerHTML = "";
 dojoList.hidden = true;
+if (hintEl) hintEl.hidden = true;
 if (emptyState) emptyState.style.display = "";
 var hasFilter = state.genre || state.pref || state.city || state.kw;
 if (resultTitle) resultTitle.textContent = hasFilter ? "掲載道場（0件）" : "掲載道場";
@@ -8573,9 +8675,10 @@ document.addEventListener("click", function(e){
 window.addEventListener("hashchange", function(){ openFromHash(true); });
 
 /* ===== 「すべて見る」展開：初期表示は先頭6件まで ===== */
-function setupShowMore(items, anchor){
-  if (!items || items.length <= SHOW_LIMIT || !anchor || !anchor.parentNode) return;
-  var rest = items.slice(SHOW_LIMIT);
+function setupShowMore(items, anchor, limit){
+  var lim = (typeof limit === "number") ? limit : SHOW_LIMIT;
+  if (!items || items.length <= lim || !anchor || !anchor.parentNode) return;
+  var rest = items.slice(lim);
   rest.forEach(function(el){ el.classList.add("more-hidden"); });
   var bar = document.createElement("div");
   bar.className = "showmore-bar";
@@ -8600,10 +8703,51 @@ function itemsOf(selector){
   return Array.prototype.slice.call(document.querySelectorAll(selector));
 }
 /* グッズ案内（#goods）：カードの先頭6件のみ初期表示 */
-setupShowMore(itemsOf("#goods .char-grid > .char-card"), document.querySelector("#goods .char-grid"));
-/* 案内役「まるまる道場」：メンバー表は先頭6行のみ初期表示（紹介カードは6件のため対象外になる） */
-setupShowMore(itemsOf("#characters .char-list tbody > tr"), document.querySelector("#characters .char-list"));
-setupShowMore(itemsOf("#characters .char-grid > .char-card"), document.querySelector("#characters .char-grid"));
+setupShowMore(itemsOf("#goods .char-grid > .char-card"), document.querySelector("#goods .char-grid"), 3);
+/* 案内役「まるまる道場」：メンバー表は初期状態で完全に畳む（下の setupCharListToggle で処理） */
+setupShowMore(itemsOf("#characters .char-grid > .char-card"), document.querySelector("#characters .char-grid"), 3);
+
+/* ===== extra collapsibles: region / materials / register detail / footer reading list ===== */
+function setupToggle(btnId, targetId, closedLabel, openLabel){
+  var btn = document.getElementById(btnId);
+  var target = document.getElementById(targetId);
+  if (!btn || !target) return;
+  btn.addEventListener("click", function(){
+    var willOpen = target.hidden;
+    target.hidden = !willOpen;
+    btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+    if (closedLabel) btn.textContent = willOpen ? openLabel : closedLabel;
+  });
+}
+/* 案内役「まるまる道場」：メンバー表は初期状態で完全に畳み、「メンバー一覧を見る」で開閉する */
+function setupCharListToggle(){
+  var list = document.querySelector("#characters .char-list");
+  if (!list || !list.parentNode) return;
+  list.hidden = true;
+  var bar = document.createElement("div");
+  bar.className = "showmore-bar";
+  var btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "btn btn-line";
+  btn.textContent = "メンバー一覧を見る";
+  btn.setAttribute("aria-expanded", "false");
+  btn.setAttribute("aria-controls", "charListTable");
+  list.id = "charListTable";
+  bar.appendChild(btn);
+  list.parentNode.insertBefore(bar, list.nextSibling);
+  btn.addEventListener("click", function(){
+    var willOpen = list.hidden;
+    list.hidden = !willOpen;
+    btn.textContent = willOpen ? "メンバー一覧を閉じる" : "メンバー一覧を見る";
+    btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+    if (!willOpen) bar.scrollIntoView({ block: "center" });
+  });
+}
+setupCharListToggle();
+setupToggle("regionToggle", "regionGrid", "都道府県から探す", "都道府県を閉じる");
+setupToggle("materialsToggle", "materialsBody", "素材集を見る", "素材集を閉じる");
+setupToggle("registerToggle", "registerDetail", "詳しく見る", "閉じる");
+setupToggle("footerReadingToggle", "footerReadingLinks", "読み物一覧", "読み物一覧を閉じる");
 })();
 </script>
 <script>
