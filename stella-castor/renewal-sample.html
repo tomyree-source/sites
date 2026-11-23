@@ -154,21 +154,16 @@ header{
 /* ---------- concept ---------- */
 .sec-concept{background:var(--sub);}
 .concept-grid{display:flex;flex-direction:column;gap:40px;}
-.concept-photos{position:relative;padding-bottom:52px;}
+.concept-photos{display:flex;flex-direction:column;gap:16px;}
 .concept-photos .p1{
-  width:72%;
+  width:100%;
   border-radius:50% 50% 0 0 / 30% 30% 0 0;
   aspect-ratio:3/4;object-fit:cover;
 }
 .concept-photos .p2{
-  position:absolute;right:0;bottom:0;
-  width:52%;
+  width:100%;
   border-radius:8px;
-  aspect-ratio:4/5;object-fit:cover;
-  border:6px solid var(--sub);
-}
-.concept-photos .v-text{
-  position:absolute;top:6px;right:6px;font-size:12px;
+  aspect-ratio:4/3;object-fit:cover;
 }
 .concept-body p{font-size:14.5px;line-height:2.1;color:var(--ink);margin-bottom:20px;max-width:34em;}
 .concept-body p:last-child{margin-bottom:0;}
@@ -422,7 +417,6 @@ footer{
     <div class="concept-grid">
       <div class="concept-photos fade">
         <img class="p1" src="assets/renewal-care.webp" alt="オイルマッサージの施術のイメージイラスト">
-        <p class="v-text">巡りと骨格、両方から整える</p>
         <img class="p2" src="assets/hero-treatment.webp" alt="施術シーンのイメージイラスト" style="object-position:72% 50%;">
       </div>
       <div class="concept-body fade">
@@ -526,10 +520,10 @@ footer{
     </div>
     <div class="therapist-grid">
       <div class="therapist-photo fade">
-        <img src="assets/therapist-kento.webp" alt="施術者ケントのイラスト">
+        <img src="assets/therapist-kento.webp" alt="施術者・平賀伸人のイラスト">
       </div>
       <div class="therapist-body fade">
-        <p class="name">ケント</p>
+        <p class="name">平賀伸人</p>
         <p class="cred">施術歴30年 ／ 鍼灸師（国家資格）</p>
         <p>3歳から武術を学び、体の使い方と向き合ってきました。施術では、筋肉の緊張だけでなく姿勢や骨格の土台、巡りの状態までを見て、その日の体に合った順序で整えていきます。</p>
         <p>強い力で押すだけの施術はしません。「終わったあと、体が軽く感じる」「呼吸が深くなる」——そんな変化を感じていただける時間を大切にしています。</p>
