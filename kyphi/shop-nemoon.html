@@ -6,77 +6,122 @@
 <meta property="og:description" content="nemoon（ネムーン）（大分県）のアロマオイルマッサージサロン情報。料金・営業時間・アクセスをまとめました。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tomyree-source.github.io/sites/kyphi/shop-nemoon.html">
-<meta property="og:image" content="https://tomyree-source.github.io/sites/kyphi/assets/hero.webp">
+<meta property="og:image" content="https://tomyree-source.github.io/sites/kyphi/assets/hero-b.webp">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0V6GQSZV7F"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0V6GQSZV7F');
 document.addEventListener('click',function(e){var a=e.target.closest('a[data-out]');if(a){gtag('event','outbound_click',{site_id:'kyphi',shop:a.dataset.out,area:a.dataset.area||''});}});
 </script><style>
-:root{--sage:#5f7d6a;--sage2:#47604f;--sage-soft:#e8efe9;--rose:#c08a7a;--cream:#fbf8f2;--ink:#33322e;--ink-soft:#6b675e;--line:#ddd5c3;--gold:#b9975f}
+:root{--night:#1e2a23;--night2:#26362c;--cream:#f3eee1;--cream2:#ece4cf;--gold:#b9975f;--gold2:#8a6d3b;--gold-l:#d3b57e;--ink:#2c2a24;--ink-soft:#6f6a5c;--line-d:rgba(185,151,95,.35);--line-l:#ddd2b8;--ease:cubic-bezier(0.16,1,0.3,1)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:var(--cream);color:var(--ink);line-height:1.8}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;background:var(--cream);color:var(--ink);line-height:1.85;padding-bottom:78px}
 a{color:inherit}
-header.site{background:var(--sage2);color:#fff;padding:16px 20px}
-header.site .wrap{max-width:1080px;margin:0 auto;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.logo{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:21px;letter-spacing:.05em;color:#fff;text-decoration:none}
-.logo small{display:block;font-size:10.5px;letter-spacing:.26em;color:#d9e6da;font-family:Georgia,serif}
-header nav{margin-left:auto;display:flex;gap:16px;font-size:13.5px;flex-wrap:wrap}
-header nav a{color:#eef3ee;text-decoration:none}
-.sample-bar{background:#fdf0e6;border-bottom:1px solid #e8c9ae;color:#8a5a33;text-align:center;font-size:12.5px;padding:7px 12px}
-.hero{background:linear-gradient(165deg,var(--sage),var(--sage2));color:#fff;padding:44px 20px 40px;text-align:center}
-.hero-img{display:block;width:min(920px,94%);height:auto;margin:0 auto 26px;border-radius:16px;border:1px solid rgba(255,255,255,.5);box-shadow:0 14px 40px rgba(0,0,0,.25)}
-.hero h1{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(25px,4.2vw,36px);letter-spacing:.04em;line-height:1.55}
-.hero p{max-width:44em;margin:16px auto 0;color:#e6eee6;font-size:15px}
-.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:20px}
-.badges span{border:1px solid rgba(255,255,255,.65);color:#fff;border-radius:999px;padding:4px 14px;font-size:12.5px}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+main{max-width:1080px;margin:0 auto;padding:0 20px 10px}
 section{padding:38px 0 6px}
-h2{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:22px;letter-spacing:.04em;margin-bottom:6px}
-h2 .en{display:block;font-size:11px;letter-spacing:.3em;color:var(--rose);font-family:Georgia,serif;margin-bottom:6px}
+/* ---- header ---- */
+header{background:var(--night);color:var(--cream)}
+.header-in{max-width:1080px;margin:0 auto;padding:15px 20px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.logo{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:21px;letter-spacing:.08em;color:var(--cream);text-decoration:none}
+.logo small{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:10px;letter-spacing:.3em;color:var(--gold-l);margin-top:2px}
+header nav{margin-left:auto;display:flex;gap:16px;font-size:13.5px;flex-wrap:wrap}
+header nav a{color:var(--cream2);text-decoration:none}
+header nav a:hover{color:var(--gold-l)}
+/* ---- hero (index) ---- */
+.hero{position:relative;overflow:hidden;background:var(--night);color:var(--cream);padding:44px 20px 0}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 42% at 78% 30%,rgba(185,151,95,.16),transparent 70%)}
+.hero-en{position:absolute;top:26px;left:50%;transform:translateX(-50%);font-family:"Cormorant Garamond",serif;font-size:clamp(90px,26vw,240px);letter-spacing:.14em;color:transparent;-webkit-text-stroke:1px rgba(211,181,126,.16);white-space:nowrap;pointer-events:none}
+.hero-main{position:relative;display:flex;gap:18px;max-width:1080px;margin:0 auto;align-items:flex-start}
+.hero-copy{flex:0 0 auto;padding-top:8px;animation:fadeUp 1s var(--ease) both}
+.eyebrow{font-size:11.5px;letter-spacing:.18em;color:var(--gold-l);margin-bottom:14px;line-height:1.7}
+.v-text{writing-mode:vertical-rl;font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:clamp(27px,7.6vw,42px);letter-spacing:.14em;line-height:1.5;height:10.8em;color:var(--cream)}
+.v-text .g{color:var(--gold-l)}
+.hero-fig{flex:1 1 auto;min-width:0;animation:fadeUp 1.1s .12s var(--ease) both}
+.hero-fig .arch{border-radius:999px 999px 18px 18px;overflow:hidden;border:1px solid var(--line-d)}
+.hero-fig img{display:block;width:100%;height:min(58vh,520px);object-fit:cover;object-position:50% 38%;animation:slowZoom 14s var(--ease) infinite alternate}
+@keyframes slowZoom{from{transform:scale(1)}to{transform:scale(1.07)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero-under{position:relative;max-width:1080px;margin:22px auto 0;animation:fadeUp 1.1s .24s var(--ease) both}
+.hero-lead{font-size:14.5px;color:var(--cream2);max-width:34em}
+.badges{display:flex;gap:8px;justify-content:flex-start;flex-wrap:wrap;margin-top:16px}
+.badges span{border:1px solid var(--line-d);color:var(--cream);border-radius:999px;padding:4px 13px;font-size:12.5px}
+.cta-gold{display:inline-flex;align-items:center;gap:10px;margin-top:20px;background:var(--gold);color:#221d10;font-weight:700;font-size:15px;text-decoration:none;padding:13px 26px;border-radius:999px;transition:transform .5s var(--ease),background .5s var(--ease)}
+.cta-gold:hover{background:var(--gold-l);transform:translateY(-2px)}
+.cta-gold .arr{transition:transform .5s var(--ease)}
+.cta-gold:hover .arr{transform:translateY(3px)}
+.wave{display:block;width:100%;height:56px;margin-top:34px;margin-left:-20px;width:calc(100% + 40px)}
+@media(min-width:861px){.hero{padding-top:56px}.hero-main{gap:34px}.hero-fig img{height:min(64vh,560px)}.hero-under{display:flex;align-items:flex-end;gap:30px}.hero-under .badges{margin-top:16px}}
+/* ---- headings & text ---- */
+h1.page{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:clamp(23px,3.6vw,31px);letter-spacing:.05em;margin-top:22px;line-height:1.55}
+h2{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:22px;letter-spacing:.05em;margin-bottom:6px}
+h2 .en{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:11px;letter-spacing:.32em;color:var(--gold2);margin-bottom:6px}
 .lead{color:var(--ink-soft);font-size:14.5px;max-width:47em}
-.area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
-@media(max-width:860px){.area-grid{grid-template-columns:repeat(2,1fr)}}
-.area-grid a{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 17px;text-decoration:none}
-.area-grid a:hover{border-color:var(--sage)}
-.area-grid .a-name{font-family:"Hiragino Mincho ProN",serif;font-size:16.5px}
-.area-grid .a-count{display:block;font-size:12px;color:var(--ink-soft);margin-top:2px}
-.cond{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
-.cond span{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 15px;font-size:13.5px}
-.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:20px}
-@media(max-width:860px){.cards{grid-template-columns:1fr}}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;text-decoration:none;display:block}
-.card:hover{border-color:var(--sage)}
-.card .c-name{font-family:"Hiragino Mincho ProN",serif;font-size:18px;display:block}
-.card .c-meta{font-size:13px;color:var(--ink-soft);display:block}
-.card .c-txt{font-size:13.5px;display:block;margin-top:6px}
-.card .c-price{display:block;margin-top:8px;font-size:13.5px;color:var(--sage2);font-weight:700}
+.meta{font-size:13px;color:var(--ink-soft)}
+.meta a{color:var(--gold2)}
+/* ---- cards & grids ---- */
+.grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:20px}
+@media(min-width:861px){.grid{grid-template-columns:repeat(3,1fr)}}
+.shop{background:#fff;border:1px solid var(--line-l);border-radius:16px;padding:20px 22px;transition:transform .5s var(--ease),border-color .5s var(--ease)}
+.shop:hover{transform:translateY(-4px);border-color:var(--gold)}
+.shop h3{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:17.5px;line-height:1.5}
+.shop h3 a{text-decoration:none}
+.shop h3 a:hover{color:var(--gold2)}
+.shop p{font-size:13.5px;margin-top:6px}
+.shop .meta{font-size:12.5px;color:var(--gold2);margin-top:3px}
+.price{font-size:13.5px;color:var(--gold2);font-weight:700;margin-top:8px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
-.tags span{background:var(--sage-soft);border:1px solid #bcccbe;border-radius:999px;font-size:11.5px;padding:2px 10px}
-.standard{background:var(--sage2);color:#e9f0e9;border-radius:18px;padding:30px;margin-top:20px}
-.standard h3{font-family:"Hiragino Mincho ProN",serif;color:#fff;font-size:19px;margin-bottom:10px}
-.standard ul{margin:0;padding-left:1.3em;font-size:14px;display:grid;gap:6px}
-.cta-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:20px}
-.btn{display:inline-block;background:var(--sage2);color:#fff;text-decoration:none;border-radius:999px;padding:11px 26px;font-size:14.5px;font-weight:700;margin-top:12px}
-.btn.rose{background:var(--rose)}
-.crumb{font-size:12.5px;color:var(--ink-soft);padding:18px 0 0}
-.crumb a{color:var(--sage2)}
-h1.page{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(23px,3.6vw,31px);letter-spacing:.04em;margin-top:10px;line-height:1.5}
-.sub{color:var(--ink-soft);font-size:14.5px;margin-top:6px;max-width:47em}
-table.info{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);margin-top:8px}
-table.info th,table.info td{padding:12px 17px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14.5px}
-table.info th{width:9.5em;background:#f4f7f3;color:var(--sage2);white-space:nowrap}
+.tags span{border:1px solid var(--line-l);background:var(--cream);border-radius:999px;font-size:11.5px;padding:2px 10px;color:var(--ink-soft)}
+.areas{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
+@media(min-width:861px){.areas{grid-template-columns:repeat(4,1fr)}}
+.area-card{display:block;background:#fff;border:1px solid var(--line-l);border-radius:12px;padding:13px 16px;text-decoration:none;transition:border-color .4s var(--ease),transform .4s var(--ease)}
+.area-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.area-card b{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:15.5px;display:block}
+.area-card span{font-size:12px;color:var(--ink-soft)}
+.cond{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.cond span{border:1px solid var(--line-l);background:#fff;border-radius:999px;padding:6px 15px;font-size:13.5px}
+.region-selects{display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px}
+@media(min-width:861px){.region-selects{grid-template-columns:1fr 1fr}}
+.region-selects label{display:block;font-size:13px;color:var(--ink-soft);margin-bottom:6px}
+.region-selects select{width:100%;box-sizing:border-box;padding:13px 14px;font-size:15.5px;border:1px solid var(--line-l);border-radius:12px;background:#fff;color:var(--ink);font-family:inherit}
+/* ---- buttons ---- */
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--gold);color:#221d10;text-decoration:none;border-radius:999px;padding:11px 24px;font-size:14.5px;font-weight:700;margin-top:12px;transition:background .4s var(--ease),transform .4s var(--ease)}
+.btn:hover{background:var(--gold-l);transform:translateY(-2px)}
+.btn.sub{background:transparent;color:var(--ink);border:1px solid var(--gold);font-weight:500}
+.btn.sub:hover{background:var(--cream2)}
+/* ---- info table / faq / standard ---- */
+table.info{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line-l);margin-top:8px}
+table.info th,table.info td{padding:12px 17px;border-bottom:1px solid var(--line-l);text-align:left;vertical-align:top;font-size:14.5px}
+table.info th{width:9.5em;background:var(--cream);color:var(--gold2);white-space:nowrap}
 table.info tr:last-child th,table.info tr:last-child td{border-bottom:none}
-details.faq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 19px;margin-top:11px}
+details.faq{background:#fff;border:1px solid var(--line-l);border-radius:12px;padding:15px 19px;margin-top:11px}
 details.faq summary{font-weight:700;cursor:pointer}
 details.faq p{font-size:14.5px;margin-top:8px;color:var(--ink-soft)}
-.note{font-size:12.5px;color:var(--ink-soft);margin-top:10px}
-footer.site{margin-top:52px;background:var(--sage2);color:#cfdccf;padding:34px 20px;text-align:center;font-size:13px}
-footer.site .f-name{font-family:"Hiragino Mincho ProN",serif;color:#fff;font-size:16px;letter-spacing:.08em}
-footer.site a{color:#e6d9b8}
-
-.eyecatch{width:100%;height:auto;border-radius:14px;display:block;margin-top:16px}
+.standard{background:var(--night);color:var(--cream2);border-radius:18px;padding:28px 30px;margin-top:20px}
+.standard ul{margin:0;padding-left:1.3em;font-size:14px;display:grid;gap:6px}
+.eyecatch{width:100%;height:auto;border-radius:18px;display:block;margin-top:16px}
+.col-card{padding:0;overflow:hidden}
 .col-card img{width:100%;height:180px;object-fit:cover;display:block}
-.col-card .shop-body{padding-top:12px}
+.col-card .shop-body{padding:16px 20px 20px}
+/* ---- footer ---- */
+footer{margin-top:52px;background:var(--night);color:var(--cream2);padding:34px 20px 30px;font-size:13px}
+.footer-in{max-width:1080px;margin:0 auto}
+footer .f-name{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;color:var(--cream);font-size:16px;letter-spacing:.08em}
+footer a{color:var(--gold-l)}
+/* ---- reveal & floating ---- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.on{opacity:1;transform:none}
+.float-bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(24,33,27,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line-d);display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.float-bar .fb-main{flex:1;background:var(--gold);color:#221d10;font-weight:700;text-align:center;text-decoration:none;border-radius:999px;padding:11px 10px;font-size:14.5px}
+.float-bar .fb-menu{flex:0 0 84px;background:transparent;color:var(--cream);border:1px solid var(--line-d);border-radius:999px;font-size:14px;cursor:pointer;font-family:inherit}
+@media(min-width:861px){.float-bar{left:auto;right:22px;bottom:22px;width:350px;border-radius:18px;border:1px solid var(--line-d)}}
+.menu-panel{position:fixed;inset:0;z-index:30;background:rgba(20,27,22,.97);display:none;padding:90px 26px 30px}
+.menu-panel.open{display:block}
+.menu-panel a{display:block;font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:20px;color:var(--cream);text-decoration:none;padding:13px 2px;border-bottom:1px solid var(--line-d)}
+.menu-close{position:absolute;top:20px;right:20px;background:none;border:1px solid var(--line-d);color:var(--cream);border-radius:999px;padding:8px 18px;font-size:14px;cursor:pointer;font-family:inherit}
 </style></head><body><header><div class="header-in">
 <a class="logo" href="index.html">キフィ<small>KYPHI — AROMA OIL MASSAGE SALON PORTAL</small></a>
 <nav><a href="index.html#area">地域から探す</a><a href="index.html#worry">お悩みから探す</a><a href="columns.html">コラム</a><a href="standard.html">掲載について</a><a href="contact.html">修正・削除のご依頼</a></nav>
@@ -85,7 +130,7 @@ footer.site a{color:#e6d9b8}
 <h1 class="page">nemoon（ネムーン）</h1>
 <div class="tags" style="margin-top:14px"><span>ドライヘッドスパ</span><span>選べる香り</span><span>駐車場あり</span></div>
 <p class="lead" style="margin-top:14px">別府市の、女性のためのオイルトリートメントサロン。ひのき・柑橘系・ラベンダーから香りを選べるアロマオイルトリートメントと、ドライヘッドスパを受けられます。</p>
-<section><h2><span class="en">INFO</span>お店の情報</h2><table class="info"><tr><th>エリア</th><td>大分県</td></tr><tr><th>住所</th><td>別府市西野口町1-19 グランメゾン806号室</td></tr><tr><th>営業時間</th><td>9:00〜17:30</td></tr><tr><th>定休日</th><td>日曜日</td></tr><tr><th>料金の目安</th><td>アロマオイルトリートメント60分 5,800円</td></tr></table>
+<section class="reveal"><h2><span class="en">INFO</span>お店の情報</h2><table class="info"><tr><th>エリア</th><td>大分県</td></tr><tr><th>住所</th><td>別府市西野口町1-19 グランメゾン806号室</td></tr><tr><th>営業時間</th><td>9:00〜17:30</td></tr><tr><th>定休日</th><td>日曜日</td></tr><tr><th>料金の目安</th><td>アロマオイルトリートメント60分 5,800円</td></tr></table>
 <p class="meta" style="margin-top:10px">出典：<a href="https://nemoon.salon/" target="_blank" rel="noopener">公式サイト</a>（確認日：2026-11-22）。情報は事実のみを要約しています。最新の料金・営業時間は公式サイトでご確認ください。</p>
 <div class="btns" style="margin-top:16px"><a class="btn" href="https://nemoon.salon/" target="_blank" rel="noopener" data-out="nemoon（ネムーン）" data-area="oita">公式サイトで最新情報・予約</a><a class="btn sub" href="contact.html">掲載内容の修正・削除のご依頼</a></div></section>
 </main><footer><div class="footer-in">
@@ -93,4 +138,26 @@ footer.site a{color:#e6d9b8}
 <p style="margin-top:8px">アロマオイルマッサージサロンのポータル<br>
 掲載情報は各店の公式サイト等の公開情報をもとに、事実情報のみを要約して掲載しています（確認日は各店舗ページに明記）。料金・営業時間は変更される場合があります。最新情報は各店の公式サイトでご確認ください。</p>
 <p style="margin-top:10px">掲載店の方へ：<a href="https://docs.google.com/forms/d/e/1FAIpQLSchEj2q-nkgXso_jBWmyclH1LMDuXnRk-U95FEWlmm6HK3Stw/viewform" target="_blank" rel="noopener">修正・削除依頼フォーム</a>（依頼があれば速やかに対応します）</p>
-</div></footer></body></html>
+</div></footer>
+<div class="float-bar">
+<a class="fb-main" href="index.html#area">地域からお店を探す</a>
+<button class="fb-menu" id="menuBtn" type="button">☰ メニュー</button>
+</div>
+<div class="menu-panel" id="menuPanel">
+<button class="menu-close" id="menuClose" type="button">閉じる</button>
+<a href="index.html#area">地域から探す</a>
+<a href="index.html#worry">お悩みから探す</a>
+<a href="columns.html">コラム</a>
+<a href="standard.html">掲載について</a>
+<a href="contact.html">修正・削除のご依頼</a>
+</div>
+<script>
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},
+{threshold:.08});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+var p=document.getElementById('menuPanel');
+document.getElementById('menuBtn').addEventListener('click',function(){p.classList.add('open')});
+document.getElementById('menuClose').addEventListener('click',function(){p.classList.remove('open')});
+p.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){p.classList.remove('open')})});
+</script>
+</body></html>
