@@ -708,11 +708,11 @@
       .hero2-figure{margin:14px 0 0}
       .hero2-arch{
         border:1px solid var(--h-line);border-radius:999px 999px 10px 10px;
-        background:var(--h-arch);overflow:hidden;
+        background:var(--h-arch);overflow:hidden;aspect-ratio:3/2;
         animation:hero2breathe 9s ease-in-out infinite alternate;
       }
       .hero2-arch img{
-        width:100%;height:212px;object-fit:contain;object-position:center bottom;
+        display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;
         padding:6px 3px 0;
       }
       .hero2-figure figcaption{
@@ -743,7 +743,7 @@
         .hero2-title{font-size:clamp(2.5rem,6.4vw,3rem)}
         .hero2-tagline{font-size:1.12rem;margin-top:16px}
         .hero2-lead{font-size:.92rem;margin-top:14px}
-        .hero2-arch img{height:400px;padding:8px 4px 0}
+        .hero2-arch img{padding:8px 4px 0}
         .hero2-stats{margin-top:24px;padding-top:16px}
         .hero2-stats .num{font-size:2.5rem}
         .hero2-stats li{padding:0 20px}
@@ -775,7 +775,7 @@
         .hero2-stats li:nth-child(2){transform:translateY(8px)}
         .hero2-actions{margin-top:36px}
         .hero2-figure{margin-top:0}
-        .hero2-arch img{height:600px;padding:14px 10px 0}
+        .hero2-arch img{padding:14px 10px 0}
         .hero2-note{grid-template-columns:1fr 1fr;align-items:start;margin-top:52px}
       }
       @media (prefers-reduced-motion: reduce){
@@ -1199,6 +1199,11 @@
 <div>
 <div class="card" style="margin-bottom:16px">
 <h3>素材：シフォンとベロア</h3>
+
+<div style="display:flex;gap:10px;margin:0 0 10px">
+<figure style="flex:1;margin:0"><img src="https://tshop.r10s.jp/auc-dfgallery/cabinet/be-hs/36q05-1-1-rk.jpg?fitin=275:275" alt="ヒップスカーフ コイン付き シフォン W36Q05の実物写真" loading="lazy" style="width:100%;height:140px;object-fit:contain;display:block;background:#fff;border-radius:10px"><figcaption style="font-size:.78rem;text-align:center;margin-top:4px">シフォン</figcaption></figure>
+<figure style="flex:1;margin:0"><img src="https://image.rakuten.co.jp/bellyshopa-c/cabinet/01585442/imgrc0065076167.jpg" alt="ヒップスカーフ ベロア シルバーコイン（全9色）の実物写真" loading="lazy" style="width:100%;height:140px;object-fit:contain;display:block;background:#fff;border-radius:10px"><figcaption style="font-size:.78rem;text-align:center;margin-top:4px">ベロア</figcaption></figure>
+</div>
 <p>
 シフォンは軽くて扱いやすく、価格も手頃な入門の定番。ベロアは滑りにくく腰に留まりやすく、
 光沢が高級に見えます。自宅練習中心ならシフォン、教室でしっかり巻きたい場合はベロアも候補です。
@@ -1206,6 +1211,8 @@
 </div>
 <div class="card" style="margin-bottom:16px">
 <h3>コインの数と音</h3>
+<img src="https://image.rakuten.co.jp/babyshop--/cabinet/tj/r-img_rr/6/mbs0182.jpg" alt="ヒップスカーフ シフォン素材 3段コイン 128枚の実物写真" loading="lazy" style="width:100%;height:170px;object-fit:contain;display:block;background:#fff;border-radius:10px">
+<p style="font-size:.78rem;margin:6px 0 10px">実物の例：ヒップスカーフ シフォン素材 3段コイン 128枚</p>
 <p>
 コイン数は約100枚台の軽いものから、300枚前後の重みのあるものまであります。
 枚数が多いほど音が大きく動きも見えやすい一方、重さで下がりやすくなります。
@@ -1214,6 +1221,8 @@
 </div>
 <div class="card">
 <h3>レッスン着との組み合わせ</h3>
+<img src="https://tshop.r10s.jp/bellytreasure/cabinet/img_1559.jpg?fitin=275:275" alt="レッスンウェア セットアップ BQ-5106の実物写真" loading="lazy" style="width:100%;height:170px;object-fit:contain;display:block;background:#fff;border-radius:10px">
+<p style="font-size:.78rem;margin:6px 0 10px">実物の例：レッスンウェア セットアップ BQ-5106</p>
 <p>
 レッスン着は、トップス＋レギンスやフレアパンツのセットアップが一般的です。
 腰の動きが見えるよう、トップスは丈が短めか、裾をインしやすいものが扱いやすいとされます。
@@ -1243,26 +1252,41 @@
 <div class="grid3">
 <div class="card">
 <h3>ベール</h3>
+<img src="https://tshop.r10s.jp/kalavika/cabinet/07144767/ym24037-1.jpg?fitin=275:275" alt="シルクベール（グラデーション）の実物写真" loading="lazy" style="width:100%;height:170px;object-fit:contain;display:block;background:#fff;border-radius:10px">
+<p style="font-size:.78rem;margin:6px 0 10px">実物の例：シルクベール（グラデーション）</p>
 <p>登場時や曲の序盤で使う大きな布。標準的な大きさは約250〜270cm×110cm前後。素材はシルクが最高級とされ、軽さと流れの美しさが特徴です。化繊（シフォン等）の練習用も広く使われます。</p>
 </div>
 <div class="card">
 <h3>ファンベール</h3>
+<img src="https://tshop.r10s.jp/kalavika/cabinet/06613947/imgrc0090531755.jpg" alt="シルクファンベール 2本セット タイダイ柄の実物写真" loading="lazy" style="width:100%;height:170px;object-fit:contain;display:block;background:#fff;border-radius:10px">
+<p style="font-size:.78rem;margin:6px 0 10px">実物の例：シルクファンベール 2本セット タイダイ柄</p>
 <p>扇子に長いシルク（または化繊）の布を付けた小物。左右1本ずつのペアで使うことが多く、開閉で布の流れが大きく変わるため、フュージョン系の演目で人気です。全長約180cmが標準的です。</p>
 </div>
 <div class="card">
 <h3>ジル（フィンガーシンバル）</h3>
+<img src="https://tshop.r10s.jp/grams-shop/cabinet/12404664/alb828655_0.jpg?fitin=275:275" alt="フィンガーシンバル（ジル）銅製4枚セットの実物写真" loading="lazy" style="width:100%;height:170px;object-fit:contain;display:block;background:#fff;border-radius:10px">
+<p style="font-size:.78rem;margin:6px 0 10px">実物の例：フィンガーシンバル（ジル）銅製4枚セット</p>
 <p>親指と中指にはめて打ち鳴らす小さな真鍮製シンバル。両手で4枚1組。踊りながらリズムを奏でるのが特徴で、直径約5〜6.5cmの範囲に初心者向けからプロサイズまであります。</p>
 </div>
 <div class="card">
 <h3>イシスウィング</h3>
+<img src="https://tshop.r10s.jp/auc-dfgallery/cabinet/be-komono/3503-1-12-rk.jpg?fitin=275:275" alt="イシスウィング（通常タイプ）の実物写真" loading="lazy" style="width:100%;height:170px;object-fit:contain;display:block;background:#fff;border-radius:10px">
+<p style="font-size:.78rem;margin:6px 0 10px">実物の例：イシスウィング（通常タイプ）</p>
 <p>背中から大きく広がる翼状の布。女神イシスにちなんだ名前で、LED内蔵タイプもあります。スティックで広げる構造のものが一般的です。</p>
 </div>
 <div class="card">
 <h3>ソード（剣）</h3>
+<img src="https://tshop.r10s.jp/uzume-raks/cabinet/bellypropos/00dragom.jpg?downsize=200:*" alt="ソードシミター［シルバー］の実物写真" loading="lazy" style="width:100%;height:170px;object-fit:contain;display:block;background:#fff;border-radius:10px">
+<p style="font-size:.78rem;margin:6px 0 10px">実物の例：ソードシミター［シルバー］</p>
 <p>頭上や身体の上でバランスを取る演目用の模造剣。重量バランスが取れた専用品を使い、安全のため刃のないものが大前提です。</p>
 </div>
 <div class="card">
 <h3>アサヤ（杖）／シャマダン（燭台）</h3>
+
+<div style="display:flex;gap:10px;margin:0 0 10px">
+<figure style="flex:1;margin:0"><img src="https://tshop.r10s.jp/auc-dfgallery/cabinet/accessory03/3500-1-2-rk.jpg?fitin=275:275" alt="アサヤ（杖）の実物写真" loading="lazy" style="width:100%;height:140px;object-fit:contain;display:block;background:#fff;border-radius:10px"><figcaption style="font-size:.78rem;text-align:center;margin-top:4px">アサヤ（杖）</figcaption></figure>
+<figure style="flex:1;margin:0"><img src="https://image.rakuten.co.jp/bellytreasure/cabinet/bellydance_costume/accessories/imgrc0103667613.jpg" alt="シャマダン（燭台）の実物写真" loading="lazy" style="width:100%;height:140px;object-fit:contain;display:block;background:#fff;border-radius:10px"><figcaption style="font-size:.78rem;text-align:center;margin-top:4px">シャマダン（燭台）</figcaption></figure>
+</div>
 <p>アサヤはサイーディで使う杖。シャマダンは結婚式の行列（ゼッファ）で頭に載せる大きな燭台で、いずれもフォークロア演目の象徴的な小物です。</p>
 </div>
 </div>
