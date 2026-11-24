@@ -708,11 +708,11 @@
       .hero2-figure{margin:14px 0 0}
       .hero2-arch{
         border:1px solid var(--h-line);border-radius:999px 999px 10px 10px;
-        background:var(--h-arch);overflow:hidden;
+        background:var(--h-arch);overflow:hidden;aspect-ratio:3/2;
         animation:hero2breathe 9s ease-in-out infinite alternate;
       }
       .hero2-arch img{
-        width:100%;height:212px;object-fit:contain;object-position:center bottom;
+        display:block;width:100%;height:auto;object-fit:contain;object-position:center bottom;
         padding:6px 3px 0;
       }
       .hero2-figure figcaption{
@@ -734,6 +734,25 @@
       .hero2-note .pr-note{margin-top:0}
       .hero2-note .pr-note.rv-armed{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
       .hero2-note .pr-note.rv-armed.inview{opacity:1;transform:none}
+      /* ---------- mobile hero: single column (<640px) ---------- */
+      @media (max-width:639px){
+        .hero2-inner{
+          grid-template-columns:minmax(0,1fr);
+          column-gap:0;
+          grid-template-areas:
+            "eyebrow"
+            "title"
+            "tagline"
+            "lead"
+            "figure"
+            "stats"
+            "actions";
+        }
+        .hero2-lead{max-width:none}
+        .hero2-figure{margin:22px 0 0;width:100%}
+        .hero2-arch{width:min(100%,360px);margin:0 auto}
+        .hero2-stats{flex-wrap:wrap}
+      }
       /* ---------- tablet ---------- */
       @media (min-width:640px){
         .hero2{padding:44px 0 14px}
@@ -743,7 +762,7 @@
         .hero2-title{font-size:clamp(2.5rem,6.4vw,3rem)}
         .hero2-tagline{font-size:1.12rem;margin-top:16px}
         .hero2-lead{font-size:.92rem;margin-top:14px}
-        .hero2-arch img{height:400px;padding:8px 4px 0}
+        .hero2-arch img{padding:8px 4px 0}
         .hero2-stats{margin-top:24px;padding-top:16px}
         .hero2-stats .num{font-size:2.5rem}
         .hero2-stats li{padding:0 20px}
@@ -775,7 +794,7 @@
         .hero2-stats li:nth-child(2){transform:translateY(8px)}
         .hero2-actions{margin-top:36px}
         .hero2-figure{margin-top:0}
-        .hero2-arch img{height:600px;padding:14px 10px 0}
+        .hero2-arch img{padding:14px 10px 0}
         .hero2-note{grid-template-columns:1fr 1fr;align-items:start;margin-top:52px}
       }
       @media (prefers-reduced-motion: reduce){
@@ -1312,7 +1331,7 @@
 <a class="to-top" href="../index.html">▲ ページの先頭へ戻る</a>
 </div>
 </div>
-<nav aria-label="姉妹サイト" style="margin:16px auto;max-width:900px;line-height:2;text-align:center"><span style="font-weight:700;letter-spacing:.15em">姉妹サイト</span><br><a href="https://tomyree-source.github.io/sites/fashion/">POSTURE &amp; STYLE（ファッション）</a> ／ <a href="https://tomyree-source.github.io/sites/yoga/">Simple Yoga Life（ヨガ）</a> ／ <a href="https://tomyree-source.github.io/sites/aroma-notes/">アロマと休息の手帖</a> ／ <a href="https://felis-cattus222.github.io/beauty-site/">美容の道具箱</a> ／ <a href="https://felis-cattus222.github.io/felis-cattus/">Felis cattus</a></nav></footer>
+<nav aria-label="姉妹サイト" style="margin:24px auto 8px;max-width:900px;text-align:center"><span style="display:block;font-weight:700;letter-spacing:.15em;color:#fff;margin-bottom:8px">姉妹サイト</span><a href="https://tomyree-source.github.io/sites/fashion/" style="display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 12px;color:#f7f1e3;text-decoration:underline;text-underline-offset:4px;line-height:1.5">POSTURE &amp; STYLE（ファッション）</a><a href="https://tomyree-source.github.io/sites/yoga/" style="display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 12px;color:#f7f1e3;text-decoration:underline;text-underline-offset:4px;line-height:1.5">Simple Yoga Life（ヨガ）</a><a href="https://tomyree-source.github.io/sites/aroma-notes/" style="display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 12px;color:#f7f1e3;text-decoration:underline;text-underline-offset:4px;line-height:1.5">アロマと休息の手帖</a><a href="https://felis-cattus222.github.io/beauty-site/" style="display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 12px;color:#f7f1e3;text-decoration:underline;text-underline-offset:4px;line-height:1.5">美容の道具箱</a><a href="https://felis-cattus222.github.io/felis-cattus/" style="display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 12px;color:#f7f1e3;text-decoration:underline;text-underline-offset:4px;line-height:1.5">Felis cattus</a></nav></footer>
 
 <!-- ============ フローティングメニュー ============ -->
 <div class="fab-overlay" id="fab-overlay" hidden></div>
