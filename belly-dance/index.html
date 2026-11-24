@@ -734,6 +734,25 @@
       .hero2-note .pr-note{margin-top:0}
       .hero2-note .pr-note.rv-armed{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
       .hero2-note .pr-note.rv-armed.inview{opacity:1;transform:none}
+      /* ---------- mobile hero: single column (<640px) ---------- */
+      @media (max-width:639px){
+        .hero2-inner{
+          grid-template-columns:minmax(0,1fr);
+          column-gap:0;
+          grid-template-areas:
+            "eyebrow"
+            "title"
+            "tagline"
+            "lead"
+            "figure"
+            "stats"
+            "actions";
+        }
+        .hero2-lead{max-width:none}
+        .hero2-figure{margin:22px 0 0;width:100%}
+        .hero2-arch{width:min(100%,360px);margin:0 auto}
+        .hero2-stats{flex-wrap:wrap}
+      }
       /* ---------- tablet ---------- */
       @media (min-width:640px){
         .hero2{padding:44px 0 14px}
