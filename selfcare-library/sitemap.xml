@@ -1,112 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/katakori/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/kubikori/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/youtsuu/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/zutsuu/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/gansei-hirou/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/hie/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/mukumi/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/fumin/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/jiritsu-shinkei/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/seiritsuu-pms/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/kounenki/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/shisei-nekoze/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/benpi/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/hada-kusumi-tarumi/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/hiroukan/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/afternoon-sleepiness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/ankle-stiffness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/appetite-swings/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/arched-back/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/arm-heaviness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/armpit-tightness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/back-of-knee/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/back-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/back-thigh/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/bow-legs/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/bunion-care/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/calf-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/cant-relax/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/chest-tightness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/cold-abdomen/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/cold-hands/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/collarbone-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/deskwork-fatigue/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/dizziness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/driving-fatigue/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/dry-eyes/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/dry-mouth/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/ear-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/elbow-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/face-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/finger-stiffness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/fingertip-fatigue/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/forearm-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/forgetfulness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/front-thigh/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/glute-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/groin-tightness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/hand-numbness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/heartburn/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/heavy-head/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/hip-stiffness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/hot-flush/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/intestinal-gas/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/irritability/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/jaw-stiffness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/knee-stiffness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/knock-knees/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/leg-cramp/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/leg-heaviness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/leg-weakness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/low-mood/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/low-motivation/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/lower-abdomen/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/morning-sluggish/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/morning-stiffness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/nasal-congestion/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/one-side-lowback/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/palm-fatigue/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/palpitation-awareness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/pelvic-floor/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/pelvis-heaviness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/poor-concentration/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/post-meal-bloating/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/postpartum-lowback/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/rounded-shoulders/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/sacrum-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/scalp-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/seasonal-slump/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/shallow-sleep/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/shin-fatigue/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/shoulder-blade/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/shoulder-mobility/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/side-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/sitting-lowback/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/sitting-posture/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/sole-fatigue/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/standing-fatigue/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/standing-posture/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/stiff-neck-morning/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/stomach-ache/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/stomach-heaviness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/straight-neck/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/throat-tightness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/thumb-base/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/toe-stiffness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/upper-arm-sagging/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/urinary-care/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/walking-fatigue/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/whole-body-tension/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/wrist-stiffness/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/brushing/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/dental-care/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/scratcher/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/cat-litter/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/food/</loc><lastmod>2026-11-21</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/felix-pouch/</loc><lastmod>2026-11-24</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/churu-sogo/</loc><lastmod>2026-11-24</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/katakori/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/kubikori/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/youtsuu/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/zutsuu/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/gansei-hirou/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/hie/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/mukumi/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/fumin/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/jiritsu-shinkei/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/seiritsuu-pms/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/kounenki/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/shisei-nekoze/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/benpi/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/hada-kusumi-tarumi/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/hiroukan/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/jaw-stiffness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/scalp-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/face-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/dry-eyes/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/ear-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/nasal-congestion/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/throat-tightness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/dizziness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/shoulder-blade/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/back-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/side-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/chest-tightness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/shoulder-mobility/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/stiff-neck-morning/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/arm-heaviness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/hand-numbness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/armpit-tightness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/collarbone-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/glute-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/hip-stiffness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/pelvis-heaviness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/sacrum-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/groin-tightness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/sitting-lowback/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/standing-fatigue/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/one-side-lowback/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/wrist-stiffness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/finger-stiffness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/thumb-base/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/forearm-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/elbow-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/palm-fatigue/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/upper-arm-sagging/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/cold-hands/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/fingertip-fatigue/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/knee-stiffness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/back-of-knee/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/calf-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/shin-fatigue/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/ankle-stiffness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/sole-fatigue/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/toe-stiffness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/front-thigh/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/back-thigh/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/leg-cramp/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/leg-heaviness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/bunion-care/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/morning-stiffness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/morning-sluggish/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/afternoon-sleepiness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/poor-concentration/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/cant-relax/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/irritability/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/low-mood/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/palpitation-awareness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/heavy-head/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/shallow-sleep/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/whole-body-tension/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/low-motivation/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/seasonal-slump/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/stomach-heaviness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/post-meal-bloating/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/intestinal-gas/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/lower-abdomen/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/stomach-ache/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/heartburn/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/cold-abdomen/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/appetite-swings/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/hot-flush/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/pelvic-floor/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/postpartum-lowback/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/urinary-care/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/forgetfulness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/dry-mouth/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/leg-weakness/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/arched-back/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/rounded-shoulders/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/straight-neck/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/bow-legs/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/knock-knees/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/standing-posture/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/sitting-posture/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/walking-fatigue/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/driving-fatigue/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/deskwork-fatigue/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/brushing/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/dental-care/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/scratcher/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/cat-litter/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/food/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/felix-pouch/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/pet-care/churu-sogo/</loc></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/</loc><lastmod>2026-11-26</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-1.html</loc><lastmod>2026-10-29</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-2.html</loc><lastmod>2026-10-30</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-3.html</loc><lastmod>2026-10-31</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-4.html</loc><lastmod>2026-11-01</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-5.html</loc><lastmod>2026-11-02</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-6.html</loc><lastmod>2026-11-03</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-7.html</loc><lastmod>2026-11-04</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-8.html</loc><lastmod>2026-11-05</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-9.html</loc><lastmod>2026-11-06</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-10.html</loc><lastmod>2026-11-07</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-11.html</loc><lastmod>2026-11-08</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-12.html</loc><lastmod>2026-11-09</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-13.html</loc><lastmod>2026-11-10</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-14.html</loc><lastmod>2026-11-11</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-15.html</loc><lastmod>2026-11-12</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-16.html</loc><lastmod>2026-11-13</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-17.html</loc><lastmod>2026-11-14</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-18.html</loc><lastmod>2026-11-15</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-19.html</loc><lastmod>2026-11-16</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-20.html</loc><lastmod>2026-11-17</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-21.html</loc><lastmod>2026-11-18</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-22.html</loc><lastmod>2026-11-19</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-23.html</loc><lastmod>2026-11-20</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-24.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-25.html</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-26.html</loc><lastmod>2026-11-24</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-27.html</loc><lastmod>2026-11-25</lastmod></url>
+<url><loc>https://tomyree-source.github.io/sites/selfcare-library/column/column-28.html</loc><lastmod>2026-11-26</lastmod></url>
 </urlset>
