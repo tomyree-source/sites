@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>マッサコンシェ｜天神／大名・伊崎のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="福岡市中央区にある、男性セラピストによる女性専用の予約制リラクゼーションサロンです。オイルトリートメントやタイ古式、もみほぐしなど幅広いメニューを用意していると公式サイトで案内されています。赤坂駅から徒歩4分、天神駅から…">
 <meta name="keywords" content="マッサコンシェ,天神／大名・伊崎 男性セラピスト,福岡県 男性セラピスト 女性専用">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Healing Space｜福岡市博多区・中央区・早良区・東区、糟屋郡粕屋町（出張範囲）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="Healing Spaceは、福岡県内を出張範囲とする、男性セラピストによる女性専用の出張マッサージです。ご自宅やホテル、レンタルサロンへ伺い、全身オイルのコースを中心に施術を行います。営業は火・木・土・日の限られた時間…">
 <meta name="keywords" content="Healing Space,福岡市博多区・中央区・早良区・東区、糟屋郡粕屋町（出張範囲） 男性セラピスト,福岡県 男性セラピスト 女性専用">

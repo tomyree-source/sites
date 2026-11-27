@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>イケリラ東京｜渋谷のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストによるアロマトリートメントを、渋谷店または自宅・ホテル等への出張で提供するサロンです。アロマトリートメント、リンパドレナージュ、ハワイアンロミロミ、ボディケア、ストレッチ、ドライヘッドスパ、リフレクソロジー…">
 <meta name="keywords" content="イケリラ東京,渋谷 男性セラピスト,東京都 男性セラピスト 女性専用">

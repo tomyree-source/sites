@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>癒しリフレ｜大阪府内全域（出張）／梅田・本町・心斎橋ほかのサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪の女性専用出張マッサージで、男性セラピストがご自宅やホテルへ訪問する形のサロンです。大阪府内全域への出張に対応し、営業時間は9:00～翌7:00と深夜の利用にも対応すると案内されています。メニューはボディケア、オイル…">
 <meta name="keywords" content="癒しリフレ,大阪府内全域（出張）／梅田・本町・心斎橋ほか 男性セラピスト,大阪府 男性セラピスト 女性専用">

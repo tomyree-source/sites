@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>ラ・シュエット｜草津市大路のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="滋賀県草津市大路のマンションの一室にある、女性専用のプライベートサロンです。施術歴15年の男性セラピストが、大きな手の温もりを生かしたオイルトリートメントを行います。朝8時から深夜27時まで割増なしで利用できる点も公式に…">
 <meta name="keywords" content="ラ・シュエット,草津市大路 男性セラピスト,滋賀県 男性セラピスト 女性専用">

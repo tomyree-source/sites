@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>京都レディースマッサージ｜京都市下京区（出張拠点）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="京都レディースマッサージは、京都市下京区を拠点とする女性専用の出張アロマオイルマッサージです。男性セラピストがご自宅やホテルへうかがい、60分から180分までの4コースから選べます。年中無休で11時から24時まで営業と案…">
 <meta name="keywords" content="京都レディースマッサージ,京都市下京区（出張拠点） 男性セラピスト,京都府 男性セラピスト 女性専用">

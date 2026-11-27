@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>もみほぐし高崎駅西口前店｜高崎駅西口のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="高崎駅西口から徒歩3分にある、男性セラピストによる女性のためのプライベートリラクゼーションサロンです。完全個室・完全予約制で1日2名限定と案内され、全身もみほぐしとオイルマッサージのコースがあります。セラピストは施術歴約…">
 <meta name="keywords" content="もみほぐし高崎駅西口前店,高崎駅西口 男性セラピスト,群馬県 男性セラピスト 女性専用">

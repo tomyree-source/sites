@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>イケレク｜代々木拠点出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストによる本格アロママッサージを行う、完全予約制の出張サロンです。脚・背中・腕など気になる箇所を中心に全身のアロマトリートメントを行う全身コースを用意しています。セラピストの指名も可能で、指名料は2,000円と…">
 <meta name="keywords" content="イケレク,代々木拠点出張 男性セラピスト,東京都 男性セラピスト 女性専用">

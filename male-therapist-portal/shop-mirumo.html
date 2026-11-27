@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>天使のリラク -mirumo-｜静岡市・店舗＋出張可のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="静岡市に2024年夏にオープンした、男性セラピストが施術する女性専用サロンです。当サイト限定のオイルマッサージコースを中心に案内し、出張にも対応しています。公式サイトは2026年11月に更新されており、予約は公式LINE…">
 <meta name="keywords" content="天使のリラク -mirumo-,静岡市・店舗＋出張可 男性セラピスト,静岡県 男性セラピスト 女性専用">

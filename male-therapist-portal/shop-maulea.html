@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>マウレア Maulea｜名古屋中心・出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="名古屋市内を中心に愛知県内や岐阜・三重の一部エリアへ出張する、女性専用のオイルマッサージです。あん摩マッサージ指圧師と鍼灸師の資格を持つ男性セラピストが、ご自宅やホテルでオールハンドの施術を行います。曜日によって営業終了…">
 <meta name="keywords" content="マウレア Maulea,名古屋中心・出張 男性セラピスト,愛知県 男性セラピスト 女性専用">

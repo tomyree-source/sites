@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>HITORI SALON（ヒトリサロン）｜心斎橋／南船場のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪・心斎橋／南船場にある、男性セラピストによる女性専用マッサージサロンです。国家資格保有のセラピストが、アロママッサージやストレッチ、ボディケアを組み合わせて対応すると案内されています。シャワー室も用意されており、お出…">
 <meta name="keywords" content="HITORI SALON（ヒトリサロン）,心斎橋／南船場 男性セラピスト,大阪府 男性セラピスト 女性専用">

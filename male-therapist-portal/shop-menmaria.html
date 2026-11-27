@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>品川　大井町レディースサロン マリア｜大井町のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="品川区大井町エリアの、男性セラピストによる女性専用プライベートサロンです。アロマオイルを使ったリンパドレナージュを中心に、60分から120分までのコースが用意されています。店舗での施術に加えて出張にも対応しており、都合に…">
 <meta name="keywords" content="品川　大井町レディースサロン マリア,大井町 男性セラピスト,東京都 男性セラピスト 女性専用">

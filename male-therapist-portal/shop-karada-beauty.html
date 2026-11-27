@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>カラダビューティー｜心斎橋／南船場のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪・心斎橋の南船場にある、男性セラピストによる女性専用のアロママッサージサロンです。公式サイトでは美深筋リンパトリートメントを中心に、整体やストレッチなどを組み合わせた施術が紹介されています。スタッフは有資格者と案内さ…">
 <meta name="keywords" content="カラダビューティー,心斎橋／南船場 男性セラピスト,大阪府 男性セラピスト 女性専用">

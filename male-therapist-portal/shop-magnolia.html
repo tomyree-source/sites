@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>MAGNOLIA（マグノリア）｜横浜元町のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="横浜元町、石川町駅から徒歩1分の場所にある女性専用のプライベートアロマサロンです。代表の奥山修司さんは公認心理師の国家資格を持ち、アロマトリートメントと心理カウンセリングの両面から心と身体のケアを行うと案内されています。…">
 <meta name="keywords" content="MAGNOLIA（マグノリア）,横浜元町 男性セラピスト,神奈川県 男性セラピスト 女性専用">

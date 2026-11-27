@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>MoonTed｜代々木八幡のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="代々木八幡エリアの高級マンションの一室にある、女性専用の完全個室サロンです。男性セラピストによるアロマオイルマッサージと美容整体を組み合わせた施術を行っています。1日2名限定で、施術の前後もゆったり過ごせる空間と案内され…">
 <meta name="keywords" content="MoonTed,代々木八幡 男性セラピスト,東京都 男性セラピスト 女性専用">

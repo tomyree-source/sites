@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Relaxation Salon Latte｜東京・湘南出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="東京都中央区と神奈川湘南地域を中心に、宿泊先や自宅へ伺う男性セラピストによる女性専用の出張サロンです。ホテルへの出張に対応し、ラブホテル・ファッションホテルやレンタルルームへの出張はできないと案内されています。">
 <meta name="keywords" content="Relaxation Salon Latte,東京・湘南出張 男性セラピスト,東京都 男性セラピスト 女性専用">

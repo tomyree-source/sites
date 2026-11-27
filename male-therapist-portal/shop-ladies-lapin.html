@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>レディースエステ ラパン｜大阪のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストによる女性専用サロンとして、落ち着いた完全個室で過ごせる時間を案内しているお店です。他のお客様と顔を合わせることのない完全予約制・事前予約制を掲げています。公式トップでは営業時間が11:00〜LAST（受付…">
 <meta name="keywords" content="レディースエステ ラパン,大阪 男性セラピスト,大阪府 男性セラピスト 女性専用">
