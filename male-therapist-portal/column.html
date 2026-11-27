@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>コラム｜男性セラピストナビ</title>
 <meta name="description" content="男性セラピストナビの毎日コラム。安心できるお店の選び方、地域ガイド、体の知識、施術者紹介、不安解消Q&A、セラピスト向けの集客ノウハウ、季節の読み物を毎日1本お届けします。">
 <meta name="keywords" content="男性セラピスト コラム,男性セラピスト 選び方,男性セラピスト 初めて,男性セラピスト 不安">

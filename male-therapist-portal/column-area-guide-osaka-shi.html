@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>大阪市で女性専用・男性セラピストを探すなら｜梅田・心斎橋・難波の特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="大阪市で女性専用の男性セラピストサロンを探す方へ。梅田・心斎橋・難波などエリアごとの特徴と、掲載17店から選んだ店舗紹介、料金の目安と選び方をまとめました。">
 <meta name="keywords" content="男性セラピスト 大阪市,大阪 男性セラピスト 女性専用,梅田 男性セラピスト,心斎橋 男性セラピスト,難波 男性セラピスト,大阪 オイルマッサージ 男性セラピスト">

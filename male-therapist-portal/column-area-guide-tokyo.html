@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>東京23区で女性専用・男性セラピストを探すなら｜池袋・渋谷・恵比寿の特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="東京23区で女性専用の男性セラピストサロンを探す方へ。池袋・渋谷・恵比寿・赤坂などエリアの特徴と、掲載店の紹介、店舗型と出張型の選び方をまとめました。">
 <meta name="keywords" content="男性セラピスト 東京,東京 男性セラピスト 女性専用,池袋 男性セラピスト,渋谷 男性セラピスト,恵比寿 男性セラピスト,東京 出張マッサージ 男性セラピスト">

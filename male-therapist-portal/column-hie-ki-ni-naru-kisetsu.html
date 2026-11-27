@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>冷えが気になる季節の過ごし方｜温めるケアの考え方と、冬の初めに整える習慣｜男性セラピストナビ コラム</title>
 <meta name="description" content="11月下旬、朝晩の冷え込みが増して手足の冷たさが気になる季節。温かい飲み物・入浴・服装の工夫など日常でできる温める習慣と、肩・背中をほぐす時間の過ごし方を、梅田の女性専用サロンの視点でまとめました。">
 <meta name="keywords" content="冷えが気になる 季節 過ごし方,冷え 温める ケア 冬,冷え 手足 女性専用サロン 梅田,冬の初め 冷え対策 女性">

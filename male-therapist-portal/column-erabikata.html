@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>初めての男性セラピスト、安心できるお店の選び方｜男性セラピストナビ コラム</title>
 <meta name="description" content="男性セラピストの施術が初めてで不安な方へ。公式サイトで確認できる5つのチェックポイントと、当日の流れ・配慮のされ方を、施術歴30年の運営者がまとめました。">
 <meta name="keywords" content="男性セラピスト 選び方,男性セラピスト 初めて,男性セラピスト 不安,男性セラピスト 女性専用,健全 サロン 見分け方">

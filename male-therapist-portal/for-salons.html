@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>店舗の方へ｜掲載のご案内 — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストナビへの掲載案内（店舗の方へ）。掲載は無料で、店舗ページは運営が作成し公開前にご確認いただけます。申込は店名・お店のページのURL・連絡先の3項目だけ。公式サイトがなくても、minimoやInstagramのページで申込できます。自店優遇なしの表示順も明記しています。">
 <meta name="keywords" content="男性セラピストナビ 掲載案内,男性セラピスト ポータル 掲載 無料">

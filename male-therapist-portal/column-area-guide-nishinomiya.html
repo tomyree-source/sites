@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>西宮市で女性専用・男性セラピストを探すなら｜西宮北口の特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="西宮市で女性専用の男性セラピストサロンを探す方へ。西宮北口エリアの掲載店の紹介と料金の目安、神戸・芦屋など近隣エリアを含めた探し方をまとめました。">
 <meta name="keywords" content="男性セラピスト 西宮,西宮 男性セラピスト 女性専用,西宮北口 マッサージ 男性セラピスト,兵庫県 男性セラピスト">

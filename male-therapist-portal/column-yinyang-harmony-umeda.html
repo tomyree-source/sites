@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>施術者紹介：YinYang-Harmony（梅田）｜梅田の女性専用タントラマッサージ・ヒーリングサロン｜男性セラピストナビ コラム</title>
 <meta name="description" content="梅田の女性専用サロン「YinYang-Harmony（梅田）」をご紹介。タントラマッサージ・ヒーリングの考え方、女性専用・完全予約制の安心の仕組み、料金とアクセス、初めての方が予約前に知っておきたいことをまとめました。">
 <meta name="keywords" content="YinYang-Harmony 梅田,タントラマッサージ 梅田 女性専用,梅田 ヒーリング 女性専用 男性セラピスト,梅田 タントラマッサージ 初めて">

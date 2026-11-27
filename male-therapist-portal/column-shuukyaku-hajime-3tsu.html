@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>男性セラピストが集客で最初に整えるべき3つのこと｜女性専用サロンの初めての予約につなげる準備｜男性セラピストナビ コラム</title>
 <meta name="description" content="男性セラピストの集客は、広告の前に「安心して選ばれる土台」を整えることから。経歴・資格の公開、料金と施術範囲の明示、予約の流れと安心の配慮の見える化——初めての予約につなげる3つの準備を、女性専用サロンの現場の視点で解説します。">
 <meta name="keywords" content="男性セラピスト 集客 最初に整えること,男性セラピスト 集客 女性専用サロン 初めての予約,男性セラピスト 開業 集客 準備,男性セラピスト 掲載 申込">

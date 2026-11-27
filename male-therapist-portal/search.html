@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>条件から探す｜男性セラピスト 女性専用 — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストナビの条件検索。地域・完全個室・シャワー完備・国家資格あり・出張開催などの条件と、営業中のみの絞り込みで、女性専用サロンを探せます。セラピスト一覧つき。">
 <meta name="keywords" content="男性セラピスト 条件検索,男性セラピスト 完全個室,男性セラピスト 国家資格,セラピストから探す 男性セラピスト">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>男性セラピストと女性セラピスト、受けてみて違うところ｜初めての女性専用サロンで比較する選び方｜男性セラピストナビ コラム</title>
 <meta name="description" content="初めて男性セラピストの施術を受ける前に気になる、女性セラピストとの違い。手の大きさや圧の感じ方、施術の進め方や距離感の受け取り方、どちらを選ぶときの確認ポイントを、梅田の女性専用サロンの視点でまとめました。">
 <meta name="keywords" content="男性セラピスト 女性セラピスト 違い,男性セラピスト 初めて 女性専用サロン,男性セラピスト 圧の強さ 選び方,女性セラピスト 男性セラピスト 比較 初めて">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>横浜市で女性専用・男性セラピストを探すなら｜元町・関内の特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="横浜市で女性専用の男性セラピストサロンを探す方へ。元町・関内などエリアの特徴と掲載店の紹介、神奈川県内の出張対応を含めた探し方をまとめました。">
 <meta name="keywords" content="男性セラピスト 横浜,横浜 男性セラピスト 女性専用,元町 男性セラピスト,関内 男性セラピスト,神奈川 男性セラピスト 出張">

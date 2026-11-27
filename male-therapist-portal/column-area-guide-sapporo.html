@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>札幌市で女性専用・男性セラピストを探すなら｜大通・すすきのと出張対応の特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="札幌市で女性専用の男性セラピストサロンを探す方へ。大通・すすきのエリアの特徴と、出張型中心の掲載5店の紹介、冬の移動も踏まえた選び方をまとめました。">
 <meta name="keywords" content="男性セラピスト 札幌,札幌 男性セラピスト 女性専用,すすきの 男性セラピスト,札幌 出張マッサージ 男性セラピスト,北海道 男性セラピスト">

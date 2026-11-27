@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>初めての方へ（よくある質問） — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストの施術が初めての方のよくある質問。男性セラピストと聞いて少し不安、触れられたくない部位がある場合、着替え、圧の強さ、予約方法、料金の目安に答えます。">
 <meta name="keywords" content="男性セラピスト 初めて 不安,男性セラピスト 女性専用 よくある質問">

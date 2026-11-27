@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>男性セラピストナビ｜女性専用・健全なサロンだけを掲載する男性セラピスト専門ポータル</title>
 <meta name="description" content="男性セラピストが担当する女性向けサロンの専門検索ポータル「男性セラピストナビ」。地域と条件から探せて、施術者の経歴と資格が事前に分かります。掲載は健全な施術のみの店舗に限る安心の掲載基準つき。">
 <meta name="keywords" content="男性セラピスト,男性セラピスト 女性専用,メンズセラピスト,男性セラピスト 大阪,男性セラピスト 梅田,オイルマッサージ 男性セラピスト">

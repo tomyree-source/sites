@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>名古屋市で女性専用・男性セラピストを探すなら｜栄・名駅エリアの特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="名古屋市で女性専用の男性セラピストサロンを探す方へ。栄・名駅・高岳などエリアの特徴と、掲載11店から選んだ店舗紹介、料金の目安と選び方をまとめました。">
 <meta name="keywords" content="男性セラピスト 名古屋,名古屋 男性セラピスト 女性専用,栄 男性セラピスト,名駅 男性セラピスト,名古屋 オイルマッサージ 男性セラピスト">

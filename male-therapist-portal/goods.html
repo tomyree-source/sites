@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>おすすめの本・用品 — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストナビのおすすめの本・用品。おうちでできるセルフケアの本、アロマを楽しむための本、体の仕組みを知る専門書を、テーマに合うものだけ選んで紹介します（PR）。">
 <meta name="keywords" content="セルフケア 本 おすすめ,アロマ 本,男性セラピスト おすすめ 本">

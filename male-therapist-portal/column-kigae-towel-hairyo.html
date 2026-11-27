@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>着替えやタオルはどうなっているの？男性セラピストが初めての女性のための服装・タオルワークQ&A｜女性専用サロンで確認したいポイント｜男性セラピストナビ コラム</title>
 <meta name="description" content="男性セラピストの施術を初めて受ける女性から多い「着替えやタオルはどうなっているの？」という質問にQ&Aで回答。当日の服装の選び方、お着替えのときの退室、施術中のタオルワーク、オイルのあとのシャワーまで、女性専用サロンで予約前に確認したいポイントをまとめました。">
 <meta name="keywords" content="着替え 男性セラピスト 女性専用 初めて,男性セラピスト タオル 施術着 服装,女性専用サロン 着替え タオルワーク 確認,男性セラピスト 初めて 服装 持ち物">

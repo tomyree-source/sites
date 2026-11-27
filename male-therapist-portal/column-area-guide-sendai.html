@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>仙台市で女性専用・男性セラピストを探すなら｜一番町・国分町の特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="仙台市で女性専用の男性セラピストサロンを探す方へ。一番町・国分町エリアの特徴と掲載店の紹介、出張型の探し方と選び方をまとめました。">
 <meta name="keywords" content="男性セラピスト 仙台,仙台 男性セラピスト 女性専用,仙台 出張 マッサージ 女性,国分町 男性セラピスト,宮城県 男性セラピスト">

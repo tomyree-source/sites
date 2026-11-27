@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>新潟市で女性専用・男性セラピストを探すなら｜市内・近郊への出張対応の特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="新潟市で女性専用の男性セラピストを探す方へ。市内と近郊へ出張する掲載店の紹介と料金の目安、出張型の選び方をまとめました。">
 <meta name="keywords" content="男性セラピスト 新潟,新潟 男性セラピスト 女性専用,新潟市 出張 マッサージ 女性,新潟県 男性セラピスト">
