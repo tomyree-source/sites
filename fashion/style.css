@@ -198,5 +198,12 @@ article.post.mag .mag-ng h2{color:#fff;margin-top:0}
 .mag-shop-head{margin-top:52px;border-top:3px solid var(--ink);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .mag-shop-head .en{font-family:var(--eng);font-size:30px;letter-spacing:.22em;font-weight:700}
 .mag-next{margin-top:44px;border:1px solid var(--ink);padding:20px 24px;display:block;text-decoration:none;color:var(--ink)}
+.share-box{margin:24px 0;padding:14px 0 16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.share-box .share-label{font-family:var(--eng);letter-spacing:.16em;font-size:11px;color:var(--sub);display:block;margin-bottom:10px}
+.share-btns{display:flex;flex-wrap:wrap;gap:8px}
+.share-btn{display:inline-block;padding:7px 14px;border:1.5px solid var(--ink);border-radius:999px;font-size:12px;color:var(--ink);text-decoration:none;background:transparent;cursor:pointer;line-height:1.5;font-family:var(--sans)}
+.share-btn.sb-line{border-color:#06C755;color:#049e43}
+.share-btn.sb-fb{border-color:#1877F2;color:#1877F2}
+.share-btn:hover{opacity:.72}
 .mag-next .k{font-family:var(--eng);font-size:11px;letter-spacing:.3em;color:var(--bronze);font-weight:700}
 .mag-next .t{font-family:var(--serif);font-weight:900;font-size:19px;margin-top:6px;display:block}
