@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>リラクゼーションサロン Deny（デニィ）｜甲府市天神町のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="甲府市にある、オーナー兼アロマセラピストの光一氏が一人で営むリラクゼーションサロンです。男性セラピストならではの丁寧さと力強さでリンパを流し筋肉をほぐすアロママッサージに、指圧を組み合わせた独自のトリートメントを行います…">
 <meta name="keywords" content="リラクゼーションサロン Deny（デニィ）,甲府市天神町 男性セラピスト,山梨県 男性セラピスト 女性専用">

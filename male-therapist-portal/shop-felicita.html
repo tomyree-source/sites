@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>フェリチタ 大阪店｜梅田／兎我野町のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪・梅田エリアにある、男性セラピストによる女性専用アロママッサージサロンです。スウェディッシュ式マッサージに独自の施術法を組み合わせたコースを用意しています。店舗での施術のほか、出張にも対応しています。">
 <meta name="keywords" content="フェリチタ 大阪店,梅田／兎我野町 男性セラピスト,大阪府 男性セラピスト 女性専用">

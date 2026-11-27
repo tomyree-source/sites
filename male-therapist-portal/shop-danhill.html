@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>男HILL(ダンヒル)｜南船場のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪・南船場にある、男性セラピストによるレディース専用のアロマプライベートサロンです。完全個室で、一人一人に合わせたアプローチを掲げ、全身アロマトリートメントを行っています。少人数制のためメール予約制で、営業時間は14:…">
 <meta name="keywords" content="男HILL(ダンヒル),南船場 男性セラピスト,大阪府 男性セラピスト 女性専用">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>フェリチタ 名古屋店｜栄のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="名古屋・栄エリアにある、男性セラピストによる女性専用アロママッサージ店です。フェリチタグループの店舗の一つとして公式サイトに掲載されています。">
 <meta name="keywords" content="フェリチタ 名古屋店,栄 男性セラピスト,愛知県 男性セラピスト 女性専用">

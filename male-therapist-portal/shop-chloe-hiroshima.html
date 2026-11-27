@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Chloe 〜和み〜｜広島市・出張＋個室サロンのサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="広島市を拠点に、出張と完全個室の店舗サロンの両方で受けられる男性セラピストによる女性向けアロマオイルマッサージです。リンパマッサージを取り入れたオールハンドのトリートメントを案内しています。出張は広島県内各地から岡山方面…">
 <meta name="keywords" content="Chloe 〜和み〜,広島市・出張＋個室サロン 男性セラピスト,広島県 男性セラピスト 女性専用">

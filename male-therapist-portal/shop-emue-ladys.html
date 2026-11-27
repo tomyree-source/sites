@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>エミュレディース｜名古屋・四日市エリア（愛知県・三重県への出張）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="エミュレディースは、名古屋と四日市をエリアとする、男性セラピストによる女性専用の出張マッサージです。ご自宅やホテルへセラピストが伺い、アロマオイルを用いたトリートメントを行います。基本のアロマトリートメントコースは90分…">
 <meta name="keywords" content="エミュレディース,名古屋・四日市エリア（愛知県・三重県への出張） 男性セラピスト,愛知県 男性セラピスト 女性専用">

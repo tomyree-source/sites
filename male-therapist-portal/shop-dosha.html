@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>ドーシャ｜難波（店舗）／出張は大阪府内・京都・奈良・神戸市内ほかのサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="男性スタッフによる女性専用出張マッサージで、指圧式ボディケアとハワイ式ロミロミの全身オイルトリートメントを案内しているお店です。公式メニューページでは60分6,000円から120分12,000円までのコースが、消費税・交…">
 <meta name="keywords" content="ドーシャ,難波（店舗）／出張は大阪府内・京都・奈良・神戸市内ほか 男性セラピスト,大阪府 男性セラピスト 女性専用">

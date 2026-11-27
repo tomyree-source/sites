@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Feeling Aroma｜東京・門前仲町のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="東京・江東区の女性専用プライベートサロンで、経験豊富な男性セラピストによるアロマトリートメントを提供しています。最寄り駅から徒歩3分の立地で、サロン施術のほか都内への出張サービスもあります。メニューは80分から140分ま…">
 <meta name="keywords" content="Feeling Aroma,東京・門前仲町 男性セラピスト,東京都 男性セラピスト 女性専用">

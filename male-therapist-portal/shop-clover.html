@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>CLOVER（クローバー）｜大阪府全域・出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪府全域と兵庫県の阪神地区へ出張する、男性セラピストによる女性専用のアロマサロンです。ご自宅やホテルでアロマオイルトリートメントを受けられます。アロマリンパやロングストロークなど複数のコースがあり、曜日によって営業時間…">
 <meta name="keywords" content="CLOVER（クローバー）,大阪府全域・出張 男性セラピスト,大阪府 男性セラピスト 女性専用">

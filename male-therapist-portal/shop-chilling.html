@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Chilling｜宇都宮市内・出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="宇都宮市内へ出張する、メンズセラピストによる女性専用のオイルリラクゼーションです。天然オイルを使ったオールハンドの全身トリートメントで、希望の部位や圧の強さを聞きながら進める流れを案内しています。予約や相談は公式LINE…">
 <meta name="keywords" content="Chilling,宇都宮市内・出張 男性セラピスト,栃木県 男性セラピスト 女性専用">

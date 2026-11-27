@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Bisetto ヘッド＆全身リンパマッサージサロン 恵比寿｜恵比寿のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="恵比寿駅から徒歩圏にある、ヘッドと全身のリンパマッサージを扱うサロンです。オールハンドの全身オイルリンパマッサージとホットストーンのコースがあり、時間は120分から選べます。音楽や香りなど空間づくりにもこだわったと案内さ…">
 <meta name="keywords" content="Bisetto ヘッド＆全身リンパマッサージサロン 恵比寿,恵比寿 男性セラピスト,東京都 男性セラピスト 女性専用">

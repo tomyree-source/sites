@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Calme（カルム）千葉サロン｜千葉駅／千葉中央駅のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="千葉市中央区富士見にある、男性セラピストによる女性専用・完全個室のリンパマッサージサロンです。施術歴5年で大手サロン店長経験のある男性セラピストが、カウンセリングからお見送りまでマンツーマンで担当します。アロマオイルを使…">
 <meta name="keywords" content="Calme（カルム）千葉サロン,千葉駅／千葉中央駅 男性セラピスト,千葉県 男性セラピスト 女性専用">

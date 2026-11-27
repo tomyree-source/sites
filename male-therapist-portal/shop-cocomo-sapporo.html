@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>COCOMO札幌｜札幌（出張）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="札幌市を中心に、小樽市・余市町まで対応する女性向け出張リラクゼーションサロンです。男性セラピストによるオイルリンパマッサージやボディケアを、ご自宅やホテルで受けられます。料金はセラピストのランクによって異なり、公式サイト…">
 <meta name="keywords" content="COCOMO札幌,札幌（出張） 男性セラピスト,北海道 男性セラピスト 女性専用">

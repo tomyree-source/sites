@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>フェリチタ 神戸三宮店｜三宮／中山手通のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="神戸・三宮エリアにある、男性セラピストによる女性専用アロママッサージ店です。フェリチタグループの店舗の一つで、大阪店と共通の時間制コースが案内されています。">
 <meta name="keywords" content="フェリチタ 神戸三宮店,三宮／中山手通 男性セラピスト,兵庫県 男性セラピスト 女性専用">

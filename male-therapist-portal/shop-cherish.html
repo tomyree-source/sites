@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>CHERISH（チェリッシュ）｜西宮発のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="CHERISH（チェリッシュ）は、西宮発の女性用エステとして、男性セラピストによるボディトリートメントを案内しています。公式サイトでは初回向けの割引など期間限定イベントも掲載されています。ゆったりとした癒しの時間を過ごし…">
 <meta name="keywords" content="CHERISH（チェリッシュ）,西宮発 男性セラピスト,兵庫県 男性セラピスト 女性専用">
