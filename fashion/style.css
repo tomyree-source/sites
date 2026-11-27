@@ -205,5 +205,13 @@ article.post.mag .mag-ng h2{color:#fff;margin-top:0}
 .share-btn.sb-line{border-color:#06C755;color:#049e43}
 .share-btn.sb-fb{border-color:#1877F2;color:#1877F2}
 .share-btn:hover{opacity:.72}
+.end-module{margin:26px 0 6px;border:1px solid var(--line);background:var(--paper);padding:18px 20px}
+.end-mod-head{font-family:var(--eng);letter-spacing:.16em;font-size:11px;color:var(--bronze);display:block;margin-bottom:8px}
+.end-mod-block + .end-mod-block{margin-top:14px}
+.end-mod-link{display:block;padding:7px 0;border-bottom:1px dashed var(--line);text-decoration:none;color:var(--ink);font-size:14px}
+.end-mod-link:last-child{border-bottom:none}
+.end-mod-link:hover{color:var(--bronze)}
+.cluster-note{margin:22px 0;padding:14px 16px;background:#EFE9DD;font-size:14px;line-height:1.9}
+.cluster-note a{color:var(--accent);text-decoration:underline}
 .mag-next .k{font-family:var(--eng);font-size:11px;letter-spacing:.3em;color:var(--bronze);font-weight:700}
 .mag-next .t{font-family:var(--serif);font-weight:900;font-size:19px;margin-top:6px;display:block}
