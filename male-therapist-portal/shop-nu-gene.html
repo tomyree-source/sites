@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>nu gene（ヌ ジェンヌ）｜栗東・目川のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="滋賀県栗東市にある、男性セラピストが営む女性専用のエステティックサロンです。入室から退室まで専属のセラピストが対応する完全個室の隠れ家サロンで、ロミロミやアロマトリートメント、ソフト整体などを受けられます。公式サイトでは…">
 <meta name="keywords" content="nu gene（ヌ ジェンヌ）,栗東・目川 男性セラピスト,滋賀県 男性セラピスト 女性専用">

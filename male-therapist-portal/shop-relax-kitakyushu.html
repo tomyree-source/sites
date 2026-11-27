@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>リラックス 出張整体｜北九州市内・出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="北九州市内へ出張する、男性セラピストによる整体・マッサージです。ご自宅やホテルで、体の状態や希望に合わせたオーダーメイドの施術を行うと案内されています。もみほぐし整体は男女とも利用でき、オイルマッサージは女性専用です。">
 <meta name="keywords" content="リラックス 出張整体,北九州市内・出張 男性セラピスト,福岡県 男性セラピスト 女性専用">

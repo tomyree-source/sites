@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>プライムローズ｜池袋のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="池袋を拠点とする、男性セラピストによる女性専用アロママッサージのサロンです。公式サイトのお知らせでは、今後は自宅またはホテルへの出張サービスのみを承ると案内されています。全身アロマリンパトリートメントを中心とした施術と紹…">
 <meta name="keywords" content="プライムローズ,池袋 男性セラピスト,東京都 男性セラピスト 女性専用">

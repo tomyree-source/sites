@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>rest time（レストタイム）｜博多駅前のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="rest time（レストタイム）は、福岡市博多区・博多駅近くにある、男性セラピストによる女性専用のリラクゼーションサロンで、2009年に開業しました。完全予約制の個室ルームでアロマオイルマッサージを受けられるほか、ご自…">
 <meta name="keywords" content="rest time（レストタイム）,博多駅前 男性セラピスト,福岡県 男性セラピスト 女性専用">

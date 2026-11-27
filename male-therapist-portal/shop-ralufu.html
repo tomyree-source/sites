@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Ralufu｜大阪・梅田拠点（出張）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪・梅田を拠点に、大阪、京都、神戸、奈良へ出張する女性専用のリラクゼーションです。ご自宅やホテルでオイルマッサージなどを受けられ、全コースに足裏指圧が付くと案内しています。営業は12時から深夜5時までで、深夜の利用にも…">
 <meta name="keywords" content="Ralufu,大阪・梅田拠点（出張） 男性セラピスト,大阪府 男性セラピスト 女性専用">

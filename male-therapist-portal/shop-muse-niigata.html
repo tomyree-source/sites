@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>ミューズ aroma MUSE｜新潟市内ほか・出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="新潟市内を中心に、新発田市や三条市、長岡市などへ出張する女性専用のアロママッサージです。男性セラピストがホテルやご自宅へ伺い、アロママッサージを行います。出張費無料と公式に案内されています。">
 <meta name="keywords" content="ミューズ aroma MUSE,新潟市内ほか・出張 男性セラピスト,新潟県 男性セラピスト 女性専用">

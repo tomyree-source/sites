@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Plume｜関東出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストがご自宅やホテルへ伺う、女性専用・完全予約制の出張オイルマッサージです。東京23区・東京都下・川崎・横浜を中心に関東エリアへ出張し、全身のリンパドレナージュを中心としたコースを用意しています。出張費は東京2…">
 <meta name="keywords" content="Plume,関東出張 男性セラピスト,東京都 男性セラピスト 女性専用">

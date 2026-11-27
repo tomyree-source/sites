@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>RICH AROMA（リッチアロマ）沖縄｜那覇市ほか沖縄県内（出張）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="沖縄県内で出張施術を行う、男性セラピストによる女性専用のアロマオイルマッサージ店です。ご自宅やホテルへ訪問し、アロママッサージやリンパドレナージュ、もみほぐし、ストレッチなど多彩なコースを提供しています。24時間営業で、…">
 <meta name="keywords" content="RICH AROMA（リッチアロマ）沖縄,那覇市ほか沖縄県内（出張） 男性セラピスト,沖縄県 男性セラピスト 女性専用">

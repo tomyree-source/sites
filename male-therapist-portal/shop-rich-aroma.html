@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>RICH AROMA（リッチアロマ）｜大宮拠点・出張（埼玉ほか）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="女性専用の出張アロママッサージ店で、ご自宅やホテルへ男性セラピストが訪問します。公式サイトではアロママッサージのほか、もみほぐしやストレッチ、ヘッドマッサージなど複数のコースが案内されています。24時間利用できるとされて…">
 <meta name="keywords" content="RICH AROMA（リッチアロマ）,大宮拠点・出張（埼玉ほか） 男性セラピスト,埼玉県 男性セラピスト 女性専用">

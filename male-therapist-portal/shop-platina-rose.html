@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>プラチナローズ｜池袋・出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="Rose-Groupの、男性セラピストによる女性専用の出張アロマリラクゼーションです。都内23区と近郊の自宅やホテルへセラピストを派遣する形と案内されています。カウンセリングから一人ひとりに合わせた施術・接客を行うとして…">
 <meta name="keywords" content="プラチナローズ,池袋・出張 男性セラピスト,東京都 男性セラピスト 女性専用">

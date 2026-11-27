@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>オイルマッサージ博多｜清川のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="福岡市中央区清川にある、女性専門のオイルマッサージ店です。マッサージ講師も務める男性セラピストが対応し、ほぐしとオイルマッサージを組み合わせて施術すると案内されています。コースは30分と45分の短時間設定で、毎日14時か…">
 <meta name="keywords" content="オイルマッサージ博多,清川 男性セラピスト,福岡県 男性セラピスト 女性専用">

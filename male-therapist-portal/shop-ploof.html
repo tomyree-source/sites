@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Ploof（プルーフ）｜心斎橋・四ツ橋／大阪市内出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪市中央区のマンションの一室で営業する、男性セラピストによる女性専用の個室サロンです。四ツ橋駅から徒歩2～3分で、大阪市内への出張にも対応しています。オールハンドのアロマオイルトリートメントを、事前のカウンセリングシー…">
 <meta name="keywords" content="Ploof（プルーフ）,心斎橋・四ツ橋／大阪市内出張 男性セラピスト,大阪府 男性セラピスト 女性専用">

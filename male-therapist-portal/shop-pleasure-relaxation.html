@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Pleasure Relaxation｜東京拠点・関東（出張）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストによる出張型の女性専用アロママッサージサロンで、関東エリアを中心にご自宅やホテルへ訪問します。全身を中心にケアするフルコースから、仰向けも含めた贅沢コースまで、時間別のコースが用意されています。営業時間は1…">
 <meta name="keywords" content="Pleasure Relaxation,東京拠点・関東（出張） 男性セラピスト,東京都 男性セラピスト 女性専用">
