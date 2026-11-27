@@ -1937,6 +1937,38 @@ if (prefSel && grid) {
 })();
 </script>
 <script>
+// 送客計測（GA4）: 教室ポータル（schools.html）専用。
+// 教室の公式サイトなど外部リンクへの遷移を outbound_click で送る。
+// 方式は Simple Yoga Life / キフィの outbound_click 実装に合わせた
+// （クリック委譲リスナー1本、外部リンク＝自ホスト以外という判定、
+// パラメータは site_id / link_url / page_path）。
+// 教室カードの公式サイトリンク（.site-link）はJSで動的生成されるため
+// 属性付与では拾えず、委譲リスナーで受ける。教室名は .site-link の
+// テキスト（=教室名）から取り、school パラメータで送る
+// （キフィの shop パラメータに相当する補助識別子）。
+(function () {
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) return;
+    var u;
+    try { u = new URL(a.href, location.href); } catch (err) { return; }
+    if (u.protocol !== "http:" && u.protocol !== "https:") return;
+    if (u.hostname === location.hostname) return;
+    if (typeof window.gtag !== "function") return;
+    var school = "";
+    if (a.classList && a.classList.contains("site-link")) {
+      school = (a.textContent || "").replace(/\s+/g, " ").trim().slice(0, 80);
+    }
+    window.gtag("event", "outbound_click", {
+      site_id: "belly-dance",
+      link_url: a.href,
+      page_path: location.pathname,
+      school: school
+    });
+  });
+})();
+</script>
+<script>
 // 分割ページ用: 単一ファイル用ルーターが付けた hidden を解除し、以後も維持する
 (function () {
   "use strict";
