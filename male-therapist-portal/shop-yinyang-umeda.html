@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>YinYang-Harmony（梅田）｜大阪府のタントラマッサージ — 男性セラピストナビ</title>
 <meta name="description" content="YinYang-Harmony（梅田）の店舗詳細。施術は施術歴30年の男性セラピスト平賀伸人が担当。タントラマッサージ・ヒーリング 90分15,000円／120分20,000円／150分25,000円、10:00〜20:00、完全予約制。">
 <meta name="keywords" content="YinYang-Harmony,梅田 男性セラピスト 女性専用,タントラマッサージ 梅田">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>アロマトリートメントサロン 夢香｜ユーカリが丘のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="佐倉市ユーカリが丘にある、男性セラピストによる女性専用・完全予約制のアロマトリートメントサロンです。体調や好みに合わせて精油をブレンドし、筋肉へのアプローチを合わせた独自のトリートメントが案内されています。セラピストはメ…">
 <meta name="keywords" content="アロマトリートメントサロン 夢香,ユーカリが丘 男性セラピスト,千葉県 男性セラピスト 女性専用">

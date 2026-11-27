@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>掲載プラン・利用条件（店舗の方へ） — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストナビの掲載プランと利用条件。無料掲載と優先掲載プラン（月額1,000円）、送客手数料（来店1件あたりの定額制）、掲載基準と掲載停止の条件をまとめています。">
 <meta name="keywords" content="男性セラピストナビ 掲載プラン,男性セラピストナビ 送客手数料">

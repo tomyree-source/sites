@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>YinYang-Harmony 東京｜東京都のタントラマッサージ（出張開催準備中） — 男性セラピストナビ</title>
 <meta name="description" content="YinYang-Harmony 東京の店舗詳細。出張開催を準備中のタントラマッサージ・ヒーリングサロン。施術は施術歴30年の男性セラピスト平賀伸人が出張で担当。90分15,000円／120分20,000円／150分25,000円（開催時の予定）、女性専用。">
 <meta name="keywords" content="YinYang-Harmony 東京,東京都 男性セラピスト 女性専用,タントラマッサージ 東京都">

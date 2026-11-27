@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>安心の掲載基準 — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストナビの掲載基準。男性セラピストが担当すること、健全な施術のみ、施術範囲・料金・営業時間の明示、女性客への配慮、効能の断定表現の禁止などを掲載の条件にしています。">
 <meta name="keywords" content="男性セラピストナビ 掲載基準,男性セラピスト 健全">
