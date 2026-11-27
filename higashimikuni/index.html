@@ -269,6 +269,8 @@ details.faq summary{cursor:pointer;font-weight:700;padding:12px 0;font-size:15.5
 details.faq p{margin:0 0 14px;color:var(--ink2);font-size:14.5px}
 /* column / article */
 .col-card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;text-decoration:none;color:var(--ink)}
+#colGrid:not(.open) .col-card:nth-of-type(n+9){display:none}
+#colToggle{font:inherit;background:var(--surface);color:var(--ink)}
 .col-card:hover{border-color:var(--line2)}
 .col-card .date{font-size:12.5px;color:var(--muted)}
 .col-card h3{margin:6px 0 8px;font-size:19px;line-height:1.5;color:var(--ink)}
@@ -622,7 +624,7 @@ footer b{color:var(--ink)}
 <div class="wrap">
 <p class="kicker">COLUMN</p>
 <h2 class="sec serif" data-i18n="colTitle">お役立ちコラム</h2>
-<div class="cols" style="margin-bottom:18px">
+<div class="cols" id="colGrid" style="margin-bottom:18px">
 <a class="col-card" href="#/article/fuyu-kansou-me-tsukare">
 <span class="date">2026年11月27日</span>
 <h3>東三国で冬の乾燥・冷え込みの始まりに気になる目の疲れ感｜男性の要因整理とセルフケア、受診の目安</h3>
@@ -864,7 +866,7 @@ footer b{color:var(--ink)}
 <span class="more" data-i18n="colMore">記事を読む →</span>
 </a>
 </div>
-<div><a class="btn btn-dark" href="assets/blog.html" data-i18n="colAllBtn">コラム一覧を見る</a></div>
+<div><button type="button" class="btn" id="colToggle" style="margin-right:10px;border-color:var(--line)">過去のコラムを広げる</button><a class="btn btn-dark" href="assets/blog.html" data-i18n="colAllBtn">コラム一覧を見る</a></div>
 </div>
 </section>
 
@@ -8050,5 +8052,6 @@ a.addEventListener('click',function(){ closeFab(false); });
 window.addEventListener('hashchange',function(){ closeFab(false); });
 })();
 </script>
+<script>document.getElementById('colToggle').addEventListener('click',function(){var g=document.getElementById('colGrid');var open=g.classList.toggle('open');this.textContent=open?'コラムを閉じる':'過去のコラムを広げる';});</script>
 </body>
 </html>
