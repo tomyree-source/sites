@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>アロマリンパオイルマッサージ　90分　¥11,000<br>アロマリンパオイルマッサージ　120分　¥14,000<br>アロマリンパオイルマッサージ（ご新規様）　90分　¥6,500<br>アロマリンパオイルマッサージ（ご新規様）　120分　¥8,000<br>オーダーメイド　90分　¥11,000<br>オーダーメイド　120分　¥14,000</td></tr><tr><th>営業時間</th><td>9:00～21:00（受付終了 17:00）</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>〒663-8201 西宮市田代町11-14-1F</td></tr><tr><th>アクセス</th><td>西宮北口駅 徒歩6分／西宮ガーデンズ 徒歩2分</td></tr><tr><th>最寄り駅</th><td>阪急西宮北口駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>完全個室</span><span>完全予約制</span><span>国家資格者による施術</span><span>施術歴20年</span><span>店舗型・路面店のプライベートサロン</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://acuchura.net/male-therapist/" target="_blank" rel="noopener">https://acuchura.net/male-therapist/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>アロマリンパオイルマッサージ　90分　¥11,000<br>アロマリンパオイルマッサージ　120分　¥14,000<br>アロマリンパオイルマッサージ（ご新規様）　90分　¥6,500<br>アロマリンパオイルマッサージ（ご新規様）　120分　¥8,000<br>オーダーメイド　90分　¥11,000<br>オーダーメイド　120分　¥14,000</td></tr><tr><th>営業時間</th><td>9:00～21:00（受付終了 17:00）</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>〒663-8201 西宮市田代町11-14-1F</td></tr><tr><th>アクセス</th><td>西宮北口駅 徒歩6分／西宮ガーデンズ 徒歩2分</td></tr><tr><th>最寄り駅</th><td>阪急西宮北口駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>完全個室</span><span>完全予約制</span><span>国家資格者による施術</span><span>施術歴20年</span><span>店舗型・路面店のプライベートサロン</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://acuchura.net/male-therapist/" target="_blank" rel="noopener">https://acuchura.net/male-therapist/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/2lKJ10k" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

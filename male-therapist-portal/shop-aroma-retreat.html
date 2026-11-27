@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>オイルトリートメント 90分　12,000円<br>オイルトリートメント 120分　16,000円<br>オイルトリートメント 150分　19,000円</td></tr><tr><th>営業時間</th><td>15:00～翌3:00</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>埼玉県さいたま市（店舗はございません／出張サービスのみ）</td></tr><tr><th>アクセス</th><td>さいたま市や埼玉県南部を中心にご自宅やホテルへ出張。基準地点は大宮駅。さいたま市・川口市・戸田市・蕨市は交通費無料</td></tr><tr><th>最寄り駅</th><td>大宮駅（基準地点）</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>出張対応</span><span>男性セラピスト</span><span>完全予約制</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://aroma-retreat.com/" target="_blank" rel="noopener">https://aroma-retreat.com/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>オイルトリートメント 90分　12,000円<br>オイルトリートメント 120分　16,000円<br>オイルトリートメント 150分　19,000円</td></tr><tr><th>営業時間</th><td>15:00～翌3:00</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>埼玉県さいたま市（店舗はございません／出張サービスのみ）</td></tr><tr><th>アクセス</th><td>さいたま市や埼玉県南部を中心にご自宅やホテルへ出張。基準地点は大宮駅。さいたま市・川口市・戸田市・蕨市は交通費無料</td></tr><tr><th>最寄り駅</th><td>大宮駅（基準地点）</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>出張対応</span><span>男性セラピスト</span><span>完全予約制</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://aroma-retreat.com/" target="_blank" rel="noopener">https://aroma-retreat.com/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://www.instagram.com/aromaretreatig/" target="_blank" rel="noopener">Instagram</a> ／ <a class="sns-link" href="https://x.com/AromaRetreat" target="_blank" rel="noopener">X</a> ／ <a class="sns-link" href="https://lin.ee/JIAbz0z" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

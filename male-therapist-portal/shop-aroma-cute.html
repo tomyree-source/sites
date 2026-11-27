@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>営業時間</th><td>13:30～24:00（新規は19:30受付終了、時間外はLINEにて相談可と公式に記載）</td></tr><tr><th>定休日</th><td>日曜～火曜、他は不定休（時間外・定休日リクエスト可、臨時営業・休業ありと公式に記載）</td></tr><tr><th>住所</th><td>熊本県熊本市西区春日4丁目27-25 SOHO熊本駅B-1</td></tr><tr><th>アクセス</th><td>JR熊本駅 アミュ近く、熊本市西区春日と公式に記載</td></tr><tr><th>最寄り駅</th><td>JR熊本駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>バリニーズアロママッサージと公式に記載</span><span>アロマ（精油）を選べることと公式に記載</span><span>しっかりとした圧を掲げている</span><span>支払いは現金のほかPayPay、楽天ペイ、クレジットカード、交通系ICが利用可と公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://aromacas.jp/" target="_blank" rel="noopener">https://aromacas.jp/</a></td></tr>
+      <tr><th>営業時間</th><td>13:30～24:00（新規は19:30受付終了、時間外はLINEにて相談可と公式に記載）</td></tr><tr><th>定休日</th><td>日曜～火曜、他は不定休（時間外・定休日リクエスト可、臨時営業・休業ありと公式に記載）</td></tr><tr><th>住所</th><td>熊本県熊本市西区春日4丁目27-25 SOHO熊本駅B-1</td></tr><tr><th>アクセス</th><td>JR熊本駅 アミュ近く、熊本市西区春日と公式に記載</td></tr><tr><th>最寄り駅</th><td>JR熊本駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>バリニーズアロママッサージと公式に記載</span><span>アロマ（精油）を選べることと公式に記載</span><span>しっかりとした圧を掲げている</span><span>支払いは現金のほかPayPay、楽天ペイ、クレジットカード、交通系ICが利用可と公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://aromacas.jp/" target="_blank" rel="noopener">https://aromacas.jp/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/7Jtj5L7" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

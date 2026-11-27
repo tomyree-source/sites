@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>アクセス</th><td>宮城・仙台への出張対応</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性向け</span><span>出張対応</span><span>男性セラピスト</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://aromadetente.wixsite.com/aroma-detente" target="_blank" rel="noopener">https://aromadetente.wixsite.com/aroma-detente</a></td></tr>
+      <tr><th>アクセス</th><td>宮城・仙台への出張対応</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性向け</span><span>出張対応</span><span>男性セラピスト</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://aromadetente.wixsite.com/aroma-detente" target="_blank" rel="noopener">https://aromadetente.wixsite.com/aroma-detente</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://twitter.com/AromaDetente" target="_blank" rel="noopener">X</a> ／ <a class="sns-link" href="https://www.facebook.com/satoshi.takahashi.77582/" target="_blank" rel="noopener">Facebook</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

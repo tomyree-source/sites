@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>オイルマッサージ 90分　10,000円<br>オイルマッサージ 120分　14,000円<br>オイルマッサージ 150分　18,000円<br>リンパ集中コース 90分　12,000円<br>リンパ集中コース 120分　16,000円<br>リンパ集中コース 150分　20,000円</td></tr><tr><th>営業時間</th><td>10:00～22:00</td></tr><tr><th>住所</th><td>加古川市役所付近にルームあり（詳細住所は予約後にお伝えすると公式に記載）</td></tr><tr><th>アクセス</th><td>ルームは加古川市役所付近、駐車場完備。出張は姫路市、高砂市、加古川市、明石市、加古郡など（出張費1000円地域）、たつの市、相生市、三木市、小野市、加西市（出張費2000円地域）と公式に記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性スタッフ</span><span>完全個室ルーム＋出張</span><span>オイルマッサージ</span><span>リンパマッサージ</span><span>駐車場完備</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://www.aromajewel.net/" target="_blank" rel="noopener">https://www.aromajewel.net/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>オイルマッサージ 90分　10,000円<br>オイルマッサージ 120分　14,000円<br>オイルマッサージ 150分　18,000円<br>リンパ集中コース 90分　12,000円<br>リンパ集中コース 120分　16,000円<br>リンパ集中コース 150分　20,000円</td></tr><tr><th>営業時間</th><td>10:00～22:00</td></tr><tr><th>住所</th><td>加古川市役所付近にルームあり（詳細住所は予約後にお伝えすると公式に記載）</td></tr><tr><th>アクセス</th><td>ルームは加古川市役所付近、駐車場完備。出張は姫路市、高砂市、加古川市、明石市、加古郡など（出張費1000円地域）、たつの市、相生市、三木市、小野市、加西市（出張費2000円地域）と公式に記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性スタッフ</span><span>完全個室ルーム＋出張</span><span>オイルマッサージ</span><span>リンパマッサージ</span><span>駐車場完備</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://www.aromajewel.net/" target="_blank" rel="noopener">https://www.aromajewel.net/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/vvxRtNZ" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

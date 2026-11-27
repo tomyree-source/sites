@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>アロマトリートメント 70分　9,000円<br>アロマトリートメント 100分　12,000円</td></tr><tr><th>営業時間</th><td>13:00～23:30</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>アクセス</th><td>提携サロン「Salon色香 愛媛本店」での案内（ルーム番号は予約当日に連絡）。松山市内中心部の一部エリアでは出張サービスも受付</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト選択可</span><span>アロマトリートメント</span><span>オイルマッサージ</span><span>出張可</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://aromanoma.jp/" target="_blank" rel="noopener">https://aromanoma.jp/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>アロマトリートメント 70分　9,000円<br>アロマトリートメント 100分　12,000円</td></tr><tr><th>営業時間</th><td>13:00～23:30</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>アクセス</th><td>提携サロン「Salon色香 愛媛本店」での案内（ルーム番号は予約当日に連絡）。松山市内中心部の一部エリアでは出張サービスも受付</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト選択可</span><span>アロマトリートメント</span><span>オイルマッサージ</span><span>出張可</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://aromanoma.jp/" target="_blank" rel="noopener">https://aromanoma.jp/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/s1kbVrs" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>
