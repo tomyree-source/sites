@@ -405,7 +405,7 @@
         border-radius: 16px; padding: 14px; margin-top: 26px;
         box-shadow: 0 4px 14px rgba(46,74,56,.06);
       }
-      .cat-card img { width: 108px; height: 108px; object-fit: cover; object-position: center 22%; border-radius: 12px; flex: none; }
+      .cat-card img { width: 108px; height: 108px; object-fit: cover; object-position: center 5%; border-radius: 12px; flex: none; }
       .cat-card h3 { font-size: 16.5px; margin: 0 0 4px; }
       .cat-card p { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
       @media (min-width: 760px) {
@@ -568,6 +568,15 @@
       .deco-cat.flow-cat { width: 118px; height: 116px; right: 4px; top: 34px; opacity: .06; }
       .deco-cat.faq-cat { width: 138px; height: 135px; left: 4px; bottom: 14px; opacity: .05; }
       .deco-cat.footer-cat { width: 176px; height: 172px; right: 10px; bottom: 6px; color: #e9e2cd; opacity: .08; }
+      /* worries cat: at widths where the content column reaches the right
+         edge, the large bottom-right placement would slide the cat's head
+         behind the last (full-width, solid) worry card. Shrink it into the
+         open strip below the list (wave margin + wave) so the whole cat,
+         face included, stays visible. Wide screens keep the large size,
+         where it sits clear of the centered column. */
+      @media (max-width: 1349px) {
+        .deco-cat.worries-cat { width: 102px; height: 100px; bottom: 4px; }
+      }
       .paw-trail { position: absolute; z-index: 0; pointer-events: none; display: flex; gap: 13px; color: var(--gold); }
       .paw-trail svg { width: 16px; height: 15px; flex: none; }
       .paw-trail svg:nth-child(1) { transform: translateY(6px) rotate(-16deg); opacity: .45; }
@@ -592,27 +601,38 @@
 
       /* paw prints: walk-in animation — each print fades in one after
          another with a slight scale, lingers, then fades out together.
+         Delays are assigned in reverse layout order, so the prints appear
+         from the bottom of each trail upward: in the vertical hero trail
+         the lowest print lands first and the steps climb up; in the
+         horizontal trails and dividers the sequence likewise runs from
+         the last (lowest-ending) print back to the first. Each location
+         keeps its original set of delays (same rhythm and spacing), only
+         the order within the group is flipped.
          Peak opacity reuses the static per-print opacity via --paw-peak,
          and the independent `scale` property keeps the existing
          translate/rotate positioning untouched. */
       .paw-trail svg, .paw-divider svg { animation: paw-step 5.6s ease-in-out infinite; }
-      .paw-trail svg:nth-child(1), .paw-divider svg:nth-child(1) { --paw-peak: .45; animation-delay: 0s; }
-      .paw-trail svg:nth-child(2), .paw-divider svg:nth-child(2) { --paw-peak: .65; animation-delay: .55s; }
-      .paw-trail svg:nth-child(3), .paw-divider svg:nth-child(3) { --paw-peak: .85; animation-delay: 1.1s; }
-      .paw-trail svg:nth-child(4), .paw-divider svg:nth-child(4) { --paw-peak: 1; animation-delay: 1.65s; }
-      .paw-divider svg:nth-child(5) { --paw-peak: .8; animation-delay: 2.2s; }
+      .paw-trail svg:nth-child(1), .paw-divider svg:nth-child(1) { --paw-peak: .45; animation-delay: 1.65s; }
+      .paw-trail svg:nth-child(2), .paw-divider svg:nth-child(2) { --paw-peak: .65; animation-delay: 1.1s; }
+      .paw-trail svg:nth-child(3), .paw-divider svg:nth-child(3) { --paw-peak: .85; animation-delay: .55s; }
+      .paw-trail svg:nth-child(4), .paw-divider svg:nth-child(4) { --paw-peak: 1; animation-delay: 0s; }
+      .paw-divider svg:nth-child(1) { animation-delay: 2.2s; }
+      .paw-divider svg:nth-child(2) { animation-delay: 1.65s; }
+      .paw-divider svg:nth-child(3) { animation-delay: 1.1s; }
+      .paw-divider svg:nth-child(4) { animation-delay: .55s; }
+      .paw-divider svg:nth-child(5) { --paw-peak: .8; animation-delay: 0s; }
       .paw-trail.pt-price svg { animation-delay: .9s; }
-      .paw-trail.pt-price svg:nth-child(2) { animation-delay: 1.45s; }
-      .paw-trail.pt-price svg:nth-child(3) { animation-delay: 2s; }
-      .paw-trail.pt-price svg:nth-child(4) { animation-delay: 2.55s; }
+      .paw-trail.pt-price svg:nth-child(1) { animation-delay: 2.55s; }
+      .paw-trail.pt-price svg:nth-child(2) { animation-delay: 2s; }
+      .paw-trail.pt-price svg:nth-child(3) { animation-delay: 1.45s; }
       .paw-trail.pt-owner svg { animation-delay: 1.8s; }
-      .paw-trail.pt-owner svg:nth-child(2) { animation-delay: 2.35s; }
-      .paw-trail.pt-owner svg:nth-child(3) { animation-delay: 2.9s; }
-      .paw-trail.pt-owner svg:nth-child(4) { animation-delay: 3.45s; }
+      .paw-trail.pt-owner svg:nth-child(1) { animation-delay: 3.45s; }
+      .paw-trail.pt-owner svg:nth-child(2) { animation-delay: 2.9s; }
+      .paw-trail.pt-owner svg:nth-child(3) { animation-delay: 2.35s; }
       .paw-trail.pt-footer svg { animation-delay: 2.7s; }
-      .paw-trail.pt-footer svg:nth-child(2) { animation-delay: 3.25s; }
-      .paw-trail.pt-footer svg:nth-child(3) { animation-delay: 3.8s; }
-      .paw-trail.pt-footer svg:nth-child(4) { animation-delay: 4.35s; }
+      .paw-trail.pt-footer svg:nth-child(1) { animation-delay: 4.35s; }
+      .paw-trail.pt-footer svg:nth-child(2) { animation-delay: 3.8s; }
+      .paw-trail.pt-footer svg:nth-child(3) { animation-delay: 3.25s; }
       @keyframes paw-step {
         0% { opacity: 0; scale: .82; }
         12% { opacity: var(--paw-peak, 1); scale: 1; }
@@ -638,8 +658,12 @@
       }
       footer .wrap { position: relative; z-index: 1; }
       @media (max-width: 759px) {
-        .deco-cat.worries-cat { width: 108px; height: 106px; bottom: 58px; }
+        .deco-cat.worries-cat { width: 100px; height: 98px; bottom: 4px; }
         .deco-cat.flow-cat { width: 92px; height: 90px; top: 22px; }
+        /* faq cat: at the bottom-left its head can slip behind the closing
+           reservation buttons on narrow screens; move it to the empty
+           top-right of the band, beside the heading, face fully visible. */
+        .deco-cat.faq-cat { left: auto; right: 4px; bottom: auto; top: 18px; width: 104px; height: 102px; }
         .deco-cat.footer-cat { width: 128px; height: 125px; }
       }
 
