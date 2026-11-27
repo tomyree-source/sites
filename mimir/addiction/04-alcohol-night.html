@@ -81,6 +81,16 @@ a{color:#14524C}
 .pc-reserve{display:none}
 @media(min-width:900px){.reserve-bar{display:none}.pc-reserve{display:flex;position:fixed;right:0;top:38%;z-index:80;background:#0B3330;color:#EAF3EF;text-decoration:none;font-family:"Cormorant Garamond",serif;letter-spacing:.34em;font-size:.78rem;padding:1.1rem .55rem;border-radius:12px 0 0 12px;writing-mode:vertical-rl}}
 </style>
+<style data-shb-css>
+.shb-wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0;padding:12px 0;border-top:1px solid rgba(140,140,140,.35);border-bottom:1px solid rgba(140,140,140,.35)}
+.shb-label{font-size:12px;letter-spacing:.08em;opacity:.75;margin-right:2px}
+.shb-btn{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;line-height:1;padding:8px 13px;border-radius:999px;border:1px solid #cfd4d8;background:#fff;color:#222;text-decoration:none;cursor:pointer;font-family:inherit}
+.shb-btn:hover{opacity:.85}
+.shb-x{border-color:#222;color:#111}
+.shb-line{border-color:#06c755;color:#04883a}
+.shb-fb{border-color:#1877f2;color:#1463cc}
+.shb-copy{border-color:#9aa3a8;color:#444}
+</style>
 </head><body>
 <div class="notice sans">近日開業予定 ― 現在、開業準備中です。予約受付の開始はLINE公式アカウントでお知らせします</div>
 <header><div class="logo">耳ツボ専門店ミミル<small>MIMIR　UMEDA</small></div><div class="hinfo sans">完全予約制／男女可<br>大阪・梅田（レンタルサロンACE梅田内）</div></header>
@@ -88,6 +98,13 @@ a{color:#14524C}
 <div class="hero"><img src="../assets/eyecatch-04.jpg" alt="夜に飲みたくなる気持ちを落ち着かせる方法｜耳ツボと夜の過ごし方"></div>
 <main>
 <h1>夜に飲みたくなる気持ちを、落ち着かせる方法</h1>
+<div class="shb-wrap" data-shb-block="1">
+<span class="shb-label">この記事をシェア</span>
+<a class="shb-btn shb-x" data-shb="x" target="_blank" rel="noopener">Xでシェア</a>
+<a class="shb-btn shb-line" data-shb="line" target="_blank" rel="noopener">LINEで送る</a>
+<a class="shb-btn shb-fb" data-shb="fb" target="_blank" rel="noopener">Facebookでシェア</a>
+<button type="button" class="shb-btn shb-copy" data-shb="copy">リンクをコピー</button>
+</div>
 <p class="lead">昼間は平気なのに、夕方になると落ち着かなくなり、夜には「一杯だけ」が頭から離れない。飲酒欲求には波があり、多くの方にとって一番大きな波は夜に来ます。このページでは、その波の越え方を具体的に紹介します。</p>
 <div class="promise"><b>お約束</b>：当店は医療機関ではありません。依存症の診断・治療は行わず、「耳ツボで治る」とも言いません。当店のケアは回復を支える補助的なものです。通院や自助グループと並行してご利用いただけます。</div>
 <section><h2><span class="en">WAVE</span>なぜ夜に波が来るのか</h2><p>飲酒が習慣になっていると、「仕事が終わった」「夕食の時間」「風呂上がり」といった日常の合図と飲酒が結びつきます。脳はその合図を受けると自動的に飲む準備を始めるため、気持ちの波は合図の直後に強くなります。逆に言えば、合図と波のピークは長くは続きません。強い欲求も、対処すれば10〜20分ほどで弱まっていくとされます。</p></section>
@@ -103,6 +120,13 @@ a{color:#14524C}
 <div class="cta"><a href="https://lin.ee/QCwGzpu" target="_blank" rel="noopener" style="display:inline-block;background:#06c755;color:#fff;padding:.85rem 2.2rem;border-radius:999px;font-size:.95rem;text-decoration:none;font-weight:700">LINEで友だち追加（開業のお知らせを受け取る）</a>
 <p class="note">耳ツボ専門店ミミル 梅田｜レンタルサロンACE梅田内（大阪市北区堂山町12-5）／完全予約制・男女可／耳ツボ施術40分 5,000円</p></div>
 </main>
+<div class="shb-wrap" data-shb-block="1">
+<span class="shb-label">この記事をシェア</span>
+<a class="shb-btn shb-x" data-shb="x" target="_blank" rel="noopener">Xでシェア</a>
+<a class="shb-btn shb-line" data-shb="line" target="_blank" rel="noopener">LINEで送る</a>
+<a class="shb-btn shb-fb" data-shb="fb" target="_blank" rel="noopener">Facebookでシェア</a>
+<button type="button" class="shb-btn shb-copy" data-shb="copy">リンクをコピー</button>
+</div>
 <footer>耳ツボ専門店ミミル 梅田（MIMIR）<br>本ページの内容は医療行為・治療の案内ではありません。依存症でお困りの場合は、専門医療機関・相談機関へご相談ください</footer>
 
 <!-- renewal-chrome-v1 -->
@@ -125,5 +149,15 @@ a{color:#14524C}
 var rnBtn=document.getElementById('menuBtn'),rnPanel=document.getElementById('menuPanel');
 rnBtn.addEventListener('click',function(){rnPanel.classList.toggle('open');});
 rnPanel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){rnPanel.classList.remove('open');});});
+</script>
+<script data-shb-js>
+(function(){var u=location.href,t=document.title;
+function fire(m){if(window.gtag){gtag('event','share_click',{method:m});}}
+document.querySelectorAll('[data-shb]').forEach(function(el){var m=el.getAttribute('data-shb');
+if(m==='x'){el.href='https://twitter.com/intent/tweet?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(u);el.addEventListener('click',function(){fire('x');});}
+else if(m==='line'){el.href='https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(u);el.addEventListener('click',function(){fire('line');});}
+else if(m==='fb'){el.href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(u);el.addEventListener('click',function(){fire('facebook');});}
+else if(m==='copy'){el.addEventListener('click',function(){fire('copy');if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(function(){el.textContent='コピーしました';setTimeout(function(){el.textContent='リンクをコピー';},2000);},function(){window.prompt('URLをコピーしてください',u);});}else{window.prompt('URLをコピーしてください',u);}});}
+});})();
 </script>
 </body></html>
