@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0V6GQSZV7F"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0V6GQSZV7F');
-document.addEventListener('click',function(e){var a=e.target.closest('a[data-out]');if(a){gtag('event','outbound_click',{site_id:'kyphi',shop:a.dataset.out,area:a.dataset.area||''});}});
+document.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a)return;try{var u=new URL(a.href,location.href);if(u.hostname!==location.hostname){gtag('event','outbound_click',{site_id:'kyphi',link_url:a.href,page_path:location.pathname,shop:a.dataset.out||'',area:a.dataset.area||''});}}catch(_ ){}});
 </script><style>
 :root{--night:#1e2a23;--night2:#26362c;--cream:#f3eee1;--cream2:#ece4cf;--gold:#b9975f;--gold2:#8a6d3b;--gold-l:#d3b57e;--ink:#2c2a24;--ink-soft:#6f6a5c;--line-d:rgba(185,151,95,.35);--line-l:#ddd2b8;--ease:cubic-bezier(0.16,1,0.3,1)}
 *{box-sizing:border-box;margin:0;padding:0}
