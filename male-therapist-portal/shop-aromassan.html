@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>出張マッサージ マッサン｜大阪・関西（出張）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪発の出張型マッサージで、30代の男性セラピストがご自宅や宿泊先へ伺います。オイルマッサージコースは女性専用で、大阪を中心に兵庫・奈良・京都で出張対応しています。カップル・ご夫婦での利用も可能です。">
 <meta name="keywords" content="出張マッサージ マッサン,大阪・関西（出張） 男性セラピスト,大阪府 男性セラピスト 女性専用">

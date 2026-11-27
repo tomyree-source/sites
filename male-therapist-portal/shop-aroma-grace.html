@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>アロマグレイス東京店｜東京（出張）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="女性専用の出張リラクゼーションで、男性セラピストがご自宅やホテルへ訪問し、オイルマッサージを行います。東京を中心に神奈川、千葉、埼玉へも出張すると案内しています。公式サイトでは予約スケジュールを随時受付中として公開してい…">
 <meta name="keywords" content="アロマグレイス東京店,東京（出張） 男性セラピスト,東京都 男性セラピスト 女性専用">

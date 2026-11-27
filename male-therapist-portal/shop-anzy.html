@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>ANZY｜札幌（出張）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="札幌を中心に活動する、男性セラピストによる女性向け出張オイルトリートメントです。札幌市内のサロンのほか、ご自宅やホテルでも施術を受けられます。お疲れの箇所や重点箇所の希望に沿った施術を案内しています。">
 <meta name="keywords" content="ANZY,札幌（出張） 男性セラピスト,北海道 男性セラピスト 女性専用">

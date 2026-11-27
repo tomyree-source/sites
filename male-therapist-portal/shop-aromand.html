@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>AROMAND SPA（アロマンド）｜名古屋市中区のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="名古屋市中区の、男性セラピストによる女性専用アロマトリートメントサロンです。アロマテラピーの認定資格を持つセラピストが施術し、完全予約制で営業しています。リラックスできる雰囲気づくりやタオルワークへの配慮が公式サイトで案…">
 <meta name="keywords" content="AROMAND SPA（アロマンド）,名古屋市中区 男性セラピスト,愛知県 男性セラピスト 女性専用">

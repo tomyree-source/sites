@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>男性セラピストのアロマリンパオイルマッサージサロンちゅら｜西宮北口／西宮ガーデンズ近くのサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="acuchura（ちゅら）は、西宮市田代町にある女性専用のプライベートサロンで、男性セラピストのアロマリンパオイルマッサージを提供しています。施術歴20年の国家資格者が担当し、完全個室・完全予約制で一人ひとりに合わせたオ…">
 <meta name="keywords" content="男性セラピストのアロマリンパオイルマッサージサロンちゅら,西宮北口／西宮ガーデンズ近く 男性セラピスト,兵庫県 男性セラピスト 女性専用">

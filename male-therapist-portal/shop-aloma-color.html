@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>AlomaColor｜大阪・阿波座のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪市西区阿波座の女性専用プライベートリラクゼーションサロンで、男性セラピストが指圧もみほぐしとオイルトリートメントを組み合わせた1種類のメニューを提供しています。完全個室・完全予約制で、阿波座のルーム施術と大阪市内への…">
 <meta name="keywords" content="AlomaColor,大阪・阿波座 男性セラピスト,大阪府 男性セラピスト 女性専用">

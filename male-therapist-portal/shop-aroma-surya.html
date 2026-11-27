@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>AROMASURYA｜中目黒のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="中目黒駅から徒歩5分の場所にある、男性セラピストによる女性専用のプライベートサロンです。アロマオイルを使ったリンパマッサージを行い、完全貸切・完全予約制で他の客と会わない形と案内されています。詳細な住所はプライバシー保持…">
 <meta name="keywords" content="AROMASURYA,中目黒 男性セラピスト,東京都 男性セラピスト 女性専用">

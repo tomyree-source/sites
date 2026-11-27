@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Aroma Detente｜仙台 出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="宮城・仙台を対象とする、男性セラピストによる女性のための出張型アロマオイルリラクゼーションです。公式サイトではホテル等での施術案内やお知らせが掲載されています。">
 <meta name="keywords" content="Aroma Detente,仙台 出張 男性セラピスト,宮城県 男性セラピスト 女性専用">

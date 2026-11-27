@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>autumn（オータム）｜東京（出張）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストがホテルやご自宅へ出張し、ソフトな整体とリフレクソロジー、オイルトリートメントを行う出張専門の施術です。中国整体（推拿）を基本としたソフト整体が特徴で、東京23区の一部エリアに対応しています。当面は週末と祝…">
 <meta name="keywords" content="autumn（オータム）,東京（出張） 男性セラピスト,東京都 男性セラピスト 女性専用">

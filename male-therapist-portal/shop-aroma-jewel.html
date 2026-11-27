@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>アロマジュエル｜加古川市中心・個室ルーム＋出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="兵庫県加古川市を中心に、完全個室のルームと出張の両方で受けられる男性スタッフによる女性専用オイルマッサージです。オイルマッサージとリンパ集中コースを用意し、カウンセリングで希望に合わせて内容を決める流れを案内しています。…">
 <meta name="keywords" content="アロマジュエル,加古川市中心・個室ルーム＋出張 男性セラピスト,兵庫県 男性セラピスト 女性専用">

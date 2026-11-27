@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Aroma feel's｜東京23区（出張エリア）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="東京23区への出張を専門とする、女性専用の完全予約制アロマオイルボディケアです。60分と90分のコースがあり、ご自宅やホテルなど指定の場所で受けられます。施術前に体調や気になる箇所を聞く丁寧なカウンセリングを行っていると…">
 <meta name="keywords" content="Aroma feel's,東京23区（出張エリア） 男性セラピスト,東京都 男性セラピスト 女性専用">

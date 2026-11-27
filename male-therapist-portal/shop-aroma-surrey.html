@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>アロマサリー｜菊池郡大津町のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="熊本県菊池郡大津町を拠点とする、メンズセラピストによる女性専用アロママッサージのサロンです。公式サイトでは、メンズセラピストの大きな手による包み込むようなアロマオイルマッサージが案内されています。店舗施術のほか出張にも対…">
 <meta name="keywords" content="アロマサリー,菊池郡大津町 男性セラピスト,熊本県 男性セラピスト 女性専用">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>アロマティック・プレミア（AROMATIC PREMIER）｜東京・関東（出張）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="女性専用の男性セラピスト出張マッサージ専門店です。ご自宅やホテルなど希望の場所へ、厳選された男性セラピストによるアロマオイルマッサージを届けています。東京・神奈川・埼玉・千葉・山梨・長野エリアに対応し、24時間営業してい…">
 <meta name="keywords" content="アロマティック・プレミア（AROMATIC PREMIER）,東京・関東（出張） 男性セラピスト,東京都 男性セラピスト 女性専用">

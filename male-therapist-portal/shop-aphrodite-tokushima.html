@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>アフロディーテ徳島｜板野郡北島町・徳島市内出張可のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="徳島県板野郡北島町を拠点とする、男性セラピストによる女性向けのオイルマッサージ店です。公式ブログで料金表を公開し、店舗利用のほか自宅やホテルへの出張にも対応すると案内しています。デトックスリンパなどのオプションも用意して…">
 <meta name="keywords" content="アフロディーテ徳島,板野郡北島町・徳島市内出張可 男性セラピスト,徳島県 男性セラピスト 女性専用">

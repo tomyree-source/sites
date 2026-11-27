@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>開業・経営サポート（料金案内）｜セラピスト向け — 男性セラピストナビ</title>
 <meta name="description" content="男性セラピストの開業・経営サポートの料金案内。文章相談（5,000円・Stripe決済）、LINE公式設定、SEO初期設計、ホームページ制作、ロングテールページ制作、開業集客セット。施術歴30年・現役で複数店舗を運営する男性セラピストが対応します。">
 <meta name="keywords" content="男性セラピスト 開業 相談,男性セラピスト 経営相談,セラピスト 集客支援,サロン ホームページ制作 料金">
