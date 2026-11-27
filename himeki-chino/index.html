@@ -589,6 +589,53 @@
       .paw-divider svg:nth-child(3) { transform: translateY(6px) rotate(-13deg); opacity: .85; }
       .paw-divider svg:nth-child(4) { transform: translateY(0) rotate(11deg); opacity: 1; }
       .paw-divider svg:nth-child(5) { transform: translateY(6px) rotate(-10deg); opacity: .8; }
+
+      /* paw prints: walk-in animation — each print fades in one after
+         another with a slight scale, lingers, then fades out together.
+         Peak opacity reuses the static per-print opacity via --paw-peak,
+         and the independent `scale` property keeps the existing
+         translate/rotate positioning untouched. */
+      .paw-trail svg, .paw-divider svg { animation: paw-step 5.6s ease-in-out infinite; }
+      .paw-trail svg:nth-child(1), .paw-divider svg:nth-child(1) { --paw-peak: .45; animation-delay: 0s; }
+      .paw-trail svg:nth-child(2), .paw-divider svg:nth-child(2) { --paw-peak: .65; animation-delay: .55s; }
+      .paw-trail svg:nth-child(3), .paw-divider svg:nth-child(3) { --paw-peak: .85; animation-delay: 1.1s; }
+      .paw-trail svg:nth-child(4), .paw-divider svg:nth-child(4) { --paw-peak: 1; animation-delay: 1.65s; }
+      .paw-divider svg:nth-child(5) { --paw-peak: .8; animation-delay: 2.2s; }
+      .paw-trail.pt-price svg { animation-delay: .9s; }
+      .paw-trail.pt-price svg:nth-child(2) { animation-delay: 1.45s; }
+      .paw-trail.pt-price svg:nth-child(3) { animation-delay: 2s; }
+      .paw-trail.pt-price svg:nth-child(4) { animation-delay: 2.55s; }
+      .paw-trail.pt-owner svg { animation-delay: 1.8s; }
+      .paw-trail.pt-owner svg:nth-child(2) { animation-delay: 2.35s; }
+      .paw-trail.pt-owner svg:nth-child(3) { animation-delay: 2.9s; }
+      .paw-trail.pt-owner svg:nth-child(4) { animation-delay: 3.45s; }
+      .paw-trail.pt-footer svg { animation-delay: 2.7s; }
+      .paw-trail.pt-footer svg:nth-child(2) { animation-delay: 3.25s; }
+      .paw-trail.pt-footer svg:nth-child(3) { animation-delay: 3.8s; }
+      .paw-trail.pt-footer svg:nth-child(4) { animation-delay: 4.35s; }
+      @keyframes paw-step {
+        0% { opacity: 0; scale: .82; }
+        12% { opacity: var(--paw-peak, 1); scale: 1; }
+        44% { opacity: var(--paw-peak, 1); scale: 1; }
+        60%, 100% { opacity: 0; scale: .92; }
+      }
+
+      /* cat tail: gentle sway pivoting at the base of the tail.
+         The tail is a separate path inside the #ic-cat symbol, so only
+         that part moves; the body stays still. transform-box: fill-box
+         makes transform-origin relative to the tail path itself, and
+         15% 90% sits at its base where it joins the body. */
+      .cat-tail {
+        transform-box: fill-box;
+        transform-origin: 15% 90%;
+        animation: tail-wag 3.8s ease-in-out infinite;
+      }
+      @keyframes tail-wag {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(9deg); }
+        55% { transform: rotate(-5deg); }
+        78% { transform: rotate(4deg); }
+      }
       footer .wrap { position: relative; z-index: 1; }
       @media (max-width: 759px) {
         .deco-cat.worries-cat { width: 108px; height: 106px; bottom: 58px; }
@@ -601,6 +648,7 @@
         .rv { opacity: 1; transform: none; transition: none; }
         .feature-photo img { transition: none; }
         .menu-panel { transition: none; }
+        .paw-trail svg, .paw-divider svg, .cat-tail { animation: none; }
       }
     </style>
   </head>
@@ -616,7 +664,7 @@
         </symbol>
         <symbol id="ic-cat" viewBox="0 0 120 118">
           <path d="M47 4 L58 13 C59 12.5 61 12.5 62 13 L73 4 L78 20 C83 27 83 35 80 41 C89 53 95 75 97 99 L98 110 L22 110 L23 99 C25 75 31 53 40 41 C37 35 37 27 42 20 Z" fill="currentColor" />
-          <path d="M97 103 C110 99 113 85 105 76" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" />
+          <path class="cat-tail" d="M97 103 C110 99 113 85 105 76" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" />
           <ellipse cx="45" cy="110" rx="10" ry="5" fill="currentColor" />
           <ellipse cx="75" cy="110" rx="10" ry="5" fill="currentColor" />
         </symbol>
