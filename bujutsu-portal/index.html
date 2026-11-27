@@ -10597,7 +10597,7 @@ card.appendChild(desc);
 var site = document.createElement("p");
 site.className = "dojo-site";
 var sa = document.createElement("a");
-sa.href = d.url; sa.target = "_blank"; sa.rel = "noopener"; sa.textContent = "公式サイトへ →";
+sa.href = d.url; sa.target = "_blank"; sa.rel = "noopener"; sa.setAttribute('data-outbound','dojo'); sa.setAttribute('data-dojo', d.name); sa.textContent = "公式サイトへ →";
 site.appendChild(sa);
 card.appendChild(site);
 return card;
@@ -10935,6 +10935,22 @@ setupToggle("footerReadingToggle", "footerReadingLinks", "読み物一覧", "読
     es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.12});
   els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[data-outbound="dojo"]') : null;
+    if (!a) return;
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'outbound_click', {
+      site_id: 'bujutsu-portal',
+      link_url: a.href,
+      dojo_name: a.getAttribute('data-dojo') || '',
+      page_path: location.pathname,
+      transport_type: 'beacon'
+    });
+  }, true);
 })();
 </script>
 </body>
