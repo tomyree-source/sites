@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>EXコース（店舗ルーム） 60分　11,000円<br>EXコース（店舗ルーム） 90分　14,000円<br>EXコース（店舗ルーム） 120分　18,000円<br>EXコース（店舗ルーム） 150分　22,000円<br>EXコース（店舗ルーム） 180分　26,000円<br>EX出張コース 60分　8,000円<br>EX出張コース 90分　10,000円<br>EX出張コース 120分　14,000円</td></tr><tr><th>アクセス</th><td>店舗ルームは金沢片町。詳細な住所は予約確定後に案内。出張は石川県全域対応</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>完全予約制</span><span>アロマオイルマッサージ</span><span>店舗・出張対応</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://jinzenuxingyongmassajimensclubshichuanxian.webnode.jp/" target="_blank" rel="noopener">https://jinzenuxingyongmassajimensclubshichuanxian.webnode.jp/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>EXコース（店舗ルーム） 60分　11,000円<br>EXコース（店舗ルーム） 90分　14,000円<br>EXコース（店舗ルーム） 120分　18,000円<br>EXコース（店舗ルーム） 150分　22,000円<br>EXコース（店舗ルーム） 180分　26,000円<br>EX出張コース 60分　8,000円<br>EX出張コース 90分　10,000円<br>EX出張コース 120分　14,000円</td></tr><tr><th>アクセス</th><td>店舗ルームは金沢片町。詳細な住所は予約確定後に案内。出張は石川県全域対応</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>完全予約制</span><span>アロマオイルマッサージ</span><span>店舗・出張対応</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://jinzenuxingyongmassajimensclubshichuanxian.webnode.jp/" target="_blank" rel="noopener">https://jinzenuxingyongmassajimensclubshichuanxian.webnode.jp/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/PBVA3YN" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

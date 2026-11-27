@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>イケレク全身コース 90分　12,000円<br>イケレク全身コース 120分　15,000円<br>イケレク全身コース 150分　18,000円<br>イケレク全身コース 180分　20,000円<br>延長 30分　4,000円</td></tr><tr><th>営業時間</th><td>12:00〜24:00（最終受付 21:00）</td></tr><tr><th>定休日</th><td>月曜定休日</td></tr><tr><th>アクセス</th><td>ご自宅またはホテル等への出張。交通費はエリアにより1,000円〜3,000円</td></tr><tr><th>特徴</th><td><span class="tags"><span>完全予約制</span><span>男性セラピスト</span><span>アロママッサージ</span><span>出張対応</span><span>指名可能</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://aromarequiem.jimdofree.com" target="_blank" rel="noopener">https://aromarequiem.jimdofree.com</a></td></tr>
+      <tr><th>メニュー・料金</th><td>イケレク全身コース 90分　12,000円<br>イケレク全身コース 120分　15,000円<br>イケレク全身コース 150分　18,000円<br>イケレク全身コース 180分　20,000円<br>延長 30分　4,000円</td></tr><tr><th>営業時間</th><td>12:00〜24:00（最終受付 21:00）</td></tr><tr><th>定休日</th><td>月曜定休日</td></tr><tr><th>アクセス</th><td>ご自宅またはホテル等への出張。交通費はエリアにより1,000円〜3,000円</td></tr><tr><th>特徴</th><td><span class="tags"><span>完全予約制</span><span>男性セラピスト</span><span>アロママッサージ</span><span>出張対応</span><span>指名可能</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://aromarequiem.jimdofree.com" target="_blank" rel="noopener">https://aromarequiem.jimdofree.com</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://line.me/R/ti/p/@jmo4446i" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

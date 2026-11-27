@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>オイルマッサージ 60分　6,000円<br>オイルマッサージ 90分　9,000円<br>オイルマッサージ 120分　12,000円<br>オイルマッサージ 150分　15,000円<br>オイルマッサージ 180分　18,000円</td></tr><tr><th>営業時間</th><td>月・火・木 13:00～20:00／水・金 13:00～22:00／土 13:00～翌2:00</td></tr><tr><th>アクセス</th><td>名古屋市内を中心に愛知県内、岐阜美濃エリア、三重中部エリアまで出張費無料で出張。ご自宅やホテルで施術</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>出張オイルマッサージ</span><span>あん摩マッサージ指圧師・鍼灸師資格を持つセラピストと公式に記載</span><span>施術歴30年と公式に記載</span><span>タオル・防水シーツを持参（公式記載）</span><span>希望に応じて骨盤矯正・頚椎矯正にも対応（公式記載）</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://lit.link/15029966" target="_blank" rel="noopener">https://lit.link/15029966</a></td></tr>
+      <tr><th>メニュー・料金</th><td>オイルマッサージ 60分　6,000円<br>オイルマッサージ 90分　9,000円<br>オイルマッサージ 120分　12,000円<br>オイルマッサージ 150分　15,000円<br>オイルマッサージ 180分　18,000円</td></tr><tr><th>営業時間</th><td>月・火・木 13:00～20:00／水・金 13:00～22:00／土 13:00～翌2:00</td></tr><tr><th>アクセス</th><td>名古屋市内を中心に愛知県内、岐阜美濃エリア、三重中部エリアまで出張費無料で出張。ご自宅やホテルで施術</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>出張オイルマッサージ</span><span>あん摩マッサージ指圧師・鍼灸師資格を持つセラピストと公式に記載</span><span>施術歴30年と公式に記載</span><span>タオル・防水シーツを持参（公式記載）</span><span>希望に応じて骨盤矯正・頚椎矯正にも対応（公式記載）</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://lit.link/15029966" target="_blank" rel="noopener">https://lit.link/15029966</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://www.facebook.com/tr" target="_blank" rel="noopener">Facebook</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

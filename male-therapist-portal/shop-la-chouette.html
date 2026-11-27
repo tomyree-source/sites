@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>アロマオイルトリートメント 60分　4,290円<br>アロマオイル 90分　6,630円<br>アロマオイルトリートメント 120分　8,970円</td></tr><tr><th>営業時間</th><td>8:00～27:00（深夜3時まで、割増なし）</td></tr><tr><th>住所</th><td>滋賀県草津市大路2丁目16-21 XYZ Court草津大路301</td></tr><tr><th>アクセス</th><td>草津市大路のマンションの一室にある完全個室サロンと公式に記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>ベテラン男性セラピスト</span><span>施術歴15年と公式に記載</span><span>完全個室プライベートサロン</span><span>アロマオイルトリートメント</span><span>新規はサイト経由予約で10分無料延長と公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://kusatsu-chouette.com/" target="_blank" rel="noopener">https://kusatsu-chouette.com/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>アロマオイルトリートメント 60分　4,290円<br>アロマオイル 90分　6,630円<br>アロマオイルトリートメント 120分　8,970円</td></tr><tr><th>営業時間</th><td>8:00～27:00（深夜3時まで、割増なし）</td></tr><tr><th>住所</th><td>滋賀県草津市大路2丁目16-21 XYZ Court草津大路301</td></tr><tr><th>アクセス</th><td>草津市大路のマンションの一室にある完全個室サロンと公式に記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>ベテラン男性セラピスト</span><span>施術歴15年と公式に記載</span><span>完全個室プライベートサロン</span><span>アロマオイルトリートメント</span><span>新規はサイト経由予約で10分無料延長と公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://kusatsu-chouette.com/" target="_blank" rel="noopener">https://kusatsu-chouette.com/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/yDyMyFw" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

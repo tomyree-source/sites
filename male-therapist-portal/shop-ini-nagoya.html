@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>営業時間</th><td>12:00～27:00</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>愛知県名古屋市中区橘1-21-29（〒460-0016）</td></tr><tr><th>アクセス</th><td>名古屋市中区の隠れ家サロン。完全予約制</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピストによるヒーリングオイルトリートメント</span><span>完全予約制</span></span></td></tr><tr><th>公式サイト</th><td><a href="http://zucchini1220.wixsite.com/zucchini1220" target="_blank" rel="noopener">http://zucchini1220.wixsite.com/zucchini1220</a></td></tr>
+      <tr><th>営業時間</th><td>12:00～27:00</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>愛知県名古屋市中区橘1-21-29（〒460-0016）</td></tr><tr><th>アクセス</th><td>名古屋市中区の隠れ家サロン。完全予約制</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピストによるヒーリングオイルトリートメント</span><span>完全予約制</span></span></td></tr><tr><th>公式サイト</th><td><a href="http://zucchini1220.wixsite.com/zucchini1220" target="_blank" rel="noopener">http://zucchini1220.wixsite.com/zucchini1220</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://twitter.com/oil_ini" target="_blank" rel="noopener">X</a> ／ <a class="sns-link" href="https://www.facebook.com/relaxingInI" target="_blank" rel="noopener">Facebook</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>究極の健全コース　70分<br>究極の健全コース　90分<br>究極の健全コース　120分<br>究極の健全コース　150分<br>延長　30分</td></tr><tr><th>営業時間</th><td>11:00〜LAST (受付時間10:00〜LAST)</td></tr><tr><th>特徴</th><td><span class="tags"><span>完全個室</span><span>完全予約制</span><span>女性専用</span><span>男性セラピスト</span><span>マンション型サロン</span><span>事前予約制（前日以降の事前予約）</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://ladies-lapin.esthe-site.com/" target="_blank" rel="noopener">https://ladies-lapin.esthe-site.com/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>究極の健全コース　70分<br>究極の健全コース　90分<br>究極の健全コース　120分<br>究極の健全コース　150分<br>延長　30分</td></tr><tr><th>営業時間</th><td>11:00〜LAST (受付時間10:00〜LAST)</td></tr><tr><th>特徴</th><td><span class="tags"><span>完全個室</span><span>完全予約制</span><span>女性専用</span><span>男性セラピスト</span><span>マンション型サロン</span><span>事前予約制（前日以降の事前予約）</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://ladies-lapin.esthe-site.com/" target="_blank" rel="noopener">https://ladies-lapin.esthe-site.com/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://twitter.com/sho_lapin_osaka" target="_blank" rel="noopener">X</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

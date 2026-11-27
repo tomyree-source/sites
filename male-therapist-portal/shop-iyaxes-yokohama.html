@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>アロマオイル 90分コース　8,000円<br>アロマオイル 120分コース　10,000円<br>エグゼクティブ 90分コース　12,000円<br>エグゼクティブ 120分コース　14,000円</td></tr><tr><th>営業時間</th><td>お電話でのお問い合わせ・翌日以降のご予約は20:00まで受付と公式に記載</td></tr><tr><th>アクセス</th><td>神奈川県・東京都一部を中心に、ご自宅・ご宿泊先・ホテル（デイユース含む）・レンタルスペース等へ出張。交通費は横浜市から計算し別途負担と公式に記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性スタッフ</span><span>出張専門</span><span>完全予約制</span><span>オールハンドのアロマオイルリラクゼーションと公式に記載</span><span>初回特別プライス実施中と公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://chibaiyaxes.wixsite.com/chiba-iyaxes" target="_blank" rel="noopener">https://chibaiyaxes.wixsite.com/chiba-iyaxes</a></td></tr>
+      <tr><th>メニュー・料金</th><td>アロマオイル 90分コース　8,000円<br>アロマオイル 120分コース　10,000円<br>エグゼクティブ 90分コース　12,000円<br>エグゼクティブ 120分コース　14,000円</td></tr><tr><th>営業時間</th><td>お電話でのお問い合わせ・翌日以降のご予約は20:00まで受付と公式に記載</td></tr><tr><th>アクセス</th><td>神奈川県・東京都一部を中心に、ご自宅・ご宿泊先・ホテル（デイユース含む）・レンタルスペース等へ出張。交通費は横浜市から計算し別途負担と公式に記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性スタッフ</span><span>出張専門</span><span>完全予約制</span><span>オールハンドのアロマオイルリラクゼーションと公式に記載</span><span>初回特別プライス実施中と公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://chibaiyaxes.wixsite.com/chiba-iyaxes" target="_blank" rel="noopener">https://chibaiyaxes.wixsite.com/chiba-iyaxes</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="http://twitter.com/WixJp" target="_blank" rel="noopener">X</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

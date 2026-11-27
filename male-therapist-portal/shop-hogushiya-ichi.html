@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>アロマオイルマッサージ　90分　8,000円<br>アロマオイルマッサージ　120分　9,000円<br>アロマオイルマッサージ　150分　10,000円<br>アロマオイルマッサージ　180分　12,000円<br>もみほぐし　75分　7,000円<br>もみほぐし　90分　8,000円<br>もみほぐし　120分　10,000円</td></tr><tr><th>営業時間</th><td>11:00〜23:00（時間外は前予約のみ受付）</td></tr><tr><th>住所</th><td>東京都豊島区南池袋3-13-9 ビスハイム池袋805号室</td></tr><tr><th>アクセス</th><td>池袋駅（西武南口）から徒歩4分ほど・明治通り沿い</td></tr><tr><th>最寄り駅</th><td>池袋駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>男性セラピスト</span><span>女性専用（アロマオイルコース）</span><span>現金のみ</span><span>プライベートサロン</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://hogushiya1.net/" target="_blank" rel="noopener">https://hogushiya1.net/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>アロマオイルマッサージ　90分　8,000円<br>アロマオイルマッサージ　120分　9,000円<br>アロマオイルマッサージ　150分　10,000円<br>アロマオイルマッサージ　180分　12,000円<br>もみほぐし　75分　7,000円<br>もみほぐし　90分　8,000円<br>もみほぐし　120分　10,000円</td></tr><tr><th>営業時間</th><td>11:00〜23:00（時間外は前予約のみ受付）</td></tr><tr><th>住所</th><td>東京都豊島区南池袋3-13-9 ビスハイム池袋805号室</td></tr><tr><th>アクセス</th><td>池袋駅（西武南口）から徒歩4分ほど・明治通り沿い</td></tr><tr><th>最寄り駅</th><td>池袋駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>男性セラピスト</span><span>女性専用（アロマオイルコース）</span><span>現金のみ</span><span>プライベートサロン</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://hogushiya1.net/" target="_blank" rel="noopener">https://hogushiya1.net/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://x.com/hogushiyaichi" target="_blank" rel="noopener">X</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

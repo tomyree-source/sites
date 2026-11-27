@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>全身オイル 60分　6,000円<br>全身オイル 90分　8,000円<br>全身オイル 120分　10,000円<br>ドライヘッドスパ 20分（単品不可・オプション）　2,000円<br>ドライヘッドスパ 30分（単品不可・オプション）　3,000円<br>フットセラピー 20分（単品不可・オプション）　3,000円</td></tr><tr><th>営業時間</th><td>火曜日15:00～20:00、木・土・日曜日12:00～15:00</td></tr><tr><th>定休日</th><td>月・水・金曜日</td></tr><tr><th>アクセス</th><td>ご自宅・ホテル・レンタルサロン等へ出張。レンタルサロンの例としてトーカン博多、Pevo（天神）の案内あり</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>出張対応</span><span>男性セラピスト</span><span>現金のみ対応</span><span>120分以上のコースはレンタルサロン代無料</span><span>当日予約は原則不可</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://oilmassage.my.canva.site/beige-elegant-massage-therapy-instagram-post" target="_blank" rel="noopener">https://oilmassage.my.canva.site/beige-elegant-massage-therapy-instagram-post</a></td></tr>
+      <tr><th>メニュー・料金</th><td>全身オイル 60分　6,000円<br>全身オイル 90分　8,000円<br>全身オイル 120分　10,000円<br>ドライヘッドスパ 20分（単品不可・オプション）　2,000円<br>ドライヘッドスパ 30分（単品不可・オプション）　3,000円<br>フットセラピー 20分（単品不可・オプション）　3,000円</td></tr><tr><th>営業時間</th><td>火曜日15:00～20:00、木・土・日曜日12:00～15:00</td></tr><tr><th>定休日</th><td>月・水・金曜日</td></tr><tr><th>アクセス</th><td>ご自宅・ホテル・レンタルサロン等へ出張。レンタルサロンの例としてトーカン博多、Pevo（天神）の案内あり</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>出張対応</span><span>男性セラピスト</span><span>現金のみ対応</span><span>120分以上のコースはレンタルサロン代無料</span><span>当日予約は原則不可</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://oilmassage.my.canva.site/beige-elegant-massage-therapy-instagram-post" target="_blank" rel="noopener">https://oilmassage.my.canva.site/beige-elegant-massage-therapy-instagram-post</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://www.instagram.com/oilmassage.fukuoka" target="_blank" rel="noopener">Instagram</a> ／ <a class="sns-link" href="https://lin.ee/vYetwBo" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>
