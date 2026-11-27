@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>武術道場ポータル｜全国の武術・武道道場を探せるポータル（デザイン見本C案）</title>
+<meta name="description" content="全国113の武術・武道道場と読み物72本を掲載するポータル。空手・柔道・合気道からボクシング・総合格闘技・古武道まで、流派と地域から探せます。道場の掲載は無料。" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0V6GQSZV7F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0V6GQSZV7F');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#f3eee0;
+  --paper-2:#eae2cb;
+  --ink:#211c15;
+  --ink-2:#453e33;
+  --sumi:#161310;
+  --red:#bc3517;
+  --red-d:#972a11;
+  --line:rgba(33,28,21,.18);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --mincho:"Shippori Mincho","Hiragino Mincho ProN",serif;
+  --corm:"Cormorant Garamond",serif;
+  --sans:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:
+    radial-gradient(120% 60% at 85% -5%, rgba(22,19,16,.14), transparent 55%),
+    radial-gradient(90% 45% at -10% 30%, rgba(22,19,16,.10), transparent 55%),
+    linear-gradient(168deg, #f6f2e5 0%, var(--paper) 42%, var(--paper-2) 100%);
+  line-height:1.9;
+  letter-spacing:.05em;
+  overflow-x:hidden;
+  padding-bottom:76px;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.13 0 0 0 0 0.11 0 0 0 0 0.08 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto;position:relative;z-index:1}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:absolute;top:0;left:0;right:0;z-index:20;
+  display:flex;align-items:center;gap:12px;
+  padding:16px 20px;
+}
+.hanko{
+  width:42px;height:42px;flex:none;border-radius:7px;
+  background:var(--red);color:#fff;
+  font-family:var(--mincho);font-weight:800;font-size:24px;line-height:42px;text-align:center;
+  transform:rotate(-5deg);
+  box-shadow:0 4px 14px rgba(151,42,17,.35);
+}
+.brand{font-family:var(--mincho);font-weight:800;font-size:20px;letter-spacing:.1em;line-height:1.2}
+.brand small{display:block;font-family:var(--corm);font-weight:600;font-size:10.5px;letter-spacing:.34em;color:var(--ink-2)}
+.topbar nav{margin-left:auto;display:none;gap:26px;font-size:13px;font-weight:500}
+.topbar nav a{text-decoration:none;position:relative;padding:4px 0}
+.topbar nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--red);transition:width .5s var(--ease)}
+.topbar nav a:hover::after{width:100%}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:104px 0 0;overflow:hidden}
+.hero .giant{
+  position:absolute;top:34px;right:-30px;z-index:0;
+  font-family:var(--mincho);font-weight:800;font-size:min(62vw,430px);line-height:1;
+  color:transparent;-webkit-text-stroke:1.5px rgba(33,28,21,.13);
+  user-select:none;pointer-events:none;
+}
+.hero-en{
+  font-family:var(--corm);font-style:italic;font-weight:500;
+  font-size:15px;letter-spacing:.3em;color:var(--red-d);text-transform:uppercase;
+}
+.hero h1{
+  font-family:var(--mincho);font-weight:800;
+  font-size:clamp(40px,10.6vw,68px);line-height:1.16;letter-spacing:.06em;
+  margin-top:10px;
+}
+.hero h1 .site{display:block;white-space:nowrap;letter-spacing:.03em}
+.hero h1 .catch{
+  display:block;margin-top:18px;
+  font-size:clamp(25px,6.4vw,44px);line-height:1.45;letter-spacing:.08em;
+}
+.hero h1 .catch em{
+  font-style:normal;position:relative;white-space:nowrap;
+}
+.hero h1 .catch em::after{
+  content:"";position:absolute;left:-2px;right:-2px;bottom:2px;height:.34em;z-index:-1;
+  background:linear-gradient(92deg, rgba(188,53,23,.85), rgba(188,53,23,.45) 70%, rgba(188,53,23,.15));
+  transform:skewX(-14deg);border-radius:2px;
+}
+.hero .lead{margin-top:20px;font-size:14.5px;color:var(--ink-2);max-width:34em}
+.hero-facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.fact{
+  display:flex;align-items:baseline;gap:8px;
+  border:1.5px solid var(--ink);border-radius:4px;padding:7px 14px 8px;
+  background:rgba(255,255,255,.45);
+}
+.fact b{font-family:var(--mincho);font-weight:800;font-size:21px;letter-spacing:.04em}
+.fact b .u{font-size:12px}
+.fact span{font-size:11.5px;color:var(--ink-2);letter-spacing:.08em}
+.fact.red{border-color:var(--red);color:var(--red-d)}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:28px}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  text-decoration:none;font-weight:700;letter-spacing:.1em;
+  border-radius:4px;transition:transform .5s var(--ease), box-shadow .5s var(--ease), background .5s var(--ease);
+}
+.btn .arr{transition:transform .5s var(--ease)}
+.btn:hover .arr{transform:translateX(6px)}
+.btn-main{
+  background:var(--red);color:#fff;font-size:16.5px;padding:16px 30px;
+  box-shadow:0 12px 26px rgba(151,42,17,.32);
+}
+.btn-main:hover{background:var(--red-d);transform:translateY(-2px)}
+.btn-sub{font-size:13.5px;color:var(--ink);border-bottom:2px solid var(--red);padding-bottom:3px}
+.btn-sub:hover{color:var(--red-d)}
+.hero-vert{
+  position:absolute;top:110px;right:14px;z-index:2;
+  writing-mode:vertical-rl;font-family:var(--mincho);font-weight:700;
+  font-size:15px;letter-spacing:.42em;color:var(--ink-2);
+  display:none;
+}
+.hero-vert .r{color:var(--red-d)}
+.hero-img{
+  margin-top:36px;position:relative;z-index:1;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 26px),0 100%);
+}
+.hero-img .ph{overflow:hidden}
+.hero-img img{
+  width:100%;height:auto;
+  animation:heroZoom 16s var(--ease) infinite alternate;
+}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-stamp{
+  position:absolute;right:16px;bottom:34px;z-index:3;
+  width:74px;height:74px;border-radius:9px;
+  background:var(--red);color:#fff;transform:rotate(6deg);
+  font-family:var(--mincho);font-weight:800;font-size:15px;line-height:1.35;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  box-shadow:0 10px 24px rgba(151,42,17,.4);
+}
+
+/* ---------- marquee band ---------- */
+.band{
+  margin-top:-4px;background:var(--sumi);color:#efe9d8;
+  transform:rotate(-1.3deg) scale(1.02);
+  overflow:hidden;padding:13px 0;position:relative;z-index:2;
+  box-shadow:0 14px 30px rgba(22,19,16,.25);
+}
+.band .track{display:flex;gap:0;width:max-content;animation:marquee 30s linear infinite}
+.band span{
+  font-family:var(--mincho);font-weight:700;font-size:16px;letter-spacing:.3em;
+  padding:0 18px;white-space:nowrap;
+}
+.band span i{font-style:normal;color:var(--red);padding-right:36px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:74px 0 8px;position:relative}
+.sec-head{display:flex;align-items:flex-end;gap:16px;margin-bottom:8px}
+.sec-no{font-family:var(--corm);font-weight:600;font-size:15px;letter-spacing:.28em;color:var(--red-d);text-transform:uppercase;padding-bottom:10px}
+.sec-head h2{
+  font-family:var(--mincho);font-weight:800;
+  font-size:clamp(29px,7.4vw,44px);line-height:1.3;letter-spacing:.07em;
+}
+.sec-lead{font-size:14px;color:var(--ink-2);max-width:40em;margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.chip{
+  text-decoration:none;font-size:13.5px;font-weight:500;letter-spacing:.08em;
+  border:1px solid var(--line);border-radius:999px;padding:9px 17px;
+  background:rgba(255,255,255,.5);position:relative;
+  transition:transform .45s var(--ease), border-color .45s var(--ease), color .45s var(--ease);
+}
+.chip:hover{transform:translateY(-2px);border-color:var(--red);color:var(--red-d)}
+.chips .lbl{width:100%;font-size:11.5px;color:var(--ink-2);letter-spacing:.16em;margin-top:8px}
+.search-cta{
+  margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  background:linear-gradient(120deg, rgba(22,19,16,.94), rgba(22,19,16,.86));
+  color:#f1ead6;border-radius:6px;padding:24px 22px;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 16px),0 100%);
+}
+.search-cta p{font-family:var(--mincho);font-weight:700;font-size:18px;letter-spacing:.08em;flex:1 1 220px}
+.search-cta .btn-main{box-shadow:none}
+
+/* ---------- reading cards ---------- */
+.cards{display:grid;grid-template-columns:1fr;gap:22px;margin-top:28px}
+.card{
+  text-decoration:none;display:block;
+  background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  transition:transform .55s var(--ease), box-shadow .55s var(--ease);
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 34px rgba(22,19,16,.16)}
+.card .ph{aspect-ratio:3/2;overflow:hidden;background:var(--paper-2)}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.card:hover .ph img{transform:scale(1.05)}
+.card .tx{padding:18px 20px 20px}
+.card .tag{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--red-d);
+  border:1px solid var(--red);border-radius:3px;padding:2px 9px;margin-bottom:10px;
+}
+.card h3{font-family:var(--mincho);font-weight:700;font-size:18.5px;line-height:1.55;letter-spacing:.05em}
+.card p{font-size:13px;color:var(--ink-2);margin-top:8px}
+.card .more{margin-top:12px;font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--ink)}
+.card .more .arr{display:inline-block;transition:transform .5s var(--ease)}
+.card:hover .more .arr{transform:translateX(5px)}
+
+/* ---------- characters band ---------- */
+.chars{
+  margin-top:70px;background:
+    radial-gradient(100% 90% at 90% 0%, rgba(188,53,23,.16), transparent 55%),
+    linear-gradient(165deg, #241f19, var(--sumi) 60%);
+  color:#f1ead6;padding:64px 0 58px;
+  clip-path:polygon(0 22px,100% 0,100% 100%,0 100%);
+}
+.chars h2{font-family:var(--mincho);font-weight:800;font-size:clamp(26px,6.6vw,38px);letter-spacing:.08em;line-height:1.35}
+.chars .sec-no{color:#e8a08c}
+.chars p{font-size:14px;color:#cfc6ae;margin-top:12px;max-width:38em}
+.char-row{
+  display:flex;gap:16px;margin-top:30px;overflow-x:auto;padding:6px 2px 14px;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+}
+.char-row figure{
+  flex:0 0 128px;scroll-snap-align:start;text-align:center;
+}
+.char-row .frame{
+  width:128px;height:128px;border-radius:50%;overflow:hidden;
+  border:2px solid rgba(241,234,214,.35);background:#efe9d8;
+  transition:transform .55s var(--ease), border-color .55s var(--ease);
+}
+.char-row figure:hover .frame{transform:translateY(-4px) rotate(-2deg);border-color:var(--red)}
+.char-row img{width:100%;height:100%;object-fit:contain}
+.char-row figcaption{font-size:12px;margin-top:9px;letter-spacing:.1em;color:#e6dec8}
+
+/* ---------- register band ---------- */
+.register{padding-bottom:84px}
+.reg-box{
+  border:2px solid var(--ink);border-radius:6px;padding:30px 24px;position:relative;
+  background:rgba(255,255,255,.5);
+}
+.reg-box h2{font-family:var(--mincho);font-weight:800;font-size:clamp(24px,6.4vw,36px);letter-spacing:.07em;line-height:1.4}
+.reg-box p{font-size:14px;color:var(--ink-2);margin-top:12px;max-width:40em}
+.reg-box .hero-cta{margin-top:22px}
+.reg-stamp{
+  position:absolute;top:-24px;right:18px;width:64px;height:64px;border-radius:8px;
+  background:var(--red);color:#fff;transform:rotate(7deg);
+  font-family:var(--mincho);font-weight:800;font-size:19px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 22px rgba(151,42,17,.38);
+}
+
+footer{
+  border-top:1px solid var(--line);padding:30px 0 8px;font-size:12px;color:var(--ink-2);
+}
+footer .sns{display:flex;gap:18px;margin-top:10px}
+footer .sns a{font-weight:700;letter-spacing:.08em;text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px}
+footer .sample-note{margin-top:16px;font-size:11px;color:var(--ink-2)}
+
+/* ---------- floating ---------- */
+.floatbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(22,19,16,.92);backdrop-filter:blur(8px);
+}
+.floatbar .btn-main{flex:1;justify-content:center;padding:14px 10px;font-size:15.5px}
+.floatbar .menu-btn{
+  flex:none;width:56px;border-radius:4px;border:1.5px solid rgba(241,234,214,.5);
+  background:transparent;color:#f1ead6;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;
+}
+.floatbar .menu-btn .bars{display:block;width:20px;height:2px;background:#f1ead6;box-shadow:0 -6px 0 #f1ead6, 0 6px 0 #f1ead6}
+.side-cta{display:none}
+.overlay{
+  position:fixed;inset:0;z-index:60;background:rgba(22,19,16,.96);color:#f1ead6;
+  display:flex;flex-direction:column;justify-content:center;padding:30px 28px;
+  opacity:0;pointer-events:none;transition:opacity .5s var(--ease);
+}
+.overlay.open{opacity:1;pointer-events:auto}
+.overlay a{
+  font-family:var(--mincho);font-weight:700;font-size:24px;letter-spacing:.1em;
+  text-decoration:none;padding:13px 0;border-bottom:1px solid rgba(241,234,214,.16);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.overlay a small{font-family:var(--corm);font-size:12px;letter-spacing:.26em;color:#e8a08c}
+.overlay .close{
+  position:absolute;top:18px;right:20px;background:none;border:1.5px solid rgba(241,234,214,.5);
+  color:#f1ead6;border-radius:4px;padding:9px 16px;font-size:13px;letter-spacing:.14em;cursor:pointer;
+}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease), transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- PC ---------- */
+@media (min-width:760px){
+  .cards{grid-template-columns:1fr 1fr}
+  .cards .card:nth-child(even){transform:translateY(26px)}
+  .cards .card:nth-child(even):hover{transform:translateY(21px)}
+  .char-row figure{flex-basis:150px}
+  .char-row .frame{width:150px;height:150px}
+}
+@media (min-width:1020px){
+  body{padding-bottom:0}
+  .topbar{padding:22px 40px}
+  .topbar nav{display:flex}
+  .hero{padding-top:130px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .hero-img{margin-top:0}
+  .hero-vert{display:block}
+  .floatbar{display:none}
+  .side-cta{
+    display:flex;position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:50;
+    writing-mode:vertical-rl;background:var(--red);color:#fff;text-decoration:none;
+    font-weight:700;letter-spacing:.3em;font-size:14px;padding:22px 13px;border-radius:6px 0 0 6px;
+    box-shadow:-8px 10px 24px rgba(151,42,17,.35);transition:background .5s var(--ease), padding-right .5s var(--ease);
+  }
+  .side-cta:hover{background:var(--red-d);padding-right:20px}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-img img{animation:none}
+  .band .track{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="hanko" aria-hidden="true">武</div>
+  <div class="brand">武術道場ポータル<small>BUJUTSU DOJO PORTAL</small></div>
+  <nav aria-label="主なページ">
+    <a href="index.html#search">道場を探す</a>
+    <a href="index.html#reading-feature-gear">読み物</a>
+    <a href="index.html#characters">まるまる道場</a>
+    <a href="index.html#register">無料掲載</a>
+  </nav>
+</header>
+
+<main>
+<!-- ===== hero ===== -->
+<div class="hero">
+  <div class="giant" aria-hidden="true">武</div>
+  <p class="hero-vert" aria-hidden="true">道は、<span class="r">ここ</span>から。</p>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hero-en">Find your dojo</p>
+      <h1>
+        <span class="site">武術道場ポータル</span>
+        <span class="catch">行きたい道場が、<br /><em>きっと見つかる。</em></span>
+      </h1>
+      <p class="lead">全国の武術道場・格闘技ジムを紹介するポータルです。空手・柔道・合気道から中国武術、ボクシング、総合格闘技、古武道まで、流派・ジャンルと地域から探せます。</p>
+      <div class="hero-facts" aria-label="ポータルの概要">
+        <div class="fact"><b>113<span class="u">道場</span></b><span>全国に掲載</span></div>
+        <div class="fact"><b>72<span class="u">本</span></b><span>読み物を公開中</span></div>
+        <div class="fact red"><b>無料</b><span>道場の掲載料</span></div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-main" href="index.html#search">道場を探す <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-sub" href="index.html#register">道場・ジムを運営の方へ ― 無料で掲載する</a>
+      </div>
+    </div>
+    <figure class="hero-img">
+      <div class="ph"><img src="assets/img/sample-c-hero.webp" alt="墨絵の流れを背に、前蹴りを放つ道着姿の武術家（アニメイラスト）" /></div>
+      <div class="hero-stamp" aria-hidden="true">全国<br />対応</div>
+    </figure>
+  </div>
+</div>
+
+<!-- ===== genre marquee ===== -->
+<div class="band" aria-hidden="true">
+  <div class="track">
+    <span>空手<i>・</i>柔道<i>・</i>合気道<i>・</i>剣道・居合<i>・</i>中国武術・太極拳<i>・</i>ボクシング<i>・</i>キックボクシング<i>・</i>総合格闘技<i>・</i>古武道・武器術<i>・</i>忍術<i>・</i>弓道<i>・</i>相撲<i>・</i></span>
+    <span>空手<i>・</i>柔道<i>・</i>合気道<i>・</i>剣道・居合<i>・</i>中国武術・太極拳<i>・</i>ボクシング<i>・</i>キックボクシング<i>・</i>総合格闘技<i>・</i>古武道・武器術<i>・</i>忍術<i>・</i>弓道<i>・</i>相撲<i>・</i></span>
+  </div>
+</div>
+
+<!-- ===== search entry ===== -->
+<section id="sample-search">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-no">Search</span><h2>道場を探す</h2></div>
+    <p class="sec-lead rv">流派・ジャンルと地域で絞り込めます。全47都道府県に掲載があり、都道府県から市区町村へとたどれるようになっています。</p>
+    <div class="chips rv">
+      <span class="lbl">流派・ジャンルから</span>
+      <a class="chip" href="index.html#search">空手</a>
+      <a class="chip" href="index.html#search">柔道</a>
+      <a class="chip" href="index.html#search">合気道</a>
+      <a class="chip" href="index.html#search">剣道・居合</a>
+      <a class="chip" href="index.html#search">中国武術・太極拳</a>
+      <a class="chip" href="index.html#search">ボクシング</a>
+      <a class="chip" href="index.html#search">キックボクシング</a>
+      <a class="chip" href="index.html#search">総合格闘技</a>
+      <a class="chip" href="index.html#search">古武道・武器術</a>
+      <a class="chip" href="index.html#search">忍術</a>
+      <a class="chip" href="index.html#search">弓道</a>
+      <a class="chip" href="index.html#search">相撲</a>
+      <a class="chip" href="index.html#search">その他・複合</a>
+      <span class="lbl">よく探される地域</span>
+      <a class="chip" href="index.html#search">大阪府</a>
+      <a class="chip" href="index.html#search">東京都</a>
+      <a class="chip" href="index.html#search">福岡県</a>
+      <a class="chip" href="index.html#search">愛知県</a>
+      <a class="chip" href="index.html#search">広島県</a>
+      <a class="chip" href="index.html#search">宮城県</a>
+    </div>
+    <div class="search-cta rv">
+      <p>条件に合う道場を、113件の掲載から探せます。</p>
+      <a class="btn btn-main" href="index.html#search">道場を探す <span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== reading ===== -->
+<section id="sample-reading">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-no">Reading</span><h2>読み物・連載</h2></div>
+    <p class="sec-lead rv">流派紹介、トレーニング入門、エリア別ガイド、武術・格闘技漫画紹介。読み物は全72本、毎日少しずつ増えています。</p>
+    <div class="cards">
+      <a class="card rv" href="index.html#reading-manga-shura-no-mon">
+        <div class="ph"><img src="assets/img/img-86decc70e9e1.webp" alt="武術・格闘技漫画紹介『修羅の門』のアイキャッチ" loading="lazy" /></div>
+        <div class="tx">
+          <span class="tag">漫画紹介</span>
+          <h3>修羅の門とは：千年不敗の古武術「陸奥圓明流」の継承者を描く格闘漫画</h3>
+          <p>武術・格闘技漫画紹介の第1回。作品データは確認できた事実だけをもとに紹介します。</p>
+          <p class="more">読む <span class="arr" aria-hidden="true">→</span></p>
+        </div>
+      </a>
+      <a class="card rv" href="index.html#reading-training-14">
+        <div class="ph"><img src="assets/img/img-28df8c477fe2.webp" alt="トレーニング入門 第14回のアイキャッチ" loading="lazy" /></div>
+        <div class="tx">
+          <span class="tag">トレーニング連載</span>
+          <h3>トレーニング入門 第14回｜ダンベル1組でできる全身メニュー</h3>
+          <p>武術・格闘家のためのトレーニング入門。武術歴30年の視点で、稽古に生きる体の使い方を解説します。</p>
+          <p class="more">読む <span class="arr" aria-hidden="true">→</span></p>
+        </div>
+      </a>
+      <a class="card rv" href="index.html#reading-area-guide-osaka">
+        <div class="ph"><img src="assets/img/img-f2d25795d31d.webp" alt="大阪の武術・武道道場ガイドのアイキャッチ" loading="lazy" /></div>
+        <div class="tx">
+          <span class="tag">エリア別ガイド</span>
+          <h3>大阪の武術・武道道場ガイド｜掲載12道場と選び方のポイント</h3>
+          <p>都道府県ごとの掲載道場を、実データだけで紹介するガイド。大阪は12道場を掲載しています。</p>
+          <p class="more">読む <span class="arr" aria-hidden="true">→</span></p>
+        </div>
+      </a>
+      <a class="card rv" href="index.html#reading-starter-set">
+        <div class="ph"><img src="assets/img/img-6ecc5cc9bc8c.webp" alt="初心者スターターセット入門のアイキャッチ" loading="lazy" /></div>
+        <div class="tx">
+          <span class="tag">道具入門</span>
+          <h3>初心者スターターセット入門｜道着・防具・最初にそろえる道具</h3>
+          <p>稽古を始める前にそろえたい道具の基礎知識。実在の商品だけを、PR表記つきで紹介します。</p>
+          <p class="more">読む <span class="arr" aria-hidden="true">→</span></p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== characters ===== -->
+<div class="chars">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-no">Guides</span><h2>案内役は、武術どうぶつ<br />「まるまる道場」</h2></div>
+    <p class="rv">山のふもとの合同道場「まるまる道場」の12体が、このポータルの案内役です。空手担当の三毛猫・みけ丸を先頭に、それぞれの種目をゆるく、でも芯のある一言で紹介します。</p>
+    <div class="char-row rv">
+      <figure>
+        <div class="frame"><img src="assets/img/img-396f509f2a10.webp" alt="空手担当・三毛猫のみけ丸" loading="lazy" /></div>
+        <figcaption>みけ丸（空手）</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="assets/img/img-ef73f71edf6d.webp" alt="まるまる道場の案内役キャラクター" loading="lazy" /></div>
+        <figcaption>まるまる道場</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="assets/img/img-c32a0c0fd7a0.webp" alt="まるまる道場の案内役キャラクター" loading="lazy" /></div>
+        <figcaption>まるまる道場</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="assets/img/img-151ec2658cb9.webp" alt="まるまる道場の案内役キャラクター" loading="lazy" /></div>
+        <figcaption>まるまる道場</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="assets/img/img-a71cebfbd72a.webp" alt="まるまる道場の案内役キャラクター" loading="lazy" /></div>
+        <figcaption>まるまる道場</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="assets/img/img-09f283d13a37.webp" alt="まるまる道場の案内役キャラクター" loading="lazy" /></div>
+        <figcaption>まるまる道場</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<!-- ===== register ===== -->
+<section class="register">
+  <div class="wrap">
+    <div class="reg-box rv">
+      <div class="reg-stamp" aria-hidden="true">無料</div>
+      <h2>道場・ジムを運営の方へ</h2>
+      <p>掲載は無料です。公式サイトで確認できた事実（道場名・流派・市区町村・稽古日時）だけを掲載し、修正・削除のご依頼にも対応しています。まずは無料登録申請からどうぞ。</p>
+      <div class="hero-cta">
+        <a class="btn btn-main" href="index.html#register">無料で掲載する <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-sub" href="index.html#search">掲載中の道場を見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>武術道場ポータル ― 全国の武術・武道道場と読み物のポータル</p>
+    <div class="sns">
+      <a href="https://www.instagram.com/bujutsu.portal/" target="_blank" rel="noopener">Instagram @bujutsu.portal</a>
+      <a href="https://www.threads.com/@bujutsu.portal" target="_blank" rel="noopener">Threads @bujutsu.portal</a>
+    </div>
+    <p class="sample-note">※このページはトップページデザイン（C案：墨絵×赤）の見本です。各ボタンは現在の本番ページへリンクしています。</p>
+  </div>
+</footer>
+
+<!-- floating (mobile) -->
+<div class="floatbar">
+  <a class="btn btn-main" href="index.html#search">道場を探す <span class="arr" aria-hidden="true">→</span></a>
+  <button class="menu-btn" id="menuOpen" aria-label="メニューを開く"><span class="bars" aria-hidden="true"></span>メニュー</button>
+</div>
+<!-- floating (PC) -->
+<a class="side-cta" href="index.html#search">道場を探す</a>
+
+<div class="overlay" id="menuOverlay" aria-hidden="true">
+  <button class="close" id="menuClose">閉じる</button>
+  <a href="index.html#search">道場を探す <small>SEARCH</small></a>
+  <a href="index.html#reading-feature-gear">読み物・連載 <small>READING</small></a>
+  <a href="index.html#characters">まるまる道場 <small>GUIDES</small></a>
+  <a href="index.html#goods">グッズ <small>GOODS</small></a>
+  <a href="index.html#register">無料で掲載する <small>REGISTER</small></a>
+  <a href="index.html">現在のトップページ <small>TOP</small></a>
+</div>
+
+<script>
+(function(){
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12}) : null;
+  document.querySelectorAll('.rv').forEach(function(el){
+    if(io){ io.observe(el); } else { el.classList.add('in'); }
+  });
+  var ov = document.getElementById('menuOverlay');
+  document.getElementById('menuOpen').addEventListener('click', function(){
+    ov.classList.add('open'); ov.setAttribute('aria-hidden','false');
+  });
+  document.getElementById('menuClose').addEventListener('click', function(){
+    ov.classList.remove('open'); ov.setAttribute('aria-hidden','true');
+  });
+})();
+</script>
+</body>
+</html>
