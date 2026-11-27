@@ -30,6 +30,11 @@
       "@type": "LocalBusiness",
       "name": "姫木整体療術茅野店",
       "url": "https://tomyree-source.github.io/sites/himeki-chino/",
+      "sameAs": [
+        "https://line.me/R/ti/p/@cak8244d",
+        "https://ameblo.jp/f2-wanko/",
+        "https://www.facebook.com/himekiseitai/"
+      ],
       "telephone": "0266-75-1797",
       "image": "https://tomyree-source.github.io/sites/himeki-chino/assets/photo-cats-sign.png",
       "address": {
@@ -213,7 +218,65 @@
       }
       .btn-tel:hover { transform: translateY(-2px); background: #b9953c; }
       .btn-tel svg { width: 20px; height: 20px; flex: none; }
-      .hero-note { font-size: 12.5px; color: var(--ink-soft); margin: 12px 0 0; }
+      .hero-note { font-size: 12.5px; color: var(--ink-soft); margin: 0; }
+      .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+      @media (min-width: 900px) { .hero-cta { align-items: flex-start; } }
+      /* mobile hero: price chips + reservation buttons come before the photo,
+         so both CTAs stay in the first view, clear of the fixed bottom bar */
+      @media (max-width: 899px) {
+        .hero-wrap { display: flex; flex-direction: column; }
+        .hero-wrap > figure { order: 7; width: 100%; }
+        .hero-subphotos { order: 8; width: 100%; }
+      }
+
+      /* ---------- LINE button ---------- */
+      .btn-line {
+        display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+        background: #06c755; color: #ffffff;
+        font-weight: 700; font-size: 15.5px; letter-spacing: .05em;
+        text-decoration: none;
+        padding: 12px 26px; border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(6, 160, 70, .30);
+        min-height: 50px;
+        transition: transform .25s ease, background .25s ease;
+      }
+      .btn-line:hover { transform: translateY(-2px); background: #05b34c; }
+      .btn-line svg { width: 22px; height: 22px; flex: none; }
+      .closing-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+      .float-bar .btn-line {
+        flex: 1; min-height: 52px; font-size: 14.5px; padding: 10px 8px; gap: 6px;
+        box-shadow: 0 4px 14px rgba(6, 160, 70, .28);
+      }
+      .float-bar .btn-line svg { width: 19px; height: 19px; }
+
+      /* ---------- sns ---------- */
+      .sns-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+      .sns-list a {
+        display: flex; align-items: center; gap: 14px;
+        background: var(--card); border: 1px solid var(--line);
+        border-radius: 14px; padding: 16px 18px;
+        text-decoration: none; color: var(--ink);
+        box-shadow: 0 4px 14px rgba(46,74,56,.06);
+        transition: transform .25s ease, border-color .25s ease;
+      }
+      .sns-list a:hover { transform: translateY(-2px); border-color: var(--gold-soft); }
+      .sns-ic {
+        width: 44px; height: 44px; flex: none; border-radius: 12px;
+        display: flex; align-items: center; justify-content: center; color: #fff;
+      }
+      .sns-ic svg { width: 24px; height: 24px; }
+      .sns-ic.line { background: #06c755; }
+      .sns-ic.blog { background: var(--mori-soft); }
+      .sns-ic.fb { background: #1877f2; }
+      .sns-list .sns-name { font-weight: 700; font-size: 16px; display: block; }
+      .sns-list .sns-desc { font-size: 13.5px; color: var(--ink-soft); display: block; margin-top: 1px; line-height: 1.6; }
+      .sns-list .sns-arrow { margin-left: auto; color: var(--gold); font-size: 18px; flex: none; }
+      @media (min-width: 760px) {
+        .sns-list { grid-template-columns: 1fr 1fr 1fr; }
+        .sns-list a { flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; height: 100%; }
+        .sns-list .sns-arrow { display: none; }
+      }
+      .menu-panel a:last-child { grid-column: 1 / -1; }
 
       /* ---------- sections ---------- */
       section { padding: 64px 0 8px; }
@@ -411,7 +474,7 @@
         padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
         display: flex; gap: 10px; align-items: stretch;
       }
-      .float-bar .btn-tel { flex: 1; min-height: 52px; font-size: 16px; padding: 10px 16px; box-shadow: 0 4px 14px rgba(46,74,56,.25); }
+      .float-bar .btn-tel { flex: 1.1; min-height: 52px; font-size: 15px; padding: 10px 8px; box-shadow: 0 4px 14px rgba(46,74,56,.25); }
       .menu-btn {
         flex: none; width: 76px; min-height: 52px;
         border: 1px solid var(--mori); border-radius: 999px;
@@ -527,7 +590,11 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
             電話で予約する
           </a>
-          <p class="hero-note">ご予約・お問い合わせはお電話で　0266-75-1797（完全予約制）</p>
+          <a class="btn-line" href="https://line.me/R/ti/p/@cak8244d" target="_blank" rel="noopener" onclick="gtag('event','line_click',{link_location:'hero'});">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.262.078C5.456.078.341 4.663.341 10.66c0 5.375 4.698 9.772 10.61 9.772 1.232 0 2.426-.176 3.54-.518.144-.045.341-.015.438.09.096.104.123.252.108.397l-.235 2.315c-.022.256.146.495.406.54.068.012.137.007.203-.015.107-.035 2.63-1.005 4.914-3.567 2.122-2.381 3.19-5.235 3.19-8.485C23.657 4.663 18.54.078 12.262.078zm5.808 13.443a.634.634 0 0 1-.637.637H13.99a.635.635 0 0 1-.447-.186.635.635 0 0 1-.186-.45V9.755a.634.634 0 0 1 .635-.637.634.634 0 0 1 .636.637v3.132h2.806a.634.634 0 0 1 .636.634zm-3.572 0a.634.634 0 0 1-.637.637.635.635 0 0 1-.636-.637V9.755c0-.351.285-.637.636-.637.351 0 .637.285.637.637zm5.508.001a.635.635 0 0 1-.448.186h-2.014a.635.635 0 0 1-.449-.186.635.635 0 0 1-.186-.45V9.755c0-.168.067-.33.186-.45a.635.635 0 0 1 .449-.186h2.014c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.683h1.378c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.68h1.378c.351 0 .636.285.636.636zm-8.683.636a.635.635 0 0 1-.636-.637V9.755a.635.635 0 0 1 .636-.637c.171 0 .334.07.452.192l2.09 2.15V9.755a.634.634 0 0 1 1.27 0v3.767a.635.635 0 0 1-1.085.448l-2.091-2.15v1.701c0 .351-.285.637-.636.637z"/></svg>
+            LINEで予約・相談
+          </a>
+          <p class="hero-note">ご予約・お問い合わせはお電話（0266-75-1797）またはLINEで承ります（完全予約制）</p>
         </div>
         <div class="hero-subphotos">
           <figure>
@@ -810,15 +877,63 @@
 
           <div class="closing rv">
             <div class="paw-divider" aria-hidden="true"><svg><use href="#ic-paw" /></svg><svg><use href="#ic-paw" /></svg><svg><use href="#ic-paw" /></svg><svg><use href="#ic-paw" /></svg><svg><use href="#ic-paw" /></svg></div>
-            <h2>ご予約はお電話で<br />お気軽にどうぞ</h2>
+            <h2>ご予約はお電話・LINEで<br />お気軽にどうぞ</h2>
             <p>完全予約制 ― 午前 8:00〜12:00／午後 14:00〜18:00（金曜定休）</p>
-            <a class="btn-tel" href="tel:0266751797">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
-              0266-75-1797
-            </a>
+            <div class="closing-btns">
+              <a class="btn-tel" href="tel:0266751797">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+                0266-75-1797
+              </a>
+              <a class="btn-line" href="https://line.me/R/ti/p/@cak8244d" target="_blank" rel="noopener" onclick="gtag('event','line_click',{link_location:'closing'});">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.262.078C5.456.078.341 4.663.341 10.66c0 5.375 4.698 9.772 10.61 9.772 1.232 0 2.426-.176 3.54-.518.144-.045.341-.015.438.09.096.104.123.252.108.397l-.235 2.315c-.022.256.146.495.406.54.068.012.137.007.203-.015.107-.035 2.63-1.005 4.914-3.567 2.122-2.381 3.19-5.235 3.19-8.485C23.657 4.663 18.54.078 12.262.078zm5.808 13.443a.634.634 0 0 1-.637.637H13.99a.635.635 0 0 1-.447-.186.635.635 0 0 1-.186-.45V9.755a.634.634 0 0 1 .635-.637.634.634 0 0 1 .636.637v3.132h2.806a.634.634 0 0 1 .636.634zm-3.572 0a.634.634 0 0 1-.637.637.635.635 0 0 1-.636-.637V9.755c0-.351.285-.637.636-.637.351 0 .637.285.637.637zm5.508.001a.635.635 0 0 1-.448.186h-2.014a.635.635 0 0 1-.449-.186.635.635 0 0 1-.186-.45V9.755c0-.168.067-.33.186-.45a.635.635 0 0 1 .449-.186h2.014c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.683h1.378c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.68h1.378c.351 0 .636.285.636.636zm-8.683.636a.635.635 0 0 1-.636-.637V9.755a.635.635 0 0 1 .636-.637c.171 0 .334.07.452.192l2.09 2.15V9.755a.634.634 0 0 1 1.27 0v3.767a.635.635 0 0 1-1.085.448l-2.091-2.15v1.701c0 .351-.285.637-.636.637z"/></svg>
+                LINEで予約・相談
+              </a>
+            </div>
           </div>
         </div>
       </div>
+      <!-- ===== Blog & SNS ===== -->
+      <section id="sns">
+        <div class="wrap">
+          <div class="sec-head rv">
+            <span class="en">BLOG &amp; SNS</span>
+            <h2>ブログ・SNS</h2>
+          </div>
+          <p class="lead rv">お店の近況は、ブログとSNSでも発信しています。</p>
+          <ul class="sns-list">
+            <li class="rv">
+              <a href="https://line.me/R/ti/p/@cak8244d" target="_blank" rel="noopener" onclick="gtag('event','line_click',{link_location:'sns'});">
+                <span class="sns-ic line"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.262.078C5.456.078.341 4.663.341 10.66c0 5.375 4.698 9.772 10.61 9.772 1.232 0 2.426-.176 3.54-.518.144-.045.341-.015.438.09.096.104.123.252.108.397l-.235 2.315c-.022.256.146.495.406.54.068.012.137.007.203-.015.107-.035 2.63-1.005 4.914-3.567 2.122-2.381 3.19-5.235 3.19-8.485C23.657 4.663 18.54.078 12.262.078zm5.808 13.443a.634.634 0 0 1-.637.637H13.99a.635.635 0 0 1-.447-.186.635.635 0 0 1-.186-.45V9.755a.634.634 0 0 1 .635-.637.634.634 0 0 1 .636.637v3.132h2.806a.634.634 0 0 1 .636.634zm-3.572 0a.634.634 0 0 1-.637.637.635.635 0 0 1-.636-.637V9.755c0-.351.285-.637.636-.637.351 0 .637.285.637.637zm5.508.001a.635.635 0 0 1-.448.186h-2.014a.635.635 0 0 1-.449-.186.635.635 0 0 1-.186-.45V9.755c0-.168.067-.33.186-.45a.635.635 0 0 1 .449-.186h2.014c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.683h1.378c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.68h1.378c.351 0 .636.285.636.636zm-8.683.636a.635.635 0 0 1-.636-.637V9.755a.635.635 0 0 1 .636-.637c.171 0 .334.07.452.192l2.09 2.15V9.755a.634.634 0 0 1 1.27 0v3.767a.635.635 0 0 1-1.085.448l-2.091-2.15v1.701c0 .351-.285.637-.636.637z"/></svg></span>
+                <span>
+                  <span class="sns-name">LINE公式アカウント</span>
+                  <span class="sns-desc">ご予約・お問い合わせにご利用いただけます（ID：@cak8244d）</span>
+                </span>
+                <span class="sns-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="rv">
+              <a href="https://ameblo.jp/f2-wanko/" target="_blank" rel="noopener">
+                <span class="sns-ic blog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg></span>
+                <span>
+                  <span class="sns-name">公式ブログ（アメブロ）</span>
+                  <span class="sns-desc">お店からのお知らせや日々の様子、看板猫の近況を発信しています</span>
+                </span>
+                <span class="sns-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="rv">
+              <a href="https://www.facebook.com/himekiseitai/" target="_blank" rel="noopener">
+                <span class="sns-ic fb"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg></span>
+                <span>
+                  <span class="sns-name">Facebookページ</span>
+                  <span class="sns-desc">お店のFacebookページです</span>
+                </span>
+                <span class="sns-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
     </main>
 
     <footer class="deco-host">
@@ -840,12 +955,17 @@
         <a href="#tencho">店長紹介</a>
         <a href="#nagare">ご利用の流れ</a>
         <a href="#info">店舗情報</a>
+        <a href="#sns">ブログ・SNS</a>
       </nav>
     </div>
     <div class="float-bar">
       <a class="btn-tel" href="tel:0266751797">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
         電話で予約する
+      </a>
+      <a class="btn-line" href="https://line.me/R/ti/p/@cak8244d" target="_blank" rel="noopener" onclick="gtag('event','line_click',{link_location:'float_bar'});" aria-label="LINEで予約・相談">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.262.078C5.456.078.341 4.663.341 10.66c0 5.375 4.698 9.772 10.61 9.772 1.232 0 2.426-.176 3.54-.518.144-.045.341-.015.438.09.096.104.123.252.108.397l-.235 2.315c-.022.256.146.495.406.54.068.012.137.007.203-.015.107-.035 2.63-1.005 4.914-3.567 2.122-2.381 3.19-5.235 3.19-8.485C23.657 4.663 18.54.078 12.262.078zm5.808 13.443a.634.634 0 0 1-.637.637H13.99a.635.635 0 0 1-.447-.186.635.635 0 0 1-.186-.45V9.755a.634.634 0 0 1 .635-.637.634.634 0 0 1 .636.637v3.132h2.806a.634.634 0 0 1 .636.634zm-3.572 0a.634.634 0 0 1-.637.637.635.635 0 0 1-.636-.637V9.755c0-.351.285-.637.636-.637.351 0 .637.285.637.637zm5.508.001a.635.635 0 0 1-.448.186h-2.014a.635.635 0 0 1-.449-.186.635.635 0 0 1-.186-.45V9.755c0-.168.067-.33.186-.45a.635.635 0 0 1 .449-.186h2.014c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.683h1.378c.351 0 .636.285.636.637 0 .35-.285.635-.636.635h-1.378v.68h1.378c.351 0 .636.285.636.636zm-8.683.636a.635.635 0 0 1-.636-.637V9.755a.635.635 0 0 1 .636-.637c.171 0 .334.07.452.192l2.09 2.15V9.755a.634.634 0 0 1 1.27 0v3.767a.635.635 0 0 1-1.085.448l-2.091-2.15v1.701c0 .351-.285.637-.636.637z"/></svg>
+        LINEで予約
       </a>
       <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuPanel">
         <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
