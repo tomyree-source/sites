@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>もみほぐし整体 60分　5,500円<br>もみほぐし整体 90分　7,500円<br>もみほぐし整体 120分　10,000円<br>オイルマッサージ（女性専用） 60分　5,500円<br>オイルマッサージ（女性専用） 90分　7,500円<br>オイルマッサージ（女性専用） 120分　10,000円</td></tr><tr><th>営業時間</th><td>受付 12:00～26:00</td></tr><tr><th>アクセス</th><td>北九州市（小倉北区・小倉南区・八幡西区・八幡東区・若松区・戸畑区）のご自宅・ホテルへの出張。エリア内は出張費無料</td></tr><tr><th>特徴</th><td><span class="tags"><span>出張専門</span><span>男性セラピストが対応</span><span>完全予約制・完全オーダーメイド・オールハンドと公式に記載</span><span>もみほぐし整体は男女可、オイルマッサージは女性専用（公式記載）</span><span>オイルマッサージではWELEDAのオイルを使用と公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="http://www.relax1202.com/" target="_blank" rel="noopener">http://www.relax1202.com/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>もみほぐし整体 60分　5,500円<br>もみほぐし整体 90分　7,500円<br>もみほぐし整体 120分　10,000円<br>オイルマッサージ（女性専用） 60分　5,500円<br>オイルマッサージ（女性専用） 90分　7,500円<br>オイルマッサージ（女性専用） 120分　10,000円</td></tr><tr><th>営業時間</th><td>受付 12:00～26:00</td></tr><tr><th>アクセス</th><td>北九州市（小倉北区・小倉南区・八幡西区・八幡東区・若松区・戸畑区）のご自宅・ホテルへの出張。エリア内は出張費無料</td></tr><tr><th>特徴</th><td><span class="tags"><span>出張専門</span><span>男性セラピストが対応</span><span>完全予約制・完全オーダーメイド・オールハンドと公式に記載</span><span>もみほぐし整体は男女可、オイルマッサージは女性専用（公式記載）</span><span>オイルマッサージではWELEDAのオイルを使用と公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="http://www.relax1202.com/" target="_blank" rel="noopener">http://www.relax1202.com/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://twitter.com/relax1202" target="_blank" rel="noopener">X</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>リラクゼーションコース／リンパ集中コース 90分　9,000円<br>リラクゼーションコース／リンパ集中コース 120分　12,000円<br>延長 30分　3,000円</td></tr><tr><th>営業時間</th><td>平日 18:00-26:00 / 土日祝 10:00-26:00</td></tr><tr><th>アクセス</th><td>東京23区・東京都下・川崎・横浜を中心に、埼玉・千葉など関東エリアのご自宅やホテルへ出張</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>完全予約制</span><span>出張型</span><span>男性セラピスト</span><span>オイルマッサージ</span><span>リンパドレナージュ</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://plume.eek.jp/" target="_blank" rel="noopener">https://plume.eek.jp/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>リラクゼーションコース／リンパ集中コース 90分　9,000円<br>リラクゼーションコース／リンパ集中コース 120分　12,000円<br>延長 30分　3,000円</td></tr><tr><th>営業時間</th><td>平日 18:00-26:00 / 土日祝 10:00-26:00</td></tr><tr><th>アクセス</th><td>東京23区・東京都下・川崎・横浜を中心に、埼玉・千葉など関東エリアのご自宅やホテルへ出張</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>完全予約制</span><span>出張型</span><span>男性セラピスト</span><span>オイルマッサージ</span><span>リンパドレナージュ</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://plume.eek.jp/" target="_blank" rel="noopener">https://plume.eek.jp/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/exoIEZ7" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>
