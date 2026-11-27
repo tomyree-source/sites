@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>オイルケアマッサージ（初回特別価格・出張料金・カウンセリング料込み）　150分　¥10,000</td></tr><tr><th>アクセス</th><td>ご自宅・ホテルへ出張（神戸〜大阪）</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>出張対応</span><span>完全予約制</span><span>国家資格をもつセラピスト</span><span>施術歴18年</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://de-bonheur.pages.dev/" target="_blank" rel="noopener">https://de-bonheur.pages.dev/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>オイルケアマッサージ（初回特別価格・出張料金・カウンセリング料込み）　150分　¥10,000</td></tr><tr><th>アクセス</th><td>ご自宅・ホテルへ出張（神戸〜大阪）</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>出張対応</span><span>完全予約制</span><span>国家資格をもつセラピスト</span><span>施術歴18年</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://de-bonheur.pages.dev/" target="_blank" rel="noopener">https://de-bonheur.pages.dev/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://www.instagram.com/oilmassage_bonheur/" target="_blank" rel="noopener">Instagram</a> ／ <a class="sns-link" href="https://lin.ee/bxYgPVE" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

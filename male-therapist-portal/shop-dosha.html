@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>基本コース（指圧式ボディケア／全身オイルトリートメント）　60分　¥6,000（消費税・交通費込み）<br>ゆったりコース　90分　¥9,000（消費税・交通費込み）<br>じっくり極上コース　120分　¥12,000（消費税・交通費込み）<br>プレミアムコース　100分　¥20,000（消費税・交通費込み）</td></tr><tr><th>アクセス</th><td>難波Hatchすぐの所にある店舗での施術あり（公式トップ表記）</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性スタッフ</span><span>出張対応</span><span>ロミロミ（全身オイルトリートメント）</span><span>指圧式ボディケア</span><span>スタッフのライセンス表記あり（リフレ・ロミロミ・指圧・ホットストーン）</span></span></td></tr><tr><th>公式サイト</th><td><a href="http://dosha.web-style.biz/" target="_blank" rel="noopener">http://dosha.web-style.biz/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>基本コース（指圧式ボディケア／全身オイルトリートメント）　60分　¥6,000（消費税・交通費込み）<br>ゆったりコース　90分　¥9,000（消費税・交通費込み）<br>じっくり極上コース　120分　¥12,000（消費税・交通費込み）<br>プレミアムコース　100分　¥20,000（消費税・交通費込み）</td></tr><tr><th>アクセス</th><td>難波Hatchすぐの所にある店舗での施術あり（公式トップ表記）</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性スタッフ</span><span>出張対応</span><span>ロミロミ（全身オイルトリートメント）</span><span>指圧式ボディケア</span><span>スタッフのライセンス表記あり（リフレ・ロミロミ・指圧・ホットストーン）</span></span></td></tr><tr><th>公式サイト</th><td><a href="http://dosha.web-style.biz/" target="_blank" rel="noopener">http://dosha.web-style.biz/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://twitter.com/milky_kitatora" target="_blank" rel="noopener">X</a> ／ <a class="sns-link" href="https://lin.ee/xKRLXXk" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

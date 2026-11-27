@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>アロマトリートメント 60分コース　4,000円<br>アロマトリートメント 90分コース　7,000円<br>アロマトリートメント 120分コース　10,000円<br>アロマトリートメント 150分コース　13,000円<br>アロマトリートメント 180分コース　16,000円</td></tr><tr><th>営業時間</th><td>受付12:00～翌5:00（受付4:00まで）</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>広島県広島市中区</td></tr><tr><th>アクセス</th><td>出張は広島市、東広島市、呉市、福山市、岩国市、周南市、山口市、岡山市、倉敷市のご自宅・シティホテル・ビジネスホテル・旅館などへ派遣と公式に記載。店舗は完全個室サロンと記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>出張＋店舗（完全個室）</span><span>アロマオイルマッサージ</span><span>リンパマッサージを取り入れたオールハンドのエステと公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://nagomi-higashihiroshima.crayonsite.net/" target="_blank" rel="noopener">https://nagomi-higashihiroshima.crayonsite.net/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>アロマトリートメント 60分コース　4,000円<br>アロマトリートメント 90分コース　7,000円<br>アロマトリートメント 120分コース　10,000円<br>アロマトリートメント 150分コース　13,000円<br>アロマトリートメント 180分コース　16,000円</td></tr><tr><th>営業時間</th><td>受付12:00～翌5:00（受付4:00まで）</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>広島県広島市中区</td></tr><tr><th>アクセス</th><td>出張は広島市、東広島市、呉市、福山市、岩国市、周南市、山口市、岡山市、倉敷市のご自宅・シティホテル・ビジネスホテル・旅館などへ派遣と公式に記載。店舗は完全個室サロンと記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>出張＋店舗（完全個室）</span><span>アロマオイルマッサージ</span><span>リンパマッサージを取り入れたオールハンドのエステと公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://nagomi-higashihiroshima.crayonsite.net/" target="_blank" rel="noopener">https://nagomi-higashihiroshima.crayonsite.net/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://line.me/R/ti/p/%40owp4278h" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

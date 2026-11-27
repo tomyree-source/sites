@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>スタンダードコース 90分　10,000円<br>ゴールドコース 120分　15,000円<br>VIPコース 150分　20,000円<br>延長 30分　5,000円</td></tr><tr><th>営業時間</th><td>19時～26時（最終受付24時、受付時間は公式LINEで24時間）</td></tr><tr><th>定休日</th><td>日曜日（サロン情報欄では不定休とも記載あり）</td></tr><tr><th>アクセス</th><td>宇都宮市内のビジネスホテル・ご自宅・リラクゼーションに適した清潔な空間など希望の場所へ出張。宇都宮市内は出張費用無料サービス実施中と公式に記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>出張型メンズセラピスト</span><span>完全予約制</span><span>オイルリラクゼーション</span><span>天然オイルをたっぷり使ったオールハンドの全身トリートメントと公式に記載</span><span>新規はコース料金から2000円OFFと公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://chilling.hp.peraichi.com/" target="_blank" rel="noopener">https://chilling.hp.peraichi.com/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>スタンダードコース 90分　10,000円<br>ゴールドコース 120分　15,000円<br>VIPコース 150分　20,000円<br>延長 30分　5,000円</td></tr><tr><th>営業時間</th><td>19時～26時（最終受付24時、受付時間は公式LINEで24時間）</td></tr><tr><th>定休日</th><td>日曜日（サロン情報欄では不定休とも記載あり）</td></tr><tr><th>アクセス</th><td>宇都宮市内のビジネスホテル・ご自宅・リラクゼーションに適した清潔な空間など希望の場所へ出張。宇都宮市内は出張費用無料サービス実施中と公式に記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>出張型メンズセラピスト</span><span>完全予約制</span><span>オイルリラクゼーション</span><span>天然オイルをたっぷり使ったオールハンドの全身トリートメントと公式に記載</span><span>新規はコース料金から2000円OFFと公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://chilling.hp.peraichi.com/" target="_blank" rel="noopener">https://chilling.hp.peraichi.com/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/3IYfB0X" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

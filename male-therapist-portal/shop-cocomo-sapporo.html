@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>ボディケア basic 60分（Sp基準・10時～）　7,000円<br>ボディケア basic 90分（Sp基準・10時～）　10,000円<br>ボディケア basic 120分（Sp基準・10時～）　13,000円<br>オイルリンパ basic 90分（Sp基準・10時～）　10,000円<br>オイルリンパ basic 120分（Sp基準・10時～）　13,000円<br>オイルリンパ basic 150分（Sp基準・10時～）　16,000円</td></tr><tr><th>営業時間</th><td>電話受付24時まで／LINE受付01時まで（事前予約で24時間対応）</td></tr><tr><th>アクセス</th><td>札幌市・小樽市・余市町へ出張対応。ご自宅やビジネスホテル・シティホテル等へ訪問</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>出張対応</span><span>オールハンド</span><span>有資格者による施術（公式表記）</span><span>カップル・ご夫婦利用可</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://www.cocomo-healer.com/" target="_blank" rel="noopener">https://www.cocomo-healer.com/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>ボディケア basic 60分（Sp基準・10時～）　7,000円<br>ボディケア basic 90分（Sp基準・10時～）　10,000円<br>ボディケア basic 120分（Sp基準・10時～）　13,000円<br>オイルリンパ basic 90分（Sp基準・10時～）　10,000円<br>オイルリンパ basic 120分（Sp基準・10時～）　13,000円<br>オイルリンパ basic 150分（Sp基準・10時～）　16,000円</td></tr><tr><th>営業時間</th><td>電話受付24時まで／LINE受付01時まで（事前予約で24時間対応）</td></tr><tr><th>アクセス</th><td>札幌市・小樽市・余市町へ出張対応。ご自宅やビジネスホテル・シティホテル等へ訪問</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>出張対応</span><span>オールハンド</span><span>有資格者による施術（公式表記）</span><span>カップル・ご夫婦利用可</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://www.cocomo-healer.com/" target="_blank" rel="noopener">https://www.cocomo-healer.com/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/WlVhxPQ" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

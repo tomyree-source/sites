@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>アロマトリートメント（全身ディープティシューリンパ＋デコルテ＋ヘッド）　90分　15,000円<br>アロマトリートメント（全身ディープティシューリンパ＋デコルテ＋ヘッド）　120分　20,000円</td></tr><tr><th>営業時間</th><td>10:00〜21:00（月曜・火曜を中心に週2日営業・完全予約制）</td></tr><tr><th>住所</th><td>千葉県船橋市本町4-38-22</td></tr><tr><th>アクセス</th><td>JR船橋駅南口徒歩6分／京成船橋駅徒歩4分（詳しい住所と入り口は予約確定後にLINEで案内）</td></tr><tr><th>最寄り駅</th><td>京成船橋駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>完全個室</span><span>完全予約制</span><span>リンパマッサージ</span><span>アロマトリートメント</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://calme-salon.jp/funabashi/" target="_blank" rel="noopener">https://calme-salon.jp/funabashi/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>アロマトリートメント（全身ディープティシューリンパ＋デコルテ＋ヘッド）　90分　15,000円<br>アロマトリートメント（全身ディープティシューリンパ＋デコルテ＋ヘッド）　120分　20,000円</td></tr><tr><th>営業時間</th><td>10:00〜21:00（月曜・火曜を中心に週2日営業・完全予約制）</td></tr><tr><th>住所</th><td>千葉県船橋市本町4-38-22</td></tr><tr><th>アクセス</th><td>JR船橋駅南口徒歩6分／京成船橋駅徒歩4分（詳しい住所と入り口は予約確定後にLINEで案内）</td></tr><tr><th>最寄り駅</th><td>京成船橋駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>完全個室</span><span>完全予約制</span><span>リンパマッサージ</span><span>アロマトリートメント</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://calme-salon.jp/funabashi/" target="_blank" rel="noopener">https://calme-salon.jp/funabashi/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/tiAJn22" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>
