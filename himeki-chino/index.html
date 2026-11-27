@@ -221,12 +221,25 @@
       .hero-note { font-size: 12.5px; color: var(--ink-soft); margin: 0; }
       .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
       @media (min-width: 900px) { .hero-cta { align-items: flex-start; } }
-      /* mobile hero: price chips + reservation buttons come before the photo,
-         so both CTAs stay in the first view, clear of the fixed bottom bar */
+      /* mobile hero: eyecatch photo comes right after the headline,
+         then price chips and reservation buttons — all inside the first view.
+         The photo keeps its natural aspect ratio (no cropping) so the sign
+         text and all three cats stay fully visible. */
       @media (max-width: 899px) {
+        .hero { padding: 20px 0 32px; }
         .hero-wrap { display: flex; flex-direction: column; }
-        .hero-wrap > figure { order: 7; width: 100%; }
-        .hero-subphotos { order: 8; width: 100%; }
+        .hero-welcome { order: 1; margin-bottom: 8px; }
+        .hero-place { order: 2; margin-bottom: 6px; }
+        .hero h1 { order: 3; font-size: clamp(29px, 8vw, 34px); margin-bottom: 2px; }
+        .hero-catch { order: 4; margin: 4px 0 14px; }
+        .hero-wrap > figure { order: 5; width: 100%; }
+        .hero-main-photo { margin-bottom: 8px; }
+        .hero-photo-cap { margin-bottom: 14px; }
+        .hero-points { order: 6; margin-bottom: 14px; }
+        .hero-cta { order: 7; gap: 10px; }
+        .hero-cta .btn-tel { padding: 13px 28px; min-height: 52px; }
+        .hero-cta .btn-line { padding: 10px 24px; min-height: 48px; }
+        .hero-subphotos { order: 8; width: 100%; margin-top: 22px; }
       }
 
       /* ---------- LINE button ---------- */
