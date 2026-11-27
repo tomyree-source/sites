@@ -93,6 +93,16 @@ a{color:#14524C}
 .pc-reserve{display:none}
 @media(min-width:900px){.reserve-bar{display:none}.pc-reserve{display:flex;position:fixed;right:0;top:38%;z-index:80;background:#0B3330;color:#EAF3EF;text-decoration:none;font-family:"Cormorant Garamond",serif;letter-spacing:.34em;font-size:.78rem;padding:1.1rem .55rem;border-radius:12px 0 0 12px;writing-mode:vertical-rl}}
 </style>
+<style data-shb-css>
+.shb-wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0;padding:12px 0;border-top:1px solid rgba(140,140,140,.35);border-bottom:1px solid rgba(140,140,140,.35)}
+.shb-label{font-size:12px;letter-spacing:.08em;opacity:.75;margin-right:2px}
+.shb-btn{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;line-height:1;padding:8px 13px;border-radius:999px;border:1px solid #cfd4d8;background:#fff;color:#222;text-decoration:none;cursor:pointer;font-family:inherit}
+.shb-btn:hover{opacity:.85}
+.shb-x{border-color:#222;color:#111}
+.shb-line{border-color:#06c755;color:#04883a}
+.shb-fb{border-color:#1877f2;color:#1463cc}
+.shb-copy{border-color:#9aa3a8;color:#444}
+</style>
 </head>
 <body>
 <header><div class="brand"><small>EAR SEED SALON MIMIR UMEDA</small>耳ツボ専門店ミミル 梅田</div></header>
@@ -102,6 +112,13 @@ a{color:#14524C}
 <div class="wrap">
 <p class="crumb"><a href="../index.html">トップ</a> ＞ <a href="../blog.html">ブログ</a> ＞ 耳ツボシードの貼り方</p>
 <h1>耳ツボシードの貼り方 ― 自分で貼るときの5つの手順と失敗しないコツ</h1>
+<div class="shb-wrap" data-shb-block="1">
+<span class="shb-label">この記事をシェア</span>
+<a class="shb-btn shb-x" data-shb="x" target="_blank" rel="noopener">Xでシェア</a>
+<a class="shb-btn shb-line" data-shb="line" target="_blank" rel="noopener">LINEで送る</a>
+<a class="shb-btn shb-fb" data-shb="fb" target="_blank" rel="noopener">Facebookでシェア</a>
+<button type="button" class="shb-btn shb-copy" data-shb="copy">リンクをコピー</button>
+</div>
 <p class="lead">耳ツボシードを買ってみたものの、貼り方が合っているか不安。そんな声をよく聞きます。シードは自分で貼れる手軽さが魅力ですが、はがれやすい・位置がずれるといった失敗も起こりがちです。この記事では、初めての方がつまずきやすい点に絞って、貼り方の5つの手順と失敗しないコツをまとめました。</p>
 
 <img class="hero" src="../assets/blog-01.jpg" alt="耳ツボシードを自分で貼る様子">
@@ -148,6 +165,13 @@ a{color:#14524C}
 
 </div>
 </div>
+<div class="shb-wrap" data-shb-block="1">
+<span class="shb-label">この記事をシェア</span>
+<a class="shb-btn shb-x" data-shb="x" target="_blank" rel="noopener">Xでシェア</a>
+<a class="shb-btn shb-line" data-shb="line" target="_blank" rel="noopener">LINEで送る</a>
+<a class="shb-btn shb-fb" data-shb="fb" target="_blank" rel="noopener">Facebookでシェア</a>
+<button type="button" class="shb-btn shb-copy" data-shb="copy">リンクをコピー</button>
+</div>
 <footer>
 耳ツボ専門店ミミル 梅田（MIMIR）｜大阪市北区堂山町12-5 ロイヤルハイツ梅田Ⅱ 303号室（レンタルサロンACE梅田内）<br>
 完全予約制・男女可｜<a href="../index.html">トップへ戻る</a>
@@ -173,6 +197,16 @@ a{color:#14524C}
 var rnBtn=document.getElementById('menuBtn'),rnPanel=document.getElementById('menuPanel');
 rnBtn.addEventListener('click',function(){rnPanel.classList.toggle('open');});
 rnPanel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){rnPanel.classList.remove('open');});});
+</script>
+<script data-shb-js>
+(function(){var u=location.href,t=document.title;
+function fire(m){if(window.gtag){gtag('event','share_click',{method:m});}}
+document.querySelectorAll('[data-shb]').forEach(function(el){var m=el.getAttribute('data-shb');
+if(m==='x'){el.href='https://twitter.com/intent/tweet?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(u);el.addEventListener('click',function(){fire('x');});}
+else if(m==='line'){el.href='https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(u);el.addEventListener('click',function(){fire('line');});}
+else if(m==='fb'){el.href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(u);el.addEventListener('click',function(){fire('facebook');});}
+else if(m==='copy'){el.addEventListener('click',function(){fire('copy');if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(function(){el.textContent='コピーしました';setTimeout(function(){el.textContent='リンクをコピー';},2000);},function(){window.prompt('URLをコピーしてください',u);});}else{window.prompt('URLをコピーしてください',u);}});}
+});})();
 </script>
 </body>
 </html>
