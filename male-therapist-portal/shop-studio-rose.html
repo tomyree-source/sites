@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>スタジオローズ（studio ROSE／キシモトサロン）｜名古屋市北区・出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="名古屋市北区に専用個室ルームを持つ、女性専用のオイルリラクゼーションサロンです。男性セラピストがオールハンドでトリートメントを行い、出張にも対応しています。90分から180分までのコースに加え、初回向けのお試しコースがあ…">
 <meta name="keywords" content="スタジオローズ（studio ROSE／キシモトサロン）,名古屋市北区・出張 男性セラピスト,愛知県 男性セラピスト 女性専用">

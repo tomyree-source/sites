@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Salon de Aroma ～THE BODY LAB～（サロン・ド・アロマ）｜小山市東城南のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="小山市にある、男性セラピストによる女性専用のプライベートサロンです。サロン全体を貸し切る形で、メディカルアロマを使ったオイルトリートメントやアロマタッチ・テクニックを提供しています。ラドン浴ができるホルミシスルームやシャ…">
 <meta name="keywords" content="Salon de Aroma ～THE BODY LAB～（サロン・ド・アロマ）,小山市東城南 男性セラピスト,栃木県 男性セラピスト 女性専用">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>メンズセラピスト タカシ｜兵庫・高砂（姫路・加古川もプロフィールに記載）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="兵庫県高砂市を中心に活動する、メンズセラピスト「タカシ」の個人アカウントです。公式Instagramプロフィールには姫路・高砂・加古川の地名が明記されています。メニューや料金、営業時間は公式プロフィールからは確認できなか…">
 <meta name="keywords" content="メンズセラピスト タカシ,兵庫・高砂（姫路・加古川もプロフィールに記載） 男性セラピスト,兵庫県 男性セラピスト 女性専用">

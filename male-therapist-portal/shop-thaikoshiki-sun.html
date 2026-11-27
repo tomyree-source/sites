@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>タイ古式サン｜米子市皆生のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="米子市皆生にあるリラクゼーションサロンで、本場タイで資格を取得した男性セラピストが施術を担当します。タイ古式や足つぼに加え、男性スタッフによるオイルリンパマッサージを用意しており、オイルコースは女性のみが対象です。公式サ…">
 <meta name="keywords" content="タイ古式サン,米子市皆生 男性セラピスト,鳥取県 男性セラピスト 女性専用">

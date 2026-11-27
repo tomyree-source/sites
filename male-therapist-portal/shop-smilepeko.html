@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>スマイルペコ｜西三河中心・出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="愛知県西三河を中心に出張する、女性専用のリラクゼーションサロンです。男性セラピストがご自宅やホテルへ伺い、オイルマッサージを行います。営業日や時間は固定ではなく、希望日時をもとに調整する形と案内されています。">
 <meta name="keywords" content="スマイルペコ,西三河中心・出張 男性セラピスト,愛知県 男性セラピスト 女性専用">

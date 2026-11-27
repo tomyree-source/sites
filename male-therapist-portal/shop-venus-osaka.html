@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>ヴィーナス Venus｜日本橋のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪市中央区日本橋にある、男性セラピストによる女性専用の隠れ家プライベートサロンです。完全個室で全身オイルトリートメントを行い、12時から深夜27時まで営業しています。初回限定のお試し90分コースも用意されています。">
 <meta name="keywords" content="ヴィーナス Venus,日本橋 男性セラピスト,大阪府 男性セラピスト 女性専用">

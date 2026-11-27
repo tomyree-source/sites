@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>salon rose｜名古屋・栄のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="名古屋・栄付近にある女性専用エステサロンで、男性セラピストによる指圧コースやアロマオイルマッサージを提供しています。名古屋ルームでの施術のほか出張も可能で、22時以降は出張のみ予約を受け付けています。営業時間は12時から…">
 <meta name="keywords" content="salon rose,名古屋・栄 男性セラピスト,愛知県 男性セラピスト 女性専用">

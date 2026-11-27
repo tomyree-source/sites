@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Velours Private Oil｜大阪・心斎橋／なんばのサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="大阪を拠点とする女性専用のプライベートオイルマッサージで、男性セラピストが施術を担当します。コースはスタンダードなCALMとSENSUALの2種類で、施術場所はエリアや希望に合わせて案内されるレンタルサロンなどです。予約…">
 <meta name="keywords" content="Velours Private Oil,大阪・心斎橋／なんば 男性セラピスト,大阪府 男性セラピスト 女性専用">

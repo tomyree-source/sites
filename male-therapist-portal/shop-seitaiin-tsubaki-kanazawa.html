@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>整体院 椿｜金沢市田上さくらのサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="金沢市にある完全予約制・女性専用の整体院で、「美と健康」をテーマに小顔矯正と骨盤矯正を専門としています。院長の竹中亮真氏は理学療法士の国家資格を持ち、骨盤矯正コンテスト全国1位の実績があります。顔や体の悩みに加え、産後の…">
 <meta name="keywords" content="整体院 椿,金沢市田上さくら 男性セラピスト,石川県 男性セラピスト 女性専用">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>Samurai｜広島・岡山・出張のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="広島と岡山を中心に、男性セラピストがご自宅やホテルへ伺う女性専用の出張アロマオイルマッサージです。アロマオイルのコースに加え、パックや脱毛などのオプションも公式に案内されています。近県への出張も相談できる体制を掲げていま…">
 <meta name="keywords" content="Samurai,広島・岡山・出張 男性セラピスト,広島県 男性セラピスト 女性専用">

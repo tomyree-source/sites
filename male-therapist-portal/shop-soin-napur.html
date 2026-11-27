@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>ソワンナピュール（Soin Napur）｜福島市笹木野／八島田街道沿いのサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="福島市笹木野にある女性専用サロンで、オーナー兼セラピストの男性がアロマを使ったリンパドレナージュを中心に施術します。天然のエッセンシャルオイルから好みの香りを選べることや、フェイシャルや小顔リンパなどのメニューも案内され…">
 <meta name="keywords" content="ソワンナピュール（Soin Napur）,福島市笹木野／八島田街道沿い 男性セラピスト,福島県 男性セラピスト 女性専用">

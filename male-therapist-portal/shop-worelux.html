@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>WORELUX｜愛知県名古屋市（出張エリア）のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="WORELUXは、愛知県名古屋市を出張エリアとする、男性セラピストによる女性向けの出張型オイルエステマッサージです。ご自宅や滞在先ホテルのほか、名古屋駅・金山駅近くの提携レンタルスペースでも施術を受けられます。ゆっくりと…">
 <meta name="keywords" content="WORELUX,愛知県名古屋市（出張エリア） 男性セラピスト,愛知県 男性セラピスト 女性専用">

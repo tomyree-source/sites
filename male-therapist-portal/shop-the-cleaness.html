@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>the CLEANESS｜恵比寿のサロン紹介 — 男性セラピストナビ</title>
 <meta name="description" content="東京・恵比寿駅から徒歩6分の場所にある、男性セラピストによる女性専用のオイルマッサージサロンです。自律神経や血流・リンパの巡りに着目し、コンディションを整えることを目的とした施術が案内されています。">
 <meta name="keywords" content="the CLEANESS,恵比寿 男性セラピスト,東京都 男性セラピスト 女性専用">
