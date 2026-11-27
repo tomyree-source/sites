@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>特徴</th><td><span class="tags"><span>メンズセラピスト</span><span>個人セラピスト</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://www.instagram.com/tmo731122/" target="_blank" rel="noopener">https://www.instagram.com/tmo731122/</a></td></tr>
+      <tr><th>特徴</th><td><span class="tags"><span>メンズセラピスト</span><span>個人セラピスト</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://www.instagram.com/tmo731122/" target="_blank" rel="noopener">https://www.instagram.com/tmo731122/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://www.instagram.com/tmo731122/" target="_blank" rel="noopener">Instagram</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

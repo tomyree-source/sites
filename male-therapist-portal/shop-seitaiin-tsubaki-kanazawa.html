@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>小顔矯正＆全身調節　33,000円<br>小顔矯正　19,800円<br>全身調節　17,600円<br>スタイルアップ骨盤矯正（産後）　11,000円</td></tr><tr><th>営業時間</th><td>10:00〜19:00</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>〒920-1157 石川県金沢市田上さくら1-126</td></tr><tr><th>アクセス</th><td>無料駐車場3台完備（5・6・7番）。完全予約制</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>完全予約制</span><span>小顔矯正</span><span>骨盤矯正</span><span>産後ケア</span><span>理学療法士（院長）</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://www.camely-tsubaki.com/" target="_blank" rel="noopener">https://www.camely-tsubaki.com/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>小顔矯正＆全身調節　33,000円<br>小顔矯正　19,800円<br>全身調節　17,600円<br>スタイルアップ骨盤矯正（産後）　11,000円</td></tr><tr><th>営業時間</th><td>10:00〜19:00</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>〒920-1157 石川県金沢市田上さくら1-126</td></tr><tr><th>アクセス</th><td>無料駐車場3台完備（5・6・7番）。完全予約制</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>完全予約制</span><span>小顔矯正</span><span>骨盤矯正</span><span>産後ケア</span><span>理学療法士（院長）</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://www.camely-tsubaki.com/" target="_blank" rel="noopener">https://www.camely-tsubaki.com/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://www.instagram.com/tsubaki_ryoma/" target="_blank" rel="noopener">Instagram</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

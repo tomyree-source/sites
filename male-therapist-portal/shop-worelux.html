@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>リラックスオイルマッサージ 60分 お試し背面中心　5,000円<br>リラックスオイルマッサージ 90分 お試し　7,000円<br>リラックスオイルマッサージ 120分 基本　9,000円<br>リラックスオイルマッサージ 150分 スペシャル　11,000円</td></tr><tr><th>アクセス</th><td>提携レンタルスペース（エステ・マッサージ専用）は名古屋駅徒歩7分／金山駅徒歩4分。ご自宅・ご滞在ホテルへの出張も対応</td></tr><tr><th>最寄り駅</th><td>名古屋駅・金山駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性向け</span><span>出張対応</span><span>男性セラピスト</span><span>提携レンタルスペース利用可（名古屋駅・金山駅）</span><span>シャワーあり（レンタルスペース利用時）</span><span>コース時間内にヘッドマッサージへの変更可</span><span>クレジットカード・交通系IC・iD・QUICPay対応</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://www.worelux-nagoya.com/" target="_blank" rel="noopener">https://www.worelux-nagoya.com/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>リラックスオイルマッサージ 60分 お試し背面中心　5,000円<br>リラックスオイルマッサージ 90分 お試し　7,000円<br>リラックスオイルマッサージ 120分 基本　9,000円<br>リラックスオイルマッサージ 150分 スペシャル　11,000円</td></tr><tr><th>アクセス</th><td>提携レンタルスペース（エステ・マッサージ専用）は名古屋駅徒歩7分／金山駅徒歩4分。ご自宅・ご滞在ホテルへの出張も対応</td></tr><tr><th>最寄り駅</th><td>名古屋駅・金山駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性向け</span><span>出張対応</span><span>男性セラピスト</span><span>提携レンタルスペース利用可（名古屋駅・金山駅）</span><span>シャワーあり（レンタルスペース利用時）</span><span>コース時間内にヘッドマッサージへの変更可</span><span>クレジットカード・交通系IC・iD・QUICPay対応</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://www.worelux-nagoya.com/" target="_blank" rel="noopener">https://www.worelux-nagoya.com/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://lin.ee/ZwhKOH6" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

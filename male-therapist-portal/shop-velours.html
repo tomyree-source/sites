@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>CALM［カーム］コース Standard Oil Massage<br>SENSUALコース Special Oil Massage</td></tr><tr><th>アクセス</th><td>施術場所は大阪市内のレンタルサロン、ビジネスホテルなど。難波ルームは難波駅徒歩5分（公式ROOMページ）。出張対応可能（公式リンク集トップ表記）</td></tr><tr><th>最寄り駅</th><td>難波駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>出張対応</span><span>プライベートオイルマッサージ</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://lit.link/veloursprivateoil" target="_blank" rel="noopener">https://lit.link/veloursprivateoil</a></td></tr>
+      <tr><th>メニュー・料金</th><td>CALM［カーム］コース Standard Oil Massage<br>SENSUALコース Special Oil Massage</td></tr><tr><th>アクセス</th><td>施術場所は大阪市内のレンタルサロン、ビジネスホテルなど。難波ルームは難波駅徒歩5分（公式ROOMページ）。出張対応可能（公式リンク集トップ表記）</td></tr><tr><th>最寄り駅</th><td>難波駅</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>出張対応</span><span>プライベートオイルマッサージ</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://lit.link/veloursprivateoil" target="_blank" rel="noopener">https://lit.link/veloursprivateoil</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://www.instagram.com/velours.private_oil/" target="_blank" rel="noopener">Instagram</a> ／ <a class="sns-link" href="https://lin.ee/REiyWz4" target="_blank" rel="noopener">LINE</a> ／ <a class="sns-link" href="https://www.facebook.com/tr" target="_blank" rel="noopener">Facebook</a> ／ <a class="sns-link" href="https://youtube.com/@veloursprivateoil" target="_blank" rel="noopener">YouTube</a> ／ <a class="sns-link" href="https://www.tiktok.com/@velours.private_oil" target="_blank" rel="noopener">TikTok</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>全身オイルリンパトリートメント</td></tr><tr><th>営業時間</th><td>12:00〜22:00（予約状況により深夜も受付）</td></tr><tr><th>定休日</th><td>年中無休</td></tr><tr><th>アクセス</th><td>現在は店舗を持たず、都内近郊のご自宅・ホテルへの派遣のみで営業（移転リニューアル準備中）</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性向け</span><span>男性セラピスト</span><span>出張対応</span><span>完全予約制</span><span>バトラー（執事）スタイル</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://rose-group.wixsite.com/silkrose" target="_blank" rel="noopener">https://rose-group.wixsite.com/silkrose</a></td></tr>
+      <tr><th>メニュー・料金</th><td>全身オイルリンパトリートメント</td></tr><tr><th>営業時間</th><td>12:00〜22:00（予約状況により深夜も受付）</td></tr><tr><th>定休日</th><td>年中無休</td></tr><tr><th>アクセス</th><td>現在は店舗を持たず、都内近郊のご自宅・ホテルへの派遣のみで営業（移転リニューアル準備中）</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性向け</span><span>男性セラピスト</span><span>出張対応</span><span>完全予約制</span><span>バトラー（執事）スタイル</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://rose-group.wixsite.com/silkrose" target="_blank" rel="noopener">https://rose-group.wixsite.com/silkrose</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="http://www.facebook.com/rosegroup.silk" target="_blank" rel="noopener">Facebook</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>

@@ -13,7 +13,7 @@
 </script>
 <script>
   document.addEventListener('click', function(ev){
-    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn, a.sns-link') : null;
     if(!a) return;
     if(typeof gtag === 'function'){
       gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
@@ -179,7 +179,7 @@ footer.site a{color:var(--gold-soft)}
   <section>
     <h2>店舗情報</h2>
     <table class="info">
-      <tr><th>メニュー・料金</th><td>アロマオイル 70分コース　6,500円<br>アロマオイル 90分コース　8,500円<br>アロマオイル 120分コース　11,000円</td></tr><tr><th>営業時間</th><td>午前10時～翌4時（受付24時間）／トップのご予約受付は12:00～04:00と記載</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>広島県・岡山県（出張専門のため詳細住所の公式記載なし）</td></tr><tr><th>アクセス</th><td>広島県（広島市、東広島市、呉市、三次市、三原市、尾道市、福山市）、岡山県（岡山市、倉敷市、津山市）を中心に出張。その他山口県、島根県、鳥取県、愛媛県、香川県、九州地区、関西地区も相談可と公式に記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>出張アロマオイルマッサージ</span><span>美容エステ</span><span>ホットストーン、脱毛、パックなどのオプションがあると公式に記載</span><span>事前予約で全コース1000円割引中と公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://samurai.crayonsite.net/" target="_blank" rel="noopener">https://samurai.crayonsite.net/</a></td></tr>
+      <tr><th>メニュー・料金</th><td>アロマオイル 70分コース　6,500円<br>アロマオイル 90分コース　8,500円<br>アロマオイル 120分コース　11,000円</td></tr><tr><th>営業時間</th><td>午前10時～翌4時（受付24時間）／トップのご予約受付は12:00～04:00と記載</td></tr><tr><th>定休日</th><td>不定休</td></tr><tr><th>住所</th><td>広島県・岡山県（出張専門のため詳細住所の公式記載なし）</td></tr><tr><th>アクセス</th><td>広島県（広島市、東広島市、呉市、三次市、三原市、尾道市、福山市）、岡山県（岡山市、倉敷市、津山市）を中心に出張。その他山口県、島根県、鳥取県、愛媛県、香川県、九州地区、関西地区も相談可と公式に記載</td></tr><tr><th>特徴</th><td><span class="tags"><span>女性専用</span><span>男性セラピスト</span><span>出張アロマオイルマッサージ</span><span>美容エステ</span><span>ホットストーン、脱毛、パックなどのオプションがあると公式に記載</span><span>事前予約で全コース1000円割引中と公式に記載</span></span></td></tr><tr><th>公式サイト</th><td><a href="https://samurai.crayonsite.net/" target="_blank" rel="noopener">https://samurai.crayonsite.net/</a></td></tr><tr><th>SNS</th><td><a class="sns-link" href="https://line.me/R/ti/p/%40wyk2215b" target="_blank" rel="noopener">LINE</a></td></tr>
     </table>
     <p class="note">※電話番号はポータルに掲載していません。ご予約・お問い合わせは公式サイトからお願いします。</p>
   </section>
