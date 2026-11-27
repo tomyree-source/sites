@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>川越市で女性専用・男性セラピストを探すなら｜川越駅周辺の特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="川越市で女性専用の男性セラピストサロンを探す方へ。川越駅周辺の店舗型掲載店の紹介と、埼玉県内の出張の選択肢、選び方をまとめました。">
 <meta name="keywords" content="男性セラピスト 川越,川越 男性セラピスト 女性専用,川越駅 マッサージ 男性セラピスト,埼玉県 男性セラピスト">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>千葉県で女性専用・男性セラピストを探すなら｜千葉・船橋・佐倉の特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="千葉県で女性専用の男性セラピストを探す方へ。千葉・船橋・佐倉の掲載店3店の紹介と料金の目安、エリアごとの選び方をまとめました。">
 <meta name="keywords" content="男性セラピスト 千葉,千葉 男性セラピスト 女性専用,千葉市 男性セラピスト,船橋 男性セラピスト,佐倉 アロマ 男性セラピスト,千葉県 男性セラピスト">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>神戸市で女性専用・男性セラピストを探すなら｜三宮・湊川の特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="神戸市で女性専用の男性セラピストサロンを探す方へ。三宮・湊川などエリアの特徴と掲載店の紹介、近隣の西宮を含めた兵庫県内の探し方をまとめました。">
 <meta name="keywords" content="男性セラピスト 神戸,神戸 男性セラピスト 女性専用,三宮 男性セラピスト,三ノ宮 マッサージ 男性セラピスト,兵庫県 男性セラピスト">

@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>男性セラピスト 静岡県・静岡市｜女性専用サロン一覧 — 男性セラピストナビ</title>
 <meta name="description" content="静岡県の静岡市で男性セラピストが担当する女性専用サロンの一覧。施術者の経歴・資格が事前に分かる、健全な施術のみの店舗だけを掲載しています。">
 <meta name="keywords" content="男性セラピスト 静岡市,静岡市 男性セラピスト 女性専用,男性セラピスト 静岡県">

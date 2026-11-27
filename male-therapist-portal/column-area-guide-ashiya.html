@@ -11,6 +11,15 @@
   gtag('js', new Date());
   gtag('config', 'G-0V6GQSZV7F');
 </script>
+<script>
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a.hp-btn') : null;
+    if(!a) return;
+    if(typeof gtag === 'function'){
+      gtag('event', 'outbound_click', {site_id: 'male-therapist-portal', link_url: a.href, page_path: location.pathname});
+    }
+  });
+</script>
 <title>芦屋市で女性専用・男性セラピストを探すなら｜芦屋駅周辺と近隣エリアの特徴と掲載店ガイド｜男性セラピストナビ コラム</title>
 <meta name="description" content="芦屋市で女性専用の男性セラピストサロンを探す方へ。開院準備中の掲載店と、西宮・神戸など近隣エリアの掲載店を含めた探し方をまとめました。">
 <meta name="keywords" content="男性セラピスト 芦屋,芦屋 男性セラピスト 女性専用,芦屋駅 マッサージ 男性セラピスト,兵庫県 男性セラピスト">
