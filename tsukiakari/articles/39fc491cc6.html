@@ -513,7 +513,7 @@
         
           
           <div class="body">
-            <p><strong>1. 頻度の希望に差があるのは、珍しいことではありません。</strong>性欲の強さや、気持ちが向くタイミングには個人差が大きく、同じ人でも時期によって変わります。ですから、二人の希望がぴったり一致し続けるほうが、むしろ例外に近いものです。差があること自体は、相性の悪さや愛情の不足を意味しません。まずは「差はあって当たり前、そのうえでどう付き合うか」という前提に立つことが、話し合いを穏やかにする土台になります。</p>
+            <p><strong>1. 頻度の希望に差があるのは、珍しいことではありません。</strong>性欲の強さや、気持ちが向くタイミングには個人差が大きく、同じ人でも時期によって変わります。ですから、二人の希望がぴったり一致し続けるほうが、むしろ例外に近いものです。差があること自体は、<a href="https://tomyree-source.github.io/sites/astrology-calendar/#learn-synastry" data-ob="hoshi">相性</a>の悪さや愛情の不足を意味しません。まずは「差はあって当たり前、そのうえでどう付き合うか」という前提に立つことが、話し合いを穏やかにする土台になります。</p>
             <p><strong>2. 相手の背景を、想像してみる。</strong>頻度が合わない背景には、体調の波、仕事の忙しさ、睡眠不足、気持ちの余裕のなさ、からだの変化など、さまざまな事情が考えられます。「求めてくれない＝自分に魅力がない」「求めすぎる＝自分勝手」という短絡的な読み方は、どちらの側にとっても苦しいものです。相手の最近の生活や体調を思い浮かべてみると、評価ではなく理解から話を始めやすくなります。もちろん、実際のところは話してみないと分かりません。そのための話し合いです。</p>
             <p><strong>3. 話し合いは「回数の交渉」にしない。</strong>「月に何回にするか」という数字の交渉から入ると、折り合いではなく勝ち負けの形になりがちです。先に共有したいのは数字ではなく、それぞれの気持ちです。「私は、誘ってもらえると安心する」「私は、疲れているときに求められるとつらくなる」のように、自分の感じ方を主語にして伝え合いましょう。そのうえで、タイミングの工夫や、体調のよい日を選び合うことなど、具体的な調整は後から少しずつで構いません。話す場面は、気持ちが高ぶっている最中を避け、落ち着いて話せるタイミングを選んでください。</p>
             <p><strong>4. 「したい日」と「そうでない日」の伝え方を、決めておく。</strong>すれ違いの多くは、誘う・断る場面の受け止め方から生まれます。断られた側は「拒絶された」と感じやすく、断る側は「嫌われたくない」と身構えます。あらかじめ、「今日は難しいけれど、気持ちはある」と伝え合える短い言葉や、「今日は一緒にゆっくり過ごしたい」といった別の過ごし方の提案を、二人の間で共有しておくと、その場の傷つきは減ります。具体的な工夫は、読み物の「誘い方と断り方が分からないときの、小さな伝え方」でもまとめています。</p>
@@ -604,6 +604,25 @@
     var pn = a.getAttribute('data-aff-name'); if (pn) params.product_name = pn.slice(0,80);
     var pc = a.getAttribute('data-aff-cat'); if (pc) params.product_category = pc.slice(0,80);
     window.gtag('event', 'affiliate_click', params);
+  }, true);
+})();
+</script>
+<!-- outbound click tracking -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[data-ob]') : null;
+    if (!a) return;
+    if (typeof window.gtag !== 'function') return;
+    var text = (a.textContent || '').replace(/\s+/g,' ').trim();
+    window.gtag('event', 'outbound_click', {
+      site_id: 'tsukiakari',
+      link_url: a.href,
+      link_text: text.slice(0,80),
+      link_group: a.getAttribute('data-ob'),
+      page_path: location.pathname,
+      transport_type: 'beacon'
+    });
   }, true);
 })();
 </script>

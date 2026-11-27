@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://tomyree-source.github.io/sites/tsukiakari/eyecatch/c604000d6c.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://tomyree-source.github.io/sites/tsukiakari/eyecatch/c604000d6c.webp">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "夜、ふと寂しさを感じるときに｜寂しさとの付き合い方", "datePublished": "2026-11-24", "description": "夜、ふと寂しさを感じるときの気持ちの整理。夜に寂しさが浮かびやすい理由、寂しさを責めずに眺める視点、誰かと比べない考え方、夜の小さな過ごし方を、診断や治療はしない一般的な情報提供の範囲で紹介します。", "image": "https://tomyree-source.github.io/sites/tsukiakari/eyecatch/c604000d6c.webp", "inLanguage": "ja", "mainEntityOfPage": "https://tomyree-source.github.io/sites/tsukiakari/articles/c604000d6c.html", "author": {"@type": "Organization", "name": "月あかり相談室", "url": "https://tomyree-source.github.io/sites/tsukiakari/"}, "publisher": {"@type": "Organization", "name": "月あかり相談室", "url": "https://tomyree-source.github.io/sites/tsukiakari/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "夜、ふと寂しさを感じるときに｜寂しさとの付き合い方", "description": "夜、ふと寂しさを感じるときの気持ちの整理。夜に寂しさが浮かびやすい理由、寂しさを責めずに眺める視点、誰かと比べない考え方、夜の小さな過ごし方を、診断や治療はしない一般的な情報提供の範囲で紹介します。", "image": "https://tomyree-source.github.io/sites/tsukiakari/eyecatch/c604000d6c.webp", "inLanguage": "ja", "mainEntityOfPage": "https://tomyree-source.github.io/sites/tsukiakari/articles/c604000d6c.html", "author": {"@type": "Organization", "name": "月あかり相談室", "url": "https://tomyree-source.github.io/sites/tsukiakari/"}, "publisher": {"@type": "Organization", "name": "月あかり相談室", "url": "https://tomyree-source.github.io/sites/tsukiakari/"}}</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0V6GQSZV7F"></script>
 <script>
@@ -533,7 +533,8 @@
             <p><strong>あかりから、最後に一言。</strong>今夜はここまでにしましょう。続きは、またいつでも。言葉にするのが難しいときは、一緒に言葉にしていきましょう。</p>
           </div>
         
-      </article>
+      <p>眠れない夜に、星空や明日の暦を眺めて気持ちを切り替える方もいます。姉妹サイト「星と暦の手帖」では、<a href="https://tomyree-source.github.io/sites/astrology-calendar/" data-ob="hoshi">今日の運勢と星のカレンダー</a>を公開しています。</p>
+</article>
   <div class="related-box">
     <p><strong>関連する読み物</strong></p>
     <ul>
@@ -593,6 +594,25 @@
     var pn = a.getAttribute('data-aff-name'); if (pn) params.product_name = pn.slice(0,80);
     var pc = a.getAttribute('data-aff-cat'); if (pc) params.product_category = pc.slice(0,80);
     window.gtag('event', 'affiliate_click', params);
+  }, true);
+})();
+</script>
+<!-- outbound click tracking -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[data-ob]') : null;
+    if (!a) return;
+    if (typeof window.gtag !== 'function') return;
+    var text = (a.textContent || '').replace(/\s+/g,' ').trim();
+    window.gtag('event', 'outbound_click', {
+      site_id: 'tsukiakari',
+      link_url: a.href,
+      link_text: text.slice(0,80),
+      link_group: a.getAttribute('data-ob'),
+      page_path: location.pathname,
+      transport_type: 'beacon'
+    });
   }, true);
 })();
 </script>

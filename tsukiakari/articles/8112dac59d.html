@@ -532,7 +532,8 @@
             <p><strong>あかりから、最後に一言。</strong>今夜はここまでにしましょう。続きは、またいつでも。言葉にするのが難しいときは、一緒に言葉にしていきましょう。</p>
           </div>
         
-      </article>
+      <p>気持ちの波を眺める手がかりは、人によってさまざまです。月の満ち欠けや月星座に気持ちを重ねて眺めるのが好きな方は、姉妹サイト「星と暦の手帖」の<a href="https://tomyree-source.github.io/sites/astrology-calendar/#learn-moon-sign" data-ob="hoshi">月星座と気持ちの傾向の読み物</a>もどうぞ。</p>
+</article>
   <div class="cta-box">
     <p><strong>読み終えて、誰かに話したくなったら</strong></p>
     <p>最初のご相談はLINE公式アカウント（@942xdxma）で受け付けています。じっくり言葉にしたい方へ：有料の個別相談（文章・1テーマ・往復5回まで）も受付中です。開始記念1,000円（先着10名）／通常3,000円。</p>
@@ -584,6 +585,25 @@
     var pn = a.getAttribute('data-aff-name'); if (pn) params.product_name = pn.slice(0,80);
     var pc = a.getAttribute('data-aff-cat'); if (pc) params.product_category = pc.slice(0,80);
     window.gtag('event', 'affiliate_click', params);
+  }, true);
+})();
+</script>
+<!-- outbound click tracking -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[data-ob]') : null;
+    if (!a) return;
+    if (typeof window.gtag !== 'function') return;
+    var text = (a.textContent || '').replace(/\s+/g,' ').trim();
+    window.gtag('event', 'outbound_click', {
+      site_id: 'tsukiakari',
+      link_url: a.href,
+      link_text: text.slice(0,80),
+      link_group: a.getAttribute('data-ob'),
+      page_path: location.pathname,
+      transport_type: 'beacon'
+    });
   }, true);
 })();
 </script>
