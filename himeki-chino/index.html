@@ -444,6 +444,50 @@
       .info-table a.telnum { font-family: "Shippori Mincho", serif; font-size: 20px; text-decoration: none; color: var(--ink); letter-spacing: .04em; }
       .info-note { font-size: 13px; color: var(--ink-soft); margin-top: 12px; }
 
+      /* ---------- google map & reviews ---------- */
+      .review-card {
+        margin-top: 20px;
+        background: var(--card); border: 1px solid var(--line);
+        border-radius: 18px; padding: 20px 22px;
+        box-shadow: var(--shadow);
+        display: flex; flex-wrap: wrap; gap: 14px 20px;
+        align-items: center; justify-content: space-between;
+      }
+      .review-label { font-size: 13px; letter-spacing: .14em; color: var(--ink-soft); font-weight: 700; }
+      .review-score { display: flex; align-items: baseline; gap: 10px; margin-top: 2px; flex-wrap: wrap; }
+      .review-stars { color: var(--gold); font-size: 19px; letter-spacing: 2px; line-height: 1; }
+      .review-num { font-family: "Shippori Mincho", serif; font-size: 26px; font-weight: 700; line-height: 1; }
+      .review-count { font-size: 14.5px; color: var(--ink-soft); }
+      .review-note { font-size: 12px; color: var(--ink-soft); margin: 6px 0 0; }
+      .btn-review {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        border: 1px solid var(--gold); color: var(--gold);
+        background: transparent;
+        font-weight: 700; font-size: 15px; letter-spacing: .05em;
+        text-decoration: none;
+        padding: 11px 22px; border-radius: 999px;
+        min-height: 48px; flex: none;
+        transition: transform .25s ease, background .25s ease, color .25s ease;
+      }
+      .btn-review:hover { transform: translateY(-2px); background: var(--gold); color: #fffdf4; }
+      .map-actions { margin-top: 16px; }
+      .btn-map {
+        display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+        background: var(--mori); color: #f7f2e2;
+        font-weight: 700; font-size: 16px; letter-spacing: .05em;
+        text-decoration: none;
+        padding: 13px 28px; border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(46,74,56,.25);
+        min-height: 52px;
+        transition: transform .25s ease, background .25s ease;
+      }
+      .btn-map:hover { transform: translateY(-2px); background: var(--mori-soft); }
+      .btn-map svg { width: 20px; height: 20px; flex: none; }
+      @media (max-width: 599px) {
+        .btn-review, .btn-map { width: 100%; }
+        .review-card { justify-content: flex-start; }
+      }
+
       /* ---------- faq ---------- */
       .faq details {
         background: var(--card); border: 1px solid var(--line);
@@ -853,6 +897,24 @@
             </tr>
           </table>
           <p class="info-note rv">※ 男性の方は、紹介者のある方のみお受けしております。</p>
+          <div class="review-card rv">
+            <div>
+              <span class="review-label">Googleの口コミ</span>
+              <div class="review-score">
+                <span class="review-stars" aria-hidden="true">★★★★★</span>
+                <span class="review-num">5.0</span>
+                <span class="review-count">（29件）</span>
+              </div>
+              <p class="review-note">※ 2026年11月時点のGoogleの口コミ評価です</p>
+            </div>
+            <a class="btn-review" href="https://www.google.com/maps/search/?api=1&query=%E5%A7%AB%E6%9C%A8%E6%95%B4%E4%BD%93%E7%99%82%E8%A1%93%E8%8C%85%E9%87%8E%E5%BA%97" target="_blank" rel="noopener" onclick="gtag('event','review_click',{link_location:'info'});">口コミを読む・投稿する</a>
+          </div>
+          <div class="map-actions rv">
+            <a class="btn-map" href="https://www.google.com/maps/search/?api=1&query=%E5%A7%AB%E6%9C%A8%E6%95%B4%E4%BD%93%E7%99%82%E8%A1%93%E8%8C%85%E9%87%8E%E5%BA%97" target="_blank" rel="noopener" onclick="gtag('event','map_click',{link_location:'info'});">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+              Googleマップで見る
+            </a>
+          </div>
         </div>
         <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,32 C240,58 480,6 720,22 C960,38 1200,58 1440,28 L1440,60 L0,60 Z"/></svg>
       </section>
